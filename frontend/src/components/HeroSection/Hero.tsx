@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./hero.css"
-import Search from "../Search/search";
+import "./Hero.css"
+import Search from "../Search/Search";
 
 
 interface heroProps {
