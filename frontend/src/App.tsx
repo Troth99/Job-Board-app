@@ -1,17 +1,18 @@
+import { Footer } from "./components/Footer/Footer";
+import { Header } from "./components/Header/Header";
+import Hero from "./components/HeroSection/Hero";
 
-import { Header } from "./components/Header/header";
-import Hero from "./components/HeroSection/hero";
-import { useTheme } from "./hooks/useTheme";
 import "./styles/global.css"
 
 
 function App() {
-  const { theme, toggleTheme } = useTheme();
 
   return (
     <div>
       <Header />
         <Hero />
+        <h2>To do JOB-Lists applications + filter</h2>
+       <Footer />
     </div>
   );
 }

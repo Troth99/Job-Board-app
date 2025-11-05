@@ -1,0 +1,32 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #b7b8bb;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+footer a {
+  color: #070707;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.links {
+  padding-bottom: 2rem;
+}
+
+footer a:hover {
+  color: #007bff;
+  transform: translateY(-1px);
+}
+
+footer p {
+  margin-top: 0.5rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}

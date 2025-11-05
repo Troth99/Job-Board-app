@@ -2,13 +2,27 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
+  
 }
-  body {
-        background: #0d1117;
-        color: #e6edf3;
-        overflow-x: hidden;
-      }
+
+body {
+  background: #0d1117;
+  color: #e6edf3;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+#root {
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  flex: 1;
+}
 
 /* Default Light Theme */
 :root {
