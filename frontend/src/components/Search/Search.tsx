@@ -7,7 +7,7 @@ interface searchProps {
 }
 
 
-const Search = ({ onSearch }: searchProps) => {
+export default function Search ({ onSearch }: searchProps) {
     const [search, setSearch] = useState<string>("");
 
     const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,4 +44,3 @@ const Search = ({ onSearch }: searchProps) => {
     )
 }
 
-export default Search
