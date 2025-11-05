@@ -30,3 +30,21 @@ footer p {
   opacity: 0.8;
   font-size: 0.9rem;
 }
+
+[data-theme="dark"] footer {
+  background: #3d3c3c;  
+  box-shadow: 0 -2px 8px rgba(255, 255, 255, 0.1);  
+}
+
+[data-theme="dark"] footer a {
+  color: #e6edf3;  
+}
+
+[data-theme="dark"] footer a:hover {
+  color: #4e9eff;  
+}
+
+[data-theme="dark"] footer p {
+  color: #b0b0b0;  
+  opacity: 0.9;
+}
