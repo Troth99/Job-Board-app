@@ -1,5 +1,8 @@
+
+import { Header } from "./components/Header/header";
+import Hero from "./components/HeroSection/hero";
 import { useTheme } from "./hooks/useTheme";
-import "./styles/theme.css"
+import "./styles/global.css"
 
 
 function App() {
@@ -7,8 +10,8 @@ function App() {
 
   return (
     <div>
-      <h1>Current theme: {theme}</h1>
-      <button onClick={toggleTheme}>Toggle theme</button>
+      <Header />
+        <Hero />
     </div>
   );
 }

@@ -1,8 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ font-family: 'Inter', sans-serif;
+}
+  body {
+        background: #0d1117;
+        color: #e6edf3;
+        overflow-x: hidden;
+      }
+
 /* Default Light Theme */
 :root {
   --bg-color: #f9f9f9;
   --text-color: #111;
   --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --btn-shadow: rgba(0, 123, 255, 0.3);
 }
 
 /* Dark Theme */
@@ -10,6 +24,8 @@
   --bg-color: #1e1e1e;
   --text-color: #f5f5f5;
   --accent-color: #4e9eff;
+  --accent-hover: #1e90ff;
+  --btn-shadow: rgba(78, 158, 255, 0.6);
 }
 
 /* Apply globally */
@@ -19,18 +35,4 @@ body {
   color: var(--text-color);
   font-family: sans-serif;
   transition: background-color 0.3s, color 0.3s;
-}
-
-button {
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-button:hover {
-  opacity: 0.8;
 }
