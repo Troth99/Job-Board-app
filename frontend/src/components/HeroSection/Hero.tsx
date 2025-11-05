@@ -1,25 +1,15 @@
 import { useState } from "react";
-import "./Hero.css"
+import "./Hero.css";
 import Search from "../Search/Search";
 
+export default function Hero() {
+  const [search, setSearch] = useState("");
 
-interface heroProps {
-  title?: string;
-  subtitle?: string;
+  return (
+    <section className="hero">
+      <h1>Find Your Dream Job</h1>
+      <p>Thousands of opportunities from top companies are waiting for you.</p>
+      <Search onSearch={setSearch} />
+    </section>
+  );
 }
-const Hero = ({
-  title = "Find Your Dream Job",
-  subtitle = "Thousands of opportunities from top companies are waiting for you.",
-}: heroProps) => {
-    const [search, setSearch] = useState("")
-
-    return (
-   <section className="hero">
-  <h1>{title}</h1>
-  <p>{subtitle}</p>
-        <Search onSearch={setSearch} />
-</section>
-    )
-};
-
-export default Hero
