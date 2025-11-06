@@ -1,7 +1,5 @@
-
 header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
   position: sticky;
@@ -13,7 +11,14 @@ header {
   transition: background 0.3s, box-shadow 0.3s;
 }
 
-/* 3D JB Logo */
+.auth-buttons.desktop-auth {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
 .logo {
   font-size: 2.6rem;
   font-weight: bold;
@@ -28,8 +33,20 @@ header {
 }
 
 @keyframes logoSpin {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* === NAV === */
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul {
@@ -47,15 +64,17 @@ nav ul li a {
   transition: all 0.3s;
 }
 
-/* Light theme hover */
+/* Light hover */
 nav ul li a:hover {
   background: rgba(0, 123, 255, 0.2);
   box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
   transform: translateY(-2px) scale(1.05);
 }
 
+/* === AUTH BUTTONS === */
 .auth-buttons {
   display: flex;
+  align-items: center;
   gap: 0.8rem;
 }
 
@@ -71,34 +90,34 @@ nav ul li a:hover {
 .btn-login {
   background: #007bff;
 }
-
 .btn-register {
   background: #28a745;
 }
 
-/* Light theme auth hover */
 .auth-buttons a:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-  padding: 0.4rem 0.8rem;
-  border-radius: 50px;
-  font-weight: bold;
+/* === THEME TOGGLE === */
+.theme-toggle-btn {
   background: var(--accent-color, #007bff);
   color: #fff;
   border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 18px rgba(0, 123, 255, 0.35);
+.theme-toggle-btn:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.5);
 }
-
 
 body[data-theme="dark"] header {
   background: rgba(13, 17, 23, 0.85);
@@ -114,40 +133,15 @@ body[data-theme="dark"] nav ul li a {
   color: #e6edf3;
 }
 
-/* Dark theme hover */
 body[data-theme="dark"] nav ul li a:hover {
   background: rgba(30, 144, 255, 0.25);
   box-shadow: 0 0 12px rgba(30, 144, 255, 0.6);
-  transform: translateY(-2px) scale(1.05);
 }
 
 body[data-theme="dark"] .auth-buttons a:hover {
-  transform: translateY(-2px) scale(1.05);
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
 }
 
 body[data-theme="dark"] .theme-toggle-btn:hover {
   box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
-}
-.theme-toggle-btn {
-  background: var(--accent-color, #007bff);
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s, box-shadow 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.theme-toggle-btn:hover {
-  transform: translateY(-2px) scale(1.1);
-  box-shadow: 0 0 12px rgba(0, 123, 255, 0.5);
-}
-
-body[data-theme="dark"] .auth-buttons a:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
 }

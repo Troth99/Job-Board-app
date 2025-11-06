@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './Search.css'
+import "./Responsive.css"
 
 
 interface searchProps {

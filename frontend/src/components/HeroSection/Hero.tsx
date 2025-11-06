@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./Hero.css";
+import "./Responsive.css"
 import Search from "../Search/Search";
+
 
 export default function Hero() {
   const [search, setSearch] = useState("");

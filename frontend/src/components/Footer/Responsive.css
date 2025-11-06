@@ -1,0 +1,64 @@
+
+@media (max-width: 1024px) {
+  footer {
+    position: relative;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .links {
+    padding-bottom: 1.5rem;
+  }
+
+  footer a {
+    display: inline-block;
+    margin: 0.5rem 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    position: relative;
+    padding: 1.2rem 1rem;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-bottom: 1rem;
+  }
+
+  footer a {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  footer {
+    padding: 1rem 0.8rem;
+  }
+
+  .links {
+    gap: 0.4rem;
+  }
+
+  footer a {
+    font-size: 0.85rem;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+  }
+}
