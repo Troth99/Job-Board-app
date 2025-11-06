@@ -112,7 +112,7 @@
     height: 16px;
   }
 }
-/* === DARK THEME RESPONSIVE FIX === */
+
 @media (max-width: 1024px) {
   body[data-theme="dark"] .search-box {
     width: 420px;
