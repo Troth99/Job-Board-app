@@ -112,3 +112,61 @@
     height: 16px;
   }
 }
+/* === DARK THEME RESPONSIVE FIX === */
+@media (max-width: 1024px) {
+  body[data-theme="dark"] .search-box {
+    width: 420px;
+    padding: 0.4rem;
+  }
+  body[data-theme="dark"] .search-box input {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+  body[data-theme="dark"] .search-btn {
+    width: 44px;
+    height: 44px;
+  }
+  body[data-theme="dark"] .search-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  body[data-theme="dark"] .search-box {
+    width: 90%;
+    padding: 0.4rem;
+  }
+  body[data-theme="dark"] .search-box input {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+  body[data-theme="dark"] .search-btn {
+    width: 42px;
+    height: 42px;
+  }
+  body[data-theme="dark"] .search-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  body[data-theme="dark"] .search-box {
+    width: 100%;
+    padding: 0.4rem;
+    border-radius: 40px;
+  }
+  body[data-theme="dark"] .search-box input {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+  }
+  body[data-theme="dark"] .search-btn {
+    width: 40px;
+    height: 40px;
+  }
+  body[data-theme="dark"] .search-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
