@@ -13,9 +13,12 @@ app.use(express.json());
 
 
 app.use(cors({
- origin: ["http://localhost:5173", "https://my-job-board.vercel.app/api"],
-  credential: true
-}))
+  origin: [
+    "http://localhost:5173", 
+    "https://my-job-board.vercel.app"
+  ],
+  credentials: true
+}));
 
 mongoose.connect(process.env.MONGO_URI, {
 
