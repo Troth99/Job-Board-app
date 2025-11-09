@@ -19,7 +19,7 @@
   padding: 1rem 0.5rem;
   flex-grow: 1;
   align-items: stretch;
-  flex-wrap: wrap; /* Това ще позволи на категориите да се преопаковат, ако няма достатъчно място */
+  flex-wrap: wrap; 
 }
 
 .categories-grid::-webkit-scrollbar {
@@ -27,7 +27,7 @@
 }
 
 .categories-grid > div {
-  flex: 1 0 190px; /* Правим категориите да растат и да се свиват, но да имат минимална ширина */
+
   background: linear-gradient(135deg, #c1d6f3, #b8cdf1);
   padding: 0.7rem 1.4rem;
   border-radius: 25px;
@@ -45,7 +45,6 @@
   transform: translateY(-2px);
 }
 
-/* Card Content */
 .card-body {
   height: 100%;
   display: flex;

@@ -10,8 +10,8 @@
   }
 
   .categories-grid > div {
-    min-width: 100%;
-    padding: 1rem;
+    min-width: 100%; 
+    padding: 0.7rem 1rem; 
   }
 
   .show-all-btn {
@@ -25,7 +25,6 @@
   }
 }
 
-
 @media (max-width: 768px) {
   .categories-section {
     padding: 1.5rem;
@@ -33,13 +32,13 @@
 
   .categories-grid {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem; 
     padding: 1rem 0;
   }
 
   .categories-grid > div {
     min-width: 100%;
-    padding: 1rem;
+    padding: 0.8rem 1.2rem; 
   }
 
   .show-all-btn {
@@ -53,10 +52,9 @@
   }
 }
 
-
 @media (max-width: 1024px) {
   .categories-section {
-    padding: 2rem;
+    padding: 1.8rem;
   }
 
   .categories-grid {
@@ -66,8 +64,8 @@
   }
 
   .categories-grid > div {
-    min-width: 100%;
-    padding: 1rem;
+    min-width: 100%; 
+    padding: 0.9rem 1.4rem; 
   }
 
   .show-all-btn {
@@ -93,11 +91,12 @@
   }
 
   .categories-grid > div {
-    min-width: 220px;
+    min-width: 220px; 
+    padding: 1rem 1.6rem; 
   }
 
   .show-all-btn {
-    width: 50%;
+    width: 50%; 
     font-size: 1rem;
     padding: 1rem 1.5rem;
   }
@@ -107,4 +106,29 @@
   }
 }
 
+@media (min-width: 1201px) {
+  .categories-section {
+    padding: 2rem;
+  }
 
+  .categories-grid {
+    flex-direction: row;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .categories-grid > div {
+    min-width: 220px;
+    padding: 1rem 1.5rem;
+  }
+
+  .show-all-btn {
+    width: 25%;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+
+  .one-line {
+    font-size: 1.1rem;
+  }
+}
