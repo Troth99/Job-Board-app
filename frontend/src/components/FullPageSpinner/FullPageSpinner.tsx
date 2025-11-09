@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import "./fullPageSpinner.css";
+import "./FullPageSpinner.css";
 import { useTheme } from "../../hooks/useTheme";
 
 export default function FullPageSpinner() {

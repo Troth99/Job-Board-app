@@ -32,7 +32,7 @@
 .spinner-logo {
   font-size: 3rem;
   font-weight: bold;
-  color: #007bff; /* JB син */
+  color: #007bff; 
   font-family: "Segoe UI", sans-serif;
   text-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
 }
