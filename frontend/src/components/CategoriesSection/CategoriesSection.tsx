@@ -6,8 +6,10 @@ import "./responsive.css"
 export default function CategoriesSection() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [showAll, setShowAll] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    
     async function fetchCategories() {
       try {
         const data = await getAllCategories();
