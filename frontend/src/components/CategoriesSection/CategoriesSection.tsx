@@ -1,26 +1,13 @@
-import { useEffect, useState } from "react";
-import { Category, getAllCategories } from "../../services/categoryService";
+import {  useState } from "react";
+import { Category, } from "../../services/categoryService";
 import "./categoriesSection.css";
 import "./responsive.css"
 
-export default function CategoriesSection() {
-  const [categories, setCategories] = useState<Category[]>([]);
+interface CategoriesSectionProps {
+  categories: Category[]; 
+}
+export default function CategoriesSection({categories}: CategoriesSectionProps) {
   const [showAll, setShowAll] = useState(false);
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    
-    async function fetchCategories() {
-      try {
-        const data = await getAllCategories();
-        setCategories(data);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    fetchCategories();
-  }, []); 
 
   const visibleCategories = showAll ? categories : categories.slice(0, 8);
   return (
