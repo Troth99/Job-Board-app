@@ -14,8 +14,8 @@ app.use(express.json());
 
 app.use(cors({
   origin: [
-    "http://localhost:5173", 
-    "https://my-job-board.vercel.app"
+    "http://localhost:5173",
+    "https://job-board-three-omega.vercel.app"  
   ],
   credentials: true
 }));
