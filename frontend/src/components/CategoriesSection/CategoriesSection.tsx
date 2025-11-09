@@ -12,12 +12,13 @@ export default function CategoriesSection() {
       try {
         const data = await getAllCategories();
         setCategories(data);
-      } catch (error) {
-        console.error("Failed to load categories", error);
+      } catch (err) {
+        console.error(err);
       }
     }
+
     fetchCategories();
-  }, []);
+  }, []); 
 
   const visibleCategories = showAll ? categories : categories.slice(0, 8);
   return (

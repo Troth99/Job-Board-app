@@ -1,4 +1,5 @@
 import { API_BASE } from "./api";
+import { categoryStore } from "./categoryStoreCache";
 
 
 export interface Category {
@@ -7,13 +8,21 @@ export interface Category {
   shortName: string;
 }
 
-export async function getAllCategories() {
 
-    const res = await fetch(`${API_BASE}/categories`);
+export async function getAllCategories(): Promise<Category[]> {
+  const cached = categoryStore.get();
 
-    if(!res.ok){
-        throw new Error('Failed to fetch categories')
-    }
+  if (cached) {
 
-    return res.json()
+    return cached;
+  }
+  const res = await fetch(`${API_BASE}/categories`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch categories");
+  }
+  const data: Category[] = await res.json();
+  categoryStore.set(data)
+  return data;
 }
+
