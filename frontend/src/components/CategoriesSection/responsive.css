@@ -106,29 +106,3 @@
   }
 }
 
-@media (min-width: 1201px) {
-  .categories-section {
-    padding: 2rem;
-  }
-
-  .categories-grid {
-    flex-direction: row;
-    gap: 2rem;
-    padding: 2rem;
-  }
-
-  .categories-grid > div {
-    min-width: 220px;
-    padding: 1rem 1.5rem;
-  }
-
-  .show-all-btn {
-    width: 25%;
-    font-size: 1rem;
-    padding: 1rem 2rem;
-  }
-
-  .one-line {
-    font-size: 1.1rem;
-  }
-}

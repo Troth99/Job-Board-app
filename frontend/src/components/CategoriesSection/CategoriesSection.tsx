@@ -27,7 +27,7 @@ export default function CategoriesSection() {
           <div key={cat._id}>
             <div className="card-body">
               <div className="one-line">
-                <span>{cat.name}</span>
+                <span>{cat.shortName}</span>
               </div>
             </div>
           </div>

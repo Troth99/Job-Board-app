@@ -10,8 +10,8 @@
 
 .categories-grid {
   display: flex;
-  gap: 2rem;
-  overflow-x: auto;
+  gap: 1rem;
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
@@ -19,7 +19,7 @@
   padding: 1rem 0.5rem;
   flex-grow: 1;
   align-items: stretch;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
 .categories-grid::-webkit-scrollbar {
@@ -27,17 +27,18 @@
 }
 
 .categories-grid > div {
-
   background: linear-gradient(135deg, #c1d6f3, #b8cdf1);
-  padding: 0.7rem 1.4rem;
-  border-radius: 25px;
+  padding: 1rem 1rem; 
+  border-radius: 20px; 
   box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
   cursor: pointer;
   transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
   color: #004a8f;
   font-weight: 500;
+  min-width: 140px; 
+  max-width: 200px; 
+  flex-shrink: 1; 
 }
-
 .categories-grid > div:hover {
   background: linear-gradient(135deg, #007bff, #00aaff);
   color: #fff;
@@ -57,7 +58,7 @@
   font-weight: 600;
   text-align: center;
   transition: color 0.3s ease;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .categories-grid > div:hover .one-line {
@@ -66,8 +67,8 @@
 
 .show-all-btn {
   min-width: 160px;
-  height: 45px;
-  padding: 0.8rem 1.5rem;
+  height: 40px; 
+  padding: 0.6rem 1.5rem; 
   background: linear-gradient(135deg, #007bff, #00aaff);
   color: #fff;
   font-weight: bold;
