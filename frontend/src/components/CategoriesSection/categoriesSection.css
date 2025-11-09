@@ -27,7 +27,7 @@
   display: none;
 }
 
-/* Category Cards */
+
 .categories-grid > div {
   flex: 0 0 auto;
   background: linear-gradient(135deg, #c1d6f3, #b8cdf1);
