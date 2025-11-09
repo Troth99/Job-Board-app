@@ -1,4 +1,4 @@
-/* Main Section */
+
 .categories-section {
   padding: 2rem;
   display: flex;
@@ -6,18 +6,18 @@
   gap: 2rem;
   position: relative;
   margin: 0 auto;
-  flex-direction: column; /* Added to ensure it’s column layout */
+  flex-direction: column; 
 }
 
-/* Categories Grid */
+
 .categories-grid {
   display: flex;
   gap: 2rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   padding: 1rem 0.5rem;
   flex-grow: 1;
   align-items: stretch;
@@ -27,27 +27,28 @@
   display: none;
 }
 
+/* Category Cards */
 .categories-grid > div {
-  min-width: 190px; 
-  max-width: 190px; 
-  scroll-snap-align: start;
-  background: rgba(179, 174, 174, 0.514);
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
+  flex: 0 0 auto;
+  background: linear-gradient(135deg, #c1d6f3, #b8cdf1);
+  padding: 0.7rem 1.4rem;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 123, 255, 0.1);
-  flex: 0 0 auto; 
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  color: #004a8f;
+  font-weight: 500;
+  min-width: 190px; 
 }
 
-/* Hover Effect */
 .categories-grid > div:hover {
-  background: linear-gradient(135deg, #0069f3, #048ac9);
-  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.2);
-  transform: translateY(-4px);
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+  transform: translateY(-2px);
 }
 
+/* Card Content */
 .card-body {
   height: 100%;
   display: flex;
@@ -60,15 +61,14 @@
   font-weight: 600;
   text-align: center;
   transition: color 0.3s ease;
-  font-size: 1.1rem
+  font-size: 1.1rem;
 }
-
 
 .categories-grid > div:hover .one-line {
-  color: rgb(255, 255, 255);
+  color: #ffffff;
 }
 
-/* Show All Button */
+
 .show-all-btn {
   min-width: 160px;
   height: 45px;
@@ -95,11 +95,41 @@
 }
 
 
+[data-theme="dark"] .categories-grid > div {
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2), 0 0 10px #007bff;
+  background: linear-gradient(135deg, #151a22, #1c2230);
+}
+
+[data-theme="dark"] .categories-grid > div:hover {
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4), 0 0 20px #00aaff;
+  background: linear-gradient(135deg, #007bff, #00aaff);
+}
 
 
-@keyframes subtle-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+[data-theme="dark"] .one-line {
+  color: #d0e7ff;
+}
+
+[data-theme="dark"] .categories-section {
+  color: #d0e7ff;
+}
+
+
+[data-theme="dark"] .show-all-btn {
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+}
+
+[data-theme="dark"] .show-all-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #0088cc);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+
+[data-theme="dark"] .show-all-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #0088cc);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
 }
 
 
