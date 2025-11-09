@@ -34,37 +34,29 @@ const [loading, setLoading] = useState(true);
 
     wakeUpServer();
   }, []);
-
-   useEffect(() => {
+  useEffect(() => {
     async function fetchCategories() {
-      setLoadingCategories(true); 
       try {
         const data = await getAllCategories();
         setCategories(data);
-        setIsAppReady(true);
-        setCategories(data);
       } catch (err) {
         console.error("Error loading categories:", err);
-      } finally {
-        setLoadingCategories(false);
       }
     }
-
     fetchCategories();
   }, []);
-  return (
+   if (loading || categories.length === 0) {
+    return <FullPageSpinner />;
+  }
+   return (
     <div>
-      {loading && <FullPageSpinner />}
-      {!loading && (
-        <>
-          <Header />
-          <Hero />
-          <CategoriesSection categories={categories} />
-          <Footer />
-        </>
-      )}
+      <Header />
+      <Hero />
+      <CategoriesSection categories={categories} />
+      <Footer />
     </div>
   );
 }
+
 
 export default App
