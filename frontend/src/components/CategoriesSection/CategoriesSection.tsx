@@ -34,7 +34,7 @@ export default function CategoriesSection() {
         ))}
       </div>
 
-      {/* Бутонът вече води към нова страница със всички категории */}
+  
       {categories.length > 8 && (
        
           <button className="show-all-btn">
