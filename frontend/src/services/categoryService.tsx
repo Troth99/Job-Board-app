@@ -1,16 +1,19 @@
+import { API_BASE } from "./api";
+
 
 export interface Category {
-    _id: string;
-    name: string;
-    shortName: string;
+  _id: string;
+  name: string;
+  shortName: string;
 }
 
-export interface Job {
-  _id: string;
-  title: string;
-  description: string;
-  location: string;
-  salary?: string;
-  category: Category;
-  company?: { name: string };
+export async function getAllCategories() {
+
+    const res = await fetch(`${API_BASE}/categories`);
+
+    if(!res.ok){
+        throw new Error('Failed to fetch categories')
+    }
+
+    return res.json()
 }

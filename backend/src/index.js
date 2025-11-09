@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import 'dotenv/config'
 import routes from "./routes/index.js";
+import cors from "cors";
+
 
 
 
@@ -9,6 +11,11 @@ const app = express()
 
 app.use(express.json());
 
+
+app.use(cors({
+ origin: ["http://localhost:5173", "https://my-job-board.vercel.app/api"],
+  credential: true
+}))
 
 mongoose.connect(process.env.MONGO_URI, {
 
