@@ -13,6 +13,7 @@ function App() {
 const [loading, setLoading] = useState(true);
  const [loadingCategories, setLoadingCategories] = useState(true); 
   const [categories, setCategories] = useState<Category[]>([]); 
+  const [isAppReady, setIsAppReady] = useState(false)
 
   useEffect(() => {
     async function wakeUpServer() {
@@ -38,7 +39,9 @@ const [loading, setLoading] = useState(true);
     async function fetchCategories() {
       setLoadingCategories(true); 
       try {
-        const data = await getAllCategories(); 
+        const data = await getAllCategories();
+        setCategories(data);
+        setIsAppReady(true);
         setCategories(data);
       } catch (err) {
         console.error("Error loading categories:", err);
