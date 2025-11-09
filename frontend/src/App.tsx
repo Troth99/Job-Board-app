@@ -17,9 +17,11 @@ const [loading, setLoading] = useState(true);
 
         //Wake up call
 
-         await fetch("https://job-board-backend-7gfd.onrender.com/");
+        const response = await fetch("https://job-board-backend-7gfd.onrender.com/");
 
-        await new Promise((res) => setTimeout(res, 500));
+        if(!response.ok) {
+         setLoading(false); 
+        }
       } catch (err) {
         console.error(err);
       } finally {
