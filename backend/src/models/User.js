@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema( {
         type: String,
         required: [true, "First name is required!"],
     },
-    secondName: {
+    lastName: {
         type: String,
         required: [true, "Second name is required!"]
     },
@@ -28,10 +28,6 @@ const userSchema = new mongoose.Schema( {
     password: {
         type: String,
         required: [true, 'Password is required!'],
-    },
-    role: {
-        type: String,
-        enum: ['candidate', 'employer', 'recruiter', 'moderator', 'admin'], default: 'candidate'
     },
       avatar: {
     type: String, 

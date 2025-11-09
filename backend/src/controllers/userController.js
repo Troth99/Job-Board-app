@@ -3,7 +3,7 @@ import generateToken from "../utils/generateToken.js";
 
 
 export const registerUser = async (req, res) => {
-    const { name, email, password, role } = req.body;
+    const { firstName, lastName, email, phoneNumber, location, password, avatar } = req.body;
 
     try {
         const existingUser = await User.findOne({ email });
@@ -11,13 +11,16 @@ export const registerUser = async (req, res) => {
             return res.status(400).json({ message: 'User already exists' })
         }
 
-        const user = await User.create({ name, email, password, role });
+        const user = await User.create({ firstName, lastName, email, phoneNumber, location, password, avatar });
 
         res.status(201).json({
             _id: user._id,
-            name: user.name,
+            firstName: user.firstName,
+            lastName: user.lastName,
             email: user.email,
-            role: user.role,
+            phoneNumber: user.phoneNumber,
+            location: user.location,
+            avatar: user.avatar,
             token: generateToken(user._id)
         })
     } catch (error) {
@@ -37,7 +40,6 @@ export const loginUser = async (req, res) => {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
-                role: user.role,
                 token: generateToken(user._id),
             });
         } else {
@@ -59,19 +61,19 @@ export const getUserProfile = async (req, res) => {
 }
 
 export const updateUserProfile = async (req, res) => {
-  try {
-    const updates = req.body; 
+    try {
+        const updates = req.body;
 
-    const updatedUser = await User.findByIdAndUpdate(
-      req.user._id,
-      updates,
-      { new: true }
-    ).select("-password");
+        const updatedUser = await User.findByIdAndUpdate(
+            req.user._id,
+            updates,
+            { new: true }
+        ).select("-password");
 
-    res.status(200).json(updatedUser);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 };
 
 export const deleteUserProfile = async (req, res) => {

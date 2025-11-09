@@ -1,11 +1,11 @@
-import {Schema, Types, model} from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 
 const jobSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   location: { type: String, required: true },
-  salary: { type: Number },
+  salary: { type: String },
   logo: {
     type: String,
   },
@@ -16,11 +16,16 @@ const jobSchema = new Schema({
     required: true,
   },
 
-company: {
-  type: Types.ObjectId,
-  ref: "Company",
-},
+  company: {
+    type: Types.ObjectId,
+    ref: "Company",
+  },
 
+  category: {
+    type: Types.ObjectId,
+    ref: 'Category',
+    required: true
+  },
   createdAt: {
     type: Date,
     default: Date.now,

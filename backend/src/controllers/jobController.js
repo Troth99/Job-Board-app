@@ -1,4 +1,5 @@
-import { createJobService, getJobById } from "../services/jobService.js";
+import Jobs from "../models/Jobs.js";
+import { createJobService, getAllJobs, getJobById } from "../services/jobService.js";
 
 
 export const createJob = async (req, res) => {
@@ -46,3 +47,13 @@ export const getJobByIdController = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const getAllJobsController = async (req, res) => {
+  try {
+    const categoryId = req.query.category;
+    const jobs = await getAllJobs(categoryId)
+    res.status(200).json(jobs)
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
