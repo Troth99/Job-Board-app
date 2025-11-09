@@ -1,0 +1,162 @@
+@media (max-width: 480px) {
+  .categories-section {
+    padding: 1rem;
+  }
+
+  .categories-grid {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .categories-grid > div {
+    min-width: 100%;
+    padding: 1rem;
+  }
+
+  .show-all-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem 0;
+  }
+
+  .one-line {
+    font-size: 0.9rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .categories-section {
+    padding: 1.5rem;
+  }
+
+  .categories-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .categories-grid > div {
+    min-width: 100%;
+    padding: 1rem;
+  }
+
+  .show-all-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem 0;
+  }
+
+  .one-line {
+    font-size: 1rem;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .categories-section {
+    padding: 2rem;
+  }
+
+  .categories-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 1rem;
+  }
+
+  .categories-grid > div {
+    min-width: 100%;
+    padding: 1rem;
+  }
+
+  .show-all-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .one-line {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .categories-section {
+    padding: 2rem;
+  }
+
+  .categories-grid {
+    flex-direction: row;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+  }
+
+  .categories-grid > div {
+    min-width: 220px;
+  }
+
+  .show-all-btn {
+    width: 50%;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .one-line {
+    font-size: 1rem;
+  }
+}
+
+
+@media (min-width: 1201px) {
+  .categories-section {
+    padding: 2rem;
+  }
+
+  .categories-grid {
+    flex-direction: row;
+    gap: 2rem;
+    padding: 1rem 2rem;
+  }
+
+  .categories-grid > div {
+    min-width: 250px;
+  }
+
+  .show-all-btn {
+    width: auto;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+  }
+
+  .one-line {
+    font-size: 1.1rem;
+  }
+}
+
+
+@media (min-width: 1600px) {
+  .categories-section {
+    padding: 2.5rem;
+  }
+
+  .categories-grid {
+    flex-direction: row;
+    gap: 2.5rem;
+    padding: 1rem 3rem;
+  }
+
+  .categories-grid > div {
+    min-width: 270px;
+  }
+
+  .show-all-btn {
+    width: auto;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+
+  .one-line {
+    font-size: 1.2rem;
+  }
+}

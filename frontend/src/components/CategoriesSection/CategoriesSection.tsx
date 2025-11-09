@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Category, getAllCategories } from "../../services/categoryService";
-import "./CategoriesSection.css";
+import "./categoriesSection.css";
+import "./responsive.css"
 
 export default function CategoriesSection() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -20,7 +21,7 @@ export default function CategoriesSection() {
 
   const visibleCategories = showAll ? categories : categories.slice(0, 8);
   return (
-   <div className="categories-section">
+      <div className="categories-section">
       <div className="categories-grid">
         {visibleCategories.map((cat) => (
           <div key={cat._id}>
@@ -33,10 +34,13 @@ export default function CategoriesSection() {
         ))}
       </div>
 
+      {/* Бутонът вече води към нова страница със всички категории */}
       {categories.length > 8 && (
-        <button onClick={() => setShowAll(!showAll)} className="show-all-btn">
-          {showAll ? "Show Less" : "View All Categories"}
-        </button>
+       
+          <button className="show-all-btn">
+            View All Categories
+          </button>
+    
       )}
     </div>
   );
