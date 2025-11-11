@@ -1,0 +1,90 @@
+/* Контейнер за обявите */
+.job-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f4f7fb;  /* Лека фоново сиво-бяла */
+  height: 100%;
+}
+
+/* Списък с обяви */
+.recent-jobs-container {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 1000px;  /* Ограничаваме ширината */
+}
+
+/* Обява */
+.job-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Контейнер за снимката и текстовата информация */
+.job-card-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-start;  /* Елементите започват отляво */
+}
+
+/* Снимка (лого на компанията) */
+.job-card-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #eaeaea;
+  margin-left: 20px; /* Малко отстояние от текстовата част */
+}
+
+/* Снимката на компанията */
+.company-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Информация за обявата */
+.job-card-details {
+  flex-grow: 1;  /* За да заема останалото пространство */
+  padding-left: 20px;
+}
+
+.job-card-details h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.job-card-details p {
+  margin: 4px 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Съобщение при липса на обяви */
+.no-jobs {
+  font-size: 1.2rem;
+  color: #888;
+  text-align: center;
+  padding: 30px;
+  font-weight: 500;
+}

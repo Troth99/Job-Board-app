@@ -1,36 +1,50 @@
-import { useState } from "react"
-import { Category } from "../../../services/categoryService";
+import { Job } from "../CreateJob/CreateJob";
+import './RecentJobs.css'
 
-export interface Job {
-  _id: string;
-  title: string;
-  description: string;
-  location: string;
-  salary?: string;
-  createdBy: string;
-  company?: string | null; 
-  type: string;
-  category?: string; 
-  createdAt: string;
-}
 
 interface RecentJobsProps {
   recentJobs: Job[];
 }
 
-export default function RecentJobs({recentJobs} : RecentJobsProps) {
-const [jobs, setJob] = useState<Job[]>([])
-
-    return (
-       <ul>
-      {jobs.map((job) => (
-        <li key={job._id} className="job-card">
-          <h3>{job.title}</h3>
-          <p>{job.company || "Unknown company"}</p>
-          <p>{job.location} - {job.type}</p>
-          <p>{job.salary}</p>
-        </li>
-      ))}
-    </ul>
-    )
+export default function RecentJobs({ recentJobs }: RecentJobsProps) {
+  return (
+    <div className="job-container">
+      {recentJobs && recentJobs.length > 0 ? (
+        <ul className="recent-jobs-container">
+          {recentJobs.map((job) => (
+            <li key={job.id} className="job-card">
+              <div className="job-card-content">
+                {/* Изображение на компания или дефолтна снимка */}
+                <div className="job-card-image">
+                  <img
+                    src={job.company ? job.company.logo : 'assets/personAvatr.jpg'}
+                    alt={job.company ? job.company.name : 'Default avatar'}
+                    className="company-logo"
+                  />
+                </div>
+                <div className="job-card-details">
+                  <h3>{job.title}</h3>
+                  {/* Проверка дали е от човек или компания */}
+                  <p>
+                    {job.company ? job.company.name : `${job.postedBy.firstName} ${job.postedBy.lastName}`}
+                  </p>
+                  <p>{job.location} - {job.type}</p>
+                  <p>Category: {job.category || "No category"}</p>
+                  <p>Posted at: {new Date(job.createdAt).toLocaleDateString()}</p>
+                  {/* Допълнителни детайли за компанията или човека */}
+                  {job.company ? (
+                    <p>Company: {job.company.name}</p>
+                  ) : (
+                    <p>Posted by: {job.postedBy.firstName} {job.postedBy.lastName}</p>
+                  )}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="no-jobs">No jobs available.</p>
+      )}
+    </div>
+  );
 }

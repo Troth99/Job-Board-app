@@ -7,8 +7,9 @@ import Hero from "./components/HeroSection/Hero";
 import "./styles/global.css"
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import { Category, getAllCategories } from "./services/categoryService";
-import RecentJobs, { Job } from "./components/Jobs/RecentJobs/RecentJobs";
+import RecentJobs from "./components/Jobs/RecentJobs/RecentJobs";
 import { getRecentJobs } from "./services/jobService";
+import { Job } from "./components/Jobs/CreateJob/CreateJob";
 
 
 
@@ -56,6 +57,7 @@ const [loading, setLoading] = useState(true);
     async function fetchRecentJobs(){
       try {
         const recentJobs = await getRecentJobs(5);
+        console.log('recent jobs', recentJobs)
         setRecentJobs(recentJobs)
       } catch (error) {
          console.error("Error loading recent jobs!:", error);
