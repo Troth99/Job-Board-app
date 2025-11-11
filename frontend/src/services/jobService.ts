@@ -1,13 +1,25 @@
-import { Category } from "./categoryService";
+import { API_BASE } from "./api";
+
+export  async function getRecentJobs(limit = 5) {
+
+    try {
+        const result = await fetch(`${API_BASE}/jobs?limit=${limit}`)
+       
+        if(!result.ok){
+            throw new Error('Failed to fetch recent jobs!')
+        }
+
+        const data = await result.json();
+        console.log(data)
+        return data;
+    } catch (error) {
+          console.error("Error fetching recent jobs:", error);
+    return [];
+    }
+}
 
 
-export interface Job {
-  _id: string;
-  title: string;
-  description: string;
-  location: string;
-  salary?: string;
-  type: string;
-  category: Category;
-  company?: { name: string };
+export  async function getAllJobs() {
+    
+    return []
 }

@@ -7,13 +7,17 @@ import Hero from "./components/HeroSection/Hero";
 import "./styles/global.css"
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import { Category, getAllCategories } from "./services/categoryService";
-import RecentJobs from "./components/Jobs/RecentJobs/Jobs";
+import RecentJobs, { Job } from "./components/Jobs/RecentJobs/RecentJobs";
+import { getRecentJobs } from "./services/jobService";
+
+
 
 
 function App() {
 const [loading, setLoading] = useState(true);
  const [loadingCategories, setLoadingCategories] = useState(true); 
   const [categories, setCategories] = useState<Category[]>([]); 
+  const [recentJobs, setRecentJobs] = useState<Job[]>([]);
   const [isAppReady, setIsAppReady] = useState(false)
 
   useEffect(() => {
@@ -39,6 +43,7 @@ const [loading, setLoading] = useState(true);
     async function fetchCategories() {
       try {
         const data = await getAllCategories();
+        
         setCategories(data);
       } catch (err) {
         console.error("Error loading categories:", err);
@@ -46,7 +51,20 @@ const [loading, setLoading] = useState(true);
     }
     fetchCategories();
   }, []);
-   if (loading || categories.length === 0) {
+
+  useEffect(() => {
+    async function fetchRecentJobs(){
+      try {
+        const recentJobs = await getRecentJobs(5);
+        setRecentJobs(recentJobs)
+      } catch (error) {
+         console.error("Error loading recent jobs!:", error);
+      }
+    }
+    fetchRecentJobs()
+  }, [])
+
+   if (loading) {
     return <FullPageSpinner />;
   }
    return (
@@ -54,7 +72,7 @@ const [loading, setLoading] = useState(true);
       <Header />
       <Hero />
       <CategoriesSection categories={categories} />
-      <RecentJobs />
+      <RecentJobs recentJobs={recentJobs} />
       <Footer />
     </div>
   );

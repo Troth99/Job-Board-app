@@ -55,28 +55,27 @@ export const updateJob = async (req, res) => {
     }
 };
 
-export const getRecentJobs = async () => {
-    const limit = 5;
-
+export const getRecentJobs = async (limit = 5) => {
+  try {
     const jobs = await Jobs.find({})
-        .sort({ createdAt: -1, _id: -1 })
-        .limit(limit)
-        .populate("company", "name")
-        .populate("category", "name")
-        .lean();
-
-    console.log("Fetched jobs:", jobs.map(j => ({ id: j._id, title: j.title, createdAt: j.createdAt })));
-    console.log("Total fetched:", jobs.length);
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .populate("company", "name")
+      .populate("category", "name")
+      .lean();
 
     return jobs.map(job => ({
-        id: job._id,
-        title: job.title,
-        company: job.company?.name || null,
-        location: job.location,
-        type: job.type || "On-site",
-        salary: job.salary || null,
-        category: job.category?.name || null,
-        postedAt: job.createdAt,
-        applyUrl: `/jobs/${job._id}`
+      id: job._id,
+      title: job.title,
+      company: job.company?.name || null,
+      location: job.location,
+      type: job.type || "On-site",
+      salary: job.salary || null,
+      category: job.category?.name || null,
+      postedAt: job.createdAt,
     }));
+  } catch (error) {
+    console.error("Error in getRecentJobs service:", error);
+    return [];
+  }
 };

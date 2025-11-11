@@ -1,5 +1,5 @@
 import Jobs from "../models/Jobs.js";
-import { createJobService, getAllJobs, getJobById } from "../services/jobService.js";
+import { createJobService, getAllJobs, getJobById, getRecentJobs } from "../services/jobService.js";
 
 
 export const createJob = async (req, res) => {
@@ -57,3 +57,19 @@ export const getAllJobsController = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 }
+
+
+export const getRecentJobsController = async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit || "5", 10);
+    console.log("Limit received:", limit);
+
+    const jobs = await getRecentJobs(limit);
+    console.log("Jobs from service:", jobs);
+
+    res.json({ jobs });
+  } catch (error) {
+    console.error("Error in getRecentJobsController:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
