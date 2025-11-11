@@ -10,12 +10,7 @@ export interface Category {
 
 
 export async function getAllCategories(): Promise<Category[]> {
-  const cached = categoryStore.get();
 
-  if (cached) {
-
-    return cached;
-  }
   const res = await fetch(`${API_BASE}/categories`);
 
   if (!res.ok) {

@@ -1,13 +1,25 @@
-import {  useState } from "react";
-import { Category, } from "../../services/categoryService";
+
 import "./categoriesSection.css";
 import "./responsive.css"
+import { Category } from "../../../services/categoryService";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { useEffect } from "react";
+import { setCategories } from "./categoriesSlice";
 
 interface CategoriesSectionProps {
   categories: Category[]; 
 }
 export default function CategoriesSection({categories}: CategoriesSectionProps) {
-  const [showAll, setShowAll] = useState(false);
+  const dispatch = useDispatch();
+ 
+  const { categories: reduxCategories, showAll } = useSelector((state: RootState) => state.categories); 
+
+  useEffect(() => {
+    if(reduxCategories.length === 0) {
+      dispatch(setCategories(categories))
+    }
+  }, [categories, reduxCategories, dispatch])
 
   const visibleCategories = showAll ? categories : categories.slice(0, 8);
   return (
