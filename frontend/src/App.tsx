@@ -6,7 +6,7 @@ import { Header } from "./components/Header/Header";
 import "./styles/global.css";
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import { BrowserRouter, Route, Router, Routes, useLocation } from "react-router";
-import Login from "./components/auth/Login/Login";
+import LoginComponent from "./components/auth/Login/Login";
 import HomeSection from "./components/Home/HomeSection";
 
 function App() {
@@ -46,7 +46,7 @@ function App() {
   {!isLoginPage && <Header />}
       <Routes>
         <Route path="/" element={<HomeSection />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginComponent />} />
       </Routes>
 
       {!isLoginPage && <Footer />}

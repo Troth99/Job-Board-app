@@ -1,11 +1,17 @@
+import { Link } from 'react-router'
 import './Login.css'
-export default  function Login() {
+import "./Responsive.css"
+
+export default  function LoginComponent() {
 
     return (
         <div className="login-wrapper">
  <div className="login-container">
     <div className="content">
-      <div className="logo">JB</div>
+        <Link to="/" className='logo'>
+        JB
+        </Link>
+   
       <h2>Login to Your Account</h2>
       <form id="loginForm">
         <div className="input-wrap">

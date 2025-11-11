@@ -1,0 +1,62 @@
+
+@media (max-width: 768px) {
+  .login-container {
+    width: 80%;
+    padding: 2rem;
+  }
+
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .input-wrap input {
+    font-size: 1rem;
+  }
+
+  .btn-login {
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+
+  .social-login button {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .logo {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .input-wrap input {
+    font-size: 0.95rem;
+  }
+
+  .btn-login {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  .social-login button {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+
+  .links {
+    font-size: 0.8rem;
+  }
+}
