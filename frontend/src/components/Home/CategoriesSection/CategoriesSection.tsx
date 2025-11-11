@@ -1,27 +1,23 @@
 
 import "./categoriesSection.css";
 import "./responsive.css"
-import { Category } from "../../../services/categoryService";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
-import { useEffect } from "react";
+import { RootState, store } from "../../../redux/store";
+import { useEffect, useState } from "react";
 import { setCategories } from "./categoriesSlice";
 
-interface CategoriesSectionProps {
-  categories: Category[]; 
-}
-export default function CategoriesSection({categories}: CategoriesSectionProps) {
+
+export default function CategoriesSection() {
+
   const dispatch = useDispatch();
  
   const { categories: reduxCategories, showAll } = useSelector((state: RootState) => state.categories); 
 
-  useEffect(() => {
-    if(reduxCategories.length === 0) {
-      dispatch(setCategories(categories))
-    }
-  }, [categories, reduxCategories, dispatch])
+  if (reduxCategories.length === 0) {
+    return <div>Loading...</div>; 
+  }
 
-  const visibleCategories = showAll ? categories : categories.slice(0, 8);
+  const visibleCategories = showAll ? reduxCategories : reduxCategories.slice(0, 8);
   return (
       <div className="categories-section">
       <div className="categories-grid">
@@ -37,7 +33,7 @@ export default function CategoriesSection({categories}: CategoriesSectionProps) 
       </div>
 
   
-      {categories.length > 8 && (
+      {reduxCategories.length > 8 && (
        
           <button className="show-all-btn">
             View All Categories
