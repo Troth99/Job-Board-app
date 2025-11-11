@@ -261,3 +261,84 @@ form {
   text-decoration: underline;
 }
 
+
+
+[data-theme="dark"] .login-wrapper {
+   background: #0d1117;
+}
+
+[data-theme="dark"] .login-container {
+  background: rgba(25, 30, 45, 0.95);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .logo {
+  color: #80aaff; 
+  text-shadow: 0 0 12px rgba(130, 170, 255, 0.6);
+}
+
+[data-theme="dark"] h2 {
+  color: #c7d3f0; 
+}
+
+[data-theme="dark"] .input-wrap input {
+  background: rgba(42, 43, 48, 0.9);
+  color: #e6edf3; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .input-wrap input::placeholder {
+  color: #aaa;
+}
+
+[data-theme="dark"] .input-wrap input:focus {
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
+}
+
+[data-theme="dark"] .btn-login {
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  color: #fff;
+}
+
+[data-theme="dark"] .btn-login:hover {
+  background: linear-gradient(90deg, #009dff, #00ccff);
+}
+
+[data-theme="dark"] .social-login button {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+[data-theme="dark"] .social-login button:hover {
+  background-color: #444;
+}
+
+[data-theme="dark"] .links a {
+  color: #00bfff;
+}
+
+[data-theme="dark"] .links a:hover {
+  color: #80bfff;
+}
+
+
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: 2px solid #1e90ff;
+  color: #1e90ff;
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background: #1e90ff;
+  color: white;
+}
