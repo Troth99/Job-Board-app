@@ -8,29 +8,27 @@ import { useValidation } from "../../../hooks/useValidation";
 export default function LoginComponent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [serverError, setServerError] = useState("");
+ const [serverErrors, setServerErrors] = useState<{ email?: string; password?: string }>({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { errors, validateEmail, validatePassword, setErrors } = useValidation();
+  const { errors, validateEmail, validatePassword } = useValidation();
 
-  const submitHandler = async (event: React.FormEvent) => {
+   const submitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
-    setServerError(""); 
+    setServerErrors({}); 
 
- 
+  
     validateEmail(email);
     validatePassword(password);
 
-  
     if (errors.email || errors.password) {
       setLoading(false);
       return;
     }
 
     try {
-   
       const user = await loginUser(email, password);
 
       if (user?.token) {
@@ -39,14 +37,19 @@ export default function LoginComponent() {
         setEmail("");
         setPassword("");
       } else {
-      
-        setServerError("User email or password is incorrect.");
-         
+  
+        setServerErrors({
+          email: "Invalid email or password.",
+          password: "Invalid email or password."
+        });
       }
     } catch (err: any) {
-    
       console.error("Login failed:", err);
-      setServerError(err.message || "Login failed. Please check your credentials.");
+
+      setServerErrors({
+        email: err.message || "Invalid email or password.",
+        password: err.message || "Invalid email or password."
+      });
     } finally {
       setLoading(false);
     }
@@ -61,7 +64,7 @@ export default function LoginComponent() {
 
           <h2>Login to Your Account</h2>
           <form id="loginForm" onSubmit={submitHandler}>
-          <div className={`input-wrap ${errors.email ? 'input-error' : ''}`}>
+          <div className={`input-wrap ${serverErrors.email ? 'input-error' : ''}`}>
               <i className="fa-solid fa-envelope"></i>
               <input
                 type="email"
@@ -71,9 +74,9 @@ export default function LoginComponent() {
                 onChange={(e) => setEmail(e.target.value)}
                 onBlur={() => validateEmail(email)}
               />
-             {serverError && <div className="error-message">{serverError}</div>}
+             {serverErrors && <div className="error-message">{serverErrors.email}</div>}
             </div>
-           <div className={`input-wrap ${errors.email ? 'input-error' : ''}`}>
+           <div className={`input-wrap ${serverErrors.password ? 'input-error' : ''}`}>
               <i className="fa-solid fa-lock"></i>
               <input
                 type="password"
@@ -82,7 +85,7 @@ export default function LoginComponent() {
                 onChange={(e) => setPassword(e.target.value)}
                 onBlur={() => validatePassword(password)}
                 />
-             {serverError && <div className="error-message">{serverError}</div>}
+             {serverErrors && <div className="error-message">{serverErrors.password}</div>}
             </div>
              <button type="submit" className="btn-login" disabled={loading}>
               {loading ? "Logging in..." : "Login"}
