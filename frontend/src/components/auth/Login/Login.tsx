@@ -1,43 +1,40 @@
 import { Link, useNavigate } from "react-router";
 import "./Login.css";
 import "./Responsive.css";
-import  { useState } from "react";
+import { useState } from "react";
 import { loginUser } from "../../../services/auth/authService";
 
-export default  function LoginComponent() {
+export default function LoginComponent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState('');
-   const [loading, setLoading] = useState(false);
-   const navigate = useNavigate()
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const  submitHandler = async (event: React.FormEvent) => {
+  const submitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
-    setError('');
-
+    setError("");
 
     try {
       const user = await loginUser(email, password);
       if (user?.token) {
-        localStorage.setItem('token', user.token);
-    
-        navigate('/')
         
-       setEmail('');  
-        setPassword('');
+        localStorage.setItem("token", user.token);
+
+        navigate("/");
+        setEmail("");
+        setPassword("");
       } else {
-        setError('Invalid credentials. Please try again.');
+        setError("Invalid credentials. Please try again.");
       }
     } catch (err: any) {
-      console.error('Login failed:', err);
-      setError('Login failed. Please check your credentials.');
+      console.error("Login failed:", err);
+      setError("Login failed. Please check your credentials.");
     } finally {
       setLoading(false);
     }
-
   };
-
 
   return (
     <div className="login-wrapper">
@@ -51,24 +48,24 @@ export default  function LoginComponent() {
           <form id="loginForm" onSubmit={submitHandler}>
             <div className="input-wrap">
               <i className="fa-solid fa-envelope"></i>
-              <input type="email" 
-              placeholder="Email address" 
-              id="email" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              
+              <input
+                type="email"
+                placeholder="Email address"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-lock"></i>
-              <input type="password"
-               placeholder="Password" 
-               id="pwd" 
-          
-               onChange={(e) => setPassword(e.target.value)}
-               />
+              <input
+                type="password"
+                placeholder="Password"
+                id="pwd"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
-            <button type='submit' className="btn-login">
+            <button type="submit" className="btn-login">
               Login
             </button>
           </form>
