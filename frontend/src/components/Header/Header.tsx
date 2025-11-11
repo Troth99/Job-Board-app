@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTheme } from "../../hooks/useTheme";
 import "./Header.css";
 import "./Responsive.css"
+import { Link, Routes } from "react-router";
 
 export function Header(){
     const {theme, toggleTheme} = useTheme();
@@ -26,18 +27,16 @@ export function Header(){
         </ul>
 
           <div className="auth-buttons mobile-auth">
-          <a href="#" className="btn-login">Login</a>
-          <a href="#" className="btn-register">Register</a>
+          <Link to="/login" className="btn-login">Login</Link>
+          <Link to="/register" className="btn-register">Register</Link>
       
         </div>
 
       </nav>
 
        <div className="auth-buttons desktop-auth">
-        <a href="#" className="btn-login">Login</a>
-        <a href="#" className="btn-register">Register</a>
-        
-        
+          <Link to="/login" className="btn-login">Login</Link>
+          <Link to="/register" className="btn-register">Register</Link>
       </div>
 
           <button onClick={toggleTheme} className="theme-toggle-btn">
@@ -54,5 +53,6 @@ export function Header(){
         <span></span>
       </button>
     </header>
+ 
   );
 }
