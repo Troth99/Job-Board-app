@@ -17,7 +17,7 @@ export function Header(){
 
       <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
         <ul>
-          <li><a href="#">Home</a></li>
+          <li><Link to="/">Home</Link></li>
           <li><a href="#">Jobs</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Companies</a></li>

@@ -5,14 +5,16 @@ import { Header } from "./components/Header/Header";
 
 import "./styles/global.css";
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
-import { BrowserRouter, Route, Router, Routes } from "react-router";
+import { BrowserRouter, Route, Router, Routes, useLocation } from "react-router";
 import Login from "./components/auth/Login/Login";
 import HomeSection from "./components/Home/HomeSection";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [loadingCategories, setLoadingCategories] = useState(true);
+  const location = useLocation();
 
+  const isLoginPage = location.pathname ==='/login'
 
   useEffect(() => {
     async function wakeUpServer() {
@@ -41,14 +43,13 @@ function App() {
   }
   return (
     <div>
-      <Header />
-
+  {!isLoginPage && <Header />}
       <Routes>
         <Route path="/" element={<HomeSection />} />
         <Route path="/login" element={<Login />} />
       </Routes>
 
-      <Footer />
+      {!isLoginPage && <Footer />}
     </div>
   );
 }
