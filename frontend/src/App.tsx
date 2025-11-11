@@ -7,6 +7,7 @@ import Hero from "./components/HeroSection/Hero";
 import "./styles/global.css"
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import { Category, getAllCategories } from "./services/categoryService";
+import RecentJobs from "./components/Jobs/RecentJobs/Jobs";
 
 
 function App() {
@@ -53,6 +54,7 @@ const [loading, setLoading] = useState(true);
       <Header />
       <Hero />
       <CategoriesSection categories={categories} />
+      <RecentJobs />
       <Footer />
     </div>
   );

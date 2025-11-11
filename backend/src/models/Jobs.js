@@ -20,6 +20,11 @@ const jobSchema = new Schema({
     type: Types.ObjectId,
     ref: "Company",
   },
+  type: {
+    type: String,
+    trim: true,
+    required:true,
+  },
 
   category: {
     type: Types.ObjectId,
