@@ -20,11 +20,14 @@ export default function LoginComponent() {
     setServerErrors({}); 
 
   
-    validateEmail(email);
-    validatePassword(password);
+   const emailError = validateEmail(email);
+  const passwordError = validatePassword(password);
 
-    if (errors.email || errors.password) {
-      setLoading(false);
+    if (emailError || passwordError) {
+       setServerErrors({
+      email: emailError,
+      password: passwordError
+    });
       return;
     }
 
