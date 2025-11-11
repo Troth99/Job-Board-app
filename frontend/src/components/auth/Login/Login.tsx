@@ -3,39 +3,48 @@ import "./Login.css";
 import "./Responsive.css";
 import { useState } from "react";
 import { loginUser } from "../../../services/auth/authService";
+import { useValidation } from "../../../hooks/useValidation";
 
 export default function LoginComponent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [serverError, setServerError] = useState("")
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const submitHandler = async (event: React.FormEvent) => {
-    event.preventDefault();
-    setLoading(true);
-    setError("");
+  const {errors ,validateEmail, validatePassword} =useValidation()
 
-    try {
-      const user = await loginUser(email, password);
-      if (user?.token) {
-        
-        localStorage.setItem("token", user.token);
+const submitHandler = async (event: React.FormEvent) => {
+  event.preventDefault();
+  setLoading(true);
+  setServerError(""); 
 
-        navigate("/");
-        setEmail("");
-        setPassword("");
-      } else {
-        setError("Invalid credentials. Please try again.");
-      }
-    } catch (err: any) {
-      console.error("Login failed:", err);
-      setError("Login failed. Please check your credentials.");
-    } finally {
-      setLoading(false);
+  validateEmail(email); 
+  validatePassword(password);
+
+  if (errors.email || errors.password) {
+    setLoading(false);
+    return;
+  }
+
+  try {
+    const user = await loginUser(email, password); 
+
+    if (user?.token) { 
+      localStorage.setItem("token", user.token);
+      navigate("/"); 
+      setEmail(""); 
+      setPassword(""); 
+    } else {
+      setServerError("User email or password is incorrect."); 
     }
-  };
-
+  } catch (err: any) {
+    console.error("Login failed:", err);
+    setServerError(err.message || "Login failed. Please check your credentials.");
+  } finally {
+    setLoading(false); 
+  }
+};
   return (
     <div className="login-wrapper">
       <div className="login-container">
@@ -54,7 +63,9 @@ export default function LoginComponent() {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onBlur={() => validateEmail(email)}
               />
+                {errors.email && <span className="error-message">{errors.email}</span>}
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-lock"></i>
@@ -63,10 +74,12 @@ export default function LoginComponent() {
                 placeholder="Password"
                 id="pwd"
                 onChange={(e) => setPassword(e.target.value)}
-              />
+                onBlur={() => validatePassword(password)}
+                />
+               {errors.password && <span className="error-message">{errors.password}</span>}
             </div>
-            <button type="submit" className="btn-login">
-              Login
+             <button type="submit" className="btn-login" disabled={loading}>
+              {loading ? "Logging in..." : "Login"}
             </button>
           </form>
 

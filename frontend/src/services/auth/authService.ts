@@ -1,39 +1,41 @@
 import { API_BASE } from "../api";
 
 export const loginUser = async (email: string, password: string) => {
-        if (!email || !password) {
-        throw new Error('Email and password are required');
+  if (!email || !password) {
+    throw new Error("Email and password are required");
+  }
+  try {
+    const response = await fetch(`${API_BASE}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+
+    if (!response.ok) {
+      const data = await response.json();
+
+      throw new Error(data.message || "Login failed");
     }
-    try {
-        const response = await fetch(`${API_BASE}/users/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-        });
 
-     
-        if (!response.ok) {
-            throw new Error('Login failed: ' + response.statusText);
-        }
 
-    
-        const data = await response.json();
+    const data = await response.json();
 
-        console.log(data)
-        if (data && data.token) {
-            return data;
-        } else {
-            throw new Error('Invalid response structure');
-        }
-    } catch (error) {
-        console.error('Login Error:', error);
-        throw error; 
+
+    return data;
+  } catch (err: any) {
+
+    if (err.message) {
+      throw new Error(err.message);
+    } else {
+ 
+      throw new Error("Login failed");
     }
+  }
 };
 
-
 export function getAuthToken(): string | null {
-    return localStorage.getItem('authToken')
+  return localStorage.getItem("authToken");
 }
