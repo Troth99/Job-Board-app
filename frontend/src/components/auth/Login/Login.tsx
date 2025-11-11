@@ -8,43 +8,49 @@ import { useValidation } from "../../../hooks/useValidation";
 export default function LoginComponent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [serverError, setServerError] = useState("")
+  const [serverError, setServerError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const {errors ,validateEmail, validatePassword} =useValidation()
+  const { errors, validateEmail, validatePassword, setErrors } = useValidation();
 
-const submitHandler = async (event: React.FormEvent) => {
-  event.preventDefault();
-  setLoading(true);
-  setServerError(""); 
+  const submitHandler = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setLoading(true);
+    setServerError(""); 
 
-  validateEmail(email); 
-  validatePassword(password);
+ 
+    validateEmail(email);
+    validatePassword(password);
 
-  if (errors.email || errors.password) {
-    setLoading(false);
-    return;
-  }
-
-  try {
-    const user = await loginUser(email, password); 
-
-    if (user?.token) { 
-      localStorage.setItem("token", user.token);
-      navigate("/"); 
-      setEmail(""); 
-      setPassword(""); 
-    } else {
-      setServerError("User email or password is incorrect."); 
+  
+    if (errors.email || errors.password) {
+      setLoading(false);
+      return;
     }
-  } catch (err: any) {
-    console.error("Login failed:", err);
-    setServerError(err.message || "Login failed. Please check your credentials.");
-  } finally {
-    setLoading(false); 
-  }
-};
+
+    try {
+   
+      const user = await loginUser(email, password);
+
+      if (user?.token) {
+        localStorage.setItem("token", user.token);
+        navigate("/"); 
+        setEmail("");
+        setPassword("");
+      } else {
+      
+        setServerError("User email or password is incorrect.");
+         
+      }
+    } catch (err: any) {
+    
+      console.error("Login failed:", err);
+      setServerError(err.message || "Login failed. Please check your credentials.");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="login-wrapper">
       <div className="login-container">
@@ -55,7 +61,7 @@ const submitHandler = async (event: React.FormEvent) => {
 
           <h2>Login to Your Account</h2>
           <form id="loginForm" onSubmit={submitHandler}>
-            <div className="input-wrap">
+          <div className={`input-wrap ${errors.email ? 'input-error' : ''}`}>
               <i className="fa-solid fa-envelope"></i>
               <input
                 type="email"
@@ -65,9 +71,9 @@ const submitHandler = async (event: React.FormEvent) => {
                 onChange={(e) => setEmail(e.target.value)}
                 onBlur={() => validateEmail(email)}
               />
-                {errors.email && <span className="error-message">{errors.email}</span>}
+             {serverError && <div className="error-message">{serverError}</div>}
             </div>
-            <div className="input-wrap">
+           <div className={`input-wrap ${errors.email ? 'input-error' : ''}`}>
               <i className="fa-solid fa-lock"></i>
               <input
                 type="password"
@@ -76,7 +82,7 @@ const submitHandler = async (event: React.FormEvent) => {
                 onChange={(e) => setPassword(e.target.value)}
                 onBlur={() => validatePassword(password)}
                 />
-               {errors.password && <span className="error-message">{errors.password}</span>}
+             {serverError && <div className="error-message">{serverError}</div>}
             </div>
              <button type="submit" className="btn-login" disabled={loading}>
               {loading ? "Logging in..." : "Login"}

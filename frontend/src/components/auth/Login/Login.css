@@ -159,10 +159,16 @@ form {
 
 
 .input-error input {
-  border: 2px solid #ff4d4f;
+  border: 2px solid #ff4d4f; 
   box-shadow: 0 0 8px #ff4d4f;
+  background-color: #fff0f0; 
+  outline: none; 
 }
 
+.input-error input:focus {
+  border: 2px solid #ff0000; 
+  box-shadow: 0 0 10px #ff0000;
+}
 .error-message {
   position: absolute;
   bottom: -18px;
