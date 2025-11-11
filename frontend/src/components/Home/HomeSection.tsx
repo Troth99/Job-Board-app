@@ -19,7 +19,7 @@ export default function HomeSection() {
         setCategories(data);
       } catch (err) {
         console.error("Error loading categories:", err);
-      } finally {
+      } finally { 
         setLoading(false);
       }
     }
