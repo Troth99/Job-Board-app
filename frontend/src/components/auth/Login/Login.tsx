@@ -39,20 +39,20 @@ export default function LoginComponent() {
         navigate("/"); 
         setEmail("");
         setPassword("");
-      } else {
+      } else if (user?.error === 'User does not exist.') {
   
         setServerErrors({
-          email: "Invalid email or password.",
-          password: "Invalid email or password."
+          email: "User does not exist.",
+     
         });
       }
     } catch (err: any) {
-      console.error("Login failed:", err);
-
-      setServerErrors({
-        email: err.message || "Invalid email or password.",
-        password: err.message || "Invalid email or password."
-      });
+      
+      if(err?.message?.includes('User does not exist.')) {
+        setServerErrors({email: 'User does not exist.'})
+      }else {
+        setServerErrors({email: "Invalid Email or password.", password: 'Invalid Email or password.'})
+      }
     } finally {
       setLoading(false);
     }

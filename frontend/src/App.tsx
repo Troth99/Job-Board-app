@@ -21,7 +21,7 @@ function App() {
     async function wakeUpServer() {
       let retries = 0;
       const maxRetries = 5;
-      const retryDelay = 2000; // 2 seconds
+      const retryDelay = 2000; 
 
       while (retries < maxRetries) {
         try {
