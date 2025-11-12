@@ -71,5 +71,5 @@ export async function registerUser(data: RegisterData): Promise<{ token: string 
 }
 
 export function getAuthToken(): string | null {
-  return localStorage.getItem("authToken");
+  return localStorage.getItem("token");
 }

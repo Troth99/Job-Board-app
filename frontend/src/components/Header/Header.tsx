@@ -1,47 +1,88 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "../../hooks/useTheme";
 import "./Header.css";
-import "./Responsive.css"
+import "./Responsive.css";
 import { Link, Routes } from "react-router";
+import { getAuthToken } from "../../services/auth/authService";
 
-export function Header(){
-    const {theme, toggleTheme} = useTheme();
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+export function Header() {
+  const { theme, toggleTheme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const hamburgerMenuHandler = () => {
-      setIsMenuOpen(isMenuOpen => !isMenuOpen)
+  useEffect(() => {
+    const token = getAuthToken();
+    console.log(token)
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
     }
-    return (
+  }, []);
+
+  const hamburgerMenuHandler = () => {
+    setIsMenuOpen((isMenuOpen) => !isMenuOpen);
+  };
+  return (
     <header className={`header ${theme}`}>
       <div className="logo">JB</div>
 
       <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><a href="#">Jobs</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Companies</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contact</a></li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <a href="#">Jobs</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <a href="#">Companies</a>
+          </li>
+          <li>
+            <a href="#">Events</a>
+          </li>
+          <li>
+            <a href="#">Blog</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
         </ul>
 
-          <div className="auth-buttons mobile-auth">
-          <Link to="/login" className="btn-login">Login</Link>
-          <Link to="/register" className="btn-register">Register</Link>
-      
+        <div className="auth-buttons mobile-auth">
+        {isAuthenticated ? (
+    <>
+      <Link to="/profile" className="btn-profile">Profile</Link>
+  
+    </>
+  ) : (
+    <>
+      <Link to="/login" className="btn-login">Login</Link>
+      <Link to="/register" className="btn-register">Register</Link>
+    </>
+  )}
         </div>
-
       </nav>
 
-       <div className="auth-buttons desktop-auth">
-          <Link to="/login" className="btn-login">Login</Link>
-          <Link to="/register" className="btn-register">Register</Link>
+     <div className="auth-buttons desktop-auth">
+        {isAuthenticated ? (
+          <>
+            <Link to="/profile" className="btn-profile">Profile</Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="btn-login">Login</Link>
+            <Link to="/register" className="btn-register">Register</Link>
+          </>
+        )}
       </div>
 
-          <button onClick={toggleTheme} className="theme-toggle-btn">
-          {theme === "light" ? "🌙" : "☀️"}
-        </button>
+      <button onClick={toggleTheme} className="theme-toggle-btn">
+        {theme === "light" ? "🌙" : "☀️"}
+      </button>
 
       <button
         className={`hamburger ${isMenuOpen ? "active" : ""}`}
@@ -53,6 +94,5 @@ export function Header(){
         <span></span>
       </button>
     </header>
- 
   );
 }

@@ -64,7 +64,7 @@ nav ul li a {
   transition: all 0.3s;
 }
 
-/* Light hover */
+
 nav ul li a:hover {
   background: rgba(0, 123, 255, 0.2);
   box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
@@ -76,6 +76,48 @@ nav ul li a:hover {
   display: flex;
   align-items: center;
   gap: 0.8rem;
+}
+
+/* === BUTTON PROFILE === */
+.btn-profile {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  text-align: center;
+  border: 2px solid;
+  cursor: pointer;
+}
+body[data-theme="light"] .btn-profile {
+  background-color: #000000;  
+  color: #ffffff; 
+  border-color: #ffffff; 
+}
+
+body[data-theme="light"] .btn-profile:hover {
+  background-color: #333333; 
+  color: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
+}
+
+
+body[data-theme="dark"] .btn-profile {
+  background-color: #ffffff;  
+  color: #000000;  
+  border-color: #000000; 
+}
+
+body[data-theme="dark"] .btn-profile:hover {
+  background-color: #f0f0f0; 
+  color: #000000;
+  border-color: #000000;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.2);
 }
 
 .auth-buttons a {
