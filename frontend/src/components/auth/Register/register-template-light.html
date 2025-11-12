@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Register - Light Theme</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI", sans-serif; }
+
+body {
+  background: linear-gradient(-45deg, #2a8ff3, #00e1ff, #1ee0ff, #0294f5);
+  background-size: 400% 400%;
+  animation: moveBG 20s ease-in-out infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+@keyframes moveBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.register-container {
+  width: 480px;
+  position: relative;
+  background: rgba(255,255,255,0.95);
+  padding: 3rem 2.5rem;
+  border-radius: 25px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+  text-align: center;
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 90vh;
+  animation: fadeUp 0.9s ease-out forwards;
+}
+.register-container::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:25px;
+  padding:3px;
+  background: linear-gradient(120deg,#007bff,#00bfff,#00e1ff,#0294f5,#007bff);
+  background-size: 300% 300%;
+  animation: borderFlow 6s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index:1;
+}
+
+@keyframes borderFlow {0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
+@keyframes fadeUp {from{opacity:0; transform:translateY(40px);}to{opacity:1; transform:translateY(0);}}
+
+.content { position:relative; z-index:2; }
+.logo { font-size:2rem; font-weight:bold; color:#007bff; text-shadow:0 0 12px rgba(0,123,255,0.4); margin-bottom:0.8rem; animation: glow 3s ease-in-out infinite alternate;}
+@keyframes glow {from{ text-shadow:0 0 12px rgba(0,123,255,0.4);} to{ text-shadow:0 0 24px rgba(0,123,255,0.8);}}
+
+h2 { margin-bottom:1rem; color:#0b2239; font-weight:600; font-size:1.3rem; }
+
+form { display:flex; flex-direction:column; gap:0.6rem; }
+
+.input-wrap { position:relative; display:flex; flex-direction:column; margin-bottom:20px; }
+.input-wrap input {
+  padding:0.7rem 2rem 0.7rem 3rem;
+  border:none;
+  border-radius:50px;
+  background: rgba(255,255,255,0.9);
+  color:#0b2239;
+  font-size:0.95rem;
+  outline:none;
+  width:100%;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  transition:0.2s;
+}
+.input-wrap input::placeholder { font-size:1.2rem; transition:font-size 0.2s ease;}
+.input-wrap input:focus::placeholder,
+.input-wrap input:not(:placeholder-shown)::placeholder { font-size:0.9rem; }
+.input-wrap input:focus { box-shadow:0 0 12px rgba(0,123,255,0.5); transform:translateY(-1px); }
+
+.input-wrap i { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#007bff; font-size:1.1rem; pointer-events:none; }
+.show-hide-btn { position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; font-size:0.9rem; color:#007bff; }
+
+.input-error input { border:2px solid #ff4d4f; box-shadow:0 0 8px #ff4d4f; }
+.error-message { position:absolute; bottom:-18px; left:3rem; color:#ff4d4f; font-size:0.9rem; min-height:1em; }
+
+.btn-register {
+  background: linear-gradient(90deg,#007bff,#00bfff);
+  color:#fff;
+  padding:0.8rem;
+  border:none;
+  border-radius:50px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:0.95rem;
+  box-shadow:0 6px 18px rgba(0,123,255,0.35);
+  transition: all 0.3s ease;
+  animation: pulse 3s infinite ease-in-out;
+  margin-top:0.3rem;
+}
+@keyframes pulse {0%,100%{box-shadow:0 6px 18px rgba(0,123,255,0.35);}50%{box-shadow:0 6px 28px rgba(0,123,255,0.6);}}
+.btn-register:hover { background: linear-gradient(90deg,#009dff,#00ccff); transform:scale(1.03); }
+
+.links { margin-top:0.8rem; font-size:0.85rem; color:#0b2239; }
+.links a { color:#007bff; text-decoration:none; font-weight:500; transition:color 0.3s; }
+.links a:hover { color:#0056b3; text-decoration:underline; }
+
+input[type="checkbox"] { width:16px; height:16px; accent-color:#007bff; margin:0; }
+.checkbox-container { display:flex; align-items:center; gap:8px; }
+.checkbox-label { margin:0; cursor:pointer; color:#0b2239; }
+
+@media (max-width:450px) {
+  .register-container { width:90%; padding:1rem 1rem; }
+  .logo { font-size:1.5rem; }
+  h2 { font-size:1.1rem; }
+  .input-wrap input { padding:0.6rem 1.5rem 0.6rem 2.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="register-container">
+  <div class="content">
+    <div class="logo">JB</div>
+    <h2>Create Account</h2>
+    <form id="registerForm">
+      <div class="input-wrap">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" placeholder="First name" />
+        <div class="error-message">test</div>
+      </div>
+      <div class="input-wrap">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" placeholder="Last name" />
+        <div class="error-message">test</div>
+      </div>
+      <div class="input-wrap">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" placeholder="Email address" />
+        <div class="error-message">test</div>
+      </div>
+      <div class="input-wrap">
+        <i class="fa-solid fa-phone"></i>
+        <input type="tel" placeholder="Phone Number" />
+        <div class="error-message">test</div>
+      </div>
+      <div class="input-wrap">
+        <i class="fa-solid fa-location-dot"></i>
+        <input type="text" placeholder="City / Location" />
+        <div class="error-message">test</div>
+      </div>
+      <div class="input-wrap">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" placeholder="Password" id="pwd" />
+        <button type="button" class="show-hide-btn" id="togglePwd">👁</button>
+        <div class="error-message">invalid password</div>
+      </div>
+      <div class="input-wrap">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" placeholder="Confirm Password" id="confirmPwd" />
+        <button type="button" class="show-hide-btn" id="toggleConfirmPwd">👁</button>
+        <div class="error-message">test</div>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="terms" required />
+        <label for="terms" class="checkbox-label">I agree to the Terms & Conditions</label>
+      </div>
+      <button class="btn-register" type="submit">Register</button>
+    </form>
+    <div class="links">
+      <p>Already have an account? <a href="#">Login</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById("togglePwd").addEventListener("click",()=>{
+  const pwd=document.getElementById("pwd");
+  pwd.type=pwd.type==="password"?"text":"password";
+});
+document.getElementById("toggleConfirmPwd").addEventListener("click",()=>{
+  const confirmPwd=document.getElementById("confirmPwd");
+  confirmPwd.type=confirmPwd.type==="password"?"text":"password";
+});
+</script>
+</body>
+</html>
