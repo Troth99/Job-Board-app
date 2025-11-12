@@ -24,10 +24,12 @@ export function useValidation() {
        return undefined
   };
 
+  
   return {
     errors,
     setErrors, 
     validateEmail,
     validatePassword
+
   };
 }

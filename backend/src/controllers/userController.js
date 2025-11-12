@@ -3,30 +3,37 @@ import generateToken from "../utils/generateToken.js";
 
 
 export const registerUser = async (req, res) => {
-    const { firstName, lastName, email, phoneNumber, location, password, avatar } = req.body;
+  const { firstName, lastName, email, phoneNumber, location, password, avatar } = req.body;
 
-    try {
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ message: 'User already exists' })
-        }
-
-        const user = await User.create({ firstName, lastName, email, phoneNumber, location, password, avatar });
-
-        res.status(201).json({
-            _id: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            phoneNumber: user.phoneNumber,
-            location: user.location,
-            avatar: user.avatar,
-            token: generateToken(user._id)
-        })
-    } catch (error) {
-        res.status(500).json({ message: error.message })
+  try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
     }
-}
+
+    const user = await User.create({ firstName, lastName, email, phoneNumber, location, password, avatar });
+
+    res.status(201).json({
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      location: user.location,
+      avatar: user.avatar,
+      token: generateToken(user._id)
+    });
+  } catch (error) {
+    if (error.name === "ValidationError") {
+      const fieldErrors = {};
+      for (const key in error.errors) {
+        fieldErrors[key] = error.errors[key].message;
+      }
+      return res.status(400).json({ fieldErrors });
+    }
+    res.status(500).json({ message: error.message });
+  }
+};
 
 
 export const loginUser = async (req, res) => {
