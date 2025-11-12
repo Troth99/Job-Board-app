@@ -1,0 +1,11 @@
+@media (max-width: 414px) {
+  .register-container {
+    padding: 1.5rem 1.2rem;
+  }
+  .logo {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.05rem;
+  }
+}

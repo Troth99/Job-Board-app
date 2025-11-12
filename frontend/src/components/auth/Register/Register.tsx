@@ -1,5 +1,6 @@
 import { Link } from "react-router"
 import './Register.css'
+import "./Responsive.css"
 
 
 

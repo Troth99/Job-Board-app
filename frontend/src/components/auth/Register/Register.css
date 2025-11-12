@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-height: 90vh;
+  max-height: 100vh;
   animation: fadeUp 0.9s ease-out forwards;
 }
 
@@ -161,7 +161,6 @@ form {
   min-height: 1em;
 }
 
-/* Checkbox */
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -242,4 +241,58 @@ input[type="checkbox"] {
   .input-wrap input {
     padding: 0.6rem 1.5rem 0.6rem 2.5rem;
   }
+}
+
+
+[data-theme="dark"] .register-wrapper {
+  background: #0d1117;
+}
+
+[data-theme="dark"] .register-container {
+  background: rgba(25, 30, 45, 0.95);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] .logo {
+  color: #80aaff;
+  text-shadow: 0 0 12px rgba(130,170,255,0.6);
+}
+
+[data-theme="dark"] h2 {
+  color: #c7d3f0;
+}
+
+[data-theme="dark"] .input-wrap input {
+  background: rgba(42,43,48,0.9);
+  color: #e6edf3;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .input-wrap input::placeholder {
+  color: #aaa;
+}
+
+[data-theme="dark"] .input-wrap input:focus {
+  box-shadow: 0 0 12px rgba(0,123,255,0.6);
+}
+
+[data-theme="dark"] .btn-register {
+  background: linear-gradient(90deg,#007bff,#00bfff);
+  color: #fff;
+}
+
+[data-theme="dark"] .btn-register:hover {
+  background: linear-gradient(90deg,#009dff,#00ccff);
+}
+
+[data-theme="dark"] .checkbox-label {
+  color: #c7d3f0;
+}
+
+[data-theme="dark"] .links a {
+  color: #00bfff;
+}
+
+[data-theme="dark"] .links a:hover {
+  color: #80bfff;
 }
