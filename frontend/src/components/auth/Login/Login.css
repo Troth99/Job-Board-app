@@ -342,3 +342,7 @@ form {
   background: #1e90ff;
   color: white;
 }
+
+[data-theme="dark"] p {
+  color: white; 
+}
