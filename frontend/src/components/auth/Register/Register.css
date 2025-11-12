@@ -154,7 +154,7 @@ form {
 
 .error-message {
   position: absolute;
-  bottom: -18px;
+  bottom: -5px;
   left: 3rem;
   color: #ff4d4f;
   font-size: 0.9rem;
