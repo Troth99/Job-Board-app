@@ -8,27 +8,29 @@ import { useValidation } from "../../../hooks/useValidation";
 export default function LoginComponent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- const [serverErrors, setServerErrors] = useState<{ email?: string; password?: string }>({});
+  const [serverErrors, setServerErrors] = useState<{
+    email?: string;
+    password?: string;
+  }>({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const { errors, validateEmail, validatePassword } = useValidation();
 
-   const submitHandler = async (event: React.FormEvent) => {
+  const submitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
-    setServerErrors({}); 
+    setServerErrors({});
 
-  
-  const emailError = !email ? "Email is required." : validateEmail(email);
-  const passwordError = !password ? "Password is required." : validatePassword(password);
+    const emailError = validateEmail(email);
+    const passwordError = validatePassword(password);
 
     if (emailError || passwordError) {
-       setServerErrors({
-      email: emailError,
-      password: passwordError
-    });
-     setLoading(false);
+      setServerErrors({
+        email: emailError,
+        password: passwordError,
+      });
+      setLoading(false);
       return;
     }
 
@@ -37,22 +39,22 @@ export default function LoginComponent() {
 
       if (user?.token) {
         localStorage.setItem("token", user.token);
-        navigate("/"); 
+        navigate("/");
         setEmail("");
         setPassword("");
-      } else if (user?.error === 'User does not exist.') {
-  
+      } else  {
         setServerErrors({
           email: "User does not exist.",
-     
         });
       }
     } catch (err: any) {
-      
-      if(err?.message?.includes('User does not exist.')) {
-        setServerErrors({email: 'User does not exist.'})
-      }else {
-        setServerErrors({email: "Invalid Email or password.", password: 'Invalid Email or password.'})
+      if (err?.message?.includes("User does not exist.")) {
+        setServerErrors({ email: "User does not exist." });
+      } else {
+        setServerErrors({
+          email: "Invalid Email or password.",
+          password: "Invalid Email or password.",
+        });
       }
     } finally {
       setLoading(false);
@@ -68,19 +70,34 @@ export default function LoginComponent() {
 
           <h2>Login to Your Account</h2>
           <form id="loginForm" onSubmit={submitHandler}>
-          <div className={`input-wrap ${serverErrors.email ? 'input-error' : ''}`}>
+            <div
+              className={`input-wrap ${
+                serverErrors.email ? "input-error" : ""
+              }`}
+            >
               <i className="fa-solid fa-envelope"></i>
               <input
-                type="email"
                 placeholder="Email address"
                 id="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setServerErrors({
+                    ...serverErrors,
+                    email: validateEmail(e.target.value),
+                  });
+                }}
                 onBlur={() => validateEmail(email)}
               />
-             {serverErrors && <div className="error-message">{serverErrors.email}</div>}
+              {serverErrors && (
+                <div className="error-message">{serverErrors.email}</div>
+              )}
             </div>
-           <div className={`input-wrap ${serverErrors.password ? 'input-error' : ''}`}>
+            <div
+              className={`input-wrap ${
+                serverErrors.password ? "input-error" : ""
+              }`}
+            >
               <i className="fa-solid fa-lock"></i>
               <input
                 type="password"
@@ -88,10 +105,12 @@ export default function LoginComponent() {
                 id="pwd"
                 onChange={(e) => setPassword(e.target.value)}
                 onBlur={() => validatePassword(password)}
-                />
-             {serverErrors && <div className="error-message">{serverErrors.password}</div>}
+              />
+              {serverErrors && (
+                <div className="error-message">{serverErrors.password}</div>
+              )}
             </div>
-             <button type="submit" className="btn-login" disabled={loading}>
+            <button type="submit" className="btn-login" disabled={loading}>
               {loading ? "Logging in..." : "Login"}
             </button>
           </form>

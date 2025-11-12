@@ -7,12 +7,15 @@ import {
   RegisterData,
   registerUser,
 } from "../../../services/auth/authService";
+import { useValidation } from "../../../hooks/useValidation";
 
 export default function RegisterComponent() {
   const [serverErrors, setServerErrors] = useState<FieldErrors>({});
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+    const {  validateConfirmPassword  } = useValidation();
+
 
   const [formData, setFormData] = useState<RegisterData>({
     firstName: "",
@@ -28,6 +31,17 @@ export default function RegisterComponent() {
     e.preventDefault();
     setLoading(true);
     setServerErrors({});
+
+    const confirmPasswordError = validateConfirmPassword(formData.password, formData.confirmPassword)
+    
+    if (confirmPasswordError) {
+      setServerErrors((prev) => ({
+        ...prev,
+        confirmPassword: confirmPasswordError,
+      }));
+      setLoading(false);
+      return;
+    }
 
     try {
       const res = await registerUser(formData);
@@ -71,7 +85,7 @@ export default function RegisterComponent() {
                 type="text"
                 placeholder="Last name"
                 value={formData.lastName}
-                    onChange={(e) => {
+                onChange={(e) => {
                   setFormData({ ...formData, lastName: e.target.value });
 
                   setServerErrors((prev) => ({ ...prev, lastName: "" }));
@@ -85,7 +99,7 @@ export default function RegisterComponent() {
                 type="email"
                 placeholder="Email address"
                 value={formData.email}
-                   onChange={(e) => {
+                onChange={(e) => {
                   setFormData({ ...formData, email: e.target.value });
 
                   setServerErrors((prev) => ({ ...prev, email: "" }));
@@ -99,7 +113,7 @@ export default function RegisterComponent() {
                 type="tel"
                 placeholder="Phone Number"
                 value={formData.phoneNumber}
-                  onChange={(e) => {
+                onChange={(e) => {
                   setFormData({ ...formData, phoneNumber: e.target.value });
 
                   setServerErrors((prev) => ({ ...prev, phoneNumber: "" }));
@@ -113,7 +127,7 @@ export default function RegisterComponent() {
                 type="text"
                 placeholder="City / Location"
                 value={formData.location}
-                  onChange={(e) => {
+                onChange={(e) => {
                   setFormData({ ...formData, location: e.target.value });
 
                   setServerErrors((prev) => ({ ...prev, location: "" }));
@@ -128,7 +142,7 @@ export default function RegisterComponent() {
                 placeholder="Password"
                 id="pwd"
                 value={formData.password}
-                  onChange={(e) => {
+                onChange={(e) => {
                   setFormData({ ...formData, password: e.target.value });
 
                   setServerErrors((prev) => ({ ...prev, password: "" }));
@@ -145,6 +159,12 @@ export default function RegisterComponent() {
                 type="password"
                 placeholder="Confirm Password"
                 id="confirmPwd"
+                  value={formData.confirmPassword}
+                onChange={(e) => {
+                  setFormData({ ...formData, confirmPassword: e.target.value });
+
+                  setServerErrors((prev) => ({ ...prev, confirmPassword: "" }));
+                }}
               />
               <div className="error-message">
                 {serverErrors.confirmPassword}
@@ -156,7 +176,7 @@ export default function RegisterComponent() {
               >
                 👁
               </button>
-              <div className="error-message"></div>
+             
             </div>
 
             <div className="checkbox-container">

@@ -7,7 +7,7 @@ export interface RegisterData {
   password: string;
   phoneNumber: string;
   location: string;
-    confirmPassword?: string;
+    confirmPassword: string;
 }
 
 export interface FieldErrors {
