@@ -1,11 +1,99 @@
-@media (max-width: 414px) {
+
+@media (max-width: 768px) {
   .register-container {
-    padding: 1.5rem 1.2rem;
+    width: 90%;
+    padding: 2rem 2rem;
   }
+
   .logo {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
+
   h2 {
-    font-size: 1.05rem;
+    font-size: 1.2rem;
+  }
+
+  .input-wrap input {
+    padding: 0.7rem 1.5rem 0.7rem 2.5rem;
+  }
+
+  .btn-register {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .checkbox-container {
+    font-size: 0.9rem;
   }
 }
+
+/* Mobile-first */
+@media (max-width: 450px) {
+  .register-container {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .input-wrap input {
+    padding: 0.6rem 1.5rem 0.6rem 2.5rem;
+  }
+
+  .input-wrap i {
+    font-size: 1rem;
+  }
+
+  .btn-register {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  .checkbox-container {
+    font-size: 0.85rem;
+  }
+
+  .show-hide-btn {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .register-container {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .input-wrap input {
+    padding: 0.6rem 1.2rem 0.6rem 2rem;
+  }
+
+  .input-wrap i {
+    font-size: 0.9rem;
+  }
+
+  .btn-register {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+
+  .show-hide-btn {
+    font-size: 0.7rem;
+  }
+}
+
+
