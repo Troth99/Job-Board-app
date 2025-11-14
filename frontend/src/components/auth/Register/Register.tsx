@@ -19,9 +19,7 @@ export default function RegisterComponent() {
 
     const formData = new FormData(event.target as HTMLFormElement);
 
-    const dataFields = Object.fromEntries(formData.entries());
-
-
+  
     const password = (formData.get("password") as string).trim();
 
     const confirmPassword = (formData.get("confirmPassword") as string).trim();
@@ -41,7 +39,7 @@ export default function RegisterComponent() {
     }
 
     try {
-      const res = await registerUser(dataFields);
+      const res = await registerUser(formData);
 
       if (res.token) {
         localStorage.setItem("token", res.token);

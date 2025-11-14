@@ -1,7 +1,6 @@
 import { API_BASE } from "../api";
 
 
-
 export interface FieldErrors {
   firstName?: string;
   lastName?: string;
@@ -44,13 +43,13 @@ export const loginUser = async (email: string, password: string) => {
   }
 };
 
-export async function registerUser(formData: Record<string, any>) {
-
+export async function registerUser(formData: FormData) {
+  const data = Object.fromEntries(formData) as Record<string, string>;
   
   const response = await fetch(`${API_BASE}/users/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
+    body: JSON.stringify(data),
   });
 
   const resData = await response.json(); 
