@@ -15,7 +15,7 @@ export default function LoginComponent() {
 
   const { validateEmail, validatePassword } = useValidation();
 
-  const submitHandler = async (event: React.FormEvent) => {
+  const loginSubmitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
     setErrors({});
@@ -71,7 +71,7 @@ export default function LoginComponent() {
           </Link>
 
           <h2>Login to Your Account</h2>
-          <form id="loginForm" onSubmit={submitHandler}>
+          <form id="loginForm" onSubmit={loginSubmitHandler}>
             <div
               className={`input-wrap ${
                 errors.email ? "input-error" : ""

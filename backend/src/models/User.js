@@ -33,12 +33,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Phone number is required!'],
         trim: true,
-        validate: {
-            validator: function (v) {
-                return validator.isMobilePhone(v, ['en-US', 'bg-BG']) || /^\+?[0-9\s\-()]{7,20}$/.test(v);
-            },
-            message: props => `${props.value} is not a valid phone number!`
-        }
     },
 
     location: {

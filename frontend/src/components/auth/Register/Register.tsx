@@ -1,41 +1,38 @@
-import { Link, useNavigate } from "react-router";
+import { data, Link, useNavigate } from "react-router";
 import "./Register.css";
 import "./Responsive.css";
 import { useEffect, useState } from "react";
-import {
-  FieldErrors,
-  RegisterData,
-  registerUser,
-} from "../../../services/auth/authService";
+import { FieldErrors, registerUser } from "../../../services/auth/authService";
 import { useValidation } from "../../../hooks/useValidation";
 
 export default function RegisterComponent() {
-  const [serverErrors, setServerErrors] = useState<FieldErrors>({});
+  const [errors, setErrors] = useState<FieldErrors>({});
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-    const {  validateConfirmPassword  } = useValidation();
+  const { validateConfirmPassword } = useValidation();
 
-
-  const [formData, setFormData] = useState<RegisterData>({
-    firstName: "",
-    lastName: "",
-    email: "", 
-    password: "",
-    confirmPassword: "",
-    phoneNumber: "",
-    location: "",
-  });
-
-  const registerHandler = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const registerHandler = async (event: React.FormEvent) => {
+    event.preventDefault();
     setLoading(true);
-    setServerErrors({});
+    setErrors({});
 
-    const confirmPasswordError = validateConfirmPassword(formData.password, formData.confirmPassword)
-    
+    const formData = new FormData(event.target as HTMLFormElement);
+
+    const dataFields = Object.fromEntries(formData.entries());
+
+
+    const password = (formData.get("password") as string).trim();
+
+    const confirmPassword = (formData.get("confirmPassword") as string).trim();
+
+    const confirmPasswordError = validateConfirmPassword(
+      password,
+      confirmPassword
+    );
+
     if (confirmPasswordError) {
-      setServerErrors((prev) => ({
+      setErrors((prev) => ({
         ...prev,
         confirmPassword: confirmPasswordError,
       }));
@@ -44,14 +41,14 @@ export default function RegisterComponent() {
     }
 
     try {
-      const res = await registerUser(formData);
+      const res = await registerUser(dataFields);
 
       if (res.token) {
         localStorage.setItem("token", res.token);
         navigate("/");
       }
     } catch (err: any) {
-      setServerErrors(err.fieldErrors || {});
+      console.log('failed to register', err.message)
     } finally {
       setLoading(false);
     }
@@ -67,73 +64,28 @@ export default function RegisterComponent() {
           <form id="registerForm" onSubmit={registerHandler}>
             <div className="input-wrap">
               <i className="fa-solid fa-user"></i>
-              <input
-                type="text"
-                placeholder="First name"
-                value={formData.firstName}
-                onChange={(e) => {
-                  setFormData({ ...formData, firstName: e.target.value });
-
-                  setServerErrors((prev) => ({ ...prev, firstName: "" }));
-                }}
-              />
-              <div className="error-message">{serverErrors.firstName}</div>
+              <input type="text" placeholder="First name" name="firstName" />
+              <div className="error-message">{errors.firstName}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-user"></i>
-              <input
-                type="text"
-                placeholder="Last name"
-                value={formData.lastName}
-                onChange={(e) => {
-                  setFormData({ ...formData, lastName: e.target.value });
-
-                  setServerErrors((prev) => ({ ...prev, lastName: "" }));
-                }}
-              />
-              <div className="error-message">{serverErrors.lastName}</div>
+              <input type="text" placeholder="Last name" name="lastName" />
+              <div className="error-message">{errors.lastName}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-envelope"></i>
-              <input
-                type="email"
-                placeholder="Email address"
-                value={formData.email}
-                onChange={(e) => {
-                  setFormData({ ...formData, email: e.target.value });
-
-                  setServerErrors((prev) => ({ ...prev, email: "" }));
-                }}
-              />
-              <div className="error-message">{serverErrors.email}</div>
+              <input type="email" placeholder="Email address" name="email" />
+              <div className="error-message">{errors.email}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-phone"></i>
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                value={formData.phoneNumber}
-                onChange={(e) => {
-                  setFormData({ ...formData, phoneNumber: e.target.value });
-
-                  setServerErrors((prev) => ({ ...prev, phoneNumber: "" }));
-                }}
-              />
-              <div className="error-message">{serverErrors.phoneNumber}</div>
+              <input type="tel" placeholder="Phone Number" name="phoneNumber" />
+              <div className="error-message">{errors.phoneNumber}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-location-dot"></i>
-              <input
-                type="text"
-                placeholder="City / Location"
-                value={formData.location}
-                onChange={(e) => {
-                  setFormData({ ...formData, location: e.target.value });
-
-                  setServerErrors((prev) => ({ ...prev, location: "" }));
-                }}
-              />
-              <div className="error-message">{serverErrors.location}</div>
+              <input type="text" placeholder="City / Location" name="location" />
+              <div className="error-message">{errors.location}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-lock"></i>
@@ -141,17 +93,12 @@ export default function RegisterComponent() {
                 type="password"
                 placeholder="Password"
                 id="pwd"
-                value={formData.password}
-                onChange={(e) => {
-                  setFormData({ ...formData, password: e.target.value });
-
-                  setServerErrors((prev) => ({ ...prev, password: "" }));
-                }}
+                name="password"
               />
               <button type="button" className="show-hide-btn" id="togglePwd">
                 👁
               </button>
-              <div className="error-message">{serverErrors.password}</div>
+              <div className="error-message">{errors.password}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-lock"></i>
@@ -159,16 +106,9 @@ export default function RegisterComponent() {
                 type="password"
                 placeholder="Confirm Password"
                 id="confirmPwd"
-                  value={formData.confirmPassword}
-                onChange={(e) => {
-                  setFormData({ ...formData, confirmPassword: e.target.value });
-
-                  setServerErrors((prev) => ({ ...prev, confirmPassword: "" }));
-                }}
+                name="confirmPassword"
               />
-              <div className="error-message">
-                {serverErrors.confirmPassword}
-              </div>
+              <div className="error-message">{errors.confirmPassword}</div>
               <button
                 type="button"
                 className="show-hide-btn"
@@ -176,7 +116,6 @@ export default function RegisterComponent() {
               >
                 👁
               </button>
-             
             </div>
 
             <div className="checkbox-container">
