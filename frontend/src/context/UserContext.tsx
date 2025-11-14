@@ -4,13 +4,13 @@ interface AuthProviderProps {
   children: ReactNode; 
 }
 
-interface User {
-  id: string;
-  name: string;
+ interface User {
+  id: string,
   email: string;
+  token: string
 }
 
-interface AuthContextType {
+export interface AuthContextType {
   user: User | null;
   login: (userData: User) => void;
   logout: () => void;
@@ -20,8 +20,15 @@ export const AuthContext = createContext<AuthContextType | null>(null);
 
 
 export const useAuth = () => {
-    return useContext(AuthContext)
-}
+  const context = useContext(AuthContext);
+  
+ 
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  
+  return context;
+};
 
 export const AuthProvider = ({children} : AuthProviderProps) => {
     const [user, setUser] = useState(null)

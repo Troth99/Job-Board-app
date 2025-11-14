@@ -4,8 +4,10 @@ import "./Responsive.css";
 import { useState } from "react";
 import { loginUser } from "../../../services/auth/authService";
 import { useValidation } from "../../../hooks/useValidation";
+import { useAuth } from "../../../context/UserContext";
 
 export default function LoginComponent() {
+  const {login} = useAuth()
   const [errors, setErrors] = useState<{
     email?: string;
     password?: string;
@@ -42,6 +44,12 @@ export default function LoginComponent() {
 
       if (user?.token) {
         localStorage.setItem("token", user.token);
+
+        login({
+          id: user._id,
+          email: user.email,
+          token: user.token
+        })
         navigate("/");
   
       } else  {

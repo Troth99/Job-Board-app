@@ -16,6 +16,7 @@ import HomeSection from "./components/Home/HomeSection";
 import RegisterComponent from "./components/auth/Register/Register";
 import MainLayout from "./components/Layouts/MainLayout";
 import MyProfile from "./components/ProfilePage/ProfilePage";
+import { AuthProvider } from "./context/UserContext";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -59,8 +60,8 @@ function App() {
   }
   return (
     <div>
+      <AuthProvider>
       <Routes>
-        
         <Route
           path="/"
           element={
@@ -86,16 +87,20 @@ function App() {
           }
         />
 
-        <Route 
-        path="/profile"
-        element={
-          <MainLayout>
-              <MyProfile />
-          </MainLayout>
-        }
+        <Route
+          path="/profile"
+          element={
+      
+              <MainLayout>
+                <MyProfile />
+              </MainLayout>
+         
+          }
         />
       </Routes>
+      </AuthProvider>
     </div>
+
   );
 }
 
