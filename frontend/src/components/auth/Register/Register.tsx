@@ -10,7 +10,16 @@ export default function RegisterComponent() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const { validateConfirmPassword } = useValidation();
+  const { validateConfirmPassword, validateForm } = useValidation();
+
+  const handleInputChange = (event :React.ChangeEvent<HTMLInputElement>) => {
+    const {name} = event.target
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: ""
+    }))
+  }
 
   const registerHandler = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -19,7 +28,14 @@ export default function RegisterComponent() {
 
     const formData = new FormData(event.target as HTMLFormElement);
 
-  
+    const formErrors = validateForm(formData);
+    setErrors(formErrors);
+
+    if (Object.keys(formErrors).length > 0) {
+      setLoading(false);
+      return;
+    }
+
     const password = (formData.get("password") as string).trim();
 
     const confirmPassword = (formData.get("confirmPassword") as string).trim();
@@ -46,7 +62,7 @@ export default function RegisterComponent() {
         navigate("/");
       }
     } catch (err: any) {
-      console.log('failed to register', err.message)
+      console.log("failed to register", err.message);
     } finally {
       setLoading(false);
     }
@@ -62,27 +78,32 @@ export default function RegisterComponent() {
           <form id="registerForm" onSubmit={registerHandler}>
             <div className="input-wrap">
               <i className="fa-solid fa-user"></i>
-              <input type="text" placeholder="First name" name="firstName" />
+              <input type="text" placeholder="First name" name="firstName"  onChange={handleInputChange} />
               <div className="error-message">{errors.firstName}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-user"></i>
-              <input type="text" placeholder="Last name" name="lastName" />
+              <input type="text" placeholder="Last name" name="lastName"  onChange={handleInputChange} />
               <div className="error-message">{errors.lastName}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-envelope"></i>
-              <input type="email" placeholder="Email address" name="email" />
+              <input type="email" placeholder="Email address" name="email" onChange={handleInputChange} />
               <div className="error-message">{errors.email}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-phone"></i>
-              <input type="tel" placeholder="Phone Number" name="phoneNumber" />
+              <input type="tel" placeholder="Phone Number" name="phoneNumber" onChange={handleInputChange} />
               <div className="error-message">{errors.phoneNumber}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-location-dot"></i>
-              <input type="text" placeholder="City / Location" name="location" />
+              <input
+                type="text"
+                placeholder="City / Location"
+                name="location"
+                 onChange={handleInputChange}
+              />
               <div className="error-message">{errors.location}</div>
             </div>
             <div className="input-wrap">
@@ -92,6 +113,7 @@ export default function RegisterComponent() {
                 placeholder="Password"
                 id="pwd"
                 name="password"
+                 onChange={handleInputChange}
               />
               <button type="button" className="show-hide-btn" id="togglePwd">
                 👁
@@ -105,6 +127,7 @@ export default function RegisterComponent() {
                 placeholder="Confirm Password"
                 id="confirmPwd"
                 name="confirmPassword"
+                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.confirmPassword}</div>
               <button
@@ -122,8 +145,8 @@ export default function RegisterComponent() {
                 I agree to the Terms & Conditions
               </label>
             </div>
-            <button className="btn-register" type="submit">
-              Register
+            <button type="submit" className="btn-register" disabled={loading}>
+              {loading ? "Submitting..." : "Register"}
             </button>
           </form>
           <div className="links">
@@ -137,4 +160,4 @@ export default function RegisterComponent() {
   );
 }
 
-//TO DO password validation matching and eye on the form
+

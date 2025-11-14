@@ -25,15 +25,114 @@ const validateEmail = (email: string): string | undefined => {
   if (password !== confirmPassword) {
     return 'Passwords do not match.';
   }
+  if(!confirmPassword) {
+    return 'Confirm password is required.'
+  }
   return undefined
 };
-  
+
+
+// Validate register form inputs
+
+ const validateFirstName = (firstName: string): string | undefined => {
+    if (!firstName) {
+      return "First name is required.";
+    }
+    if (!/^[A-Z]/.test(firstName)) {
+      return "First name must start with a capital letter.";
+    }
+    return undefined;
+  };
+
+   const validateLastName = (firstName: string): string | undefined => {
+    if (!firstName) {
+      return "Last name is required.";
+    }
+    if (!/^[A-Z]/.test(firstName)) {
+      return "Last name must start with a capital letter.";
+    }
+    return undefined;
+  };
+
+    const validatePhoneNumber = (phoneNumber: string): string | undefined => {
+    const regex = /^[0-9]{10}$/; 
+    if (!phoneNumber) {
+      return "Phone number is required.";
+    }
+    if (!regex.test(phoneNumber)) {
+      return "Phone number must be 10 digits long.";
+    }
+    return undefined;
+  };
+
+  const validateLocation = (location: string): string | undefined => {
+
+    if(!location){
+      return 'Location is required.'
+    }
+
+    if(location.length <=3) {
+      return 'Location must be at least 3 characters.'
+    }
+
+    return undefined
+  }
+
+    const validateRegisterPassword = (password: string): string  | undefined => {
+    if (!password) {
+      return 'Password is required'
+    } 
+
+    if(password.length < 8) {
+      return 'Password must be at least 8 characters.'
+    }
+
+       return undefined
+  };
+
+
+
+    const validateForm = (formData: FormData) => {
+    let newErrors: { [key: string]: string } = {};
+
+    for (const [key, value] of formData.entries()) {
+      let error;
+      switch (key) {
+        case 'firstName':
+          error = validateFirstName(value as string);
+          break;
+        case 'lastName' :
+          error = validateLastName(value as string);
+          break;
+        case 'email':
+          error = validateEmail(value as string);
+          break;
+        case 'password':
+          error = validateRegisterPassword(value as string);
+          break;
+          case 'confirmPassword' :
+            error = validateConfirmPassword(value as string, value as string)
+            break;
+        case 'phoneNumber':
+          error = validatePhoneNumber(value as string);
+          break;
+        
+        case 'location':
+        error = validateLocation(value as string);
+        break;
+        default:
+          break;
+      }
+      if (error) newErrors[key] = error;
+    }
+    return newErrors;
+  };
   return {
-    errors,
     setErrors, 
     validateEmail,
     validatePassword,
-    validateConfirmPassword
+    validateConfirmPassword,
+    validateForm
 
   };
 }
