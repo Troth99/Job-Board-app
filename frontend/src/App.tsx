@@ -15,6 +15,7 @@ import LoginComponent from "./components/auth/Login/Login";
 import HomeSection from "./components/Home/HomeSection";
 import RegisterComponent from "./components/auth/Register/Register";
 import MainLayout from "./components/Layouts/MainLayout";
+import MyProfile from "./components/ProfilePage/ProfilePage";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -83,6 +84,15 @@ function App() {
               <RegisterComponent />
             </MainLayout>
           }
+        />
+
+        <Route 
+        path="/profile"
+        element={
+          <MainLayout>
+              <MyProfile />
+          </MainLayout>
+        }
         />
       </Routes>
     </div>
