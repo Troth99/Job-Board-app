@@ -20,7 +20,7 @@ export default function RegisterComponent() {
   const [formData, setFormData] = useState<RegisterData>({
     firstName: "",
     lastName: "",
-    email: "",
+    email: "", 
     password: "",
     confirmPassword: "",
     phoneNumber: "",

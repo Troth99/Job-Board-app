@@ -6,27 +6,30 @@ import { loginUser } from "../../../services/auth/authService";
 import { useValidation } from "../../../hooks/useValidation";
 
 export default function LoginComponent() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [serverErrors, setServerErrors] = useState<{
+  const [errors, setErrors] = useState<{
     email?: string;
     password?: string;
   }>({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { errors, validateEmail, validatePassword } = useValidation();
+  const { validateEmail, validatePassword } = useValidation();
 
   const submitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
-    setServerErrors({});
+    setErrors({});
+
+    const formData = new FormData(event.target as HTMLFormElement)
+
+    const email = formData.get('email') as string
+    const password = formData.get('password') as string
 
     const emailError = validateEmail(email);
     const passwordError = validatePassword(password);
 
     if (emailError || passwordError) {
-      setServerErrors({
+      setErrors({
         email: emailError,
         password: passwordError,
       });
@@ -40,18 +43,17 @@ export default function LoginComponent() {
       if (user?.token) {
         localStorage.setItem("token", user.token);
         navigate("/");
-        setEmail("");
-        setPassword("");
+  
       } else  {
-        setServerErrors({
+        setErrors({
           email: "User does not exist.",
         });
       }
     } catch (err: any) {
       if (err?.message?.includes("User does not exist.")) {
-        setServerErrors({ email: "User does not exist." });
+        setErrors({ email: "User does not exist." });
       } else {
-        setServerErrors({
+        setErrors({
           email: "Invalid Email or password.",
           password: "Invalid Email or password.",
         });
@@ -72,30 +74,23 @@ export default function LoginComponent() {
           <form id="loginForm" onSubmit={submitHandler}>
             <div
               className={`input-wrap ${
-                serverErrors.email ? "input-error" : ""
+                errors.email ? "input-error" : ""
               }`}
             >
               <i className="fa-solid fa-envelope"></i>
               <input
                 placeholder="Email address"
                 id="email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setServerErrors({
-                    ...serverErrors,
-                    email: validateEmail(e.target.value),
-                  });
-                }}
-                onBlur={() => validateEmail(email)}
+                name='email'
+                onInput={() => setErrors(prev => ({...prev, email: undefined}))}
               />
-              {serverErrors && (
-                <div className="error-message">{serverErrors.email}</div>
+              {errors && (
+                <div className="error-message">{errors.email}</div>
               )}
             </div>
             <div
               className={`input-wrap ${
-                serverErrors.password ? "input-error" : ""
+                errors.password ? "input-error" : ""
               }`}
             >
               <i className="fa-solid fa-lock"></i>
@@ -103,11 +98,11 @@ export default function LoginComponent() {
                 type="password"
                 placeholder="Password"
                 id="pwd"
-                onChange={(e) => setPassword(e.target.value)}
-                onBlur={() => validatePassword(password)}
+                name="password"
+           onInput={() => setErrors(prev => ({...prev, password: undefined}))}
               />
-              {serverErrors && (
-                <div className="error-message">{serverErrors.password}</div>
+              {errors && (
+                <div className="error-message">{errors.password}</div>
               )}
             </div>
             <button type="submit" className="btn-login" disabled={loading}>

@@ -15,10 +15,8 @@ const validateEmail = (email: string): string | undefined => {
 };
   const validatePassword = (password: string): string  | undefined => {
     if (!password) {
-      setErrors((prev) => ({ ...prev, password: 'Password is required' }));
-    } else {
-      setErrors((prev) => ({ ...prev, password: '' }));
-    }
+      return 'Password is required'
+    } 
        return undefined
   };
 
