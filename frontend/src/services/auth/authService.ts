@@ -38,6 +38,25 @@ export async function registerUser(formData: FormData) {
     return response
 }
 
+export async function logOut(){
+try {
+  
+  const token = getAuthToken();
+
+     if (!token) {
+      throw new Error('No token found!');
+    }
+  const response = await sendRequest(`${API_BASE}/users/logout`, "POST" , {})
+
+  if(response){
+    localStorage.removeItem('user');
+    return true
+  }
+} catch (error) {
+  console.error('Logout error', error)
+  return false
+}
+}
 export function getAuthToken(): string | null {
   return localStorage.getItem("user");
 }

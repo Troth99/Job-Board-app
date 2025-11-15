@@ -4,21 +4,24 @@ import "./Header.css";
 import "./Responsive.css";
 import { Link, Routes } from "react-router";
 import { getAuthToken } from "../../services/auth/authService";
+import { useDispatch, useSelector } from "react-redux";
+import { setAuthenticated } from "../../redux/authSlice";  
+import { RootState } from "../../redux/store";
+
 
 export function Header() {
+    const dispatch = useDispatch();
+
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated); 
+
 
   useEffect(() => {
     const token = getAuthToken();
-    console.log(token)
-    if (token) {
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
-  }, []);
+    dispatch(setAuthenticated(!!token));  
+  }, [dispatch]);
+
 
   const hamburgerMenuHandler = () => {
     setIsMenuOpen((isMenuOpen) => !isMenuOpen);
@@ -89,9 +92,7 @@ export function Header() {
         onClick={hamburgerMenuHandler}
         aria-label="Toggle Menu"
       >
-        <span></span>
-        <span></span>
-        <span></span>
+  
       </button>
     </header>
   );
