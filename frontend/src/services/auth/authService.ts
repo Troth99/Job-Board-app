@@ -63,5 +63,5 @@ export async function registerUser(formData: FormData) {
 }
 
 export function getAuthToken(): string | null {
-  return localStorage.getItem("token");
+  return localStorage.getItem("user");
 }

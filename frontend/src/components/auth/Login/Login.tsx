@@ -4,10 +4,8 @@ import "./Responsive.css";
 import { useState } from "react";
 import { loginUser } from "../../../services/auth/authService";
 import { useValidation } from "../../../hooks/useValidation";
-import { useAuth } from "../../../context/UserContext";
 
 export default function LoginComponent() {
-  const {login} = useAuth()
   const [errors, setErrors] = useState<{
     email?: string;
     password?: string;
@@ -22,10 +20,10 @@ export default function LoginComponent() {
     setLoading(true);
     setErrors({});
 
-    const formData = new FormData(event.target as HTMLFormElement)
+    const formData = new FormData(event.target as HTMLFormElement);
 
-    const email = formData.get('email') as string
-    const password = formData.get('password') as string
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
 
     const emailError = validateEmail(email);
     const passwordError = validatePassword(password);
@@ -43,16 +41,15 @@ export default function LoginComponent() {
       const user = await loginUser(email, password);
 
       if (user?.token) {
-        localStorage.setItem("token", user.token);
 
-        login({
-          id: user._id,
-          email: user.email,
-          token: user.token
-        })
+        const { id, email } = user;
+        const userData = { id, email, token: user.token };
+
+        localStorage.setItem("user", JSON.stringify(userData));
+    
+
         navigate("/");
-  
-      } else  {
+      } else {
         setErrors({
           email: "User does not exist.",
         });
@@ -80,26 +77,20 @@ export default function LoginComponent() {
 
           <h2>Login to Your Account</h2>
           <form id="loginForm" onSubmit={loginSubmitHandler}>
-            <div
-              className={`input-wrap ${
-                errors.email ? "input-error" : ""
-              }`}
-            >
+            <div className={`input-wrap ${errors.email ? "input-error" : ""}`}>
               <i className="fa-solid fa-envelope"></i>
               <input
                 placeholder="Email address"
                 id="email"
-                name='email'
-                onInput={() => setErrors(prev => ({...prev, email: undefined}))}
+                name="email"
+                onInput={() =>
+                  setErrors((prev) => ({ ...prev, email: undefined }))
+                }
               />
-              {errors && (
-                <div className="error-message">{errors.email}</div>
-              )}
+              {errors && <div className="error-message">{errors.email}</div>}
             </div>
             <div
-              className={`input-wrap ${
-                errors.password ? "input-error" : ""
-              }`}
+              className={`input-wrap ${errors.password ? "input-error" : ""}`}
             >
               <i className="fa-solid fa-lock"></i>
               <input
@@ -107,11 +98,11 @@ export default function LoginComponent() {
                 placeholder="Password"
                 id="pwd"
                 name="password"
-           onInput={() => setErrors(prev => ({...prev, password: undefined}))}
+                onInput={() =>
+                  setErrors((prev) => ({ ...prev, password: undefined }))
+                }
               />
-              {errors && (
-                <div className="error-message">{errors.password}</div>
-              )}
+              {errors && <div className="error-message">{errors.password}</div>}
             </div>
             <button type="submit" className="btn-login" disabled={loading}>
               {loading ? "Logging in..." : "Login"}
