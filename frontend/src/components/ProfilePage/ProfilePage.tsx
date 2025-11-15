@@ -6,13 +6,25 @@ import { setAuthenticated } from "../../redux/authSlice";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getUserProfile } from "../../services/userService";
+import {formatDate} from "../../utils/formData"
 
+interface User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber?: string;
+  location?: string;
+  avatar?: string;
+  createdAt?: string;
+}
 
 export default function MyProfile() {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(true)
-  const [ userData, setUserData] = useState(null);
+  const [ userData, setUserData] = useState<User | null>(null);
+    const [error, setError] = useState<string>(); 
+
 
   const logOutHandler = async () => {
     try {
@@ -31,8 +43,19 @@ export default function MyProfile() {
     }
   };
   const getLoggedInUserData = async () => {
-    const data = await getUserProfile()
-    console.log(data)
+
+    try {
+      const data = await getUserProfile()
+      
+      if(data){
+        setUserData(data)
+        return data
+      }
+
+    } catch (error) {
+      setError("Failed to fetch user data"); 
+      console.error(error);
+    }
   }
 
 
@@ -54,16 +77,19 @@ export default function MyProfile() {
       {/* Profile information section */}
       <div className="profile-info">
         <div>
-          <strong>Name:</strong> Ivan Petrov
+          <strong>First name:</strong> {userData?.firstName}
+        </div>
+          <div>
+          <strong>Last name:</strong> {userData?.lastName}
         </div>
         <div>
-          <strong>Email:</strong> user@example.com
+          <strong>Email:</strong> {userData?.email}
         </div>
         <div>
-          <strong>Phone</strong> 45446546464
+          <strong>Phone:</strong> {userData?.phoneNumber}
         </div>
         <div>
-          <strong>Created at</strong> 252516
+          <strong>Created at:</strong> {userData?.createdAt && formatDate(userData.createdAt)}
         </div>
       </div>
 
