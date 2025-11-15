@@ -4,11 +4,15 @@ import "./Profile.css";
 import "./Responsive.css";
 import { setAuthenticated } from "../../redux/authSlice";
 import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { getUserProfile } from "../../services/userService";
 
 
 export default function MyProfile() {
   const dispatch = useDispatch()
   const navigate = useNavigate();
+  const [loading, setLoading] = useState<boolean>(true)
+  const [ userData, setUserData] = useState(null);
 
   const logOutHandler = async () => {
     try {
@@ -26,7 +30,17 @@ export default function MyProfile() {
       alert("An error occurred while logging out.", );
     }
   };
+  const getLoggedInUserData = async () => {
+    const data = await getUserProfile()
+    console.log(data)
+  }
 
+
+  useEffect(() => {
+    getLoggedInUserData()
+  }, [])
+
+  
   return (
     <div className="profile-container">
       <div className="profile-header">

@@ -7,10 +7,12 @@ interface RequestOptions {
   body?: string;
 }
 
-export async function sendRequest(url: string, method: "POST" | "GET" | "PUT" | "DELETE", data?: Record<string, any>) {
+export async function sendRequest(url: string, method: "POST" | "GET" | "PUT" | "DELETE", data?: Record<string, any>, headers?: Record<string, string>) {
   const options: RequestOptions = {
     method,
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" ,
+      ...headers,
+    },
   };
 
   if (data && (method === 'POST' || method === 'PUT')) {
@@ -23,7 +25,6 @@ export async function sendRequest(url: string, method: "POST" | "GET" | "PUT" | 
 
   try {
     const response = await fetch(url, options);
-
     const resData = await response.json();
 
     if (!response.ok) {

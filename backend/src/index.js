@@ -17,7 +17,9 @@ app.use(cors({
     "http://localhost:5173",
     "https://job-board-three-omega.vercel.app"  
   ],
-  credentials: true
+  credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+
 }));
 
 mongoose.connect(process.env.MONGO_URI, {

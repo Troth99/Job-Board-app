@@ -58,5 +58,6 @@ try {
 }
 }
 export function getAuthToken(): string | null {
-  return localStorage.getItem("user");
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  return user.token
 }
