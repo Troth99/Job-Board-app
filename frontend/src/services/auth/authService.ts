@@ -1,3 +1,4 @@
+import { sendRequest } from "../../utils/requester";
 import { API_BASE } from "../api";
 
 
@@ -17,23 +18,10 @@ export const loginUser = async (email: string, password: string) => {
     throw new Error("Email and password are required");
   }
   try {
-    const response = await fetch(`${API_BASE}/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    
+    const response = await sendRequest( `${API_BASE}/users/login`, "POST", {email, password})
+    return response
 
-    if (!response.ok) {
-      const data = await response.json();
-
-      throw new Error(data.message || "Login failed");
-    }
-
-    const data = await response.json();
-
-    return data;
   } catch (err: any) {
     if (err.message) {
       throw new Error(err.message);
@@ -46,20 +34,8 @@ export const loginUser = async (email: string, password: string) => {
 export async function registerUser(formData: FormData) {
   const data = Object.fromEntries(formData) as Record<string, string>;
   
-  const response = await fetch(`${API_BASE}/users/register`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-
-  const resData = await response.json(); 
-
-  console.log(resData)
-  if (!response.ok) {
-     throw resData;
-  }
-
-  return resData;
+   const response = await sendRequest( `${API_BASE}/users/register`, "POST", data)
+    return response
 }
 
 export function getAuthToken(): string | null {

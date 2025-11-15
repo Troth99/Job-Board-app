@@ -58,7 +58,9 @@ export default function RegisterComponent() {
       const res = await registerUser(formData);
 
       if (res.token) {
-        localStorage.setItem("token", res.token);
+       const { id, email, token } = res; 
+   const userData = { id, email, token };
+        localStorage.setItem("user", JSON.stringify(userData));
         navigate("/");
       }
     } catch (err: any) {

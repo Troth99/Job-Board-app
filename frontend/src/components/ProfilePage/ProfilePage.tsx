@@ -3,6 +3,26 @@ import "./Responsive.css"
 
 export default function MyProfile() {
 
+
+
+
+
+
+
+
+
+
+  const logOutHandler = () => {
+    
+  }
+
+
+
+
+
+
+
+
     return (
 <div className="profile-container">
 
@@ -21,6 +41,12 @@ export default function MyProfile() {
     </div>
     <div>
       <strong>Email:</strong> user@example.com
+    </div>
+    <div>
+        <strong>Phone</strong> 45446546464
+    </div>
+    <div>
+        <strong>Created at</strong> 252516
     </div>
   </div>
 
@@ -76,6 +102,10 @@ export default function MyProfile() {
   <div className="job-description-info">
     <p>Click one of the options above to proceed.</p>
   </div>
+  <div className="logout-container">
+    <button className="logout-button">Logout</button>
+  </div>
+
 </div>
 </div>
 

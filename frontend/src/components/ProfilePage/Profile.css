@@ -474,7 +474,32 @@
   transform: scale(1.05);
 }
 
+.logout-container {
+  display: flex;
+  justify-content: center;
+}
 
+.logout-button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+ align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+.logout-button:active {
+  transform: translateY(1px);
+}
 [data-theme="dark"] .job-description-info {
   margin-top: 20px;
   font-size: 18px;
