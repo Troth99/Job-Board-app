@@ -4,9 +4,10 @@ import "./Profile.css";
 import "./Responsive.css";
 import { setAuthenticated } from "../../redux/authSlice";
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { getUserProfile } from "../../services/userService";
+import { useEffect, useRef, useState } from "react";
+import { getUserProfile, updateUserProfile, uploadUserProfileImage } from "../../services/userService";
 import {formatDate} from "../../utils/formData"
+import defaultAvatar from "../../assets/personAvatar.jpg"
 
 interface User {
   firstName: string;
@@ -23,7 +24,10 @@ export default function MyProfile() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(true)
   const [ userData, setUserData] = useState<User | null>(null);
+  const [ avatar, setAvatar] = useState<string>(defaultAvatar)
     const [error, setError] = useState<string>(); 
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
 
 
   const logOutHandler = async () => {
@@ -49,6 +53,7 @@ export default function MyProfile() {
       
       if(data){
         setUserData(data)
+        setAvatar(data.avatar || defaultAvatar);
         return data
       }
 
@@ -58,7 +63,18 @@ export default function MyProfile() {
     }
   }
 
+const handleFileChange = async (file: File) => {
+  try {
+    const imageUrl = await uploadUserProfileImage(file);
+    setAvatar(imageUrl); 
 
+    await updateUserProfile({ avatar: imageUrl }); 
+
+  } catch (err: any) {
+    console.error("Image upload failed:", err.message);
+    alert("Failed to upload image");
+  }
+};
   useEffect(() => {
     getLoggedInUserData()
   }, [])
@@ -70,8 +86,8 @@ export default function MyProfile() {
         <h1>My Profile</h1>
       </div>
       <div className="profile-image">
-        <img src="path/to/your/default-image.jpg" alt="Profile" />
-        <button className="edit-image-button">Choose Image</button>
+        <img src={avatar || defaultAvatar} alt="Profile" />
+        <button className="edit-image-button" onClick={() => fileInputRef.current?.click()}>Choose Image</button>
       </div>
 
       {/* Profile information section */}
@@ -150,6 +166,20 @@ export default function MyProfile() {
           <button className="logout-button" onClick={logOutHandler}>Logout</button>
         </div>
       </div>
+
+      {/* Hidden file input */}
+  <input
+    type="file"
+    accept="image/*"
+    style={{ display: "none" }}
+    ref={fileInputRef}
+    onChange={(e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      handleFileChange(file)
+
+    }}
+  />
     </div>
   );
 }
