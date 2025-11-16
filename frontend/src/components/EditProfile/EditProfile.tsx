@@ -8,7 +8,8 @@ const [ profileData, setProfileData] = useState({
     avatar: '',
 })
 
-    const handleDeleteProfileImage = async () => {
+    const handleDeleteProfileImage = async (e: React.FormEvent) => {
+        e.preventDefault()
         try {
             const response = await deleteUserProfileImage()
                if (response && response.message === 'Profile image deleted successfully') {
