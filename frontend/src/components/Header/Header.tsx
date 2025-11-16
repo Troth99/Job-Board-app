@@ -92,7 +92,9 @@ export function Header() {
         onClick={hamburgerMenuHandler}
         aria-label="Toggle Menu"
       >
-  
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </header>
   );

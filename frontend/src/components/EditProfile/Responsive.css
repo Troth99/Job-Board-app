@@ -1,0 +1,64 @@
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 20px;
+    margin-top: 3em;
+  }
+
+  .profile-header h1 {
+    font-size: 28px;
+  }
+
+  .profile-info div {
+    width: 80%;
+  }
+
+  .profile-info input,
+  .profile-info textarea {
+    font-size: 14px;
+  }
+
+  .button-container {
+    padding: 15px;
+  }
+
+  .delete-image-button,
+  .change-password-button,
+  .delete-profile-button,
+  .check-profile-logs-button {
+    width: 80%;
+  }
+}
+
+/* За малки екрани и таблети */
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 15px;
+    margin-top: 2em;
+  }
+
+  .profile-header h1 {
+    font-size: 24px;
+  }
+
+  .profile-info div {
+    width: 100%;
+  }
+
+  .profile-info input,
+  .profile-info textarea {
+    font-size: 14px;
+  }
+
+  .button-container {
+    padding: 10px;
+  }
+
+  .delete-image-button,
+  .change-password-button,
+  .delete-profile-button,
+  .check-profile-logs-button {
+    width: 90%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
