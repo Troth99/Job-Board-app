@@ -115,3 +115,47 @@ export const logOutUser = async( req, res) => {
 
     }
 }
+
+export const deleteUserProfileImage = async (req, res) => {
+  try {
+   
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+ 
+    if (user.avatar) {
+      
+      const imgbbApiKey = '844b750f8696c887633d12684dff203e';
+      
+    
+      const imageId = user.avatar.split('/').pop().split('.')[0]; 
+
+   
+      const response = await fetch(`https://api.imgbb.com/1/delete?key=${imgbbApiKey}&image=${imageId}`, {
+        method: 'DELETE'
+      });
+
+    
+      const data = await response.json();
+      
+      if (data.success) {
+        console.log('Image deleted from ImgBB');
+      } else {
+        console.log('Failed to delete image from ImgBB');
+      }
+
+     
+      user.avatar = null;
+      await user.save(); 
+    }
+
+    
+    res.status(200).json({ message: "Profile image deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "An error occurred while deleting the profile image" });
+  }
+};
