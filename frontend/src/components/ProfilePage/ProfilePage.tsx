@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { getAuthToken, logOut } from "../../services/auth/authService";
 import "./Profile.css";
 import "./Responsive.css";
@@ -128,7 +128,9 @@ const handleFileChange = async (file: File) => {
           </div>
 
           <div className="edit-profile-button-container">
-            <button className="edit-profile-button">Edit Profile</button>
+            <Link to="/profile/setthings" className="edit-profile-button" >
+          Edit Profile
+        </Link>
           </div>
 
           <div className="role-change">

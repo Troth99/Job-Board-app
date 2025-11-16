@@ -9,14 +9,14 @@ import {
   Route,
   Router,
   Routes,
-  useLocation,
+
 } from "react-router";
 import LoginComponent from "./components/auth/Login/Login";
 import HomeSection from "./components/Home/HomeSection";
 import RegisterComponent from "./components/auth/Register/Register";
 import MainLayout from "./components/Layouts/MainLayout";
 import MyProfile from "./components/ProfilePage/ProfilePage";
-
+import EditProfile from "./components/EditProfile/EditProfile";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -59,8 +59,9 @@ function App() {
     return <FullPageSpinner />;
   }
   return (
-    <div>
+       <div>
       <Routes>
+    
         <Route
           path="/"
           element={
@@ -69,10 +70,12 @@ function App() {
             </MainLayout>
           }
         />
+        
+    
         <Route
           path="/login"
           element={
-            <MainLayout hideHeaderFooter>
+            <MainLayout hideHeaderFooter={true}>
               <LoginComponent />
             </MainLayout>
           }
@@ -80,26 +83,19 @@ function App() {
         <Route
           path="/register"
           element={
-            <MainLayout hideHeaderFooter>
+            <MainLayout hideHeaderFooter={true}>
               <RegisterComponent />
             </MainLayout>
           }
         />
 
-        <Route
-          path="/profile"
-          element={
-      
-              <MainLayout>
-                <MyProfile />
-              </MainLayout>
-         
-          }
-        />
+   
+        <Route path="/profile" element={<MainLayout />}>
+          <Route index element={<MyProfile />} /> 
+          <Route path="setthings" element={<EditProfile />} /> 
+        </Route>
       </Routes>
-
     </div>
-
   );
 }
 
