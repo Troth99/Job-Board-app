@@ -60,3 +60,25 @@ export async function updateUserProfile(data: { avatar?: string; [key: string]: 
     );
 
 }
+
+export async function deleteUserProfileImage() {
+  const token = getAuthToken();
+  if (!token) throw new Error("User not authenticated");
+
+  try {
+    const response = await sendRequest(
+      `${API_BASE}/users/me/avatar`, 
+      "DELETE",
+      {},
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    );
+
+ 
+    return response;
+  } catch (error: any) {
+    console.error("Error deleting user profile image:", error.message);
+    throw new Error("Failed to delete profile image.");
+  }
+}
