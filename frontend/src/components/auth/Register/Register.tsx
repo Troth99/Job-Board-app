@@ -21,12 +21,12 @@ export default function RegisterComponent() {
     }))
   }
 
-  const registerHandler = async (event: React.FormEvent) => {
+  const registerHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
     setErrors({});
 
-    const formData = new FormData(event.target as HTMLFormElement);
+    const formData = new FormData(event.currentTarget);
 
     const formErrors = validateForm(formData);
     setErrors(formErrors);

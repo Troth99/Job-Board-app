@@ -9,6 +9,8 @@ import "./Responsive.css";
 import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../utils/toast";
+import { FieldErrors } from "../../services/auth/authService";
+import { useValidation } from "../../hooks/useValidation";
 
 interface ProfileData {
   firstName: string;
@@ -25,7 +27,9 @@ export default function EditProfile() {
   });
   const [profileData, setProfileData] = useState<ProfileData>();
   const [loading, setLoading] = useState<boolean>(true);
-  const [buttonLoading, setButtonLoading] = useState<boolean>(false)
+  const [buttonLoading, setButtonLoading] = useState<boolean>(false);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const { validateForm } = useValidation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,25 +65,32 @@ export default function EditProfile() {
     }
   };
 
-const editSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setButtonLoading(true);
+  const editSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setButtonLoading(true);
+    setErrors({});
 
-  try {
     const form = new FormData(e.currentTarget);
     const formData = Object.fromEntries(form.entries());
 
-    await updateUserProfile(formData)
-    
-    showSuccess('Profile saved scucsesfully!')
-    navigate('/profile')
- 
-  } catch (error) {
-    console.error("Failed to save changes!");
-  } finally {
-    setButtonLoading(false);
-  }
-};
+    const formErrors = validateForm(form);
+    setErrors(formErrors);
+
+    if (Object.keys(formErrors).length > 0) {
+      setButtonLoading(false);
+      return;
+    }
+    try {
+      await updateUserProfile(formData);
+
+      showSuccess("Profile saved scucsesfully!");
+      navigate("/profile");
+    } catch (error) {
+      console.error("Failed to save changes!");
+    } finally {
+      setButtonLoading(false);
+    }
+  };
 
   return (
     <div className="profile-body" style={{ position: "relative" }}>
@@ -90,38 +101,57 @@ const editSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         </div>
 
         <form onSubmit={editSubmitHandler}>
-          <div className="profile-info">
+          <div className="profile-details">
             <div>
               <strong>First name:</strong>
               <input
                 type="text"
-                defaultValue={profileData?.firstName}
+                value={profileData?.firstName || ""}
                 name="firstName"
+                onChange={(e) =>
+                  setProfileData({ ...profileData!, firstName: e.target.value })
+                }
               />
+                <div className="error-message">{errors.firstName}</div>
             </div>
             <div>
               <strong>Last name:</strong>
               <input
                 type="text"
-                defaultValue={profileData?.lastName}
+                value={profileData?.lastName || ""}
                 name="lastName"
+                onChange={(e) =>
+                  setProfileData({ ...profileData!, lastName: e.target.value })
+                }
               />
+              <div className="error-message">{errors.lastName}</div>
             </div>
             <div>
               <strong>Phone:</strong>
               <input
                 type="text"
-                defaultValue={profileData?.phoneNumber}
-                name="phone"
+                value={profileData?.phoneNumber || ""}
+                name="phoneNumber"
+                onChange={(e) =>
+                  setProfileData({
+                    ...profileData!,
+                    phoneNumber: e.target.value,
+                  })
+                }
               />
+              <div className="error-message">{errors.phoneNumber}</div>
             </div>
             <div>
               <strong>Location:</strong>
               <input
                 type="text"
-                defaultValue={profileData?.location}
+                value={profileData?.location || ""}
                 name="location"
+                onChange={(e) =>
+                  setProfileData({ ...profileData!, location: e.target.value })
+                }
               />
+              <div className="error-message">{errors.location}</div>
             </div>
 
             <div className="edit-profile-button-container">
