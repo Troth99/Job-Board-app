@@ -19,6 +19,7 @@ import MyProfile from "./components/ProfilePage/ProfilePage";
 import EditProfile from "./components/EditProfile/EditProfile";
 import ProtectedRoutes from "./utils/RouteGuards/authRouteGuard"
 import GuestGuardRoute from "./utils/RouteGuards/guestRouteGuard";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -100,6 +101,7 @@ function App() {
 
        </Route>
       </Routes>
+   
     </div>
   );
 }
