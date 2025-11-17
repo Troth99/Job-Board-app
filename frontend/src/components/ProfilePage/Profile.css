@@ -30,6 +30,7 @@
 }
 
 .profile-info div {
+  margin-bottom: 5px;
   font-size: 18px;
   padding: 8px 0;
 }
@@ -103,7 +104,6 @@
 
 
 .edit-profile-button-container {
-  margin-top: 20px;
   text-align: center;
 }
 
@@ -258,6 +258,7 @@
   color: #7f8c8d;
   text-align: center;
 }
+
 [data-theme="dark"] .profile-container {
   background-color: #181818; 
   color: #ecf0f1; 
@@ -269,12 +270,6 @@
   text-shadow: 0 0 12px rgba(130, 170, 255, 0.6);
 }
 
-[data-theme="dark"] .profile-info div {
-  margin-bottom: 12px;
-  font-size: 18px;
-  padding: 8px 0;
-  color: #e6edf3; 
-}
 
 [data-theme="dark"] .profile-info strong {
   color: #f1c40f; 
@@ -328,27 +323,6 @@
 }
 
 [data-theme="dark"] .edit-image-button:hover {
-  background-color: #2980b9;
-  transform: scale(1.05);
-}
-
-[data-theme="dark"] .edit-profile-button-container {
-  margin-top: 20px;
-  text-align: center;
-}
-
-[data-theme="dark"] .edit-profile-button {
-  background-color: #3498db;
-  color: white;
-  padding: 12px 30px;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-[data-theme="dark"] .edit-profile-button:hover {
   background-color: #2980b9;
   transform: scale(1.05);
 }
