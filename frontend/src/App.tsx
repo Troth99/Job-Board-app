@@ -17,6 +17,8 @@ import RegisterComponent from "./components/auth/Register/Register";
 import MainLayout from "./components/Layouts/MainLayout";
 import MyProfile from "./components/ProfilePage/ProfilePage";
 import EditProfile from "./components/EditProfile/EditProfile";
+import ProtectedRoutes from "./utils/RouteGuards/authRouteGuard"
+import GuestGuardRoute from "./utils/RouteGuards/guestRouteGuard";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -71,7 +73,7 @@ function App() {
           }
         />
         
-    
+    <Route element={<GuestGuardRoute />}>
         <Route
           path="/login"
           element={
@@ -88,12 +90,15 @@ function App() {
             </MainLayout>
           }
         />
-
-   
+</Route>
+  
+          <Route element={<ProtectedRoutes />}>
         <Route path="/profile" element={<MainLayout />}>
           <Route index element={<MyProfile />} /> 
           <Route path="setthings" element={<EditProfile />} /> 
         </Route>
+
+       </Route>
       </Routes>
     </div>
   );
