@@ -1,12 +1,41 @@
-import { useState } from "react";
-import { deleteUserProfileImage } from "../../services/userService";
+import { useEffect, useState } from "react";
+import { deleteUserProfileImage, getUserProfile } from "../../services/userService";
 import "./EditProfile.css"
 import "./Responsive.css"
+import Spinner from "../Spinner/Spinner";
+
+interface ProfileData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber?: string;
+  location?: string;
+  avatar?: string;
+}
 
 export default function EditProfile() {
-const [ profileData, setProfileData] = useState({
+const [ avatarInfo, setAvatarInfo] = useState({
     avatar: '',
 })
+const [profileData, setProfileData] = useState<ProfileData>()
+const [loading, setLoading] = useState<boolean>(true)
+
+
+useEffect(() => {
+  const fetchProfile = async () => {
+    try {
+      const data = await getUserProfile()
+      setProfileData(data)
+    } catch (error) {
+      console.error('Failed to fetch user for edit page.')
+    }finally{
+      setLoading(false)
+    }
+  }
+  fetchProfile()
+},[])
+
+
 
     const handleDeleteProfileImage = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -17,7 +46,7 @@ const [ profileData, setProfileData] = useState({
 
             const response = await deleteUserProfileImage()
                if (response && response.message === 'Profile image deleted successfully') {
-        setProfileData({ ...profileData, avatar: '' });
+        setAvatarInfo({ ...avatarInfo, avatar: '' });
         alert('Profile image deleted successfully');
       }
         } catch (error) {
@@ -26,36 +55,41 @@ const [ profileData, setProfileData] = useState({
         }
     }
 
+    const editSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const form = new FormData(e.currentTarget)
+      const formData = Object.fromEntries(form)
+
+    }
 
     return (
+          <div className="profile-body" style={{ position: "relative" }}>
+         
+            {loading && <Spinner overlay={true} />}
 <div className="profile-container">
   <div className="profile-header">
     <h1>Edit Profile</h1>
   </div>
 
-  <form>
+  <form onSubmit={editSubmitHandler}>
     <div className="profile-info">
       <div>
         <strong>First name:</strong>
-        <input type="text" value="John" />
+        <input type="text" defaultValue={profileData?.firstName} name="firstName"/>
       </div>
       <div>
         <strong>Last name:</strong>
-        <input type="text" value="Doe" />
+        <input type="text" defaultValue={profileData?.lastName} name="lastName" />
       </div>
       <div>
         <strong>Phone:</strong>
-        <input type="text" value="123123123123" />
+        <input type="text" defaultValue={profileData?.phoneNumber} name="phone"/>
       </div>
       <div>
         <strong>Location:</strong>
-        <input type="text" value="New York" />
+        <input type="text" defaultValue={profileData?.location} name="location"/>
       </div>
-      <div>
-        <strong>Role:</strong>
-        <input type="text" value="Developer" />
-      </div>
-
+  
       <div className="edit-profile-button-container">
         <button className="edit-profile-button" type="submit">Save Changes</button>
       </div>
@@ -86,6 +120,7 @@ const [ profileData, setProfileData] = useState({
       <p>If you have registered a new company, you can add it here.</p>
     </div>
   </form>
+</div>
 </div>
   );
 }
