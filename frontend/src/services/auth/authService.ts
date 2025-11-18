@@ -2,14 +2,14 @@ import { sendRequest } from "../../utils/requester";
 import { API_BASE } from "../api";
 
 
-export interface FieldErrors {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  confirmPassword? : string,
-  phoneNumber?: string;
-  location?: string;
+export interface registerFormType {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword : string,
+  phoneNumber: string;
+  location: string;
 }
 
 
@@ -31,9 +31,8 @@ export const loginUser = async (email: string, password: string) => {
   }
 };
 
-export async function registerUser(formData: FormData) {
-  const data = Object.fromEntries(formData) as Record<string, string>;
-  
+export async function registerUser(data: registerFormType) {
+
    const response = await sendRequest( `${API_BASE}/users/register`, "POST", data)
     return response
 }

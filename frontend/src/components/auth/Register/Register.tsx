@@ -2,33 +2,43 @@ import { data, Link, useNavigate } from "react-router";
 import "./Register.css";
 import "./Responsive.css";
 import { useEffect, useState } from "react";
-import { FieldErrors, registerUser } from "../../../services/auth/authService";
+import {
+  registerFormType,
+  registerUser,
+} from "../../../services/auth/authService";
 import { useValidation } from "../../../hooks/useValidation";
 
+const intialValueRegister = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phoneNumber: "",
+  location: "",
+  password: "",
+  confirmPassword: "",
+};
+
 export default function RegisterComponent() {
-  const [errors, setErrors] = useState<FieldErrors>({});
+  const [errors, setErrors] = useState<Partial<registerFormType>>({});
   const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState<registerFormType>(intialValueRegister);
 
   const navigate = useNavigate();
   const { validateConfirmPassword, validateForm } = useValidation();
 
-  const handleInputChange = (event :React.ChangeEvent<HTMLInputElement>) => {
-    const {name} = event.target
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
 
-    setErrors((prev) => ({
-      ...prev,
-      [name]: ""
-    }))
-  }
+    setForm((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
 
   const registerHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
     setErrors({});
 
-    const formData = new FormData(event.currentTarget);
-
-    const formErrors = validateForm(formData);
+    const formErrors = validateForm(form);
     setErrors(formErrors);
 
     if (Object.keys(formErrors).length > 0) {
@@ -36,13 +46,9 @@ export default function RegisterComponent() {
       return;
     }
 
-    const password = (formData.get("password") as string).trim();
-
-    const confirmPassword = (formData.get("confirmPassword") as string).trim();
-
     const confirmPasswordError = validateConfirmPassword(
-      password,
-      confirmPassword
+      form.password,
+      form.confirmPassword
     );
 
     if (confirmPasswordError) {
@@ -55,16 +61,23 @@ export default function RegisterComponent() {
     }
 
     try {
-      const res = await registerUser(formData);
+      const res = await registerUser(form);
 
       if (res.token) {
-       const { id, email, token } = res; 
-   const userData = { id, email, token };
+        const { id, email, token } = res;
+        const userData = { id, email, token };
         localStorage.setItem("user", JSON.stringify(userData));
         navigate("/");
       }
     } catch (err: any) {
-      console.log("failed to register", err.message);
+      if (
+        err.message.includes('User already exists')
+      ) {
+        setErrors((prev) => ({
+          ...prev,
+          email: "This email is already registered.",
+        }));
+      }
     } finally {
       setLoading(false);
     }
@@ -80,22 +93,46 @@ export default function RegisterComponent() {
           <form id="registerForm" onSubmit={registerHandler}>
             <div className="input-wrap">
               <i className="fa-solid fa-user"></i>
-              <input type="text" placeholder="First name" name="firstName"  onChange={handleInputChange} />
+              <input
+                type="text"
+                placeholder="First name"
+                name="firstName"
+                value={form.firstName}
+                onChange={handleInputChange}
+              />
               <div className="error-message">{errors.firstName}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-user"></i>
-              <input type="text" placeholder="Last name" name="lastName"  onChange={handleInputChange} />
+              <input
+                type="text"
+                placeholder="Last name"
+                name="lastName"
+                value={form.lastName}
+                onChange={handleInputChange}
+              />
               <div className="error-message">{errors.lastName}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-envelope"></i>
-              <input type="email" placeholder="Email address" name="email" onChange={handleInputChange} />
+              <input
+                type="text"
+                placeholder="Email address"
+                name="email"
+                value={form.email}
+                onChange={handleInputChange}
+              />
               <div className="error-message">{errors.email}</div>
             </div>
             <div className="input-wrap">
               <i className="fa-solid fa-phone"></i>
-              <input type="tel" placeholder="Phone Number" name="phoneNumber" onChange={handleInputChange} />
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                name="phoneNumber"
+                value={form.phoneNumber}
+                onChange={handleInputChange}
+              />
               <div className="error-message">{errors.phoneNumber}</div>
             </div>
             <div className="input-wrap">
@@ -104,7 +141,8 @@ export default function RegisterComponent() {
                 type="text"
                 placeholder="City / Location"
                 name="location"
-                 onChange={handleInputChange}
+                value={form.location}
+                onChange={handleInputChange}
               />
               <div className="error-message">{errors.location}</div>
             </div>
@@ -115,7 +153,8 @@ export default function RegisterComponent() {
                 placeholder="Password"
                 id="pwd"
                 name="password"
-                 onChange={handleInputChange}
+                value={form.password}
+                onChange={handleInputChange}
               />
               <button type="button" className="show-hide-btn" id="togglePwd">
                 👁
@@ -129,7 +168,8 @@ export default function RegisterComponent() {
                 placeholder="Confirm Password"
                 id="confirmPwd"
                 name="confirmPassword"
-                 onChange={handleInputChange}
+                value={form.confirmPassword}
+                onChange={handleInputChange}
               />
               <div className="error-message">{errors.confirmPassword}</div>
               <button
@@ -161,5 +201,3 @@ export default function RegisterComponent() {
     </div>
   );
 }
-
-

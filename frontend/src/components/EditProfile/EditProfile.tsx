@@ -9,8 +9,8 @@ import "./Responsive.css";
 import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../utils/toast";
-import { FieldErrors } from "../../services/auth/authService";
 import { useValidation } from "../../hooks/useValidation";
+import { registerFormType } from "../../services/auth/authService";
 
 interface ProfileData {
   firstName: string;
@@ -28,7 +28,7 @@ export default function EditProfile() {
   const [profileData, setProfileData] = useState<ProfileData>();
   const [loading, setLoading] = useState<boolean>(true);
   const [buttonLoading, setButtonLoading] = useState<boolean>(false);
-  const [errors, setErrors] = useState<FieldErrors>({});
+  const [errors, setErrors] = useState<Partial<registerFormType>>({});
   const { validateForm } = useValidation();
   const navigate = useNavigate();
 
