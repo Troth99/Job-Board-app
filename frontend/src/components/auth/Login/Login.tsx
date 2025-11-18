@@ -5,13 +5,18 @@ import { useState } from "react";
 import { loginUser } from "../../../services/auth/authService";
 import { useValidation } from "../../../hooks/useValidation";
 
+const initialFormValue = {
+  email: '',
+  password: ''
+}
+
 export default function LoginComponent() {
   const [errors, setErrors] = useState<{
     email?: string;
     password?: string;
   }>({});
   const [loading, setLoading] = useState(false);
-const [form, setForm] = useState({ email: "", password: "" });
+const [form, setForm] = useState(initialFormValue);
 
 const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
  const { name, value } = e.target;
