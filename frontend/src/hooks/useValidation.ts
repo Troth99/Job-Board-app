@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { registerFormType } from "../services/auth/authService";
+import { ProfileData } from "../components/EditProfile/EditProfile";
+
+type FormDataUnion = Partial<registerFormType> & Partial<ProfileData>;
 
 export function useValidation() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -53,7 +56,7 @@ export function useValidation() {
     return undefined;
   };
 
-  const validateForm = (data: registerFormType) => {
+  const validateForm = (data: FormDataUnion) => {
     const newErrors: { [key: string]: string } = {};
 
     for (const [key, value] of Object.entries(data)) {

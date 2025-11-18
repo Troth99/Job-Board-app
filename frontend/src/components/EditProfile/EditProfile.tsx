@@ -12,7 +12,7 @@ import { showSuccess } from "../../utils/toast";
 import { useValidation } from "../../hooks/useValidation";
 import { registerFormType } from "../../services/auth/authService";
 
-interface ProfileData {
+export interface ProfileData {
   firstName: string;
   lastName: string;
   email: string;
@@ -21,14 +21,24 @@ interface ProfileData {
   avatar?: string;
 }
 
+const initialProfileData: ProfileData = {
+  firstName: "",
+  lastName: "",
+  email: "",  
+  phoneNumber: "",
+  location: "",
+  avatar: "",
+};
 export default function EditProfile() {
   const [avatarInfo, setAvatarInfo] = useState({
     avatar: "",
   });
-  const [profileData, setProfileData] = useState<ProfileData>();
+  const [profileData, setProfileData] = useState<ProfileData>(initialProfileData);
   const [loading, setLoading] = useState<boolean>(true);
   const [buttonLoading, setButtonLoading] = useState<boolean>(false);
   const [errors, setErrors] = useState<Partial<registerFormType>>({});
+
+
   const { validateForm } = useValidation();
   const navigate = useNavigate();
 
@@ -45,6 +55,15 @@ export default function EditProfile() {
     };
     fetchProfile();
   }, []);
+
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+
+  const trimmedValue = value.trim();
+
+  setProfileData((prev) => ({ ...prev as ProfileData, [name]: trimmedValue }));
+  setErrors((prev) => ({ ...prev, [name]: "" }));
+};
 
   const handleDeleteProfileImage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,10 +89,7 @@ export default function EditProfile() {
     setButtonLoading(true);
     setErrors({});
 
-    const form = new FormData(e.currentTarget);
-    const formData = Object.fromEntries(form.entries());
-
-    const formErrors = validateForm(form);
+    const formErrors = validateForm(profileData);
     setErrors(formErrors);
 
     if (Object.keys(formErrors).length > 0) {
@@ -81,7 +97,7 @@ export default function EditProfile() {
       return;
     }
     try {
-      await updateUserProfile(formData);
+      await updateUserProfile(profileData);
 
       showSuccess("Profile saved scucsesfully!");
       navigate("/profile");
@@ -106,11 +122,9 @@ export default function EditProfile() {
               <strong>First name:</strong>
               <input
                 type="text"
-                value={profileData?.firstName || ""}
+                value={profileData?.firstName}
                 name="firstName"
-                onChange={(e) =>
-                  setProfileData({ ...profileData!, firstName: e.target.value })
-                }
+                onChange={handleInputChange}
               />
                 <div className="error-message">{errors.firstName}</div>
             </div>
@@ -118,11 +132,9 @@ export default function EditProfile() {
               <strong>Last name:</strong>
               <input
                 type="text"
-                value={profileData?.lastName || ""}
+                value={profileData?.lastName}
                 name="lastName"
-                onChange={(e) =>
-                  setProfileData({ ...profileData!, lastName: e.target.value })
-                }
+                onChange={handleInputChange}
               />
               <div className="error-message">{errors.lastName}</div>
             </div>
@@ -130,14 +142,10 @@ export default function EditProfile() {
               <strong>Phone:</strong>
               <input
                 type="text"
-                value={profileData?.phoneNumber || ""}
+                value={profileData?.phoneNumber}
                 name="phoneNumber"
-                onChange={(e) =>
-                  setProfileData({
-                    ...profileData!,
-                    phoneNumber: e.target.value,
-                  })
-                }
+                onChange={handleInputChange}
+                
               />
               <div className="error-message">{errors.phoneNumber}</div>
             </div>
@@ -145,11 +153,9 @@ export default function EditProfile() {
               <strong>Location:</strong>
               <input
                 type="text"
-                value={profileData?.location || ""}
+                value={profileData?.location}
                 name="location"
-                onChange={(e) =>
-                  setProfileData({ ...profileData!, location: e.target.value })
-                }
+                onChange={handleInputChange}
               />
               <div className="error-message">{errors.location}</div>
             </div>

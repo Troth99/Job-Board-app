@@ -29,7 +29,9 @@ export default function RegisterComponent() {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
-    setForm((prev) => ({ ...prev, [name]: value }));
+    const trimmedValue = value.trim();
+
+    setForm((prev) => ({ ...prev, [name]: trimmedValue }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
@@ -70,9 +72,7 @@ export default function RegisterComponent() {
         navigate("/");
       }
     } catch (err: any) {
-      if (
-        err.message.includes('User already exists')
-      ) {
+      if (err.message.includes("User already exists")) {
         setErrors((prev) => ({
           ...prev,
           email: "This email is already registered.",
