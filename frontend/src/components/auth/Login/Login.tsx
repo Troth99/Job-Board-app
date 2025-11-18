@@ -11,6 +11,15 @@ export default function LoginComponent() {
     password?: string;
   }>({});
   const [loading, setLoading] = useState(false);
+const [form, setForm] = useState({ email: "", password: "" });
+
+const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+ const { name, value } = e.target;
+
+  setForm(prev => ({ ...prev, [name]: value }));      
+  setErrors(prev => ({ ...prev, [name]: undefined }));
+}
+  
   const navigate = useNavigate();
 
   const { validateEmail, validatePassword } = useValidation();
@@ -20,13 +29,8 @@ export default function LoginComponent() {
     setLoading(true);
     setErrors({});
 
-    const formData = new FormData(event.target as HTMLFormElement);
-
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
-
-    const emailError = validateEmail(email);
-    const passwordError = validatePassword(password);
+    const emailError = validateEmail(form.email);
+    const passwordError = validatePassword(form.password);
 
     if (emailError || passwordError) {
       setErrors({
@@ -38,7 +42,7 @@ export default function LoginComponent() {
     }
 
     try {
-      const user = await loginUser(email, password);
+      const user = await loginUser(form.email, form.password);
 
       if (user?.token) {
 
@@ -83,9 +87,8 @@ export default function LoginComponent() {
                 placeholder="Email address"
                 id="email"
                 name="email"
-                onInput={() =>
-                  setErrors((prev) => ({ ...prev, email: undefined }))
-                }
+                value={form.email}
+                onChange={onChangeHandler}
               />
               {errors && <div className="error-message">{errors.email}</div>}
             </div>
@@ -98,9 +101,8 @@ export default function LoginComponent() {
                 placeholder="Password"
                 id="pwd"
                 name="password"
-                onInput={() =>
-                  setErrors((prev) => ({ ...prev, password: undefined }))
-                }
+                value={form.password}
+                onChange={onChangeHandler}
               />
               {errors && <div className="error-message">{errors.password}</div>}
             </div>

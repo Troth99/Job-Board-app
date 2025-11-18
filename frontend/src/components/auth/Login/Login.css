@@ -1,5 +1,4 @@
 
-
 .login-wrapper {
   background: linear-gradient(-45deg, #2a8ff3, #00e1ff, #1ee0ff, #0294f5);
   background-size: 400% 400%;
@@ -22,7 +21,11 @@
   overflow: hidden;
   animation: fadeUp 0.9s ease-out forwards;
 }
-
+.btn-login:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -137,7 +140,7 @@ form {
 .input-wrap i {
   position: absolute;
   left: 12px;
-  top: 40%;
+  top: 30%;
   transform: translateY(-50%);
   color: #007bff;
   font-size: 1.1rem;
