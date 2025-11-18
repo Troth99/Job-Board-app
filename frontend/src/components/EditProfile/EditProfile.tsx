@@ -57,7 +57,7 @@ export default function EditProfile() {
     fetchProfile();
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     const trimmedValue = value.trim();
@@ -86,7 +86,7 @@ export default function EditProfile() {
 
   const changePasswordHandler = () => {
     navigate("/profile/change-password");
-    
+
   };
   const editSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -130,7 +130,7 @@ export default function EditProfile() {
                   type="text"
                   value={profileData?.firstName}
                   name="firstName"
-                  onChange={handleInputChange}
+                  onChange={onChangeHandler}
                 />
                 <div className="error-message">{errors.firstName}</div>
               </div>
@@ -140,7 +140,7 @@ export default function EditProfile() {
                   type="text"
                   value={profileData?.lastName}
                   name="lastName"
-                  onChange={handleInputChange}
+                  onChange={onChangeHandler}
                 />
                 <div className="error-message">{errors.lastName}</div>
               </div>
@@ -150,7 +150,7 @@ export default function EditProfile() {
                   type="text"
                   value={profileData?.phoneNumber}
                   name="phoneNumber"
-                  onChange={handleInputChange}
+                  onChange={onChangeHandler}
                 />
                 <div className="error-message">{errors.phoneNumber}</div>
               </div>
@@ -160,7 +160,7 @@ export default function EditProfile() {
                   type="text"
                   value={profileData?.location}
                   name="location"
-                  onChange={handleInputChange}
+                  onChange={onChangeHandler}
                 />
                 <div className="error-message">{errors.location}</div>
               </div>
