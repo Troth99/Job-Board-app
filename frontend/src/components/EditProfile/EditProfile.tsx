@@ -11,6 +11,7 @@ import { useNavigate } from "react-router";
 import { showSuccess } from "../../utils/toast";
 import { useValidation } from "../../hooks/useValidation";
 import { registerFormType } from "../../services/auth/authService";
+import ChangePassword from "./ChangePassword/ChangePassword";
 
 export interface ProfileData {
   firstName: string;
@@ -83,6 +84,9 @@ export default function EditProfile() {
     }
   };
 
+  const changePasswordHandler = () => {
+    navigate("/profile/change-password");
+  };
   const editSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setButtonLoading(true);
@@ -170,41 +174,44 @@ export default function EditProfile() {
                 </button>
               </div>
             </div>
-            <div className="button-container">
-              <div className="delete-image-container">
-                <button
-                  className="delete-image-button"
-                  onClick={handleDeleteProfileImage}
-                >
-                  Delete Profile Image
-                </button>
-              </div>
-              <div className="check-profile-logs-container">
-                <button className="check-profile-logs-button">View logs</button>
-              </div>
-              <div className="change-password-container">
-                <button className="change-password-button">
-                  Change Password
-                </button>
-              </div>
-
-              <div className="delete-profile-container">
-                <button className="delete-profile-button">
-                  Delete Profile
-                </button>
-              </div>
-            </div>
-
-            <div className="role-change">
-              <h3>Change Role</h3>
-              <p>Select a new role for your profile.</p>
-            </div>
-
-            <div className="company-registration">
-              <h3>Company Registration</h3>
-              <p>If you have registered a new company, you can add it here.</p>
-            </div>
           </form>
+          <div className="button-container">
+            <div className="delete-image-container">
+              <button
+                className="delete-image-button"
+                onClick={handleDeleteProfileImage}
+                disabled={buttonLoading}
+              >
+                Delete Profile Image
+              </button>
+            </div>
+            <div className="check-profile-logs-container">
+              <button className="check-profile-logs-button">View logs</button>
+            </div>
+            <div className="change-password-container">
+              <button
+                className="change-password-button"
+                onClick={changePasswordHandler}
+                disabled={buttonLoading}
+              >
+                Change Password
+              </button>
+            </div>
+
+            <div className="delete-profile-container">
+              <button className="delete-profile-button">Delete Profile</button>
+            </div>
+          </div>
+
+          <div className="role-change">
+            <h3>Change Role</h3>
+            <p>Select a new role for your profile.</p>
+          </div>
+
+          <div className="company-registration">
+            <h3>Company Registration</h3>
+            <p>If you have registered a new company, you can add it here.</p>
+          </div>
         </div>
       )}
     </div>

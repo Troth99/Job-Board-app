@@ -20,6 +20,7 @@ import EditProfile from "./components/EditProfile/EditProfile";
 import ProtectedRoutes from "./utils/RouteGuards/authRouteGuard"
 import GuestGuardRoute from "./utils/RouteGuards/guestRouteGuard";
 import { ToastContainer } from "react-toastify";
+import ChangePassword from "./components/EditProfile/ChangePassword/ChangePassword";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -97,6 +98,7 @@ function App() {
         <Route path="/profile" element={<MainLayout />}>
           <Route index element={<MyProfile />} /> 
           <Route path="setthings" element={<EditProfile />} /> 
+          <Route path='change-password' element={<ChangePassword />} />
         </Route>
 
        </Route>

@@ -204,7 +204,10 @@
 .check-profile-logs-button:active {
   transform: translateY(1px);
 }
-
+.delete-image-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .error-message {
   margin-top: 4px;      
   color: #ff4d4f;
