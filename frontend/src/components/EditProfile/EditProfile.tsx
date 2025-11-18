@@ -68,15 +68,11 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const handleDeleteProfileImage = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      //TO refracto this function with the message
-
       const response = await deleteUserProfileImage();
-      if (
-        response &&
-        response.message === "Profile image deleted successfully"
-      ) {
-        setAvatarInfo({ ...avatarInfo, avatar: "" });
-        alert("Profile image deleted successfully");
+      if(response.message === 'Profile image deleted successfully'){
+          setAvatarInfo(prev => ({ ...prev, avatar: "" }));
+          showSuccess('Profile image deleted successfully!')
+          navigate('/profile')
       }
     } catch (error) {
       console.error("Error deleting profile image:", error);
