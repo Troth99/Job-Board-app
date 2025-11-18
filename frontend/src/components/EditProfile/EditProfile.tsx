@@ -86,6 +86,7 @@ export default function EditProfile() {
 
   const changePasswordHandler = () => {
     navigate("/profile/change-password");
+    
   };
   const editSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

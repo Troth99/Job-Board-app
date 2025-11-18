@@ -1,20 +1,59 @@
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .profile-container {
-    padding: 20px;
+    padding: 25px;
     margin-top: 3em;
   }
 
   .profile-header h1 {
-    font-size: 28px;
+    font-size: 30px;
   }
 
-  .profile-info div {
-    width: 80%;
+  .profile-details div {
+    width: 90%;
+    margin-bottom: 12px;
   }
 
-  .profile-info input,
-  .profile-info textarea {
+  .profile-details input,
+  .profile-details textarea {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .button-container {
+    padding: 18px;
+  }
+
+  .delete-image-button,
+  .change-password-button,
+  .delete-profile-button,
+  .check-profile-logs-button,
+  .edit-profile-button {
+    width: 90%;
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 20px;
+    margin-top: 2.5em;
+  }
+
+  .profile-header h1 {
+    font-size: 26px;
+  }
+
+  .profile-details div {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .profile-details input,
+  .profile-details textarea {
     font-size: 14px;
+    padding: 8px;
   }
 
   .button-container {
@@ -24,12 +63,15 @@
   .delete-image-button,
   .change-password-button,
   .delete-profile-button,
-  .check-profile-logs-button {
-    width: 80%;
+  .check-profile-logs-button,
+  .edit-profile-button {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px;
   }
 }
 
-/* За малки екрани и таблети */
+/* Extra small screens (very small phones) */
 @media (max-width: 480px) {
   .profile-container {
     padding: 15px;
@@ -37,16 +79,18 @@
   }
 
   .profile-header h1 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
-  .profile-info div {
+  .profile-details div {
     width: 100%;
+    margin-bottom: 8px;
   }
 
-  .profile-info input,
-  .profile-info textarea {
-    font-size: 14px;
+  .profile-details input,
+  .profile-details textarea {
+    font-size: 13px;
+    padding: 6px;
   }
 
   .button-container {
@@ -56,9 +100,10 @@
   .delete-image-button,
   .change-password-button,
   .delete-profile-button,
-  .check-profile-logs-button {
-    width: 90%;
-    font-size: 14px;
-    padding: 10px;
+  .check-profile-logs-button,
+  .edit-profile-button {
+    width: 100%;
+    font-size: 13px;
+    padding: 6px;
   }
 }
