@@ -156,9 +156,7 @@ export default function RegisterComponent() {
                 value={form.password}
                 onChange={handleInputChange}
               />
-              <button type="button" className="show-hide-btn" id="togglePwd">
-                👁
-              </button>
+          
               <div className="error-message">{errors.password}</div>
             </div>
             <div className="input-wrap">
@@ -172,13 +170,7 @@ export default function RegisterComponent() {
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.confirmPassword}</div>
-              <button
-                type="button"
-                className="show-hide-btn"
-                id="toggleConfirmPwd"
-              >
-                👁
-              </button>
+        
             </div>
 
             <div className="checkbox-container">

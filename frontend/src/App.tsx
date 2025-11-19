@@ -15,7 +15,7 @@ import LoginComponent from "./components/auth/Login/Login";
 import HomeSection from "./components/Home/HomeSection";
 import RegisterComponent from "./components/auth/Register/Register";
 import MainLayout from "./components/Layouts/MainLayout";
-import MyProfile from "./components/ProfilePage/ProfilePage";
+import MyProfile from "./components/Profile/Profile";
 import EditProfile from "./components/EditProfile/EditProfile";
 import ProtectedRoutes from "./utils/RouteGuards/authRouteGuard"
 import GuestGuardRoute from "./utils/RouteGuards/guestRouteGuard";

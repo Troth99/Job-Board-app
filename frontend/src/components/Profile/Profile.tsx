@@ -5,11 +5,15 @@ import "./Responsive.css";
 import { setAuthenticated } from "../../redux/authSlice";
 import { useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
-import { getUserProfile, updateUserProfile, uploadUserProfileImage } from "../../services/userService";
-import {formatDate} from "../../utils/formData"
-import defaultAvatar from "../../assets/personAvatar.jpg"
-import spinner from "../../components/Spinner/Spinner"
-import Spinner from "../../components/Spinner/Spinner";
+import {
+  getUserProfile,
+  updateUserProfile,
+  uploadUserProfileImage,
+} from "../../services/userService";
+import { formatDate } from "../../utils/formData";
+import defaultAvatar from "../../assets/personAvatar.jpg";
+import spinner from "../Spinner/Spinner";
+import Spinner from "../Spinner/Spinner";
 
 interface User {
   firstName: string;
@@ -22,74 +26,66 @@ interface User {
 }
 
 export default function MyProfile() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState<boolean>(true)
-  const [ userData, setUserData] = useState<User | null>(null);
-  const [ avatar, setAvatar] = useState<string>(defaultAvatar)
-    const [error, setError] = useState<string>(); 
-    const fileInputRef = useRef<HTMLInputElement>(null);
-
-
+  const [loading, setLoading] = useState<boolean>(true);
+  const [userData, setUserData] = useState<User | null>(null);
+  const [avatar, setAvatar] = useState<string>(defaultAvatar);
+  const [error, setError] = useState<string>();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const logOutHandler = async () => {
     try {
       const success = await logOut();
-  
+
       if (success) {
-       dispatch(setAuthenticated(false));
+        dispatch(setAuthenticated(false));
 
         navigate("/");
       } else {
         alert("Logout failed");
       }
     } catch (error: any) {
-      console.log('failed to log out', error.message)
-      alert("An error occurred while logging out.", );
+      console.log("failed to log out", error.message);
+      alert("An error occurred while logging out.");
     }
   };
   const getLoggedInUserData = async () => {
-
     try {
-      const data = await getUserProfile()
-      
-      if(data){
-        setUserData(data)
+      const data = await getUserProfile();
+
+      if (data) {
+        setUserData(data);
         setAvatar(data.avatar || defaultAvatar);
-        return data
+        return data;
       }
-
     } catch (error) {
-      setError("Failed to fetch user data"); 
+      setError("Failed to fetch user data");
       console.error(error);
-    }finally {
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
-const handleFileChange = async (file: File) => {
-  try {
-    const imageUrl = await uploadUserProfileImage(file);
-    setAvatar(imageUrl); 
+  const handleFileChange = async (file: File) => {
+    try {
+      const imageUrl = await uploadUserProfileImage(file);
+      setAvatar(imageUrl);
 
-    await updateUserProfile({ avatar: imageUrl }); 
-
-  } catch (err: any) {
-    console.error("Image upload failed:", err.message);
-    alert("Failed to upload image");
-  }
-};
+      await updateUserProfile({ avatar: imageUrl });
+    } catch (err: any) {
+      console.error("Image upload failed:", err.message);
+      alert("Failed to upload image");
+    }
+  };
   useEffect(() => {
-    getLoggedInUserData()
-  }, [])
+    getLoggedInUserData();
+  }, []);
 
-  
   return (
-       <div className="profile-body" style={{ position: "relative" }}>
-   
+    <div className="profile-body" style={{ position: "relative" }}>
       {loading && <Spinner overlay={true} />}
 
-  
       <div style={{ display: loading ? "none" : "block" }}>
         <div className="profile-container">
           <div className="profile-header">
@@ -118,7 +114,7 @@ const handleFileChange = async (file: File) => {
             <div>
               <strong>Phone:</strong> {userData?.phoneNumber}
             </div>
-             <div>
+            <div>
               <strong>Location:</strong> {userData?.location}
             </div>
             <div>
@@ -128,9 +124,9 @@ const handleFileChange = async (file: File) => {
           </div>
 
           <div className="edit-profile-button-container">
-            <Link to="/profile/setthings" className="edit-profile-button" >
-          Edit Profile
-        </Link>
+            <Link to="/profile/setthings" className="edit-profile-button">
+              User settings
+            </Link>
           </div>
 
           <div className="role-change">
@@ -195,5 +191,4 @@ const handleFileChange = async (file: File) => {
       </div>
     </div>
   );
- 
 }
