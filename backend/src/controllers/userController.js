@@ -98,14 +98,32 @@ export const updateUserProfile = async (req, res) => {
 };
 
 export const deleteUserProfile = async (req, res) => {
-    try {
-        await User.findByIdAndDelete(req.user._id);
-        res.status(200).json({ message: "Account deleted successfully" });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+  try {
+   
+    if (!req.user || !req.user._id) {
+      return res.status(400).json({ message: "Unauthorized" });
     }
-};
 
+ 
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ message: "User was not found" });
+    }
+
+ 
+    // await Post.deleteMany({ userId: req.user._id });
+    // await Comment.deleteMany({ userId: req.user._id });
+
+ 
+    await User.findByIdAndDelete(req.user._id);
+
+    
+    res.status(200).json({ message: "Profile was deleted." });
+  } catch (error) {
+    console.error("An error occured while deleting the profile:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
 
 export const logOutUser = async( req, res) => {
     try {

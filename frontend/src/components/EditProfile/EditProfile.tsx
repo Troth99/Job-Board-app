@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  deleteUserProfile,
   deleteUserProfileImage,
   getUserProfile,
   updateUserProfile,
@@ -10,8 +11,9 @@ import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../utils/toast";
 import { useValidation } from "../../hooks/useValidation";
-import { registerFormType } from "../../services/auth/authService";
-import ChangePassword from "./ChangePassword/ChangePassword";
+import { logOut, registerFormType } from "../../services/auth/authService";
+import { useDispatch } from "react-redux";
+import { logout, setAuthenticated } from "../../redux/authSlice";
 
 export interface ProfileData {
   firstName: string;
@@ -39,6 +41,7 @@ export default function EditProfile() {
   const [loading, setLoading] = useState<boolean>(true);
   const [buttonLoading, setButtonLoading] = useState<boolean>(false);
   const [errors, setErrors] = useState<Partial<registerFormType>>({});
+  const dispatch = useDispatch();
 
   const { validateForm } = useValidation();
   const navigate = useNavigate();
@@ -86,7 +89,6 @@ export default function EditProfile() {
 
   const changePasswordHandler = () => {
     navigate("/profile/change-password");
-
   };
   const editSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -112,6 +114,42 @@ export default function EditProfile() {
     }
   };
 
+  const deleteProfileHandler = async () => {
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete your profile??"
+    );
+    if (!isConfirmed) {
+      return;
+    }
+    const password = window.prompt(
+      "Please enter your password to confirm the deletion:"
+    );
+
+    if (!password) {
+      alert("Password is required to delete the profile.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await deleteUserProfile();
+      const success = await logOut();
+      
+      dispatch(setAuthenticated(false));
+      if (success) {
+        dispatch(setAuthenticated(false));
+
+        navigate("/");
+      } else {
+        alert("Logout failed");
+      }
+    } catch (error) {
+      console.error("Error deleting profile:", error);
+      alert("An error occurred while deleting your profile.");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="profile-body" style={{ position: "relative" }}>
       {loading && <Spinner overlay={true} />}
@@ -200,7 +238,13 @@ export default function EditProfile() {
             </div>
 
             <div className="delete-profile-container">
-              <button className="delete-profile-button">Delete Profile</button>
+              <button
+                className="delete-profile-button"
+                onClick={deleteProfileHandler}
+                disabled={buttonLoading}
+              >
+                Delete Profile
+              </button>
             </div>
           </div>
 

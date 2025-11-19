@@ -97,3 +97,22 @@ export async function changePassword(data: changePasswordForm) {
 
   }
 }
+
+export async function deleteUserProfile() {
+    const token = getAuthToken();
+  if (!token) throw new Error("User not authenticated");
+
+  try {
+    const response = await sendRequest(
+      `${API_BASE}/users/me`,
+      "DELETE",
+      {},
+      { Authorization: `Bearer ${token}` }
+    );
+
+    return response;
+  } catch (error: any) {
+        throw new Error(error.message || "Network error");
+
+  }
+}
