@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "./RegisterCompany.css";
 import "./Responsive.css";
+import { createCompany } from "../../../services/companyService";
+import { showSuccess } from "../../../utils/toast";
+import { useNavigate } from "react-router";
 
 export interface RegisterCompanyInterface {
   name: string;
@@ -29,6 +32,8 @@ export default function RegisterCompany() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState<boolean>(false);
 
+  const navigate = useNavigate()
+
   const onChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -42,11 +47,21 @@ export default function RegisterCompany() {
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-
   const submitHandler = async (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log(form)
-  }
+    e.preventDefault();
+    setErrors({});
+    setLoading(true);
+
+    try {
+      const result = await createCompany(form);
+      navigate('/')
+      showSuccess("Company registered successfully!");
+    } catch (error: any) {
+      setErrors(error.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="create-company-container">
       <h2>Create Company</h2>
@@ -155,7 +170,13 @@ export default function RegisterCompany() {
           <div className="error-message">Test</div>
         </div>
 
-        <button type="submit">Create Company</button>
+      <button
+  type="submit"
+  className="create-company-button"
+  disabled={loading}
+>
+  {loading ? "Creating..." : "Create Company"}
+</button>
       </form>
     </div>
   );
