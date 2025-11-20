@@ -1,0 +1,31 @@
+@media (max-width: 768px) {
+  .create-company-form {
+    flex-direction: column;
+  }
+
+  .create-company-form .form-group {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .create-company-container {
+    padding: 20px;
+    margin: 3em auto 5em auto;
+  }
+
+  .create-company-container h2 {
+    font-size: 28px;
+  }
+
+  .create-company-form input,
+  .create-company-form textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .create-company-form button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}

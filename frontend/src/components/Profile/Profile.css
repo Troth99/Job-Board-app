@@ -158,6 +158,11 @@
   color: #fff;
 }
 
+.job-posting h3 {
+  display: flex;
+  justify-content: center;
+}
+
 .company-registration p {
   font-size: 18px;
 }
@@ -227,7 +232,7 @@
 
 .job-title-options {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 20px;
 }
 [data-theme="light"] .profile-container .job-title-button {

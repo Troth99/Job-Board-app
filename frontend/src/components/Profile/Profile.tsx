@@ -82,6 +82,10 @@ export default function MyProfile() {
     getLoggedInUserData();
   }, []);
 
+
+  const registerCompanyNavigation = () => {
+    navigate('/register/company')
+  }
   return (
     <div className="profile-body" style={{ position: "relative" }}>
       {loading && <Spinner overlay={true} />}
@@ -159,15 +163,13 @@ export default function MyProfile() {
 
           <div className="job-posting">
             <h3>
-              Post a New Job as a Freelancer or Register Company to Hire Your
-              Team
+             You must register a company before you post a job.
             </h3>
             <div className="job-title-options">
-              <button className="job-title-button">Post Freelance Job</button>
-              <button className="job-title-button">Register Company</button>
+              <button className="job-title-button" onClick={registerCompanyNavigation}>Register Company</button>
             </div>
             <div className="job-description-info">
-              <p>Click one of the options above to proceed.</p>
+              <p>Click register company to hide your team.</p>
             </div>
             <div className="logout-container">
               <button className="logout-button" onClick={logOutHandler}>
