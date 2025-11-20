@@ -10,7 +10,7 @@ import "./Responsive.css";
 import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../utils/toast";
-import { useValidation } from "../../hooks/useValidation";
+import { useValidation } from "../../utils/useValidation";
 import { logOut, registerFormType } from "../../services/auth/authService";
 import { useDispatch } from "react-redux";
 import { logout, setAuthenticated } from "../../redux/authSlice";

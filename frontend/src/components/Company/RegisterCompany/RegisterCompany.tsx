@@ -39,11 +39,10 @@ export default function RegisterCompany() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    const trimmedValue = value.trim();
 
     setForm((prev) => ({
       ...prev,
-      [name]: trimmedValue,
+      [name]: value,
     }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
@@ -66,7 +65,6 @@ export default function RegisterCompany() {
   return (
     <div className="create-company-container">
       <h2>Create Company</h2>
-      <h3>All fields are required.</h3>
       <form className="create-company-form" onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="name">Company Name</label>

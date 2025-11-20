@@ -6,7 +6,7 @@ import {
   registerFormType,
   registerUser,
 } from "../../../services/auth/authService";
-import { useValidation } from "../../../hooks/useValidation";
+import { useValidation } from "../../../utils/useValidation";
 
 const intialValueRegister = {
   firstName: "",

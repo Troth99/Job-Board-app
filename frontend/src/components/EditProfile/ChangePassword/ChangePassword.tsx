@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./ChangePassword.css";
-import { useChangePasswordValidation } from "../../../hooks/useChangePasswordValidation";
+import { useChangePasswordValidation } from "../../../utils/useChangePasswordValidation";
 import { changePassword } from "../../../services/userService";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../../utils/toast";

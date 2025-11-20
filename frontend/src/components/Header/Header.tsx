@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../utils/useTheme";
 import "./Header.css";
 import "./Responsive.css";
 import { Link, Routes } from "react-router";

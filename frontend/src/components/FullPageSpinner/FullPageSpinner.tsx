@@ -1,5 +1,5 @@
 import "./FullPageSpinner.css";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../utils/useTheme";
 
 export default function FullPageSpinner() {
 const {theme} = useTheme()
