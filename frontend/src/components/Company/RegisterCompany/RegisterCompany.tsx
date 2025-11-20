@@ -61,6 +61,7 @@ export default function RegisterCompany() {
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+       setLoading(false);
       return;
     }
 

@@ -35,6 +35,23 @@ export default function RegisterComponent() {
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    let error = "";
+
+    if (name === "confirmPassword") {
+      error = validateConfirmPassword(form.password, form.confirmPassword);
+    } else {
+      const formErrors = validateForm(form);
+      error = formErrors[name] || "";
+    }
+
+      setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
+  };
+
   const registerHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
@@ -98,6 +115,7 @@ export default function RegisterComponent() {
                 placeholder="First name"
                 name="firstName"
                 value={form.firstName}
+                onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.firstName}</div>
@@ -109,6 +127,7 @@ export default function RegisterComponent() {
                 placeholder="Last name"
                 name="lastName"
                 value={form.lastName}
+                 onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.lastName}</div>
@@ -120,6 +139,7 @@ export default function RegisterComponent() {
                 placeholder="Email address"
                 name="email"
                 value={form.email}
+                 onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.email}</div>
@@ -131,6 +151,7 @@ export default function RegisterComponent() {
                 placeholder="Phone Number"
                 name="phoneNumber"
                 value={form.phoneNumber}
+                 onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.phoneNumber}</div>
@@ -142,6 +163,7 @@ export default function RegisterComponent() {
                 placeholder="City / Location"
                 name="location"
                 value={form.location}
+                 onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.location}</div>
@@ -154,9 +176,10 @@ export default function RegisterComponent() {
                 id="pwd"
                 name="password"
                 value={form.password}
+                 onBlur={handleBlur}
                 onChange={handleInputChange}
               />
-          
+
               <div className="error-message">{errors.password}</div>
             </div>
             <div className="input-wrap">
@@ -167,10 +190,10 @@ export default function RegisterComponent() {
                 id="confirmPwd"
                 name="confirmPassword"
                 value={form.confirmPassword}
+                 onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.confirmPassword}</div>
-        
             </div>
 
             <div className="checkbox-container">
