@@ -1,12 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./RegisterCompany.css";
 import "./Responsive.css";
 import { createCompany } from "../../../services/companyService";
 import { showSuccess } from "../../../utils/toast";
 import { useNavigate } from "react-router";
+import { validateCompany } from "../../../utils/registerCompanyValidation";
 
 export interface RegisterCompanyInterface {
-    _id?: string,
+  _id?: string;
   name: string;
   industry: string;
   location: string;
@@ -28,12 +29,16 @@ const initialValues = {
   foundedYear: "",
 };
 
+// Errors type validator
+type ValidationErrors = Partial<Record<keyof RegisterCompanyInterface, string>>;
+
 export default function RegisterCompany() {
   const [form, setForm] = useState<RegisterCompanyInterface>(initialValues);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<ValidationErrors>({});
   const [loading, setLoading] = useState<boolean>(false);
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -52,9 +57,16 @@ export default function RegisterCompany() {
     setErrors({});
     setLoading(true);
 
+    const validationErrors = validateCompany(form as ValidationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     try {
       const result = await createCompany(form);
-      navigate('/')
+      navigate("/");
       showSuccess("Company registered successfully!");
     } catch (error: any) {
       setErrors(error.message || "Something went wrong");
@@ -62,6 +74,25 @@ export default function RegisterCompany() {
       setLoading(false);
     }
   };
+
+  const onBlurHandler = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+
+    setTouched((prev) => ({
+      ...prev,
+      [name]: true,
+    }));
+    const ValidationErrors = validateCompany(form as ValidationErrors);
+    const error = ValidationErrors[name];
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
+  };
+
   return (
     <div className="create-company-container">
       <h2>Create Company</h2>
@@ -74,9 +105,10 @@ export default function RegisterCompany() {
             name="name"
             placeholder="Enter company name"
             value={form.name}
+            onBlur={onBlurHandler}
             onChange={onChangeHandler}
           />
-          <div className="error-message">Test</div>
+          <div className="error-message">{errors.name}</div>
         </div>
 
         <div className="form-group">
@@ -87,9 +119,10 @@ export default function RegisterCompany() {
             name="industry"
             placeholder="Enter industry"
             value={form.industry}
+            onBlur={onBlurHandler}
             onChange={onChangeHandler}
           />
-          <div className="error-message">Test</div>
+          <div className="error-message">{errors.industry}</div>
         </div>
 
         <div className="form-group">
@@ -100,9 +133,10 @@ export default function RegisterCompany() {
             name="location"
             placeholder="Enter location"
             value={form.location}
+            onBlur={onBlurHandler}
             onChange={onChangeHandler}
           />
-          <div className="error-message">Test</div>
+          <div className="error-message">{errors.location}</div>
         </div>
 
         <div className="form-group">
@@ -112,9 +146,10 @@ export default function RegisterCompany() {
             name="description"
             placeholder="Enter description"
             value={form.description}
+            onBlur={onBlurHandler}
             onChange={onChangeHandler}
           ></textarea>
-          <div className="error-message">Test</div>
+          <div className="error-message">{errors.description}</div>
         </div>
 
         <div className="form-group">
@@ -125,9 +160,10 @@ export default function RegisterCompany() {
             name="website"
             placeholder="Enter website URL"
             value={form.website}
+            onBlur={onBlurHandler}
             onChange={onChangeHandler}
           />
-          <div className="error-message">Test</div>
+          <div className="error-message">{errors.website}</div>
         </div>
 
         <div className="form-group">
@@ -138,9 +174,10 @@ export default function RegisterCompany() {
             name="logo"
             placeholder="Enter logo URL"
             value={form.logo}
+            onBlur={onBlurHandler}
             onChange={onChangeHandler}
           />
-          <div className="error-message">Test</div>
+          <div className="error-message">{errors.logo}</div>
         </div>
 
         <div className="form-group">
@@ -151,9 +188,10 @@ export default function RegisterCompany() {
             name="size"
             placeholder="Enter size (e.g. 10-50)"
             value={form.size}
+            onBlur={onBlurHandler}
             onChange={onChangeHandler}
           />
-          <div className="error-message">Test</div>
+          <div className="error-message">{errors.size}</div>
         </div>
 
         <div className="form-group">
@@ -164,18 +202,19 @@ export default function RegisterCompany() {
             name="foundedYear"
             placeholder="Enter founded year"
             value={form.foundedYear}
+            onBlur={onBlurHandler}
             onChange={onChangeHandler}
           />
-          <div className="error-message">Test</div>
+          <div className="error-message">{errors.foundedYear}</div>
         </div>
 
-      <button
-  type="submit"
-  className="create-company-button"
-  disabled={loading}
->
-  {loading ? "Creating..." : "Create Company"}
-</button>
+        <button
+          type="submit"
+          className="create-company-button"
+          disabled={loading}
+        >
+          {loading ? "Creating..." : "Create Company"}
+        </button>
       </form>
     </div>
   );

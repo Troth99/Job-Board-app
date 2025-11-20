@@ -9,14 +9,20 @@ const requiredFields = [
   "foundedYear",
 ];
 
+const formatFieldName = (field: string) => {
+  return field.charAt(0).toUpperCase() + field.slice(1);
+};
+
+
 export function validateCompany(form: Record<string, string>) {
   let errors: Record<string, string> = {};
-  
+
   const websiteRegEx = /^https?:\/\/.+/i;
+  const year = Number(form.foundedYear);
 
   for (const field of requiredFields) {
     if (!form[field] || form[field].trim().length === 0) {
-      errors[field] = `${field} is required.`;
+      errors[field] = `${formatFieldName(field)} is required.`;
     }
   }
 
@@ -28,11 +34,9 @@ export function validateCompany(form: Record<string, string>) {
     errors.website = "Incorrect URL (it must start with http/https)";
   }
 
-    const year = Number(form.foundedYear);
   if (!errors.foundedYear && (year < 1800 || year > new Date().getFullYear())) {
     errors.foundedYear = "Incorrect year";
   }
-
 
   return errors;
 }
