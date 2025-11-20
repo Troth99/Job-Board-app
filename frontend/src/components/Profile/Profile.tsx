@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router";
-import {  logOut } from "../../services/auth/authService";
+import { logOut } from "../../services/auth/authService";
 import "./Profile.css";
 import "./Responsive.css";
 import { setAuthenticated } from "../../redux/authSlice";
@@ -13,7 +13,7 @@ import {
 import { formatDate } from "../../utils/formData";
 import defaultAvatar from "../../assets/personAvatar.jpg";
 import Spinner from "../Spinner/Spinner";
-import {  getMyCompany } from "../../services/companyService";
+import { getMyCompany } from "../../services/companyService";
 import { RegisterCompanyInterface } from "../Company/RegisterCompany/RegisterCompany";
 
 interface User {
@@ -35,6 +35,7 @@ export default function MyProfile() {
   const [error, setError] = useState<string>();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [company, setCompany] = useState<RegisterCompanyInterface>();
+  const [userHasCompany, setUserHasCompany] = useState(false);
 
   const logOutHandler = async () => {
     try {
@@ -82,12 +83,13 @@ export default function MyProfile() {
   };
   useEffect(() => {
     const fetchData = async () => {
-       await getLoggedInUserData();
-
       try {
+        await getLoggedInUserData();
         const myCompany = await getMyCompany();
 
         setCompany(myCompany);
+        const hasCompany = Boolean(myCompany);
+        setUserHasCompany(hasCompany);
       } catch (error) {
         console.error(error);
       } finally {
@@ -153,9 +155,7 @@ export default function MyProfile() {
           </div>
 
           <div className="company-registration">
-            {loading ? (
-              <p>Loading...</p>
-            ) : company ? (
+            {company ? (
               <>
                 <h3>{company.name}</h3>
                 <p>Industry: {company.industry}</p>
@@ -174,7 +174,6 @@ export default function MyProfile() {
               </>
             )}
           </div>
-
           <div className="application-history">
             <h3>Application History</h3>
             <div className="application-card">
@@ -194,18 +193,34 @@ export default function MyProfile() {
           </div>
 
           <div className="job-posting">
-            <h3>You must register a company before you post a job.</h3>
+            <h3>
+              {userHasCompany
+                ? "You are part of a company. You can post your job offer."
+                : "You must register a company before you post a job."}
+            </h3>
+
             <div className="job-title-options">
               <button
                 className="job-title-button"
-                onClick={registerCompanyNavigation}
+                onClick={() => {
+                  if (userHasCompany) {
+                  } else {
+                    registerCompanyNavigation();
+                  }
+                }}
               >
-                Register Company
+                {userHasCompany ? "Post a Job" : "Register Company"}
               </button>
             </div>
+
             <div className="job-description-info">
-              <p>Click register company to hide your team.</p>
+              <p>
+                {userHasCompany
+                  ? "Click 'Post a Job' to hire your team."
+                  : "Click 'Register Company' to hire your team."}
+              </p>
             </div>
+
             <div className="logout-container">
               <button className="logout-button" onClick={logOutHandler}>
                 Logout
