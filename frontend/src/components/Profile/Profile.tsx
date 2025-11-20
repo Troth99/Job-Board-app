@@ -164,7 +164,7 @@ export default function MyProfile() {
             </h3>
             <div className="job-title-options">
               <button className="job-title-button">Post Freelance Job</button>
-              <button className="job-title-button">Create Company</button>
+              <button className="job-title-button">Register Company</button>
             </div>
             <div className="job-description-info">
               <p>Click one of the options above to proceed.</p>
