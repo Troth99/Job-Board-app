@@ -1,3 +1,4 @@
+import { Company } from "../models/Company.js";
 import { createCompanyService, getCompaniesService, getCompanyByIdService } from "../services/companyService.js"
 
 
@@ -39,4 +40,17 @@ export const getCompanyByIdController = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
+};
+
+export const getMyCompanyController = async (req, res) => {
+  try {
+    if (!req.user || !req.user._id) return res.status(401).json({ message: "Unauthorized" });
+
+    const company = await Company.findOne({ createdBy: req.user._id }).populate('createdBy', 'name email');
+    if (!company) return res.status(404).json({ message: "No company found" });
+
+    res.status(200).json(company);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };

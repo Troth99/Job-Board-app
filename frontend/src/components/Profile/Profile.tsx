@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router";
-import { getAuthToken, logOut } from "../../services/auth/authService";
+import {  logOut } from "../../services/auth/authService";
 import "./Profile.css";
 import "./Responsive.css";
 import { setAuthenticated } from "../../redux/authSlice";
@@ -12,8 +12,9 @@ import {
 } from "../../services/userService";
 import { formatDate } from "../../utils/formData";
 import defaultAvatar from "../../assets/personAvatar.jpg";
-import spinner from "../Spinner/Spinner";
 import Spinner from "../Spinner/Spinner";
+import {  getMyCompany } from "../../services/companyService";
+import { RegisterCompanyInterface } from "../Company/RegisterCompany/RegisterCompany";
 
 interface User {
   firstName: string;
@@ -33,6 +34,7 @@ export default function MyProfile() {
   const [avatar, setAvatar] = useState<string>(defaultAvatar);
   const [error, setError] = useState<string>();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [company, setCompany] = useState<RegisterCompanyInterface>();
 
   const logOutHandler = async () => {
     try {
@@ -79,13 +81,25 @@ export default function MyProfile() {
     }
   };
   useEffect(() => {
-    getLoggedInUserData();
+    const fetchData = async () => {
+       await getLoggedInUserData();
+
+      try {
+        const myCompany = await getMyCompany();
+
+        setCompany(myCompany);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
   }, []);
 
-
   const registerCompanyNavigation = () => {
-    navigate('/register/company')
-  }
+    navigate("/register/company");
+  };
   return (
     <div className="profile-body" style={{ position: "relative" }}>
       {loading && <Spinner overlay={true} />}
@@ -139,8 +153,26 @@ export default function MyProfile() {
           </div>
 
           <div className="company-registration">
-            <h3>Company Registration</h3>
-            <p>Status: Not Registered</p>
+            {loading ? (
+              <p>Loading...</p>
+            ) : company ? (
+              <>
+                <h3>{company.name}</h3>
+                <p>Industry: {company.industry}</p>
+                <p>Location: {company.location}</p>
+                <button
+                  className="create-company-button"
+                  onClick={() => navigate(`/dashboard/company/${company._id}`)}
+                >
+                  Go to Dashboard
+                </button>
+              </>
+            ) : (
+              <>
+                <h3>Company Registration</h3>
+                <p>Status: Not Registered</p>
+              </>
+            )}
           </div>
 
           <div className="application-history">
@@ -162,11 +194,14 @@ export default function MyProfile() {
           </div>
 
           <div className="job-posting">
-            <h3>
-             You must register a company before you post a job.
-            </h3>
+            <h3>You must register a company before you post a job.</h3>
             <div className="job-title-options">
-              <button className="job-title-button" onClick={registerCompanyNavigation}>Register Company</button>
+              <button
+                className="job-title-button"
+                onClick={registerCompanyNavigation}
+              >
+                Register Company
+              </button>
             </div>
             <div className="job-description-info">
               <p>Click register company to hide your team.</p>

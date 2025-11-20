@@ -146,25 +146,28 @@
 
 .company-registration {
   margin-top: 30px;
-  padding: 12px;
-  background-color: #f5b041;
-  border-radius: 8px;
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f7f9fc;
+  color: #333;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .company-registration h3 {
-  font-size: 24px;
-  color: #fff;
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #2c3e50;
 }
-
 .job-posting h3 {
   display: flex;
   justify-content: center;
 }
-
 .company-registration p {
-  font-size: 18px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #555;
 }
 
 .application-history {
@@ -430,11 +433,6 @@
 }
 
 
-[data-theme="dark"] .job-title-options {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
 
 [data-theme="dark"] .job-title-button {
   background-color: #3498db;

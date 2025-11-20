@@ -6,6 +6,7 @@ import { showSuccess } from "../../../utils/toast";
 import { useNavigate } from "react-router";
 
 export interface RegisterCompanyInterface {
+    _id?: string,
   name: string;
   industry: string;
   location: string;

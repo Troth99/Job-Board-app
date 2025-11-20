@@ -15,3 +15,15 @@ export async function createCompany(data: RegisterCompanyInterface) {
   const response = await sendRequest(`${API_BASE}/companies`, "POST", data, authHeaders());
   return response
 }
+
+export async function getCompanies() {
+  return await sendRequest(`${API_BASE}/companies`, "GET", {}, authHeaders());
+}
+
+export async function getCompanyById(id: string) {
+  return await sendRequest(`${API_BASE}/companies/${id}`, "GET", {}, authHeaders());
+}
+
+export async function getMyCompany() {
+  return await sendRequest(`${API_BASE}/companies/my-company`, "GET", {}, authHeaders());
+}
