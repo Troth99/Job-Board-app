@@ -232,22 +232,6 @@ input[type="checkbox"] {
   text-decoration: underline;
 }
 
-@media (max-width: 450px) {
-  .register-container {
-    width: 90%;
-    padding: 1rem 1rem;
-  }
-  .logo {
-    font-size: 1.5rem;
-  }
-  h2 {
-    font-size: 1.1rem;
-  }
-  .input-wrap input {
-    padding: 0.6rem 1.5rem 0.6rem 2.5rem;
-  }
-}
-
 
 [data-theme="dark"] .register-wrapper {
   background: #0d1117;

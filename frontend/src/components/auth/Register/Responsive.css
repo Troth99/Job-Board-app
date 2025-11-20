@@ -1,99 +1,40 @@
-
-@media (max-width: 768px) {
+@media (max-width: 420px) {
   .register-container {
-    width: 90%;
-    padding: 2rem 2rem;
+    width: 95%;
+    padding: 1rem 1rem !important;
+    border-radius: 15px;
   }
 
   .logo {
-    font-size: 1.5rem;
+    display: none !important;
   }
 
   h2 {
-    font-size: 1.2rem;
-  }
-
-  .input-wrap input {
-    padding: 0.7rem 1.5rem 0.7rem 2.5rem;
-  }
-
-  .btn-register {
-    padding: 1rem;
     font-size: 1rem;
   }
 
-  .checkbox-container {
-    font-size: 0.9rem;
-  }
-}
-
-/* Mobile-first */
-@media (max-width: 450px) {
-  .register-container {
-    width: 90%;
-    padding: 1.5rem;
-  }
-
-  .logo {
-    font-size: 1.4rem;
-  }
-
-  h2 {
-    font-size: 1.1rem;
-  }
-
   .input-wrap input {
-    padding: 0.6rem 1.5rem 0.6rem 2.5rem;
-  }
-
-  .input-wrap i {
-    font-size: 1rem;
-  }
-
-  .btn-register {
-    font-size: 0.95rem;
-    padding: 0.8rem;
-  }
-
-  .checkbox-container {
+    padding: 0.5rem 1rem 0.5rem 2rem;
     font-size: 0.85rem;
   }
 
-  .show-hide-btn {
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 375px) {
-  .register-container {
-    width: 95%;
-    padding: 1rem;
-  }
-
-  .logo {
-    font-size: 1.3rem;
-  }
-
-  h2 {
-    font-size: 1rem;
-  }
-
-  .input-wrap input {
-    padding: 0.6rem 1.2rem 0.6rem 2rem;
-  }
-
   .input-wrap i {
-    font-size: 0.9rem;
+    left: 7px;
+    font-size: 0.95rem;
+    top: 15px
+  }
+
+  .show-hide-btn {
+    right: 8px;
+    font-size: 0.75rem;
   }
 
   .btn-register {
-    font-size: 0.9rem;
-    padding: 0.7rem;
+    font-size: 0.85rem;
+    padding: 0.6rem;
   }
 
-  .show-hide-btn {
-    font-size: 0.7rem;
+  .links {
+    font-size: 0.75rem;
   }
 }
-
-
