@@ -36,7 +36,6 @@ export default function CompanyRouteGuard() {
 
       try {
         const company = await getCompanyById(companyId); 
-
         if (company.members.includes(user._id)) {
           setHasAccess(true);
           if (!toastShown) {

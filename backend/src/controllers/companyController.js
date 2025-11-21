@@ -1,19 +1,21 @@
 import { Types } from "mongoose";
 import { Company } from "../models/Company.js";
 import { createCompanyService, getCompaniesService, getCompanyByIdService } from "../services/companyService.js"
+import { CompanyMember } from "../models/CompanyMember.js";
 
 
 
 export const createCompanyController = async (req, res) => {
 
     try {
-
+        const userId = req.user._id
         if (!req.user || !req.user._id) {
             return res.status(401).json({ message: "Unauthorized: no user found in request" });
         }
         const companyData = {
             ...req.body,
-            createdBy: req.user._id
+            createdBy: userId,
+            members: [userId],
         }
 
 
@@ -73,5 +75,49 @@ export const getMyCompanyController = async (req, res) => {
     res.status(200).json(company);
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+};
+
+export const getMembersController = async (req, res) => {
+  const { companyId } = req.params;
+
+  try {
+
+    const members = await CompanyMember.find({ companyId }).populate('userId', 'name email');
+
+    
+    if (members.length === 0) {
+      return res.status(404).json({ message: "No members found in this company" });
+    }
+
+    
+    res.status(200).json(members);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getCompanyMembersController = async (req, res) => {
+  const { companyId } = req.params;
+
+  try {
+   
+    const companyMembers = await CompanyMember.find({ companyId })
+      .populate('userId', 'name email') 
+      .select('role userId');  
+
+    if (!companyMembers || companyMembers.length === 0) {
+      return res.status(404).json({ message: "No members found for this company" });
+    }
+
+    const membersWithRole = companyMembers.map(member => ({
+      userId: member.userId,
+      role: member.role
+    }));
+
+    res.status(200).json(membersWithRole);  
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
   }
 };

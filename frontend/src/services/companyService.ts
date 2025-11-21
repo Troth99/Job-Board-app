@@ -27,3 +27,8 @@ export async function getCompanyById(id: string) {
 export async function getMyCompany() {
   return await sendRequest(`${API_BASE}/companies/my-company`, "GET", {}, authHeaders());
 }
+
+
+export async function getUserRole (companyId: any) {
+  return await sendRequest(`${API_BASE}/companies/${companyId}/members`, 'GET', {}, authHeaders())
+}

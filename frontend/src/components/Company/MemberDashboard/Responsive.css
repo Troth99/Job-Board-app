@@ -1,0 +1,40 @@
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .members-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .add-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-header h2 {
+    font-size: 20px;
+  }
+
+  .sidebar-nav ul li {
+    padding: 10px 15px;
+  }
+
+  .content-header h3 {
+    font-size: 18px;
+  }
+}
+
