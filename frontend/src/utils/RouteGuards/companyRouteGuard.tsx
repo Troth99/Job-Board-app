@@ -5,6 +5,7 @@ import { getAuthToken, getUserFromLocalStorage } from "../../services/auth/authS
 import { getCompanyById } from "../../services/companyService"; 
 import { Navigate, Outlet } from "react-router";
 import { showCompanySuccess, showCompanyWarning } from "../toast";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function CompanyRouteGuard() {
   const { companyId } = useParams<{ companyId: string }>(); 
@@ -59,6 +60,10 @@ export default function CompanyRouteGuard() {
 
     fetchUserCompany();
   }, [companyId, token, user, navigate, toastShown]); 
+
+  if (loading) {
+    return <Spinner />
+  }
 
   if (!hasAccess) {
     return <Navigate to="/" replace />;
