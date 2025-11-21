@@ -4,24 +4,19 @@ import { Header } from "./components/Header/Header";
 
 import "./styles/global.css";
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
-import {
-  BrowserRouter,
-  Route,
-  Router,
-  Routes,
-
-} from "react-router";
+import { BrowserRouter, Route, Router, Routes } from "react-router";
 import LoginComponent from "./components/auth/Login/Login";
 import HomeSection from "./components/Home/HomeSection";
 import RegisterComponent from "./components/auth/Register/Register";
 import MainLayout from "./components/Layouts/MainLayout";
 import MyProfile from "./components/Profile/Profile";
 import EditProfile from "./components/EditProfile/EditProfile";
-import ProtectedRoutes from "./utils/RouteGuards/authRouteGuard"
+import ProtectedRoutes from "./utils/RouteGuards/authRouteGuard";
 import GuestGuardRoute from "./utils/RouteGuards/guestRouteGuard";
 import { ToastContainer } from "react-toastify";
 import ChangePassword from "./components/EditProfile/ChangePassword/ChangePassword";
 import RegisterCompany from "./components/Company/RegisterCompany/RegisterCompany";
+import { CompanyDashboard } from "./components/Company/MemberDashboard/MemberDashboard";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -64,9 +59,8 @@ function App() {
     return <FullPageSpinner />;
   }
   return (
-       <div>
+    <div>
       <Routes>
-    
         <Route
           path="/"
           element={
@@ -75,41 +69,41 @@ function App() {
             </MainLayout>
           }
         />
-        
-    <Route element={<GuestGuardRoute />}>
-        <Route
-          path="/login"
-          element={
-            <MainLayout hideHeaderFooter={true}>
-              <LoginComponent />
-            </MainLayout>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <MainLayout hideHeaderFooter={true}>
-              <RegisterComponent />
-            </MainLayout>
-          }
-        />
-</Route>
-  
-          <Route element={<ProtectedRoutes />}>
-        <Route path="/profile" element={<MainLayout />}>
-          <Route index element={<MyProfile />} /> 
-          <Route path="setthings" element={<EditProfile />} /> 
-          <Route path='change-password' element={<ChangePassword />} />
+
+        <Route element={<GuestGuardRoute />}>
+          <Route
+            path="/login"
+            element={
+              <MainLayout hideHeaderFooter={true}>
+                <LoginComponent />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <MainLayout hideHeaderFooter={true}>
+                <RegisterComponent />
+              </MainLayout>
+            }
+          />
         </Route>
 
-       </Route>
-       <Route element={<ProtectedRoutes />} >
-       <Route element={<MainLayout />} >
-            <Route path="/register/company" element={<RegisterCompany />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/profile" element={<MainLayout />}>
+            <Route index element={<MyProfile />} />
+            <Route path="setthings" element={<EditProfile />} />
+            <Route path="change-password" element={<ChangePassword />} />
+          </Route>
         </Route>
+
+        <Route element={<ProtectedRoutes />}>
+          <Route element={<MainLayout />}>
+            <Route path="/register/company" element={<RegisterCompany />} />
+            <Route path="/company/:companyId/dashboard" element={<CompanyDashboard />} />
+          </Route>
         </Route>
       </Routes>
-   
     </div>
   );
 }

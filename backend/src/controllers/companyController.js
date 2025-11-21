@@ -47,7 +47,11 @@ export const getMyCompanyController = async (req, res) => {
     if (!req.user || !req.user._id) return res.status(401).json({ message: "Unauthorized" });
 
     const company = await Company.findOne({ createdBy: req.user._id }).populate('createdBy', 'name email');
-    if (!company) return res.status(404).json({ message: "No company found" });
+    if (!company) {
+    
+      return res.status(200).json(null);  
+    }
+
 
     res.status(200).json(company);
   } catch (err) {
