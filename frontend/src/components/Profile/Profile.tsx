@@ -162,7 +162,7 @@ export default function MyProfile() {
                 <p>Location: {company.location}</p>
                 <button
                   className="create-company-button"
-                  onClick={() => navigate(`/dashboard/company/${company._id}`)}
+                  onClick={() => navigate(`/company/${company._id}/dashboard`)}
                 >
                   Go to Dashboard
                 </button>

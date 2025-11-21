@@ -46,7 +46,7 @@ export default function RegisterComponent() {
       error = formErrors[name] || "";
     }
 
-      setErrors((prev) => ({
+    setErrors((prev) => ({
       ...prev,
       [name]: error,
     }));
@@ -83,8 +83,8 @@ export default function RegisterComponent() {
       const res = await registerUser(form);
 
       if (res.token) {
-        const { id, email, token } = res;
-        const userData = { id, email, token };
+        const { _id, email, token } = res;
+        const userData = { _id, email, token };
         localStorage.setItem("user", JSON.stringify(userData));
         navigate("/");
       }
@@ -127,7 +127,7 @@ export default function RegisterComponent() {
                 placeholder="Last name"
                 name="lastName"
                 value={form.lastName}
-                 onBlur={handleBlur}
+                onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.lastName}</div>
@@ -139,7 +139,7 @@ export default function RegisterComponent() {
                 placeholder="Email address"
                 name="email"
                 value={form.email}
-                 onBlur={handleBlur}
+                onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.email}</div>
@@ -151,7 +151,7 @@ export default function RegisterComponent() {
                 placeholder="Phone Number"
                 name="phoneNumber"
                 value={form.phoneNumber}
-                 onBlur={handleBlur}
+                onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.phoneNumber}</div>
@@ -163,7 +163,7 @@ export default function RegisterComponent() {
                 placeholder="City / Location"
                 name="location"
                 value={form.location}
-                 onBlur={handleBlur}
+                onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.location}</div>
@@ -176,7 +176,7 @@ export default function RegisterComponent() {
                 id="pwd"
                 name="password"
                 value={form.password}
-                 onBlur={handleBlur}
+                onBlur={handleBlur}
                 onChange={handleInputChange}
               />
 
@@ -190,7 +190,7 @@ export default function RegisterComponent() {
                 id="confirmPwd"
                 name="confirmPassword"
                 value={form.confirmPassword}
-                 onBlur={handleBlur}
+                onBlur={handleBlur}
                 onChange={handleInputChange}
               />
               <div className="error-message">{errors.confirmPassword}</div>

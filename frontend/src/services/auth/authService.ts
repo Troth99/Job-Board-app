@@ -60,3 +60,8 @@ export function getAuthToken(): string | null {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   return user.token
 }
+
+export function getUserFromLocalStorage() {
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  return user
+}

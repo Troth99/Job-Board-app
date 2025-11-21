@@ -1,9 +1,9 @@
-import "./CompanyDashboard.css"
+import "./MemberDashboard.css"
 import "./Responsive.css"
 
 
 
-export async function CompanyDashboard() {
+export function MemberDashboard() {
 
 
 

@@ -1,4 +1,4 @@
-import {Schema, Types, model} from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 
 const companySchema = new Schema(
@@ -26,16 +26,21 @@ const companySchema = new Schema(
       default: "",
     },
     logo: {
-      type: String, 
+      type: String,
       default: "",
     },
     size: {
-      type: String, 
+      type: String,
       default: "",
     },
     foundedYear: {
       type: Number,
     },
+    members: [
+      { 
+      type: Types.ObjectId, 
+      ref: "User" }
+    ],
     createdBy: {
       type: Types.ObjectId,
       ref: "User",

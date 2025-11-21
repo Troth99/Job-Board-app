@@ -53,9 +53,9 @@ export default function LoginComponent() {
       const user = await loginUser(form.email, form.password);
 
       if (user?.token) {
-        const { id, email } = user;
-        const userData = { id, email, token: user.token };
-
+        const { _id, email } = user;
+        const userData = { _id, email, token: user.token };
+        console.log("Saving user data to localStorage:", userData);
         localStorage.setItem("user", JSON.stringify(userData));
 
         navigate("/");
