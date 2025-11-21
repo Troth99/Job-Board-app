@@ -61,10 +61,13 @@ export default function CompanyRouteGuard() {
     fetchUserCompany();
   }, [companyId, token, user, navigate, toastShown]); 
 
-  if (loading) {
-    return <Spinner />
-  }
-
+ if (loading) {
+  return (
+    <div className="profile-body" style={{ position: "relative" }}>
+      <Spinner overlay={true} /> 
+    </div>
+  );
+}
   if (!hasAccess) {
     return <Navigate to="/" replace />;
   }
