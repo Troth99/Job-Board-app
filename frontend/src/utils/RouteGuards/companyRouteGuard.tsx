@@ -60,10 +60,6 @@ export default function CompanyRouteGuard() {
     fetchUserCompany();
   }, [companyId, token, user, navigate, toastShown]); 
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   if (!hasAccess) {
     return <Navigate to="/" replace />;
   }

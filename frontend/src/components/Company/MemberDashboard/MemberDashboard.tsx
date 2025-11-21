@@ -14,8 +14,10 @@ export function MemberDashboard() {
   useEffect(() => {
     const fetchRole = async () => {
       try {
-        const userRole = await getUserRole(companyId);
-        setRole(userRole[0].role);
+        if (companyId) {
+          const userRole = await getUserRole(companyId);
+          setRole(userRole[0].role);
+        }
       } catch (error) {
         console.log("Failed to fetch the data.");
       } finally {

@@ -29,6 +29,6 @@ export async function getMyCompany() {
 }
 
 
-export async function getUserRole (companyId: any) {
+export async function getUserRole (companyId: string) {
   return await sendRequest(`${API_BASE}/companies/${companyId}/members`, 'GET', {}, authHeaders())
 }
