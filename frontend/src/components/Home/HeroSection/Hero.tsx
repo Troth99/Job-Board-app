@@ -4,6 +4,7 @@ import "./Responsive.css"
 import Search from "../Search/Search";
 
 
+
 export default function Hero() {
   const [search, setSearch] = useState("");
 
@@ -12,10 +13,11 @@ export default function Hero() {
   }
   
   return (
-    <section className="hero">
-      <h1>Find Your Dream Job</h1>
-      <p>Thousands of opportunities from top companies are waiting for you.</p>
-      <Search onSearch={handleSearch} />
-    </section>
+<section className="hero">
+
+  <h1>Find Your Dream Job</h1>
+  <p>Thousands of opportunities from top companies are waiting for you.</p>
+  <Search onSearch={handleSearch} />
+</section>
   );
 }
