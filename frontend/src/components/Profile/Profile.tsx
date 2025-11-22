@@ -29,14 +29,14 @@ interface User {
 export default function MyProfile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [userData, setUserData] = useState<User | null>(null);
   const [avatar, setAvatar] = useState<string>(defaultAvatar);
   const [error, setError] = useState<string>();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [company, setCompany] = useState<RegisterCompanyInterface>();
   const [userHasCompany, setUserHasCompany] = useState(false);
-  const [userRole, setUserRole] = useState<string>('')
+  const [userRole, setUserRole] = useState<string>("");
 
   const logOutHandler = async () => {
     try {
@@ -84,24 +84,27 @@ export default function MyProfile() {
   };
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-      const [user, myCompany] = await Promise.all([
-        getLoggedInUserData(),
-        getMyCompany(),
-      ]);
+        const [user, myCompany] = await Promise.all([
+          getLoggedInUserData(),
+          getMyCompany(),
+        ]);
 
-      setCompany(myCompany);
-      setUserHasCompany(Boolean(myCompany));
+        setUserData(user);
+        setCompany(myCompany);
+        setUserHasCompany(Boolean(myCompany));
 
-      if (myCompany?._id) {
-        const userRole = await getUserRole(myCompany._id);
+        if (myCompany?._id) {
+          const userRole = await getUserRole(myCompany._id);
 
-        const role = userRole[0]?.role ?? null;
-        if (role) {
-          const formatted = role.charAt(0).toUpperCase() + role.slice(1);
-          setUserRole(formatted);
+          const role = userRole[0]?.role;
+
+          if (role) {
+            const formatted = role.charAt(0).toUpperCase() + role.slice(1);
+            setUserRole(formatted);
+          }
         }
-      }
       } catch (error) {
         console.error(error);
       } finally {
@@ -116,9 +119,9 @@ export default function MyProfile() {
   };
   return (
     <div className="profile-body" style={{ position: "relative" }}>
-      {loading && <Spinner overlay={true} />}
-
-      <div style={{ display: loading ? "none" : "block" }}>
+      {loading || !userData || !userRole ? (
+        <Spinner overlay={true} />
+      ) : (
         <div className="profile-container">
           <div className="profile-header">
             <h1>My Profile</h1>
@@ -163,8 +166,13 @@ export default function MyProfile() {
 
           <div className="role-change">
             <h3>Role:</h3>
-         
-            <p> {userRole? `${userRole} of ${company?.name}`: 'Not part of a company yet.'}</p>
+
+            <p>
+              {" "}
+              {userRole
+                ? `${userRole} of ${company?.name}`
+                : "Not part of a company yet."}
+            </p>
           </div>
 
           <div className="company-registration">
@@ -253,7 +261,7 @@ export default function MyProfile() {
             }}
           />
         </div>
-      </div>
+      )}
     </div>
   );
 }
