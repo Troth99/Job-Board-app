@@ -13,7 +13,7 @@ import {
 import { formatDate } from "../../utils/formData";
 import defaultAvatar from "../../assets/personAvatar.jpg";
 import Spinner from "../Spinner/Spinner";
-import { getMyCompany } from "../../services/companyService";
+import { getMyCompany, getUserRole } from "../../services/companyService";
 import { RegisterCompanyInterface } from "../Company/RegisterCompany/RegisterCompany";
 
 interface User {
@@ -36,6 +36,7 @@ export default function MyProfile() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [company, setCompany] = useState<RegisterCompanyInterface>();
   const [userHasCompany, setUserHasCompany] = useState(false);
+  const [userRole, setUserRole] = useState<string>('')
 
   const logOutHandler = async () => {
     try {
@@ -86,6 +87,11 @@ export default function MyProfile() {
       try {
         await getLoggedInUserData();
         const myCompany = await getMyCompany();
+      
+        const userRole = await getUserRole(myCompany?._id)
+        const role = userRole[0].role
+        const formattedRole = role.charAt(0).toUpperCase() + role.slice(1);
+        setUserRole(formattedRole)
 
         setCompany(myCompany);
         const hasCompany = Boolean(myCompany);
@@ -150,8 +156,9 @@ export default function MyProfile() {
           </div>
 
           <div className="role-change">
-            <h3>Role</h3>
-            <p>Freelancer</p>
+            <h3>Role:</h3>
+         
+            <p> {userRole? `${userRole} of ${company?.name}`: 'Not part of a company yet.'}</p>
           </div>
 
           <div className="company-registration">
