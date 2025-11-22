@@ -36,7 +36,7 @@ export default function MyProfile() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [company, setCompany] = useState<RegisterCompanyInterface>();
   const [userHasCompany, setUserHasCompany] = useState(false);
-  const [userRole, setUserRole] = useState<string>("");
+  const [userRole, setUserRole] = useState<string>('')
 
   const logOutHandler = async () => {
     try {
@@ -85,15 +85,23 @@ export default function MyProfile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [myCompany] = await Promise.all([getMyCompany()]);
+      const [user, myCompany] = await Promise.all([
+        getLoggedInUserData(),
+        getMyCompany(),
+      ]);
 
-        if (myCompany) {
-          const roles = await getUserRole(myCompany._id);
-          const role = roles[0].role;
-          setUserRole(role.charAt(0).toUpperCase() + role.slice(1));
+      setCompany(myCompany);
+      setUserHasCompany(Boolean(myCompany));
+
+      if (myCompany?._id) {
+        const userRole = await getUserRole(myCompany._id);
+
+        const role = userRole[0]?.role ?? null;
+        if (role) {
+          const formatted = role.charAt(0).toUpperCase() + role.slice(1);
+          setUserRole(formatted);
         }
-        setCompany(myCompany);
-        setUserHasCompany(Boolean(myCompany));
+      }
       } catch (error) {
         console.error(error);
       } finally {
@@ -155,13 +163,8 @@ export default function MyProfile() {
 
           <div className="role-change">
             <h3>Role:</h3>
-
-            <p>
-              {" "}
-              {userRole
-                ? `${userRole} of ${company?.name}`
-                : "Not part of a company yet."}
-            </p>
+         
+            <p> {userRole? `${userRole} of ${company?.name}`: 'Not part of a company yet.'}</p>
           </div>
 
           <div className="company-registration">
