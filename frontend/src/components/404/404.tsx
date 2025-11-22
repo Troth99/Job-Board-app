@@ -11,11 +11,11 @@ export function PageNotFound() {
         <p>Oops! No job listings found here...</p>
 
         <div className="job-animation">
-          <div className="job-card">Frontend</div>
-          <div className="job-card">Backend</div>
-          <div className="job-card">Designer</div>
-          <div className="job-card">DevOps</div>
-          <div className="job-card">QA</div>
+          <div className="job-card-404">Frontend</div>
+          <div className="job-card-404">Backend</div>
+          <div className="job-card-404">Designer</div>
+          <div className="job-card-404">DevOps</div>
+          <div className="job-card-404">QA</div>
         </div>
 
         <a href="/">Return to Job Board</a>

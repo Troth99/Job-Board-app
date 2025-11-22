@@ -132,22 +132,22 @@
   margin-top: 40px;
 }
 
-.job-card {
-  background-color: #fff;
+.job-card-member {
+  background-color: #929490d2;
   padding: 15px;
   margin-bottom: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.job-card h4 {
+.job-card-member h4 {
   font-size: 18px;
   font-weight: 600;
 }
 
-.job-card p {
+.job-card-member p {
   font-size: 14px;
-  color: #7f8c8d;
+  color: #2e3030;
 }
 
 .announcement-list {
