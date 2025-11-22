@@ -16,8 +16,9 @@ import GuestGuardRoute from "./utils/RouteGuards/guestRouteGuard";
 import { ToastContainer } from "react-toastify";
 import ChangePassword from "./components/EditProfile/ChangePassword/ChangePassword";
 import RegisterCompany from "./components/Company/RegisterCompany/RegisterCompany";
-import {  MemberDashboard } from "./components/Company/MemberDashboard/MemberDashboard";
+import { MemberDashboard } from "./components/Company/MemberDashboard/MemberDashboard";
 import CompanyRouteGuard from "./utils/RouteGuards/companyRouteGuard";
+import { PageNotFound } from "./components/404/404";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -104,11 +105,18 @@ function App() {
           </Route>
         </Route>
 
-      <Route element={<CompanyRouteGuard />}>
-  <Route element={<MainLayout />}>
-    <Route path="company/:companyId/dashboard" element={<MemberDashboard />} />
-  </Route>
-</Route>
+        <Route element={<CompanyRouteGuard />}>
+          <Route element={<MainLayout />}>
+            <Route
+              path="company/:companyId/dashboard"
+              element={<MemberDashboard />}
+            />
+          </Route>
+        </Route>
+
+        <Route element={<MainLayout />}>
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
       </Routes>
     </div>
   );
