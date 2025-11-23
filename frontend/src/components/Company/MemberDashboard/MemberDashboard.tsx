@@ -138,7 +138,7 @@ export function MemberDashboard() {
 
             {/* Jobs Section */}
             <div className="content-header">
-              <h3>Jobs</h3>
+              <h3>Most 5 recent Posted jobs</h3>
               <div className="buttons-for-jobs">
               <button className="add-button" onClick={postJobHandlerNavigate}>
                 + Post Job
@@ -150,8 +150,9 @@ export function MemberDashboard() {
               </div>
 
             <div className="job-list">
-           
+    
               <ShowJobs jobs={jobs} />
+            
             </div>
 
        

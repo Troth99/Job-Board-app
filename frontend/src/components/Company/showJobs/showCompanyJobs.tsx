@@ -19,28 +19,26 @@ console.log(companyId);
     navigate(`/company/${companyId}/job/${jobId}`); 
   };
     return (
-              <div className="job-card-member">
-                    {jobs.length > 0 ? (
-                        <div>
-                            <ul>
-                                {jobs.map((job) => (
-                                    <li key={job._id}
-                                    onClick={() => handleJobClick(job._id)}
-                                    style={{cursor: 'pointer'}}
-                                    >
-                                        <h3>Job: {job.title}</h3>
-                                        <p>Description: {job.description}</p>
-                                        <p>Location: {job.location}</p>
-                                           <p>Status: {job.isActive ? "Active" : "Closed"}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ) : (
-                        <p>No jobs for current company.</p>  
-                    )}
-            
-         
-        </div>
-    )
+         <div className="job-list">
+      {jobs.length > 0 ? (
+        jobs.map((job) => (
+          <div
+            className="job-card-member"
+            key={job._id}
+            onClick={() => handleJobClick(job._id)}
+            style={{ cursor: "pointer", marginBottom: "20px", padding: "15px", border: "1px solid #ccc", borderRadius: "8px" }} 
+          >
+            <h3>{job.title}</h3>
+            <p><strong>Description:</strong> {job.description}</p>
+            <p><strong>Location:</strong> {job.location}</p>
+            <p><strong>Status:</strong> {job.isActive ? "Active" : "Closed"}</p>
+       
+          </div>
+        ))
+      ) : (
+        <p>No jobs for current company.</p>
+      )}
+    </div>
+  );
+    
 }
