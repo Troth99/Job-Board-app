@@ -1,10 +1,15 @@
-import { JSX } from "react";
-import { getMyCompany } from "../../services/companyService";
+import { Navigate, Outlet } from "react-router";
+import { getCompanyFromLocalStorage } from "../../services/companyService";
+import { toast } from "react-toastify";
 
 
-export async function CompanyRegisterGuard(){
+export default function CompanyRegisterGuard() {
+  const companyId = getCompanyFromLocalStorage();
 
-    const {company} = await getMyCompany()
-    console.log()
-    
+  if (companyId) {
+      toast.warn('You are part of a company, so was not able to navigate to register.')
+      return <Navigate to={`/company/${companyId}/dashboard`} replace />;
+    }
+
+  return <Outlet />;
 }

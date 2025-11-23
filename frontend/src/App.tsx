@@ -19,6 +19,7 @@ import RegisterCompany from "./components/Company/RegisterCompany/RegisterCompan
 import { MemberDashboard } from "./components/Company/MemberDashboard/MemberDashboard";
 import CompanyRouteGuard from "./utils/RouteGuards/companyRouteGuard";
 import { PageNotFound } from "./components/404/404";
+import CompanyRegisterGuard from "./utils/RouteGuards/companyRegisterGuard";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -100,8 +101,10 @@ function App() {
         </Route>
 
         <Route element={<ProtectedRoutes />}>
+        <Route element={<CompanyRegisterGuard />}>
           <Route element={<MainLayout />}>
             <Route path="/register/company" element={<RegisterCompany />} />
+            </Route>
           </Route>
         </Route>
 
