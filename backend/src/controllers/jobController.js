@@ -1,6 +1,7 @@
 import { CompanyMember } from "../models/CompanyMember.js";
 import Jobs from "../models/Jobs.js";
 import { createJobService, getAllJobs, getJobById, getRecentJobs } from "../services/jobService.js";
+import mongoose from "mongoose";
 
 
 
@@ -15,7 +16,6 @@ export const createJob = async (req, res) => {
     }
 
     const companyId = membership.companyId;
-
 
     const jobData = {
       ...req.body,
@@ -63,15 +63,23 @@ export const getJobByIdController = async (req, res) => {
 
 export const getAllJobsController = async (req, res) => {
   try {
-    const categoryId = req.query.category;
-    const jobs = await getAllJobs(categoryId)
-    res.status(200).json(jobs)
+    const filter = {};
+
+    const companyId = req.query.company.trim();
+
+    if (!mongoose.isValidObjectId(companyId)) {
+      return res.status(400).json({ message: "Invalid company ID." });
+    }
+
+    filter.company = companyId;
+
+    const jobs = await Jobs.find(filter).populate("company");
+    res.json(jobs);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
-}
-
-
+};
 export const getRecentJobsController = async (req, res) => {
   try {
     const limit = parseInt(req.query.limit || "5", 10);

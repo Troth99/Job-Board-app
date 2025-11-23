@@ -117,6 +117,9 @@
 .member-card:hover {
   transform: scale(1.05);
 }
+ul {
+    list-style-type: none; 
+}
 
 .member-card img {
   width: 50px;

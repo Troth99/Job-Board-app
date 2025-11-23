@@ -4,6 +4,7 @@ import "./Responsive.css";
 import { getUserRole } from "../../../services/companyService";
 import { useNavigate, useParams } from "react-router";
 import Spinner from "../../Spinner/Spinner";
+import { ShowJobs } from "../showJobs/showCompanyJobs";
 
 export function MemberDashboard() {
   const { companyId } = useParams();
@@ -102,16 +103,8 @@ export function MemberDashboard() {
           </div>
 
           <div className="job-list">
-            <div className="job-card-member">
-              <h4>Frontend Developer</h4>
-              <p>Location: Remote</p>
-              <p>Status: Open</p>
-            </div>
-            <div className="job-card-member">
-              <h4>UI/UX Designer</h4>
-              <p>Location: New York</p>
-              <p>Status: Open</p>
-            </div>
+          <ShowJobs  />
+         
           </div>
 
           <div className="content-header">
