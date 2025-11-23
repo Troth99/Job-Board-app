@@ -5,14 +5,11 @@ import { Job } from "../../Jobs/CreateJob/CreateJob";
 
 interface ShowCompanyJobsProps {
   jobs: Job[];  
-  loading: boolean; 
 }
 
 
 
 export function ShowJobs({jobs}: ShowCompanyJobsProps) {
-    const {companyId} = useParams<{companyId: string}>()
-    const [loading, setLoading] = useState(true);
   
     return (
               <div className="job-card-member">
