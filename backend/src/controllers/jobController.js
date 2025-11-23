@@ -1,27 +1,40 @@
+import { CompanyMember } from "../models/CompanyMember.js";
 import Jobs from "../models/Jobs.js";
 import { createJobService, getAllJobs, getJobById, getRecentJobs } from "../services/jobService.js";
 
 
+
 export const createJob = async (req, res) => {
   try {
-    const jobData = {
-      ...req.body,
-      createdBy: req.user._id,
-    };
+    const userId = req.user._id;
 
-    if (req.user.company) {
-      jobData.company = req.user.company;
+
+    const membership = await CompanyMember.findOne({ userId });
+    if (!membership) {
+      return res.status(403).json({ message: "You must belong to a company to post a job." });
     }
 
+    const companyId = membership.companyId;
+
+
+    const jobData = {
+      ...req.body,
+      createdBy: userId,
+      company: companyId,
+    };
+
     const job = await createJobService(jobData);
-    res.status(201).json(job)
+
+
+    const populatedJob = await Jobs.findById(job._id).populate("company");
+
+    res.status(201).json(populatedJob);
   } catch (error) {
     res.status(500).json({
-      message: error.message
-    })
+      message: error.message || "Failed to create job.",
+    });
   }
 };
-
 
 export const getJobByIdController = async (req, res) => {
   try {

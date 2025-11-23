@@ -1,19 +1,32 @@
 import {Schema, model} from "mongoose";
-
+[
+  { "name": "Information Technology", "shortName": "IT" },
+  { "name": "Finance & Accounting", "shortName": "Finance" },
+  { "name": "Marketing & Advertising", "shortName": "Marketing" },
+  { "name": "Human Resources", "shortName": "HR" },
+  { "name": "Design & Creative", "shortName": "Design" },
+  { "name": "Sales & Business Development", "shortName": "Sales" },
+  { "name": "Customer Support", "shortName": "Support" },
+  { "name": "Operations & Logistics", "shortName": "Operations" },
+  { "name": "Education & Training", "shortName": "Education" },
+  { "name": "Legal & Compliance", "shortName": "Legal" },
+  { "name": "Healthcare & Medical", "shortName": "Healthcare" },
+  { "name": "Engineering & Manufacturing", "shortName": "Engineering" },
+  { "name": "Science & Research", "shortName": "Research" },
+  { "name": "Consulting & Strategy", "shortName": "Consulting" },
+  { "name": "Media & Communication", "shortName": "Media" }
+]
 
 const categorySchema = new Schema({
     name: {
         type: String,
         required: [true, 'Category name is required!'],
-        minlength: [3, 'Category name must be at least 3 characters long!'], 
-        maxlength: [50, 'Category name cannot be longer than 50 characters!'],
+        trim: true,
     },
     shortName: {
         type: String,
-        required: true,
-        minlength: [2, 'Short name must be at least 2 characters long!'],
-        maxlength: [20, 'Short name cannot be longer than 20 characters!'], 
+        required: [true, 'Short name is required!'],
+        trim: true,
     },
 });
-
 export default model('Category', categorySchema)
