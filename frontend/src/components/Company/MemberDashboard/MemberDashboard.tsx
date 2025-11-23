@@ -11,7 +11,8 @@ import { getJobsByCompany } from "../../../services/jobService";
 export function MemberDashboard() {
   const { companyId } = useParams();
   const [role, setRole] = useState(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loadingJobs, setLoadingJobs] = useState<boolean>(true); 
+  const [loadingRole, setLoadingRole] = useState<boolean>(true);
   const [error, setError] = useState(null);
   const [jobs, setJobs] = useState<Job[]>([]);
   const navigate = useNavigate();
@@ -33,14 +34,14 @@ export function MemberDashboard() {
       } catch (error) {
         console.error("Error fetching jobs:", error);
       } finally {
-        setLoading(false);
+        setLoadingJobs(false);
       }
     }
   };
 
   const fetchUserRole = async () => {
     try {
-      setLoading(true)
+ 
       if (companyId) {
         const userRole = await getUserRole(companyId);
         setRole(userRole[0].role);
@@ -48,7 +49,7 @@ export function MemberDashboard() {
     } catch (error) {
       console.log("Failed to fetch the role data.");
     } finally {
-      setLoading(false);
+      setLoadingRole(false);
     }
   };
 
@@ -62,9 +63,11 @@ export function MemberDashboard() {
   const postJobHandlerNavigate = () => {
     navigate(`/company/${companyId}/post-job`);
   };
+
+   const isLoading = loadingJobs || loadingRole;
   return (
     <div className="profile-body" style={{ position: "relative" }}>
-      {loading ? (
+      {isLoading ? (
         <Spinner overlay={true} />
       ) : (
         <div className="dashboard">
