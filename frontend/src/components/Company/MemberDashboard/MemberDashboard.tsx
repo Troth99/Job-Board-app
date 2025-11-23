@@ -5,38 +5,62 @@ import { getUserRole } from "../../../services/companyService";
 import { useNavigate, useParams } from "react-router";
 import Spinner from "../../Spinner/Spinner";
 import { ShowJobs } from "../showJobs/showCompanyJobs";
+import { Job } from "../../Jobs/CreateJob/CreateJob";
+import { getJobsByCompany } from "../../../services/jobService";
 
 export function MemberDashboard() {
   const { companyId } = useParams();
   const [role, setRole] = useState(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate()
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchRole = async () => {
+   const fetchCompanyJobs = async () => {
+    if(companyId){
       try {
-        if (companyId) {
-          const userRole = await getUserRole(companyId);
-          setRole(userRole[0].role);
+        setLoading(true); 
+        const response = await getJobsByCompany(companyId);
+        if (response.length > 0) {
+          const sortedJobs = response.sort((a: Job, b: Job) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+          setJobs(sortedJobs.slice(0, 5)); 
+        } else {
+          setJobs([]); 
         }
       } catch (error) {
-        console.log("Failed to fetch the data.");
+        console.error("Error fetching jobs:", error);
       } finally {
-        setLoading(false);
+        setLoading(false);  
       }
     };
+   
+    }
+  
+    const fetchUserRole = async () => {
+    try {
+      if (companyId) {
+        const userRole = await getUserRole(companyId);
+        setRole(userRole[0].role);
+      }
+    } catch (error) {
+      console.log("Failed to fetch the role data.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+   useEffect(() => {
     if (companyId) {
-      fetchRole();
+      fetchCompanyJobs(); 
+      fetchUserRole();  
     }
   }, [companyId]);
 
-
   const postJobHandlerNavigate = () => {
-    console.log('click')
-    navigate(`/company/${companyId}/post-job`)
-  }
+    navigate(`/company/${companyId}/post-job`);
+  };
   return (
     <div className="profile-body" style={{ position: "relative" }}>
       {loading && <Spinner overlay={true} />}
@@ -99,12 +123,13 @@ export function MemberDashboard() {
 
           <div className="content-header">
             <h3>Jobs</h3>
-            <button className="add-button" onClick={postJobHandlerNavigate}>+ Post Job</button>
+            <button className="add-button" onClick={postJobHandlerNavigate}>
+              + Post Job
+            </button>
           </div>
 
           <div className="job-list">
-          <ShowJobs  />
-         
+            <ShowJobs jobs={jobs} />
           </div>
 
           <div className="content-header">
