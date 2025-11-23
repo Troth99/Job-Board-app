@@ -37,6 +37,8 @@ export default function MyProfile() {
   const [company, setCompany] = useState<RegisterCompanyInterface>();
   const [userHasCompany, setUserHasCompany] = useState(false);
   const [userRole, setUserRole] = useState<string>("");
+  const [loadingUser, setLoadingUser] = useState(true);
+  const [loadingCompany, setLoadingCompany] = useState(true);
 
   const logOutHandler = async () => {
     try {
@@ -67,7 +69,7 @@ export default function MyProfile() {
       setError("Failed to fetch user data");
       console.error(error);
     } finally {
-      setLoading(false);
+   
     }
   };
 
@@ -119,7 +121,7 @@ export default function MyProfile() {
   };
   return (
     <div className="profile-body" style={{ position: "relative" }}>
-      {loading || !userData || !userRole ? (
+      {loading  ? (
         <Spinner overlay={true} />
       ) : (
         <div className="profile-container">
