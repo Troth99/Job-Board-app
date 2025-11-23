@@ -19,7 +19,7 @@ export function MemberDashboard() {
   const fetchCompanyJobs = async () => {
     if (companyId) {
       try {
-        setLoading(true);
+      
         const response = await getJobsByCompany(companyId);
         if (response.length > 0) {
           const sortedJobs = response.sort(
@@ -40,6 +40,7 @@ export function MemberDashboard() {
 
   const fetchUserRole = async () => {
     try {
+      setLoading(true)
       if (companyId) {
         const userRole = await getUserRole(companyId);
         setRole(userRole[0].role);
