@@ -20,6 +20,7 @@ import { MemberDashboard } from "./components/Company/MemberDashboard/MemberDash
 import CompanyRouteGuard from "./utils/RouteGuards/companyRouteGuard";
 import { PageNotFound } from "./components/404/404";
 import CompanyRegisterGuard from "./utils/RouteGuards/companyRegisterGuard";
+import { PostJob } from "./components/Jobs/CreateJob/CreateJob";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -111,10 +112,16 @@ function App() {
         <Route element={<CompanyRouteGuard />}>
           <Route element={<MainLayout />}>
             <Route
-              path="company/:companyId/dashboard"
+              path="/company/:companyId/dashboard"
               element={<MemberDashboard />}
             />
           </Route>
+        </Route>
+
+        <Route element={<ProtectedRoutes />} >
+        <Route element={<MainLayout />}>
+            <Route path="/company/:companyId/post-job" element={<PostJob />} />
+        </Route>
         </Route>
 
         <Route element={<MainLayout />}>

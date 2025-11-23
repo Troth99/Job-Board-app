@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./MemberDashboard.css";
 import "./Responsive.css";
 import { getUserRole } from "../../../services/companyService";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Spinner from "../../Spinner/Spinner";
 
 export function MemberDashboard() {
@@ -10,6 +10,7 @@ export function MemberDashboard() {
   const [role, setRole] = useState(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchRole = async () => {
@@ -30,6 +31,11 @@ export function MemberDashboard() {
     }
   }, [companyId]);
 
+
+  const postJobHandlerNavigate = () => {
+    console.log('click')
+    navigate(`/company/${companyId}/post-job`)
+  }
   return (
     <div className="profile-body" style={{ position: "relative" }}>
       {loading && <Spinner overlay={true} />}
@@ -92,7 +98,7 @@ export function MemberDashboard() {
 
           <div className="content-header">
             <h3>Jobs</h3>
-            <button className="add-button">+ Post Job</button>
+            <button className="add-button" onClick={postJobHandlerNavigate}>+ Post Job</button>
           </div>
 
           <div className="job-list">
