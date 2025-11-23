@@ -64,6 +64,7 @@ export function MemberDashboard() {
     navigate(`/company/${companyId}/post-job`);
   };
 
+
    const isLoading = loadingJobs || loadingRole;
   return (
     <div className="profile-body" style={{ position: "relative" }}>
@@ -138,10 +139,15 @@ export function MemberDashboard() {
             {/* Jobs Section */}
             <div className="content-header">
               <h3>Jobs</h3>
+              <div className="buttons-for-jobs">
               <button className="add-button" onClick={postJobHandlerNavigate}>
                 + Post Job
               </button>
+                <button className="add-button" >
+                + View all jobs for the company.
+              </button>
             </div>
+              </div>
 
             <div className="job-list">
            
