@@ -69,7 +69,6 @@ export default function MyProfile() {
       setError("Failed to fetch user data");
       console.error(error);
     } finally {
-   
     }
   };
 
@@ -119,9 +118,13 @@ export default function MyProfile() {
   const registerCompanyNavigation = () => {
     navigate("/register/company");
   };
+
+  const postJobNavigation = () => {
+    navigate(`/company/${company?._id}/post-job`);
+  };
   return (
     <div className="profile-body" style={{ position: "relative" }}>
-      {loading  ? (
+      {loading ? (
         <Spinner overlay={true} />
       ) : (
         <div className="profile-container">
@@ -227,6 +230,7 @@ export default function MyProfile() {
                 className="job-title-button"
                 onClick={() => {
                   if (userHasCompany) {
+                    postJobNavigation();
                   } else {
                     registerCompanyNavigation();
                   }

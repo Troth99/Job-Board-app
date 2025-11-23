@@ -33,17 +33,6 @@ export default function HomeSection() {
     loadCategories();
   }, [dispatch, categories]);
 
-  useEffect(() => {
-    async function fetchRecentJobs() {
-      try {
-        const jobs = await getRecentJobs(5);
-        setRecentJobs(jobs);
-      } catch (error) {
-        console.error("Error loading recent jobs!", error);
-      }
-    }
-    fetchRecentJobs();
-  }, []);
 
   useEffect(() => {
     if (categories.length > 0 && recentJobs.length > 0) {
