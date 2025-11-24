@@ -1,6 +1,4 @@
 
-
-
 export function formatDate(dateString: string, locale: string = "en-US"): string {
   if (!dateString) return "";
   const date = new Date(dateString);

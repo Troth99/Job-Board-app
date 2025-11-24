@@ -21,6 +21,8 @@ import CompanyRouteGuard from "./utils/RouteGuards/companyRouteGuard";
 import { PageNotFound } from "./components/404/404";
 import CompanyRegisterGuard from "./utils/RouteGuards/companyRegisterGuard";
 import { PostJob } from "./components/Jobs/CreateJob/CreateJob";
+import { EditJob } from "./components/Jobs/EditJob/EditJob";
+import JobEditRouteGuard from "./utils/RouteGuards/jobEditRouteGuard";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -102,9 +104,9 @@ function App() {
         </Route>
 
         <Route element={<ProtectedRoutes />}>
-        <Route element={<CompanyRegisterGuard />}>
-          <Route element={<MainLayout />}>
-            <Route path="/register/company" element={<RegisterCompany />} />
+          <Route element={<CompanyRegisterGuard />}>
+            <Route element={<MainLayout />}>
+              <Route path="/register/company" element={<RegisterCompany />} />
             </Route>
           </Route>
         </Route>
@@ -118,10 +120,21 @@ function App() {
           </Route>
         </Route>
 
-        <Route element={<ProtectedRoutes />} >
-        <Route element={<MainLayout />}>
+        <Route element={<ProtectedRoutes />}>
+          <Route element={<MainLayout />}>
             <Route path="/company/:companyId/post-job" element={<PostJob />} />
+          </Route>
         </Route>
+
+        <Route element={<ProtectedRoutes />}>
+          <Route element={<JobEditRouteGuard />}>
+            <Route element={<MainLayout />}>
+              <Route
+                path="/company/:companyId/job/:jobId/edit"
+                element={<EditJob />}
+              />
+            </Route>
+          </Route>
         </Route>
 
         <Route element={<MainLayout />}>

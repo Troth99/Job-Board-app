@@ -1,7 +1,7 @@
 import { CompanyMember } from "../models/CompanyMember.js";
 import Jobs from "../models/Jobs.js";
 import { createJobService, getAllJobs, getJobById, getRecentJobs } from "../services/jobService.js";
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 
 
@@ -38,14 +38,15 @@ export const createJob = async (req, res) => {
 
 export const getJobByIdController = async (req, res) => {
   try {
+    const  jobId  = req.params.id.trim();
 
-    const jobId = req.params.id;
 
-    if (!jobId) {
-      return res.status(400).json({ message: "Job ID is required" });
+    if (!mongoose.Types.ObjectId.isValid(jobId)) {
+
+      return res.status(400).json({ message: "Invalid job ID format" });
     }
-
     const job = await getJobById(jobId);
+
 
     if (!job) {
       return res.status(404).json({ message: "Job not found" });
@@ -53,10 +54,7 @@ export const getJobByIdController = async (req, res) => {
 
     res.status(200).json(job);
   } catch (error) {
-
-    if (error.message === 'Invalid job ID format') {
-      return res.status(400).json({ message: "Invalid job ID format" });
-    }
+    console.error(error);
     res.status(500).json({ message: "Internal server error" });
   }
 };

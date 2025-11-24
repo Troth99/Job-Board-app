@@ -37,12 +37,22 @@ export const getAllJobs = async (categoryId) => {
     return jobs
 }
 
+
 export const getJobById = async (jobId) => {
-    if (!mongoose.Types.ObjectId.isValid(jobId)) {
-        throw new Error('Invalid job ID format');
+  try {
+   
+
+    const job = await Jobs.findById(jobId).populate("createdBy", "name email role");  
+
+    if (!job) {
+      throw new Error("Job not found");
     }
-    const job = await Jobs.findById(jobId).populate("createdBy", "name email role");
+
     return job;
+  } catch (error) {
+    console.error("Error fetching job:", error);
+    throw error;
+  }
 };
 
 export const updateJob = async (req, res) => {

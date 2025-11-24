@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getJobsByCompany } from "../../../services/jobService";
 import { useNavigate, useParams } from "react-router";
 import { Job } from "../../Jobs/CreateJob/CreateJob";
+import { formatDate } from "../../../utils/formData";
 
 interface ShowCompanyJobsProps {
   jobs: Job[];  
@@ -11,12 +12,10 @@ interface ShowCompanyJobsProps {
 
 export function ShowJobs({jobs}: ShowCompanyJobsProps) {
    const { companyId } = useParams<{ companyId: string, jobId: string }>();
-    console.log(jobs)
-console.log(companyId);
     const navigate = useNavigate()
   
       const handleJobClick = (jobId: string) => {
-    navigate(`/company/${companyId}/job/${jobId}`); 
+    navigate(`/company/${companyId}/job/${jobId}/edit`); 
   };
     return (
          <div className="job-list">
@@ -31,6 +30,7 @@ console.log(companyId);
             <h3>{job.title}</h3>
             <p><strong>Description:</strong> {job.description}</p>
             <p><strong>Location:</strong> {job.location}</p>
+            <p><strong>Posted At:</strong> {formatDate(job.createdAt, 'en-US')}</p>
             <p><strong>Status:</strong> {job.isActive ? "Active" : "Closed"}</p>
        
           </div>

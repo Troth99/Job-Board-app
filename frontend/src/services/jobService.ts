@@ -44,14 +44,27 @@ export async function createJob(jobData: Partial<Job>) {
   }
 }
 
-
 export async function getJobsByCompany(companyId: string) {
   try {
-    if(!companyId) throw new Error('Not part of a company.');
-      const response = await sendRequest(`${API_BASE}/jobs?company=${companyId}`, 'GET', {})
+    if (!companyId) throw new Error("Not part of a company.");
+    const response = await sendRequest(
+      `${API_BASE}/jobs?company=${companyId}`,
+      "GET",
+      {}
+    );
 
-      return response
-  } catch (error: any)  {
-    console.error('Failed to fetch jobs.')
+    return response;
+  } catch (error) {
+    console.error("Failed to fetch jobs.");
+  }
+}
+
+export async function getJobById(jobId: string) {
+  try {
+    if (!jobId) throw new Error("Job ID is missing.");
+    const response = await sendRequest(`${API_BASE}/jobs/${jobId}`, "GET", {});
+    return response;
+  } catch (error) {
+    console.error("Failed to fetch jobs.");
   }
 }
