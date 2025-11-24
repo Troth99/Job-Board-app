@@ -20,6 +20,7 @@ export default function CompanyRouteGuard() {
     //CompanyId has 24 characters from mongoose db, this one checks if its the correct characters in case someone type incorrect Id.
   const isValidCompanyId = (id: string) => /^[0-9a-fA-F]{24}$/.test(id);
   companyId = companyId?.trim()
+  
   useEffect(() => {
     if (!companyId || !isValidCompanyId(companyId)) {
       toast.error("Invalid company ID format.");
@@ -29,7 +30,7 @@ export default function CompanyRouteGuard() {
 
     const fetchUserCompany = async () => {
       if (!token || !user) {
-        toast.error("Unauthorized: No token found.");
+        toast.error("You do not have access to this page.");
         navigate("/login"); 
         setLoading(false);
         return;
@@ -39,10 +40,6 @@ export default function CompanyRouteGuard() {
         const company = await getCompanyById(companyId); 
         if (company.members.includes(user._id)) {
           setHasAccess(true);
-          if (!toastShown) {
-            showCompanySuccess(`Welcome to the ${company.name} dashboard!`);
-            setToastShown(true); 
-          }
         } else {
           if (!toastShown) {
             showCompanyWarning("You do not have access to this company.");
