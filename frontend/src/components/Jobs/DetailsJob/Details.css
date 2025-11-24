@@ -1,0 +1,404 @@
+
+.job-details-container {
+  font-family: 'Roboto', sans-serif; 
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  max-width: 1400px;
+  overflow: hidden;
+}
+
+
+.job-overview {
+  margin-bottom: 40px;
+}
+
+.job-title h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d2d2d;
+  margin-bottom: 10px;
+}
+
+.job-description p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #555;
+  margin-top: 15px;
+}
+
+.job-location-salary,
+.job-category-type,
+.job-skills-benefits {
+  margin-top: 20px;
+}
+
+.job-location-salary div,
+.job-category-type div,
+.job-skills-benefits div {
+  font-size: 16px;
+  color: #777;
+}
+
+.job-location-salary div strong,
+.job-category-type div strong,
+.job-skills-benefits div strong {
+  color: #2d2d2d;
+  font-weight: 600;
+}
+
+.candidates-section {
+  margin-top: 60px;
+}
+
+.candidates-section h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.candidates-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.candidates-list th,
+.candidates-list td {
+  border: 1px solid #ddd;
+  padding: 16px;
+  text-align: left;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.candidates-list th {
+  background-color: #f8f8f8;
+  color: #444;
+  font-weight: 600;
+}
+
+.candidates-list td {
+  background-color: #ffffff;
+  color: #555;
+  
+}
+
+.candidates-list tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.candidates-list tr:hover {
+  background-color: #f1f1f1;
+}
+
+.candidates-list button {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.approve-button {
+    margin-right: 1em;
+  background-color: #28a745;
+  color: white;
+}
+
+.reject-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.approve-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.reject-button:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.approve-button:disabled,
+.reject-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.approve-button:active,
+.reject-button:active {
+  transform: scale(0.95); 
+}
+
+
+.candidates-list .cv-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.candidates-list .cv-link:hover {
+  text-decoration: underline;
+}
+
+
+.job-actions {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 2px solid #ddd;
+}
+
+.job-actions h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.job-actions-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.edit-job-button,
+.delete-job-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.edit-job-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.delete-job-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.edit-job-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.delete-job-button:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.edit-job-button:disabled,
+.delete-job-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.edit-job-button:active,
+.delete-job-button:active {
+  transform: scale(0.95);
+}
+
+
+.job-details-container .location,
+.job-details-container .salary {
+  font-weight: 600;
+  color: #333;
+  font-size: 17px;
+}
+
+
+@media (max-width: 768px) {
+  .job-details-container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .candidates-list th,
+  .candidates-list td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .job-title h3 {
+    font-size: 24px;
+  }
+
+  .job-description p {
+    font-size: 14px;
+  }
+
+  .job-actions-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .edit-job-button,
+  .delete-job-button {
+    width: 100%;
+  }
+}
+
+[data-theme="dark"] .job-details-container {
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #181818; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+[data-theme="dark"] .job-title h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff; 
+  margin-bottom: 10px;
+}
+
+
+[data-theme="dark"] .job-description p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #d1d1d1; 
+  margin-top: 15px;
+}
+
+
+[data-theme="dark"] .job-location-salary,
+[data-theme="dark"] .job-category-type,
+[data-theme="dark"] .job-skills-benefits {
+  margin-top: 20px;
+}
+
+[data-theme="dark"] .job-location-salary div,
+[data-theme="dark"] .job-category-type div,
+[data-theme="dark"] .job-skills-benefits div {
+  font-size: 16px;
+  color: #bbb; 
+}
+
+[data-theme="dark"] .job-location-salary div strong,
+[data-theme="dark"] .job-category-type div strong,
+[data-theme="dark"] .job-skills-benefits div strong {
+  color: #f4f4f4; /
+}
+
+
+[data-theme="dark"] .candidates-section {
+  margin-top: 60px;
+}
+
+[data-theme="dark"] .candidates-section h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff; 
+  margin-bottom: 20px;
+  border-bottom: 2px solid #666;
+  padding-bottom: 10px;
+}
+
+
+[data-theme="dark"] .candidates-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+[data-theme="dark"] .candidates-list th,
+[data-theme="dark"] .candidates-list td {
+  border: 1px solid #444; 
+  padding: 16px;
+  text-align: left;
+  font-size: 16px;
+  vertical-align: middle;
+  color: #fff;
+}
+
+[data-theme="dark"] .candidates-list th {
+  background-color: #333; 
+  color: #f4f4f4; 
+}
+
+[data-theme="dark"] .candidates-list td {
+  background-color: #444; 
+  color: #f4f4f4; 
+}
+
+[data-theme="dark"] .candidates-list tr:nth-child(even) {
+  background-color: #f9c800; 
+}
+
+[data-theme="dark"] .candidates-list tr:hover {
+  background-color: #555; 
+}
+
+
+[data-theme="dark"] .approve-button {
+  background-color: #28a745;
+  color: white;
+}
+
+[data-theme="dark"] .reject-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+[data-theme="dark"] .approve-button:hover {
+  background-color: #218838;
+}
+
+[data-theme="dark"] .reject-button:hover {
+  background-color: #c82333;
+}
+
+
+[data-theme="dark"] .job-actions {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 2px solid #555;
+}
+
+[data-theme="dark"] .job-actions h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff; 
+  margin-bottom: 20px;
+}
+
+[data-theme="dark"] .job-actions-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+[data-theme="dark"] .edit-job-button,
+[data-theme="dark"] .delete-job-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+
+
+[data-theme="dark"] .edit-job-button:disabled,
+[data-theme="dark"] .delete-job-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+[data-theme="dark"] .edit-job-button:active,
+[data-theme="dark"] .delete-job-button:active {
+  transform: scale(0.95);
+}

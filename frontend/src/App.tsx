@@ -23,6 +23,7 @@ import CompanyRegisterGuard from "./utils/RouteGuards/companyRegisterGuard";
 import { PostJob } from "./components/Jobs/CreateJob/CreateJob";
 import { EditJob } from "./components/Jobs/EditJob/EditJob";
 import JobEditRouteGuard from "./utils/RouteGuards/jobEditRouteGuard";
+import { DetailsJob } from "./components/Jobs/DetailsJob/DetailsJob";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -132,6 +133,17 @@ function App() {
               <Route
                 path="/company/:companyId/job/:jobId/edit"
                 element={<EditJob />}
+              />
+            </Route>
+          </Route>
+        </Route>
+        
+            <Route element={<ProtectedRoutes />}>
+          <Route element={<JobEditRouteGuard />}>
+            <Route element={<MainLayout />}>
+              <Route
+                path="/company/:companyId/job/:jobId/details"
+                element={<DetailsJob />}
               />
             </Route>
           </Route>

@@ -15,7 +15,7 @@ export function ShowJobs({jobs}: ShowCompanyJobsProps) {
     const navigate = useNavigate()
   
       const handleJobClick = (jobId: string) => {
-    navigate(`/company/${companyId}/job/${jobId}/edit`); 
+    navigate(`/company/${companyId}/job/${jobId}/details`); 
   };
     return (
          <div className="job-list">

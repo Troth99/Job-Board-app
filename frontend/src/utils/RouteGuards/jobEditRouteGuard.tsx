@@ -23,16 +23,19 @@ export default function JobEditRouteGuard() {
   const token = getAuthToken();
   const user = getUserFromLocalStorage();
 
+  
+ 
   // Validate company and job IDs
   const isValidId = (id: string) => /^[0-9a-fA-F]{24}$/.test(id);
-
+  
   // Check user role for access
   const hasValidRole = (role: string) =>
     ["admin", "owner", "recruiter"].includes(role);
-
+  
   // Fetch company and role data
   const fetchCompanyAndRole = useCallback(async () => {
     try {
+      
       const [company, role] = await Promise.all([
         getCompanyById(companyId),
         getUserRole(companyId),
@@ -48,6 +51,11 @@ export default function JobEditRouteGuard() {
   }, [companyId]);
 
   useEffect(() => {
+     if(!companyId) {
+     toast.error("You do not have access to this company or job.");
+     navigate('/')
+    return
+  }
     if (!companyId || !isValidId(companyId) || !jobId || !isValidId(jobId)) {
       toast.error("Invalid ID format.");
       navigate("/");

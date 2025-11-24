@@ -8,7 +8,7 @@ import { showCompanySuccess, showCompanyWarning } from "../toast";
 import Spinner from "../../components/Spinner/Spinner";
 
 export default function CompanyRouteGuard() {
-  const { companyId } = useParams<{ companyId: string }>(); 
+  let { companyId } = useParams<{ companyId: string }>(); 
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(true);
   const [hasAccess, setHasAccess] = useState<boolean>(false);
@@ -19,7 +19,7 @@ export default function CompanyRouteGuard() {
 
     //CompanyId has 24 characters from mongoose db, this one checks if its the correct characters in case someone type incorrect Id.
   const isValidCompanyId = (id: string) => /^[0-9a-fA-F]{24}$/.test(id);
-
+  companyId = companyId?.trim()
   useEffect(() => {
     if (!companyId || !isValidCompanyId(companyId)) {
       toast.error("Invalid company ID format.");

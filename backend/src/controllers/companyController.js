@@ -36,16 +36,16 @@ export const getCompaniesController = async (req, res) => {
 };
 
 export const getCompanyByIdController = async (req, res) => {
-    const { id } = req.params; 
-
+    const  companyId  = req.params.id.trim()
    
-    if (!Types.ObjectId.isValid(id)) {
+
+    if (!Types.ObjectId.isValid(companyId)) {
         return res.status(400).json({ message: "Invalid company ID format" });
     }
 
     try {
       
-        const company = await getCompanyByIdService(id);
+        const company = await getCompanyByIdService(companyId);
         
       
         if (!company) {
