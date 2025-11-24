@@ -13,7 +13,6 @@ import MyProfile from "./components/Profile/Profile";
 import EditProfile from "./components/EditProfile/EditProfile";
 import ProtectedRoutes from "./utils/RouteGuards/authRouteGuard";
 import GuestGuardRoute from "./utils/RouteGuards/guestRouteGuard";
-import { ToastContainer } from "react-toastify";
 import ChangePassword from "./components/EditProfile/ChangePassword/ChangePassword";
 import RegisterCompany from "./components/Company/RegisterCompany/RegisterCompany";
 import { MemberDashboard } from "./components/Company/MemberDashboard/MemberDashboard";
@@ -22,8 +21,11 @@ import { PageNotFound } from "./components/404/404";
 import CompanyRegisterGuard from "./utils/RouteGuards/companyRegisterGuard";
 import { PostJob } from "./components/Jobs/CreateJob/CreateJob";
 import { EditJob } from "./components/Jobs/EditJob/EditJob";
-import JobEditRouteGuard from "./utils/RouteGuards/jobEditRouteGuard";
 import { DetailsJob } from "./components/Jobs/DetailsJob/DetailsJob";
+import { JobEditRouteGuard } from "./utils/RouteGuards/jobEditRouteGuard";  
+
+
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -127,27 +129,30 @@ function App() {
           </Route>
         </Route>
 
-        <Route element={<ProtectedRoutes />}>
-          <Route element={<JobEditRouteGuard />}>
-            <Route element={<MainLayout />}>
-              <Route
-                path="/company/:companyId/job/:jobId/edit"
-                element={<EditJob />}
-              />
-            </Route>
-          </Route>
+      <Route element={<MainLayout />}>
+          <Route
+            path="/company/:companyId/job/:jobId/edit"
+            element={
+              <JobEditRouteGuard>
+                <DetailsJob />
+              </JobEditRouteGuard>
+       
+            }
+          />
         </Route>
         
-            <Route element={<ProtectedRoutes />}>
-          <Route element={<JobEditRouteGuard />}>
-            <Route element={<MainLayout />}>
-              <Route
-                path="/company/:companyId/job/:jobId/details"
-                element={<DetailsJob />}
-              />
-            </Route>
-          </Route>
+       <Route element={<MainLayout />}>
+          <Route
+            path="/company/:companyId/job/:jobId/details"
+            element={
+              <JobEditRouteGuard>
+                <DetailsJob />
+              </JobEditRouteGuard>
+       
+            }
+          />
         </Route>
+     
 
         <Route element={<MainLayout />}>
           <Route path="*" element={<PageNotFound />} />

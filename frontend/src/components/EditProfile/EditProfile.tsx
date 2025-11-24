@@ -224,9 +224,6 @@ export default function EditProfile() {
                 Delete Profile Image
               </button>
             </div>
-            <div className="check-profile-logs-container">
-              <button className="check-profile-logs-button">View logs</button>
-            </div>
             <div className="change-password-container">
               <button
                 className="change-password-button"
@@ -246,16 +243,6 @@ export default function EditProfile() {
                 Delete Profile
               </button>
             </div>
-          </div>
-
-          <div className="role-change">
-            <h3>Change Role</h3>
-            <p>Select a new role for your profile.</p>
-          </div>
-
-          <div className="company-registration">
-            <h3>Company Registration</h3>
-            <p>If you have registered a new company, you can add it here.</p>
           </div>
         </div>
       )}

@@ -7,7 +7,7 @@ interface RequestOptions {
   body?: string;
 }
 
-export async function sendRequest(url: string, method: "POST" | "GET" | "PUT" | "DELETE", data?: Record<string, any>, headers?: Record<string, string>) {
+export async function sendRequest(url: string, method: HttpMethod, data?: Record<string, any>, headers?: Record<string, string>) {
   const options: RequestOptions = {
     method,
     headers: { "Content-Type": "application/json" ,

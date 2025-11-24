@@ -123,7 +123,7 @@ export default function MyProfile() {
     navigate(`/company/${company?._id}/post-job`);
   };
   return (
-    <div className="profile-body" style={{ position: "relative" }}>
+    <>
       {loading ? (
         <Spinner overlay={true} />
       ) : (
@@ -268,6 +268,6 @@ export default function MyProfile() {
           />
         </div>
       )}
-    </div>
+</>
   );
 }

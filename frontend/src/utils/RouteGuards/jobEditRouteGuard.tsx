@@ -1,89 +1,67 @@
-import { useEffect, useState, useCallback } from "react";
-import { Outlet, useNavigate, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
-import {
-  getAuthToken,
-  getUserFromLocalStorage,
-} from "../../services/auth/authService";
-import {
-  getCompanyById,
-  getCompanyFromLocalStorage,
-  getUserRole,
-} from "../../services/companyService";
+import { getAuthToken, getUserFromLocalStorage } from "../../services/auth/authService";
+import { getCompanyById, getUserRole } from "../../services/companyService";
 import Spinner from "../../components/Spinner/Spinner";
 
-export default function JobEditRouteGuard() {
-  const { jobId } = useParams<{ companyId: string; jobId: string }>();
+
+export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
   const navigate = useNavigate();
-  const [hasAccess, setHasAccess] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [userRole, setUserRole] = useState<string | null>(null);
-
-  const companyId = getCompanyFromLocalStorage();
   const token = getAuthToken();
+  const { companyId, jobId } = useParams<{ companyId: string; jobId: string }>()
   const user = getUserFromLocalStorage();
+   const [loading, setLoading] = useState(true)
 
-  
- 
-  // Validate company and job IDs
-  const isValidId = (id: string) => /^[0-9a-fA-F]{24}$/.test(id);
-  
-  // Check user role for access
-  const hasValidRole = (role: string) =>
-    ["admin", "owner", "recruiter"].includes(role);
-  
-  // Fetch company and role data
-  const fetchCompanyAndRole = useCallback(async () => {
-    try {
-      
-      const [company, role] = await Promise.all([
-        getCompanyById(companyId),
-        getUserRole(companyId),
-      ]);
-      return { company, role: role[0]?.role };
-
-    } catch (error) {
-
-      console.error("Failed to fetch the data.");
-
-      return { company: null, role: null };
-    }
-  }, [companyId]);
+  const hasValidRole = (role: string) => ["admin", "owner"].includes(role);
 
   useEffect(() => {
-     if(!companyId) {
-     toast.error("You do not have access to this company or job.");
-     navigate('/')
-    return
-  }
-    if (!companyId || !isValidId(companyId) || !jobId || !isValidId(jobId)) {
-      toast.error("Invalid ID format.");
-      navigate("/");
-      return;
-    }
 
-    if (!token) {
-      navigate("/login");
-      return;
-    }
-
-    const jobAndCompanyGuard = async () => {
-      const { company, role } = await fetchCompanyAndRole();
-
-        if (company.members.includes(user._id) && hasValidRole(role)) {
-        setUserRole(role);
-        setHasAccess(true);
-      } else {
+    const checkAccess = async () => {
+      if (!companyId || !jobId) {
         toast.error("You do not have access to this company or job.");
-        navigate("/");
+        navigate("/"); 
+        return;
       }
-      setLoading(false);
+
+      if (!token) {
+        navigate("/login");  
+        return;
+      }
+
+      try {
+        const [company, roleResult] = await Promise.all([
+          getCompanyById(companyId),
+          getUserRole(companyId),
+        ]);
+
+        const role = roleResult[0]?.role;
+
+        if (!company.members.includes(user._id) || !hasValidRole(role)) {
+          toast.error("You do not have access to this company or job.");
+         navigate('/')
+          return;
+        }
+      } catch (error) {
+        console.error("Error loading data.");
+        navigate("/");  
+      }
+
+      setLoading(false)
     };
 
-    jobAndCompanyGuard();
-  }, [companyId, jobId, token, user._id, navigate, fetchCompanyAndRole]);
+    checkAccess();
 
-  if (loading) return <Spinner />;
+   
+  }, [companyId, jobId, token, user._id, navigate]);
 
-  return hasAccess ? <Outlet /> : null;
+if (loading) {
+  return (
+
+      <Spinner overlay={true} />
+    
+  );
 }
+  return <>{children}</>; 
+};
+
