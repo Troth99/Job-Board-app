@@ -67,8 +67,8 @@ export function MemberDashboard() {
 
    const isLoading = loadingJobs || loadingRole;
   return (
-    <div className="profile-body" style={{ position: "relative" }}>
-      {isLoading ? (
+    <>
+    {isLoading ? (
         <Spinner overlay={true} />
       ) : (
         <div className="dashboard">
@@ -181,6 +181,6 @@ export function MemberDashboard() {
           </div>
         </div>
       )}
-    </div>
+  </>
   );
 }

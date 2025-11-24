@@ -39,6 +39,8 @@ const jobSchema = new Schema({
 
   tags: [{ type: String }],
 
+  skills: [{type: String}],
+
   views: { type: Number, default: 0 },
 
   isActive: { type: Boolean, default: true },

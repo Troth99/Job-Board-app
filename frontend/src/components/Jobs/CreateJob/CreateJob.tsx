@@ -16,7 +16,9 @@ export interface Job {
   description: string;
   location: string;
   salary?: string;
-  createdBy: string;
+  createdBy: {
+    email: string;
+  };
   company?: Company | null;
   type: string;
   category?: string | null;
@@ -56,7 +58,7 @@ const initialValues = {
   contactEmail: "",
 };
 export function PostJob() {
-  const {companyId} = useParams()
+  const { companyId } = useParams();
   const [form, setForm] = useState<valuesInterface>(initialValues);
   const [loading, setLoading] = useState<boolean>(false);
   const [errors, setErrors] = useState({});
@@ -74,27 +76,25 @@ export function PostJob() {
     }));
   };
 
-
   const onSubmitHandler = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     setErrors({});
     setLoading(true);
 
-
     try {
-      const result = await createJob(form)
-      showSuccess("Job posted successfully!")
-      navigate(`/company/${companyId}/dashboard`)
+      const result = await createJob(form);
+      showSuccess("Job posted successfully!");
+      navigate(`/company/${companyId}/dashboard`);
     } catch (error: unknown) {
-      if(error instanceof Error) {
+      if (error instanceof Error) {
         setErrors(error.message || "Something went wrong");
-      }else {
-        console.error('Unknown error', error)
+      } else {
+        console.error("Unknown error", error);
       }
-    }finally {
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="post-job-container">
@@ -204,11 +204,8 @@ export function PostJob() {
             onChange={onChangeHandler}
           />
         </div>
-        <button type="submit" 
-        className="post-job-button"
-        disabled={loading}
-        >
-         {loading ? "Posting job..." : 'Post job'}
+        <button type="submit" className="post-job-button" disabled={loading}>
+          {loading ? "Posting job..." : "Post job"}
         </button>
       </form>
     </div>
