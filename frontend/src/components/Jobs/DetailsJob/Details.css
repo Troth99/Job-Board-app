@@ -8,6 +8,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   max-width: 1400px;
   overflow: hidden;
+  margin-bottom: 7em;
 }
 
 
@@ -251,8 +252,6 @@
 }
 
 [data-theme="dark"] .job-details-container {
-  margin: 30px auto;
-  padding: 30px;
   background-color: #181818; 
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

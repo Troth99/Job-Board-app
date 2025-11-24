@@ -41,7 +41,6 @@ export function MemberDashboard() {
 
   const fetchUserRole = async () => {
     try {
- 
       if (companyId) {
         const userRole = await getUserRole(companyId);
         setRole(userRole[0].role);
