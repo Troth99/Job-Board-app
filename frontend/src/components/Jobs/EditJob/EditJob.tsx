@@ -1,4 +1,3 @@
-import "./EditJob.css"
 
 export function EditJob() {
 

@@ -134,7 +134,7 @@ function App() {
             path="/company/:companyId/job/:jobId/edit"
             element={
               <JobEditRouteGuard>
-                <DetailsJob />
+                <EditJob />
               </JobEditRouteGuard>
        
             }

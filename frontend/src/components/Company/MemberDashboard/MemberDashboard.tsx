@@ -64,6 +64,7 @@ export function MemberDashboard() {
     navigate(`/company/${companyId}/post-job`);
   };
 
+ const canPostJob = role === "admin" || role === "owner" || role === "recruiter";
 
    const isLoading = loadingJobs || loadingRole;
   return (
@@ -139,14 +140,18 @@ export function MemberDashboard() {
             {/* Jobs Section */}
             <div className="content-header">
               <h3>Most 5 recent Posted jobs</h3>
-              <div className="buttons-for-jobs">
-              <button className="add-button" onClick={postJobHandlerNavigate}>
-                + Post Job
-              </button>
-                <button className="add-button" >
-                + View all jobs for the company.
-              </button>
-            </div>
+          <div className="buttons-for-jobs">
+        {canPostJob && (
+          <button className="add-button" onClick={postJobHandlerNavigate}>
+            + Post Job
+          </button>
+        )}
+        {canPostJob && (
+          <button className="add-button">
+            + View all jobs for the company
+          </button>
+        )}
+      </div>
               </div>
 
             <div className="job-list">
