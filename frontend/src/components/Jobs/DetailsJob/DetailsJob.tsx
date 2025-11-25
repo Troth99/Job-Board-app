@@ -61,6 +61,7 @@ export function DetailsJob() {
   };
 
   const changeStatusHandler = async () => {
+    setLoading(true)
     try {
       if(!jobId){
         console.error('Job Id is missing')
@@ -92,6 +93,8 @@ export function DetailsJob() {
       }
     } catch (error) {
       console.error('failed to update the status')
+    }finally {
+      setLoading(false)
     }
   }
   const canEditOrDelete = userRole === "admin" || userRole === "owner";
