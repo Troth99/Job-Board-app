@@ -32,9 +32,14 @@ export const loginUser = async (email: string, password: string) => {
 };
 
 export async function registerUser(data: registerFormType) {
-
-   const response = await sendRequest( `${API_BASE}/users/register`, "POST", data)
-    return response
+  
+try {
+  const response = await sendRequest( `${API_BASE}/users/register`, "POST", data)
+  return response
+  
+} catch (error) {
+  throw new Error("Failed to register user.");
+}
 }
 
 export async function logOut(){

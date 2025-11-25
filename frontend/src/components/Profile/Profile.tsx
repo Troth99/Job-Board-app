@@ -1,8 +1,6 @@
 import { Link, useNavigate } from "react-router";
-import { logOut } from "../../services/auth/authService";
 import "./Profile.css";
 import "./Responsive.css";
-import { setAuthenticated } from "../../redux/authSlice";
 import { useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -25,9 +23,12 @@ interface User {
   avatar?: string;
   createdAt?: string;
 }
-
-export default function MyProfile() {
-  const dispatch = useDispatch();
+interface ProfileProps {
+  LogOutComponnent: React.ComponentType
+}
+export default function MyProfile(
+  {LogOutComponnent}: ProfileProps
+) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
   const [userData, setUserData] = useState<User | null>(null);
@@ -37,25 +38,8 @@ export default function MyProfile() {
   const [company, setCompany] = useState<RegisterCompanyInterface>();
   const [userHasCompany, setUserHasCompany] = useState(false);
   const [userRole, setUserRole] = useState<string>("");
-  const [loadingUser, setLoadingUser] = useState(true);
-  const [loadingCompany, setLoadingCompany] = useState(true);
 
-  const logOutHandler = async () => {
-    try {
-      const success = await logOut();
-
-      if (success) {
-        dispatch(setAuthenticated(false));
-
-        navigate("/");
-      } else {
-        alert("Logout failed");
-      }
-    } catch (error: any) {
-      console.log("failed to log out", error.message);
-      alert("An error occurred while logging out.");
-    }
-  };
+  
   const getLoggedInUserData = async () => {
     try {
       const data = await getUserProfile();
@@ -249,9 +233,7 @@ export default function MyProfile() {
             </div>
 
             <div className="logout-container">
-              <button className="logout-button" onClick={logOutHandler}>
-                Logout
-              </button>
+             <LogOutComponnent />
             </div>
           </div>
 

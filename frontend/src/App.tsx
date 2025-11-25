@@ -26,6 +26,7 @@ import { JobEditRouteGuard } from "./utils/RouteGuards/jobEditRouteGuard";
 import { useDispatch } from "react-redux";
 import { getCategories } from "./services/categoryService";
 import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
+import { LogOut } from "./components/auth/Logout/Logout";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -115,7 +116,7 @@ function App() {
 
         <Route element={<ProtectedRoutes />}>
           <Route path="/profile" element={<MainLayout />}>
-            <Route index element={<MyProfile />} />
+            <Route index element={<MyProfile LogOutComponnent={LogOut} />} />
             <Route path="setthings" element={<EditProfile />} />
             <Route path="change-password" element={<ChangePassword />} />
           </Route>

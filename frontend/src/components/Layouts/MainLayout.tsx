@@ -13,6 +13,8 @@ interface Props {
 }
 
 export default  function MainLayout({children, hideHeaderFooter }: Props) {
+
+  //set company to localstorage if the user is part of a company.
     useEffect(() => {
       const fetchComapny = async () => {
         const user = getUserFromLocalStorage()
