@@ -18,6 +18,7 @@ export function DetailsJob() {
   const [userRole, setUserRole] = useState<string | null>(null);
   const [currentStatus, setCurrentStatus] = useState()
   const [jobStatus, setJobStatus] = useState<boolean | undefined>(currentStatus)
+  const [statusLoading, setStatusLoading] = useState(false)
 
   const fetchCurrentJob = async () => {
     try {
@@ -61,7 +62,7 @@ export function DetailsJob() {
   };
 
   const changeStatusHandler = async () => {
-    setLoading(true)
+    setStatusLoading(true)
     try {
       if(!jobId){
         console.error('Job Id is missing')
@@ -94,7 +95,7 @@ export function DetailsJob() {
     } catch (error) {
       console.error('failed to update the status')
     }finally {
-      setLoading(false)
+      setStatusLoading(false)
     }
   }
   const canEditOrDelete = userRole === "admin" || userRole === "owner";
@@ -102,7 +103,7 @@ export function DetailsJob() {
 
   return (
     <>
-      {loading ? (
+      {loading && statusLoading ? (
         <Spinner overlay={true} />
       ) : (
         <div className="job-details-container">
