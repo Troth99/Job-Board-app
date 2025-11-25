@@ -13,9 +13,14 @@ interface ShowCompanyJobsProps {
 export function ShowJobs({jobs}: ShowCompanyJobsProps) {
    const { companyId } = useParams<{ companyId: string, jobId: string }>();
     const navigate = useNavigate()
-  
-      const handleJobClick = (jobId: string) => {
-    navigate(`/company/${companyId}/job/${jobId}/details`); 
+
+      const handleJobClick = (jobId: string | undefined) => {
+
+        if(jobId){
+          navigate(`/company/${companyId}/job/${jobId}/details`); 
+        }else {
+          console.error('Job id is missing')
+        }
   };
     return (
          <div className="job-list">
@@ -30,7 +35,7 @@ export function ShowJobs({jobs}: ShowCompanyJobsProps) {
             <h3>{job.title}</h3>
             <p><strong>Description:</strong> {job.description}</p>
             <p><strong>Location:</strong> {job.location}</p>
-            <p><strong>Posted At:</strong> {formatDate(job.createdAt, 'en-US')}</p>
+            <p><strong>Posted At:</strong> {formatDate(job.createdAt || '', 'en-US')}</p>
             <p><strong>Status:</strong> {job.isActive ? "Active" : "Closed"}</p>
        
           </div>

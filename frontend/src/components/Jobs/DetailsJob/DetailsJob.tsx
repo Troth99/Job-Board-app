@@ -6,6 +6,7 @@ import { getUserFromLocalStorage } from "../../../services/auth/authService";
 import { Job } from "../CreateJob/CreateJob";
 import { getJobById, updateJob } from "../../../services/jobService";
 import Spinner from "../../Spinner/Spinner";
+import { formatDate } from "../../../utils/formData";
 
 export function DetailsJob() {
   const { companyId, jobId } = useParams<{
@@ -148,6 +149,9 @@ export function DetailsJob() {
               </div>
                 <div>
               <strong>Job Status:</strong> {jobDetails?.isActive ? "Active" : "Closed"}
+              </div>
+                   <div>
+                <strong>Updated at:</strong> {formatDate(jobDetails?.updatedAt || '', 'en-US')}
               </div>
               <div>
                
