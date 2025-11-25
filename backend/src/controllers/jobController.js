@@ -92,3 +92,27 @@ export const getRecentJobsController = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+export const updateJobController = async (req, res) => {
+  const { id } = req.params;  
+  const jobData = req.body;  
+
+  try {
+ 
+    const job = await Jobs.findById(id);
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+   
+    Object.assign(job, jobData);  
+
+   
+    await job.save();
+
+    res.status(200).json(job);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to update job", error: error.message });
+  }
+};

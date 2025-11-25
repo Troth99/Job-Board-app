@@ -27,9 +27,6 @@ import { useDispatch } from "react-redux";
 import { getCategories } from "./services/categoryService";
 import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
 
-
-
-
 function App() {
   const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
@@ -52,8 +49,8 @@ function App() {
   useEffect(() => {
     async function wakeUpServer() {
       let retries = 0;
-      const maxRetries = 5;
-      const retryDelay = 2000;
+      const maxRetries = 3;
+      const retryDelay = 1000;
 
       while (retries < maxRetries) {
         try {

@@ -11,17 +11,17 @@ interface Company {
 }
 
 export interface Job {
-  _id: string;
+  _id?: string;
   title: string;
   description: string;
   location: string;
   salary?: string;
-  createdBy: {
+  createdBy?: {
     email: string;
   };
   company?: Company | null;
   category?: string | null;
-  createdAt: string;
+  createdAt?: string;
   skills?: string;
   employmentType?: string;
   benefits?: string;
@@ -30,10 +30,11 @@ export interface Job {
   isActive?: boolean;
   tags?: string;
   email?: string;
-  
+  updatedAt?: string
 }
 
 export interface valuesInterface {
+  _id?: string,
   title: string;
   description: string;
   location: string;
@@ -44,6 +45,7 @@ export interface valuesInterface {
   benefits: string;
   tags: string;
   email: string;
+  
 }
 const initialValues = {
   title: "",

@@ -62,7 +62,6 @@ export  function JobCategorySelect({ value, onChange }: Props) {
   );
 }
 export  function JobEditCategory({ value, categories, onChange }: JobCategorySelectProps) {
-  console.log(categories)
   return (
     <select name="category" value={value } onChange={onChange}>
       <option value="">Select a category</option>
