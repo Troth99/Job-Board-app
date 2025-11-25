@@ -56,7 +56,7 @@ const [currentJob, setCurrentJob] = useState<Job>()
           navigate('/')
 
           return;
-        }
+        } 
 
        if (role === "recruiter" && isEditPage) {
           toast.error("Recruiters cannot edit jobs.");

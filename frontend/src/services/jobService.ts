@@ -68,3 +68,14 @@ export async function getJobById(jobId: string) {
     console.error("Failed to fetch jobs.");
   }
 }
+
+
+export async function updateJob(jobId: string, jobData: Job){
+  try {
+    if (!jobId) throw new Error("Job ID is missing.");
+    const response = await sendRequest(`${API_BASE}/jobs/${jobId}`, "PUT", jobData, authHeaders())
+    return response
+  } catch (error) {
+     console.error("Failed to fetch jobs.");
+  }
+}
