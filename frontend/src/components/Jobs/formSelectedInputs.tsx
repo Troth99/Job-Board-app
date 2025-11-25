@@ -45,7 +45,7 @@ export const employmentOptions = [
 ];
 export  function JobCategorySelect({ value, onChange }: Props) {
   return (
-    <select name="category" value={value} onChange={onChange}>
+    <select name="category" value={value } onChange={onChange}>
       <option value="">Select a category</option>
       {categories.map((cat) => (
         <option key={cat.value} value={cat.value}>
