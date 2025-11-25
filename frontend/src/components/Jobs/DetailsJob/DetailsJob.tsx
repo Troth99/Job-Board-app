@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getUserRole } from "../../../services/companyService";
 import { getUserFromLocalStorage } from "../../../services/auth/authService";
 import { Job } from "../CreateJob/CreateJob";
-import { getJobById } from "../../../services/jobService";
+import { getJobById, updateJob } from "../../../services/jobService";
 import Spinner from "../../Spinner/Spinner";
 
 export function DetailsJob() {
@@ -16,12 +16,15 @@ export function DetailsJob() {
   const [jobDetails, setJobdetails] = useState<Job>();
   const [loading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState<string | null>(null);
+  const [currentStatus, setCurrentStatus] = useState()
+  const [jobStatus, setJobStatus] = useState<boolean | undefined>(currentStatus)
 
   const fetchCurrentJob = async () => {
     try {
       if (jobId) {
         setLoading(true);
         const currentJob = await getJobById(jobId);
+        setCurrentStatus(currentJob.isActive)
         setJobdetails(currentJob);
       }
     } catch (error) {
@@ -51,12 +54,46 @@ export function DetailsJob() {
     if (jobId) {
       fetchCurrentJob();
     }
-  }, [companyId]);
+  }, [companyId, jobStatus]);
 
   const editNavigateHandler = () => {
     navigate(`/company/${companyId}/job/${jobId}/edit`);
   };
 
+  const changeStatusHandler = async () => {
+    try {
+      if(!jobId){
+        console.error('Job Id is missing')
+        return
+      }
+      const newStatus = !jobDetails?.isActive
+
+     setJobdetails((prevJob) => ({
+          ...prevJob,
+          isActive: newStatus
+        }))
+
+     const updatedJob: Job = {
+      ...jobDetails, 
+      isActive: newStatus,
+      updatedAt: new Date().toISOString(), 
+    };
+
+      setJobStatus(newStatus);
+
+      const response = await updateJob(jobId, updatedJob)
+
+      if(response) {
+     
+        setJobdetails((prevJob) => ({
+          ...prevJob,
+          isActive: newStatus
+        }))
+      }
+    } catch (error) {
+      console.error('failed to update the status')
+    }
+  }
   const canEditOrDelete = userRole === "admin" || userRole === "owner";
 
 
@@ -101,7 +138,7 @@ export function DetailsJob() {
             </div>
               <div className="job-skills-benefits">
               <div>
-                <strong>Posted By:</strong> {jobDetails?.createdBy.email || 'Deleted user.'}
+                <strong>Posted By:</strong> {jobDetails?.createdBy?.email || 'Deleted user.'}
               </div>
                 <div>
               <strong>Job Status:</strong> {jobDetails?.isActive ? "Active" : "Closed"}
@@ -177,6 +214,9 @@ export function DetailsJob() {
                   Edit Job
                 </button>
                 <button className="delete-job-button">Delete Job</button>
+                <button className="update-status-button" onClick={changeStatusHandler}>
+                  {jobDetails?.isActive? 'Deactivate Job' : 'Activate Job'}
+                </button>
               </div>
             </div>
           )}

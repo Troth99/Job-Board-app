@@ -12,12 +12,12 @@ interface Company {
 
 export interface Job {
   _id?: string;
-  title: string;
-  description: string;
-  location: string;
+  title?: string;
+  description?: string;
+  location?: string;
   salary?: string;
   createdBy?: {
-    email: string;
+    email?: string;
   };
   company?: Company | null;
   category?: string | null;
@@ -27,7 +27,7 @@ export interface Job {
   benefits?: string;
   applicationDeadline?: string;
   views?: number;
-  isActive?: boolean;
+  isActive: boolean;
   tags?: string;
   email?: string;
   updatedAt?: string

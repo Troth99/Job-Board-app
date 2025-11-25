@@ -170,7 +170,8 @@
 }
 
 .edit-job-button,
-.delete-job-button {
+.delete-job-button,
+.update-status-button {
   padding: 12px 24px;
   font-size: 16px;
   border-radius: 5px;
@@ -218,7 +219,10 @@
   color: #333;
   font-size: 17px;
 }
-
+.update-status-button {
+  cursor: pointer;
+  
+}
 
 @media (max-width: 768px) {
   .job-details-container {

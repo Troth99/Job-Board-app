@@ -23,10 +23,12 @@ export function MemberDashboard() {
       
         const response = await getJobsByCompany(companyId);
         if (response.length > 0) {
-          const sortedJobs = response.sort(
-            (a: Job, b: Job) =>
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-          );
+          const sortedJobs = response.sort((a: Job, b:Job) => {
+            const aCreatedAt = a.createdAt ? new Date(a.createdAt).getTime(): 0;
+            const bCreatedAt = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+            return bCreatedAt - aCreatedAt
+
+          })
           setJobs(sortedJobs.slice(0, 5));
         } else {
           setJobs([]);
