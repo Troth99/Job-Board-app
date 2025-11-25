@@ -20,7 +20,6 @@ export interface Job {
     email: string;
   };
   company?: Company | null;
-  type: string;
   category?: string | null;
   createdAt: string;
   skills?: string;
@@ -30,20 +29,21 @@ export interface Job {
   views?: number;
   isActive?: boolean;
   tags?: string;
-  contactEmail?: string;
+  email?: string;
+  
 }
 
-interface valuesInterface {
+export interface valuesInterface {
   title: string;
   description: string;
   location: string;
   salary: string;
   category: string;
-  type: string;
+  employmentType: string;
   skills: string;
   benefits: string;
   tags: string;
-  contactEmail: string;
+  email: string;
 }
 const initialValues = {
   title: "",
@@ -51,11 +51,11 @@ const initialValues = {
   location: "",
   salary: "",
   category: "",
-  type: "",
+  employmentType: "",
   skills: "",
   benefits: "",
   tags: "",
-  contactEmail: "",
+  email: "",
 };
 export function PostJob() {
   const { companyId } = useParams();
@@ -154,7 +154,7 @@ export function PostJob() {
 
         <div className="form-group">
           <label htmlFor="employmentType">Employment Type</label>
-          <EmploymentTypeSelect value={form.type} onChange={onChangeHandler} />
+          <EmploymentTypeSelect value={form.employmentType} onChange={onChangeHandler} />
         </div>
 
         <div className="form-group">
@@ -198,9 +198,9 @@ export function PostJob() {
           <input
             type="email"
             id="contactEmail"
-            name="contactEmail"
+            name="email"
             placeholder="Contact Email"
-            value={form.contactEmail}
+            value={form.email}
             onChange={onChangeHandler}
           />
         </div>

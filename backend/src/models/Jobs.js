@@ -41,6 +41,10 @@ const jobSchema = new Schema({
 
   skills: [{type: String}],
 
+  email: {
+    type: String,
+  },
+
   views: { type: Number, default: 0 },
 
   isActive: { type: Boolean, default: true },

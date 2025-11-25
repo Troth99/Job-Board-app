@@ -23,6 +23,9 @@ import { PostJob } from "./components/Jobs/CreateJob/CreateJob";
 import { EditJob } from "./components/Jobs/EditJob/EditJob";
 import { DetailsJob } from "./components/Jobs/DetailsJob/DetailsJob";
 import { JobEditRouteGuard } from "./utils/RouteGuards/jobEditRouteGuard";  
+import { useDispatch } from "react-redux";
+import { getCategories } from "./services/categoryService";
+import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
 
 
 
@@ -30,6 +33,21 @@ import { JobEditRouteGuard } from "./utils/RouteGuards/jobEditRouteGuard";
 function App() {
   const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    async function loadCategories() {
+      try {
+        const categories = await getCategories();
+            dispatch(setCategories(categories));
+      } catch (error) {
+         console.error("Error loading categories:", error);
+      }
+
+    }
+    loadCategories();
+  }, [dispatch]);
 
   useEffect(() => {
     async function wakeUpServer() {

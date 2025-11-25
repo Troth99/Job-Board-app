@@ -23,7 +23,7 @@ export async function getCategoryById(categoryId: string) {
       throw new Error('Category Id is missing.')
     }
 
-    const res = await sendRequest(`${API_BASE}/categories/${categoryId}`, 'GET', {})
+    const res = await sendRequest(`${API_BASE}/categories`, 'POST', {categoryId})
     return res
   } catch (error) {
     console.error('Failed to get category')

@@ -1,10 +1,15 @@
 import React from "react";
+import { Category } from "../../services/categoryService";
 
 interface Props {
-  value: string;
+  value: string | undefined;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
-
+interface JobCategorySelectProps {
+  value: string; 
+  categories: Category[]; 
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
 const categories = [
   { value: "IT", label: "IT / Software Development" },
   { value: "Design", label: "Design / Creative" },
@@ -44,6 +49,7 @@ export const employmentOptions = [
   { value: "Hybrid", label: "Hybrid" },
 ];
 export  function JobCategorySelect({ value, onChange }: Props) {
+
   return (
     <select name="category" value={value } onChange={onChange}>
       <option value="">Select a category</option>
@@ -55,9 +61,23 @@ export  function JobCategorySelect({ value, onChange }: Props) {
     </select>
   );
 }
+export  function JobEditCategory({ value, categories, onChange }: JobCategorySelectProps) {
+  console.log(categories)
+  return (
+    <select name="category" value={value } onChange={onChange}>
+      <option value="">Select a category</option>
+      {categories.map((category) => (
+        <option key={category._id} value={category._id}>
+          {category.name}
+        </option>
+      ))}
+    </select>
+  );
+}
+
 export  function EmploymentTypeSelect({ value, onChange }: Props) {
   return (
-    <select id="employmentType" name="type" value={value} onChange={onChange}>
+    <select id="employmentType" name="employmentType" value={value} onChange={onChange}>
       <option value="">Select Employment Type</option>
       {employmentOptions.map((opt) => (
         <option key={opt.value} value={opt.value}>
@@ -67,5 +87,6 @@ export  function EmploymentTypeSelect({ value, onChange }: Props) {
     </select>
   );
 }
+
 
 

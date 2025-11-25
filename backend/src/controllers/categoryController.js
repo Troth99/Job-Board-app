@@ -12,9 +12,9 @@ export const getCategories = async (req, res) => {
 
 export const getCategoryById = async (req, res) => {
     try {
-        console.log(req.body)
+  
         const  { categoryId }  = req.body;
-     console.log(categoryId)
+
 
   
         if (!categoryId) {

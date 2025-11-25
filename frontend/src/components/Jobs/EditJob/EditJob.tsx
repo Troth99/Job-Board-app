@@ -1,64 +1,90 @@
 import { useEffect, useState } from "react";
-import { Job } from "../CreateJob/CreateJob";
+import { Job, valuesInterface } from "../CreateJob/CreateJob";
 import { useParams } from "react-router";
 import { getJobById } from "../../../services/jobService";
-import { JobCategorySelect } from "../formSelectedInputs";
+import { EmploymentTypeSelect, JobCategorySelect, JobEditCategory } from "../formSelectedInputs";
+import { Category, getCategoryById } from "../../../services/categoryService";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+
+const initialValues = {
+  title: "",
+  description: "",
+  location: "",
+  salary: "",
+  category: "",
+  employmentType: "",
+  skills: "",
+  benefits: "",
+  tags: "",
+  email: "",
+};
 
 export function EditJob() {
   const { companyId, jobId } = useParams();
-  const [jobData, setJobData] = useState<Job >();
-  const [category, setCategory] = useState()
-  const [loading, setLoading] = useState<boolean>(true)
+  const [jobData, setJobData] = useState<valuesInterface>(initialValues);
+  const [category, setCategory] = useState<Category | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const dispatch = useDispatch()
 
-
-
+  const categories = useSelector((state: RootState) => state.categories.categories)
+  console.log(categories)
   const fetchCurrentJob = async () => {
     if (!jobId) {
       throw new Error("Job id is missing.");
     }
     try {
       const currentJob = await getJobById(jobId);
-      console.log(currentJob)
       setJobData(currentJob);
     } catch (error) {
-      console.error('Unable to fetch jobs.')
-    }finally {
-      setLoading(false)
+      console.error("Unable to fetch jobs.");
+    } finally {
+      setLoading(false);
     }
   };
 
-  const fetchCategory = async () => {
-     if (!jobId) {
-      throw new Error("Job id is missing.");
-    }
-    try {
-      
-    } catch (error) {
-      
-    }
-  }
 
   useEffect(() => {
-    console.log(jobData)
-    fetchCurrentJob()
-  }, [jobId])
 
+    const fetchData = async () => {
+      setLoading(true);
+      await fetchCurrentJob();
+      setLoading(false);
+    };
+    fetchData();
+  }, [jobId]);
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const {value} = e.target;
-    setJobData((prevData) => prevData ? {...prevData, category: value}: prevData)
-  }
+    const { value } = e.target;
+    setJobData((prevData) => ({
+       ...prevData, category: value 
+    })
+    );
+  };
 
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setJobData((prevData) => ({
+      ...prevData,
+      [name] : value
+    })
+    )
+  };
   return (
     <div className="post-job-container">
       <h2>Edit Job</h2>
       <form className="post-job-form">
         <div className="form-group">
           <label htmlFor="title">Job Title</label>
-          <input type="text" 
-          id="title" name="title" 
-          placeholder="Job Title" 
-          value={jobData?.title}
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Job Title"
+            value={jobData.title}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -68,7 +94,8 @@ export function EditJob() {
             id="description"
             name="description"
             placeholder="Job Description"
-                value={jobData?.description}
+            value={jobData.description}
+            onChange={handleInputChange}
           ></textarea>
         </div>
 
@@ -79,34 +106,38 @@ export function EditJob() {
             id="location"
             name="location"
             placeholder="Location"
-              value={jobData?.location}
+            value={jobData.location}
+            onChange={handleInputChange}
           />
         </div>
 
         <div className="form-group">
           <label htmlFor="salary">Salary</label>
-          <input type="text"
-           id="salary" 
-           name="salary"
-            placeholder="Salary" 
-              value={jobData?.salary}
-            />
+          <input
+            type="text"
+            id="salary"
+            name="salary"
+            placeholder="Salary"
+            value={jobData.salary}
+            onChange={handleInputChange}
+          />
         </div>
 
         <div className="form-group">
           <label htmlFor="category">Job Category</label>
-          
+          <JobEditCategory
+            value={jobData.category}
+            categories={categories}
+            onChange={handleCategoryChange}
+          />
         </div>
 
         <div className="form-group">
           <label htmlFor="employmentType">Employment Type</label>
-          <select id="employmentType" name="employmentType">
-            <option value="">Select Employment Type</option>
-            <option value="full-time">Full-time</option>
-            <option value="part-time">Part-time</option>
-            <option value="contract">Contract</option>
-            <option value="internship">Internship</option>
-          </select>
+          <EmploymentTypeSelect
+            value={jobData.employmentType}
+            onChange={handleCategoryChange}
+          />
         </div>
 
         <div className="form-group">
@@ -116,6 +147,8 @@ export function EditJob() {
             id="skills"
             name="skills"
             placeholder="e.g., React, Node.js, CSS"
+            value={jobData.skills}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -126,6 +159,8 @@ export function EditJob() {
             id="benefits"
             name="benefits"
             placeholder="e.g., Health Insurance, Remote Work"
+            value={jobData.benefits}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -136,6 +171,8 @@ export function EditJob() {
             id="tags"
             name="tags"
             placeholder="e.g., Frontend, Remote"
+            value={jobData.tags}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -144,8 +181,10 @@ export function EditJob() {
           <input
             type="email"
             id="contactEmail"
-            name="contactEmail"
+            name="email"
             placeholder="Contact Email"
+            value={jobData.email}
+            onChange={handleInputChange}
           />
         </div>
         <button type="submit" className="post-job-button">

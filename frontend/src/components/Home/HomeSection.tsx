@@ -16,33 +16,9 @@ export default function HomeSection() {
     (state: RootState) => state.categories.categories
   );
   const [recentJobs, setRecentJobs] = useState<Job[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadCategories() {
-      if (categories.length === 0) {
-        try {
-          const data = await getCategories();
-          dispatch(setCategories(data));
-        } catch (err) {
-          console.error(err);
-        }
-      }
-      setLoading(false);
-    }
-    loadCategories();
-  }, [dispatch, categories]);
 
 
-  useEffect(() => {
-    if (categories.length > 0 && recentJobs.length > 0) {
-      setLoading(false);
-    }
-  }, [categories, recentJobs]);
 
-  if (loading) {
-    return <FullPageSpinner />;
-  }
 
   return (
     <div>
