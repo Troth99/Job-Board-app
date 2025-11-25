@@ -103,7 +103,7 @@ export function DetailsJob() {
 
   return (
     <>
-      {loading && statusLoading ? (
+      {loading || statusLoading ? (
         <Spinner overlay={true} />
       ) : (
         <div className="job-details-container">
