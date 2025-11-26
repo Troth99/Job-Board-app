@@ -45,7 +45,7 @@ fetchRecentJobs()
       <Hero />
 
       <CategoriesSection />
-
+        <h1 className="recent-posted-jobs-text">Recent posted jobs.</h1>
       <RecentJobs recentJobs={recentJobs} />
     </div>
   );
