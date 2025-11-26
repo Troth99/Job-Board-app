@@ -1,6 +1,8 @@
 
+import { useEffect, useState } from 'react';
 import { Job } from '../../Jobs/CreateJob/CreateJob';
 import './RecentJobs.css'
+import { getRecentJobs } from '../../../services/jobService';
 
 
 interface RecentJobsProps {
@@ -8,12 +10,14 @@ interface RecentJobsProps {
 }
 
 export default function RecentJobs({ recentJobs }: RecentJobsProps) {
+console.log(recentJobs)
   return (
     <div className="job-container">
       {recentJobs && recentJobs.length > 0 ? (
         <ul className="recent-jobs-container">
+
           {recentJobs.map((job) => (
-            <li key={job.id} className="job-card">
+            <li key={job._id} className="job-card">
               <div className="job-card-content">
             
                 <div className="job-card-image">
@@ -27,16 +31,16 @@ export default function RecentJobs({ recentJobs }: RecentJobsProps) {
                   <h3>{job.title}</h3>
              
                   <p>
-                    {job.company ? job.company.name : `${job.postedBy.firstName} ${job.postedBy.lastName}`}
+                    {job.company ? job.company.name : `${job.createdBy?.firstName} ${job.createdBy?.lastName}`}
                   </p>
-                  <p>{job.location} - {job.type}</p>
-                  <p>Category: {job.category || "No category"}</p>
-                  <p>Posted at: {new Date(job.createdAt).toLocaleDateString()}</p>
+                  <p>{job.location} </p>
+                  <p>Category: {job.category?.name}</p>
+                  <p>Posted at: {job.createdAt}</p>
            
                   {job.company ? (
                     <p>Company: {job.company.name}</p>
                   ) : (
-                    <p>Posted by: {job.postedBy.firstName} {job.postedBy.lastName}</p>
+                    <p>Posted by: {job.createdBy?.firstName} {job.createdBy?.lastName}</p>
                   )}
                 </div>
               </div>

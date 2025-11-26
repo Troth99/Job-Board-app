@@ -129,7 +129,7 @@ export function DetailsJob() {
             </div>
             <div className="job-category-type">
               <div>
-                <strong>Job Category:</strong> {jobDetails?.category}
+                <strong>Job Category:</strong> {jobDetails?.category?.name}
               </div>
               <div>
                 <strong>Employment Type:</strong> {jobDetails?.employmentType}

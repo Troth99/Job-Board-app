@@ -16,7 +16,20 @@ export default function HomeSection() {
     (state: RootState) => state.categories.categories
   );
   const [recentJobs, setRecentJobs] = useState<Job[]>([]);
+ 
+const fetchRecentJobs = async () => {
 
+  try {
+    const data = await getRecentJobs()
+    setRecentJobs(data)
+  } catch (error) {
+    
+  }
+}
+
+useEffect(() => {
+fetchRecentJobs()
+},[])
 
 
 

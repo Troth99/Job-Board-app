@@ -86,11 +86,7 @@ export const getAllJobsController = async (req, res) => {
 export const getRecentJobsController = async (req, res) => {
   try {
 
-    console.log(req.query)
- 
     const limit = parseInt(req.query.limit || "10", 10);
-
-     console.log("Limit received:", limit);
     const jobs = await getRecentJobs(limit);
 
     res.json({jobs})
@@ -106,7 +102,7 @@ export const updateJobController = async (req, res) => {
 
   try {
  
-    const job = await Jobs.findById(id);
+    const job = await Jobs.findById(id).populate('category').exac();
     if (!job) {
       return res.status(404).json({ message: "Job not found" });
     }

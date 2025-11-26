@@ -72,6 +72,7 @@ export const getRecentJobs = async (limit = 5) => {
       .limit(limit)
       .populate("company", "name")
       .populate("category", "name")
+       .populate("createdBy", "firstName lastName")
       .lean();
 
     return jobs

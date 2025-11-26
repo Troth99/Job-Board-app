@@ -4,6 +4,7 @@ import { EmploymentTypeSelect, JobCategorySelect } from "../formSelectedInputs";
 import { createJob } from "../../../services/jobService";
 import { showSuccess } from "../../../utils/toast";
 import { useNavigate, useParams } from "react-router";
+import { Category } from "../../../services/categoryService";
 
 interface Company {
   name: string;
@@ -18,9 +19,11 @@ export interface Job {
   salary?: string;
   createdBy?: {
     email?: string;
+    firstName?: string,
+    lastName?: string,
   };
   company?: Company | null;
-  category?: string | null;
+  category?:Category
   createdAt?: string;
   skills?: string;
   employmentType?: string;
@@ -39,7 +42,7 @@ export interface valuesInterface {
   description: string;
   location: string;
   salary: string;
-  category: string;
+  category: Category;
   employmentType: string;
   skills: string;
   benefits: string;
@@ -52,7 +55,11 @@ const initialValues = {
   description: "",
   location: "",
   salary: "",
-  category: "",
+ category: {
+  _id: "",
+  name: "",
+  shortName: ""
+},
   employmentType: "",
   skills: "",
   benefits: "",
@@ -151,7 +158,7 @@ export function PostJob() {
 
         <div className="form-group">
           <label htmlFor="category">Job Category</label>
-          <JobCategorySelect value={form.category} onChange={onChangeHandler} />
+          <JobCategorySelect value={form.category._id} onChange={onChangeHandler} />
         </div>
 
         <div className="form-group">

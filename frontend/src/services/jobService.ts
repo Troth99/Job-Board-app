@@ -6,23 +6,13 @@ import { getAuthToken } from "./auth/authService";
 
 export async function getRecentJobs(limit = 5) {
   try {
-    const result = await fetch(`${API_BASE}/jobs/recent?limit=${limit}`);
-
-    if (!result.ok) {
-      throw new Error("Failed to fetch recent jobs!");
-    }
-
-    const data = await result.json();
-    console.log(data);
-    return data.jobs;
+    const recentJobs = await sendRequest(`${API_BASE}/jobs/recent?limit=${limit}`, "GET", {})
+  
+    return recentJobs.jobs
   } catch (error) {
     console.error("Error fetching recent jobs:", error);
     return [];
   }
-}
-
-export async function getAllJobs() {
-  return [];
 }
 
 export async function createJob(jobData: Partial<Job>) {
