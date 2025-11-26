@@ -23,7 +23,7 @@ export default function HomeSection() {
       setLoading(false)
     }
 
-  })
+  }, [])
 
     if(loading){
       return <FullPageSpinner/>
