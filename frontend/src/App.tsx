@@ -27,6 +27,7 @@ import { useDispatch } from "react-redux";
 import { getCategories } from "./services/categoryService";
 import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
 import { LogOut } from "./components/auth/Logout/Logout";
+import { CandidateJobView } from "./components/Jobs/CandidateJobView/CandidateJobView";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -86,14 +87,10 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <MainLayout>
-              <HomeSection />
-            </MainLayout>
-          }
-        />
+       <Route path="/" element={<MainLayout />}>
+        <Route index element={<HomeSection />} /> 
+        <Route path="job/:id" element={<CandidateJobView />} />
+      </Route>
 
         <Route element={<GuestGuardRoute />}>
           <Route

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Job } from '../../Jobs/CreateJob/CreateJob';
 import './RecentJobs.css'
 import { formatDate } from '../../../utils/formData';
+import { Link } from 'react-router';
 
 
 
@@ -11,12 +12,13 @@ interface RecentJobsProps {
 }
 
 export default function RecentJobs({ recentJobs }: RecentJobsProps) {
-console.log(recentJobs)
+
   return (
-      <div className="job-container">
+    <div className="job-container">
       {recentJobs && recentJobs.length > 0 ? (
         <ul className="recent-jobs-container">
           {recentJobs.map((job) => (
+           <Link to={`/job/${job._id}`} key={job._id} className="job-link">
             <li key={job._id} className="job-card">
               <div className="job-card-content">
                 <div className="job-card-image">
@@ -39,6 +41,7 @@ console.log(recentJobs)
                 </div>
               </div>
             </li>
+        </Link>
           ))}
         </ul>
       ) : (
