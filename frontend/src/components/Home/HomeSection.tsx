@@ -16,13 +16,14 @@ export default function HomeSection() {
     (state: RootState) => state.categories.categories
   );
   const [recentJobs, setRecentJobs] = useState<Job[]>([]);
-  const [loading, setLoading] = useState<boolean>(false)
+
 
 
 
     if(categories.length <= 0){
       return <FullPageSpinner/>
     }
+
   return (
     <div>
       <Hero />

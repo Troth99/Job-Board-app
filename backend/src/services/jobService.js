@@ -74,16 +74,7 @@ export const getRecentJobs = async (limit = 5) => {
       .populate("category", "name")
       .lean();
 
-    return jobs.map(job => ({
-      id: job._id,
-      title: job.title,
-      company: job.company?.name || null,
-      location: job.location,
-      type: job.type || "On-site",
-      salary: job.salary || null,
-      category: job.category?.name || null,
-      postedAt: job.createdAt,
-    }));
+    return jobs
   } catch (error) {
     console.error("Error in getRecentJobs service:", error);
     return [];

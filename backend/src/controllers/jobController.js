@@ -1,6 +1,6 @@
 import { CompanyMember } from "../models/CompanyMember.js";
 import Jobs from "../models/Jobs.js";
-import { createJobService, getAllJobs, getJobById, getRecentJobs } from "../services/jobService.js";
+import { createJobService, getJobById, getRecentJobs } from "../services/jobService.js";
 import mongoose, { Types } from "mongoose";
 
 
@@ -39,7 +39,9 @@ export const createJob = async (req, res) => {
 export const getJobByIdController = async (req, res) => {
   try {
     const  jobId  = req.params.id.trim();
-
+if (!jobId) {
+  return res.status(400).json({ message: "Job ID is required" });
+}
 
     if (!mongoose.Types.ObjectId.isValid(jobId)) {
 
@@ -63,13 +65,16 @@ export const getAllJobsController = async (req, res) => {
   try {
     const filter = {};
 
-    const companyId = req.query.company.trim();
+    if (req.query.company) {
+ 
+      const companyId = req.query.company.trim();  
 
-    if (!mongoose.isValidObjectId(companyId)) {
-      return res.status(400).json({ message: "Invalid company ID." });
+      if (!mongoose.isValidObjectId(companyId)) {
+        return res.status(400).json({ message: "Invalid company ID." });
+      }
+
+      filter.company = companyId;
     }
-
-    filter.company = companyId;
 
     const jobs = await Jobs.find(filter).populate("company");
     res.json(jobs);
@@ -80,13 +85,15 @@ export const getAllJobsController = async (req, res) => {
 };
 export const getRecentJobsController = async (req, res) => {
   try {
-    const limit = parseInt(req.query.limit || "5", 10);
-    console.log("Limit received:", limit);
 
+    console.log(req.query)
+ 
+    const limit = parseInt(req.query.limit || "10", 10);
+
+     console.log("Limit received:", limit);
     const jobs = await getRecentJobs(limit);
-    console.log("Jobs from service:", jobs);
 
-    res.json({ jobs });
+    res.json({jobs})
   } catch (error) {
     console.error("Error in getRecentJobsController:", error);
     res.status(500).json({ message: "Server error" });
