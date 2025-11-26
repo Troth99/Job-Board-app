@@ -70,7 +70,7 @@ export const getRecentJobs = async (limit = 5) => {
     const jobs = await Jobs.find({})
       .sort({ createdAt: -1 })
       .limit(limit)
-      .populate("company", "name")
+      .populate("company", "name logo website")
       .populate("category", "name")
        .populate("createdBy", "firstName lastName")
       .lean();
