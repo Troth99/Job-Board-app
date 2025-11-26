@@ -16,6 +16,7 @@ export default function HomeSection() {
     (state: RootState) => state.categories.categories
   );
   const [recentJobs, setRecentJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState<boolean>(true)
  
 const fetchRecentJobs = async () => {
 
@@ -23,7 +24,9 @@ const fetchRecentJobs = async () => {
     const data = await getRecentJobs()
     setRecentJobs(data)
   } catch (error) {
-    
+    console.error('Failed to fetch recent jobs.')
+  }finally{
+    setLoading(false)
   }
 }
 
@@ -33,7 +36,7 @@ fetchRecentJobs()
 
 
 
-    if(categories.length <= 0){
+    if(loading || categories.length <= 0 ){
       return <FullPageSpinner/>
     }
 

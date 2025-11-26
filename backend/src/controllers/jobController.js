@@ -102,7 +102,7 @@ export const updateJobController = async (req, res) => {
 
   try {
  
-    const job = await Jobs.findById(id).populate('category').exac();
+    const job = await Jobs.findById(id).populate('category')
     if (!job) {
       return res.status(404).json({ message: "Job not found" });
     }

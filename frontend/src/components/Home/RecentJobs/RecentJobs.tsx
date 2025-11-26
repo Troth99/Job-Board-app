@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Job } from '../../Jobs/CreateJob/CreateJob';
 import './RecentJobs.css'
-import { getRecentJobs } from '../../../services/jobService';
+
 
 
 interface RecentJobsProps {
@@ -22,8 +22,8 @@ console.log(recentJobs)
             
                 <div className="job-card-image">
                   <img
-                    src={job.company ? job.company.logo : 'assets/personAvatr.jpg'}
-                    alt={job.company ? job.company.name : 'Default avatar'}
+                    src={job.company ? job.company.logo : '/assets/defaultCompany.png'}
+                    alt="No image"
                     className="company-logo"
                   />
                 </div>

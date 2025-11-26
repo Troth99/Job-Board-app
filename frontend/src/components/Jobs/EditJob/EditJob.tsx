@@ -7,13 +7,18 @@ import { Category } from "../../../services/categoryService";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import Spinner from "../../Spinner/Spinner";
+import { l } from "react-router/dist/development/index-react-server-client-BSxMvS7Z";
 
 const initialValues = {
   title: "",
   description: "",
   location: "",
   salary: "",
-  category: "",
+ category: {
+  _id: "",
+  name: "",
+  shortName: ""
+},
   employmentType: "",
   skills: "",
   benefits: "",
@@ -39,6 +44,15 @@ export function EditJob() {
     }
     try {
       const currentJob = await getJobById(jobId);
+     
+      if(currentJob.category){
+        const selectedCategory = categories.find(
+          (category) => category._id === currentJob.category
+        );
+        if(selectedCategory) {
+          currentJob.category = selectedCategory
+        }
+      }
       setJobData(currentJob);
     } catch (error) {
       console.error("Unable to fetch jobs.");
@@ -57,13 +71,22 @@ export function EditJob() {
     fetchData();
   }, [jobId]);
 
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
+const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const selectedCategoryId = e.target.value;
+
+  const selectedCategory = categories.find(
+    (category) => category._id === selectedCategoryId
+  );
+
+
+  if (selectedCategory) {
+  
     setJobData((prevData) => ({
       ...prevData,
-      category: value,
+      category: selectedCategory, 
     }));
-  };
+  }
+};
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

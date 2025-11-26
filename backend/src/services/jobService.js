@@ -42,7 +42,7 @@ export const getJobById = async (jobId) => {
   try {
    
 
-    const job = await Jobs.findById(jobId).populate("createdBy", "name email role");  
+    const job = await Jobs.findById(jobId).populate("createdBy", "name email role").populate('category', 'name shortName');  
 
     if (!job) {
       throw new Error("Job not found");
