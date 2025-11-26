@@ -8,6 +8,7 @@ import RecentJobs from "./RecentJobs/RecentJobs";
 import FullPageSpinner from "../FullPageSpinner/FullPageSpinner";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { setCategories } from "./CategoriesSection/categoriesSlice";
 
 export default function HomeSection() {
   const dispatch = useDispatch();
@@ -15,17 +16,11 @@ export default function HomeSection() {
     (state: RootState) => state.categories.categories
   );
   const [recentJobs, setRecentJobs] = useState<Job[]>([]);
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(false)
 
-  useEffect(() => {
 
-    if(categories){
-      setLoading(false)
-    }
 
-  }, [])
-
-    if(loading){
+    if(categories.length <= 0){
       return <FullPageSpinner/>
     }
   return (
