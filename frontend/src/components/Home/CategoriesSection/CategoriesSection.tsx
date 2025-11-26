@@ -13,10 +13,6 @@ export default function CategoriesSection() {
  
   const { categories: reduxCategories, showAll } = useSelector((state: RootState) => state.categories); 
 
-  if (reduxCategories.length === 0) {
-    return <div>Loading...</div>; 
-  }
-
   const visibleCategories = showAll ? reduxCategories : reduxCategories.slice(0, 8);
   return (
       <div className="categories-section">
