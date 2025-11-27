@@ -20,7 +20,7 @@ export default function CategoriesSection() {
     : reduxCategories.slice(0, 8);
 
 const handleCategoryClick = (cat: Category) => {
-  const categoryName = encodeURIComponent(cat.name.toLowerCase().replace(/\s+/g, '-'))
+  const categoryName = encodeURIComponent(cat.name)
   navigate(`/category/${categoryName}`); 
 };
 

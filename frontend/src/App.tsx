@@ -28,6 +28,7 @@ import { getCategories } from "./services/categoryService";
 import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
 import { LogOut } from "./components/auth/Logout/Logout";
 import { CandidateJobView } from "./components/Jobs/CandidateJobView/CandidateJobView";
+import { FilterJobByCategory } from "./components/FilterJobsByCategory/FilterJobsByCategory";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -90,6 +91,7 @@ function App() {
        <Route path="/" element={<MainLayout />}>
         <Route index element={<HomeSection />} /> 
         <Route path="job/:id" element={<CandidateJobView />} />
+        <Route path="category/:categoryName" element={<FilterJobByCategory />} />
       </Route>
 
         <Route element={<GuestGuardRoute />}>
