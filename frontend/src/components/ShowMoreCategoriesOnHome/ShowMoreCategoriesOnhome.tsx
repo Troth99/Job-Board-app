@@ -1,29 +1,27 @@
+
 import "./ShowMoreCategories.css"
+import { Category } from "../../services/categoryService";
 
 type Props = {
   categories: any[];
   onClose: () => void;
-  onCategoryClick?: (cat: any) => void;
+  categoryHandler?: (cat: Category) => void;
 };
-export function ShowMoreCategories({categories, onCategoryClick, onClose }:  Props){
-
-
+export function ShowMoreCategories({categories, categoryHandler ,onClose }:  Props){
+    
     return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div
-        className="modal-content"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button className="modal-close-btn" onClick={onClose}>
-          ×
-        </button>
-
+      <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close-btn" onClick={onClose}>×</button>
         <div className="all-categories-grid">
           {categories.map((cat) => (
             <div
               key={cat._id}
               className="category-card large"
-              onClick={() => onCategoryClick(cat)}
+              onClick={() => {
+                categoryHandler?.(cat); 
+                onClose(); 
+              }}
             >
               {cat.name}
             </div>

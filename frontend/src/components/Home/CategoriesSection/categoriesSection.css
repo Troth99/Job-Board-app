@@ -172,3 +172,32 @@
 .modal-close-btn:hover {
   background: #e0e0e0;
 }
+
+@media (max-width: 768px) {
+.modal-content {
+width: 90%;
+padding: 20px;
+}
+.category-card {
+min-width: 100px;
+max-width: 150px;
+font-size: 0.9rem;
+padding: 0.8rem;
+}
+.show-all-btn {
+min-width: 140px;
+height: 36px;
+font-size: 0.9rem;
+}
+}
+
+@media (max-width: 480px) {
+.all-categories-grid {
+grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+}
+.category-card {
+min-width: 80px;
+max-width: 120px;
+font-size: 0.8rem;
+}
+}
