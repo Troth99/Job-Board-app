@@ -67,13 +67,13 @@ export const loginUser = async (req, res) => {
     console.log(user)
  
     if (!user) {
-      return res.status(401).json({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "Invalid email or password" });
     }
 
 
     const passwordMatches = await user.matchPassword(password);
     if (!passwordMatches) {
-      return res.status(401).json({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "Invalid email or password" });
     }
 
   
