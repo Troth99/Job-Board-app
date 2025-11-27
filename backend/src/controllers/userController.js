@@ -1,29 +1,51 @@
+import RefreshToken from "../models/RefreshToken.js";
 import User from "../models/User.js";
-import generateToken from "../utils/generateToken.js";
+import  { generateAccessToken, generateRefreshToken } from "../utils/generateToken.js";
 
 
 export const registerUser = async (req, res) => {
   const { firstName, lastName, email, phoneNumber, location, password, avatar } = req.body;
 
-
   try {
+ 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    const user = await User.create({ firstName, lastName, email, phoneNumber, location, password, avatar });
+    const user = await User.create({
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      location,
+      password,
+      avatar
+    });
+
+    const accessToken = generateAccessToken(user._id);
+    const refreshToken = generateRefreshToken(user._id);
+
+    await RefreshToken.create({
+      userId: user._id,
+      token: refreshToken,
+      expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) 
+    });
 
     res.status(201).json({
-      _id: user._id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      phoneNumber: user.phoneNumber,
-      location: user.location,
-      avatar: user.avatar,
-      token: generateToken(user._id)
+      user: {
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        location: user.location,
+        avatar: user.avatar
+      },
+      accessToken,
+      refreshToken
     });
+
   } catch (error) {
     if (error.name === "ValidationError") {
       const fieldErrors = {};
@@ -32,40 +54,57 @@ export const registerUser = async (req, res) => {
       }
       return res.status(400).json({ fieldErrors });
     }
+
     res.status(500).json({ message: error.message });
   }
 };
 
-
 export const loginUser = async (req, res) => {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
-    if (!email || !password) {
-        return res.status(400).json({ message: "Email and password are required" });
+  try {
+    const user = await User.findOne({ email });
+    console.log(user)
+ 
+    if (!user) {
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    try {
-        const user = await User.findOne({ email })
 
-        if (!user) {
-            return res.status(401).json({ message: "User does not exist." });
-        }
-
-        if (user && (await user.matchPassword(password))) {
-            res.json({
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-                token: generateToken(user._id),
-            });
-        } else {
-            res.status(401).json({ message: "Invalid email or password" });
-        }
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+    const passwordMatches = await user.matchPassword(password);
+    if (!passwordMatches) {
+      return res.status(401).json({ message: "Invalid email or password" });
     }
-}
 
+  
+    const accessToken = generateAccessToken(user._id);
+    const refreshToken = generateRefreshToken(user._id);
+
+
+    await RefreshToken.create({
+      userId: user._id,
+      token: refreshToken,
+      expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+    });
+
+    res.json({
+      user: {
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        location: user.location,
+        avatar: user.avatar
+      },
+      accessToken,
+      refreshToken
+    });
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 export const getUserProfile = async (req, res) => {
     try {
 
@@ -125,14 +164,21 @@ export const deleteUserProfile = async (req, res) => {
   }
 };
 
-export const logOutUser = async( req, res) => {
-    try {
-        res.status(200).json({message: 'Logged out'})
-    } catch (error) {
-            res.status(500).json({ message: error.message });
+export const logOutUser = async (req, res) => {
+  const { refreshToken } = req.body;
 
-    }
-}
+  if (!refreshToken) {
+    return res.status(400).json({ message: "Missing refresh token" });
+  }
+
+  try {
+    await RefreshToken.deleteOne({ token: refreshToken });
+
+    res.json({ message: "Logged out" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 export const deleteUserProfileImage = async (req, res) => {
   try {

@@ -11,7 +11,7 @@ const initialFormValue = {
 };
 
 export default function LoginComponent() {
-  const focusRef = useRef<HTMLInputElement>(null)
+  const focusRef = useRef<HTMLInputElement>(null);
   const [errors, setErrors] = useState<{
     email?: string;
     password?: string;
@@ -29,8 +29,8 @@ export default function LoginComponent() {
   };
 
   useEffect(() => {
-   focusRef.current?.focus()
-  },[]) 
+    focusRef.current?.focus();
+  }, []);
 
   const loginSubmitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -51,10 +51,12 @@ export default function LoginComponent() {
 
     try {
       const user = await loginUser(form.email, form.password);
-
-      if (user?.token) {
-        const { _id, email } = user;
-        const userData = { _id, email, token: user.token };
+      if (user?.accessToken) {
+        const userData = {
+          _id: user.user._id,
+          accessToken: user.accessToken,
+          refreshToken: user.refreshToken,
+        };
         localStorage.setItem("user", JSON.stringify(userData));
 
         navigate("/");
@@ -89,7 +91,7 @@ export default function LoginComponent() {
             <div className={`input-wrap ${errors.email ? "input-error" : ""}`}>
               <i className="fa-solid fa-envelope"></i>
               <input
-              ref={focusRef}
+                ref={focusRef}
                 placeholder="Email address"
                 id="email"
                 name="email"
@@ -103,7 +105,6 @@ export default function LoginComponent() {
             >
               <i className="fa-solid fa-lock"></i>
               <input
-              
                 type="password"
                 placeholder="Password"
                 id="pwd"

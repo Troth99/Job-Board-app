@@ -45,12 +45,12 @@ try {
 export async function logOut(){
 try {
   
-  const token = getAuthToken();
+  const token = getRefreshToken();
 
      if (!token) {
       throw new Error('No token found!');
     }
-  const response = await sendRequest(`${API_BASE}/users/logout`, "POST" , {})
+  const response = await sendRequest(`${API_BASE}/users/logout`, "POST" , {refreshToken: token})
 
   if(response){
     localStorage.removeItem('user');
@@ -63,7 +63,12 @@ try {
 }
 export function getAuthToken(): string | null {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
-  return user.token
+  return user.accessToken
+}
+
+export function getRefreshToken(): string | null {
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  return user.refreshToken
 }
 
 export function getUserFromLocalStorage() {

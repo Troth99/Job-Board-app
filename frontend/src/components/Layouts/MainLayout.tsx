@@ -18,7 +18,7 @@ export default  function MainLayout({children, hideHeaderFooter }: Props) {
     useEffect(() => {
       const fetchComapny = async () => {
         const user = getUserFromLocalStorage()
-        if(!user?.token) return;
+        if(!user?.accessToken) return;
 
         try {
           const companyMemberShip = await getMyCompany()

@@ -4,7 +4,7 @@ import { Header } from "./components/Header/Header";
 
 import "./styles/global.css";
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
-import { BrowserRouter, Route, Router, Routes } from "react-router";
+import {  Route, Routes } from "react-router";
 import LoginComponent from "./components/auth/Login/Login";
 import HomeSection from "./components/Home/HomeSection";
 import RegisterComponent from "./components/auth/Register/Register";
@@ -34,7 +34,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     async function loadCategories() {

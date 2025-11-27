@@ -80,11 +80,14 @@ export default function RegisterComponent() {
     }
 
     try {
-      const res = await registerUser(form);
+      const user = await registerUser(form);
 
-      if (res.token) {
-        const { _id, email, token } = res;
-        const userData = { _id, email, token };
+      if (user.accessToken) {
+             const userData = {
+          _id: user.user._id,
+          accessToken: user.accessToken,
+          refreshToken: user.refreshToken,
+        };
         localStorage.setItem("user", JSON.stringify(userData));
         navigate("/");
       }

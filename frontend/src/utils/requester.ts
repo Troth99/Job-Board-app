@@ -1,3 +1,7 @@
+import { toast } from "react-toastify";
+import { setAuthenticated } from "../redux/authSlice";
+import { store } from "../redux/store";
+import { useNavigate } from "react-router";
 
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'OPTIONS';
 
@@ -28,9 +32,13 @@ export async function sendRequest(url: string, method: HttpMethod, data?: Record
     const resData = await response.json();
 
     if (!response.ok) {
+       if (response.status === 401) {
+        localStorage.removeItem("user");
+        store.dispatch(setAuthenticated(false));
+        window.location.href = "/"
+      }
       throw new Error(resData.message || "Request failed");
     }
-
     return resData;
 
   } catch (err: any) {
