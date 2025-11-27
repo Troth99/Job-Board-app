@@ -1,0 +1,50 @@
+.all-categories-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem 0;
+  justify-content: center;
+}
+
+.all-categories-grid > div {
+     flex: 0 0 160px;   
+  height: 75px; 
+  background: linear-gradient(135deg, #c1d6f3, #b8cdf1);
+  padding: 1rem 1rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  color: #004a8f;
+  font-weight: 500;
+  min-width: 140px;
+  max-width: 200px;
+  text-align: center;
+}
+
+.all-categories-grid > div:hover {
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.all-categories-grid > div span {
+  font-weight: 600;
+  display: block;
+}
+
+[data-theme="dark"] .all-categories-grid {
+    background: linear-gradient(135deg, #151a22, #1c2230);
+}
+[data-theme="dark"] .all-categories-grid > div {
+  background: linear-gradient(135deg, #151a22, #1c2230);
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2), 0 0 10px #007bff;
+  color: #d0e7ff;
+}
+
+[data-theme="dark"] .all-categories-grid > div:hover {
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4), 0 0 20px #00aaff;
+  color: #fff;
+}
