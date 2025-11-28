@@ -21,10 +21,19 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     handleFileChange,
   } = useUserProfile();
 
-  const { loading: companyLoading, company, userRole } = useCompany();
+  const { loading: companyLoading, company, userRole, getCompanyFromLocalStorage, getCompanyById, getUserRole } = useCompany();
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+
+  // Fetch company data on mount
+  useEffect(() => {
+    const companyId = getCompanyFromLocalStorage();
+    if (companyId) {
+      getCompanyById(companyId);
+      getUserRole(companyId);
+    }
+  }, []);
 
   const registerCompanyNavigation = () => {
     navigate("/register/company");

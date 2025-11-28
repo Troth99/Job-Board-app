@@ -117,21 +117,11 @@ export default function useCompany() {
       const parsedUser = JSON.parse(user);
       const companyId = parsedUser?.company;
       if (companyId) {
-        getUserRole(companyId)
-        getCompanyById(companyId);
         return companyId;
-      } else {
-        setError("No company ID found in localStorage");
       }
-    } else {
-      console.log("No user data found in localStorage");
     }
     return null;
   };
-
-  useEffect(() => {
-    getCompanyFromLocalStorage();
-  }, []);
 
   return {
     loading,

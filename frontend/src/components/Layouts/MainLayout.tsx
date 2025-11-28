@@ -15,13 +15,15 @@ export default function MainLayout({ children, hideHeaderFooter }: Props) {
 
   // Set company to localStorage if the user is part of a company
   useEffect(() => {
+    let isMounted = true;
+
     const fetchCompany = async () => {
       const user = getUserFromLocalStorage();
       if (!user?.accessToken) return;
 
       try {
         const companyMembership = await getMyCompany();
-        if (companyMembership?._id) {
+        if (isMounted && companyMembership?._id) {
           localStorage.setItem(
             "user",
             JSON.stringify({ ...user, company: companyMembership._id })
@@ -32,7 +34,11 @@ export default function MainLayout({ children, hideHeaderFooter }: Props) {
       }
     };
     fetchCompany();
-  }, [getMyCompany]);
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <div>
