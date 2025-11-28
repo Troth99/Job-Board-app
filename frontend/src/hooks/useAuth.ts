@@ -10,6 +10,7 @@ export interface registerFormType {
   confirmPassword: string;
   phoneNumber: string;
   location: string;
+  [key: string]: string;
 }
 
 export default function useAuth() {
@@ -39,7 +40,7 @@ export default function useAuth() {
     setLoading(true);
     try {
       const { confirmPassword, ...registrationData } = data;
-      const response = await request(`${API_BASE}/users/register`, "POST", registrationData);
+      const response = await request(`${API_BASE}/users/register`, "POST", registrationData, {});
       return response;
     } catch (error: any) {
       console.error('Registration error:', error);

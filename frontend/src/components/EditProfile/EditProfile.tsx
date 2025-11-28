@@ -3,7 +3,7 @@ import "./Responsive.css";
 import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../utils/toast";
-import { useValidation } from "../../utils/useValidation";
+import { useValidation } from "../validators/useValidation";
 import useUserProfile from "../../hooks/useProfile";
 import useForm from "../../hooks/useForm";
 import { useState, useEffect } from "react";

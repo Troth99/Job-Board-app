@@ -29,6 +29,8 @@ export default function CompanyRouteGuard() {
       return; 
     }
 
+    let isMounted = true;
+
     const fetchUserCompany = async () => {
       if (!token || !user) {
         toast.error("You do not have access to this page.");
@@ -38,16 +40,24 @@ export default function CompanyRouteGuard() {
       }
 
       try {
-        await getCompanyById(companyId);
+        if (isMounted) {
+          await getCompanyById(companyId);
+        }
       } catch (error) {
         console.error(error);
-        showCompanyWarning("Error fetching company data.");
-        setLoading(false);
+        if (isMounted) {
+          showCompanyWarning("Error fetching company data.");
+          setLoading(false);
+        }
       }
     };
 
     fetchUserCompany();
-  }, [companyId, token, user, navigate, toastShown]); 
+
+    return () => {
+      isMounted = false;
+    };
+  }, [companyId]); 
 
   // Check access when company data is loaded
   useEffect(() => {

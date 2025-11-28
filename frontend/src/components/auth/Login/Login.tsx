@@ -3,7 +3,7 @@ import "./Login.css";
 import "./Responsive.css";
 import { useEffect, useRef, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
-import { useValidation } from "../../../utils/useValidation";
+import { useValidation } from "../../validators/useValidation";
 
 const initialFormValue = {
   email: "",

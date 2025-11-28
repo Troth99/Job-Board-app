@@ -3,7 +3,7 @@ import "./RegisterCompany.css";
 import "./Responsive.css";
 import { showSuccess } from "../../../utils/toast";
 import { useNavigate } from "react-router";
-import { validateCompany } from "../../../utils/registerCompanyValidation";
+import { validateCompany } from "../../validators/registerCompanyValidation";
 import useForm from "../../../hooks/useForm";
 import useCompany from "../../../hooks/useCompany";
 
@@ -32,16 +32,32 @@ const initialValues: RegisterCompanyInterface = {
 export default function RegisterCompany() {
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
-  const { createCompany } = useCompany();
+  const {company, createCompany } = useCompany();
 
   const validateForm = (values: RegisterCompanyInterface) => validateCompany(values);
 
   const onSubmit = async (values: RegisterCompanyInterface) => {
     setLoading(true);
     try {
-      await createCompany(values);
+      const createdCompany = await createCompany(values);
+      
+      // Extract company ID from response
+      const companyId = createdCompany?.company?._id || createdCompany?._id;
+      
+      if (!companyId) {
+        throw new Error("Company ID not returned from server");
+      }
+      
+      // Update localStorage to include company ID
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        const user = JSON.parse(userStr);
+        user.company = companyId;
+        localStorage.setItem('user', JSON.stringify(user));
+      }
+      
       showSuccess("Company registered successfully!");
-      navigate("/");
+      navigate(`/company/${companyId}/dashboard`);
     } catch (error: any) {
       throw new Error(error.message || "Failed to create company");
     } finally {

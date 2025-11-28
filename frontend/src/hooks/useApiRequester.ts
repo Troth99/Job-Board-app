@@ -23,7 +23,8 @@ const useApiRequester = () => {
     method: HttpMethod,
     data?: Record<string, any>,
     headers?: Record<string, string>,
-    isRetry: boolean = false
+    isRetry: boolean = false,
+    showToast: boolean = true
   ) => {
     setLoading(true);
     setError(null);
@@ -69,7 +70,7 @@ const useApiRequester = () => {
               updateTokensInStorage(tokenData.accessToken, tokenData.refreshToken);
               
               // Retry the original request with the new token
-              return await request(url, method, data, headers, true);
+              return await request(url, method, data, headers, true, showToast);
             } catch (refreshError) {
               // Refresh failed - logout user
               console.error('Token refresh failed:', refreshError);
@@ -93,7 +94,9 @@ const useApiRequester = () => {
       return resData;
     } catch (err: any) {
       setError(err?.message || "Something went wrong");
-      toast.error(err?.message || "Something went wrong");
+      if (showToast) {
+        toast.error(err?.message || "Something went wrong");
+      }
       throw err;
     } finally {
       setLoading(false);

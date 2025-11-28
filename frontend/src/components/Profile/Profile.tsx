@@ -21,7 +21,6 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     handleFileChange,
   } = useUserProfile();
 
-  console.log(avatar);
   const { loading: companyLoading, company, userRole } = useCompany();
 
   const fileInputRef = useRef<HTMLInputElement>(null);

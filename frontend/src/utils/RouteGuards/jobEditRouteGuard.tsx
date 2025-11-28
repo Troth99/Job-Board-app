@@ -26,6 +26,7 @@ export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
   const isEditPage = location.pathname.includes("/edit");
   
   useEffect(() => {
+    let isMounted = true;
 
     const checkAccess = async () => {
       if (!companyId || !jobId) {
@@ -40,46 +41,63 @@ export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
       }
 
       try {
+        // Fetch all data first
         await getCompanyById(companyId);
         await getUserRole(companyId);
-        const currentJob = await getJobById(jobId);
-        setCurrentJob(currentJob);
-
-        if (!company?.members?.includes(user._id)) {
-          toast.error("You are not a member of this company.");
-          navigate("/"); 
-          return;
-        }
-      
-        if (companyId !== currentJob.company) {
-          toast.error("This job is not part of your company.");
-          navigate('/')
-          return;
-        } 
-
-        if (userRole === "recruiter" && isEditPage) {
-          toast.error("Recruiters cannot edit jobs.");
-          navigate(`/company/${companyId}/job/${jobId}/details`); 
-          return;
-        }
-
-        if (!company?.members?.includes(user._id) || !hasValidRole(userRole || '')) {
-          toast.error("You do not have access to this company or job.");
-          navigate('/')
-          return;
-        }
+        const job = await getJobById(jobId);
+        
+        if (!isMounted) return;
+        
+        setCurrentJob(job);
       } catch (error) {
-        console.error("Error loading data.");
-        navigate("/");  
+        console.error("Error loading data.", error);
+        if (isMounted) {
+          toast.error("Failed to load job or company data.");
+          navigate("/");  
+        }
+        return;
       }
 
-      setLoading(false)
+      if (isMounted) {
+        setLoading(false);
+      }
     };
 
     checkAccess();
 
-   
-  }, [companyId, jobId, token, user._id, navigate]);
+    return () => {
+      isMounted = false;
+    };
+  }, [companyId, jobId]);
+
+  // Check access after company and role data loads
+  useEffect(() => {
+    if (loading || !company || !currentJob || userRole === null) return;
+
+    if (!company?.members?.includes(user._id)) {
+      toast.error("You are not a member of this company.");
+      navigate("/"); 
+      return;
+    }
+  
+    if (companyId !== currentJob.company) {
+      toast.error("This job is not part of your company.");
+      navigate('/')
+      return;
+    } 
+
+    if (userRole === "recruiter" && isEditPage) {
+      toast.error("Recruiters cannot edit jobs.");
+      navigate(`/company/${companyId}/job/${jobId}/details`); 
+      return;
+    }
+
+    if (!hasValidRole(userRole || '')) {
+      toast.error("You do not have access to this job.");
+      navigate('/')
+      return;
+    }
+  }, [company, userRole, currentJob, loading]);
 
 if (loading) {
   return (

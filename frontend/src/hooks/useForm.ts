@@ -72,6 +72,7 @@ export default function useForm<T extends FormValues>(
         values,
         register,
         formHandler,
-        errors, 
+        errors,
+        setErrors,
     };
 }

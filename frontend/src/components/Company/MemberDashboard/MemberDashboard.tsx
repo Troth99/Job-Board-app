@@ -7,17 +7,17 @@ import Spinner from "../../Spinner/Spinner";
 import { ShowJobs } from "../showJobs/showCompanyJobs";
 import { Job } from "../../Jobs/CreateJob/CreateJob";
 import useJobs from "../../../hooks/useJobs";
+import useCompany from "../../../hooks/useCompany";
 
 export function MemberDashboard() {
   const { companyId } = useParams();
-  const [role, setRole] = useState(null);
   const [loadingJobs, setLoadingJobs] = useState<boolean>(true); 
-  const [loadingRole, setLoadingRole] = useState<boolean>(true);
-  const [error, setError] = useState(null);
   const [jobs, setJobs] = useState<Job[]>([]);
   const navigate = useNavigate();
+  const {company, getUserRole, userRole, loading: loadingRole} = useCompany();
   const { getJobsByCompany } = useJobs();
 
+  console.log(companyId)
   const fetchCompanyJobs = async () => {
     if (companyId) {
       try {
@@ -45,6 +45,7 @@ export function MemberDashboard() {
   useEffect(() => {
     if (companyId) {
       fetchCompanyJobs();
+      getUserRole(companyId);
     }
   }, [companyId]);
 
@@ -52,7 +53,7 @@ export function MemberDashboard() {
     navigate(`/company/${companyId}/post-job`);
   };
 
- const canPostJob = role === "admin" || role === "owner" || role === "recruiter";
+ const canPostJob = userRole === "admin" || userRole === "owner" || userRole === "recruiter";
 
    const isLoading = loadingJobs || loadingRole;
   return (
@@ -65,7 +66,7 @@ export function MemberDashboard() {
           <div className="sidebar">
             <div className="sidebar-header">
               <h2>Company Dashboard</h2>
-              <p className="user-role">Role: {role}</p>
+              <p className="user-role">Role: {userRole}</p>
             </div>
             <div className="sidebar-nav">
               <ul>
