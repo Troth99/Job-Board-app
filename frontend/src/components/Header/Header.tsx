@@ -3,7 +3,7 @@ import { useTheme } from "../../utils/useTheme";
 import "./Header.css";
 import "./Responsive.css";
 import { Link, Routes } from "react-router";
-import { getAuthToken } from "../../services/auth/authService";
+import { getAuthToken, getRefreshToken } from "../../services/auth/authService";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated } from "../../redux/authSlice";  
 import { RootState } from "../../redux/store";
@@ -17,10 +17,16 @@ export function Header() {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated); 
 
 
-  useEffect(() => {
-    const token = getAuthToken();
-    dispatch(setAuthenticated(!!token));  
-  }, [dispatch]);
+useEffect(() => {
+  const token = getRefreshToken();
+
+
+  if (!token) {
+    dispatch(setAuthenticated({ isAuthenticated: false, }));
+  } else {
+    dispatch(setAuthenticated({ isAuthenticated: true }));
+  }
+}, [dispatch]);
 
 
   const hamburgerMenuHandler = () => {

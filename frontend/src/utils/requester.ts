@@ -33,9 +33,6 @@ export async function sendRequest(url: string, method: HttpMethod, data?: Record
 
     if (!response.ok) {
        if (response.status === 401) {
-        localStorage.removeItem("user");
-        store.dispatch(setAuthenticated(false));
-        window.location.href = "/"
       }
       throw new Error(resData.message || "Request failed");
     }

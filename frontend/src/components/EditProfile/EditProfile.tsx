@@ -1,29 +1,22 @@
-import { useEffect, useState } from "react";
-import {
-  deleteUserProfile,
-  deleteUserProfileImage,
-  getUserProfile,
-  updateUserProfile,
-} from "../../services/userService";
 import "./EditProfile.css";
 import "./Responsive.css";
 import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../utils/toast";
 import { useValidation } from "../../utils/useValidation";
-import { logOut, registerFormType } from "../../services/auth/authService";
-import { useDispatch } from "react-redux";
-import { logout, setAuthenticated } from "../../redux/authSlice";
+import useUserProfile from "../../hooks/useProfile";
+import useForm from "../../hooks/useForm";
+import { useState, useEffect } from "react";
 
-export interface ProfileData {
+interface ProfileData {
   firstName: string;
   lastName: string;
   email: string;
   phoneNumber?: string;
   location?: string;
   avatar?: string;
+  [key: string]: string | undefined; 
 }
-
 const initialProfileData: ProfileData = {
   firstName: "",
   lastName: "",
@@ -32,174 +25,93 @@ const initialProfileData: ProfileData = {
   location: "",
   avatar: "",
 };
+
 export default function EditProfile() {
-  const [avatarInfo, setAvatarInfo] = useState({
-    avatar: "",
-  });
-  const [profileData, setProfileData] =
-    useState<ProfileData>(initialProfileData);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [buttonLoading, setButtonLoading] = useState<boolean>(false);
-  const [errors, setErrors] = useState<Partial<registerFormType>>({});
-  const dispatch = useDispatch();
+  const { userData, loading, updateUserProfile } = useUserProfile();
+
+  const [profileData, setProfileData] = useState<ProfileData>(initialProfileData);
+
+
+  useEffect(() => {
+    if (userData) {
+    
+      setProfileData({
+        firstName: userData.firstName || "",
+        lastName: userData.lastName || "",
+        email: userData.email || "",
+        phoneNumber: userData.phoneNumber || "",
+        location: userData.location || "",
+        avatar: userData.avatar || "",
+      });
+    }
+  }, [userData])
+  
+
 
   const { validateForm } = useValidation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const data = await getUserProfile();
-        setProfileData(data);
-      } catch (error) {
-        console.error("Failed to fetch user for edit page.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProfile();
-  }, []);
-
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    const trimmedValue = value.trim();
-
-    setProfileData((prev) => ({
-      ...(prev as ProfileData),
-      [name]: trimmedValue,
-    }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
-  };
-
-  const handleDeleteProfileImage = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const formAction = async (values: any) => {
     try {
-      const response = await deleteUserProfileImage();
-      if (response.message === "Profile image deleted successfully") {
-        setAvatarInfo((prev) => ({ ...prev, avatar: "" }));
-        showSuccess("Profile image deleted successfully!");
-        navigate("/profile");
-      }
+      await updateUserProfile(values);
+      showSuccess("Profile was updated successfully!");
+      navigate("/profile"); 
     } catch (error) {
-      console.error("Error deleting profile image:", error);
-      alert("Failed to delete profile image.");
+      console.error("Failed to update profile.");
     }
   };
+
+  const { register, formHandler, values, errors } = useForm(formAction, profileData, validateForm);
+  
+  const [buttonLoading, setButtonLoading] = useState(false);
 
   const changePasswordHandler = () => {
     navigate("/profile/change-password");
   };
-  const editSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setButtonLoading(true);
-    setErrors({});
-
-    const formErrors = validateForm(profileData);
-    setErrors(formErrors);
-
-    if (Object.keys(formErrors).length > 0) {
-      setButtonLoading(false);
-      return;
-    }
-    try {
-      await updateUserProfile(profileData);
-
-      showSuccess("Profile saved scucsesfully!");
-      navigate("/profile");
-    } catch (error) {
-      console.error("Failed to save changes!");
-    } finally {
-      setButtonLoading(false);
-    }
-  };
 
   const deleteProfileHandler = async () => {
-    const isConfirmed = window.confirm(
-      "Are you sure you want to delete your profile??"
-    );
+    const isConfirmed = window.confirm("Are you sure you want to delete your profile?");
     if (!isConfirmed) {
       return;
     }
-    const password = window.prompt(
-      "Please enter your password to confirm the deletion:"
-    );
-
+    const password = window.prompt("Please enter your password to confirm the deletion:");
+    
     if (!password) {
       alert("Password is required to delete the profile.");
       return;
     }
-
-    setLoading(true);
-    try {
-      await deleteUserProfile();
-      const success = await logOut();
-      
-      dispatch(setAuthenticated(false));
-      if (success) {
-        dispatch(setAuthenticated(false));
-
-        navigate("/");
-      } else {
-        alert("Logout failed");
-      }
-    } catch (error) {
-      console.error("Error deleting profile:", error);
-      alert("An error occurred while deleting your profile.");
-    } finally {
-      setLoading(false);
-    }
   };
+
   return (
     <div className="profile-body" style={{ position: "relative" }}>
       {loading && <Spinner overlay={true} />}
-
+      
       {!loading && (
         <div className="profile-container">
           <div className="profile-header">
             <h1>Edit Profile</h1>
           </div>
 
-          <form onSubmit={editSubmitHandler}>
+          <form onSubmit={formHandler}>
             <div className="profile-details">
               <div>
                 <strong>First name:</strong>
-                <input
-                  type="text"
-                  value={profileData?.firstName}
-                  name="firstName"
-                  onChange={onChangeHandler}
-                />
+                <input type="text" {...register('firstName')} />
                 <div className="error-message">{errors.firstName}</div>
               </div>
               <div>
                 <strong>Last name:</strong>
-                <input
-                  type="text"
-                  value={profileData?.lastName}
-                  name="lastName"
-                  onChange={onChangeHandler}
-                />
+                <input type="text" {...register('lastName')} />
                 <div className="error-message">{errors.lastName}</div>
               </div>
               <div>
                 <strong>Phone:</strong>
-                <input
-                  type="text"
-                  value={profileData?.phoneNumber}
-                  name="phoneNumber"
-                  onChange={onChangeHandler}
-                />
+                <input type="text" {...register('phoneNumber')} />
                 <div className="error-message">{errors.phoneNumber}</div>
               </div>
               <div>
                 <strong>Location:</strong>
-                <input
-                  type="text"
-                  value={profileData?.location}
-                  name="location"
-                  onChange={onChangeHandler}
-                />
+                <input type="text" {...register('location')} />
                 <div className="error-message">{errors.location}</div>
               </div>
 
@@ -214,11 +126,11 @@ export default function EditProfile() {
               </div>
             </div>
           </form>
+
           <div className="button-container">
             <div className="delete-image-container">
               <button
                 className="delete-image-button"
-                onClick={handleDeleteProfileImage}
                 disabled={buttonLoading}
               >
                 Delete Profile Image
@@ -228,7 +140,7 @@ export default function EditProfile() {
               <button
                 className="change-password-button"
                 onClick={changePasswordHandler}
-                disabled={buttonLoading}
+                disabled={loading}
               >
                 Change Password
               </button>
@@ -238,7 +150,7 @@ export default function EditProfile() {
               <button
                 className="delete-profile-button"
                 onClick={deleteProfileHandler}
-                disabled={buttonLoading}
+                disabled={loading}
               >
                 Delete Profile
               </button>

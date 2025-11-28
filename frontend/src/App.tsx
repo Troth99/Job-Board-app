@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import { Footer } from "./components/Footer/Footer";
-import { Header } from "./components/Header/Header";
-
 import "./styles/global.css";
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import {  Route, Routes } from "react-router";
