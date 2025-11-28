@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getJobsByCompany } from "../../../services/jobService";
+import useJobs from "../../../hooks/useJobs";
 import { useNavigate, useParams } from "react-router";
 import { Job } from "../../Jobs/CreateJob/CreateJob";
 import { formatDate } from "../../../utils/formData";

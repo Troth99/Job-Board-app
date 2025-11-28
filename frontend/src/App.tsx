@@ -21,7 +21,7 @@ import { EditJob } from "./components/Jobs/EditJob/EditJob";
 import { DetailsJob } from "./components/Jobs/DetailsJob/DetailsJob";
 import { JobEditRouteGuard } from "./utils/RouteGuards/jobEditRouteGuard";  
 import { useDispatch } from "react-redux";
-import { getCategories } from "./services/categoryService";
+import useCategories from "./hooks/useCategories";
 import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
 import { LogOut } from "./components/auth/Logout/Logout";
 import { CandidateJobView } from "./components/Jobs/CandidateJobView/CandidateJobView";
@@ -31,6 +31,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
   const dispatch = useDispatch();
+  const { getCategories } = useCategories();
 
   useEffect(() => {
     async function loadCategories() {

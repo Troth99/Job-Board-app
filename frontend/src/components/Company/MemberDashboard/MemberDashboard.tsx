@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router";
 import Spinner from "../../Spinner/Spinner";
 import { ShowJobs } from "../showJobs/showCompanyJobs";
 import { Job } from "../../Jobs/CreateJob/CreateJob";
-import { getJobsByCompany } from "../../../services/jobService";
+import useJobs from "../../../hooks/useJobs";
 
 export function MemberDashboard() {
   const { companyId } = useParams();
@@ -16,6 +16,7 @@ export function MemberDashboard() {
   const [error, setError] = useState(null);
   const [jobs, setJobs] = useState<Job[]>([]);
   const navigate = useNavigate();
+  const { getJobsByCompany } = useJobs();
 
   const fetchCompanyJobs = async () => {
     if (companyId) {

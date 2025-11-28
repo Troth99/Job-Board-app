@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../../hooks/useAuth";
 import Spinner from "../../components/Spinner/Spinner";
 import { Job } from "../../components/Jobs/CreateJob/CreateJob";
-import { getJobById } from "../../services/jobService";
+import useJobs from "../../hooks/useJobs";
 import useCompany from "../../hooks/useCompany";
 
 
@@ -16,6 +16,7 @@ export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
   const [loading, setLoading] = useState(true)
   const [currentJob, setCurrentJob] = useState<Job>()
   const { getCompanyById, getUserRole, company, userRole } = useCompany();
+  const { getJobById } = useJobs();
 
   const hasValidRole = (role: string) => ["admin", "owner", "recruiter"].includes(role);
 

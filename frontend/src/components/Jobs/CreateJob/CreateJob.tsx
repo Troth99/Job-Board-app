@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./CreateJob.css";
 import { EmploymentTypeSelect, JobCategorySelect } from "../formSelectedInputs";
-import { createJob } from "../../../services/jobService";
+import useJobs from "../../../hooks/useJobs";
 import { showSuccess } from "../../../utils/toast";
 import { useNavigate, useParams } from "react-router";
-import { Category } from "../../../services/categoryService";
+import { Category } from "../../../hooks/useCategories";
 
 interface Company {
   name: string;
@@ -72,6 +72,7 @@ export function PostJob() {
   const [loading, setLoading] = useState<boolean>(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const { createJob } = useJobs();
 
   const onChangeHandler = (
     e: React.ChangeEvent<

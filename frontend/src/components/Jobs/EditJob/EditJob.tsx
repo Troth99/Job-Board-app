@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Job, valuesInterface } from "../CreateJob/CreateJob";
 import { useNavigate, useParams } from "react-router";
-import { getJobById, updateJob } from "../../../services/jobService";
+import useJobs from "../../../hooks/useJobs";
 import { EmploymentTypeSelect, JobEditCategory } from "../formSelectedInputs";
-import { Category } from "../../../services/categoryService";
+import { Category } from "../../../hooks/useCategories";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import Spinner from "../../Spinner/Spinner";
@@ -37,6 +37,7 @@ export function EditJob() {
   const categories = useSelector(
     (state: RootState) => state.categories.categories
   );
+  const { getJobById, updateJob } = useJobs();
 
   const fetchCurrentJob = async () => {
     if (!jobId) {

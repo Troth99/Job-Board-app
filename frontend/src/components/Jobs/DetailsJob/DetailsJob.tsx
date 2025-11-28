@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import "./Details.css";
 import { useEffect, useState } from "react";
 import { Job } from "../CreateJob/CreateJob";
-import { getJobById, updateJob } from "../../../services/jobService";
+import useJobs from "../../../hooks/useJobs";
 import Spinner from "../../Spinner/Spinner";
 import { formatDate } from "../../../utils/formData";
 import useCompany from "../../../hooks/useCompany";
@@ -19,6 +19,7 @@ export function DetailsJob() {
   const [jobStatus, setJobStatus] = useState<boolean | undefined>(currentStatus)
   const [statusLoading, setStatusLoading] = useState(false)
   const { getUserRole, userRole } = useCompany();
+  const { getJobById, updateJob } = useJobs();
 
   const fetchCurrentJob = async () => {
     try {
