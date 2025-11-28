@@ -245,7 +245,7 @@ export const refreshAccessToken = async (req, res) => {
 
 
     const newAccessToken = generateAccessToken(decoded.id);
-    console.log('✨ New access token generated:', newAccessToken);
+
 
   
     res.json({

@@ -115,9 +115,8 @@ export function updateTokensInStorage(accessToken: string, refreshToken?: string
     ...(refreshToken && { refreshToken }),
   };
   
-  console.log('📝 Updated user object:', updatedUser);
   localStorage.setItem('user', JSON.stringify(updatedUser));
-  console.log('📝 Saved to localStorage');
+
 }
 
 export function getAuthToken(): string | null {

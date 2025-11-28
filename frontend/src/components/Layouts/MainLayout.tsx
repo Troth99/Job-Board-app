@@ -24,9 +24,11 @@ export default function MainLayout({ children, hideHeaderFooter }: Props) {
       try {
         const companyMembership = await getMyCompany();
         if (isMounted && companyMembership?._id) {
+          // Get fresh user data from localStorage (might have been updated by token refresh)
+          const freshUser = getUserFromLocalStorage();
           localStorage.setItem(
             "user",
-            JSON.stringify({ ...user, company: companyMembership._id })
+            JSON.stringify({ ...freshUser, company: companyMembership._id })
           );
         }
       } catch (error) {

@@ -11,6 +11,9 @@ interface RequestOptions {
   body?: string;
 }
 
+// Global refresh promise to prevent multiple simultaneous refresh attempts
+let refreshPromise: Promise<any> | null = null;
+
 const useApiRequester = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -57,24 +60,38 @@ const useApiRequester = () => {
 
       if (!response.ok) {
         if (response.status === 401 && !isRetry) {
-  
-          // Try to refresh the token
+          console.log('🔴 Got 401 - attempting token refresh...');
+          
           const refreshToken = getRefreshToken();
           
           if (refreshToken) {
             try {
-       
-              const tokenData = await refreshAccessToken(refreshToken);
-        
+              // Check if refresh is already in progress
+              if (!refreshPromise) {
+                console.log('🔒 Starting new refresh...');
+                refreshPromise = refreshAccessToken(refreshToken)
+                  .then(tokenData => {
+                    console.log('✅ Token refreshed!');
+                    updateTokensInStorage(tokenData.accessToken, tokenData.refreshToken);
+                    return tokenData;
+                  })
+                  .finally(() => {
+                    refreshPromise = null; // Clear the promise
+                  });
+              } else {
+                console.log('⏳ Waiting for existing refresh...');
+              }
               
-              // Update tokens in localStorage
-              updateTokensInStorage(tokenData.accessToken, tokenData.refreshToken);
-     
-              // Retry the original request with the new token
-       
+              // Wait for the refresh to complete
+              await refreshPromise;
+              
+           
+              console.log('🔄 Retrying original request...');
               return await request(url, method, data, headers, true);
             } catch (refreshError) {
               // Refresh failed - logout user
+              console.error('❌ Refresh failed:', refreshError);
+              refreshPromise = null;
               localStorage.removeItem("user");
               store.dispatch(setAuthenticated({ isAuthenticated: false }));
               window.location.href = "/";
