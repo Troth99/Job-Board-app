@@ -111,6 +111,42 @@ function useUserProfile() {
     }
   };
 
+  const handleDeleteProfileImage = async () => {
+    const isConfirmed = window.confirm("Are you sure you want to delete your profile image?");
+    if (!isConfirmed) return false;
+
+    try {
+      await deleteUserProfileImage();
+      setAvatar("");
+      setUserData(prev => prev ? { ...prev, avatar: "" } : null);
+      return true;
+    } catch (error) {
+      console.error("Failed to delete profile image:", error);
+      throw error;
+    }
+  };
+
+  const handleDeleteProfile = async (onSuccess?: () => void) => {
+    const isConfirmed = window.confirm("Are you sure you want to delete your profile?");
+    if (!isConfirmed) return false;
+    
+    const password = window.prompt("Please enter your password to confirm the deletion:");
+    if (!password) {
+      alert("Password is required to delete the profile.");
+      return false;
+    }
+
+    try {
+      await deleteUserProfile();
+      localStorage.removeItem("user");
+      if (onSuccess) onSuccess();
+      return true;
+    } catch (error) {
+      console.error("Failed to delete profile:", error);
+      throw error;
+    }
+  };
+
   const deleteUserProfile = async () => {
     const token = getAuthToken();
     if (!token) throw new Error("User not authenticated");
@@ -119,8 +155,8 @@ function useUserProfile() {
       const response = await sendRequest(
         `${API_BASE}/users/me`,
         "DELETE",
-        {},
-
+        undefined,
+        { Authorization: `Bearer ${token}` }
       );
       return response;
     } catch (error: any) {
@@ -137,7 +173,9 @@ function useUserProfile() {
     userData,
     avatar,
     error,
-      handleFileChange,
+    handleFileChange,
+    handleDeleteProfileImage,
+    handleDeleteProfile,
     uploadUserProfileImage,
     updateUserProfile,
     deleteUserProfileImage,

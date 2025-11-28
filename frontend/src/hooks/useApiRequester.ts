@@ -18,7 +18,6 @@ const useApiRequester = () => {
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<any>(null);
 
-const token = getAuthToken()
 
   const request = async (
     url: string,
@@ -30,8 +29,10 @@ const token = getAuthToken()
     setError(null);
     setData(null);
 
-    const authHeaders: Record<string, string> = token
-      ? { Authorization: `Bearer ${token}` }
+    // Read the latest token at call time and include Authorization header
+    const currentToken = getAuthToken();
+    const authHeaders: Record<string, string> = currentToken
+      ? { Authorization: `Bearer ${currentToken}` }
       : {};
 
     const options: RequestOptions = {
@@ -61,7 +62,7 @@ const token = getAuthToken()
           store.dispatch(
             setAuthenticated({ isAuthenticated: false, })
           );
-  
+          window.location.href = "/"
         }
         throw new Error(resData.message || "Request failed");
       }

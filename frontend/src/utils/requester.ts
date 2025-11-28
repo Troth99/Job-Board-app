@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import { setAuthenticated } from "../redux/authSlice";
 import { store } from "../redux/store";
 import { useNavigate } from "react-router";
+import { getAuthToken } from "../services/auth/authService";
 
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'OPTIONS';
 
@@ -12,9 +13,16 @@ interface RequestOptions {
 }
 
 export async function sendRequest(url: string, method: HttpMethod, data?: Record<string, any>, headers?: Record<string, string>) {
+  const currentToken = getAuthToken();
+  const authHeaders: Record<string, string> = currentToken
+    ? { Authorization: `Bearer ${currentToken}` }
+    : {};
+
   const options: RequestOptions = {
     method,
-    headers: { "Content-Type": "application/json" ,
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeaders,
       ...headers,
     },
   };
@@ -33,6 +41,7 @@ export async function sendRequest(url: string, method: HttpMethod, data?: Record
 
     if (!response.ok) {
        if (response.status === 401) {
+        // Optionally handle unauthorized globally here
       }
       throw new Error(resData.message || "Request failed");
     }

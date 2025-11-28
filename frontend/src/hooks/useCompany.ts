@@ -99,7 +99,7 @@ export default function useCompany() {
         "GET",
         {}
       );
-       console.log("Response:", response);
+  
       setUserRole(response[0]?.role || null);
     } catch (err) {
       setError("Error fetching user role");

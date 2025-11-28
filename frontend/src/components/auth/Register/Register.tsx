@@ -29,9 +29,7 @@ export default function RegisterComponent() {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
-    const trimmedValue = value.trim();
-
-    setForm((prev) => ({ ...prev, [name]: trimmedValue }));
+    setForm((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 

@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 
 
-interface FormValues {
-  [key: string]: string | undefined;
-}
+export type FormValues = Record<string, string | undefined>;
 
+type CallbackFunction<T extends FormValues> = (values: T) => void | Promise<void>;
 
-type CallbackFunction = (values: FormValues) => void;
+type ValidateFunction<T extends FormValues> = (values: T) => Partial<T>;
 
-export default function useForm(callBack: CallbackFunction, initialValues: FormValues, validateForm: Function) {
-    const [values, setValues] = useState<FormValues>(initialValues);
-    const [errors, setErrors] = useState<FormValues>({}); 
+export default function useForm<T extends FormValues>(
+    callBack: CallbackFunction<T>,
+    initialValues: T,
+    validateForm: ValidateFunction<T>
+) {
+    const [values, setValues] = useState<T>(initialValues);
+    const [errors, setErrors] = useState<Partial<T>>({}); 
 
    
     useEffect(() => {
@@ -23,9 +26,24 @@ export default function useForm(callBack: CallbackFunction, initialValues: FormV
             ...state,
             [name]: value
         }));
+        // Clear this field's error while typing
+        setErrors(prev => ({
+            ...prev,
+            [name]: undefined
+        }));
     }
 
-    const formHandler = (e: React.FormEvent) => {
+    const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+        const { name } = e.target;
+        const formErrors = validateForm(values);
+        // Only update the specific field's error on blur
+        setErrors(prev => ({
+            ...prev,
+            [name]: (formErrors as any)[name]
+        }));
+    }
+
+    const formHandler = async (e: React.FormEvent) => {
         e.preventDefault();
         
         const formErrors = validateForm(values);
@@ -37,14 +55,15 @@ export default function useForm(callBack: CallbackFunction, initialValues: FormV
         }
 
    
-        callBack(values);  
+        await callBack(values);  
     }
 
  
-    const register = (fieldName: string) => {
+    const register = (fieldName: keyof T & string) => {
         return {
             name: fieldName,
             onChange: changeHandler,
+            onBlur: blurHandler,
             value: values[fieldName]
         };
     };

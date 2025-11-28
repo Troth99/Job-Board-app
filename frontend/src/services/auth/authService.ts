@@ -34,11 +34,13 @@ export const loginUser = async (email: string, password: string) => {
 export async function registerUser(data: registerFormType) {
   
 try {
-  const response = await sendRequest( `${API_BASE}/users/register`, "POST", data)
+  const { confirmPassword, ...registrationData } = data;
+  const response = await sendRequest( `${API_BASE}/users/register`, "POST", registrationData)
   return response
   
-} catch (error) {
-  throw new Error("Failed to register user.");
+} catch (error: any) {
+  console.error('Registration error:', error);
+  throw error;
 }
 }
 

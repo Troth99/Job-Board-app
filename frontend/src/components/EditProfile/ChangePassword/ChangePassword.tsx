@@ -3,8 +3,10 @@ import "./ChangePassword.css";
 import { useChangePasswordValidation } from "../../../utils/useChangePasswordValidation";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../../utils/toast";
+import useUserProfile from "../../../hooks/useProfile";
+import useForm from "../../../hooks/useForm";
 
-export interface changePasswordForm {
+export interface changePasswordForm extends Record<string, string> {
   currentPassword: string;
   newPassword: string;
   confirmPassword: string;
@@ -16,50 +18,27 @@ const initialForm: changePasswordForm = {
 };
 
 export default function ChangePassword() {
-  const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState<boolean>(false);
-  const [errors, setErrors] = useState<Partial<changePasswordForm>>({});
   const { validate } = useChangePasswordValidation();
   const navigate = useNavigate();
+  const { changePassword } = useUserProfile();
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  const validateForm = (values: changePasswordForm) => validate(values);
 
-    const trimValue = value.trim();
-
-    setForm((prev) => ({
-      ...prev,
-      [name]: trimValue,
-    }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
-  };
-
-  const changePasswordSubmitHandler = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
-    e.preventDefault();
+  const onSubmit = async (values: changePasswordForm) => {
     setLoading(true);
-    setErrors({});
-
-    const validation = validate(form);
-
-    if (Object.keys(validation).length > 0) {
-      setErrors(validation);
-      setLoading(false);
-      return;
-    }
-
-
     try {
-      await changePassword(form);
+      await changePassword({ currentPassword: values.currentPassword, newPassword: values.newPassword });
       showSuccess("Password changed succsessfully!");
       navigate("/profile");
     } catch (error: any) {
-      setErrors({ currentPassword: error.message });
+      throw new Error(error.message || "Failed to change password");
     } finally {
       setLoading(false);
     }
   };
+
+  const { register, formHandler, errors } = useForm<changePasswordForm>(onSubmit, initialForm, validateForm);
 
   return (
     <div className="profile-container">
@@ -67,35 +46,20 @@ export default function ChangePassword() {
         <h1>Change Password</h1>
       </div>
 
-      <form className="profile-details" onSubmit={changePasswordSubmitHandler}>
+      <form className="profile-details" onSubmit={formHandler}>
         <div>
           <strong>Current Password:</strong>
-          <input
-            type="password"
-            name="currentPassword"
-            value={form.currentPassword}
-            onChange={onChangeHandler}
-          />
+          <input type="password" {...register("currentPassword")} />
           <div className="error-message">{errors.currentPassword}</div>
         </div>
         <div>
           <strong>New Password:</strong>
-          <input
-            type="password"
-            name="newPassword"
-            value={form.newPassword}
-            onChange={onChangeHandler}
-          />
+          <input type="password" {...register("newPassword")} />
           <div className="error-message">{errors.newPassword}</div>
         </div>
         <div>
           <strong>Confirm Password:</strong>
-          <input
-            type="password"
-            name="confirmPassword"
-            value={form.confirmPassword}
-            onChange={onChangeHandler}
-          />
+          <input type="password" {...register("confirmPassword")} />
           <div className="error-message">{errors.confirmPassword}</div>
         </div>
 
