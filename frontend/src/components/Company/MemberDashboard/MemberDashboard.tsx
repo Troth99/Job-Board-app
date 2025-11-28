@@ -14,10 +14,11 @@ export function MemberDashboard() {
   const [loadingJobs, setLoadingJobs] = useState<boolean>(true); 
   const [jobs, setJobs] = useState<Job[]>([]);
   const navigate = useNavigate();
-  const {company, getUserRole, userRole, loading: loadingRole} = useCompany();
+  const {company, getUserRole, userRole, loading: loadingRole, getMyCompany} = useCompany();
   const { getJobsByCompany } = useJobs();
 
-  console.log(companyId)
+  console.log(company)
+ 
   const fetchCompanyJobs = async () => {
     if (companyId) {
       try {
@@ -46,6 +47,7 @@ export function MemberDashboard() {
     if (companyId) {
       fetchCompanyJobs();
       getUserRole(companyId);
+      getMyCompany();
     }
   }, [companyId]);
 
@@ -65,10 +67,17 @@ export function MemberDashboard() {
           {/* Sidebar */}
           <div className="sidebar">
             <div className="sidebar-header">
-              <h2>Company Dashboard</h2>
+              <h2>Welcome to <span className="company-name">{company?.name}</span> dashboard.</h2>
               <p className="user-role">Role: {userRole}</p>
             </div>
             <div className="sidebar-nav">
+                  <div className="job-card-dashboard-image">
+                  <img
+                    src={company ?company.logo : "/assets/defaultCompany.png"}
+                    alt={company ? company.name : "No image"}
+                    className="company-logo"
+                  />
+                </div>
               <ul>
                 <li>
                   <a href="#">Members</a>

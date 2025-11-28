@@ -16,11 +16,9 @@ export default function useCategories() {
   const getCategories = async (): Promise<Category[]> => {
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/categories`);
-      if (!res.ok) throw new Error("Failed to fetch categories");
-      const data = await res.json();
-      setCategories(data);
-      return data;
+      const res = await request(`${API_BASE}/categories`, 'GET');
+      setCategories(res);
+      return res;
     } catch (error) {
       console.error("Failed to fetch categories:", error);
       throw error;

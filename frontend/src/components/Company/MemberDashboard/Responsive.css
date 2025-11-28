@@ -12,6 +12,7 @@
 
   .main-content {
     padding: 10px;
+    margin: 5px;
   }
 
   .members-list {
@@ -21,6 +22,26 @@
   .add-button {
     font-size: 14px;
     padding: 8px 16px;
+  }
+
+  .content-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .buttons-for-jobs {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .buttons-for-jobs .add-button {
+    width: 100%;
+  }
+
+  .company-logo {
+    width: 80px;
+    height: 80px;
   }
 }
 

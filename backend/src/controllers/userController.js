@@ -1,6 +1,7 @@
 import RefreshToken from "../models/RefreshToken.js";
 import User from "../models/User.js";
 import  { generateAccessToken, generateRefreshToken } from "../utils/generateToken.js";
+import jwt from "jsonwebtoken";
 
 
 export const registerUser = async (req, res) => {
@@ -223,3 +224,36 @@ export const deleteUserProfileImage = async (req, res) => {
     res.status(500).json({ message: "An error occurred while deleting the profile image" });
   }
 };
+
+
+export const refreshAccessToken = async (req, res) => {
+  const {refreshToken} = req.body;
+
+  if(!refreshToken){
+    return res.status(401).json({ message: "Refresh token required" });
+  };
+
+  try {
+  
+    const storedToken = await RefreshToken.findOne({token: refreshToken});
+    if(!storedToken){
+      return res.status(403).json({message: 'Invalid refresh token.'})
+    }
+
+
+    const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+
+
+    const newAccessToken = generateAccessToken(decoded.id);
+    console.log('✨ New access token generated:', newAccessToken);
+
+  
+    res.json({
+      accessToken: newAccessToken,
+      refreshToken: refreshToken
+    });
+  } catch (error) {
+ 
+    return res.status(403).json({ message: "Invalid or expired refresh token" });
+  }
+}

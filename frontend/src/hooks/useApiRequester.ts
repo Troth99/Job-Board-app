@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { setAuthenticated } from "../redux/authSlice";
 import { store } from "../redux/store";
 import { getAuthToken, getRefreshToken, refreshAccessToken, updateTokensInStorage } from "./useAuth";
@@ -24,7 +23,6 @@ const useApiRequester = () => {
     data?: Record<string, any>,
     headers?: Record<string, string>,
     isRetry: boolean = false,
-    showToast: boolean = true
   ) => {
     setLoading(true);
     setError(null);
@@ -59,21 +57,24 @@ const useApiRequester = () => {
 
       if (!response.ok) {
         if (response.status === 401 && !isRetry) {
+  
           // Try to refresh the token
           const refreshToken = getRefreshToken();
           
           if (refreshToken) {
             try {
+       
               const tokenData = await refreshAccessToken(refreshToken);
+        
               
               // Update tokens in localStorage
               updateTokensInStorage(tokenData.accessToken, tokenData.refreshToken);
-              
+     
               // Retry the original request with the new token
-              return await request(url, method, data, headers, true, showToast);
+       
+              return await request(url, method, data, headers, true);
             } catch (refreshError) {
               // Refresh failed - logout user
-              console.error('Token refresh failed:', refreshError);
               localStorage.removeItem("user");
               store.dispatch(setAuthenticated({ isAuthenticated: false }));
               window.location.href = "/";
@@ -94,9 +95,6 @@ const useApiRequester = () => {
       return resData;
     } catch (err: any) {
       setError(err?.message || "Something went wrong");
-      if (showToast) {
-        toast.error(err?.message || "Something went wrong");
-      }
       throw err;
     } finally {
       setLoading(false);

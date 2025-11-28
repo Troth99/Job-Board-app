@@ -5,11 +5,8 @@ import useJobs from "../../../hooks/useJobs";
 import { showSuccess } from "../../../utils/toast";
 import { useNavigate, useParams } from "react-router";
 import { Category } from "../../../hooks/useCategories";
+import { Company } from "../../../hooks/useCompany";
 
-interface Company {
-  name: string;
-  logo: string;
-}
 
 export interface Job {
   _id?: string;

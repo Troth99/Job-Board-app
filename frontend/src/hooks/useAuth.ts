@@ -108,12 +108,16 @@ export async function refreshAccessToken(refreshToken: string) {
 
 export function updateTokensInStorage(accessToken: string, refreshToken?: string) {
   const user = getUserFromLocalStorage();
+
   const updatedUser = {
     ...user,
     accessToken,
     ...(refreshToken && { refreshToken }),
   };
+  
+  console.log('📝 Updated user object:', updatedUser);
   localStorage.setItem('user', JSON.stringify(updatedUser));
+  console.log('📝 Saved to localStorage');
 }
 
 export function getAuthToken(): string | null {
