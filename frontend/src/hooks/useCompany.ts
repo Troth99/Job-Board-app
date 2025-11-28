@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { sendRequest } from "../utils/requester";
 import { API_BASE } from "../services/api";
 import useApiRequester from "./useApiRequester";
 
@@ -15,6 +14,7 @@ interface Company {
   name: string;
   industry: string;
   location: string;
+  members?: string[];
 }
 
 export default function useCompany() {
@@ -71,7 +71,7 @@ export default function useCompany() {
     }
   };
 
-  const getMyCompany = async () => {
+  const getMyCompany = async (): Promise<Company | null> => {
     setLoading(true);
     setError(null);
     try {
@@ -81,9 +81,11 @@ export default function useCompany() {
         {}
       );
       setCompany(response);
+      return response;
     } catch (err) {
       setError("Error fetching my company data");
       console.error(err);
+      return null;
     } finally {
       setLoading(false);
     }
@@ -109,7 +111,7 @@ export default function useCompany() {
     }
   };
 
-  const getCompanyFromLocalStorage = () => {
+  const getCompanyFromLocalStorage = (): string | null => {
     const user = localStorage.getItem("user");
     if (user) {
       const parsedUser = JSON.parse(user);
@@ -117,12 +119,14 @@ export default function useCompany() {
       if (companyId) {
         getUserRole(companyId)
         getCompanyById(companyId);
+        return companyId;
       } else {
         setError("No company ID found in localStorage");
       }
     } else {
       console.log("No user data found in localStorage");
     }
+    return null;
   };
 
   useEffect(() => {

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify"; 
-import { getAuthToken, getUserFromLocalStorage } from "../../services/auth/authService"; 
-import { getCompanyById } from "../../services/companyService"; 
+import { getAuthToken, getUserFromLocalStorage } from "../../hooks/useAuth"; 
 import { Navigate, Outlet } from "react-router";
-import { showCompanySuccess, showCompanyWarning } from "../toast";
+import { showCompanyWarning } from "../toast";
 import Spinner from "../../components/Spinner/Spinner";
+import useCompany from "../../hooks/useCompany";
 
 export default function CompanyRouteGuard() {
   let { companyId } = useParams<{ companyId: string }>(); 
@@ -13,6 +13,7 @@ export default function CompanyRouteGuard() {
   const [loading, setLoading] = useState<boolean>(true);
   const [hasAccess, setHasAccess] = useState<boolean>(false);
   const [toastShown, setToastShown] = useState<boolean>(false);
+  const { getCompanyById, company } = useCompany();
 
   const token = getAuthToken(); 
   const user = getUserFromLocalStorage(); 
@@ -37,26 +38,32 @@ export default function CompanyRouteGuard() {
       }
 
       try {
-        const company = await getCompanyById(companyId); 
-        if (company.members.includes(user._id)) {
-          setHasAccess(true);
-        } else {
-          if (!toastShown) {
-            showCompanyWarning("You do not have access to this company.");
-            setToastShown(true); 
-            navigate("/"); 
-          }
-        }
+        await getCompanyById(companyId);
       } catch (error) {
         console.error(error);
         showCompanyWarning("Error fetching company data.");
-      } finally {
         setLoading(false);
       }
     };
 
     fetchUserCompany();
   }, [companyId, token, user, navigate, toastShown]); 
+
+  // Check access when company data is loaded
+  useEffect(() => {
+    if (company && user) {
+      if (company.members?.includes(user._id)) {
+        setHasAccess(true);
+      } else {
+        if (!toastShown) {
+          showCompanyWarning("You do not have access to this company.");
+          setToastShown(true);
+          navigate("/");
+        }
+      }
+      setLoading(false);
+    }
+  }, [company, user, toastShown, navigate]);
 
  if (loading) {
   return (

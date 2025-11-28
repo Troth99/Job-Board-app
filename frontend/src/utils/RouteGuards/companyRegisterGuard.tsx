@@ -1,9 +1,10 @@
 import { Navigate, Outlet } from "react-router";
-import { getCompanyFromLocalStorage } from "../../services/companyService";
 import { toast } from "react-toastify";
+import useCompany from "../../hooks/useCompany";
 
 
 export default function CompanyRegisterGuard() {
+  const { getCompanyFromLocalStorage } = useCompany();
   const companyId = getCompanyFromLocalStorage();
 
   if (companyId) {

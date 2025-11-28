@@ -1,12 +1,11 @@
 import { useNavigate, useParams } from "react-router";
 import "./Details.css";
 import { useEffect, useState } from "react";
-import { getUserRole } from "../../../services/companyService";
-import { getUserFromLocalStorage } from "../../../services/auth/authService";
 import { Job } from "../CreateJob/CreateJob";
 import { getJobById, updateJob } from "../../../services/jobService";
 import Spinner from "../../Spinner/Spinner";
 import { formatDate } from "../../../utils/formData";
+import useCompany from "../../../hooks/useCompany";
 
 export function DetailsJob() {
   const { companyId, jobId } = useParams<{
@@ -16,10 +15,10 @@ export function DetailsJob() {
   const navigate = useNavigate();
   const [jobDetails, setJobdetails] = useState<Job>();
   const [loading, setLoading] = useState(true);
-  const [userRole, setUserRole] = useState<string | null>(null);
   const [currentStatus, setCurrentStatus] = useState()
   const [jobStatus, setJobStatus] = useState<boolean | undefined>(currentStatus)
   const [statusLoading, setStatusLoading] = useState(false)
+  const { getUserRole, userRole } = useCompany();
 
   const fetchCurrentJob = async () => {
     try {
@@ -39,8 +38,7 @@ export function DetailsJob() {
   const fetchRole = async () => {
     try {
       if (companyId) {
-        const responseRole = await getUserRole(companyId);
-        setUserRole(responseRole[0].role);
+        await getUserRole(companyId);
       }
     } catch (error) {
       console.error("Error fetching role:", error);

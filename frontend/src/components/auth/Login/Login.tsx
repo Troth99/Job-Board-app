@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router";
 import "./Login.css";
 import "./Responsive.css";
 import { useEffect, useRef, useState } from "react";
-import { loginUser } from "../../../services/auth/authService";
+import useAuth from "../../../hooks/useAuth";
 import { useValidation } from "../../../utils/useValidation";
 
 const initialFormValue = {
@@ -16,10 +16,11 @@ export default function LoginComponent() {
     email?: string;
     password?: string;
   }>({});
-  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState(initialFormValue);
   const navigate = useNavigate();
   const { validateEmail, validatePassword } = useValidation();
+  const { loginUser, loading: authLoading } = useAuth();
+  const [loading, setLoading] = useState(false);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

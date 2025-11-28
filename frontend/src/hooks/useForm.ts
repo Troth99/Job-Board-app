@@ -20,7 +20,7 @@ export default function useForm<T extends FormValues>(
         setValues(initialValues);
     }, [initialValues]);
 
-    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setValues(state => ({
             ...state,
@@ -33,7 +33,7 @@ export default function useForm<T extends FormValues>(
         }));
     }
 
-    const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+    const blurHandler = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name } = e.target;
         const formErrors = validateForm(values);
         // Only update the specific field's error on blur

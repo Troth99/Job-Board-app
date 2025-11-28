@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./MemberDashboard.css";
 import "./Responsive.css";
-import { getUserRole } from "../../../services/companyService";
+
 import { useNavigate, useParams } from "react-router";
 import Spinner from "../../Spinner/Spinner";
 import { ShowJobs } from "../showJobs/showCompanyJobs";
@@ -41,23 +41,9 @@ export function MemberDashboard() {
     }
   };
 
-  const fetchUserRole = async () => {
-    try {
-      if (companyId) {
-        const userRole = await getUserRole(companyId);
-        setRole(userRole[0].role);
-      }
-    } catch (error) {
-      console.log("Failed to fetch the role data.");
-    } finally {
-      setLoadingRole(false);
-    }
-  };
-
   useEffect(() => {
     if (companyId) {
       fetchCompanyJobs();
-      fetchUserRole();
     }
   }, [companyId]);
 

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./RegisterCompany.css";
 import "./Responsive.css";
-import { createCompany } from "../../../services/companyService";
 import { showSuccess } from "../../../utils/toast";
 import { useNavigate } from "react-router";
 import { validateCompany } from "../../../utils/registerCompanyValidation";
+import useForm from "../../../hooks/useForm";
+import useCompany from "../../../hooks/useCompany";
 
-export interface RegisterCompanyInterface {
-  _id?: string;
+export interface RegisterCompanyInterface extends Record<string, string> {
   name: string;
   industry: string;
   location: string;
@@ -18,7 +18,7 @@ export interface RegisterCompanyInterface {
   foundedYear: string;
 }
 
-const initialValues = {
+const initialValues: RegisterCompanyInterface = {
   name: "",
   industry: "",
   location: "",
@@ -29,85 +29,43 @@ const initialValues = {
   foundedYear: "",
 };
 
-// Errors type validator
-type ValidationErrors = Partial<Record<keyof RegisterCompanyInterface, string>>;
-
 export default function RegisterCompany() {
-  const [form, setForm] = useState<RegisterCompanyInterface>(initialValues);
-  const [errors, setErrors] = useState<ValidationErrors>({});
   const [loading, setLoading] = useState<boolean>(false);
-  const [touched, setTouched] = useState<Record<string, boolean>>({});
-
   const navigate = useNavigate();
+  const { createCompany } = useCompany();
 
-  const onChangeHandler = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
+  const validateForm = (values: RegisterCompanyInterface) => validateCompany(values);
 
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
-  };
-
-  const submitHandler = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrors({});
+  const onSubmit = async (values: RegisterCompanyInterface) => {
     setLoading(true);
-
-    const validationErrors = validateCompany(form as ValidationErrors);
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-       setLoading(false);
-      return;
-    }
-
     try {
-      const result = await createCompany(form);
-      navigate("/");
+      await createCompany(values);
       showSuccess("Company registered successfully!");
+      navigate("/");
     } catch (error: any) {
-      setErrors(error.message || "Something went wrong");
+      throw new Error(error.message || "Failed to create company");
     } finally {
       setLoading(false);
     }
   };
 
-  const onBlurHandler = (
-    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-
-    setTouched((prev) => ({
-      ...prev,
-      [name]: true,
-    }));
-    const ValidationErrors = validateCompany(form as ValidationErrors);
-    const error = ValidationErrors[name];
-
-    setErrors((prev) => ({
-      ...prev,
-      [name]: error,
-    }));
-  };
+  const { register, formHandler, errors } = useForm<RegisterCompanyInterface>(
+    onSubmit,
+    initialValues,
+    validateForm
+  );
 
   return (
     <div className="create-company-container">
       <h2>Create Company</h2>
-      <form className="create-company-form" onSubmit={submitHandler}>
+      <form className="create-company-form" onSubmit={formHandler}>
         <div className="form-group">
           <label htmlFor="name">Company Name</label>
           <input
             type="text"
             id="name"
-            name="name"
             placeholder="Enter company name"
-            value={form.name}
-            onBlur={onBlurHandler}
-            onChange={onChangeHandler}
+            {...register("name")}
           />
           <div className="error-message">{errors.name}</div>
         </div>
@@ -117,11 +75,8 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="industry"
-            name="industry"
             placeholder="Enter industry"
-            value={form.industry}
-            onBlur={onBlurHandler}
-            onChange={onChangeHandler}
+            {...register("industry")}
           />
           <div className="error-message">{errors.industry}</div>
         </div>
@@ -131,11 +86,8 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="location"
-            name="location"
             placeholder="Enter location"
-            value={form.location}
-            onBlur={onBlurHandler}
-            onChange={onChangeHandler}
+            {...register("location")}
           />
           <div className="error-message">{errors.location}</div>
         </div>
@@ -144,11 +96,8 @@ export default function RegisterCompany() {
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            name="description"
             placeholder="Enter description"
-            value={form.description}
-            onBlur={onBlurHandler}
-            onChange={onChangeHandler}
+            {...register("description")}
           ></textarea>
           <div className="error-message">{errors.description}</div>
         </div>
@@ -158,11 +107,8 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="website"
-            name="website"
             placeholder="Enter website URL"
-            value={form.website}
-            onBlur={onBlurHandler}
-            onChange={onChangeHandler}
+            {...register("website")}
           />
           <div className="error-message">{errors.website}</div>
         </div>
@@ -172,11 +118,8 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="logo"
-            name="logo"
             placeholder="Enter logo URL"
-            value={form.logo}
-            onBlur={onBlurHandler}
-            onChange={onChangeHandler}
+            {...register("logo")}
           />
           <div className="error-message">{errors.logo}</div>
         </div>
@@ -186,11 +129,8 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="size"
-            name="size"
             placeholder="Enter size (e.g. 10-50)"
-            value={form.size}
-            onBlur={onBlurHandler}
-            onChange={onChangeHandler}
+            {...register("size")}
           />
           <div className="error-message">{errors.size}</div>
         </div>
@@ -200,11 +140,8 @@ export default function RegisterCompany() {
           <input
             type="number"
             id="foundedYear"
-            name="foundedYear"
             placeholder="Enter founded year"
-            value={form.foundedYear}
-            onBlur={onBlurHandler}
-            onChange={onChangeHandler}
+            {...register("foundedYear")}
           />
           <div className="error-message">{errors.foundedYear}</div>
         </div>

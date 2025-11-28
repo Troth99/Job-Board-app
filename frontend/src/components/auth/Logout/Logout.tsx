@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { logOut } from "../../../services/auth/authService";
+import useAuth from "../../../hooks/useAuth";
 import { setAuthenticated } from "../../../redux/authSlice";
 import { useNavigate } from "react-router";
 import { useState } from "react";
@@ -7,24 +7,27 @@ import { useState } from "react";
 export function LogOut() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [loadingButton, setLoadingButton] = useState<boolean>(false)
+  const [loadingButton, setLoadingButton] = useState<boolean>(false);
+  const { logOut } = useAuth();
 
   const logOutHandler = async () => {
     setLoadingButton(true)
     try {
-      const success = await logOut();
-
-      if (success) {
-        dispatch(setAuthenticated(false));
-
-        navigate("/");
-      } else {
-        alert("Logout failed");
-      }
+      // Clear localStorage immediately
+      localStorage.removeItem('user');
+      dispatch(setAuthenticated({ isAuthenticated: false }));
+      
+      // Try to notify backend (but don't wait for it)
+      logOut().catch((err: any) => console.error('Backend logout failed:', err));
+      
+      // Force page reload to clear all state
+      window.location.href = "/";
     } catch (error: any) {
       console.log("failed to log out", error.message);
-      alert("An error occurred while logging out.");
-    }finally {
+      // Still clear local state even on error
+      localStorage.removeItem('user');
+      window.location.href = "/";
+    } finally {
       setLoadingButton(false)
     }
   };

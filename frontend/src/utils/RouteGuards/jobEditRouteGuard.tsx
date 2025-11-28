@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
-import { getAuthToken, getUserFromLocalStorage } from "../../services/auth/authService";
-import { getCompanyById, getUserRole } from "../../services/companyService";
+import { getAuthToken, getUserFromLocalStorage } from "../../hooks/useAuth";
 import Spinner from "../../components/Spinner/Spinner";
 import { Job } from "../../components/Jobs/CreateJob/CreateJob";
 import { getJobById } from "../../services/jobService";
+import useCompany from "../../hooks/useCompany";
 
 
 export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
@@ -13,8 +13,9 @@ export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
   const token = getAuthToken();
   const { companyId, jobId } = useParams<{ companyId: string; jobId: string }>()
   const user = getUserFromLocalStorage();
-   const [loading, setLoading] = useState(true)
-const [currentJob, setCurrentJob] = useState<Job>()
+  const [loading, setLoading] = useState(true)
+  const [currentJob, setCurrentJob] = useState<Job>()
+  const { getCompanyById, getUserRole, company, userRole } = useCompany();
 
   const hasValidRole = (role: string) => ["admin", "owner", "recruiter"].includes(role);
 
@@ -38,35 +39,32 @@ const [currentJob, setCurrentJob] = useState<Job>()
       }
 
       try {
-        const [company, roleResult, currentJob] = await Promise.all([
-          getCompanyById(companyId),
-          getUserRole(companyId),
-          getJobById(jobId)
-        ]);
+        await getCompanyById(companyId);
+        await getUserRole(companyId);
+        const currentJob = await getJobById(jobId);
+        setCurrentJob(currentJob);
 
-        const role = roleResult[0]?.role;
-         if (!company.members.includes(user._id)) {
+        if (!company?.members?.includes(user._id)) {
           toast.error("You are not a member of this company.");
           navigate("/"); 
           return;
         }
       
-          if (companyId !== currentJob.company) {
+        if (companyId !== currentJob.company) {
           toast.error("This job is not part of your company.");
           navigate('/')
-
           return;
         } 
 
-       if (role === "recruiter" && isEditPage) {
+        if (userRole === "recruiter" && isEditPage) {
           toast.error("Recruiters cannot edit jobs.");
           navigate(`/company/${companyId}/job/${jobId}/details`); 
           return;
         }
 
-        if (!company.members.includes(user._id) || !hasValidRole(role)) {
+        if (!company?.members?.includes(user._id) || !hasValidRole(userRole || '')) {
           toast.error("You do not have access to this company or job.");
-         navigate('/')
+          navigate('/')
           return;
         }
       } catch (error) {

@@ -2,10 +2,7 @@ import { data, Link, useNavigate } from "react-router";
 import "./Register.css";
 import "./Responsive.css";
 import { useEffect, useState } from "react";
-import {
-  registerFormType,
-  registerUser,
-} from "../../../services/auth/authService";
+import useAuth, { registerFormType } from "../../../hooks/useAuth";
 import { useValidation } from "../../../utils/useValidation";
 
 const intialValueRegister = {
@@ -25,6 +22,7 @@ export default function RegisterComponent() {
 
   const navigate = useNavigate();
   const { validateConfirmPassword, validateForm } = useValidation();
+  const { registerUser } = useAuth();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;

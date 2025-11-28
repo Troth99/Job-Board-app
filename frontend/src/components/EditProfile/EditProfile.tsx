@@ -8,7 +8,7 @@ import useUserProfile from "../../hooks/useProfile";
 import useForm from "../../hooks/useForm";
 import { useState, useEffect } from "react";
 
-interface ProfileData {
+export interface ProfileData {
   firstName: string;
   lastName: string;
   email: string;

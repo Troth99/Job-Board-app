@@ -1,4 +1,4 @@
-import { sendRequest } from "../../utils/requester";
+import { sendRequest, setLoggingOut } from "../../utils/requester";
 import { API_BASE } from "../api";
 
 
@@ -45,24 +45,64 @@ try {
 }
 
 export async function logOut(){
-try {
+  // Prevent auto-refresh during logout
+  setLoggingOut(true);
   
-  const token = getRefreshToken();
+  try {
+    const token = getRefreshToken();
 
-     if (!token) {
-      throw new Error('No token found!');
+    if (!token) {
+
+      localStorage.removeItem('user');
+      return true;
     }
-  const response = await sendRequest(`${API_BASE}/users/logout`, "POST" , {refreshToken: token})
+    
+    const response = await sendRequest(`${API_BASE}/users/logout`, "POST", {refreshToken: token})
 
-  if(response){
+    if(response){
+      localStorage.removeItem('user');
+      return true
+    }
+  } catch (error) {
+    console.error('Logout error', error)
+    
     localStorage.removeItem('user');
-    return true
+    return true; 
   }
-} catch (error) {
-  console.error('Logout error', error)
-  return false
 }
+
+export async function refreshAccessToken(refreshToken: string) {
+  try {
+    const response = await fetch(`${API_BASE}/users/refresh-token`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ refreshToken }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to refresh token');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Refresh token error:', error);
+    throw error;
+  }
 }
+
+export function updateTokensInStorage(accessToken: string, refreshToken?: string) {
+  const user = getUserFromLocalStorage();
+  const updatedUser = {
+    ...user,
+    accessToken,
+    ...(refreshToken && { refreshToken }),
+  };
+  localStorage.setItem('user', JSON.stringify(updatedUser));
+}
+
 export function getAuthToken(): string | null {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   return user.accessToken

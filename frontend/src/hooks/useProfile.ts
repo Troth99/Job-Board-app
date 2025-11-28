@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { sendRequest } from "../utils/requester";
 import { API_BASE } from "../services/api";
-import { getAuthToken } from "../services/auth/authService";
 import useApiRequester from "./useApiRequester";
 
 interface User {
@@ -53,13 +51,8 @@ function useUserProfile() {
 
 
   const updateUserProfile = async (data: { avatar?: string; [key: string]: any }) => {
-    const token = getAuthToken();
-    if (!token) throw new Error("User not authenticated");
-
     try {
-      const response = await sendRequest(`${API_BASE}/users/me`, "PUT", data, {
-        Authorization: `Bearer ${token}`,
-      });
+      const response = await request(`${API_BASE}/users/me`, "PUT", data);
       return response;
     } catch (error: any) {
       throw new Error(error.message || "Failed to update profile.");
@@ -68,15 +61,10 @@ function useUserProfile() {
 
  
   const deleteUserProfileImage = async () => {
-    const token = getAuthToken();
-    if (!token) throw new Error("User not authenticated");
-
     try {
-      const response = await sendRequest(
+      const response = await request(
         `${API_BASE}/users/me/avatar`,
-        "DELETE",
-        {},
-        { Authorization: `Bearer ${token}` }
+        "DELETE"
       );
       return response;
     } catch (error: any) {
@@ -86,14 +74,11 @@ function useUserProfile() {
   };
 
   const changePassword = async (data: ChangePasswordForm) => {
-    const token = getAuthToken();
-    if (!token) throw new Error("User not authenticated");
-
     try {
-      const response = await sendRequest(
+      const response = await request(
         `${API_BASE}/users/change-password`,
         "PUT",
-        data,
+        data
       );
       return response;
     } catch (error: any) {
@@ -148,15 +133,10 @@ function useUserProfile() {
   };
 
   const deleteUserProfile = async () => {
-    const token = getAuthToken();
-    if (!token) throw new Error("User not authenticated");
-
     try {
-      const response = await sendRequest(
+      const response = await request(
         `${API_BASE}/users/me`,
-        "DELETE",
-        undefined,
-        { Authorization: `Bearer ${token}` }
+        "DELETE"
       );
       return response;
     } catch (error: any) {

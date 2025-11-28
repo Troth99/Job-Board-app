@@ -1,36 +1,38 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect } from "react";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
-import { Outlet, useNavigate } from "react-router";
-import { getMyCompany } from "../../services/companyService";
-import { getUserFromLocalStorage } from "../../services/auth/authService";
+import { Outlet } from "react-router";
+import { getUserFromLocalStorage } from "../../hooks/useAuth";
+import useCompany from "../../hooks/useCompany";
 
 interface Props {
   children?: ReactNode;
-
   hideHeaderFooter?: boolean;
-
 }
 
-export default  function MainLayout({children, hideHeaderFooter }: Props) {
+export default function MainLayout({ children, hideHeaderFooter }: Props) {
+  const { getMyCompany } = useCompany();
 
-  //set company to localstorage if the user is part of a company.
-    useEffect(() => {
-      const fetchComapny = async () => {
-        const user = getUserFromLocalStorage()
-        if(!user?.accessToken) return;
+  // Set company to localStorage if the user is part of a company
+  useEffect(() => {
+    const fetchCompany = async () => {
+      const user = getUserFromLocalStorage();
+      if (!user?.accessToken) return;
 
-        try {
-          const companyMemberShip = await getMyCompany()
-          if(companyMemberShip?._id){
-            localStorage.setItem("user", JSON.stringify({...user, company: companyMemberShip._id}))
-          }
-        } catch (error) {
-           console.error(error);
+      try {
+        const companyMembership = await getMyCompany();
+        if (companyMembership?._id) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ ...user, company: companyMembership._id })
+          );
         }
+      } catch (error) {
+        console.error(error);
       }
- fetchComapny()
-  }, []);
+    };
+    fetchCompany();
+  }, [getMyCompany]);
 
   return (
     <div>

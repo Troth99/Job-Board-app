@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { registerFormType } from "../services/auth/authService";
+import { registerFormType } from "../hooks/useAuth";
 import { ProfileData } from "../components/EditProfile/EditProfile";
+
 
 type FormDataUnion = Partial<registerFormType> & Partial<ProfileData>;
 

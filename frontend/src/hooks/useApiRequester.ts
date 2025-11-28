@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { setAuthenticated } from "../redux/authSlice";
-import { RootState, store } from "../redux/store";
-import { useSelector } from "react-redux";
-import { getAuthToken, getRefreshToken } from "../services/auth/authService";
+import { store } from "../redux/store";
+import { getAuthToken, getRefreshToken, refreshAccessToken, updateTokensInStorage } from "./useAuth";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
 
@@ -23,7 +22,8 @@ const useApiRequester = () => {
     url: string,
     method: HttpMethod,
     data?: Record<string, any>,
-    headers?: Record<string, string>
+    headers?: Record<string, string>,
+    isRetry: boolean = false
   ) => {
     setLoading(true);
     setError(null);
@@ -57,12 +57,34 @@ const useApiRequester = () => {
       const resData = await response.json();
 
       if (!response.ok) {
-        if (response.status === 401) {
-          localStorage.removeItem("user");
-          store.dispatch(
-            setAuthenticated({ isAuthenticated: false, })
-          );
-          window.location.href = "/"
+        if (response.status === 401 && !isRetry) {
+          // Try to refresh the token
+          const refreshToken = getRefreshToken();
+          
+          if (refreshToken) {
+            try {
+              const tokenData = await refreshAccessToken(refreshToken);
+              
+              // Update tokens in localStorage
+              updateTokensInStorage(tokenData.accessToken, tokenData.refreshToken);
+              
+              // Retry the original request with the new token
+              return await request(url, method, data, headers, true);
+            } catch (refreshError) {
+              // Refresh failed - logout user
+              console.error('Token refresh failed:', refreshError);
+              localStorage.removeItem("user");
+              store.dispatch(setAuthenticated({ isAuthenticated: false }));
+              window.location.href = "/";
+              throw new Error('Session expired. Please login again.');
+            }
+          } else {
+            // No refresh token - logout
+            localStorage.removeItem("user");
+            store.dispatch(setAuthenticated({ isAuthenticated: false }));
+            window.location.href = "/";
+            throw new Error('Session expired. Please login again.');
+          }
         }
         throw new Error(resData.message || "Request failed");
       }
