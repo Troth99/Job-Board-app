@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
-import { getAuthToken, getUserFromLocalStorage } from "../../hooks/useAuth";
-import Spinner from "../../components/Spinner/Spinner";
-import { Job } from "../../components/Jobs/CreateJob/CreateJob";
-import useJobs from "../../hooks/useJobs";
-import useCompany from "../../hooks/useCompany";
+import { getAuthToken, getUserFromLocalStorage } from "../hooks/useAuth";
+import Spinner from "../components/Spinner/Spinner";
+import { Job } from "../components/Jobs/CreateJob/CreateJob";
+import useJobs from "../hooks/useJobs";
+import useCompany from "../hooks/useCompany";
 
 
 export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
