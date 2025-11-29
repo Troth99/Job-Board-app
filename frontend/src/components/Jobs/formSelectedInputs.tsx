@@ -6,31 +6,33 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 interface JobCategorySelectProps {
-  value: Category; 
+  value: Category | null; 
   categories: Category[]; 
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 const categories = [
-  { value: "IT", label: "IT / Software Development" },
-  { value: "Design", label: "Design / Creative" },
-  { value: "Marketing", label: "Marketing / Sales" },
-  { value: "Finance", label: "Finance / Accounting" },
-  { value: "HR", label: "Human Resources" },
+  { value: "Information Technology", label: "Information Technology" },
+  { value: "Finance & Accounting", label: "Finance & Accounting" },
+  { value: "Marketing & Advertising", label: "Marketing & Advertising" },
+  { value: "Human Resources", label: "Human Resources" },
+  { value: "Design & Creative", label: "Design & Creative" },
+  { value: "Sales & Business Development", label: "Sales & Business Development" },
   { value: "Customer Support", label: "Customer Support" },
-  { value: "Operations", label: "Operations / Management" },
-  { value: "Education", label: "Education / Training" },
-  { value: "Healthcare", label: "Healthcare / Medical" },
-  { value: "Engineering", label: "Engineering / Technical" },
-  { value: "Legal", label: "Legal / Compliance" },
-  { value: "Hospitality", label: "Hospitality / Tourism" },
-  { value: "Logistics", label: "Logistics / Supply Chain" },
-  { value: "Media", label: "Media / Communications" },
-  { value: "Research", label: "Research / Science" },
-  { value: "Construction", label: "Construction / Architecture" },
-  { value: "Retail", label: "Retail / Customer Experience" },
-  { value: "Agriculture", label: "Agriculture / Farming" },
-  { value: "Non-Profit", label: "Non-Profit / NGO" },
-  { value: "other", label: "Other" },
+  { value: "Operations & Logistics", label: "Operations & Logistics" },
+  { value: "Education & Training", label: "Education & Training" },
+  { value: "Legal & Compliance", label: "Legal & Compliance" },
+  { value: "Healthcare & Medical", label: "Healthcare & Medical" },
+  { value: "Engineering & Manufacturing", label: "Engineering & Manufacturing" },
+  { value: "Science & Research", label: "Science & Research" },
+  { value: "Consulting & Strategy", label: "Consulting & Strategy" },
+  { value: "Media & Communication", label: "Media & Communication" },
+  { value: "Data Science & Analytics", label: "Data Science & Analytics" },
+  { value: "Retail & E-commerce", label: "Retail & E-commerce" },
+  { value: "Hospitality & Tourism", label: "Hospitality & Tourism" },
+  { value: "Real Estate & Property", label: "Real Estate & Property" },
+  { value: "Food & Beverage", label: "Food & Beverage" },
+  { value: "Transportation & Delivery", label: "Transportation & Delivery" },
+  { value: "Non-Profit & NGO", label: "Non-Profit & NGO" },
 ];
 
 //for Employement options
@@ -64,7 +66,7 @@ export  function JobCategorySelect({ value, onChange }: Props) {
 export  function JobEditCategory({ value, categories, onChange }: JobCategorySelectProps) {
 
   return (
-    <select name="category" value={value._id } onChange={onChange}>
+    <select name="category" value={value?._id} onChange={onChange}>
       <option value="">Select a category</option>
       {categories.map((category) => (
         <option key={category._id} value={category._id}>

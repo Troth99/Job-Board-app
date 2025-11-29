@@ -1,11 +1,30 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import "./FilterJobsByCategory.css";
 import useCompany from "../../hooks/useCompany";
+import useJobs from "../../hooks/useJobs";
+import { useEffect, useState } from "react";
+import { Job } from "../Jobs/CreateJob/CreateJob";
+import { ShowJobs } from "../Company/showJobs/showCompanyJobs";
 
 export function FilterJobByCategory() {
-  const { categoryName } = useParams();
-  const {company} = useCompany()
-  console.log(company)
+  const { categoryName } = useParams<{ categoryName: string }>();
+  const [jobsData, setJobsData] = useState<Job[]>([]);
+  const { getJobsByCategoryName } = useJobs();
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const getJobs = async () => {
+      if (!categoryName) return;
+      try {
+        const jobs = await getJobsByCategoryName(categoryName);
+        setJobsData(jobs);
+      } catch (error) {
+        console.error("Failed to fetch jobs");
+      }
+    };
+    getJobs();
+  }, [categoryName]);
+
   return (
     <div className="filter-jobs-container">
       <div className="filter-header">
@@ -16,7 +35,7 @@ export function FilterJobByCategory() {
           <p className="subtitle">Explore opportunities from {categoryName}</p>
         </div>
         <div className="filter-stats">
-          <span className="job-count">0 jobs found</span>
+          <span className="job-count">{jobsData.length} jobs found</span>
         </div>
       </div>
 
@@ -84,11 +103,15 @@ export function FilterJobByCategory() {
         </aside>
 
         <main className="jobs-list-area">
-          <div className="no-jobs-message">
-            <i className="fa-solid fa-briefcase"></i>
-            <h3>No jobs found</h3>
-            <p>Try adjusting your filters or check back later</p>
-          </div>
+          {jobsData.length > 0 ? (
+            <ShowJobs jobs={jobsData} onJobClick={(jobId) => navigate(`/job/${jobId}`)}/>
+          ) : (
+            <div className="no-jobs-message">
+              <i className="fa-solid fa-briefcase"></i>
+              <h3>No jobs found</h3>
+              <p>Try adjusting your filters or check back later</p>
+            </div>
+          )}
         </main>
       </div>
     </div>

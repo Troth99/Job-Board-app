@@ -5,39 +5,58 @@ import { Job } from "../../Jobs/CreateJob/CreateJob";
 import { formatDate } from "../../../utils/formData";
 
 interface ShowCompanyJobsProps {
-  jobs: Job[];  
+  jobs: Job[];
+  onJobClick?: (jobId: string) => void;
 }
 
+export function ShowJobs({ jobs, onJobClick }: ShowCompanyJobsProps) {
+  const { companyId } = useParams<{ companyId: string; jobId: string }>();
+  const navigate = useNavigate();
 
-
-export function ShowJobs({jobs}: ShowCompanyJobsProps) {
-   const { companyId } = useParams<{ companyId: string, jobId: string }>();
-    const navigate = useNavigate()
-
-      const handleJobClick = (jobId: string | undefined) => {
-
-        if(jobId){
-          navigate(`/company/${companyId}/job/${jobId}/details`); 
-        }else {
-          console.error('Job id is missing')
-        }
+  const handleJobClick = (jobId: string | undefined) => {
+    if (!jobId) {
+      console.error("Job id is missing");
+      return;
+    }
+    if (onJobClick) {
+      onJobClick(jobId);
+    } else {
+      navigate(`/company/${companyId}/job/${jobId}/details`);
+    }
   };
-    return (
-         <div className="job-list">
+  return (
+    <div className="job-list">
       {jobs.length > 0 ? (
         jobs.map((job) => (
           <div
             className="job-card-member"
             key={job._id}
             onClick={() => handleJobClick(job._id)}
-            style={{ cursor: "pointer", marginBottom: "20px", padding: "15px", border: "1px solid #ccc", borderRadius: "8px" }} 
+            style={{
+              cursor: "pointer",
+              marginBottom: "20px",
+              padding: "15px",
+              border: "1px solid #ccc",
+              borderRadius: "8px",
+            }}
           >
             <h3>{job.title}</h3>
-            <p><strong>Description:</strong> {job.description}</p>
-            <p><strong>Location:</strong> {job.location}</p>
-            <p><strong>Posted At:</strong> {formatDate(job.createdAt || '', 'en-US')}</p>
-            <p><strong>Status:</strong> {job.isActive ? "Active" : "Closed"}</p>
-       
+            <p>
+              <strong>Description:</strong> {job.description}
+            </p>
+            <p>
+              <strong>Location:</strong> {job.location}
+            </p>
+            <p>
+              <strong>Work type:</strong> {job.employmentType}
+            </p>
+            <p>
+              <strong>Posted At:</strong>{" "}
+              {formatDate(job.createdAt || "", "en-US")}
+            </p>
+            <p>
+              <strong>Status:</strong> {job.isActive ? "Active" : "Closed"}
+            </p>
           </div>
         ))
       ) : (
@@ -45,5 +64,4 @@ export function ShowJobs({jobs}: ShowCompanyJobsProps) {
       )}
     </div>
   );
-    
 }

@@ -3,11 +3,10 @@ import { Job, valuesInterface } from "../CreateJob/CreateJob";
 import { useNavigate, useParams } from "react-router";
 import useJobs from "../../../hooks/useJobs";
 import { EmploymentTypeSelect, JobEditCategory } from "../formSelectedInputs";
-import { Category } from "../../../hooks/useCategories";
+
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import Spinner from "../../Spinner/Spinner";
-import { l } from "react-router/dist/development/index-react-server-client-BSxMvS7Z";
 
 const initialValues = {
   title: "",
@@ -63,7 +62,6 @@ export function EditJob() {
   };
 
   useEffect(() => {
-    console.log(jobData)
     const fetchData = async () => {
       setLoading(true);
       await fetchCurrentJob();

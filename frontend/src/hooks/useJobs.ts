@@ -75,6 +75,19 @@ export default function useJobs() {
     }
   };
 
+  const getJobsByCategoryName = async(categoryName: string, ) => {
+    setLoading(true);
+    try {
+      if(!categoryName) throw new Error('Category name is missing!')
+      const response = await request(`${API_BASE}/jobs/category/${categoryName}`, "GET", {})
+    return response
+    } catch (error) {
+      console.error('Failed to load current category jobs.')
+    }finally {
+      setLoading(false)
+    }
+  }
+
   return {
     loading,
     getRecentJobs,
@@ -82,5 +95,6 @@ export default function useJobs() {
     getJobsByCompany,
     getJobById,
     updateJob,
+    getJobsByCategoryName
   };
 }

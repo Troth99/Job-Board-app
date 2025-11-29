@@ -1,8 +1,13 @@
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import Category from "./models/Category.js"; 
+import path from "path";
+import { fileURLToPath } from "url";
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 console.log(process.env.MONGO_URI);
 
 const categories = [
@@ -20,7 +25,14 @@ const categories = [
   { name: "Engineering & Manufacturing", shortName: "Engineering" },
   { name: "Science & Research", shortName: "Research" },
   { name: "Consulting & Strategy", shortName: "Consulting" },
-  { name: "Media & Communication", shortName: "Media" }
+  { name: "Media & Communication", shortName: "Media" },
+  { name: "Data Science & Analytics", shortName: "Data Science" },
+  { name: "Retail & E-commerce", shortName: "Retail" },
+  { name: "Hospitality & Tourism", shortName: "Hospitality" },
+  { name: "Real Estate & Property", shortName: "Real Estate" },
+  { name: "Food & Beverage", shortName: "F&B" },
+  { name: "Transportation & Delivery", shortName: "Transport" },
+  { name: "Non-Profit & NGO", shortName: "Non-Profit" }
 ];
 
 const seedCategories = async () => {
