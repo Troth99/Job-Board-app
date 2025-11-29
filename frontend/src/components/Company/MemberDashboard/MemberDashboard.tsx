@@ -2,44 +2,15 @@ import { useEffect, useState } from "react";
 import "./MemberDashboard.css";
 import "./Responsive.css";
 import { useNavigate, useParams } from "react-router";
-import Spinner from "../../Spinner/Spinner";
-import { Job } from "../../Jobs/CreateJob/CreateJob";
-import useJobs from "../../../hooks/useJobs";
 import useCompany from "../../../hooks/useCompany";
 import { CompanyJobsList } from "../CompanyJobList.tsx/CompanyJobList";
+import Spinner from "../../Spinner/Spinner";
 
 export function MemberDashboard() {
   const { companyId } = useParams();
-  const [loadingJobs, setLoadingJobs] = useState<boolean>(true); 
-  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loadingJobs, setLoadingJobs] = useState<boolean>(false); 
   const navigate = useNavigate();
-  const {company, getUserRole, userRole, loading: loadingRole, getMyCompany} = useCompany();
-  const { getJobsByCompany } = useJobs();
-
-
-  const fetchCompanyJobs = async () => {
-    if (companyId) {
-      try {
-      
-        const response = await getJobsByCompany(companyId);
-        if (response.length > 0) {
-          const sortedJobs = response.sort((a: Job, b:Job) => {
-            const aCreatedAt = a.createdAt ? new Date(a.createdAt).getTime(): 0;
-            const bCreatedAt = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-            return bCreatedAt - aCreatedAt
-
-          })
-          setJobs(sortedJobs.slice(0, 5));
-        } else {
-          setJobs([]);
-        }
-      } catch (error) {
-        console.error("Error fetching jobs:", error);
-      } finally {
-        setLoadingJobs(false);
-      }
-    }
-  };
+  const { company, getUserRole, userRole, loading: loadingRole } = useCompany();
 
   useEffect(() => {
     let isMounted = true;
@@ -48,10 +19,7 @@ export function MemberDashboard() {
       if (!companyId) return;
 
       try {
-        await Promise.all([
-          fetchCompanyJobs(),
-          getUserRole(companyId)
-        ]);
+        await getUserRole(companyId);
       } catch (error) {
         if (isMounted) {
           console.error("Error fetching dashboard data:", error);
