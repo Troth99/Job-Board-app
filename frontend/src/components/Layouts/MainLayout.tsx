@@ -4,14 +4,16 @@ import { Footer } from "../Footer/Footer";
 import { Outlet } from "react-router";
 import { getUserFromLocalStorage } from "../../hooks/useAuth";
 import useCompany from "../../hooks/useCompany";
+import { CompanyProvider, useCompanyContext } from "../../context/CompanyContext";
 
 interface Props {
   children?: ReactNode;
   hideHeaderFooter?: boolean;
 }
 
-export default function MainLayout({ children, hideHeaderFooter }: Props) {
+function MainLayoutContent({ children, hideHeaderFooter }: Props) {
   const { getMyCompany } = useCompany();
+  const { setCompany } = useCompanyContext();
 
   // Set company to localStorage if the user is part of a company
   useEffect(() => {
@@ -25,6 +27,7 @@ export default function MainLayout({ children, hideHeaderFooter }: Props) {
       try {
         const companyMembership = await getMyCompany();
         if (isMounted && companyMembership?._id) {
+          setCompany(companyMembership);
           // Get fresh user data from localStorage (might have been updated by token refresh)
           const freshUser = getUserFromLocalStorage();
           localStorage.setItem(
@@ -51,5 +54,13 @@ export default function MainLayout({ children, hideHeaderFooter }: Props) {
         <Outlet /> 
       {!hideHeaderFooter && <Footer />}
     </div>
+  );
+}
+
+export default function MainLayout(props: Props) {
+  return (
+    <CompanyProvider>
+      <MainLayoutContent {...props} />
+    </CompanyProvider>
   );
 }

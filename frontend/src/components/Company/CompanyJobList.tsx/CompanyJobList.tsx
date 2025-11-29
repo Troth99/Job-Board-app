@@ -8,14 +8,14 @@ interface CompanyJobsListProps {
   companyId: string;
   canPostJob: boolean;
   onPostJob: () => void;
-  setLoadingJobs: (loading: boolean) => void;
+  setLoadingJobs: (loading: boolean) => void
 }
 
 export function CompanyJobsList({
   companyId,
   canPostJob,
   onPostJob,
-  setLoadingJobs,
+  setLoadingJobs
 }: CompanyJobsListProps) {
   const [jobs, setJobs] = useState<Job[]>([]);
   const { getJobsByCompany, loading } = useJobs();
@@ -42,14 +42,16 @@ export function CompanyJobsList({
         }
       } catch (error) {
         console.error("Failed to load jobs");
-      } finally {
-        setLoadingJobs(false);
+      }
+      finally {
+        setLoadingJobs(false)
       }
     };
     fetchData();
 
     return () => controller.abort();
   }, [companyId]);
+
 
   return (
     <>

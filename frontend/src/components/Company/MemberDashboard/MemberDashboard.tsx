@@ -5,15 +5,18 @@ import { useNavigate, useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
 import { CompanyJobsList } from "../CompanyJobList.tsx/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
+import { useCompanyContext } from "../../../context/CompanyContext";
 
 export function MemberDashboard() {
   const { companyId } = useParams();
-  const [loadingJobs, setLoadingJobs] = useState<boolean>(false); 
+  const [loadingJobs, setLoadingJobs] = useState<boolean>(false);
   const navigate = useNavigate();
-  const { company, getUserRole, userRole, loading: loadingRole } = useCompany();
-
+  const { getUserRole, userRole, loading: loadingRole } = useCompany();
+  const {company} = useCompanyContext()
+  
   useEffect(() => {
-    let isMounted = true;
+   
+ 
 
     const fetchData = async () => {
       if (!companyId) return;
@@ -21,17 +24,13 @@ export function MemberDashboard() {
       try {
         await getUserRole(companyId);
       } catch (error) {
-        if (isMounted) {
-          console.error("Error fetching dashboard data:", error);
-        }
+      console.error('Failed to load member dasbharod.')
       }
     };
 
     fetchData();
 
-    return () => {
-      isMounted = false;
-    };
+  
   }, [companyId]);
 
   const postJobHandlerNavigate = () => {
@@ -40,7 +39,8 @@ export function MemberDashboard() {
 
  const canPostJob = userRole === "admin" || userRole === "owner" || userRole === "recruiter";
 
-   const isLoading = loadingJobs || loadingRole;
+  const isLoading = loadingJobs || loadingRole;
+
   return (
     <>
     {isLoading ? (
@@ -123,7 +123,7 @@ export function MemberDashboard() {
             companyId={companyId!}
             canPostJob={canPostJob}
             onPostJob={postJobHandlerNavigate}
-            setLoadingJobs={setLoadingJobs} 
+            setLoadingJobs={setLoadingJobs}
             />
        
             <div className="content-header">
