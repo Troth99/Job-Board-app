@@ -75,14 +75,7 @@ export default function CompanyRouteGuard() {
     }
   }, [company, user, toastShown, navigate]);
 
- if (loading) {
-  return (
-    <div className="profile-body" style={{ position: "relative" }}>
-      <Spinner overlay={true} /> 
-    </div>
-  );
-}
-  if (!hasAccess) {
+ if (!hasAccess && !loading) {
     return <Navigate to="/" replace />;
   }
 

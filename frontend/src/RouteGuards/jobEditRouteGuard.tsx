@@ -99,13 +99,6 @@ export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
     }
   }, [company, userRole, currentJob, loading]);
 
-if (loading) {
-  return (
-
-      <Spinner overlay={true} />
-    
-  );
-}
   return <>{children}</>; 
 };
 

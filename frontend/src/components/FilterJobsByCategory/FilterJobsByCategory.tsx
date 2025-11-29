@@ -1,25 +1,29 @@
 import { useNavigate, useParams } from "react-router";
 import "./FilterJobsByCategory.css";
-import useCompany from "../../hooks/useCompany";
 import useJobs from "../../hooks/useJobs";
 import { useEffect, useState } from "react";
 import { Job } from "../Jobs/CreateJob/CreateJob";
 import { ShowJobs } from "../../showJobs/showJobs";
+import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
 
 export function FilterJobByCategory() {
   const { categoryName } = useParams<{ categoryName: string }>();
   const [jobsData, setJobsData] = useState<Job[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const { getJobsByCategoryName } = useJobs();
   const navigate = useNavigate()
 
   useEffect(() => {
     const getJobs = async () => {
       if (!categoryName) return;
+      setLoading(true);
       try {
         const jobs = await getJobsByCategoryName(categoryName);
         setJobsData(jobs);
       } catch (error) {
         console.error("Failed to fetch jobs");
+      } finally {
+        setLoading(false);
       }
     };
     getJobs();
@@ -103,7 +107,9 @@ export function FilterJobByCategory() {
         </aside>
 
         <main className="jobs-list-area">
-          {jobsData.length > 0 ? (
+          {loading ? (
+            <LoadingIndicator message="Loading jobs..." size="medium"/>
+          ) : jobsData.length > 0 ? (
             <ShowJobs jobs={jobsData} onJobClick={(jobId) => navigate(`/job/${jobId}`)}/>
           ) : (
             <div className="no-jobs-message">

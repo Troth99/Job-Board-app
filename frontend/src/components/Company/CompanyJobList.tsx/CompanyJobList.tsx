@@ -3,6 +3,7 @@ import { Job } from "../../Jobs/CreateJob/CreateJob";
 import useJobs from "../../../hooks/useJobs";
 import { ShowJobs } from "../../../showJobs/showJobs";
 import Spinner from "../../Spinner/Spinner";
+import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
 
 interface CompanyJobsListProps {
   companyId: string;
@@ -72,7 +73,11 @@ export function CompanyJobsList({
       </div>
 
       <div className="job-list">
-        {loading ? <Spinner /> : <ShowJobs jobs={jobs} />}
+        {loading ? (
+          <LoadingIndicator size="small" message="Loading jobs..." />
+        ) : (
+          <ShowJobs jobs={jobs} />
+        )}
       </div>
     </>
   );

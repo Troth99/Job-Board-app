@@ -3,8 +3,9 @@ import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Outlet } from "react-router";
 import { getUserFromLocalStorage } from "../../hooks/useAuth";
-import useCompany from "../../hooks/useCompany";
 import { CompanyProvider, useCompanyContext } from "../../context/CompanyContext";
+import useApiRequester from "../../hooks/useApiRequester";
+import { API_BASE } from "../../services/api";
 
 interface Props {
   children?: ReactNode;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 function MainLayoutContent({ children, hideHeaderFooter }: Props) {
-  const { getMyCompany } = useCompany();
+  const { request } = useApiRequester();
   const { setCompany } = useCompanyContext();
 
   // Set company to localStorage if the user is part of a company
@@ -25,7 +26,11 @@ function MainLayoutContent({ children, hideHeaderFooter }: Props) {
       if (!user?.accessToken) return;
 
       try {
-        const companyMembership = await getMyCompany();
+        const companyMembership = await request(
+          `${API_BASE}/companies/my-company`,
+          "GET",
+          {}
+        );
         if (isMounted && companyMembership?._id) {
           setCompany(companyMembership);
           // Get fresh user data from localStorage (might have been updated by token refresh)

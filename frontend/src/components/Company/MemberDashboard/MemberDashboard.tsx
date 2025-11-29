@@ -15,8 +15,6 @@ export function MemberDashboard() {
 
   useEffect(() => {
    
- 
-
     const fetchData = async () => {
       if (!companyId) return;
 
@@ -38,14 +36,14 @@ export function MemberDashboard() {
 
  const canPostJob = userRole === "admin" || userRole === "owner" || userRole === "recruiter";
 
+ if(loadingRole) {
+  return <Spinner inline={true} />;
+ }
   return (
-    <>
-    {loadingRole ? (
-        <Spinner overlay={true} />
-      ) : (
-        <div className="dashboard">
-          {/* Sidebar */}
-          <div className="sidebar">
+
+    <div className="dashboard">
+      {/* Sidebar */}
+      <div className="sidebar">
             <div className="sidebar-header">
               <h2>Welcome to <span className="company-name">{company?.name}</span> dashboard.</h2>
               <p className="user-role">Role: {userRole}</p>
@@ -141,8 +139,6 @@ export function MemberDashboard() {
               </div>
             </div>
           </div>
-        </div>
-      )}
-  </>
+    </div>
   );
 }
