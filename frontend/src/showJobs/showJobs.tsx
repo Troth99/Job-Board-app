@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import useJobs from "../hooks/useJobs";
 import { useNavigate, useParams } from "react-router";
-import { Job } from "../../Jobs/CreateJob/CreateJob";
-import { formatDate } from "../../../utils/formData";
+import { Job } from "../components/Jobs/CreateJob/CreateJob";
+import { formatDate } from "../utils/formData";
 
 interface ShowCompanyJobsProps {
   jobs: Job[];
@@ -48,6 +49,9 @@ export function ShowJobs({ jobs, onJobClick }: ShowCompanyJobsProps) {
             </p>
             <p>
               <strong>Work type:</strong> {job.employmentType}
+            </p>
+            <p>
+              <strong>Salary:</strong> {job.salary}
             </p>
             <p>
               <strong>Posted At:</strong>{" "}

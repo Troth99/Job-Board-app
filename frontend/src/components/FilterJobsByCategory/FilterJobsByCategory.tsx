@@ -4,7 +4,7 @@ import useCompany from "../../hooks/useCompany";
 import useJobs from "../../hooks/useJobs";
 import { useEffect, useState } from "react";
 import { Job } from "../Jobs/CreateJob/CreateJob";
-import { ShowJobs } from "../Company/showJobs/showCompanyJobs";
+import { ShowJobs } from "../../showJobs/showJobs";
 
 export function FilterJobByCategory() {
   const { categoryName } = useParams<{ categoryName: string }>();

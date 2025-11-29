@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Job } from "../../Jobs/CreateJob/CreateJob";
 import useJobs from "../../../hooks/useJobs";
-import { ShowJobs } from "../showJobs/showCompanyJobs";
+import { ShowJobs } from "../../../showJobs/showJobs";
 import Spinner from "../../Spinner/Spinner";
 
 interface CompanyJobsListProps {
