@@ -1,6 +1,6 @@
 import { CompanyMember } from "../models/CompanyMember.js";
 import Jobs from "../models/Jobs.js";
-import { createJobService, getJobById, getRecentJobs } from "../services/jobService.js";
+import { createJobService, getJobById, getJobsByCategoryName, getRecentJobs } from "../services/jobService.js";
 import mongoose, { Types } from "mongoose";
 
 
@@ -119,3 +119,18 @@ export const updateJobController = async (req, res) => {
     res.status(500).json({ message: "Failed to update job", error: error.message });
   }
 };
+
+
+export const getJobsByCategoryController = async  (req, res) => {
+  try {
+    const {categoryName}  = req.params;
+
+    const decodedCategoryName = decodeURIComponent(categoryName);
+
+    const jobs = await getJobsByCategoryName(decodedCategoryName);
+    res.status(200).json(jobs)
+  } catch (error) {
+     console.error("Error in getJobsByCategoryController:", error);
+    res.status(400).json({ message: error.message });
+  }
+}

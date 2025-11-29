@@ -15,6 +15,7 @@ export default function MainLayout({ children, hideHeaderFooter }: Props) {
 
   // Set company to localStorage if the user is part of a company
   useEffect(() => {
+    const controller = new AbortController()
     let isMounted = true;
 
     const fetchCompany = async () => {
@@ -39,6 +40,7 @@ export default function MainLayout({ children, hideHeaderFooter }: Props) {
 
     return () => {
       isMounted = false;
+      controller.abort()
     };
   }, []);
 

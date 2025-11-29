@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import "./MemberDashboard.css";
 import "./Responsive.css";
-
 import { useNavigate, useParams } from "react-router";
 import Spinner from "../../Spinner/Spinner";
-import { ShowJobs } from "../showJobs/showCompanyJobs";
 import { Job } from "../../Jobs/CreateJob/CreateJob";
 import useJobs from "../../../hooks/useJobs";
 import useCompany from "../../../hooks/useCompany";
+import { CompanyJobsList } from "../CompanyJobList.tsx/CompanyJobList";
 
 export function MemberDashboard() {
   const { companyId } = useParams();
@@ -17,8 +16,7 @@ export function MemberDashboard() {
   const {company, getUserRole, userRole, loading: loadingRole, getMyCompany} = useCompany();
   const { getJobsByCompany } = useJobs();
 
-  console.log(company)
- 
+
   const fetchCompanyJobs = async () => {
     if (companyId) {
       try {
@@ -44,11 +42,28 @@ export function MemberDashboard() {
   };
 
   useEffect(() => {
-    if (companyId) {
-      fetchCompanyJobs();
-      getUserRole(companyId);
-      getMyCompany();
-    }
+    let isMounted = true;
+
+    const fetchData = async () => {
+      if (!companyId) return;
+
+      try {
+        await Promise.all([
+          fetchCompanyJobs(),
+          getUserRole(companyId)
+        ]);
+      } catch (error) {
+        if (isMounted) {
+          console.error("Error fetching dashboard data:", error);
+        }
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [companyId]);
 
   const postJobHandlerNavigate = () => {
@@ -136,28 +151,12 @@ export function MemberDashboard() {
             </div>
 
             {/* Jobs Section */}
-            <div className="content-header">
-              <h3>Most 5 recent Posted jobs</h3>
-          <div className="buttons-for-jobs">
-        {canPostJob && (
-          <button className="add-button" onClick={postJobHandlerNavigate}>
-            + Post Job
-          </button>
-        )}
-        {canPostJob && (
-          <button className="add-button">
-            + View all jobs for the company
-          </button>
-        )}
-      </div>
-              </div>
-
-            <div className="job-list">
-    
-              <ShowJobs jobs={jobs} />
-            
-            </div>
-
+            <CompanyJobsList
+            companyId={companyId!}
+            canPostJob={canPostJob}
+            onPostJob={postJobHandlerNavigate}
+            setLoadingJobs={setLoadingJobs} 
+            />
        
             <div className="content-header">
               <h3>Announcements</h3>

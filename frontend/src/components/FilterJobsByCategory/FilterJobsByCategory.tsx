@@ -1,9 +1,11 @@
 import { useParams } from "react-router";
 import "./FilterJobsByCategory.css";
+import useCompany from "../../hooks/useCompany";
 
 export function FilterJobByCategory() {
   const { categoryName } = useParams();
-
+  const {company} = useCompany()
+  console.log(company)
   return (
     <div className="filter-jobs-container">
       <div className="filter-header">

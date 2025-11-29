@@ -17,7 +17,7 @@ let refreshPromise: Promise<any> | null = null;
 const useApiRequester = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState(null);
 
 
   const request = async (
@@ -60,18 +60,16 @@ const useApiRequester = () => {
 
       if (!response.ok) {
         if (response.status === 401 && !isRetry) {
-          console.log('🔴 Got 401 - attempting token refresh...');
-          
+     
           const refreshToken = getRefreshToken();
           
           if (refreshToken) {
             try {
               // Check if refresh is already in progress
               if (!refreshPromise) {
-                console.log('🔒 Starting new refresh...');
                 refreshPromise = refreshAccessToken(refreshToken)
                   .then(tokenData => {
-                    console.log('✅ Token refreshed!');
+              
                     updateTokensInStorage(tokenData.accessToken, tokenData.refreshToken);
                     return tokenData;
                   })
@@ -79,22 +77,22 @@ const useApiRequester = () => {
                     refreshPromise = null; // Clear the promise
                   });
               } else {
-                console.log('⏳ Waiting for existing refresh...');
+                console.error('Unable to refresh Token.')
               }
               
               // Wait for the refresh to complete
               await refreshPromise;
               
-           
-              console.log('🔄 Retrying original request...');
+      
               return await request(url, method, data, headers, true);
             } catch (refreshError) {
               // Refresh failed - logout user
-              console.error('❌ Refresh failed:', refreshError);
               refreshPromise = null;
               localStorage.removeItem("user");
+
               store.dispatch(setAuthenticated({ isAuthenticated: false }));
               window.location.href = "/";
+              
               throw new Error('Session expired. Please login again.');
             }
           } else {

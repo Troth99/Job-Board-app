@@ -5,44 +5,44 @@ import mongoose from "mongoose";
 
 export const createJobService = async (jobData) => {
 
-    if (jobData.category) {
-        let category = await Category.findOne({ name: jobData.category });
+  if (jobData.category) {
+    let category = await Category.findOne({ name: jobData.category });
 
-        if (!category) {
-            category = await Category.create({
-                name: jobData.category,
-                shortName: jobData.category.toLowerCase().replace(/\s+/g, '-')
-            });
-        }
-        jobData.category = category._id
+    if (!category) {
+      category = await Category.create({
+        name: jobData.category,
+        shortName: jobData.category.toLowerCase().replace(/\s+/g, '-')
+      });
     }
-    const job = await Jobs.create(jobData)
+    jobData.category = category._id
+  }
+  const job = await Jobs.create(jobData)
 
-    return job;
+  return job;
 };
 
 
 
 export const getAllJobs = async (categoryId) => {
-    const filter = {};
+  const filter = {};
 
-    if (categoryId) {
-        filter.category = categoryId;
-    }
+  if (categoryId) {
+    filter.category = categoryId;
+  }
 
-    const jobs = await Jobs.find(filter)
-        .populate("category", "name")
-        .populate("company", "name");
+  const jobs = await Jobs.find(filter)
+    .populate("category", "name")
+    .populate("company", "name");
 
-    return jobs
+  return jobs
 }
 
 
 export const getJobById = async (jobId) => {
   try {
-   
 
-    const job = await Jobs.findById(jobId).populate("createdBy", "name email role").populate('category', 'name shortName');  
+
+    const job = await Jobs.findById(jobId).populate("createdBy", "name email role").populate('category', 'name shortName');
 
     if (!job) {
       throw new Error("Job not found");
@@ -56,13 +56,13 @@ export const getJobById = async (jobId) => {
 };
 
 export const updateJob = async (req, res) => {
-    try {
-        const job = await updateJobService(req.params.id, req.body, req.user._id);
-        if (!job) return res.status(404).json({ message: "Job not found or not authorized" });
-        res.json(job);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+  try {
+    const job = await updateJobService(req.params.id, req.body, req.user._id);
+    if (!job) return res.status(404).json({ message: "Job not found or not authorized" });
+    res.json(job);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 export const getRecentJobs = async (limit = 5) => {
@@ -72,7 +72,7 @@ export const getRecentJobs = async (limit = 5) => {
       .limit(limit)
       .populate("company", "name logo website")
       .populate("category", "name")
-       .populate("createdBy", "firstName lastName")
+      .populate("createdBy", "firstName lastName")
       .lean();
 
     return jobs
@@ -81,3 +81,33 @@ export const getRecentJobs = async (limit = 5) => {
     return [];
   }
 };
+
+
+export const getJobsByCategoryName = async (categoryName) => {
+  try {
+    if (!categoryName) {
+      throw new Error('Category name is requred.')
+    }
+
+    const category = await Category.findOne({
+      name: { $regex: new RegExp(`^${categoryName}$`, 'i') }
+    })
+
+    if (!category) {
+      throw new Error("Category not found.")
+    }
+
+    const jobs = await Jobs.find({ category: category._id })
+      .populate("company", "name logo website")
+      .populate("category", "name shortName")
+      .populate("createdBy", "firstName lastName")
+      .sort({ createdAt: -1 })
+      .lean()
+
+    return jobs
+  } catch (error) {
+    console.error("Error in getJobsByCategoryName service:", error);
+    throw error;
+
+  }
+}
