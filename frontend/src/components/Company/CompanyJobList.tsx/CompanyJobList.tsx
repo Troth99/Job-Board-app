@@ -8,21 +8,21 @@ interface CompanyJobsListProps {
   companyId: string;
   canPostJob: boolean;
   onPostJob: () => void;
-  setLoadingJobs: (loading: boolean) => void
 }
 
 export function CompanyJobsList({
   companyId,
   canPostJob,
   onPostJob,
-  setLoadingJobs
 }: CompanyJobsListProps) {
   const [jobs, setJobs] = useState<Job[]>([]);
-  const { getJobsByCompany, loading } = useJobs();
+  const [loading, setLoading] = useState<boolean>(true);
+  const { getJobsByCompany } = useJobs();
 
   useEffect(() => {
     const controller = new AbortController();
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await getJobsByCompany(companyId);
         if (response.length > 0) {
@@ -44,7 +44,7 @@ export function CompanyJobsList({
         console.error("Failed to load jobs");
       }
       finally {
-        setLoadingJobs(false)
+        setLoading(false);
       }
     };
     fetchData();
@@ -72,7 +72,7 @@ export function CompanyJobsList({
       </div>
 
       <div className="job-list">
-        <ShowJobs jobs={jobs} />
+        {loading ? <Spinner /> : <ShowJobs jobs={jobs} />}
       </div>
     </>
   );

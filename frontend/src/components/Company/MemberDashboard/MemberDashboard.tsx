@@ -9,11 +9,10 @@ import { useCompanyContext } from "../../../context/CompanyContext";
 
 export function MemberDashboard() {
   const { companyId } = useParams();
-  const [loadingJobs, setLoadingJobs] = useState<boolean>(false);
   const navigate = useNavigate();
   const { getUserRole, userRole, loading: loadingRole } = useCompany();
   const {company} = useCompanyContext()
-  
+
   useEffect(() => {
    
  
@@ -39,11 +38,9 @@ export function MemberDashboard() {
 
  const canPostJob = userRole === "admin" || userRole === "owner" || userRole === "recruiter";
 
-  const isLoading = loadingJobs || loadingRole;
-
   return (
     <>
-    {isLoading ? (
+    {loadingRole ? (
         <Spinner overlay={true} />
       ) : (
         <div className="dashboard">
@@ -123,7 +120,6 @@ export function MemberDashboard() {
             companyId={companyId!}
             canPostJob={canPostJob}
             onPostJob={postJobHandlerNavigate}
-            setLoadingJobs={setLoadingJobs}
             />
        
             <div className="content-header">
