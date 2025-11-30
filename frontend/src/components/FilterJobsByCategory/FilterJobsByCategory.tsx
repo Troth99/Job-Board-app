@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Job } from "../Jobs/CreateJob/CreateJob";
 import { ShowJobs } from "../../showJobs/showJobs";
 import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
+import { usePagination } from "../../hooks/usePagination";
 
 export function FilterJobByCategory() {
   const { categoryName } = useParams<{ categoryName: string }>();
@@ -12,6 +13,9 @@ export function FilterJobByCategory() {
   const [loading, setLoading] = useState<boolean>(true);
   const { getJobsByCategoryName } = useJobs();
   const navigate = useNavigate()
+  
+  const {currentPage, totalPages, currentItems, goToNextPage, goToPreviousPage} = usePagination(jobsData, 3)
+
 
   useEffect(() => {
     const getJobs = async () => {
@@ -110,7 +114,21 @@ export function FilterJobByCategory() {
           {loading ? (
             <LoadingIndicator message="Loading jobs..." size="medium"/>
           ) : jobsData.length > 0 ? (
-            <ShowJobs jobs={jobsData} onJobClick={(jobId) => navigate(`/job/${jobId}`)}/>
+            <>
+              <ShowJobs jobs={currentItems} onJobClick={(jobId) => navigate(`/job/${jobId}`)}/>
+              
+              {jobsData.length > 3 && (
+                <div className="pagination">
+                  <button onClick={goToPreviousPage} disabled={currentPage === 1}>
+                    Previous
+                  </button>
+                  <span>Page {currentPage} of {totalPages}</span>
+                  <button onClick={goToNextPage} disabled={currentPage === totalPages}>
+                    Next
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
             <div className="no-jobs-message">
               <i className="fa-solid fa-briefcase"></i>

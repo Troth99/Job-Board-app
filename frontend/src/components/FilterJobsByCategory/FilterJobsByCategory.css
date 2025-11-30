@@ -216,7 +216,45 @@
 [data-theme="dark"] .no-jobs-message p {
   color: #95a5a6;
 }
+.jobs-list-area {
+  display: flex;
+  flex-direction: column;
+  min-height: 600px; /* или колкото искаш */
+}
 
+.pagination {
+  margin-top: auto; /* това го бутва най-долу */
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 16px;
+  font-weight: 500;
+}
 /* Responsive */
 @media (max-width: 968px) {
   .filter-content {
