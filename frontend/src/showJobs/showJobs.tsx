@@ -63,7 +63,10 @@ export function ShowJobs({ jobs, onJobClick }: ShowCompanyJobsProps) {
           </div>
         ))
       ) : (
-        <p>No jobs for current company.</p>
+           <div className="no-jobs-message">
+              <i className="fa-solid fa-briefcase"></i>
+              <h3>No jobs found</h3>
+            </div>
       )}
     </div>
   );

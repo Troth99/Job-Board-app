@@ -6,6 +6,9 @@ import { Job } from "../Jobs/CreateJob/CreateJob";
 import { ShowJobs } from "../../showJobs/showJobs";
 import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
 import { usePagination } from "../../hooks/usePagination";
+import { FilterGroup } from "./FilterGroup/FilterGroup";
+import { employmentOptions } from "../Jobs/formSelectedInputs";
+import { useJobFilters } from "../../hooks/useJobFilters";
 
 export function FilterJobByCategory() {
   const { categoryName } = useParams<{ categoryName: string }>();
@@ -13,9 +16,19 @@ export function FilterJobByCategory() {
   const [loading, setLoading] = useState<boolean>(true);
   const { getJobsByCategoryName } = useJobs();
   const navigate = useNavigate()
-  
-  const {currentPage, totalPages, currentItems, goToNextPage, goToPreviousPage} = usePagination(jobsData, 3)
+    const {selectedTypes, handleCompanyChange, handleTypeChange, filteredJobs, selectedCompanies} = useJobFilters(jobsData)
+    const {currentPage, totalPages, currentItems, goToNextPage, goToPreviousPage} = usePagination(filteredJobs, 3)
 
+//Get company names, that have current posted jobs.
+const companyOptions = [
+  ...new Set(
+    jobsData
+      .map(job => job.company?.name)
+      .filter((name): name is string => Boolean(name))
+  )
+];
+
+console.log(currentItems)
 
   useEffect(() => {
     const getJobs = async () => {
@@ -51,61 +64,21 @@ export function FilterJobByCategory() {
         <aside className="filter-sidebar">
           <div className="filter-section">
             <h3>Filters</h3>
+              <FilterGroup
+              title="Job Type"
+              options={employmentOptions.map(option => option.value)}
+              selected={selectedTypes}
+              onChange={handleTypeChange}
+              />
+              /</div>
+               <div className="filter-section">
 
-            <div className="filter-group">
-              <h4>Location</h4>
-              <div className="filter-options">
-                <label className="filter-checkbox">
-                  <input type="checkbox" />
-                  <span>Remote</span>
-                </label>
-                <label className="filter-checkbox">
-                  <input type="checkbox" />
-                  <span>On-site</span>
-                </label>
-                <label className="filter-checkbox">
-                  <input type="checkbox" />
-                  <span>Hybrid</span>
-                </label>
-              </div>
-            </div>
-
-            <div className="filter-group">
-              <h4>Experience Level</h4>
-              <div className="filter-options">
-                <label className="filter-checkbox">
-                  <input type="checkbox" />
-                  <span>Entry Level</span>
-                </label>
-                <label className="filter-checkbox">
-                  <input type="checkbox" />
-                  <span>Mid Level</span>
-                </label>
-                <label className="filter-checkbox">
-                  <input type="checkbox" />
-                  <span>Senior Level</span>
-                </label>
-              </div>
-            </div>
-
-            <div className="filter-group">
-              <h4>Job Type</h4>
-              <div className="filter-options">
-                <label className="filter-checkbox">
-                  <input type="checkbox" />
-                  <span>Full-time</span>
-                </label>
-                <label className="filter-checkbox">
-                  <input type="checkbox" />
-                  <span>Part-time</span>
-                </label>
-                <label className="filter-checkbox">
-                  <input type="checkbox" />
-                  <span>Contract</span>
-                </label>
-              </div>
-            </div>
-
+              <FilterGroup
+              title="Company"
+              options={companyOptions}
+              selected={selectedCompanies}
+              onChange={handleCompanyChange}
+              />
             <button className="clear-filters">Clear All Filters</button>
           </div>
         </aside>
@@ -117,7 +90,7 @@ export function FilterJobByCategory() {
             <>
               <ShowJobs jobs={currentItems} onJobClick={(jobId) => navigate(`/job/${jobId}`)}/>
               
-              {jobsData.length > 3 && (
+              {filteredJobs.length > 3 && (
                 <div className="pagination">
                   <button onClick={goToPreviousPage} disabled={currentPage === 1}>
                     Previous
@@ -133,7 +106,6 @@ export function FilterJobByCategory() {
             <div className="no-jobs-message">
               <i className="fa-solid fa-briefcase"></i>
               <h3>No jobs found</h3>
-              <p>Try adjusting your filters or check back later</p>
             </div>
           )}
         </main>
