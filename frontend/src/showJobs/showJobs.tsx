@@ -35,9 +35,7 @@ export function ShowJobs({ jobs, onJobClick }: ShowCompanyJobsProps) {
             style={{
               cursor: "pointer",
               marginBottom: "20px",
-              padding: "15px",
               border: "1px solid #ccc",
-              borderRadius: "8px",
             }}
           >
             <h3>{job.title}</h3>

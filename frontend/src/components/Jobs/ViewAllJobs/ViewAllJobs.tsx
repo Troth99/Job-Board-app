@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { ShowJobs } from "../../../showJobs/showJobs";
 import { Job } from "../CreateJob/CreateJob";
 import useJobs from "../../../hooks/useJobs";
 import Spinner from "../../Spinner/Spinner";
@@ -8,20 +7,15 @@ import { usePagination } from "../../../hooks/usePagination";
 import { useNavigate, useParams, useSearchParams } from "react-router";
 
 export function ViewAllJobs() {
-  const { jobId } = useParams();
   const [jobs, setJobs] = useState<Job[]>([]);
   const { loading, getAllJobs } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
 
-const { currentItems, totalPages } = usePagination(jobs, 5, pageFromUrl);  
+  const { currentItems, totalPages } = usePagination(jobs, 5, pageFromUrl);
 
   const navigate = useNavigate();
-
-  const handlePageChange = (page: number) => {
-    setSearchParams({ page: page.toString() });
-  };
   useEffect(() => {
     const fetchJobs = async () => {
       try {
@@ -72,21 +66,25 @@ const { currentItems, totalPages } = usePagination(jobs, 5, pageFromUrl);
       )}
       {jobs.length > 5 && (
         <div className="pagination">
-  <button
-  onClick={() => setSearchParams({ page: (pageFromUrl - 1).toString() })}
-  disabled={pageFromUrl === 1}
->
-  Previous
-</button>
-<span>
-  Page {pageFromUrl} of {totalPages}
-</span>
-<button
-  onClick={() => setSearchParams({ page: (pageFromUrl + 1).toString() })}
-  disabled={pageFromUrl === totalPages}
->
-  Next
-</button>
+          <button
+            onClick={() =>
+              setSearchParams({ page: (pageFromUrl - 1).toString() })
+            }
+            disabled={pageFromUrl === 1}
+          >
+            Previous
+          </button>
+          <span>
+            Page {pageFromUrl} of {totalPages}
+          </span>
+          <button
+            onClick={() =>
+              setSearchParams({ page: (pageFromUrl + 1).toString() })
+            }
+            disabled={pageFromUrl === totalPages}
+          >
+            Next
+          </button>
         </div>
       )}
     </div>

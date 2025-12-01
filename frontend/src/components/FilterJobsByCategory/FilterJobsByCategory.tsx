@@ -24,13 +24,19 @@ export function FilterJobByCategory() {
     handleTypeChange,
     filteredJobs,
     selectedCompanies,
+    setSelectedTypes,
+    setSelectedCompanies
   } = useJobFilters(jobsData);
+
   const { totalPages, currentItems } = usePagination(
     filteredJobs,
     3,
     pageFromUrl
   );
-
+const clearFilter = () => {
+  setSelectedTypes([])
+  setSelectedCompanies([])
+}
   //Get company names, that have current posted jobs.
   const companyOptions = [
     ...new Set(
@@ -39,8 +45,6 @@ export function FilterJobByCategory() {
         .filter((name): name is string => Boolean(name))
     ),
   ];
-
-  console.log(currentItems);
 
   useEffect(() => {
     const getJobs = async () => {
@@ -82,7 +86,6 @@ export function FilterJobByCategory() {
               selected={selectedTypes}
               onChange={handleTypeChange}
             />
-            /
           </div>
           <div className="filter-section">
             <FilterGroup
@@ -91,7 +94,7 @@ export function FilterJobByCategory() {
               selected={selectedCompanies}
               onChange={handleCompanyChange}
             />
-            <button className="clear-filters">Clear All Filters</button>
+            <button className="clear-filters" onClick={clearFilter}>Clear All Filters</button>
           </div>
         </aside>
 
