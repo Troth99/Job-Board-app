@@ -3,69 +3,98 @@ import { ShowJobs } from "../../../showJobs/showJobs";
 import { Job } from "../CreateJob/CreateJob";
 import useJobs from "../../../hooks/useJobs";
 import Spinner from "../../Spinner/Spinner";
-import "./ViewAllJobs.css"
+import "./ViewAllJobs.css";
 import { usePagination } from "../../../hooks/usePagination";
-import { useSearchParams } from "react-router";
+import { useNavigate, useParams, useSearchParams } from "react-router";
 
 export function ViewAllJobs() {
-const [jobs, setJobs] = useState<Job[]>([])
-const {loading, getAllJobs } = useJobs()
-const { currentItems, currentPage, totalPages, goToNextPage, goToPreviousPage, goToPage } = usePagination(jobs, 5);
-const [searchParams, setSearchParams] = useSearchParams();
-const pageFromUrl = parseInt(searchParams.get('page') || '1', 10)
+  const { jobId } = useParams();
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const { loading, getAllJobs } = useJobs();
+  const {
+    currentItems,
+    currentPage,
+    totalPages,
+    goToNextPage,
+    goToPreviousPage,
+    goToPage,
+  } = usePagination(jobs, 5);
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  const navigate = useNavigate();
 
-const handlePageChange = (page: number) => {
-    setSearchParams({page: page.toString()});
-    goToPage(page)
-}
-useEffect(() => {
+  const handlePageChange = (page: number) => {
+    setSearchParams({ page: page.toString() });
+    goToPage(page);
+  };
+  useEffect(() => {
     const fetchJobs = async () => {
-        try {
-            const response = await getAllJobs();
-            console.log(response)
-            setJobs(response)
-        } catch (error) {
-            console.error('Failed to set jobs.')
-        }
+      try {
+        const response = await getAllJobs();
+        setJobs(response);
+      } catch (error) {
+        console.error("Failed to set jobs.");
+      }
+    };
+    fetchJobs();
+  }, []);
 
-    }
-    fetchJobs()
-},[])
+  if (loading) {
+    return <Spinner overlay={true} />;
+  }
+  return (
+    <div className="jobs-list-modern">
+      {currentItems.length > 0 ? (
+        currentItems.map((job) => (
+          <div
+            className="job-card-modern"
+            key={job._id}
+            onClick={() => navigate(`/job/${job._id}`)}
+          >
+            <div className="job-header-modern">
+              <span className="job-company-modern">
+                {typeof job.company === "string"
+                  ? job.company
+                  : job.company?.name ?? ""}
+              </span>
+              <span className="job-location-modern">{job.location}</span>
+            </div>
+            <h2 className="job-title-modern">{job.title}</h2>
+            <div className="job-info-modern">
+              <span className="job-type-modern">{job.employmentType}</span>
+              <span className="job-salary-modern">{job.salary}</span>
+              <span className="job-status-modern">
+                {job.isActive ? "Active" : "Closed"}
+              </span>
+            </div>
+            <span className="job-apply-btn-modern">
+              Posted by: {job.createdBy?.firstName} {job.createdBy?.lastName}
+            </span>
+          </div>
+        ))
+      ) : (
+        <p className="no-jobs-modern">No jobs found.</p>
+      )}
+      {jobs.length > 5 && (
+        <div className="pagination">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
 
-if(loading){
-    return <Spinner overlay={true} />
-}
-    return (
-<div className="jobs-list-modern">
-  {currentItems.length > 0 ? (
-    currentItems.map((job) => (
-      <div className="job-card-modern" key={job._id}>
-        <div className="job-header-modern">
-          <span className="job-company-modern">{typeof job.company === "string" ? job.company : job.company?.name ?? ""}</span>
-          <span className="job-location-modern">{job.location}</span>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
         </div>
-        <h2 className="job-title-modern">{job.title}</h2>
-        <div className="job-info-modern">
-          <span className="job-type-modern">{job.employmentType}</span>
-          <span className="job-salary-modern">{job.salary}</span>
-          <span className="job-status-modern">{job.isActive ? "Active" : "Closed"}</span>
-        </div>
-        <span className="job-apply-btn-modern">Posted by: {job.createdBy?.firstName} {job.createdBy?.lastName}</span>
-      </div>
-    ))  
-  ) : (
-    <p className="no-jobs-modern">No jobs found.</p>
-  )}
-    {jobs.length > 5 && (
-          <div className="pagination">
-      <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
-
-        <span>Page {currentPage} of {totalPages}</span>
-   <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
-      </div>
-    )}
-</div>
-
-    )
+      )}
+    </div>
+  );
 }

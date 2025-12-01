@@ -10,6 +10,7 @@
 
 .job-card-modern {
   background: #fff;
+  cursor: pointer;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.07);
   padding: 28px 24px;
