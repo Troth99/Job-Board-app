@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams, useSearchParams } from "react-router";
 import "./FilterJobsByCategory.css";
 import useJobs from "../../hooks/useJobs";
 import { useEffect, useState } from "react";
@@ -11,24 +11,36 @@ import { employmentOptions } from "../Jobs/formSelectedInputs";
 import { useJobFilters } from "../../hooks/useJobFilters";
 
 export function FilterJobByCategory() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
   const { categoryName } = useParams<{ categoryName: string }>();
   const [jobsData, setJobsData] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { getJobsByCategoryName } = useJobs();
-  const navigate = useNavigate()
-    const {selectedTypes, handleCompanyChange, handleTypeChange, filteredJobs, selectedCompanies} = useJobFilters(jobsData)
-    const {currentPage, totalPages, currentItems, goToNextPage, goToPreviousPage} = usePagination(filteredJobs, 3)
+  const navigate = useNavigate();
+  const {
+    selectedTypes,
+    handleCompanyChange,
+    handleTypeChange,
+    filteredJobs,
+    selectedCompanies,
+  } = useJobFilters(jobsData);
+  const { totalPages, currentItems } = usePagination(
+    filteredJobs,
+    3,
+    pageFromUrl
+  );
 
-//Get company names, that have current posted jobs.
-const companyOptions = [
-  ...new Set(
-    jobsData
-      .map(job => job.company?.name)
-      .filter((name): name is string => Boolean(name))
-  )
-];
+  //Get company names, that have current posted jobs.
+  const companyOptions = [
+    ...new Set(
+      jobsData
+        .map((job) => job.company?.name)
+        .filter((name): name is string => Boolean(name))
+    ),
+  ];
 
-console.log(currentItems)
+  console.log(currentItems);
 
   useEffect(() => {
     const getJobs = async () => {
@@ -64,39 +76,54 @@ console.log(currentItems)
         <aside className="filter-sidebar">
           <div className="filter-section">
             <h3>Filters</h3>
-              <FilterGroup
+            <FilterGroup
               title="Job Type"
-              options={employmentOptions.map(option => option.value)}
+              options={employmentOptions.map((option) => option.value)}
               selected={selectedTypes}
               onChange={handleTypeChange}
-              />
-              /</div>
-               <div className="filter-section">
-
-              <FilterGroup
+            />
+            /
+          </div>
+          <div className="filter-section">
+            <FilterGroup
               title="Company"
               options={companyOptions}
               selected={selectedCompanies}
               onChange={handleCompanyChange}
-              />
+            />
             <button className="clear-filters">Clear All Filters</button>
           </div>
         </aside>
 
         <main className="jobs-list-area">
           {loading ? (
-            <LoadingIndicator message="Loading jobs..." size="medium"/>
+            <LoadingIndicator message="Loading jobs..." size="medium" />
           ) : jobsData.length > 0 ? (
             <>
-              <ShowJobs jobs={currentItems} onJobClick={(jobId) => navigate(`/job/${jobId}`)}/>
-              
+              <ShowJobs
+                jobs={currentItems}
+                onJobClick={(jobId) => navigate(`/job/${jobId}`)}
+              />
+
               {filteredJobs.length > 3 && (
                 <div className="pagination">
-                  <button onClick={goToPreviousPage} disabled={currentPage === 1}>
+                  <button
+                    onClick={() =>
+                      setSearchParams({ page: (pageFromUrl - 1).toString() })
+                    }
+                    disabled={pageFromUrl === 1}
+                  >
                     Previous
                   </button>
-                  <span>Page {currentPage} of {totalPages}</span>
-                  <button onClick={goToNextPage} disabled={currentPage === totalPages}>
+                  <span>
+                    Page {pageFromUrl} of {totalPages}
+                  </span>
+                  <button
+                    onClick={() =>
+                      setSearchParams({ page: (pageFromUrl + 1).toString() })
+                    }
+                    disabled={pageFromUrl === totalPages}
+                  >
                     Next
                   </button>
                 </div>
