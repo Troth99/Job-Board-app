@@ -38,7 +38,7 @@ const jobSchema = new Schema({
 
   tags: [{ type: String }],
 
-  skills: [{type: String}],
+  skills: [{ type: String }],
 
   email: {
     type: String,

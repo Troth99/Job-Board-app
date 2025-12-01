@@ -4,11 +4,12 @@ import { Job } from "../CreateJob/CreateJob";
 import useJobs from "../../../hooks/useJobs";
 import Spinner from "../../Spinner/Spinner";
 import "./ViewAllJobs.css"
+import { usePagination } from "../../../hooks/usePagination";
 
 export function ViewAllJobs() {
 const [jobs, setJobs] = useState<Job[]>([])
 const {loading, getAllJobs } = useJobs()
-
+const { currentItems, currentPage, totalPages, goToNextPage, goToPreviousPage, goToPage } = usePagination(jobs, 5);
 useEffect(() => {
     const fetchJobs = async () => {
         try {
@@ -28,8 +29,8 @@ if(loading){
 }
     return (
 <div className="jobs-list-modern">
-  {jobs.length > 0 ? (
-    jobs.map((job) => (
+  {currentItems.length > 0 ? (
+    currentItems.map((job) => (
       <div className="job-card-modern" key={job._id}>
         <div className="job-header-modern">
           <span className="job-company-modern">{typeof job.company === "string" ? job.company : job.company?.name ?? ""}</span>
@@ -39,15 +40,26 @@ if(loading){
         <div className="job-info-modern">
           <span className="job-type-modern">{job.employmentType}</span>
           <span className="job-salary-modern">{job.salary}</span>
-            <span className="job-salary-modern">{job.views}</span>
           <span className="job-status-modern">{job.isActive ? "Active" : "Closed"}</span>
         </div>
         <span className="job-apply-btn-modern">Posted by: {job.createdBy?.firstName} {job.createdBy?.lastName}</span>
       </div>
-    ))
+    ))  
   ) : (
     <p className="no-jobs-modern">No jobs found.</p>
   )}
+    {jobs.length > 5 && (
+          <div className="pagination">
+        <button onClick={goToPreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span>Page {currentPage} of {totalPages}</span>
+        <button onClick={goToNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
+    )}
 </div>
+
     )
 }
