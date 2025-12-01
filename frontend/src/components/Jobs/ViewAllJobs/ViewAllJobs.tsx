@@ -5,11 +5,20 @@ import useJobs from "../../../hooks/useJobs";
 import Spinner from "../../Spinner/Spinner";
 import "./ViewAllJobs.css"
 import { usePagination } from "../../../hooks/usePagination";
+import { useSearchParams } from "react-router";
 
 export function ViewAllJobs() {
 const [jobs, setJobs] = useState<Job[]>([])
 const {loading, getAllJobs } = useJobs()
 const { currentItems, currentPage, totalPages, goToNextPage, goToPreviousPage, goToPage } = usePagination(jobs, 5);
+const [searchParams, setSearchParams] = useSearchParams();
+const pageFromUrl = parseInt(searchParams.get('page') || '1', 10)
+
+
+const handlePageChange = (page: number) => {
+    setSearchParams({page: page.toString()});
+    goToPage(page)
+}
 useEffect(() => {
     const fetchJobs = async () => {
         try {
@@ -50,13 +59,10 @@ if(loading){
   )}
     {jobs.length > 5 && (
           <div className="pagination">
-        <button onClick={goToPreviousPage} disabled={currentPage === 1}>
-          Previous
-        </button>
+      <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
+
         <span>Page {currentPage} of {totalPages}</span>
-        <button onClick={goToNextPage} disabled={currentPage === totalPages}>
-          Next
-        </button>
+   <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
       </div>
     )}
 </div>
