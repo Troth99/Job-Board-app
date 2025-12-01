@@ -88,6 +88,19 @@ export default function useJobs() {
     }
   }
 
+  const getAllJobs = async () => {
+    setLoading(true);
+    try {
+      const response = await request(`${API_BASE}/jobs`, "GET", {});
+      return response
+    } catch (error) {
+      console.error('Failed to load all jobs.')
+    }
+    finally {
+      setLoading(false)
+    }
+  }
+
   return {
     loading,
     getRecentJobs,
@@ -95,6 +108,7 @@ export default function useJobs() {
     getJobsByCompany,
     getJobById,
     updateJob,
-    getJobsByCategoryName
+    getJobsByCategoryName,
+    getAllJobs
   };
 }

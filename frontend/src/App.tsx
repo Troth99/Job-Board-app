@@ -26,6 +26,8 @@ import { setCategories } from "./components/Home/CategoriesSection/categoriesSli
 import { LogOut } from "./components/auth/Logout/Logout";
 import { CandidateJobView } from "./components/Jobs/CandidateJobView/CandidateJobView";
 import { FilterJobByCategory } from "./components/FilterJobsByCategory/FilterJobsByCategory";
+import { ViewAllJobs } from "./components/Jobs/ViewAllJobs/ViewAllJobs";
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -109,6 +111,9 @@ function App() {
             }
           />
         </Route>
+            <Route element={<MainLayout />}>
+            <Route path="/jobs" element={<ViewAllJobs />} />
+            </Route>
 
         <Route element={<ProtectedRoutes />}>
           <Route path="/profile" element={<MainLayout />}>

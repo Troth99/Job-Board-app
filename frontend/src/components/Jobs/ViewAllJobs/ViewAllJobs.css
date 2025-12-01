@@ -1,0 +1,182 @@
+
+.jobs-list-modern {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.job-card-modern {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-left: 6px solid #1976d2;
+  position: relative;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.job-card-modern:hover {
+  box-shadow: 0 8px 32px rgba(30,144,255,0.13);
+  border-color: #6c3fc7;
+}
+
+.job-header-modern {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.job-company-modern {
+  color: #1976d2;
+  font-weight: 700;
+  font-size: 1.08rem;
+  background: #e3f2fd;
+  border-radius: 6px;
+  padding: 4px 12px;
+}
+
+.job-location-modern {
+  color: #388e3c;
+  font-weight: 500;
+  background: #e8f5e9;
+  border-radius: 6px;
+  padding: 4px 12px;
+}
+
+.job-title-modern {
+  font-size: 1.35rem;
+  color: #222;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.job-info-modern {
+  display: flex;
+  gap: 18px;
+  font-size: 1.02rem;
+  color: #333;
+  flex-wrap: wrap;
+}
+
+.job-type-modern {
+  background: #ede7f6;
+  color: #6c3fc7;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-weight: 500;
+}
+
+.job-salary-modern {
+  background: #fff3e0;
+  color: #f57c00;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-weight: 500;
+}
+
+.job-status-modern {
+  background: #d84315;
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-weight: 600;
+}
+
+.job-apply-btn-modern {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin-top: 10px;
+  align-self: flex-end;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.job-apply-btn-modern:hover {
+  background: #6c3fc7;
+  box-shadow: 0 2px 8px #6c3fc7;
+}
+
+.no-jobs-modern {
+  font-size: 1.1rem;
+  color: #c00;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+/* DARK THEME */
+[data-theme="dark"] .jobs-list-modern {
+  background: #161b22;
+}
+[data-theme="dark"] .job-card-modern {
+  background: #232a36;
+  box-shadow: 0 8px 32px rgba(30,144,255,0.13);
+  border-color: #6c3fc7;
+}
+[data-theme="dark"] .job-company-modern {
+  background: #6c3fc7;
+  color: #ede7f6;
+}
+[data-theme="dark"] .job-location-modern {
+  background: #388e3c;
+  color: #e8f5e9;
+}
+[data-theme="dark"] .job-title-modern {
+  color: #90caf9;
+}
+[data-theme="dark"] .job-info-modern {
+  color: #e6edf3;
+}
+[data-theme="dark"] .job-type-modern {
+  background: #ede7f6;
+  color: #6c3fc7;
+}
+[data-theme="dark"] .job-salary-modern {
+  background: #f57c00;
+  color: #fff3e0;
+}
+[data-theme="dark"] .job-status-modern {
+  background: #fbe9e7;
+  color: #d84315;
+}
+[data-theme="dark"] .job-apply-btn-modern {
+  background: #6c3fc7;
+  color: #fff;
+}
+[data-theme="dark"] .job-apply-btn-modern:hover {
+  background: #1976d2;
+  box-shadow: 0 2px 8px #1976d2;
+}
+[data-theme="dark"] .no-jobs-modern {
+  color: #ff5252;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .jobs-list-modern {
+    gap: 14px;
+    padding: 14px 0;
+  }
+  .job-card-modern {
+    padding: 14px 8px;
+  }
+}
+@media (max-width: 600px) {
+  .jobs-list-modern {
+    gap: 8px;
+    padding: 6px 0;
+  }
+  .job-card-modern {
+    padding: 8px 2px;
+  }
+}

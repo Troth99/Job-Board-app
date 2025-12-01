@@ -76,7 +76,7 @@ export const getAllJobsController = async (req, res) => {
       filter.company = companyId;
     }
 
-    const jobs = await Jobs.find(filter).populate("company");
+    const jobs = await Jobs.find(filter).populate("company").populate('createdBy', 'firstName lastName email');
     res.json(jobs);
   } catch (error) {
     console.error(error);

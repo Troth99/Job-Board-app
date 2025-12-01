@@ -42,7 +42,7 @@ useEffect(() => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#">Jobs</a>
+            <Link to="/jobs">Jobs </Link>
           </li>
           <li>
             <a href="#">About</a>
