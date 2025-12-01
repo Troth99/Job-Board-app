@@ -11,21 +11,16 @@ export function ViewAllJobs() {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState<Job[]>([]);
   const { loading, getAllJobs } = useJobs();
-  const {
-    currentItems,
-    currentPage,
-    totalPages,
-    goToNextPage,
-    goToPreviousPage,
-    goToPage,
-  } = usePagination(jobs, 5);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
+
+const { currentItems, totalPages } = usePagination(jobs, 5, pageFromUrl);  
 
   const navigate = useNavigate();
 
   const handlePageChange = (page: number) => {
     setSearchParams({ page: page.toString() });
-    goToPage(page);
   };
   useEffect(() => {
     const fetchJobs = async () => {
@@ -77,22 +72,21 @@ export function ViewAllJobs() {
       )}
       {jobs.length > 5 && (
         <div className="pagination">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+  <button
+  onClick={() => setSearchParams({ page: (pageFromUrl - 1).toString() })}
+  disabled={pageFromUrl === 1}
+>
+  Previous
+</button>
+<span>
+  Page {pageFromUrl} of {totalPages}
+</span>
+<button
+  onClick={() => setSearchParams({ page: (pageFromUrl + 1).toString() })}
+  disabled={pageFromUrl === totalPages}
+>
+  Next
+</button>
         </div>
       )}
     </div>
