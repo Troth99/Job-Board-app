@@ -2,13 +2,13 @@ import { useNavigate, useParams, useSearchParams } from "react-router";
 import "./FilterJobsByCategory.css";
 import useJobs from "../../hooks/useJobs";
 import { useEffect, useState } from "react";
-import { Job } from "../Jobs/CreateJob/CreateJob";
 import { ShowJobs } from "../../showJobs/showJobs";
 import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
 import { usePagination } from "../../hooks/usePagination";
 import { FilterGroup } from "./FilterGroup/FilterGroup";
 import { employmentOptions } from "../Jobs/formSelectedInputs";
 import { useJobFilters } from "../../hooks/useJobFilters";
+import { Job } from "../../interfaces/Job.model";
 
 export function FilterJobByCategory() {
   const [searchParams, setSearchParams] = useSearchParams();

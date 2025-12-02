@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useApiRequester from "./useApiRequester";
 import { API_BASE } from "../services/api";
-import { Job } from "../components/Jobs/CreateJob/CreateJob";
+import { Job } from "../interfaces/Job.model";
 
 export default function useJobs() {
   const { request } = useApiRequester();

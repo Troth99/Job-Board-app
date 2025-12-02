@@ -1,4 +1,4 @@
-import { Job, valuesInterface } from "../Jobs/CreateJob/CreateJob";
+import { valuesInterface } from "../../interfaces/Job.model";
 
 export function jobPostValidations(form:valuesInterface) {
   let errors: Record<string, string> = {};

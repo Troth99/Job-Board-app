@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Job, valuesInterface } from "../CreateJob/CreateJob";
+
 import { useNavigate, useParams } from "react-router";
 import useJobs from "../../../hooks/useJobs";
 import { EmploymentTypeSelect, JobEditCategory } from "../formSelectedInputs";
@@ -7,6 +7,7 @@ import { EmploymentTypeSelect, JobEditCategory } from "../formSelectedInputs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import Spinner from "../../Spinner/Spinner";
+import { valuesInterface } from "../../../interfaces/Job.model";
 
 const initialValues = {
   title: "",
