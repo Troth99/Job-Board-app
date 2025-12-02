@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Job } from "../../Jobs/CreateJob/CreateJob";
 import useJobs from "../../../hooks/useJobs";
 import { ShowJobs } from "../../../showJobs/showJobs";
 import Spinner from "../../Spinner/Spinner";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
+import { Job } from "../../../interfaces/Job.model";
 
 interface CompanyJobsListProps {
   companyId: string;

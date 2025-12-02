@@ -135,3 +135,16 @@ export const getJobsByCategoryController = async  (req, res) => {
   }
 }
 
+export const deleteJobController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const job = await Jobs.findByIdAndDelete(id);
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+    res.status(200).json({ message: "Job deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to delete job", error: error.message });
+  }
+};

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Hero from "./HeroSection/Hero";
-import { Job } from "../Jobs/CreateJob/CreateJob";
 import { Category } from "../../hooks/useCategories";
 import useJobs from "../../hooks/useJobs";
 import useCategories from "../../hooks/useCategories";
@@ -9,6 +8,7 @@ import RecentJobs from "./RecentJobs/RecentJobs";
 import FullPageSpinner from "../FullPageSpinner/FullPageSpinner";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { Job } from "../../interfaces/Job.model";
 
 export default function HomeSection() {
   const categories = useSelector(

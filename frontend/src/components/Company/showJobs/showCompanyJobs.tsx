@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { Job } from "../../Jobs/CreateJob/CreateJob";
 import { formatDate } from "../../../utils/formData";
+import { Job } from "../../../interfaces/Job.model";
 
 interface ShowCompanyJobsProps {
   jobs: Job[];

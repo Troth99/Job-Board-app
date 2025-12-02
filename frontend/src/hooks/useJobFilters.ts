@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { Job } from "../components/Jobs/CreateJob/CreateJob";
+import { Job } from "../interfaces/Job.model";
+
 
 export function useJobFilters(jobData: Job[]){
 

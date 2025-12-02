@@ -10,7 +10,10 @@ export default function useJobs() {
   const getRecentJobs = async (limit = 5) => {
     setLoading(true);
     try {
-      const recentJobs = await request(`${API_BASE}/jobs/recent?limit=${limit}`, "GET");
+      const recentJobs = await request(
+        `${API_BASE}/jobs/recent?limit=${limit}`,
+        "GET"
+      );
       return recentJobs.jobs;
     } catch (error) {
       console.error("Error fetching recent jobs:", error);
@@ -37,7 +40,10 @@ export default function useJobs() {
     setLoading(true);
     try {
       if (!companyId) throw new Error("Not part of a company.");
-      const response = await request(`${API_BASE}/jobs?company=${companyId}`, "GET");
+      const response = await request(
+        `${API_BASE}/jobs?company=${companyId}`,
+        "GET"
+      );
       return response;
     } catch (error) {
       console.error("Failed to fetch jobs.");
@@ -65,7 +71,11 @@ export default function useJobs() {
     setLoading(true);
     try {
       if (!jobId) throw new Error("Job ID is missing.");
-      const response = await request(`${API_BASE}/jobs/${jobId}`, "PUT", jobData);
+      const response = await request(
+        `${API_BASE}/jobs/${jobId}`,
+        "PUT",
+        jobData
+      );
       return response;
     } catch (error) {
       console.error("Failed to update job.");
@@ -75,31 +85,46 @@ export default function useJobs() {
     }
   };
 
-  const getJobsByCategoryName = async(categoryName: string, ) => {
+  const getJobsByCategoryName = async (categoryName: string) => {
     setLoading(true);
     try {
-      if(!categoryName) throw new Error('Category name is missing!')
-      const response = await request(`${API_BASE}/jobs/category/${categoryName}`, "GET", {})
-    return response
+      if (!categoryName) throw new Error("Category name is missing!");
+      const response = await request(
+        `${API_BASE}/jobs/category/${categoryName}`,
+        "GET",
+        {}
+      );
+      return response;
     } catch (error) {
-      console.error('Failed to load current category jobs.')
-    }finally {
-      setLoading(false)
+      console.error("Failed to load current category jobs.");
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   const getAllJobs = async () => {
     setLoading(true);
     try {
       const response = await request(`${API_BASE}/jobs`, "GET", {});
-      return response
+      return response;
     } catch (error) {
-      console.error('Failed to load all jobs.')
+      console.error("Failed to load all jobs.");
+    } finally {
+      setLoading(false);
     }
-    finally {
+  };
+
+  const deleteJob = async (jobId: string) => {
+    setLoading(true);
+    try {
+      const response = await request(`${API_BASE}/jobs/${jobId}`, "DELETE", {});
+      return response;
+    } catch (error) {
+      console.error("Failed to delete job.");
+    }finally {
       setLoading(false)
     }
-  }
+  };
 
   return {
     loading,
@@ -109,6 +134,7 @@ export default function useJobs() {
     getJobById,
     updateJob,
     getJobsByCategoryName,
-    getAllJobs
+    getAllJobs,
+    deleteJob
   };
 }

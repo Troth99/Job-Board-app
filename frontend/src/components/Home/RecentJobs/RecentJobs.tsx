@@ -1,9 +1,7 @@
-
-import { useEffect, useState } from 'react';
-import { Job } from '../../Jobs/CreateJob/CreateJob';
 import './RecentJobs.css'
 import { formatDate } from '../../../utils/formData';
 import { Link } from 'react-router';
+import { Job } from '../../../interfaces/Job.model';
 
 
 

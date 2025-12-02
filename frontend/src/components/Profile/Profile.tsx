@@ -1,7 +1,6 @@
 import "./Profile.css";
 import "./Responsive.css";
-import { useRef, useState, useEffect } from "react";
-
+import { useRef, useEffect } from "react";
 import { formatDate } from "../../utils/formData";
 import defaultAvatar from "../../assets/personAvatar.jpg";
 import Spinner from "../Spinner/Spinner";
