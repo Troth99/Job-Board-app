@@ -6,7 +6,8 @@ import { showSuccess } from "../../../utils/toast";
 import { useNavigate, useParams } from "react-router";
 import { Category } from "../../../hooks/useCategories";
 import { Company } from "../../../hooks/useCompany";
-
+import { jobPostValidations } from "../../validators/postJobValidation";
+import useForm from "../../../hooks/useForm";
 
 export interface Job {
   _id?: string;
@@ -16,11 +17,11 @@ export interface Job {
   salary?: string;
   createdBy?: {
     email?: string;
-    firstName?: string,
-    lastName?: string,
+    firstName?: string;
+    lastName?: string;
   };
   company?: Company | null;
-  category?:Category
+  category?: Category;
   createdAt?: string;
   skills?: string;
   employmentType?: string;
@@ -30,11 +31,11 @@ export interface Job {
   isActive: boolean;
   tags?: string;
   email?: string;
-  updatedAt?: string
+  updatedAt?: string;
 }
 
 export interface valuesInterface {
-  _id?: string,
+  _id?: string;
   title: string;
   description: string;
   location: string;
@@ -45,18 +46,18 @@ export interface valuesInterface {
   benefits: string;
   tags: string;
   email: string;
-  
+  [key: string]: any;
 }
 const initialValues = {
   title: "",
   description: "",
   location: "",
   salary: "",
- category: {
-  _id: "",
-  name: "",
-  shortName: ""
-},
+  category: {
+    _id: "",
+    name: "",
+    shortName: "",
+  },
   employmentType: "",
   skills: "",
   benefits: "",
@@ -65,36 +66,21 @@ const initialValues = {
 };
 export function PostJob() {
   const { companyId } = useParams();
-  const [form, setForm] = useState<valuesInterface>(initialValues);
   const [loading, setLoading] = useState<boolean>(false);
-  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { createJob } = useJobs();
 
-  const onChangeHandler = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const validateForm = (values: valuesInterface) => jobPostValidations(values);
 
-  const onSubmitHandler = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrors({});
+  const onSubmitHandler = async (values: valuesInterface) => {
     setLoading(true);
-
     try {
-      const result = await createJob(form);
+      await createJob(values);
       showSuccess("Job posted successfully!");
       navigate(`/company/${companyId}/dashboard`);
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setErrors(error.message || "Something went wrong");
+        console.error("Somethign went wrong while posting job.");
       } else {
         console.error("Unknown error", error);
       }
@@ -103,31 +89,32 @@ export function PostJob() {
     }
   };
 
+  const { register, formHandler, errors, setFieldValue } =
+    useForm<valuesInterface>(onSubmitHandler, initialValues, validateForm);
+
   return (
     <div className="post-job-container">
       <h2>Post a New Job</h2>
-      <form className="post-job-form" onSubmit={onSubmitHandler}>
+      <form className="post-job-form" onSubmit={formHandler}>
         <div className="form-group">
           <label htmlFor="title">Job Title</label>
           <input
             type="text"
             id="title"
-            name="title"
-            value={form.title}
-            onChange={onChangeHandler}
+            {...register("title")}
             placeholder="Job Title"
           />
+          <div className="error-message">{errors.title}</div>
         </div>
 
         <div className="form-group">
           <label htmlFor="description">Job Description</label>
           <textarea
             id="description"
-            name="description"
             placeholder="Job Description"
-            value={form.description}
-            onChange={onChangeHandler}
+            {...register("description")}
           ></textarea>
+          <div className="error-message">{errors.description}</div>
         </div>
 
         <div className="form-group">
@@ -135,11 +122,10 @@ export function PostJob() {
           <input
             type="text"
             id="location"
-            name="location"
             placeholder="Location"
-            value={form.location}
-            onChange={onChangeHandler}
+            {...register("location")}
           />
+          <div className="error-message">{errors.location}</div>
         </div>
 
         <div className="form-group">
@@ -147,33 +133,37 @@ export function PostJob() {
           <input
             type="text"
             id="salary"
-            name="salary"
             placeholder="Salary"
-            value={form.salary}
-            onChange={onChangeHandler}
+            {...register("salary")}
+          />
+          <div className="error-message">{errors.salary}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="salary">Category</label>
+          <JobCategorySelect
+            value={register("category").value?._id}
+            onChange={(e) => setFieldValue("category", e.target.value)}
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="category">Job Category</label>
-          <JobCategorySelect value={form.category._id} onChange={onChangeHandler} />
+    <div className="form-group">
+          <label htmlFor="salary">Employment Type</label>
+      <EmploymentTypeSelect
+          value={register("employmentType").value}
+          onChange={(e) => setFieldValue("employmentType", e.target.value)}
+        />
         </div>
-
-        <div className="form-group">
-          <label htmlFor="employmentType">Employment Type</label>
-          <EmploymentTypeSelect value={form.employmentType} onChange={onChangeHandler} />
-        </div>
-
+      
         <div className="form-group">
           <label htmlFor="skills">Skills (comma separated)</label>
           <input
             type="text"
             id="skills"
-            name="skills"
             placeholder="e.g., React, Node.js, CSS"
-            value={form.skills}
-            onChange={onChangeHandler}
+            {...register("skills")}
           />
+          <div className="error-message">{errors.skills}</div>
         </div>
 
         <div className="form-group">
@@ -181,10 +171,8 @@ export function PostJob() {
           <input
             type="text"
             id="benefits"
-            name="benefits"
             placeholder="e.g., Health Insurance, Remote Work"
-            value={form.benefits}
-            onChange={onChangeHandler}
+            {...register("benefits")}
           />
         </div>
 
@@ -193,11 +181,10 @@ export function PostJob() {
           <input
             type="text"
             id="tags"
-            name="tags"
             placeholder="e.g., Frontend, Remote"
-            value={form.tags}
-            onChange={onChangeHandler}
+            {...register("tags")}
           />
+          <div className="error-message">{errors.tags}</div>
         </div>
 
         <div className="form-group">
@@ -205,11 +192,10 @@ export function PostJob() {
           <input
             type="email"
             id="contactEmail"
-            name="email"
             placeholder="Contact Email"
-            value={form.email}
-            onChange={onChangeHandler}
+            {...register("email")}
           />
+          <div className="error-message">{errors.email}</div>
         </div>
         <button type="submit" className="post-job-button" disabled={loading}>
           {loading ? "Posting job..." : "Post job"}
