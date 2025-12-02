@@ -1,117 +1,185 @@
-# Job Board — React + Vite 🚀
+# Job Board App — Full Stack (React + Node.js + MongoDB)
 
-[![Version](https://img.shields.io/badge/version-0.0.0-blue.svg)](https://github.com/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Built with Vite](https://img.shields.io/badge/built_with-Vite-yellowgreen.svg)](https://vitejs.dev)
+## 📝 Overview
 
-> A lightweight frontend for job listings built with React and Vite — focused on UI and developer ergonomics.
+A modern job board platform for posting, searching, and managing job listings, companies, and users. The project is split into two main modules: **frontend** (React + Vite) and **backend** (Node.js + Express + MongoDB).
 
-----
+---
 
-## Table of Contents
+## 📦 Project Structure
 
-- [Job Board — React + Vite 🚀](#job-board--react--vite-)
-  - [Table of Contents](#table-of-contents)
-  - [Quick overview](#quick-overview)
-  - [Features](#features)
-  - [Stack](#stack)
-  - [Prerequisites](#prerequisites)
-  - [Install \& run (local)](#install--run-local)
-  - [Frontend details — structure, components and styling](#frontend-details--structure-components-and-styling)
-  - [Deployment](#deployment)
-## Quick overview
+```
+Job-Board-app/
+│
+├── backend/      # Node.js/Express/MongoDB REST API
+│   ├── src/
+│   │   ├── controllers/      # API logic (job, user, company, category)
+│   │   ├── middleware/       # JWT, CORS, error handling
+│   │   ├── models/           # Mongoose schemas (User, Job, Company, Category)
+│   │   ├── routes/           # Express routes
+│   │   ├── services/         # Business logic (jobService, companyService)
+│   │   ├── utils/            # Utility functions (token, validation)
+│   │   └── index.js          # Main entry point
+│   ├── package.json
+│   └── .env                  # Configuration (MONGO_URI, JWT_SECRET)
+│
+├── frontend/     # React + Vite SPA
+│   ├── src/
+│   │   ├── components/       # UI components (Jobs, Company, Profile, Auth)
+│   │   ├── hooks/            # Custom React hooks (useJobs, useCompany, useForm)
+│   │   ├── services/         # API requests (api.ts, jobService.tsx)
+│   │   ├── context/          # Global contexts (Auth, Company)
+│   │   ├── styles/           # CSS files
+│   │   ├── interfaces/       # TypeScript interfaces
+│   │   ├── App.tsx           # Main component with routes
+│   ├── public/               # Static files
+│   ├── package.json
+│   └── vite.config.js
+│
+├── README.md
+└── LICENSE
+```
 
-- Purpose: Single Page Application for job listings with CRUD for users, jobs, and companies.
-- Tech: React (v19), Vite, ESLint.
+---
 
+## 🚀 Technologies
 
-## Features
+- **Frontend:** React 19, Vite, TypeScript, Redux Toolkit, React Router, ESLint, CSS Modules, React Toastify
+- **Backend:** Node.js, Express, MongoDB (Mongoose), JWT, bcrypt, dotenv, multer, express-validator
+- **Dev tools:** Nodemon, ESLint
 
-- User management (Create / Read / Update / Delete)
-- Create, edit and delete job postings
-- Company management
-- Filtering and searching job listings
-- Forms with basic validation and error handling
+---
 
-## Stack
+## 🔑 Main Features
 
-- React
-- Vite
-- ESLint
+- User registration and login (JWT authentication)
+- Create, edit, and delete job postings
+- Company and member management
+- Filter and search jobs by category, keywords, and employment type
+- Protected routes (middleware protect)
+- Responsive and modern UI
+- Form validation (frontend + backend)
+- Toast notifications for success/error
+- Pagination and search
 
-## Prerequisites
+---
 
-- Node.js (LTS) and npm or yarn
+## 🖥️ Local Development Setup
 
-## Install & run (local)
-
-From a terminal (PowerShell) in the project folder:
+### 1. Clone the repository
 
 ```powershell
-# Install dependencies
-npm install
+git clone <repo-url>
+cd Job-Board-app
+```
 
-# Start dev server (Vite)
+### 2. Setup backend
+
+```powershell
+cd backend
+npm install
+```
+
+#### .env file (example):
+
+```
+PORT=5000
+MONGO_URI=mongodb+srv://jobboard_admin:zQvzM90QIPYF1WWg@cluster0.mcnhlci.mongodb.net/jobboard?retryWrites=true&w=majority
+JWT_SECRET=Df83hfh29fhf7hfsdjfhs9fhsf8fhsfhs93fh
+JWT_REFRESH_SECRET=1231adaseawq23awdaw22d2ads2c2c2
+
+```
+
+#### Start backend:
+
+```powershell
 npm run dev
 ```
+Backend will start on port 5000 (or as configured).
 
-Available npm scripts (from `package.json`):
-
-- `dev` — start Vite development server
-- `build` — build for production
-- `preview` — preview the production build
-- `lint` — run ESLint
-
-To build and preview production output:
+### 3. Setup frontend
 
 ```powershell
-npm run build
-npm run preview
+cd ../frontend
+npm install
+npm run dev
 ```
+Frontend will start on port 5173 (Vite).
 
+---
 
-## Frontend details — structure, components and styling
+## 🗂️ Important npm scripts
 
-This project focuses on the frontend app. Below are recommendations and a suggested structure to make development faster and consistent.
+**Backend:**
+- `npm run dev` — start backend with nodemon (auto-reload)
+- `npm start` — start backend with node
 
-Suggested `src/` structure (example):
+**Frontend:**
+- `npm run dev` — start Vite dev server
+- `npm run build` — build for production
+- `npm run preview` — preview production build
+- `npm run lint` — lint code
 
-- `src/main.jsx` — app entry
-- `src/App.jsx` — top-level routes / layout
-- `src/pages/` — page-level components (JobsPage, JobDetail, CompanyPage, Profile)
-- `src/components/` — reusable components (Header, Footer, JobCard, JobList, JobForm, CompanyCard)
-- `src/hooks/` — custom hooks (useFetch, useJobs, useAuth)
-- `src/services/` — API client wrappers / fetch helpers
-- `src/context/` — React Contexts (AuthContext, ThemeContext)
-- `src/styles/` — global CSS, variables, utilities
-- `public/` — static assets (images, fonts, other static files)
+---
 
-Recommended core components:
-- Header — navigation, search bar, auth links
-- JobsList / JobCard — listing and preview of individual jobs
-- JobForm — create / edit job with validation
-- CompanyList / CompanyCard — companies overview
-- Profile / UserForm — user profile management
+## 🏗️ Code Structure
 
-State & data layer
-- For small projects, React state (useState/useReducer + Context) is enough.
-- For larger apps, consider a state library (Redux Toolkit, Zustand) or React Query for server state and caching.
+**Backend:**
+- `controllers/` — API logic (jobController, userController, companyController)
+- `models/` — Mongoose schemas (User, Job, Company, Category)
+- `routes/` — Express routes (jobRoutes, userRoutes, companyRoutes)
+- `middleware/` — JWT, CORS, error handling
+- `services/` — business logic (jobService, companyService)
+- `utils/` — utility functions (token, validation)
 
-API layer
-- Keep a small `services/api.js` or `services/jobs.js` with a thin wrapper around fetch/axios. Implement all data-fetching logic here. For frontend-only development you can read JSON files from a `mock/` folder and return those from the service layer so components don't depend on a live API.
+**Frontend:**
+- `components/` — UI components (Jobs, Company, Profile, Auth, Header, Footer)
+- `hooks/` — custom React hooks (useJobs, useCompany, useForm, useApiRequester)
+- `services/` — API requests (api.ts, jobService.tsx)
+- `context/` — global contexts (Auth, Company)
+- `styles/` — CSS files
+- `interfaces/` — TypeScript interfaces (Job, Company, User)
 
-Styling
-- Choose one approach: plain CSS / CSS Modules, Tailwind CSS, or styled-components. Tailwind speeds up layout work; CSS Modules keeps styles local.
+---
 
-Accessibility & responsiveness
-- Use semantic HTML, proper landmarks, labels on form inputs and ARIA attributes for interactive controls. Build mobile-first and verify layouts at common breakpoints.
+## 🧪 Testing
 
-<!-- Icons and backend/mock-server instructions removed — README focuses on frontend-only guidance -->
+- Use Postman or Thunder Client to test the API.
+- For frontend — start the dev server and test in your browser.
+- For production build — use `npm run build` and `npm run preview`.
 
-## Deployment
+---
 
-This application is deployed. Add your production URL below so other users can visit the live site:
+## 🛡️ Security
 
-PRODUCTION_URL: https://your-production-url.example
+- All protected routes use JWT middleware.
+- Passwords are hashed with bcrypt.
+- CORS is configured for frontend/backend communication.
+
+---
+
+## 🌐 Live Deployment
+
+The frontend is deployed and publicly accessible at:
+
+**Production URL:** [https://job-board-three-omega.vercel.app/](https://job-board-three-omega.vercel.app/)
+
+You can visit the live site to explore all features and UI.
+
+---
+
+## 📋 Deployment
+
+- **Frontend:** Vercel, Netlify, or other static hosting.
+- **Backend:** Render.com, Heroku, or other Node.js hosting.
+- **MongoDB:** MongoDB Atlas (cloud).
+
+---
+
+## 🛠️ Additional Information
+
+- Use Postman or Thunder Client for API testing.
+- For production, add CORS, rate limiting, and security best practices.
+- For questions and suggestions — open an issue on GitHub.
 
 ---
