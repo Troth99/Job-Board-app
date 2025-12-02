@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
-
+import { useLocalStorage } from "../hooks/useLocalStorage";
 export const useTheme = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useLocalStorage("theme", "light");
 
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
@@ -10,7 +9,7 @@ export const useTheme = () => {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => (prev === "light" ? "dark" : "light"));
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return { theme, toggleTheme };

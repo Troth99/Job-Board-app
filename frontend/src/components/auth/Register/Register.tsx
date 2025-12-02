@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useAuth, { registerFormType } from "../../../hooks/useAuth";
 import { useValidation } from "../../validators/useValidation";
 import useForm from "../../../hooks/useForm";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 
 const intialValueRegister: registerFormType = {
   firstName: "",
@@ -17,6 +18,7 @@ const intialValueRegister: registerFormType = {
 };
 
 export default function RegisterComponent() {
+const [user, setUser] = useLocalStorage('user', { _id: '', accessToken: '', refreshToken: '' });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { validateConfirmPassword, validateForm } = useValidation();
@@ -40,12 +42,11 @@ export default function RegisterComponent() {
       const user = await registerUser(formValues);
 
       if (user.accessToken) {
-        const userData = {
+         setUser({
           _id: user.user._id,
           accessToken: user.accessToken,
           refreshToken: user.refreshToken,
-        };
-        localStorage.setItem("user", JSON.stringify(userData));
+        });
         navigate("/");
       }
     } catch (err: any) {

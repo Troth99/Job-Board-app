@@ -4,6 +4,7 @@ import "./Responsive.css";
 import { useEffect, useRef, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { useValidation } from "../../validators/useValidation";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 
 const initialFormValue = {
   email: "",
@@ -11,6 +12,12 @@ const initialFormValue = {
 };
 
 export default function LoginComponent() {
+  const [user, setUser] = useLocalStorage("user", {
+    _id: "",
+    accessToken: "",
+    refreshToken: "",
+  });
+
   const focusRef = useRef<HTMLInputElement>(null);
   const [errors, setErrors] = useState<{
     email?: string;
@@ -53,13 +60,11 @@ export default function LoginComponent() {
     try {
       const user = await loginUser(form.email, form.password);
       if (user?.accessToken) {
-        const userData = {
+        setUser({
           _id: user.user._id,
           accessToken: user.accessToken,
           refreshToken: user.refreshToken,
-        };
-        localStorage.setItem("user", JSON.stringify(userData));
-
+        });
         navigate("/");
       } else {
         setErrors({
