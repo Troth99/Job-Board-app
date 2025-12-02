@@ -27,6 +27,7 @@ import { LogOut } from "./components/auth/Logout/Logout";
 import { CandidateJobView } from "./components/Jobs/CandidateJobView/CandidateJobView";
 import { FilterJobByCategory } from "./components/FilterJobsByCategory/FilterJobsByCategory";
 import { ViewAllJobs } from "./components/Jobs/ViewAllJobs/ViewAllJobs";
+import { ViewAllJobsForCompany } from "./components/Company/ViewAllJobsForCompany/ViewAllJobsForCompany";
 
 
 function App() {
@@ -146,6 +147,11 @@ function App() {
           </Route>
         </Route>
 
+            <Route element={<ProtectedRoutes />} >
+            <Route element={<MainLayout />} >
+              <Route path="/company/:companyId/jobs" element={<ViewAllJobsForCompany />} />
+            </Route>
+            </Route>
       <Route element={<MainLayout />}>
           <Route
             path="/company/:companyId/job/:jobId/edit"

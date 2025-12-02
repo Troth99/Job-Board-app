@@ -4,6 +4,7 @@ import { ShowJobs } from "../../../showJobs/showJobs";
 import Spinner from "../../Spinner/Spinner";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
 import { Job } from "../../../interfaces/Job.model";
+import { useNavigate } from "react-router";
 
 interface CompanyJobsListProps {
   companyId: string;
@@ -19,6 +20,7 @@ export function CompanyJobsList({
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { getJobsByCompany } = useJobs();
+  const navigate = useNavigate()
 
   useEffect(() => {
     const controller = new AbortController();
@@ -53,7 +55,10 @@ export function CompanyJobsList({
     return () => controller.abort();
   }, [companyId]);
 
-
+const viewAllJobsHandler = () =>{
+  navigate(`/company/${companyId}/jobs`);
+}
+  
   return (
     <>
       <div className="content-header">
@@ -65,7 +70,7 @@ export function CompanyJobsList({
             </button>
           )}
           {canPostJob && (
-            <button className="add-button">
+            <button className="add-button" onClick={viewAllJobsHandler} >
               + View all jobs for the company
             </button>
           )}

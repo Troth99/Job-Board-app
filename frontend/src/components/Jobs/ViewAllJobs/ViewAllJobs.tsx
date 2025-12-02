@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Job } from "../CreateJob/CreateJob";
 import useJobs from "../../../hooks/useJobs";
 import Spinner from "../../Spinner/Spinner";
 import "./ViewAllJobs.css";
 import { usePagination } from "../../../hooks/usePagination";
-import { useNavigate, useParams, useSearchParams } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
+import { Job } from "../../../interfaces/Job.model";
 
 export function ViewAllJobs() {
   const [jobs, setJobs] = useState<Job[]>([]);
