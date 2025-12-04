@@ -1,0 +1,123 @@
+	.modal-content textarea {
+		font-size: 1.08rem;
+		padding: 12px 14px;
+		min-height: 100px;
+		border-radius: 8px;
+		border: 1px solid #b6c6e3;
+		background: #f4f8fc;
+		resize: vertical;
+		margin-bottom: 8px;
+	}
+
+
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(30, 42, 61, 0.55);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+	backdrop-filter: blur(2px);
+}
+
+.modal-content {
+	background: linear-gradient(135deg, #f8fbff 0%, #e3f2fd 100%);
+	border-radius: 18px;
+	box-shadow: 0 12px 36px rgba(25, 118, 210, 0.18);
+	padding: 40px 32px 32px 32px;
+	min-width: 420px;
+	max-width: 600px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+	animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+	from { opacity: 0; transform: translateY(40px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content h2 {
+	margin-bottom: 10px;
+	font-size: 1.7rem;
+	color: #1976d2;
+	text-align: center;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+}
+
+.modal-content form {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+
+.modal-content input[type="email"],
+.modal-content input[type="file"],
+.modal-content input[type="phone"] {
+	padding: 10px 14px;
+	border: 1px solid #b6c6e3;
+	border-radius: 8px;
+	font-size: 1rem;
+	background: #f4f8fc;
+	transition: border 0.2s;
+	margin-bottom: 8px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.modal-content input[type="phone"]:focus {
+	border: 1.5px solid #1976d2;
+	outline: none;
+}
+
+.modal-content label[for="phone"] {
+	font-weight: 500;
+	color: #1976d2;
+	margin-bottom: 4px;
+	letter-spacing: 0.2px;
+}
+
+.modal-content button[type="submit"] {
+	background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 12px 0;
+	font-size: 1.08rem;
+	font-weight: 700;
+	cursor: pointer;
+	margin-top: 10px;
+	box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+	transition: background 0.2s, box-shadow 0.2s;
+}
+.modal-content button[type="submit"]:hover {
+	background: linear-gradient(90deg, #1565c0 0%, #1976d2 100%);
+	box-shadow: 0 4px 16px rgba(25, 118, 210, 0.15);
+}
+
+.modal-content button {
+	font-size: 1rem;
+}
+.modal-content .close-btn {
+	position: absolute;
+	top: 16px;
+	right: 20px;
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	color: #888;
+	cursor: pointer;
+	transition: color 0.2s;
+}
+.modal-content .close-btn:hover {
+	color: #1976d2;
+}
