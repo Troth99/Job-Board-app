@@ -1,4 +1,5 @@
-import { useParams } from 'react-router'
+import { Link, useParams } from 'react-router'
+
 import useJobs from '../../../hooks/useJobs'
 import './CandidateJob.css'
 import { useEffect, useState } from 'react'
@@ -122,9 +123,16 @@ if (loading) {
           {isLoggedIn ? (
             <button className="apply-button">Apply Now</button>
           ) : (
-            <button className="apply-button" disabled>
-              You must log in in order to apply for job
-            </button>
+            <>
+              <button className="apply-button" disabled>
+                You must log in in order to apply for job
+              </button>
+              <div style={{ marginTop: '8px' }}>
+                <Link to="/login" state={{ from: location.pathname }} className="login-btn">
+                  Log in to apply
+                </Link>
+              </div>
+            </>
           )}
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import "./Login.css";
 import "./Responsive.css";
 import { useEffect, useRef, useState } from "react";
@@ -28,6 +28,10 @@ export default function LoginComponent() {
   const { validateEmail, validatePassword } = useValidation();
   const { loginUser, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(false);
+
+  const location = useLocation()
+  const from = location.state?.from || "/";
+
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -65,7 +69,7 @@ export default function LoginComponent() {
           accessToken: user.accessToken,
           refreshToken: user.refreshToken,
         });
-        navigate("/");
+        navigate(from, {replace: true});
       } else {
         setErrors({
           email: "User does not exist.",

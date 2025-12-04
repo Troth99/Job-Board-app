@@ -1,3 +1,58 @@
+.login-btn {
+  display: inline-block;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.login-btn:hover {
+  background: #1565c0;
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.15);
+}
+/* Login link next to disabled apply button */
+
+.job-apply {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.apply-button[disabled] {
+  background: #eee;
+  color: #888;
+  border: 1px solid #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.login-link {
+  color: #1976d2;
+  background: none;
+  border: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0;
+  margin-left: 0;
+  margin-top: 2px;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.login-link:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}
 /* Disabled apply button styles */
 .apply-button:disabled {
   background: #eee;

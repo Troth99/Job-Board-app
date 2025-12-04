@@ -15,7 +15,7 @@ export default function AuthGuardRoute() {
   }, [token])
 
   if (!token) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace state={{from: location.pathname}} />;
   }
 
   return <Outlet />;
