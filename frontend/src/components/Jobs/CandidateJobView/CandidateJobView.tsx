@@ -5,11 +5,14 @@ import { useEffect, useState } from 'react'
 import { Job } from '../../../interfaces/Job.model'
 import { formatDate } from '../../../utils/formData'
 import Spinner from '../../Spinner/Spinner'
+import { useLocalStorage } from '../../../hooks/useLocalStorage'
 
 export function CandidateJobView() {
   const {jobId} = useParams()
 const {loading, getJobById} = useJobs()
 const [jobData, setJobData] = useState<Job>()
+const [token] = useLocalStorage<string>('user', '')
+const isLoggedIn = !!token
  
 
 useEffect(() => {
@@ -116,7 +119,13 @@ if (loading) {
                  Status: {jobData?.isActive ? 'Active' : 'Closed'}
                </span>
         <div className="job-apply">
-          <button className="apply-button">Apply Now</button>
+          {isLoggedIn ? (
+            <button className="apply-button">Apply Now</button>
+          ) : (
+            <button className="apply-button" disabled>
+              You must log in in order to apply for job
+            </button>
+          )}
         </div>
       </div>
     )

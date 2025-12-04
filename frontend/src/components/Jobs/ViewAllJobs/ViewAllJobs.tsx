@@ -20,7 +20,10 @@ export function ViewAllJobs() {
     const fetchJobs = async () => {
       try {
         const response = await getAllJobs();
-        setJobs(response);
+        const sortedJobs = response.sort(
+          (a: Job, b: Job) => new Date(b.createdAt ?? '').getTime() - new Date(a.createdAt ?? '').getTime()
+        );
+        setJobs(sortedJobs);
       } catch (error) {
         console.error("Failed to set jobs.");
       }
