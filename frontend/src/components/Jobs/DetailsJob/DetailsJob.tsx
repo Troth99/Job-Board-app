@@ -104,7 +104,7 @@ export function DetailsJob() {
   const deleteJobHandler = async () => {
     if (confirm("Are you sure you want to delete this job ?")) {
       try {
-        setLoading(true)
+        setLoading(true);
         if (!jobId) {
           return;
         }
@@ -112,8 +112,8 @@ export function DetailsJob() {
         navigate(`/company/${companyId}/dashboard`);
       } catch (error) {
         console.error("Failed to delete job:", error);
-      }finally{
-        setLoading(false)
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -242,7 +242,7 @@ export function DetailsJob() {
                   onClick={deleteJobHandler}
                   disabled={loading}
                 >
-                {loading ? "Deleting..." : "Delete Job"}
+                  {loading ? "Deleting..." : "Delete Job"}
                 </button>
                 <button
                   className="update-status-button"

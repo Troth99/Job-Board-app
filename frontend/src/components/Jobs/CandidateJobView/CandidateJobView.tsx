@@ -17,8 +17,8 @@ export function CandidateJobView() {
   const isLoggedIn = !!token;
   const [showApplyModal, setShowApplyModal] = useState(false);
 
-  if(!jobId) {
-    return
+  if (!jobId) {
+    return;
   }
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +46,8 @@ export function CandidateJobView() {
         <div className="company-header">
           <img
             src={
-              jobData?.company?.logo && jobData.company.logo.trim() !== ""
+              jobData?.company?.logo &&
+              jobData.company.logo.trim().startsWith("http")
                 ? jobData.company.logo
                 : "/assets/defaultCompany.png"
             }

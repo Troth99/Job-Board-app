@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../hooks/useAuth";
-import Spinner from "../components/Spinner/Spinner";
-import { Job } from "../components/Jobs/CreateJob/CreateJob";
 import useJobs from "../hooks/useJobs";
 import useCompany from "../hooks/useCompany";
+import { Job } from "../interfaces/Job.model";
 
 
 export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
@@ -80,7 +79,7 @@ export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
       return;
     }
   
-    if (companyId !== currentJob.company) {
+    if (companyId !== currentJob.company?._id) {
       toast.error("This job is not part of your company.");
       navigate('/')
       return;

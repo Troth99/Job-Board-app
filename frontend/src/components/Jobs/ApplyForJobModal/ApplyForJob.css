@@ -61,7 +61,7 @@
 
 
 .modal-content input[type="email"],
-.modal-content input[type="file"],
+.modal-content input[type="text"],
 .modal-content input[type="phone"] {
 	padding: 10px 14px;
 	border: 1px solid #b6c6e3;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import useApiRequester from "./useApiRequester";
 import { API_BASE } from "../services/api";
 import { Job } from "../interfaces/Job.model";
+import { ApplicationFormData } from "../interfaces/Apllication.model";
 
 export default function useJobs() {
   const { request } = useApiRequester();
@@ -126,6 +127,21 @@ export default function useJobs() {
     }
   };
 
+
+  const createApplication = async (applicationData: ApplicationFormData) => {
+    setLoading(true);
+    try {
+      const response = await request(`${API_BASE}/applications`, "POST", applicationData);
+      return response
+    } catch (error) {
+      console.error('Failed to create application')
+    }
+    finally{
+      setLoading(false)
+    }
+    
+  };
+
   return {
     loading,
     getRecentJobs,
@@ -135,6 +151,7 @@ export default function useJobs() {
     updateJob,
     getJobsByCategoryName,
     getAllJobs,
-    deleteJob
+    deleteJob,
+    createApplication
   };
 }

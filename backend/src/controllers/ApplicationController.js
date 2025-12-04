@@ -1,0 +1,58 @@
+import Application from "../models/Application.js";
+
+
+export const createApplication = async (req, res) => {
+  try {
+    const { jobId, userId, email, phone, coverLetter, cv } = req.body;
+
+    // Save only CV link in MongoDB
+    const application = await Application.create({
+      jobId,
+      userId,
+      email,
+      phone,
+      cv,
+      coverLetter,
+    });
+    res.status(201).json(application);
+  } catch (err) {
+    console.error("Application creation error:", err);
+    res.status(500).json({ error: "Failed to create application", details: err.message });
+  }
+};
+
+
+export const downloadCv = async (req, res) => {
+  try {
+    const application = await Application.findById(req.params.id);
+    if (!application || !application.cvUrl) {
+      return res.status(404).json({ error: "CV not found" });
+    }
+    res.download(application.cvUrl);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to download CV" });
+  }
+};
+
+
+export const getApplicationsByJob = async (req, res) => {
+  try {
+    const { jobId } = req.params;
+    const applications = await Application.find({ jobId });
+    res.json(applications);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch applications" });
+  }
+};
+
+
+export const getApplicationById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const application = await Application.findById(id);
+    if (!application) return res.status(404).json({ error: "Not found" });
+    res.json(application);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch application" });
+  }
+};

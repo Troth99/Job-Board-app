@@ -20,11 +20,20 @@ export default function RecentJobs({ recentJobs }: RecentJobsProps) {
             <li key={job._id} className="job-card">
               <div className="job-card-content">
                 <div className="job-card-image">
-                  <img
-                    src={job.company ? job.company.logo : "/assets/defaultCompany.png"}
-                    alt={job.company ? job.company.name : "No image"}
-                    className="company-logo"
-                  />
+             <img
+  src={
+    job?.company?.logo &&
+    job.company.logo.trim().startsWith("http")
+      ? job.company.logo
+      : "/assets/defaultCompany.png"
+  }
+  alt={
+    job?.company?.logo && job.company.logo.trim() !== ""
+      ? job.company.name
+      : "Default Company Logo"
+  }
+  className="company-logo"
+/>
                 </div>
                 <div className="job-card-details">
                   <h3 className="job-title">{job.title}</h3>
