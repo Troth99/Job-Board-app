@@ -139,7 +139,18 @@ export default function useJobs() {
     finally{
       setLoading(false)
     }
-    
+  };
+  
+  const getApplicationsByJobId = async (jobId: string) => {
+    setLoading(true)
+    try {
+      const response = await request(`${API_BASE}/applications/job/${jobId}`, 'GET', {})
+      return response
+    } catch (error) {
+      console.error('Failed to get applicatiosn for currentJob')
+    }finally {
+      setLoading(false)
+    }
   };
 
   return {
@@ -152,6 +163,7 @@ export default function useJobs() {
     getJobsByCategoryName,
     getAllJobs,
     deleteJob,
-    createApplication
+    createApplication,
+    getApplicationsByJobId
   };
 }

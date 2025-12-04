@@ -6,6 +6,7 @@ import Spinner from "../../Spinner/Spinner";
 import { formatDate } from "../../../utils/formData";
 import useCompany from "../../../hooks/useCompany";
 import { Job } from "../../../interfaces/Job.model";
+import { CandidateApplications } from "../CandidateApplications/CandidateApplications";
 
 export function DetailsJob() {
   const { companyId, jobId } = useParams<{
@@ -20,8 +21,14 @@ export function DetailsJob() {
     currentStatus
   );
   const [statusLoading, setStatusLoading] = useState(false);
+  const [candidates, setCandidates] = useState([])
   const { getUserRole, userRole } = useCompany();
-  const { getJobById, updateJob, deleteJob } = useJobs();
+  const { getJobById, updateJob, deleteJob, getApplicationsByJobId} = useJobs();
+  
+  if (!jobId) {
+    console.error("Job Id is missing");
+    return;
+  }
 
   const fetchCurrentJob = async () => {
     try {
@@ -50,14 +57,26 @@ export function DetailsJob() {
     }
   };
 
+  const fetchApllications = async() => {
+    try {
+      setLoading(true)
+      const result = await getApplicationsByJobId(jobId)
+      setCandidates(result)
+    } catch (error) {
+      console.error('Error fetching candidates')
+    }finally{
+      setLoading(false)
+    }
+  }
   useEffect(() => {
     if (companyId) {
       fetchRole();
     }
     if (jobId) {
       fetchCurrentJob();
+      fetchApllications()
     }
-  }, [companyId, jobStatus]);
+  }, [companyId, jobStatus, jobId]);
 
   const editNavigateHandler = () => {
     navigate(`/company/${companyId}/job/${jobId}/edit`);
@@ -66,10 +85,6 @@ export function DetailsJob() {
   const changeStatusHandler = async () => {
     setStatusLoading(true);
     try {
-      if (!jobId) {
-        console.error("Job Id is missing");
-        return;
-      }
       const newStatus = !jobDetails?.isActive;
 
       setJobdetails((prevJob) => ({
@@ -173,60 +188,8 @@ export function DetailsJob() {
             </div>
           </div>
 
-          <div className="candidates-section">
-            <h3>Candidate Applications</h3>
-            <table className="candidates-list">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>CV</th>
-                  <th>Applied On</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>John Doe</td>
-                  <td>
-                    <a
-                      href="path/to/cv/johndoe.pdf"
-                      target="_blank"
-                      className="cv-link"
-                    >
-                      View CV
-                    </a>
-                  </td>
-                  <td>2023-11-10</td>
-                  <td>Pending</td>
-                  <td>
-                    <button className="approve-button">Approve</button>
-                    <button className="reject-button">Reject</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Jane Smith</td>
-                  <td>
-                    <a
-                      href="path/to/cv/janesmith.pdf"
-                      target="_blank"
-                      className="cv-link"
-                    >
-                      View CV
-                    </a>
-                  </td>
-                  <td>2023-11-09</td>
-                  <td>Approved</td>
-                  <td>
-                    <button className="approve-button" disabled>
-                      Approve
-                    </button>
-                    <button className="reject-button">Reject</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+         <CandidateApplications jobId={jobId} candidates={candidates}/>
+
           {canEditOrDelete && (
             <div className="job-actions">
               <h3>Job Actions</h3>
