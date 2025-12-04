@@ -1,3 +1,21 @@
+/* Job status styles */
+.job-status {
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-top: 8px;
+}
+.job-status.active {
+  background: #e6ffe6;
+  color: #1a7f37;
+  border: 1px solid #1a7f37;
+}
+.job-status.closed {
+  background: #ffe6e6;
+  color: #a71a1a;
+  border: 1px solid #a71a1a;
+}
 .candidate-job-view-container {
   max-width: 900px;
   margin: 48px auto;

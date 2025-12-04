@@ -1,6 +1,6 @@
 import Category from "../models/Category.js";
 import Jobs from "../models/Jobs.js"
-import mongoose from "mongoose";
+
 
 
 export const createJobService = async (jobData) => {
@@ -42,7 +42,10 @@ export const getJobById = async (jobId) => {
   try {
 
 
-    const job = await Jobs.findById(jobId).populate("createdBy", "name email role").populate('category', 'name shortName');
+    const job = await Jobs.findById(jobId)
+    .populate("createdBy", "name email role")
+    .populate('category', 'name shortName')
+    .populate('company')
 
     if (!job) {
       throw new Error("Job not found");

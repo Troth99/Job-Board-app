@@ -1,67 +1,120 @@
+import { useParams } from 'react-router'
+import useJobs from '../../../hooks/useJobs'
 import './CandidateJob.css'
+import { useEffect, useState } from 'react'
+import { Job } from '../../../interfaces/Job.model'
+import { formatDate } from '../../../utils/formData'
+import Spinner from '../../Spinner/Spinner'
+
 export function CandidateJobView() {
+  const {jobId} = useParams()
+const {loading, getJobById} = useJobs()
+const [jobData, setJobData] = useState<Job>()
+ 
 
-    //To Do validation on post new form...
-    //delete job
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      if(!jobId){
+        console.error('Job id is missing.')
+        return
+      }
 
+      const response = await getJobById(jobId);
+     setJobData(response)
+    } catch (error) {
+      console.error('Failed to fetch jobs.')
+    }
+  }
+  fetchData()
+}, [jobId])
+
+if (loading) {
+  return <Spinner overlay={true} />;
+}
     return (
         
      <div className="candidate-job-view-container">
       <div className="company-details-card">
   <div className="company-header">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT7RiKSjCLH7UUM2…" alt="TechNova Solutions Logo" className="company-logo" />
+    <img
+      src={jobData?.company?.logo && jobData.company.logo.trim() !== ''
+        ? jobData.company.logo
+        : '/assets/defaultCompany.png'}
+      alt={jobData?.company?.logo && jobData.company.logo.trim() !== ''
+        ? jobData.company.name
+        : 'Default Company Logo'}
+      className="company-logo"
+    />
     <div>
-      <h3 className="company-name">TechNova Solutions</h3>
-      <span className="company-industry">Industry: Software Development</span>
-      <span className="company-size">Size: 10-50 employees</span>
-      <span className="company-founded">Founded: 2021</span>
+      <h3 className="company-name">{jobData?.company?.name}</h3>
+      <span className="company-industry">Industry: {jobData?.company?.industry}</span>
+      <span className="company-size">Size: {jobData?.company?.size} employers</span>
+      <span className="company-founded">Founded: {formatDate(jobData?.company?.createdAt ?? "")}</span>
     </div>
   </div>
   <div className="company-meta">
-    <span className="company-location">Location: Sofia, Bulgaria</span>
+    <span className="company-location">Location: {jobData?.company?.location}</span>
     <span className="company-website">
-      Website: <a href="https://technova-solutions.com/" target="_blank" rel="noopener noreferrer">technova-solutions.com</a>
+      Website: <a href={jobData?.company?.website} target="_blank" rel="noopener noreferrer">{jobData?.company?.website} </a>
     </span>
   </div>
   <div className="company-description-data">
     <p>
-      Innovative software solutions for small and medium businesses.
+     {jobData?.company?.description}
     </p>
   </div>
 </div>
         <div className="job-header">
-          <h2 className="job-title">Frontend Developer</h2>
-          <span className="job-category">Category: IT</span>
-          <span className="job-type">Type: Full-time</span>
+          <h2 className="job-title">{jobData?.title}</h2>
+          <span className="job-category">Category: {jobData?.category?.name}</span>
+          <span className="job-type">Type: {jobData?.employmentType}</span>
         </div>
         <div className="job-meta">
-          <span className="job-location">Location: Sofia</span>
-          <span className="job-salary">Salary: 3500 BGN</span>
-          <span className="job-date">Posted: 2025-12-01</span>
+          <span className="job-location">Location: {jobData?.location}</span>
+          <span className="job-salary">Salary: {jobData?.salary}</span>
+          <span className="job-date">Posted at: {formatDate(jobData?.createdAt ?? "")}</span>
+           <span className="job-date">Posted by: {jobData?.createdBy?.email}</span>
         </div>
         <div className="job-description">
-          <h3>Description</h3>
+          <h3>Job Description & Expectations</h3>
           <p>
-            We are looking for a passionate frontend developer to join our team. You will work with React, TypeScript and modern web technologies.
+          {jobData?.description}
           </p>
         </div>
         <div className="job-skills">
-          <h3>Skills</h3>
+          <h3>Required skills</h3>
           <ul>
-            <li>React</li>
-            <li>TypeScript</li>
-            <li>CSS</li>
-            <li>REST APIs</li>
+            {Array.isArray(jobData?.skills)
+              ? jobData.skills.map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))
+              : null}
           </ul>
         </div>
         <div className="job-benefits">
           <h3>Benefits</h3>
           <ul>
-            <li>Remote work</li>
-            <li>Health insurance</li>
-            <li>Flexible hours</li>
+             {Array.isArray(jobData?.benefits)
+              ? jobData.benefits.map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))
+              : null}
           </ul>
         </div>
+          <div className="job-benefits">
+          <h3>Tags</h3>
+          <ul>
+             {Array.isArray(jobData?.tags)
+              ? jobData.tags.map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))
+              : null}
+          </ul>
+        </div>
+               <span className={`job-status ${jobData?.isActive ? 'active' : 'closed'}`}>
+                 Status: {jobData?.isActive ? 'Active' : 'Closed'}
+               </span>
         <div className="job-apply">
           <button className="apply-button">Apply Now</button>
         </div>

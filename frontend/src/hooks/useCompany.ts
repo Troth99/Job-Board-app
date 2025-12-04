@@ -16,6 +16,10 @@ export interface Company {
   location: string;
   logo: string,
   members?: string[];
+  description: string;
+  size: string
+  website: string;
+  createdAt: string
 }
 
 export default function useCompany() {

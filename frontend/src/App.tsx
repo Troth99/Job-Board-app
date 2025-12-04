@@ -90,7 +90,7 @@ function App() {
       <Routes>
        <Route path="/" element={<MainLayout />}>
         <Route index element={<HomeSection />} /> 
-        <Route path="job/:id" element={<CandidateJobView />} />
+        <Route path="job/:jobId" element={<CandidateJobView />} />
         <Route path="category/:categoryName" element={<FilterJobByCategory />} />
       </Route>
 

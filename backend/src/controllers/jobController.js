@@ -47,7 +47,7 @@ if (!jobId) {
 
       return res.status(400).json({ message: "Invalid job ID format" });
     }
-    const job = await getJobById(jobId);
+    const job = await getJobById(jobId)
 
 
     if (!job) {
