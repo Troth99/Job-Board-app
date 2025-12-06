@@ -28,6 +28,7 @@ import { CandidateJobView } from "./components/Jobs/CandidateJobView/CandidateJo
 import { FilterJobByCategory } from "./components/FilterJobsByCategory/FilterJobsByCategory";
 import { ViewAllJobs } from "./components/Jobs/ViewAllJobs/ViewAllJobs";
 import { ViewAllJobsForCompany } from "./components/Company/ViewAllJobsForCompany/ViewAllJobsForCompany";
+import { ViewAllCompanies } from "./components/Company/ViewAllCompanies/ViewAllCompanies";
 
 
 function App() {
@@ -114,6 +115,7 @@ function App() {
         </Route>
             <Route element={<MainLayout />}>
             <Route path="/jobs" element={<ViewAllJobs />} />
+            <Route path="/companies" element={<ViewAllCompanies />} />
             </Route>
 
         <Route element={<ProtectedRoutes />}>

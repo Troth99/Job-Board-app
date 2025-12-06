@@ -48,7 +48,7 @@ useEffect(() => {
             <a href="#">About</a>
           </li>
           <li>
-            <a href="#">Companies</a>
+            <Link to="/companies">Companies</Link>
           </li>
           <li>
             <a href="#">Events</a>

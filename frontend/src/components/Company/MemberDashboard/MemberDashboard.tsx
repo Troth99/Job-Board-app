@@ -3,7 +3,7 @@ import "./MemberDashboard.css";
 import "./Responsive.css";
 import { useNavigate, useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
-import { CompanyJobsList } from "../CompanyJobList.tsx/CompanyJobList";
+import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
 import { useCompanyContext } from "../../../context/CompanyContext";
 
