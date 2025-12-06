@@ -21,9 +21,10 @@ export function DetailsJob() {
     currentStatus
   );
   const [statusLoading, setStatusLoading] = useState(false);
-  const [candidates, setCandidates] = useState([])
-  const { getUserRole, userRole } = useCompany();
-  const { getJobById, updateJob, deleteJob, getApplicationsByJobId} = useJobs();
+    const [candidates, setCandidates] = useState([]);
+    const { getUserRole, userRole } = useCompany();
+    const { getJobById, updateJob, deleteJob, getApplicationsByJobId } = useJobs();
+    const [loadingApplications, setLoadingApplications] = useState<boolean>(false);
   
   if (!jobId) {
     console.error("Job Id is missing");
@@ -59,13 +60,13 @@ export function DetailsJob() {
 
   const fetchApllications = async() => {
     try {
-      setLoading(true)
+        setLoadingApplications(true);
       const result = await getApplicationsByJobId(jobId)
       setCandidates(result)
     } catch (error) {
       console.error('Error fetching candidates')
     }finally{
-      setLoading(false)
+        setLoadingApplications(false);
     }
   }
   useEffect(() => {
@@ -188,7 +189,7 @@ export function DetailsJob() {
             </div>
           </div>
 
-         <CandidateApplications jobId={jobId} candidates={candidates}/>
+           <CandidateApplications jobId={jobId} candidates={candidates} loading={loadingApplications}/>
 
           {canEditOrDelete && (
             <div className="job-actions">
