@@ -7,6 +7,7 @@ import { formatDate } from "../../../utils/formData";
 import useCompany from "../../../hooks/useCompany";
 import { Job } from "../../../interfaces/Job.model";
 import { CandidateApplications } from "../CandidateApplications/CandidateApplications";
+import { Candidate } from "../../../interfaces/Apllication.model";
 
 export function DetailsJob() {
   const { companyId, jobId } = useParams<{
@@ -21,7 +22,7 @@ export function DetailsJob() {
     currentStatus
   );
   const [statusLoading, setStatusLoading] = useState(false);
-    const [candidates, setCandidates] = useState([]);
+    const [candidates, setCandidates] = useState<Candidate[]>([]);
     const { getUserRole, userRole } = useCompany();
     const { getJobById, updateJob, deleteJob, getApplicationsByJobId } = useJobs();
     const [loadingApplications, setLoadingApplications] = useState<boolean>(false);
@@ -189,8 +190,7 @@ export function DetailsJob() {
             </div>
           </div>
 
-           <CandidateApplications jobId={jobId} candidates={candidates} loading={loadingApplications}/>
-
+<CandidateApplications jobId={jobId} candidates={candidates} loading={loadingApplications} setCandidates={setCandidates} />
           {canEditOrDelete && (
             <div className="job-actions">
               <h3>Job Actions</h3>

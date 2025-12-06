@@ -1,61 +1,93 @@
+import { Candidate } from "../../../interfaces/Apllication.model";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
 import { formatDate } from "../../../utils/formData";
 
 export function CandidateApplications({
   jobId,
   candidates,
-  loading
+  loading,
+  setCandidates,
 }: {
   jobId: string;
-  candidates: any[];
+  candidates: Candidate[];
   loading: boolean;
+  setCandidates: React.Dispatch<React.SetStateAction<Candidate[]>>;
 }) {
-
+  const viewCvHandler = (candidateId: string) => {
+    setCandidates((prev) =>
+      prev.map((candidate) =>
+        candidate._id === candidateId
+          ? { ...candidate, status: "Pending" }
+          : candidate
+      )
+    );
+  };
+  
+  const approveHandler = (candidateId: string) => {
+    setCandidates((prev) =>
+      prev.map((candidate) =>
+        candidate._id === candidateId
+          ? { ...candidate, status: "Approved" }
+          : candidate
+      )
+    );
+    // Optionally: call backend to persist status change
+  };
+  
+  const rejectHandler = (candidateId: string) => {
+    setCandidates((prev) => prev.filter(candidate => candidate._id !== candidateId));
+    // Optionally: call backend to delete application
+  };
 
   return (
     <div className="candidates-section">
       <h3>Candidate Applications</h3>
       {loading ? (
-        <LoadingIndicator message="Loading applications..." size="small"/>
-      ): candidates.length === 0 ? (
-      <div className="no-candidates-message">
-        No candidates applied for this job.
-      </div>
-    ) : (
-      <table className="candidates-list">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>CV</th>
-            <th>Applied On</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {candidates.map((candidate) => (
-            <tr key={candidate._id}>
-              <td>{candidate.email}</td>
-              <td>
-                <a href={candidate.cv} target="_blank" className="cv-link">
-                  View CV
-                </a>
-              </td>
-              <td>
-                {candidate.appliedAt
-                  ? formatDate(candidate.appliedAt, "en-US")
-                  : ""}
-              </td>
-              <td>Pending</td>
-              <td>
-                <button className="approve-button">Approve</button>
-                <button className="reject-button">Reject</button>
-              </td>
+        <LoadingIndicator message="Loading applications..." size="small" />
+      ) : candidates.length === 0 ? (
+        <div className="no-candidates-message">
+          No candidates applied for this job.
+        </div>
+      ) : (
+        <table className="candidates-list">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>CV</th>
+              <th>Applied On</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    )}
-  </div>
-);
+          </thead>
+          <tbody>
+            {candidates.map((candidate) => (
+              <tr key={candidate._id}>
+                <td>{candidate.email}</td>
+                <td>
+                  <a
+                    href={candidate.cv}
+                    target="_blank"
+                    className="cv-link"
+                    onClick={() => viewCvHandler(candidate._id)}
+                  >
+                    View CV
+                  </a>
+                </td>
+                <td>
+                  {candidate.appliedAt
+                    ? formatDate(candidate.appliedAt, "en-US")
+                    : ""}
+                </td>
+                <td>{candidate.status}</td>
+                <td>
+                  <button className="approve-button" onClick={() => approveHandler(candidate._id)} disabled={candidate.status === 'Approved'}>Approve</button>
+                  <button className="reject-button" onClick={() => rejectHandler(candidate._id)}>Reject</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
 }
