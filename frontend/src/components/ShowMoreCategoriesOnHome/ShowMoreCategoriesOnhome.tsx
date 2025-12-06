@@ -10,24 +10,24 @@ type Props = {
 export function ShowMoreCategories({categories, categoryHandler ,onClose }:  Props){
     
     return (
-      <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close-btn" onClick={onClose}>×</button>
-        <div className="all-categories-grid">
-          {categories.map((cat) => (
-            <div
-              key={cat._id}
-              className="category-card large"
-              onClick={() => {
-                categoryHandler?.(cat); 
-                onClose(); 
-              }}
-            >
-              {cat.name}
-            </div>
-          ))}
+      <div className="overlay-categories-shown-home" onClick={onClose}>
+        <div className="section-categories-shown-for-home" onClick={e => e.stopPropagation()}>
+          <button className="btn-close-categories-shown-for-home" onClick={onClose}>×</button>
+          <div className="categories-list-flex">
+            {categories.map((cat) => (
+              <div
+                key={cat._id}
+                className="category-card-flex"
+                onClick={() => {
+                  categoryHandler?.(cat);
+                  onClose();
+                }}
+              >
+                {cat.name}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-    )
+    );
 }

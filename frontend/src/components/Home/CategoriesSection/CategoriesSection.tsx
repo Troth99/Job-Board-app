@@ -46,8 +46,8 @@ const handleCategoryClick = (cat: Category) => {
 
  
       {openModal && (
-        <div className="modal-overlay" onClick={() => setOpenModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div  onClick={() => setOpenModal(false)}>
+          <div onClick={(e) => e.stopPropagation()}>
             <ShowMoreCategories
               categories={reduxCategories}
               onClose={() => setOpenModal(false)}
