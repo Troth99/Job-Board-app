@@ -9,7 +9,7 @@ const applicationSchema = new Schema({
   userId: {
     type: Types.ObjectId,
     ref: "User",
-    required: true, 
+    required: true,
   },
   email: {
     type: String,
@@ -31,7 +31,7 @@ const applicationSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ["new", "reviewed", "rejected", "accepted"],
+    enum: ["new", "pending", "rejected", "approved"],
     default: "new",
   },
 });

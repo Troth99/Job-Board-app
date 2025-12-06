@@ -1,3 +1,4 @@
+import useJobs from "../../../hooks/useJobs";
 import { Candidate } from "../../../interfaces/Apllication.model";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
 import { formatDate } from "../../../utils/formData";
@@ -13,30 +14,21 @@ export function CandidateApplications({
   loading: boolean;
   setCandidates: React.Dispatch<React.SetStateAction<Candidate[]>>;
 }) {
-  const viewCvHandler = (candidateId: string) => {
-    setCandidates((prev) =>
-      prev.map((candidate) =>
-        candidate._id === candidateId
-          ? { ...candidate, status: "Pending" }
-          : candidate
-      )
-    );
-  };
-  
-  const approveHandler = (candidateId: string) => {
-    setCandidates((prev) =>
-      prev.map((candidate) =>
-        candidate._id === candidateId
-          ? { ...candidate, status: "Approved" }
-          : candidate
-      )
-    );
-    // Optionally: call backend to persist status change
-  };
-  
-  const rejectHandler = (candidateId: string) => {
-    setCandidates((prev) => prev.filter(candidate => candidate._id !== candidateId));
-    // Optionally: call backend to delete application
+  const {updateApplicationStatus} = useJobs()
+
+  const viewCvHandler = async (candidateId: string) => {
+    try {
+      await updateApplicationStatus(candidateId, "pending");
+      setCandidates((prev) =>
+        prev.map((candidate) =>
+          candidate._id === candidateId
+            ? { ...candidate, status: "pending" }
+            : candidate
+        )
+      );
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -80,8 +72,8 @@ export function CandidateApplications({
                 </td>
                 <td>{candidate.status}</td>
                 <td>
-                  <button className="approve-button" onClick={() => approveHandler(candidate._id)} disabled={candidate.status === 'Approved'}>Approve</button>
-                  <button className="reject-button" onClick={() => rejectHandler(candidate._id)}>Reject</button>
+                  <button className="approve-button">Approve</button>
+                  <button className="reject-button">Reject</button>
                 </td>
               </tr>
             ))}

@@ -153,6 +153,17 @@ export default function useJobs() {
     }
   };
 
+  const updateApplicationStatus = async (applicationsId: string, status: string) => {
+    setLoading(true);
+    try {
+      const response = await request(`${API_BASE}/applications/${applicationsId}/status`, "PATCH", {status})
+      return response
+    } catch (error) {
+       console.error("Failed to update application status.");
+    }finally {
+      setLoading(false)
+    }
+  }
   return {
     loading,
     getRecentJobs,
@@ -164,6 +175,7 @@ export default function useJobs() {
     getAllJobs,
     deleteJob,
     createApplication,
-    getApplicationsByJobId
+    getApplicationsByJobId,
+    updateApplicationStatus
   };
 }
