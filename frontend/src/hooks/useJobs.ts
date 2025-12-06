@@ -164,6 +164,18 @@ export default function useJobs() {
       setLoading(false)
     }
   }
+  const deleteApplication = async (applicationId: string) => {
+  setLoading(true);
+  try {
+    const response = await request(`${API_BASE}/applications/${applicationId}`, "DELETE");
+    return response;
+  } catch (error) {
+    console.error("Failed to delete application.");
+    throw error;
+  } finally {
+    setLoading(false);
+  }
+};
   return {
     loading,
     getRecentJobs,
@@ -176,6 +188,7 @@ export default function useJobs() {
     deleteJob,
     createApplication,
     getApplicationsByJobId,
-    updateApplicationStatus
+    updateApplicationStatus,
+    deleteApplication
   };
 }

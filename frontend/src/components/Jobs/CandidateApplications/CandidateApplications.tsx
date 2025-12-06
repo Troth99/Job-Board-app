@@ -14,7 +14,7 @@ export function CandidateApplications({
   loading: boolean;
   setCandidates: React.Dispatch<React.SetStateAction<Candidate[]>>;
 }) {
-  const { updateApplicationStatus } = useJobs();
+  const { updateApplicationStatus, deleteApplication } = useJobs();
 
   const viewCvHandler = async (candidateId: string) => {
     try {
@@ -46,6 +46,15 @@ export function CandidateApplications({
     }
   };
 
+  const rejectHandler = async (candidateId: string) => {
+    try {
+      await deleteApplication(candidateId);
+     setCandidates(candidate => candidate.filter(app => app._id !== candidateId));
+
+    } catch (error) {
+      console.error("Faileld to set status.", error);
+    }
+  }
   return (
     <div className="candidates-section">
       <h3>Candidate Applications</h3>
@@ -96,7 +105,15 @@ export function CandidateApplications({
                   >
                     Approve
                   </button>
-                  <button className="reject-button">Reject</button>
+                  <button 
+                  className={`reject-button ${
+                    candidate.status ==='rejected' ? "disabled" : ''
+                  }`}
+                  onClick={() => rejectHandler(candidate._id)}
+                  >
+                    Reject
+                    </button>
+              
                 </td>
               </tr>
             ))}
