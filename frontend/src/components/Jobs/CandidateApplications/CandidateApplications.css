@@ -1,0 +1,100 @@
+.candidates-section {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.candidates-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  min-width: 600px;
+}
+
+.candidates-list th,
+.candidates-list td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.candidates-list th {
+  background: #f8f8f8;
+  font-weight: 600;
+}
+
+.cv-link {
+  color: #1976d2;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.approve-button,
+.reject-button {
+  padding: 0.4rem 0.8rem;
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.approve-button {
+  background: #4caf50;
+  color: #fff;
+}
+.approve-button.disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+.reject-button {
+  background: #f44336;
+  color: #fff;
+}
+.reject-button.disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .candidates-list, .candidates-list thead, .candidates-list tbody, .candidates-list th, .candidates-list td, .candidates-list tr {
+    display: block;
+  }
+  .candidates-list thead {
+    display: none;
+  }
+  .candidates-list tr {
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid #e0e0e0;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+  .candidates-list td {
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+    padding-left: 50%;
+    min-height: 40px;
+    font-size: 0.98rem;
+    background: #fafafa;
+  }
+  .candidates-list td:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 48%;
+    padding-left: 1rem;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #888;
+    content: attr(data-label);
+  }
+}
+
+.no-candidates-message {
+  padding: 1.5rem;
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
+}

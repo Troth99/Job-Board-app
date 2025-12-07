@@ -6,7 +6,7 @@ import { usePagination } from "../../../hooks/usePagination";
 import { useNavigate, useSearchParams } from "react-router";
 import { Job } from "../../../interfaces/Job.model";
 
-export function ViewAllJobs() {
+function ViewAllJobs() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const { loading, getAllJobs } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -93,3 +93,5 @@ export function ViewAllJobs() {
     </div>
   );
 }
+
+export default ViewAllJobs;

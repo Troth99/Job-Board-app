@@ -1,3 +1,4 @@
+import "./CandidateApplications.css";
 import useJobs from "../../../hooks/useJobs";
 import { Candidate } from "../../../interfaces/Apllication.model";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
@@ -78,8 +79,8 @@ export function CandidateApplications({
           <tbody>
             {candidates.map((candidate) => (
               <tr key={candidate._id}>
-                <td>{candidate.email}</td>
-                <td>
+                <td data-label="Email">{candidate.email}</td>
+                <td data-label="CV">
                   <a
                     href={candidate.cv}
                     target="_blank"
@@ -89,13 +90,13 @@ export function CandidateApplications({
                     View CV
                   </a>
                 </td>
-                <td>
+                <td data-label="Applied On">
                   {candidate.appliedAt
                     ? formatDate(candidate.appliedAt, "en-US")
                     : ""}
                 </td>
-                <td>{candidate.status}</td>
-                <td>
+                <td data-label="Status">{candidate.status}</td>
+                <td data-label="Actions">
                   <button
                     className={`approve-button ${
                       candidate.status === "approved" ? "disabled" : ""
@@ -112,8 +113,7 @@ export function CandidateApplications({
                   onClick={() => rejectHandler(candidate._id)}
                   >
                     Reject
-                    </button>
-              
+                  </button>
                 </td>
               </tr>
             ))}

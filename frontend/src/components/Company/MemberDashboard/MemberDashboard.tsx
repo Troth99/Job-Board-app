@@ -7,7 +7,7 @@ import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
 import { useCompanyContext } from "../../../context/CompanyContext";
 
-export function MemberDashboard() {
+export default function MemberDashboard() {
   const { companyId } = useParams();
   const navigate = useNavigate();
   const { getUserRole, userRole, loading: loadingRole } = useCompany();
@@ -125,15 +125,9 @@ export function MemberDashboard() {
 
         <div className="announcement-list">
           <div className="announcement-card">
-            <h4>Company Meeting on Friday</h4>
-            <p>Date: 23rd July 2025</p>
-            <p>Join us for the quarterly review meeting. It's important!</p>
+       
           </div>
-          <div className="announcement-card">
-            <h4>New Project Launch</h4>
-            <p>Date: 15th August 2025</p>
-            <p>Our new project is launching soon. Stay tuned for more info!</p>
-          </div>
+     
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import { Job } from "../../../interfaces/Job.model";
 import { CandidateApplications } from "../CandidateApplications/CandidateApplications";
 import { Candidate } from "../../../interfaces/Apllication.model";
 
-export function DetailsJob() {
+function DetailsJob() {
   const { companyId, jobId } = useParams<{
     companyId: string;
     jobId: string;
@@ -222,3 +222,5 @@ export function DetailsJob() {
     </>
   );
 }
+
+export default DetailsJob;

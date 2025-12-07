@@ -1,3 +1,4 @@
+import "./CreateJob.css";
 import { useEffect, useState } from "react";
 import "./CreateJob.css";
 import { EmploymentTypeSelect, JobCategorySelect } from "../formSelectedInputs";
@@ -26,7 +27,7 @@ const initialValues = {
   tags: "",
   email: "",
 };
-export function PostJob() {
+function PostJob() {
   const { companyId } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -166,3 +167,5 @@ export function PostJob() {
     </div>
   );
 }
+
+export default PostJob;

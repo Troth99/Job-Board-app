@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router";
 import { usePagination } from "../../../hooks/usePagination";
 import Spinner from "../../Spinner/Spinner";
 
-export function ViewAllCompanies() {
+export default function ViewAllCompanies() {
   const { loading, companies, getCompanies } = useCompany();
   const [searchParams, setSearchParams] = useSearchParams();
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);

@@ -2,23 +2,12 @@ import { useEffect, useState } from "react";
 import "./styles/global.css";
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import {  Route, Routes } from "react-router";
-import LoginComponent from "./components/auth/Login/Login";
-import HomeSection from "./components/Home/HomeSection";
-import RegisterComponent from "./components/auth/Register/Register";
 import MainLayout from "./components/Layouts/MainLayout";
-import MyProfile from "./components/Profile/Profile";
-import EditProfile from "./components/EditProfile/EditProfile";
 import ProtectedRoutes from "./RouteGuards/authRouteGuard";
 import GuestGuardRoute from "./RouteGuards/guestRouteGuard";
-import ChangePassword from "./components/EditProfile/ChangePassword/ChangePassword";
-import RegisterCompany from "./components/Company/RegisterCompany/RegisterCompany";
-import { MemberDashboard } from "./components/Company/MemberDashboard/MemberDashboard";
 import CompanyRouteGuard from "./RouteGuards/companyRouteGuard";
 import { PageNotFound } from "./components/404/404";
 import CompanyRegisterGuard from "./RouteGuards/companyRegisterGuard";
-import { PostJob } from "./components/Jobs/CreateJob/CreateJob";
-import { EditJob } from "./components/Jobs/EditJob/EditJob";
-import { DetailsJob } from "./components/Jobs/DetailsJob/DetailsJob";
 import { JobEditRouteGuard } from "./RouteGuards/jobEditRouteGuard";  
 import { useDispatch } from "react-redux";
 import useCategories from "./hooks/useCategories";
@@ -26,10 +15,25 @@ import { setCategories } from "./components/Home/CategoriesSection/categoriesSli
 import { LogOut } from "./components/auth/Logout/Logout";
 import { CandidateJobView } from "./components/Jobs/CandidateJobView/CandidateJobView";
 import { FilterJobByCategory } from "./components/FilterJobsByCategory/FilterJobsByCategory";
-import { ViewAllJobs } from "./components/Jobs/ViewAllJobs/ViewAllJobs";
-import { ViewAllJobsForCompany } from "./components/Company/ViewAllJobsForCompany/ViewAllJobsForCompany";
-import { ViewAllCompanies } from "./components/Company/ViewAllCompanies/ViewAllCompanies";
+import {lazy, Suspense} from 'react'
 
+// Lazy loaded components
+const LoginComponent = lazy(() => import("./components/auth/Login/Login"));
+const RegisterComponent = lazy(() => import("./components/auth/Register/Register"));
+const RegisterCompany = lazy(() => import("./components/Company/RegisterCompany/RegisterCompany"));
+const MyProfile = lazy(() => import("./components/Profile/Profile"));
+const EditProfile = lazy(() => import("./components/EditProfile/EditProfile"));
+const ChangePassword = lazy(() => import("./components/EditProfile/ChangePassword/ChangePassword"));
+const PostJob = lazy(() => import("./components/Jobs/CreateJob/CreateJob"));
+const EditJob = lazy(() => import("./components/Jobs/EditJob/EditJob"));
+const DetailsJob = lazy(() => import("./components/Jobs/DetailsJob/DetailsJob"));
+const ViewAllJobs = lazy(() => import("./components/Jobs/ViewAllJobs/ViewAllJobs"));
+const ViewAllJobsForCompany = lazy(() => import("./components/Company/ViewAllJobsForCompany/ViewAllJobsForCompany"));
+const ViewAllCompanies = lazy(() => import("./components/Company/ViewAllCompanies/ViewAllCompanies"));
+
+//lazy loaded components
+const MemberDashboard = lazy(() => import("./components/Company/MemberDashboard/MemberDashboard"));
+const HomeSection = lazy(() => import("./components/Home/HomeSection"));
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -90,7 +94,11 @@ function App() {
     <div>
       <Routes>
        <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomeSection />} /> 
+        <Route index element={
+          <Suspense fallback={<FullPageSpinner />}>
+            <HomeSection />
+          </Suspense>
+        } /> 
         <Route path="job/:jobId" element={<CandidateJobView />} />
         <Route path="category/:categoryName" element={<FilterJobByCategory />} />
       </Route>
@@ -100,7 +108,9 @@ function App() {
             path="/login"
             element={
               <MainLayout hideHeaderFooter={true}>
-                <LoginComponent />
+                <Suspense fallback={<FullPageSpinner />}>
+                  <LoginComponent />
+                </Suspense>
               </MainLayout>
             }
           />
@@ -108,28 +118,54 @@ function App() {
             path="/register"
             element={
               <MainLayout hideHeaderFooter={true}>
-                <RegisterComponent />
+                <Suspense fallback={<FullPageSpinner />}>
+                  <RegisterComponent />
+                </Suspense>
               </MainLayout>
             }
           />
         </Route>
             <Route element={<MainLayout />}>
-            <Route path="/jobs" element={<ViewAllJobs />} />
-            <Route path="/companies" element={<ViewAllCompanies />} />
+            <Route path="/jobs" element={
+              <Suspense fallback={<FullPageSpinner />}>
+                <ViewAllJobs />
+              </Suspense>
+            } />
+            <Route path="/companies" element={
+              <Suspense fallback={<FullPageSpinner />}>
+                <ViewAllCompanies />
+              </Suspense>
+            } />
             </Route>
 
         <Route element={<ProtectedRoutes />}>
           <Route path="/profile" element={<MainLayout />}>
-            <Route index element={<MyProfile LogOutComponnent={LogOut} />} />
-            <Route path="setthings" element={<EditProfile />} />
-            <Route path="change-password" element={<ChangePassword />} />
+            <Route index element={
+              <Suspense fallback={<FullPageSpinner />}>
+                <MyProfile LogOutComponnent={LogOut} />
+              </Suspense>
+            } />
+            <Route path="setthings" element={
+              <Suspense fallback={<FullPageSpinner />}>
+                <EditProfile />
+              </Suspense>
+            } />
+            <Route path="change-password" element={
+              <Suspense fallback={<FullPageSpinner />}>
+                <ChangePassword />
+              </Suspense>
+            } />
           </Route>
         </Route>
 
         <Route element={<ProtectedRoutes />}>
           <Route element={<CompanyRegisterGuard />}>
             <Route element={<MainLayout />}>
-              <Route path="/register/company" element={<RegisterCompany />} />
+              <Route path="/register/company" element={
+                <Suspense fallback={<FullPageSpinner />}>
+                  <RegisterCompany />
+                </Suspense>
+              } />
             </Route>
           </Route>
         </Route>
@@ -138,20 +174,32 @@ function App() {
           <Route element={<MainLayout />}>
             <Route
               path="/company/:companyId/dashboard"
-              element={<MemberDashboard />}
+              element={
+                <Suspense fallback={<FullPageSpinner />}>
+                  <MemberDashboard />
+                </Suspense>
+              }
             />
           </Route>
         </Route>
 
         <Route element={<ProtectedRoutes />}>
           <Route element={<MainLayout />}>
-            <Route path="/company/:companyId/post-job" element={<PostJob />} />
+            <Route path="/company/:companyId/post-job" element={
+              <Suspense fallback={<FullPageSpinner />}>
+                <PostJob />
+              </Suspense>
+            } />
           </Route>
         </Route>
 
             <Route element={<ProtectedRoutes />} >
             <Route element={<MainLayout />} >
-              <Route path="/company/:companyId/jobs" element={<ViewAllJobsForCompany />} />
+              <Route path="/company/:companyId/jobs" element={
+                <Suspense fallback={<FullPageSpinner />}>
+                  <ViewAllJobsForCompany />
+                </Suspense>
+              } />
             </Route>
             </Route>
       <Route element={<MainLayout />}>
@@ -159,9 +207,10 @@ function App() {
             path="/company/:companyId/job/:jobId/edit"
             element={
               <JobEditRouteGuard>
-                <EditJob />
+                <Suspense fallback={<FullPageSpinner />}>
+                  <EditJob />
+                </Suspense>
               </JobEditRouteGuard>
-       
             }
           />
         </Route>
@@ -171,16 +220,21 @@ function App() {
             path="/company/:companyId/job/:jobId/details"
             element={
               <JobEditRouteGuard>
-                <DetailsJob />
+                <Suspense fallback={<FullPageSpinner />}>
+                  <DetailsJob />
+                </Suspense>
               </JobEditRouteGuard>
-       
             }
           />
         </Route>
      
 
         <Route element={<MainLayout />}>
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="*" element={
+            <Suspense fallback={<FullPageSpinner />}>
+              <PageNotFound />
+            </Suspense>
+          } />
         </Route>
       </Routes>
     </div>

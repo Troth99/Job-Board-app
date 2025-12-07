@@ -26,7 +26,7 @@ const initialValues = {
   email: "",
 };
 
-export function EditJob() {
+export default function EditJob() {
   const { companyId, jobId } = useParams();
   const [jobData, setJobData] = useState<valuesInterface>(initialValues);
   const [pending, setPending] = useState<boolean>(false);
@@ -128,6 +128,12 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
           <h2>Edit Job</h2>
           <form className="post-job-form" onSubmit={editSubmitHandler}>
             <div className="form-group">
+  
+   function EditJob() {
+     // ...existing code...
+   }
+ 
+   export default EditJob;
               <label htmlFor="title">Job Title</label>
               <input
                 type="text"

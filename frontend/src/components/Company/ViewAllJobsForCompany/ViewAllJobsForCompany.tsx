@@ -64,4 +64,6 @@ export function ViewAllJobsForCompany() {
       )}
     </div>
   );
-}
+  }
+
+  export default ViewAllJobsForCompany;
