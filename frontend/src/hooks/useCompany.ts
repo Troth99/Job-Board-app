@@ -128,20 +128,14 @@ export default function useCompany() {
     return null;
   };
 
-const addMemberToCompany = async (companyId: string, userId: string, role: string = "viewer") => {
-  try {
-    setLoading(true);
-    const response = await request(
-      `${API_BASE}/companies/${companyId}/members`,
-      "POST",
-      { userId, role }
-    );
-    return response;
-  } catch (error) {
-    console.error('Fialed to add member to the company')
-  } finally {
-    setLoading(false);
-  }
+const checkUser = async (email: string) => {
+if(!email) return
+try {
+  const response = await request(`${API_BASE}/users/check-user-exists`, "POST", {email})
+  return response
+} catch (error) {
+  console.error('Failed to check if the user exists in the backend', error)
+}
 }
   return {
     loading,
@@ -155,6 +149,6 @@ const addMemberToCompany = async (companyId: string, userId: string, role: strin
     getUserRole,
     getCompanyFromLocalStorage,
     getMyCompany,
-    addMemberToCompany
+checkUser
   };
 }

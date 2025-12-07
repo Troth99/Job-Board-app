@@ -258,12 +258,15 @@ export const refreshAccessToken = async (req, res) => {
   }
 }
 
-export const getAllUsersEmails = async (req,res) => {
+export const checkUserExists = async (req, res) => {
+  const { email } = req.body;
   try {
-    const users = await User.find({}, "_id email" )
-       res.status(200).json(users);
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User does not exist" });
+    }
+    res.status(200).json({ message: "User exists" });
   } catch (error) {
-        res.status(500).json({ message: error.message });
-
+    res.status(500).json({ message: error.message });
   }
-}
+};

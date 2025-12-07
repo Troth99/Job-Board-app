@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { deleteUserProfile, deleteUserProfileImage, getAllUsersEmails, getUserProfile, loginUser, logOutUser, refreshAccessToken, registerUser, updateUserProfile } from "../controllers/userController.js";
+import { checkUserExists, deleteUserProfile, deleteUserProfileImage, getUserProfile, loginUser, logOutUser, refreshAccessToken, registerUser, updateUserProfile } from "../controllers/userController.js";
 import { protect } from "../middleware/authMiddleware.js";
 import { changePasswordController } from "../controllers/changePasswordController.js";
 
@@ -12,7 +12,7 @@ router.post('/login', loginUser)
 
 router.post('/refresh-token', refreshAccessToken)
 router.post('/logout', logOutUser)
-router.get('/', getAllUsersEmails)
+router.post('/check-user-exists', checkUserExists)
 // Routes only for owner of the own profile
 router.get("/me", protect, getUserProfile);
 router.put("/me", protect, updateUserProfile);

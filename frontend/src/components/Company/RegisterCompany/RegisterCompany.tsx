@@ -36,7 +36,6 @@ export default function RegisterCompany() {
 
   const validateForm = (values: RegisterCompanyInterface) => validateCompany(values);
   const onSubmit = async (values: RegisterCompanyInterface) => {
-    console.log('fomr handler called')
     setLoading(true);
     try {
       const createdCompany = await createCompany(values);
