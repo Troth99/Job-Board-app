@@ -12,9 +12,6 @@ interface searchProps {
 
 export default function Search({ onSearch }: searchProps) {
   const [search, setSearch] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<Job[]>([]);
-  const [showResults, setShowResults] = useState(false);
-  const { getAllJobs } = useJobs();
   const navigate = useNavigate();
 
   const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

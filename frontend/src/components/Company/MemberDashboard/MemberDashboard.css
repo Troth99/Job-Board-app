@@ -161,55 +161,6 @@ ul {
   color: #7f8c8d;
 }
 
-.job-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.job-card-member {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  background-color: #fff;
-  transition: transform 0.2s ease-in-out;
-}
-
-.job-card-member:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.job-card-member h4 {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.job-card-member p {
-  padding-top: 0.5em;
-  font-size: 14px;
-  color: #555;
-}
-
-.job-card-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
-}
-
-.company-logo {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
 .announcement-list {
   display: flex;
   flex-direction: column;
@@ -329,39 +280,5 @@ ul {
 }
 
 [data-theme="dark"] .member-card p {
-  color: #bdc3c7;
-}
-
-[data-theme="dark"] .job-list {}
-[data-theme="dark"] .job-card-member {
-  background-color: #34495e;
-}
-
-[data-theme="dark"] .job-card-member:hover {
-  background-color: #2c3e50;
-}
-
-[data-theme="dark"] .job-card-member h4 {
-  color: #ecf0f1;
-}
-
-[data-theme="dark"] .job-card-member p {
-  color: #bdc3c7;
-}
-
-[data-theme="dark"] .announcement-list {}
-[data-theme="dark"] .announcement-card {
-  background-color: #34495e;
-}
-
-[data-theme="dark"] .announcement-card:hover {
-  background-color: #2c3e50;
-}
-
-[data-theme="dark"] .announcement-card h4 {
-  color: #ecf0f1;
-}
-
-[data-theme="dark"] .announcement-card p {
   color: #bdc3c7;
 }

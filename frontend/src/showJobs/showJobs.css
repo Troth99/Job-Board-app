@@ -1,0 +1,52 @@
+.job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.job-card-member {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background-color: #fff;
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.job-card-member:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.job-card-member h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.job-card-member p {
+  padding-top: 0.5em;
+  font-size: 14px;
+  color: #555;
+}
+
+.no-jobs-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 1.2rem;
+  margin-top: 48px;
+  gap: 0.5em;
+}
+
+.no-jobs-message i {
+  font-size: 2.2rem;
+  margin-bottom: 0.5em;
+}
