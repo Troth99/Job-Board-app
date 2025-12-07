@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../hooks/useAuth"; 
 import { Navigate, Outlet } from "react-router";
 import { showCompanyWarning } from "../utils/toast";
-import Spinner from "../components/Spinner/Spinner";
+
 import useCompany from "../hooks/useCompany";
 
 export default function CompanyRouteGuard() {

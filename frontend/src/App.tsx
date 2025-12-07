@@ -180,6 +180,14 @@ function App() {
                 </Suspense>
               }
             />
+            <Route
+              path="/company/:companyId/job/:jobId/details"
+              element={
+                <Suspense fallback={<FullPageSpinner />}>
+                  <DetailsJob />
+                </Suspense>
+              }
+            />
           </Route>
         </Route>
 
@@ -215,18 +223,7 @@ function App() {
           />
         </Route>
         
-       <Route element={<MainLayout />}>
-          <Route
-            path="/company/:companyId/job/:jobId/details"
-            element={
-              <JobEditRouteGuard>
-                <Suspense fallback={<FullPageSpinner />}>
-                  <DetailsJob />
-                </Suspense>
-              </JobEditRouteGuard>
-            }
-          />
-        </Route>
+       {/* DetailsJob вече е защитен с CompanyRouteGuard по-горе */}
      
 
         <Route element={<MainLayout />}>

@@ -66,9 +66,6 @@ export default function MemberDashboard() {
           </div>
           <ul>
             <li>
-              <a href="#">Members</a>
-            </li>
-            <li>
               <a href="#">Settings</a>
             </li>
           </ul>
@@ -77,40 +74,7 @@ export default function MemberDashboard() {
 
       {/* Main Content Area */}
       <div className="main-content">
-        <div className="content-header">
-          <h3>Members</h3>
-          <button className="add-button">+ Add Member</button>
-        </div>
 
-        {/* Displaying Member List */}
-        <div className="members-list">
-          <div className="member-card">
-            <img src="https://i.imgur.com/OqVaosK.jpeg" alt="Member 1" />
-            <div className="member-info">
-              <h4>John Doe</h4>
-              <p>Role: Developer</p>
-              <p>Status: Active</p>
-            </div>
-          </div>
-
-          <div className="member-card">
-            <img src="https://i.imgur.com/OqVaosK.jpeg" alt="Member 2" />
-            <div className="member-info">
-              <h4>Jane Smith</h4>
-              <p>Role: Designer</p>
-              <p>Status: Active</p>
-            </div>
-          </div>
-
-          <div className="member-card">
-            <img src="https://i.imgur.com/OqVaosK.jpeg" alt="Member 3" />
-            <div className="member-info">
-              <h4>Tom Brown</h4>
-              <p>Role: Manager</p>
-              <p>Status: Pending</p>
-            </div>
-          </div>
-        </div>
 
         {/* Jobs Section */}
         <CompanyJobsList
@@ -118,17 +82,21 @@ export default function MemberDashboard() {
           canPostJob={canPostJob}
           onPostJob={postJobHandlerNavigate}
         />
+  {/*announcements section 
+  
+  <div className="content-header">
+    <h3>Announcements</h3>
+  </div>
 
-        <div className="content-header">
-          <h3>Announcements</h3>
-        </div>
+  <div className="announcement-list">
+    <div className="announcement-card">
+ 
+    </div>
+    </div>
+  
+  
 
-        <div className="announcement-list">
-          <div className="announcement-card">
-       
-          </div>
-     
-        </div>
+  */}
       </div>
     </div>
   );

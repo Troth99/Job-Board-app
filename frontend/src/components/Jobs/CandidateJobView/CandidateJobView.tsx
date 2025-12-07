@@ -8,6 +8,7 @@ import { formatDate } from "../../../utils/formData";
 import Spinner from "../../Spinner/Spinner";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { ApplyForJobModal } from "../ApplyForJobModal/ApplyForJobModal";
+import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 
 export function CandidateJobView() {
   const { jobId } = useParams();
@@ -16,10 +17,13 @@ export function CandidateJobView() {
   const [token] = useLocalStorage<string>("user", "");
   const isLoggedIn = !!token;
   const [showApplyModal, setShowApplyModal] = useState(false);
-
+ const user = getUserFromLocalStorage()
   if (!jobId) {
     return;
   }
+
+const isCompanyMember = jobData?.company?.members?.includes(user._id);
+  console.log(isCompanyMember)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -145,12 +149,14 @@ export function CandidateJobView() {
       <div className="job-apply">
         {isLoggedIn ? (
           <>
+          {!isCompanyMember && (
             <button
               className="apply-button"
               onClick={() => setShowApplyModal(true)}
             >
               Apply Now
             </button>
+          )}
             {showApplyModal && (
               <ApplyForJobModal
                 jobId={jobId}

@@ -121,34 +121,3 @@ export const getCompanyMembersController = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-export const addCompanyMemberController = async (req, res) => {
-  const { companyId } = req.params;
-  const { userId, role } = req.body;
-  if (!Types.ObjectId.isValid(companyId) || !Types.ObjectId.isValid(userId)) {
-    return res.status(400).json({ message: "Invalid companyId or userId" });
-  }
-  try {
-    const exists = await CompanyMember.findOne({ companyId, userId });
-    if (exists) {
-      return res.status(409).json({ message: "The user is already member from the company." });
-    }
-    const newMember = await CompanyMember.create({
-      companyId,
-      userId,
-      role: role || "member",
-      invitedBy: req.user._id,
-      invitedAt: new Date(),
-      joinedAt: new Date(),
-    });
-
-    const updateCompany = await Company.findByIdAndUpdate(
-      companyId,
-      { $addToSet: { members: userId } },
-      { new: true }
-    );
-console.log("Нов член създаден:", newMember);
-    res.status(201).json(newMember);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
