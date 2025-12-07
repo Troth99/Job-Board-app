@@ -16,6 +16,7 @@ import { LogOut } from "./components/auth/Logout/Logout";
 import { CandidateJobView } from "./components/Jobs/CandidateJobView/CandidateJobView";
 import { FilterJobByCategory } from "./components/FilterJobsByCategory/FilterJobsByCategory";
 import {lazy, Suspense} from 'react'
+import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
 
 // Lazy loaded components
 const LoginComponent = lazy(() => import("./components/auth/Login/Login"));
@@ -102,6 +103,10 @@ function App() {
         <Route path="job/:jobId" element={<CandidateJobView />} />
         <Route path="category/:categoryName" element={<FilterJobByCategory />} />
       </Route>
+
+        <Route element={<MainLayout />}>
+          <Route path="/search" element={<SearchResults />} />
+        </Route>
 
         <Route element={<GuestGuardRoute />}>
           <Route

@@ -1,28 +1,32 @@
 import { useState } from "react";
-import './Search.css'
-import "./Responsive.css"
-
+import "./Search.css";
+import "./Responsive.css";
+import { Job } from "../../../interfaces/Job.model";
+import useJobs from "../../../hooks/useJobs";
+import SearchResults from "./SearchResults/SearchResults";
+import { useNavigate } from "react-router";
 
 interface searchProps {
-    onSearch: (query: string) => void;
+  onSearch: (query: string) => void;
 }
 
+export default function Search({ onSearch }: searchProps) {
+  const [search, setSearch] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<Job[]>([]);
+  const [showResults, setShowResults] = useState(false);
+  const { getAllJobs } = useJobs();
+  const navigate = useNavigate();
 
-export default function Search ({ onSearch }: searchProps) {
-    const [search, setSearch] = useState<string>("");
+  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate(`/search?query=${encodeURIComponent(search)}`);
+  };
 
-    const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
-    }
-
-    const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log('Searching', search)
-        onSearch(search);
-    }
-
-    return (
-            <div className="search-container">
+  return (
+    <div className="search-container">
       <form onSubmit={submitHandler}>
         <div className="search-box">
           <input
@@ -42,6 +46,5 @@ export default function Search ({ onSearch }: searchProps) {
         </div>
       </form>
     </div>
-    )
+  );
 }
-

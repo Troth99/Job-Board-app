@@ -5,6 +5,15 @@
   position: relative;
   z-index: 2;
 }
+.search-results-container {
+  margin: 32px auto;
+  max-width: 900px;
+    min-height: 80vh;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
 
 .search-box {
   display: flex;
@@ -148,4 +157,53 @@ body[data-theme="dark"] .search-btn:hover {
 
 body[data-theme="dark"] .search-btn:hover svg {
   transform: rotate(15deg);
+}
+
+/* Modern, visually appealing style for 'No jobs found' message */
+.search-no-jobs-f1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #007bff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 64px;
+  margin-bottom: 64px;
+  padding: 32px 0;
+  background: linear-gradient(90deg, #f8fafc 60%, #e3f2fd 100%);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,123,255,0.07);
+  animation: fadeIn 0.7s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.search-no-jobs::before {
+  content: "🔍";
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .search-no-jobs {
+    font-size: 1.1rem;
+    padding: 18px 0;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  .search-no-jobs::before {
+    font-size: 2rem;
+  }
+}
+
+body[data-theme="dark"] .search-no-jobs {
+  color: #00bfff;
+  background: linear-gradient(90deg, #23272f 60%, #1a2636 100%);
+  box-shadow: 0 2px 16px rgba(0,123,255,0.13);
 }
