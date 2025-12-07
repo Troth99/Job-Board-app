@@ -36,11 +36,7 @@ const companySchema = new Schema(
     foundedYear: {
       type: Number,
     },
-    members: [
-      { 
-      type: Types.ObjectId, 
-      ref: "User" }
-    ],
+  members: [{ type: Types.ObjectId, ref: 'User' }],
     createdBy: {
       type: Types.ObjectId,
       ref: "User",

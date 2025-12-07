@@ -5,26 +5,16 @@ import { useNavigate, useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
 import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
-import { useCompanyContext } from "../../../context/CompanyContext";
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
   const navigate = useNavigate();
-  const { getUserRole, userRole, loading: loadingRole } = useCompany();
-  const { company } = useCompanyContext();
+  const { company, getCompanyById, getUserRole, userRole, loading: loadingRole } = useCompany();
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (!companyId) return;
-
-      try {
-        await getUserRole(companyId);
-      } catch (error) {
-        console.error("Failed to load member dasbharod.");
-      }
-    };
-
-    fetchData();
+    if (!companyId) return;
+    getCompanyById(companyId);
+    getUserRole(companyId);
   }, [companyId]);
 
   const postJobHandlerNavigate = () => {

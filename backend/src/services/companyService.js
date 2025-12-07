@@ -46,5 +46,5 @@ export const getCompaniesService = async () => {
 }
 
 export const getCompanyByIdService = async (id) => {
-    return await Company.findById(id).populate('createdBy', 'name email')
+    return await Company.findById(id).populate('createdBy', 'name email').populate('members')
 }
