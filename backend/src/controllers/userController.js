@@ -257,3 +257,13 @@ export const refreshAccessToken = async (req, res) => {
     return res.status(403).json({ message: "Invalid or expired refresh token" });
   }
 }
+
+export const getAllUsersEmails = async (req,res) => {
+  try {
+    const users = await User.find({}, "_id email" )
+       res.status(200).json(users);
+  } catch (error) {
+        res.status(500).json({ message: error.message });
+
+  }
+}
