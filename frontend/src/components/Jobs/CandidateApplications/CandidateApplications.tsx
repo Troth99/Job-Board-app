@@ -46,14 +46,6 @@ const {companyId} = useParams()
             : candidate
         )
       );
-
-      const candidate = candidates.find(c => c._id === candidateId);
-      console.log("DEBUG candidate:", candidate);
-
-      if (candidate && candidate.userId && companyId) {
-
-        await addMemberToCompany(companyId, candidate.userId, "member");
-      }
     } catch (error) {
       console.error("Faileld to set status or add member.", error);
     }

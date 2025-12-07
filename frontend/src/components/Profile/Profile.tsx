@@ -105,7 +105,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
             <p>Industry: {company.industry}</p>
             <p>Location: {company.location}</p>
             <button
-              className="create-company-button"
+              className="create-company-button-f1"
               onClick={() => navigate(`/company/${company._id}/dashboard`)}
             >
               Go to Dashboard
