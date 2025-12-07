@@ -5,9 +5,6 @@ import useForm from "../../../hooks/useForm";
 import { useValidation } from "../../validators/useValidation";
 import "./CompanyMembers.css"
 
-interface initialValueMemberForm {
-  email: string;
-}
 const initialValue = {
   email: "",
 };
@@ -47,11 +44,17 @@ export function CompanyMembers() {
     }
   };
 
-  const { register, formHandler, errors } = useForm(
+  const { register, formHandler, errors, setErrors } = useForm(
     addMemberHandler,
     initialValue,
     validators,
   );
+
+  const handleCloseModal =() => {
+ setShowModal(false);
+  setErrors({});
+  setuserEmailExistError("");
+  }
   return (
     <>
       <div className="content-header">
@@ -62,7 +65,7 @@ export function CompanyMembers() {
       </div>
 
       {showModal && (
-        <div className="modal-overlay" onClick={() => setShowModal(false)}>
+        <div className="modal-overlay">
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h3>Add Member</h3>
             <form onSubmit={formHandler}>
@@ -79,7 +82,7 @@ export function CompanyMembers() {
             </form>
             <button
               className="modal-close-f2"
-              onClick={() => setShowModal(false)}
+              onClick={handleCloseModal}
             >
               Close
             </button>
