@@ -236,7 +236,32 @@ ul {
   font-size: 14px;
   color: #7f8c8d;
 }
-
+/* Modern, stylish modal close button */
+.modal-close-f2 {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff3b3b 60%, #ffb347 100%);
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(255,59,59,0.18);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  border-radius: 50%;
+  z-index: 10;
+}
+.modal-close-f2:hover {
+  background: linear-gradient(135deg, #ffb347 60%, #ff3b3b 100%);
+  color: #fff;
+  transform: scale(1.15) rotate(12deg);
+  box-shadow: 0 4px 18px rgba(255,59,59,0.28);
+}
 [data-theme="dark"] .dashboard {
   background-color: #181818;
   color: #ecf0f1;

@@ -5,11 +5,18 @@ import { useNavigate, useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
 import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
+import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
   const navigate = useNavigate();
-  const { company, getCompanyById, getUserRole, userRole, loading: loadingRole } = useCompany();
+  const {
+    company,
+    getCompanyById,
+    getUserRole,
+    userRole,
+    loading: loadingRole,
+  } = useCompany();
 
   useEffect(() => {
     if (!companyId) return;
@@ -64,7 +71,8 @@ export default function MemberDashboard() {
 
       {/* Main Content Area */}
       <div className="main-content">
-
+        {/* Members Section */}
+        <CompanyMembers />
 
         {/* Jobs Section */}
         <CompanyJobsList
@@ -72,7 +80,7 @@ export default function MemberDashboard() {
           canPostJob={canPostJob}
           onPostJob={postJobHandlerNavigate}
         />
-  {/*announcements section 
+        {/*announcements section 
   
   <div className="content-header">
     <h3>Announcements</h3>
