@@ -1,8 +1,10 @@
 import "./CandidateApplications.css";
 import useJobs from "../../../hooks/useJobs";
+import useCompany from "../../../hooks/useCompany";
 import { Candidate } from "../../../interfaces/Apllication.model";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
 import { formatDate } from "../../../utils/formData";
+import { useParams } from "react-router";
 
 export function CandidateApplications({
   jobId,
@@ -16,6 +18,8 @@ export function CandidateApplications({
   setCandidates: React.Dispatch<React.SetStateAction<Candidate[]>>;
 }) {
   const { updateApplicationStatus, deleteApplication } = useJobs();
+  const { addMemberToCompany } = useCompany();
+const {companyId} = useParams()
 
   const viewCvHandler = async (candidateId: string) => {
     try {
@@ -42,8 +46,16 @@ export function CandidateApplications({
             : candidate
         )
       );
+
+      const candidate = candidates.find(c => c._id === candidateId);
+      console.log("DEBUG candidate:", candidate);
+
+      if (candidate && candidate.userId && companyId) {
+
+        await addMemberToCompany(companyId, candidate.userId, "member");
+      }
     } catch (error) {
-      console.error("Faileld to set status.", error);
+      console.error("Faileld to set status or add member.", error);
     }
   };
 
@@ -71,6 +83,7 @@ export function CandidateApplications({
             <tr>
               <th>Email</th>
               <th>CV</th>
+              <th>Phone</th>
               <th>Applied On</th>
               <th>Status</th>
               <th>Actions</th>
@@ -89,6 +102,9 @@ export function CandidateApplications({
                   >
                     View CV
                   </a>
+                </td>
+                <td data-label="Phone">{candidate?.phone}
+
                 </td>
                 <td data-label="Applied On">
                   {candidate.appliedAt

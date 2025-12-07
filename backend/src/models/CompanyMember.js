@@ -1,6 +1,6 @@
 import { Schema, model, Types } from "mongoose";
 
-export const COMPANY_ROLES = ["owner", "admin", "recruiter", "viewer"]
+export const COMPANY_ROLES = ["owner", "admin", "recruiter", "member"]
 
 
 const companyMemberSchema = new Schema(

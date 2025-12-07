@@ -128,6 +128,21 @@ export default function useCompany() {
     return null;
   };
 
+const addMemberToCompany = async (companyId: string, userId: string, role: string = "viewer") => {
+  try {
+    setLoading(true);
+    const response = await request(
+      `${API_BASE}/companies/${companyId}/members`,
+      "POST",
+      { userId, role }
+    );
+    return response;
+  } catch (error) {
+    console.error('Fialed to add member to the company')
+  } finally {
+    setLoading(false);
+  }
+}
   return {
     loading,
     error,
@@ -139,6 +154,7 @@ export default function useCompany() {
     getCompanyById,
     getUserRole,
     getCompanyFromLocalStorage,
-    getMyCompany
+    getMyCompany,
+    addMemberToCompany
   };
 }
