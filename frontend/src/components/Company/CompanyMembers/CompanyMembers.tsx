@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
 import useForm from "../../../hooks/useForm";
 import { useValidation } from "../../validators/useValidation";
-import "./CompanyMembers.css"
+import "./CompanyMembers.css";
 
 const initialValue = {
   email: "",
@@ -24,8 +24,8 @@ export function CompanyMembers() {
     }
     return errors;
   };
-  
-  const addMemberHandler = async (values: {email: string}) => {
+
+  const addMemberHandler = async (values: { email: string }) => {
     setuserEmailExistError("");
     if (!companyId || !values.email) {
       console.error("Data is missing");
@@ -33,32 +33,41 @@ export function CompanyMembers() {
     }
     try {
       const response = await checkUser(values.email);
-      if (!response || response.message === 'User does not exist') {
-        setuserEmailExistError('User does not exist!');
+      if (!response || response.message === "User does not exist") {
+        setuserEmailExistError("User does not exist!");
         return;
       }
       if (!response.userId) {
-        setuserEmailExistError('User ID not found! Backend must return userId.');
+        setuserEmailExistError(
+          "User ID not found! Backend must return userId."
+        );
         return;
       }
-      await addMemberToCompany(companyId, response.userId);
-    
-    } catch (error) {
-      setuserEmailExistError("Failed to check if the user exists in the backend");
+      const result = await addMemberToCompany(companyId, response.userId)
+      if(!result.success){
+        setuserEmailExistError('User is already a member')
+      }
+
+    } catch (error: any) {
+
+        setuserEmailExistError(
+          "Failed to check if the user exists in the backend"
+        );
+      
     }
   };
 
   const { register, formHandler, errors, setErrors } = useForm(
     addMemberHandler,
     initialValue,
-    validators,
+    validators
   );
 
-  const handleCloseModal =() => {
- setShowModal(false);
-  setErrors({});
-  setuserEmailExistError("");
-  }
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setErrors({});
+    setuserEmailExistError("");
+  };
   return (
     <>
       <div className="content-header">
@@ -79,15 +88,12 @@ export function CompanyMembers() {
                 {...register("email")}
               />
               {errors.email && (
-               <div className="error-message">{errors.email}</div>
-            )}
-            <div className="error-message">{userEmailExistError}</div>
+                <div className="error-message">{errors.email}</div>
+              )}
+              <div className="error-message">{userEmailExistError}</div>
               <button type="submit">Add</button>
             </form>
-            <button
-              className="modal-close-f2"
-              onClick={handleCloseModal}
-            >
+            <button className="modal-close-f2" onClick={handleCloseModal}>
               Close
             </button>
           </div>

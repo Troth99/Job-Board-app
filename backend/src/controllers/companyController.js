@@ -125,7 +125,11 @@ export const getCompanyMembersController = async (req, res) => {
 export const addMemberToCompany = async (req, res) => {
   const { companyId } = req.params;
   const { userId } = req.body;
-
+  
+const company = await Company.findById(companyId);
+if (company.members.includes(userId)) {
+  return res.status(409).json({ message: "User is already a member" });
+}
   try {
     //Add userId to the array from the company
     await Company.findByIdAndUpdate(

@@ -143,14 +143,14 @@ try {
 }
 }
 const addMemberToCompany =async (companyId: string, userId: string) => {
-  setLoading(true)
+  setLoading(true);
   try {
-    const response = await request(`${API_BASE}/companies/${companyId}/add-member`, "POST", {userId})
-    return response
-  } catch (error) {
-    console.error('Failed to add member to the company')
-  }finally{
-    setLoading(false)
+    const response = await request(`${API_BASE}/companies/${companyId}/add-member`, "POST", { userId });
+    return { success: true, ...response };
+  } catch (error: any) {
+    return { success: false, errorMessage: error?.message || "Failed to add member to the company" };
+  } finally {
+    setLoading(false);
   }
 }
   return {
