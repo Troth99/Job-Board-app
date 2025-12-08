@@ -2,6 +2,7 @@ import { Types } from "mongoose";
 import { Company } from "../models/Company.js";
 import { createCompanyService, getCompaniesService, getCompanyByIdService } from "../services/companyService.js"
 import { CompanyMember } from "../models/CompanyMember.js";
+import User from "../models/User.js";
 
 
 
@@ -20,6 +21,7 @@ export const createCompanyController = async (req, res) => {
 
 
     const company = await createCompanyService(companyData);
+    await User.findByIdAndUpdate(userId, { $set: { company: company._id } });
     res.status(201).json(company)
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -125,9 +127,10 @@ export const getCompanyMembersController = async (req, res) => {
 export const addMemberToCompany = async (req, res) => {
   const { companyId } = req.params;
   const { userId } = req.body;
-  
+
 const company = await Company.findById(companyId);
-if (company.members.includes(userId)) {
+
+if (company.members.some(id => id.toString() === userId.toString())) {
   return res.status(409).json({ message: "User is already a member" });
 }
   try {
@@ -145,7 +148,9 @@ if (company.members.includes(userId)) {
       invitedAt: new Date(),
       joinedAt: new Date(),
     })
-    res.status(200).json({ message: "Member added successfully" });
+
+await User.findByIdAndUpdate(userId, { $set: { company: companyId } });   
+ res.status(200).json({ message: "Member added successfully" });
 
   } catch (error) {
     res.status(500).json({ message: error.message });

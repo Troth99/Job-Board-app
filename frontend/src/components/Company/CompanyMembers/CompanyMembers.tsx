@@ -43,17 +43,18 @@ export function CompanyMembers() {
         );
         return;
       }
-      const result = await addMemberToCompany(companyId, response.userId)
-      if(!result.success){
-        setuserEmailExistError('User is already a member')
+      const result = await addMemberToCompany(companyId, response.userId);
+      console.log(result);
+
+      if (result.success) {
+        setShowModal(false);
+      } else {
+        setuserEmailExistError("User is already a member");
       }
-
     } catch (error: any) {
-
-        setuserEmailExistError(
-          "Failed to check if the user exists in the backend"
-        );
-      
+      setuserEmailExistError(
+        "Failed to check if the user exists in the backend"
+      );
     }
   };
 

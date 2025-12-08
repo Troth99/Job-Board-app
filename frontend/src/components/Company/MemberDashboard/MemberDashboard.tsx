@@ -6,6 +6,7 @@ import useCompany from "../../../hooks/useCompany";
 import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
 import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
+import { useRole } from "../../../context/RoleContext";
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
@@ -13,15 +14,13 @@ export default function MemberDashboard() {
   const {
     company,
     getCompanyById,
-    getUserRole,
-    userRole,
     loading: loadingRole,
   } = useCompany();
+const {userRole} = useRole()
 
   useEffect(() => {
     if (!companyId) return;
     getCompanyById(companyId);
-    getUserRole(companyId);
   }, [companyId]);
 
   const postJobHandlerNavigate = () => {

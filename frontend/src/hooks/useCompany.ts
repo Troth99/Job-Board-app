@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { API_BASE } from "../services/api";
 import useApiRequester from "./useApiRequester";
+import { getUserFromLocalStorage } from "./useAuth";
 
 export interface Member {
   _id: string;
-  email: string
+  email: string;
 }
 
 interface RegisterCompanyInterface {
@@ -19,12 +20,12 @@ export interface Company {
   name: string;
   industry: string;
   location: string;
-  logo: string,
+  logo: string;
   members?: Member[];
   description: string;
-  size: string
+  size: string;
   website: string;
-  createdAt: string
+  createdAt: string;
 }
 
 export default function useCompany() {
@@ -33,7 +34,7 @@ export default function useCompany() {
   const [company, setCompany] = useState<Company | null>(null);
   const [companies, setCompanies] = useState<Company[]>([]);
   const [userRole, setUserRole] = useState<string | null>(null);
-  const {request} = useApiRequester()
+  const { request } = useApiRequester();
 
   const createCompany = async (data: RegisterCompanyInterface) => {
     setLoading(true);
@@ -67,11 +68,7 @@ export default function useCompany() {
     setLoading(true);
     setError(null);
     try {
-      const response = await request(
-        `${API_BASE}/companies/${id}`,
-        "GET",
-        {}
-      );
+      const response = await request(`${API_BASE}/companies/${id}`, "GET", {});
       setCompany(response);
     } catch (err) {
       setError("Error fetching company data");
@@ -101,21 +98,25 @@ export default function useCompany() {
     }
   };
 
-  const getUserRole = async (companyId: string) => {
+  const getUserRole = async (companyId: string): Promise<string | null> => {
     setLoading(true);
     setError(null);
-
     try {
       const response = await request(
         `${API_BASE}/companies/${companyId}/members`,
         "GET",
         {}
       );
-  
-      setUserRole(response[0]?.role || null);
+      const user = getUserFromLocalStorage();
+      const userId = user._id;
+      const member = response.find((m: any) => m.userId?._id === userId);
+      const role = member?.role || null;
+      setUserRole(role);
+      return role;
     } catch (err) {
       setError("Error fetching user role");
       console.error(err);
+      return null;
     } finally {
       setLoading(false);
     }
@@ -133,26 +134,37 @@ export default function useCompany() {
     return null;
   };
 
-const checkUser = async (email: string) => {
-if(!email) return
-try {
-  const response = await request(`${API_BASE}/users/check-user-exists`, "POST", {email})
-  return response
-} catch (error) {
-  console.error('Failed to check if the user exists in the backend', error)
-}
-}
-const addMemberToCompany =async (companyId: string, userId: string) => {
-  setLoading(true);
-  try {
-    const response = await request(`${API_BASE}/companies/${companyId}/add-member`, "POST", { userId });
-    return { success: true, ...response };
-  } catch (error: any) {
-    return { success: false, errorMessage: error?.message || "Failed to add member to the company" };
-  } finally {
-    setLoading(false);
-  }
-}
+  const checkUser = async (email: string) => {
+    if (!email) return;
+    try {
+      const response = await request(
+        `${API_BASE}/users/check-user-exists`,
+        "POST",
+        { email }
+      );
+      return response;
+    } catch (error) {
+      console.error("Failed to check if the user exists in the backend", error);
+    }
+  };
+  const addMemberToCompany = async (companyId: string, userId: string) => {
+    setLoading(true);
+    try {
+      const response = await request(
+        `${API_BASE}/companies/${companyId}/add-member`,
+        "POST",
+        { userId }
+      );
+      return { success: true, ...response };
+    } catch (error: any) {
+      return {
+        success: false,
+        errorMessage: error?.message || "Failed to add member to the company",
+      };
+    } finally {
+      setLoading(false);
+    }
+  };
   return {
     loading,
     error,
@@ -165,7 +177,7 @@ const addMemberToCompany =async (companyId: string, userId: string) => {
     getUserRole,
     getCompanyFromLocalStorage,
     getMyCompany,
-checkUser,
-addMemberToCompany
+    checkUser,
+    addMemberToCompany,
   };
 }

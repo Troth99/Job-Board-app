@@ -10,6 +10,7 @@ interface User {
   location?: string;
   avatar?: string;
   createdAt?: string;
+  company? : string
 }
 
 interface ChangePasswordForm {

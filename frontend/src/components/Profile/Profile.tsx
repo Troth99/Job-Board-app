@@ -8,6 +8,7 @@ import useUserProfile from "../../hooks/useProfile";
 import { Link, useNavigate } from "react-router";
 import useCompany from "../../hooks/useCompany";
 import ImageUpload from "../../features/UploadProfileImage/UploadProfileImage";
+import { useRole } from "../../context/RoleContext";
 
 interface ProfileProps {
   LogOutComponnent: React.ComponentType;
@@ -19,20 +20,17 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     avatar,
     handleFileChange,
   } = useUserProfile();
-
-  const { loading: companyLoading, company, userRole, getCompanyFromLocalStorage, getCompanyById, getUserRole } = useCompany();
-
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { userRole } = useRole();
+  const { loading: companyLoading, company, getCompanyFromLocalStorage, getCompanyById, getUserRole } = useCompany();
   const navigate = useNavigate();
 
   // Fetch company data on mount
-  useEffect(() => {
-    const companyId = getCompanyFromLocalStorage();
-    if (companyId) {
-      getCompanyById(companyId);
-      getUserRole(companyId);
-    }
-  }, []);
+useEffect(() => {
+
+  if (userData?.company) {
+    getCompanyById(userData.company);
+  }
+}, [userData?.company]);
 
   const registerCompanyNavigation = () => {
     navigate("/register/company");
