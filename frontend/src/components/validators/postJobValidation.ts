@@ -1,7 +1,7 @@
 import { valuesInterface } from "../../interfaces/Job.model";
 
 
-const normalize = (arr) =>
+const normalize = (arr: any) =>
   Array.isArray(arr)
     ? arr.flatMap((s) =>
         typeof s === "string" ? s.split(",").map((x) => x.trim()) : []

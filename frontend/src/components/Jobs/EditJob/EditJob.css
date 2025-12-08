@@ -22,7 +22,9 @@
   color: #2563eb;
   margin-bottom: 18px;
 }
-
+.form-group label {
+  margin-top: 10px;
+}
 [data-theme="dark"] .edit-job-title {
   color: #60a5fa;
 }
