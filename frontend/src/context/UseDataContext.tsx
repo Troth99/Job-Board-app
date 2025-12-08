@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-type UserDataType = any; // Можеш да го типизираш по твоя модел
+type UserDataType = any;
 
 interface UserDataContextType {
   userData: UserDataType;

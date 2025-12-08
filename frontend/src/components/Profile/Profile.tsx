@@ -10,6 +10,7 @@ import useCompany from "../../hooks/useCompany";
 import ImageUpload from "../../features/UploadProfileImage/UploadProfileImage";
 import { useRole } from "../../context/RoleContext";
 import { useUserData } from "../../context/UseDataContext";
+import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
 
 
 interface ProfileProps {
@@ -47,12 +48,14 @@ useEffect(() => {
   const postJobNavigation = () => {
     navigate(`/company/${company?._id}/post-job`);
   };
+  console.log("MyProfile render");
 
-  if (userLoading || companyLoading) {
+  if (userLoading || !userData) {
     return <Spinner overlay={true} />;
   }
 
   return (
+
     <div className="profile-container">
       <div className="profile-header">
         <h1>My Profile</h1>
@@ -93,7 +96,13 @@ useEffect(() => {
         </Link>
       </div>
 
+
       {/* Role and company section */}
+<div className="Profile-Data-info">
+  {(userRole === undefined || companyLoading) ? (
+    <LoadingIndicator message="Loading..." size="medium" />
+  ) : (
+    <>
       <div className="role-change">
         <h3>Role:</h3>
         <p>
@@ -102,8 +111,6 @@ useEffect(() => {
             : "Not part of a company yet."}
         </p>
       </div>
-
-      {/* Company registration */}
       <div className="company-registration">
         {company ? (
           <>
@@ -124,7 +131,9 @@ useEffect(() => {
           </>
         )}
       </div>
-
+    </>
+  )}
+</div>
       {/* Job posting and application section */}
       <div className="job-posting">
         <h3>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./MemberDashboard.css";
 import "./Responsive.css";
 import { useNavigate, useParams } from "react-router";
@@ -15,13 +15,17 @@ export default function MemberDashboard() {
   const {
     company,
     getCompanyById,
+    getUserRole,
     loading: loadingRole,
   } = useCompany();
+  const [localRole, setLocalRole] = useState<string | null>(null);
 const {userRole} = useRole()
+
 
   useEffect(() => {
     if (!companyId) return;
     getCompanyById(companyId);
+  getUserRole(companyId).then(setLocalRole);
   }, [companyId]);
 
   const postJobHandlerNavigate = () => {
@@ -29,7 +33,7 @@ const {userRole} = useRole()
   };
 
   const canPostJob =
-    userRole === "admin" || userRole === "owner" || userRole === "recruiter";
+    localRole === "admin" || localRole === "owner" || localRole === "recruiter";
 
   if (loadingRole) {
     return <Spinner inline={true} />;
@@ -43,7 +47,7 @@ const {userRole} = useRole()
             Welcome to <span className="company-name">{company?.name}</span>{" "}
             dashboard.
           </h2>
-          <p className="user-role">Role: {userRole}</p>
+          <p className="user-role">Role: {localRole}</p>
         </div>
         <div className="sidebar-nav">
           <div className="job-card-dashboard-image">
