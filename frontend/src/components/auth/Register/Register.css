@@ -157,14 +157,7 @@ form {
   box-shadow: 0 0 8px #ff4d4f;
 }
 
-.error-message {
-  position: absolute;
-  bottom: -18px;
-  left: 3rem;
-  color: #ff4d4f;
-  font-size: 0.9rem;
-  min-height: 1em;
-}
+
 
 .checkbox-container {
   display: flex;

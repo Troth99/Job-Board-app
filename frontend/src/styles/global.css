@@ -50,3 +50,14 @@ body {
   font-family: sans-serif;
   transition: background-color 0.3s, color 0.3s;
 }
+
+.error-message {
+  color: #ff4d4f;
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+body[data-theme="dark"] .error-message {
+  color: #ff6b6b;
+}

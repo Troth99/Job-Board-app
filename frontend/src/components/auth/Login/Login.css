@@ -172,14 +172,7 @@ form {
   border: 2px solid #ff0000; 
   box-shadow: 0 0 10px #ff0000;
 }
-.error-message {
-  position: absolute;
-  bottom: -18px;
-  left: 3rem;
-  color: #ff4d4f;
-  font-size: 0.9rem;
-  min-height: 2.5em;
-}
+
 
 
 .btn-login {
