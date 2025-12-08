@@ -72,12 +72,12 @@ export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
   // Check access after company and role data loads
   useEffect(() => {
     if (loading || !company || !currentJob || userRole === null) return;
-
-    if (!company?.members?.includes(user._id)) {
-      toast.error("You are not a member of this company.");
-      navigate("/"); 
-      return;
-    }
+ 
+if (!company?.members?.some(member => member._id === user._id)) {
+  toast.error("You are not a member of this company.");
+  navigate("/");
+  return;
+}
   
     if (companyId !== currentJob.company?._id) {
       toast.error("This job is not part of your company.");

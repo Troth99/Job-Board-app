@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import { API_BASE } from "../services/api";
 import useApiRequester from "./useApiRequester";
 
+export interface Member {
+  _id: string;
+  email: string
+}
+
 interface RegisterCompanyInterface {
   name: string;
   industry: string;
@@ -15,7 +20,7 @@ export interface Company {
   industry: string;
   location: string;
   logo: string,
-  members?: string[];
+  members?: Member[];
   description: string;
   size: string
   website: string;

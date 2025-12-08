@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./EditJob.css"
 
 import { useNavigate, useParams } from "react-router";
 import useJobs from "../../../hooks/useJobs";
@@ -8,6 +9,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import Spinner from "../../Spinner/Spinner";
 import { valuesInterface } from "../../../interfaces/Job.model";
+import useForm from "../../../hooks/useForm";
 
 const initialValues = {
   title: "",
@@ -98,10 +100,9 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     }));
   };
 
-  const editSubmitHandler = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const editSubmitHandler = async (values) => {
+   
     setPending(true);
-    setErrors({});
 
     const jobToUpdate = {
       ...jobData,
@@ -113,27 +114,23 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         console.error("Job ID is missing.");
         return;
       }
-      await updateJob(jobId, jobToUpdate);
+      await updateJob(jobId,{...values, jobToUpdate} );
       navigate(`/company/${companyId}/job/${jobId}/details`)
     } catch (error) {
       console.error('Failed to fetch', error)
     }
   };
+
+  const {register, errors, formHandler, values } = useForm(editSubmitHandler, profileData)
   return (
     <>
       {loading ? (
         <Spinner overlay={true} />
       ) : (
-        <div className="post-job-container">
-          <h2>Edit Job</h2>
-          <form className="post-job-form" onSubmit={editSubmitHandler}>
+        <div className="edit-job-container">
+          <h2 className="edit-job-title">Edit Job</h2>
+          <form className="edit-job-form" onSubmit={editSubmitHandler}>
             <div className="form-group">
-  
-   function EditJob() {
-     // ...existing code...
-   }
- 
-   export default EditJob;
               <label htmlFor="title">Job Title</label>
               <input
                 type="text"
@@ -144,7 +141,6 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 onChange={handleInputChange}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="description">Job Description</label>
               <textarea
@@ -155,7 +151,6 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 onChange={handleInputChange}
               ></textarea>
             </div>
-
             <div className="form-group">
               <label htmlFor="location">Location</label>
               <input
@@ -167,7 +162,6 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 onChange={handleInputChange}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="salary">Salary</label>
               <input
@@ -179,7 +173,6 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 onChange={handleInputChange}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="category">Job Category</label>
               <JobEditCategory
@@ -188,7 +181,6 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 onChange={handleCategoryChange}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="employmentType">Employment Type</label>
               <EmploymentTypeSelect
@@ -196,7 +188,6 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 onChange={handleCategoryChange}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="skills">Skills (comma separated)</label>
               <input
@@ -208,7 +199,6 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 onChange={handleInputChange}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="benefits">Benefits (comma separated)</label>
               <input
@@ -220,7 +210,6 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 onChange={handleInputChange}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="tags">Tags (comma separated)</label>
               <input
@@ -232,7 +221,6 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 onChange={handleInputChange}
               />
             </div>
-
             <div className="form-group">
               <label htmlFor="contactEmail">Contact Email</label>
               <input
@@ -244,12 +232,11 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 onChange={handleInputChange}
               />
             </div>
-            <button type="submit" className="post-job-button"
-                 disabled={pending}
-                >
-                  {pending ? "Saving..." : "Save Changes"}
-                
-            </button>
+            <div className="edit-job-actions">
+              <button type="submit" className="edit-job-save-btn" disabled={pending}>
+                {pending ? "Saving..." : "Save Changes"}
+              </button>
+            </div>
           </form>
         </div>
       )}

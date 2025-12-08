@@ -1,0 +1,114 @@
+.edit-job-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 32px;
+  background: #f7f9fc;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(44, 62, 80, 0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+[data-theme="dark"] .edit-job-container {
+  background: #18181b;
+  box-shadow: 0 4px 18px rgba(44, 62, 80, 0.18);
+}
+
+.edit-job-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 18px;
+}
+
+[data-theme="dark"] .edit-job-title {
+  color: #60a5fa;
+}
+
+.edit-job-form label {
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 6px;
+  display: block;
+}
+
+[data-theme="dark"] .edit-job-form label {
+  color: #a5b4fc;
+}
+
+.edit-job-form input,
+.edit-job-form textarea,
+.edit-job-form select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1.5px solid #cbd5e1;
+  background: #fff;
+  color: #222;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+
+.edit-job-form input:focus,
+.edit-job-form textarea:focus,
+.edit-job-form select:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+[data-theme="dark"] .edit-job-form input,
+[data-theme="dark"] .edit-job-form textarea,
+[data-theme="dark"] .edit-job-form select {
+  background: #23272f;
+  color: #e6edf3;
+  border: 1.5px solid #334155;
+}
+
+.edit-job-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.edit-job-save-btn {
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.edit-job-save-btn:hover {
+  background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+[data-theme="dark"] .edit-job-save-btn {
+  background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+  color: #fff;
+}
+
+.edit-job-cancel-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.edit-job-cancel-btn:hover {
+  background: #c0392b;
+  transform: translateY(-2px) scale(1.04);
+}
