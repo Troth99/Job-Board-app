@@ -142,6 +142,17 @@ try {
   console.error('Failed to check if the user exists in the backend', error)
 }
 }
+const addMemberToCompany =async (companyId: string, userId: string) => {
+  setLoading(true)
+  try {
+    const response = await request(`${API_BASE}/companies/${companyId}/add-member`, "POST", {userId})
+    return response
+  } catch (error) {
+    console.error('Failed to add member to the company')
+  }finally{
+    setLoading(false)
+  }
+}
   return {
     loading,
     error,
@@ -154,6 +165,7 @@ try {
     getUserRole,
     getCompanyFromLocalStorage,
     getMyCompany,
-checkUser
+checkUser,
+addMemberToCompany
   };
 }

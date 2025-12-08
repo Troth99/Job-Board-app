@@ -14,7 +14,7 @@ export function CompanyMembers() {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [userEmailExistError, setuserEmailExistError] = useState<string>("");
   const { validateEmail } = useValidation();
-  const { checkUser } = useCompany();
+  const { checkUser, addMemberToCompany } = useCompany();
 
   const validators = (value: { email: string }) => {
     const errors: Partial<{ email: string }> = {};
@@ -24,25 +24,27 @@ export function CompanyMembers() {
     }
     return errors;
   };
+  
   const addMemberHandler = async (values: {email: string}) => {
     setuserEmailExistError("");
-    console.log(values.email, companyId);
     if (!companyId || !values.email) {
       console.error("Data is missing");
       return;
     }
     try {
       const response = await checkUser(values.email);
-      if(!response || response.message === 'User does not exist') {
-        setuserEmailExistError('User does not exist!')
-        return
+      if (!response || response.message === 'User does not exist') {
+        setuserEmailExistError('User does not exist!');
+        return;
       }
-
-      //todo to add member to the company
-      console.log(response);
+      if (!response.userId) {
+        setuserEmailExistError('User ID not found! Backend must return userId.');
+        return;
+      }
+      await addMemberToCompany(companyId, response.userId);
+    
     } catch (error) {
-          setuserEmailExistError("Failed to check if the user exists in the backend");
-
+      setuserEmailExistError("Failed to check if the user exists in the backend");
     }
   };
 
