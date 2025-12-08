@@ -172,12 +172,24 @@ body[data-theme="dark"] .search-btn:hover svg {
   margin-top: 64px;
   margin-bottom: 64px;
   padding: 32px 0;
-  background: linear-gradient(90deg, #f8fafc 60%, #e3f2fd 100%);
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(0,123,255,0.07);
+
   animation: fadeIn 0.7s cubic-bezier(.4,0,.2,1);
 }
+[data-theme="dark"] .search-results-container{
+  background-color: #23272f;
+  color: #e6edf3;
+  border: 1px solid #444;
+  box-shadow: 0 2px 8px rgba(30, 144, 255, 0.08);
+}
 
+[data-theme="dark"] .search-results-container h2,
+[data-theme="dark"] .search-results-container h3 {
+  color: #80aaff;
+}
+
+[data-theme="dark"] .search-results-container p {
+  color: #b2b8c2;
+}
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -188,6 +200,16 @@ body[data-theme="dark"] .search-btn:hover svg {
   font-size: 2.5rem;
   margin-bottom: 12px;
   opacity: 0.7;
+}
+
+[data-theme="dark"] .search-no-jobs-f1 {
+  background-color: #23272f ;
+  color: #b2b8c2;
+
+}
+
+[data-theme="dark"] .search-no-jobs-f1 i {
+  color: #80aaff;
 }
 
 @media (max-width: 600px) {

@@ -37,6 +37,8 @@ export function CompanyMembers() {
         setuserEmailExistError('User does not exist!')
         return
       }
+
+      //todo to add member to the company
       console.log(response);
     } catch (error) {
           setuserEmailExistError("Failed to check if the user exists in the backend");

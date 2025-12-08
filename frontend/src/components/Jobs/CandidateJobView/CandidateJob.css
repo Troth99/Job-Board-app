@@ -247,8 +247,7 @@
   z-index: 1;
 }
 
-.company-description-data[data-theme="dark"] {
-  background: #18181b !important;
+body[data-theme="dark"] .company-description-data p {
   color: #cbd5e1 !important;
   box-shadow: 0 1px 6px rgba(99, 102, 241, 0.10);
 }

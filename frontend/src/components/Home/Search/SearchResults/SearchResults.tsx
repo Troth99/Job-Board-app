@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Job } from "../../../../interfaces/Job.model";
-import { useSearchParams } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import useJobs from "../../../../hooks/useJobs";
 import { ShowJobs } from "../../../../showJobs/showJobs";
 import Spinner from "../../../Spinner/Spinner";
@@ -11,7 +11,7 @@ export default function SearchResults() {
   const { getAllJobs } = useJobs();
   const [results, setResults] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(false)
-
+const navigate = useNavigate()
   useEffect(() => {
     const fetchAndFilter = async () => {
       setLoading(true)
@@ -41,7 +41,8 @@ export default function SearchResults() {
           No jobs found.
         </div>
       ) : (
-        <ShowJobs jobs={results} />
+        <ShowJobs jobs={results}  onJobClick={(jobId) => navigate(`/job/${jobId}`)}
+  />
       )}
     </div>
   );

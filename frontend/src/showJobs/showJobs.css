@@ -50,3 +50,29 @@
   font-size: 2.2rem;
   margin-bottom: 0.5em;
 }
+[data-theme="dark"] .job-card-member {
+  background-color: #23272f;
+  color: #e6edf3;
+  border: 1px solid #444;
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.08);
+}
+
+[data-theme="dark"] .job-card-member:hover {
+  box-shadow: 0 6px 16px rgba(30, 144, 255, 0.15);
+}
+
+[data-theme="dark"] .job-card-member h4 {
+  color: #80aaff;
+}
+
+[data-theme="dark"] .job-card-member p {
+  color: #b2b8c2;
+}
+
+[data-theme="dark"] .no-jobs-message {
+  color: #b2b8c2;
+}
+
+[data-theme="dark"] .no-jobs-message i {
+  color: #80aaff;
+}

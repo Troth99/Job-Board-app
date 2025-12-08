@@ -1,6 +1,5 @@
 import "./CandidateApplications.css";
 import useJobs from "../../../hooks/useJobs";
-import useCompany from "../../../hooks/useCompany";
 import { Candidate } from "../../../interfaces/Apllication.model";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
 import { formatDate } from "../../../utils/formData";
@@ -18,7 +17,6 @@ export function CandidateApplications({
   setCandidates: React.Dispatch<React.SetStateAction<Candidate[]>>;
 }) {
   const { updateApplicationStatus, deleteApplication } = useJobs();
-  const { addMemberToCompany } = useCompany();
 const {companyId} = useParams()
 
   const viewCvHandler = async (candidateId: string) => {

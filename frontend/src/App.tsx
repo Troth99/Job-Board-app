@@ -18,6 +18,7 @@ import { FilterJobByCategory } from "./components/FilterJobsByCategory/FilterJob
 import {lazy, Suspense} from 'react'
 import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
 
+
 // Lazy loaded components
 const LoginComponent = lazy(() => import("./components/auth/Login/Login"));
 const RegisterComponent = lazy(() => import("./components/auth/Register/Register"));

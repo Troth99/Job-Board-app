@@ -1,8 +1,8 @@
 import "./FullPageSpinner.css";
-import { useTheme } from "../../utils/useTheme";
+import { useThemeContext } from "../../context/ThemeContext";
 
 export default function FullPageSpinner() {
-const {theme} = useTheme()
+const {theme} = useThemeContext()
   return (
      <div className="spinner-overlay">
       <div className={`spinner ${theme === 'dark' ? 'dark-theme' : ''}`}></div>

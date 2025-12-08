@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useTheme } from "../../utils/useTheme";
+import { useThemeContext } from "../../context/ThemeContext";
 import "./Header.css";
 import "./Responsive.css";
-import { Link, Routes } from "react-router";
-import { getAuthToken, getRefreshToken } from "../../hooks/useAuth";
+import { Link} from "react-router";
+import { getRefreshToken } from "../../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated } from "../../redux/authSlice";  
 import { RootState } from "../../redux/store";
@@ -12,7 +12,7 @@ import { RootState } from "../../redux/store";
 export function Header() {
     const dispatch = useDispatch();
 
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated); 
 
