@@ -9,6 +9,8 @@ import { Link, useNavigate } from "react-router";
 import useCompany from "../../hooks/useCompany";
 import ImageUpload from "../../features/UploadProfileImage/UploadProfileImage";
 import { useRole } from "../../context/RoleContext";
+import { useUserData } from "../../context/UseDataContext";
+
 
 interface ProfileProps {
   LogOutComponnent: React.ComponentType;
@@ -21,12 +23,18 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     handleFileChange,
   } = useUserProfile();
   const { userRole } = useRole();
-  const { loading: companyLoading, company, getCompanyFromLocalStorage, getCompanyById, getUserRole } = useCompany();
+  const { loading: companyLoading, company, getCompanyById } = useCompany();
   const navigate = useNavigate();
+  const { setUserData } = useUserData();
+
 
   // Fetch company data on mount
 useEffect(() => {
+  if (!userData || !userData.company) return;
+  if(userData){
 
+    setUserData(userData)
+  }
   if (userData?.company) {
     getCompanyById(userData.company);
   }

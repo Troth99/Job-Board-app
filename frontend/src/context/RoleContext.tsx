@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import useUserProfile from "../hooks/useProfile";
+import { useUserData } from "./UseDataContext";
 import useCompany from "../hooks/useCompany";
 
 interface RoleContextType {
@@ -11,20 +11,19 @@ const RoleContext = createContext<RoleContextType | undefined>(undefined);
 
 export const RoleProvider = ({ children }: { children: ReactNode }) => {
   const [userRole, setUserRole] = useState<string | null | undefined>(undefined);
-  const { userData } = useUserProfile();
   const { getUserRole } = useCompany();
+  const { userData } = useUserData();
 
   useEffect(() => {
+    if (!userData || !userData.company) {
+      setUserRole(null);
+      return;
+    }
     async function fetchRole() {
-      if (userData?.company) {
-        try {
-          const role = await getUserRole(userData.company);
-          console.log(role)
-          setUserRole(role);
-        } catch (err) {
-          setUserRole(null);
-        }
-      } else {
+      try {
+        const role = await getUserRole(userData.company);
+        setUserRole(role);
+      } catch (err) {
         setUserRole(null);
       }
     }

@@ -8,6 +8,7 @@ import Spinner from "../../Spinner/Spinner";
 import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
 import { useRole } from "../../../context/RoleContext";
 
+
 export default function MemberDashboard() {
   const { companyId } = useParams();
   const navigate = useNavigate();

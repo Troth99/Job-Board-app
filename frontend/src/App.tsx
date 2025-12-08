@@ -20,6 +20,7 @@ import SearchResults from "./components/Home/Search/SearchResults/SearchResults"
 import { RoleGuard } from "./RouteGuards/RoleGuard";
 import useCompany from "./hooks/useCompany";
 
+
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 
 // Lazy loaded components
@@ -114,6 +115,7 @@ function App() {
   }
   return (
     <div>
+
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route
