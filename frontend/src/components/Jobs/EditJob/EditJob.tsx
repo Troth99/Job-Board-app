@@ -10,6 +10,8 @@ import { RootState } from "../../../redux/store";
 import Spinner from "../../Spinner/Spinner";
 import { valuesInterface } from "../../../interfaces/Job.model";
 import useForm from "../../../hooks/useForm";
+import { useValidation } from "../../validators/useValidation";
+import { jobPostValidations } from "../../validators/postJobValidation";
 
 const initialValues = {
   title: "",
@@ -23,7 +25,7 @@ const initialValues = {
 },
   employmentType: "",
   skills: "",
-  benefits: "",
+  benefits: [],
   tags: "",
   email: "",
 };
@@ -33,7 +35,6 @@ export default function EditJob() {
   const [jobData, setJobData] = useState<valuesInterface>(initialValues);
   const [pending, setPending] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
-  const [errors, setErrors] = useState({});
   const navigate = useNavigate()
 
   const categories = useSelector(
@@ -80,7 +81,6 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     (category) => category._id === selectedCategoryId
   );
 
-
   if (selectedCategory) {
   
     setJobData((prevData) => ({
@@ -90,22 +90,12 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
   }
 };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setJobData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const editSubmitHandler = async (values: valuesInterface) => {
 
-  const editSubmitHandler = async (values) => {
-   
     setPending(true);
 
     const jobToUpdate = {
-      ...jobData,
+      ...values,
       updatedAt: new Date().toISOString(),
     };
 
@@ -114,14 +104,14 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         console.error("Job ID is missing.");
         return;
       }
-      await updateJob(jobId,{...values, jobToUpdate} );
+      await updateJob(jobId, jobToUpdate );
       navigate(`/company/${companyId}/job/${jobId}/details`)
     } catch (error) {
       console.error('Failed to fetch', error)
     }
   };
 
-  const {register, errors, formHandler, values } = useForm(editSubmitHandler, profileData)
+  const {register, errors, formHandler, values } = useForm(editSubmitHandler, jobData, jobPostValidations)
   return (
     <>
       {loading ? (
@@ -129,49 +119,47 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       ) : (
         <div className="edit-job-container">
           <h2 className="edit-job-title">Edit Job</h2>
-          <form className="edit-job-form" onSubmit={editSubmitHandler}>
+          <form className="edit-job-form" onSubmit={formHandler}>
             <div className="form-group">
               <label htmlFor="title">Job Title</label>
               <input
                 type="text"
                 id="title"
-                name="title"
                 placeholder="Job Title"
-                value={jobData.title}
-                onChange={handleInputChange}
+               {...register("title")}
               />
+              <div className="error-message">{errors.title}</div>
             </div>
             <div className="form-group">
               <label htmlFor="description">Job Description</label>
               <textarea
                 id="description"
-                name="description"
                 placeholder="Job Description"
-                value={jobData.description}
-                onChange={handleInputChange}
+                   {...register("description")}
               ></textarea>
+                   <div className="error-message">{errors.description}</div>
             </div>
             <div className="form-group">
               <label htmlFor="location">Location</label>
               <input
                 type="text"
                 id="location"
-                name="location"
+            
                 placeholder="Location"
-                value={jobData.location}
-                onChange={handleInputChange}
+                 {...register("location")}
               />
+                   <div className="error-message">{errors.location}</div>
             </div>
             <div className="form-group">
               <label htmlFor="salary">Salary</label>
               <input
                 type="text"
                 id="salary"
-                name="salary"
+       
                 placeholder="Salary"
-                value={jobData.salary}
-                onChange={handleInputChange}
+                  {...register("salary")}
               />
+                   <div className="error-message">{errors.salary}</div>
             </div>
             <div className="form-group">
               <label htmlFor="category">Job Category</label>
@@ -192,45 +180,44 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
               <label htmlFor="skills">Skills (comma separated)</label>
               <input
                 type="text"
-                id="skills"
-                name="skills"
+                id="skills"     
                 placeholder="e.g., React, Node.js, CSS"
-                value={jobData.skills}
-                onChange={handleInputChange}
+               {...register("skills")}
               />
+                   <div className="error-message">{errors.skills}</div>
             </div>
             <div className="form-group">
               <label htmlFor="benefits">Benefits (comma separated)</label>
               <input
                 type="text"
                 id="benefits"
-                name="benefits"
+       
                 placeholder="e.g., Health Insurance, Remote Work"
-                value={jobData.benefits}
-                onChange={handleInputChange}
+               {...register("benefits")}
               />
+                   <div className="error-message">{errors.benefits}</div>
             </div>
             <div className="form-group">
               <label htmlFor="tags">Tags (comma separated)</label>
               <input
                 type="text"
                 id="tags"
-                name="tags"
+         
                 placeholder="e.g., Frontend, Remote"
-                value={jobData.tags}
-                onChange={handleInputChange}
+                 {...register("tags")}
               />
+                   <div className="error-message">{errors.tags}</div>
             </div>
             <div className="form-group">
               <label htmlFor="contactEmail">Contact Email</label>
               <input
                 type="email"
                 id="contactEmail"
-                name="email"
+    
                 placeholder="Contact Email"
-                value={jobData.email}
-                onChange={handleInputChange}
+               {...register("email")}
               />
+                   <div className="error-message">{errors.email}</div>
             </div>
             <div className="edit-job-actions">
               <button type="submit" className="edit-job-save-btn" disabled={pending}>

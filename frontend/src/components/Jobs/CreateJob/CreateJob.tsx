@@ -1,12 +1,11 @@
 import "./CreateJob.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./CreateJob.css";
 import { EmploymentTypeSelect, JobCategorySelect } from "../formSelectedInputs";
 import useJobs from "../../../hooks/useJobs";
 import { showSuccess } from "../../../utils/toast";
 import { useNavigate, useParams } from "react-router";
-import { Category } from "../../../hooks/useCategories";
-import { Company } from "../../../hooks/useCompany";
+
 import { jobPostValidations } from "../../validators/postJobValidation";
 import useForm from "../../../hooks/useForm";
 import { valuesInterface } from "../../../interfaces/Job.model";
@@ -23,7 +22,7 @@ const initialValues = {
   },
   employmentType: "",
   skills: "",
-  benefits: "",
+  benefits: [],
   tags: "",
   email: "",
 };

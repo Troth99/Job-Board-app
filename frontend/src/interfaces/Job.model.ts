@@ -17,7 +17,7 @@ export interface Job {
   createdAt?: string;
   skills?: string;
   employmentType?: string;
-  benefits?: string;
+  benefits?: string[];
   applicationDeadline?: string;
   views?: number;
   isActive: boolean;
@@ -35,7 +35,7 @@ export interface valuesInterface {
   category: Category;
   employmentType: string;
   skills: string;
-  benefits: string;
+  benefits: string[];
   tags: string;
   email: string;
   [key: string]: any;

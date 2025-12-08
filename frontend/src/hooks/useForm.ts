@@ -49,7 +49,6 @@ export default function useForm<T extends FormValues>(
 
   const formHandler = async (e: React.FormEvent) => {
     e.preventDefault();
-
     const formErrors = validateForm(values);
     setErrors(formErrors);
 

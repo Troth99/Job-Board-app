@@ -1,6 +1,17 @@
 import { valuesInterface } from "../../interfaces/Job.model";
 
-export function jobPostValidations(form:valuesInterface) {
+
+const normalize = (arr) =>
+  Array.isArray(arr)
+    ? arr.flatMap((s) =>
+        typeof s === "string" ? s.split(",").map((x) => x.trim()) : []
+      )
+    : typeof arr === "string"
+    ? arr.split(",").map((x) => x.trim())
+    : [];
+
+export function jobPostValidations(form: valuesInterface) {
+console.log("Normalized skills:", normalize(form.skills));
   let errors: Record<string, string> = {};
 
   if (!form.title || form.title.trim().length === 0) {
@@ -17,13 +28,13 @@ export function jobPostValidations(form:valuesInterface) {
     errors.salary = "Salary is required.";
   }
 
-  if (!form.skills || form.skills.trim().length === 0) {
-    errors.skills = "Skills are required.";
-  }
-  if (!form.benefits || form.benefits.trim().length === 0) {
+if (normalize(form.skills).filter(Boolean).length === 0) {
+  errors.skills = "Skills are required.";
+}
+  if (normalize(form.benefits).filter(Boolean).length === 0) {
     errors.benefits = "Benefits are required.";
   }
-  if (!form.tags || form.tags.trim().length === 0) {
+  if (normalize(form.tags).filter(Boolean).length === 0) {
     errors.tags = "Tags are required.";
   }
   if (!form.email || form.email.trim().length === 0) {
