@@ -1,32 +1,52 @@
+import { useEffect, useState } from "react";
 import "./ViewMembers.css";
+import { useParams } from "react-router";
+import useCompany from "../../../hooks/useCompany";
+import { formatDate } from "../../../utils/formData";
 
 export function ViewMembers() {
-  const members = [
-    { name: "Ivan Ivanov", email: "ivan@company.com", role: "owner" },
-    { name: "Maria Petrova", email: "maria@company.com", role: "admin" },
-    { name: "Georgi Georgiev", email: "georgi@company.com", role: "member" },
-  ];
+  const { companyId } = useParams();
+  const { getCompanyMembers, loading } = useCompany();
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    const fetchMembers = async () => {
+      if (companyId) {
+        const data = await getCompanyMembers(companyId);
+        console.log(data)
+        setMembers(data);
+      }
+    };
+    fetchMembers();
+  }, [companyId]);
 
   return (
     <div className="member-list-page">
-    <div className="members-list-container">
-      <h2>Company Members</h2>
-      <div className="members-cards">
-        {members.map((member, idx) => (
-          <div className="member-card" key={idx}>
-            <div className="member-info">
-              <div className="member-name">{member.name}</div>
-              <div className="member-email">{member.email}</div>
-              <div className="member-role">Role: {member.role}</div>
+      <div className="members-list-container">
+        <h2>Company Members</h2>
+        <div className="members-cards">
+          {members.map((member: any, idx: number) => (
+            <div className="member-card" key={member._id || idx}>
+              <div className="member-info">
+                <div className="member-name">
+                  {member.userId?.name || member.userId?.email || member.userId}
+                </div>
+                <div className="member-email">
+                  {member.userId?.email || ''}
+                </div>
+                <div className="member-role">Role: {member.role}</div>
+                <div className="member-invited">Invited By: {member.invitedBy?.name || member.invitedBy?.email || member.invitedBy}</div>
+                <div className="member-invitedAt">Invited At: {formatDate(member.invitedAt)}</div>
+                <div className="member-updatedAt">Updated At: {formatDate(member.updatedAt)}</div>
+              </div>
+              <div className="member-actions">
+                <button className="change-role-btn">Change Role</button>
+                <button className="kick-btn">Kick</button>
+              </div>
             </div>
-            <div className="member-actions">
-              <button className="change-role-btn">Change Role</button>
-              <button className="kick-btn">Kick</button>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 }

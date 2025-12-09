@@ -103,21 +103,14 @@ export const getCompanyMembersController = async (req, res) => {
   const { companyId } = req.params;
 
   try {
-
     const companyMembers = await CompanyMember.find({ companyId })
       .populate('userId', 'name email')
-      .select('role userId');
+      .populate('invitedBy', 'name email');
 
     if (!companyMembers || companyMembers.length === 0) {
       return res.status(404).json({ message: "No members found for this company" });
     }
-
-    const membersWithRole = companyMembers.map(member => ({
-      userId: member.userId,
-      role: member.role
-    }));
-
-    res.status(200).json(membersWithRole);
+    res.status(200).json(companyMembers);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });

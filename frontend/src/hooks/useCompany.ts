@@ -165,6 +165,25 @@ export default function useCompany() {
       setLoading(false);
     }
   };
+
+  const getCompanyMembers = async (companyId: string) => {
+  setLoading(true);
+  setError(null);
+  try {
+    const response = await request(
+      `${API_BASE}/companies/${companyId}/members`,
+      "GET",
+      {}
+    );
+    return response;
+  } catch (err) {
+    setError("Error fetching company members");
+    console.error(err);
+    return [];
+  } finally {
+    setLoading(false);
+  }
+};
   return {
     loading,
     error,
@@ -179,5 +198,6 @@ export default function useCompany() {
     getMyCompany,
     checkUser,
     addMemberToCompany,
+    getCompanyMembers
   };
 }
