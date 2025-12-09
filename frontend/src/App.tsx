@@ -19,7 +19,7 @@ import { lazy, Suspense } from "react";
 import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
 import { RoleGuard } from "./RouteGuards/RoleGuard";
 import useCompany from "./hooks/useCompany";
-
+import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
 
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 
@@ -115,7 +115,6 @@ function App() {
   }
   return (
     <div>
-
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route
@@ -235,7 +234,7 @@ function App() {
             <Route
               path="/company/:companyId/job/:jobId/details"
               element={
-                <RoleGuard allowedRoles={JOB_ALLOWED_ROLES} >
+                <RoleGuard allowedRoles={JOB_ALLOWED_ROLES}>
                   <Suspense fallback={<FullPageSpinner />}>
                     <DetailsJob />
                   </Suspense>
@@ -244,13 +243,22 @@ function App() {
             />
           </Route>
         </Route>
+        <Route element={<MainLayout />}>
+        
+        <Route element={<CompanyRouteGuard />}>
+          <Route
+            path="/company/:companyId/members"
+            element={<ViewMembers />}
+          ></Route>
+        </Route>
+        </Route>
 
         <Route element={<ProtectedRoutes />}>
           <Route element={<MainLayout />}>
             <Route
               path="/company/:companyId/post-job"
               element={
-                <RoleGuard allowedRoles={JOB_ALLOWED_ROLES} >
+                <RoleGuard allowedRoles={JOB_ALLOWED_ROLES}>
                   <Suspense fallback={<FullPageSpinner />}>
                     <PostJob />
                   </Suspense>
@@ -276,7 +284,7 @@ function App() {
           <Route
             path="/company/:companyId/job/:jobId/edit"
             element={
-              <RoleGuard allowedRoles={JOB_ALLOWED_ROLES} >
+              <RoleGuard allowedRoles={JOB_ALLOWED_ROLES}>
                 <JobEditRouteGuard>
                   <Suspense fallback={<FullPageSpinner />}>
                     <EditJob />

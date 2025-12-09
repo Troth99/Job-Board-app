@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./MemberDashboard.css";
 import "./Responsive.css";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
 import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
@@ -67,7 +67,7 @@ const {userRole} = useRole()
           </div>
           <ul>
             <li>
-              <a href="#">Settings</a>
+              <Link to={`/company/${companyId}/members`}>Members</Link>
             </li>
           </ul>
         </div>

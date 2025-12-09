@@ -1,0 +1,147 @@
+.members-list-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.members-list-container {
+  min-height: 80vh;
+  margin: 2rem auto;
+  max-width: 1000px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  padding: 2.5rem 2rem;
+}
+
+.members-list-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.members-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+}
+
+.member-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  padding: 2rem 1.5rem;
+  min-width: 260px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: box-shadow 0.2s;
+}
+.member-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+.member-info {
+  margin-bottom: 1.2rem;
+}
+.member-name {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.3rem;
+}
+.member-email {
+  font-size: 0.98rem;
+  color: #666;
+  margin-bottom: 0.2rem;
+}
+.member-role {
+  font-size: 0.95rem;
+  color: #007bff;
+  font-weight: 500;
+}
+.member-actions {
+  display: flex;
+  gap: 0.7rem;
+}
+.change-role-btn, .kick-btn {
+  padding: 0.45rem 1.1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.97rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.change-role-btn {
+  background: #e3f0ff;
+  color: #1565c0;
+}
+.change-role-btn:hover {
+  background: #1565c0;
+  color: #fff;
+}
+.kick-btn {
+  background: #ffe3e3;
+  color: #c62828;
+}
+.kick-btn:hover {
+  background: #c62828;
+  color: #fff;
+}
+
+@media (max-width: 1000px) {
+  .members-list-container {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem;
+  }
+  .members-cards {
+    gap: 1.2rem;
+  }
+  .member-card {
+    min-width: 90vw;
+    max-width: 98vw;
+    padding: 1.2rem 0.7rem;
+  }
+}
+
+[data-theme="dark"] .members-list-container {
+  background: #23272f;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+[data-theme="dark"] .members-list-container h2 {
+  color: #e0e6f0;
+}
+[data-theme="dark"] .member-card {
+  background: #2c313a;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.18);
+}
+[data-theme="dark"] .member-name {
+  color: #e0e6f0;
+}
+[data-theme="dark"] .member-email {
+  color: #b0b8c6;
+}
+[data-theme="dark"] .member-role {
+  color: #90caf9;
+}
+[data-theme="dark"] .change-role-btn {
+  background: #263859;
+  color: #90caf9;
+}
+[data-theme="dark"] .change-role-btn:hover {
+  background: #90caf9;
+  color: #23272f;
+}
+[data-theme="dark"] .kick-btn {
+  background: #3a2323;
+  color: #ff8a80;
+}
+[data-theme="dark"] .kick-btn:hover {
+  background: #ff8a80;
+  color: #23272f;
+}
+
+.footer {
+  margin-top: auto;
+}
