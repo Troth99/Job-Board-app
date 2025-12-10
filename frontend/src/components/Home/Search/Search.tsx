@@ -28,7 +28,7 @@ export default function Search({ onSearch }: searchProps) {
         <div className="search-box">
           <input
             type="text"
-            placeholder="Search jobs, companies or keywords..."
+            placeholder="Search jobs..."
             value={search}
             onChange={searchHandler}
           />

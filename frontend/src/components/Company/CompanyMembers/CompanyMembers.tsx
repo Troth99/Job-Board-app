@@ -72,7 +72,6 @@ export function CompanyMembers() {
   return (
     <>
       <div className="content-header">
-        <h3>Members</h3>
         <button className="add-button" onClick={() => setShowModal(true)}>
           + Add Member
         </button>
@@ -102,25 +101,7 @@ export function CompanyMembers() {
       )}
 
       {/* Displaying Member List */}
-      <div className="members-list">
-        <div className="member-card">
-          <img src="https://i.imgur.com/OqVaosK.jpeg" alt="Member 1" />
-          <div className="member-info">
-            <h4>John Doe</h4>
-            <p>Role: Developer</p>
-            <p>Status: Active</p>
-          </div>
-        </div>
 
-        <div className="member-card">
-          <img src="https://i.imgur.com/OqVaosK.jpeg" alt="Member 2" />
-          <div className="member-info">
-            <h4>Jane Smith</h4>
-            <p>Role: Designer</p>
-            <p>Status: Active</p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }

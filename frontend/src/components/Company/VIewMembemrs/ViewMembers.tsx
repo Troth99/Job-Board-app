@@ -20,7 +20,6 @@ export function ViewMembers() {
     };
     fetchMembers();
   }, [companyId]);
-
  if(loading) {
     return <Spinner overlay={true} />
  }
