@@ -3,6 +3,7 @@ import "./ViewMembers.css";
 import { useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
 import { formatDate } from "../../../utils/formData";
+import Spinner from "../../Spinner/Spinner";
 
 export function ViewMembers() {
   const { companyId } = useParams();
@@ -20,6 +21,9 @@ export function ViewMembers() {
     fetchMembers();
   }, [companyId]);
 
+ if(loading) {
+    return <Spinner overlay={true} />
+ }
   return (
     <div className="member-list-page">
       <div className="members-list-container">
@@ -40,8 +44,6 @@ export function ViewMembers() {
                 <div className="member-updatedAt">Updated At: {formatDate(member.updatedAt)}</div>
               </div>
               <div className="member-actions">
-                <button className="change-role-btn">Change Role</button>
-                <button className="kick-btn">Kick</button>
               </div>
             </div>
           ))}

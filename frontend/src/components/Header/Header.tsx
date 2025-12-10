@@ -43,15 +43,9 @@ useEffect(() => {
           </li>
           <li>
             <Link to="/jobs">Jobs </Link>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
+          </li> 
           <li>
             <Link to="/companies">Companies</Link>
-          </li>
-          <li>
-            <a href="#">Contact</a>
           </li>
         </ul>
 
