@@ -1,7 +1,7 @@
-import { data, Link, useNavigate } from "react-router";
+import {  Link, useNavigate } from "react-router";
 import "./Register.css";
 import "./Responsive.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useAuth, { registerFormType } from "../../../hooks/useAuth";
 import { useValidation } from "../../validators/useValidation";
 import useForm from "../../../hooks/useForm";
@@ -16,6 +16,7 @@ const intialValueRegister: registerFormType = {
   password: "",
   confirmPassword: "",
 };
+
 
 export default function RegisterComponent() {
 const [user, setUser] = useLocalStorage('user', { _id: '', accessToken: '', refreshToken: '' });
@@ -33,7 +34,7 @@ const [user, setUser] = useLocalStorage('user', { _id: '', accessToken: '', refr
     );
 
     if (confirmPasswordError) {
-      // Will be handled by useForm validation
+     
       setLoading(false);
       return;
     }
@@ -66,6 +67,8 @@ const [user, setUser] = useLocalStorage('user', { _id: '', accessToken: '', refr
     intialValueRegister,
     validateForm
   );
+
+
   return (
     <div className="register-wrapper">
       <div className="register-container">

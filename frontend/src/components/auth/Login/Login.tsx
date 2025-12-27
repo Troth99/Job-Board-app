@@ -88,17 +88,18 @@ export default function LoginComponent() {
       setLoading(false);
     }
   };
+
   return (
     <div className="login-wrapper">
       <div className="login-container">
-        <div className="content">
+        <div className="login-content">
           <Link to="/" className="logo">
             JB
           </Link>
 
           <h2>Login to Your Account</h2>
           <form id="loginForm" onSubmit={loginSubmitHandler}>
-            <div className={`input-wrap ${errors.email ? "input-error" : ""}`}>
+            <div className={`login-input-wrap ${errors.email ? "input-error" : ""}`}>
               <i className="fa-solid fa-envelope"></i>
               <input
                 ref={focusRef}
@@ -111,7 +112,7 @@ export default function LoginComponent() {
               {errors && <div className="error-message">{errors.email}</div>}
             </div>
             <div
-              className={`input-wrap ${errors.password ? "input-error" : ""}`}
+              className={`login-input-wrap ${errors.password ? "input-error" : ""}`}
             >
               <i className="fa-solid fa-lock"></i>
               <input
@@ -138,7 +139,7 @@ export default function LoginComponent() {
             </button>
           </div>
 
-          <div className="links">
+          <div className="login-links">
             <p>
               <a href="#">Forgot password?</a>
             </p>

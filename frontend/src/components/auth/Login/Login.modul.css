@@ -1,3 +1,4 @@
+
 .login-wrapper {
   background: linear-gradient(-45deg, #2a8ff3, #00e1ff, #1ee0ff, #0294f5);
   background-size: 400% 400%;
@@ -36,6 +37,7 @@
   }
 }
 
+
 @keyframes borderFlow {
   0% {
     background-position: 0% 50%;
@@ -59,9 +61,29 @@
   mask-composite: exclude;
   z-index: 1;
 }
+
 .login-content {
   position: relative;
   z-index: 2;
+}
+
+
+.logo {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #007bff;
+  text-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
+  margin-bottom: 1rem;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
+  }
+  to {
+    text-shadow: 0 0 24px rgba(0, 123, 255, 0.8);
+  }
 }
 
 h2 {
@@ -70,19 +92,20 @@ h2 {
   font-weight: 600;
   font-size: 1.5rem;
 }
-#loginForm {
+
+form {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
 
-.login-input-wrap {
+.input-wrap {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.login-input-wrap input {
+.input-wrap input {
   padding: 1rem 2rem 1rem 3rem;
   border: none;
   border-radius: 50px;
@@ -96,22 +119,23 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
-.login-input-wrap input::placeholder {
+.input-wrap input::placeholder {
   font-size: 1.2rem;
   transition: font-size 0.2s ease;
 }
 
-.login-input-wrap input:focus::placeholder,
-.login-input-wrap input:not(:placeholder-shown)::placeholder {
+.input-wrap input:focus::placeholder,
+.input-wrap input:not(:placeholder-shown)::placeholder {
   font-size: 0.9rem;
 }
 
-.login-input-wrap input:focus {
+.input-wrap input:focus {
   box-shadow: 0 0 12px rgba(0, 123, 255, 0.5);
   transform: translateY(-1px);
 }
 
-.login-input-wrap i {
+
+.input-wrap i {
   position: absolute;
   left: 12px;
   top: 30%;
@@ -120,6 +144,20 @@ h2 {
   font-size: 1.1rem;
   pointer-events: none;
 }
+
+
+.show-hide-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #007bff;
+}
+
 
 .input-error input {
   border: 2px solid #ff4d4f; 
@@ -132,6 +170,8 @@ h2 {
   border: 2px solid #ff0000; 
   box-shadow: 0 0 10px #ff0000;
 }
+
+
 
 .btn-login {
   background: linear-gradient(90deg, #007bff, #00bfff);
@@ -147,10 +187,12 @@ h2 {
   margin-top: 0.3rem;
 }
 
+
 .btn-login:hover {
   background: linear-gradient(90deg, #009dff, #00ccff);
   transform: scale(1.03);
 }
+
 
 .social-login {
   display: flex;
