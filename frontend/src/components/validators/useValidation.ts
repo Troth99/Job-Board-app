@@ -24,10 +24,10 @@ export function useValidation() {
   const validateConfirmPassword = (
     password: string,
     confirmPassword: string
-  ): string => {
+  ): string | undefined => {
     if (!confirmPassword) return "Confirm password is required.";
     if (password !== confirmPassword) return "Passwords do not match.";
-    return "";
+    return undefined;
   };
 
   const validateFirstName = (firstName: string): string | undefined => {

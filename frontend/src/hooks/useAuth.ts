@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useApiRequester from "./useApiRequester";
 import { API_BASE } from "../services/api";
+import { LoginFormType } from "../components/auth/Login/Login";
 
 export interface registerFormType {
   firstName: string;
@@ -17,13 +18,13 @@ export default function useAuth() {
   const { request } = useApiRequester();
   const [loading, setLoading] = useState<boolean>(false);
 
-  const loginUser = async (email: string, password: string) => {
-    if (!email || !password) {
+  const loginUser = async (data: LoginFormType) => {
+    if (!data.email || !data.password) {
       throw new Error("Email and password are required");
     }
     setLoading(true);
     try {
-      const response = await request(`${API_BASE}/users/login`, "POST", { email, password });
+      const response = await request(`${API_BASE}/users/login`, "POST", data );
       return response;
     } catch (err: any) {
       if (err.message) {

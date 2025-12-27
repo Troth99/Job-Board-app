@@ -5,6 +5,13 @@ import { useEffect, useRef, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { useValidation } from "../../validators/useValidation";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import useForm from "../../../hooks/useForm";
+
+export interface LoginFormType {
+  email: string;
+  password: string;
+  [key: string]: string | undefined;
+}
 
 const initialFormValue = {
   email: "",
@@ -17,78 +24,42 @@ export default function LoginComponent() {
     accessToken: "",
     refreshToken: "",
   });
-
   const focusRef = useRef<HTMLInputElement>(null);
-  const [errors, setErrors] = useState<{
-    email?: string;
-    password?: string;
-  }>({});
-  const [form, setForm] = useState(initialFormValue);
   const navigate = useNavigate();
-  const { validateEmail, validatePassword } = useValidation();
+  const { validateForm } = useValidation();
   const { loginUser, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(false);
 
-  const location = useLocation()
+  const location = useLocation();
   const from = location.state?.from || "/";
-
-
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setForm((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: undefined }));
-  };
 
   useEffect(() => {
     focusRef.current?.focus();
   }, []);
 
-  const loginSubmitHandler = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const loginSubmitHandler = async (formValues: LoginFormType) => {
     setLoading(true);
-    setErrors({});
-
-    const emailError = validateEmail(form.email);
-    const passwordError = validatePassword(form.password);
-
-    if (emailError || passwordError) {
-      setErrors({
-        email: emailError,
-        password: passwordError,
-      });
-      setLoading(false);
-      return;
-    }
-
     try {
-      const user = await loginUser(form.email, form.password);
-      if (user?.accessToken) {
-        setUser({
-          _id: user.user._id,
-          accessToken: user.accessToken,
-          refreshToken: user.refreshToken,
-        });
-        navigate(from, {replace: true});
-      } else {
-        setErrors({
-          email: "User does not exist.",
-        });
-      }
+      const user = await loginUser(formValues);
+
+      setUser({
+        _id: user.user._id,
+        accessToken: user.accessToken,
+        refreshToken: user.refreshToken,
+      });
+      navigate(from, { replace: true });
     } catch (err: any) {
-      if (err?.message?.includes("User does not exist.")) {
-        setErrors({ email: "User does not exist." });
-      } else {
-        setErrors({
-          email: "Invalid Email or password.",
-          password: "Invalid Email or password.",
-        });
-      }
+      setErrors({
+        email: "Invalid email or password.",
+        password: "Invalid email or password.",
+      });
     } finally {
       setLoading(false);
     }
   };
 
+  const { values, register, formHandler, errors, setErrors } =
+    useForm<LoginFormType>(loginSubmitHandler, initialFormValue, validateForm);
   return (
     <div className="login-wrapper">
       <div className="login-container">
@@ -96,32 +67,31 @@ export default function LoginComponent() {
           <Link to="/" className="logo">
             JB
           </Link>
-
           <h2>Login to Your Account</h2>
-          <form id="loginForm" onSubmit={loginSubmitHandler}>
-            <div className={`login-input-wrap ${errors.email ? "input-error" : ""}`}>
+          <form id="loginForm" onSubmit={formHandler}>
+            <div
+              className={`login-input-wrap ${
+                errors.email ? "input-error" : ""
+              }`}
+            >
               <i className="fa-solid fa-envelope"></i>
               <input
                 ref={focusRef}
                 placeholder="Email address"
-                id="email"
-                name="email"
-                value={form.email}
-                onChange={onChangeHandler}
+                {...register("email")}
               />
               {errors && <div className="error-message">{errors.email}</div>}
             </div>
             <div
-              className={`login-input-wrap ${errors.password ? "input-error" : ""}`}
+              className={`login-input-wrap ${
+                errors.password ? "input-error" : ""
+              }`}
             >
               <i className="fa-solid fa-lock"></i>
               <input
                 type="password"
                 placeholder="Password"
-                id="pwd"
-                name="password"
-                value={form.password}
-                onChange={onChangeHandler}
+                {...register("password")}
               />
               {errors && <div className="error-message">{errors.password}</div>}
             </div>
