@@ -60,7 +60,7 @@ export default function EditProfile() {
       navigate("/profile");
     } catch (error: any) {
       if (error.message === "Email already exists.") {
-        setErrors((prev: any) => ({ ...prev, email: "Email already exists" }));
+        setErrors((prev: Partial<ProfileData>) => ({ ...prev, email: "Email already exists" }));
         setButtonLoading(false);
         return;
       }
