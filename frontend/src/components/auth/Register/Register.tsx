@@ -17,6 +17,7 @@ const intialValueRegister: registerFormType = {
   confirmPassword: "",
 };
 
+//To fix logo css
 
 export default function RegisterComponent() {
 const [user, setUser] = useLocalStorage('user', { _id: '', accessToken: '', refreshToken: '' });

@@ -27,11 +27,14 @@ const initialProfileData: ProfileData = {
 };
 
 export default function EditProfile() {
-  const { userData, loading, updateUserProfile, handleDeleteProfileImage, handleDeleteProfile} =
-    useUserProfile();
+  const {
+    userData,
+    updateUserProfile,
+    handleDeleteProfileImage,
+    handleDeleteProfile,
+  } = useUserProfile();
 
-  const [profileData, setProfileData] =
-    useState<ProfileData>(initialProfileData);
+  const [profileData, setProfileData] = useState<ProfileData>(initialProfileData);
 
   useEffect(() => {
     if (userData) {
@@ -50,16 +53,23 @@ export default function EditProfile() {
   const navigate = useNavigate();
 
   const formAction = async (values: any) => {
+    setButtonLoading(true);
     try {
       await updateUserProfile(values);
       showSuccess("Profile was updated successfully!");
       navigate("/profile");
-    } catch (error) {
+    } catch (error: any) {
+      if (error.message === "Email already exists.") {
+        setErrors((prev: any) => ({ ...prev, email: "Email already exists" }));
+        setButtonLoading(false);
+        return;
+      }
       console.error("Failed to update profile.");
     }
+    setButtonLoading(false);
   };
 
-  const { register, formHandler, values, errors } = useForm(
+  const { register, formHandler, values, errors, setErrors } = useForm(
     formAction,
     profileData,
     validateForm
@@ -98,82 +108,87 @@ export default function EditProfile() {
   };
 
   return (
-      <div className="profile-body" style={{ position: "relative" }}>
-        {loading && <Spinner overlay={true} />}
+    <div className="profile-body" style={{ position: "relative" }}>
+      {!userData ? (
+        <Spinner overlay={true} />
+      ) : (
+        <div className="profile-container">
+          <div className="profile-header">
+            <h1>Edit Profile</h1>
+          </div>
 
-        {!loading && (
-          <div className="profile-container">
-            <div className="profile-header">
-              <h1>Edit Profile</h1>
-            </div>
-
-            <form onSubmit={formHandler}>
-              <div className="profile-details">
-                <div>
-                  <strong>First name:</strong>
-                  <input type="text" {...register("firstName")} />
-                  <div className="error-message">{errors.firstName}</div>
-                </div>
-                <div>
-                  <strong>Last name:</strong>
-                  <input type="text" {...register("lastName")} />
-                  <div className="error-message">{errors.lastName}</div>
-                </div>
-                <div>
-                  <strong>Phone:</strong>
-                  <input type="text" {...register("phoneNumber")} />
-                  <div className="error-message">{errors.phoneNumber}</div>
-                </div>
-                <div>
-                  <strong>Location:</strong>
-                  <input type="text" {...register("location")} />
-                  <div className="error-message">{errors.location}</div>
-                </div>
-
-                <div className="edit-profile-button-container">
-                  <button
-                    className="edit-profile-button"
-                    type="submit"
-                    disabled={buttonLoading}
-                  >
-                    {buttonLoading ? "Saving..." : "Save Changes"}
-                  </button>
-                </div>
+          <form onSubmit={formHandler}>
+            <div className="profile-details">
+              <div>
+                <strong>First name:</strong>
+                <input type="text" {...register("firstName")} />
+                <div className="error-message">{errors.firstName}</div>
               </div>
-            </form>
+              <div>
+                <strong>Last name:</strong>
+                <input type="text" {...register("lastName")} />
+                <div className="error-message">{errors.lastName}</div>
+              </div>
+              <div>
+                <strong>Phone:</strong>
+                <input type="text" {...register("phoneNumber")} />
+                <div className="error-message">{errors.phoneNumber}</div>
+              </div>
+              <div>
+                <strong>Email:</strong>
+                <input type="email" {...register("email")} />
+                <div className="error-message">{errors.email}</div>
+              </div>
+              <div>
+                <strong>Location:</strong>
+                <input type="text" {...register("location")} />
+                <div className="error-message">{errors.location}</div>
+              </div>
 
-            <div className="button-container">
-              <div className="delete-image-container">
+              <div className="edit-profile-button-container">
                 <button
-                  className="delete-image-button"
-                  onClick={imageDeleteHandler}
+                  className="edit-profile-button"
+                  type="submit"
                   disabled={buttonLoading}
                 >
-                  Delete Profile Image
-                </button>
-              </div>
-              <div className="change-password-container">
-                <button
-                  className="change-password-button"
-                  onClick={changePasswordHandler}
-                  disabled={loading}
-                >
-                  Change Password
-                </button>
-              </div>
-
-              <div className="delete-profile-container">
-                <button
-                  className="delete-profile-button"
-                  onClick={deleteProfileHandler}
-                  disabled={loading}
-                >
-                  Delete Profile
+                  {buttonLoading ? "Saving..." : "Save Changes"}
                 </button>
               </div>
             </div>
+          </form>
+
+          <div className="button-container">
+            <div className="delete-image-container">
+              <button
+                className="delete-image-button"
+                onClick={imageDeleteHandler}
+                disabled={buttonLoading}
+              >
+                Delete Profile Image
+              </button>
+            </div>
+            <div className="change-password-container">
+              <button
+                className="change-password-button"
+                onClick={changePasswordHandler}
+                disabled={buttonLoading}
+              >
+                Change Password
+              </button>
+            </div>
+
+            <div className="delete-profile-container">
+              <button
+                className="delete-profile-button"
+                onClick={deleteProfileHandler}
+                disabled={buttonLoading}
+              >
+                Delete Profile
+              </button>
+            </div>
           </div>
-        )}
-      </div>
-    );
+        </div>
+      )}
+    </div>
+  );
 }
