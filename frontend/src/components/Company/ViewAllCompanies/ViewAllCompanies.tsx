@@ -80,7 +80,7 @@ export default function ViewAllCompanies() {
               </p>
               <p className="company-size-unique">
                 <span className="company-label-unique">Company Size:</span>{" "}
-                {company.website}
+                {company.size}
               </p>
               <p className="company-founded-unique">
                 <span className="company-label-unique">Founded Year:</span>{" "}
