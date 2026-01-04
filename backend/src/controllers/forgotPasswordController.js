@@ -1,8 +1,10 @@
 import User from "../models/User.js";
 import crypto from "crypto"
 import sgMail from "@sendgrid/mail"
+import dotenv from 'dotenv';
+dotenv.config();
 
-sgMail.setApiKey("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")
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 export const forgotPassword = async (req, res) => {
 
@@ -29,11 +31,9 @@ export const forgotPassword = async (req, res) => {
             subject: "Password Reset Request",
             html: `<p>You requested a password reset.</p><p>Click <a href='${resetUrl}'>here</a> to reset your password.</p>`,
         }
-        console.log("Sending email to:", user.email);
-
+   
         await sgMail.send(msg)
-        console.log("Email sent!");
-
+     
         res.status(200).json({ message: "Reset email sent" });
 
 
