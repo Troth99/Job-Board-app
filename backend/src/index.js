@@ -39,6 +39,5 @@ app.use('/', (req, res) => {
 // app.use('/', (req, res) => {
 //   return res.status(403).json({ error: 'Access to root is forbidden' });
 // });
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`))

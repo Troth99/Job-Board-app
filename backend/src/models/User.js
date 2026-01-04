@@ -49,7 +49,13 @@ const userSchema = new mongoose.Schema({
         default: "",
     },
     company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company' },
-    createdAt: { type: Date, default: Date.now }
+    createdAt: { type: Date, default: Date.now },
+    resetPasswordToken: {
+        type: String
+    },
+    resetPasswordExpire:{
+        type:Date
+    }
 });
 
 // has password before save
