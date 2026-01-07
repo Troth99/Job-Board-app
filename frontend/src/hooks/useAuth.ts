@@ -83,7 +83,7 @@ export default function useAuth() {
         throw new Error('Email is not valid.')
       }
 
-      const response = await request(`${API_BASE}/users/forgot-password`, 'POST', {email})
+      const response = await request(`${API_BASE}/users/forgot-password`, 'POST', {email}, {},false)
       return response
     } catch (error: any) {
       throw new Error('Sending password link failed', error)

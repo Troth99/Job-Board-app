@@ -9,9 +9,10 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 export const forgotPassword = async (req, res) => {
 
     const { email } = req.body;
-
+  
     try {
         const user = await User.findOne({ email })
+        console.log(user)
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -24,7 +25,6 @@ export const forgotPassword = async (req, res) => {
         await user.save();
 
         const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
-
         const msg = {
             to: user.email,
             from: process.env.EMAIL_FROM,
