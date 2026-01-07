@@ -20,6 +20,7 @@ import SearchResults from "./components/Home/Search/SearchResults/SearchResults"
 import { RoleGuard } from "./RouteGuards/RoleGuard";
 import useCompany from "./hooks/useCompany";
 import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
+import { ForgotPassowrd } from "./components/auth/forgot-password/Forgot-Password";
 
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 
@@ -157,7 +158,16 @@ function App() {
               </MainLayout>
             }
           />
+          <Route 
+            path="/auth/forgot-password"
+            element={
+              <MainLayout>
+                <ForgotPassowrd></ForgotPassowrd>
+              </MainLayout>
+            }
+          />
         </Route>
+
         <Route element={<MainLayout />}>
           <Route
             path="/jobs"

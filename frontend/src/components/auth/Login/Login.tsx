@@ -111,7 +111,7 @@ export default function LoginComponent() {
 
           <div className="login-links">
             <p>
-              <a href="#">Forgot password?</a>
+           <Link to="/auth/forgot-password">Forgot password?</Link>
             </p>
             <p>
               Don't have an account? <Link to="/register">Register</Link>
