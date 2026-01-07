@@ -2,6 +2,7 @@ import { useState } from "react"
 import "./ForgotPassword.css"
 import useForm from "../../../hooks/useForm";
 import { useValidation } from "../../validators/useValidation";
+import useAuth from "../../../hooks/useAuth";
 
 const initialFormValue = {
     email: ''
@@ -10,10 +11,17 @@ const initialFormValue = {
 export function ForgotPassowrd() {
     const [userEmail, setUserEmail] = useState<string>();
     const {validateForm} = useValidation()
+    const {sendResetPasswordLink} = useAuth()
 
 
-    const resetLinkSendHandler = () => {
-        console.log(values)
+    const resetLinkSendHandler = async (values: {email: string}) => {
+
+      try {
+        const result =await sendResetPasswordLink(values.email)
+        console.log(result)
+      } catch (error) {
+        console.error('Failed to send reset password email')
+      }
     }
 
 

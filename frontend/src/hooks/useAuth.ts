@@ -76,11 +76,27 @@ export default function useAuth() {
     }
   };
 
+  const sendResetPasswordLink = async (email: string) => {
+    setLoading(true)
+    try {
+      if(!email) {
+        throw new Error('Email is not valid.')
+      }
+
+      const response = await request(`${API_BASE}/users/forgot-password`, 'POST', {email})
+      return response
+    } catch (error: any) {
+      throw new Error('Sending password link failed', error)
+    }finally {
+      setLoading(false)
+    }
+  }
   return {
     loading,
     loginUser,
     registerUser,
     logOut,
+    sendResetPasswordLink
   };
 }
 
