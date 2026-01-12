@@ -1,6 +1,11 @@
+import "./resetPassword.css"
+
 export default function ResetPassword() {
   return (
     <div className="reset-password-container">
+           <div className="logo">
+            JB
+        </div>
       <h2>Reset Your Password</h2>
       <form>
         <input type="password" placeholder="New password" required />
