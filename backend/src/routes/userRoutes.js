@@ -3,6 +3,7 @@ import { checkUserExists, deleteUserProfile, deleteUserProfileImage, getUserProf
 import { protect } from "../middleware/authMiddleware.js";
 import { changePasswordController } from "../controllers/changePasswordController.js";
 import { forgotPassword } from "../controllers/forgotPasswordController.js";
+import { resetPasswordController } from "../controllers/resetPasswordController.js";
 
 
 const router = Router();
@@ -21,6 +22,7 @@ router.delete('/me/avatar', protect, deleteUserProfileImage)
 router.delete("/me", protect, deleteUserProfile);
 router.put("/change-password", protect, changePasswordController);
 router.post('/forgot-password', forgotPassword)
+router.post('/reset-password', resetPasswordController)
 
 
 
