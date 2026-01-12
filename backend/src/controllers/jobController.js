@@ -1,9 +1,6 @@
 import { CompanyMember } from "../models/CompanyMember.js";
 import Jobs from "../models/Jobs.js";
 import { createJobService, getJobById, getJobsByCategoryName, getRecentJobs } from "../services/jobService.js";
-import mongoose, { Types } from "mongoose";
-
-
 
 export const createJob = async (req, res) => {
   try {
