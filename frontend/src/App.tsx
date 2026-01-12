@@ -59,6 +59,10 @@ const MemberDashboard = lazy(
 );
 const HomeSection = lazy(() => import("./components/Home/HomeSection"));
 
+const ResetPassword = lazy(
+  () => import("./components/auth/Reset-password/Reset-password")
+);
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
@@ -158,11 +162,22 @@ function App() {
               </MainLayout>
             }
           />
-          <Route 
+          <Route
             path="/auth/forgot-password"
             element={
               <MainLayout>
                 <ForgotPassowrd></ForgotPassowrd>
+              </MainLayout>
+            }
+          />
+
+          <Route
+            path="/reset-password/:token"
+            element={
+              <MainLayout>
+                <Suspense fallback={<FullPageSpinner />}>
+                  <ResetPassword />
+                </Suspense>
               </MainLayout>
             }
           />
@@ -254,13 +269,12 @@ function App() {
           </Route>
         </Route>
         <Route element={<MainLayout />}>
-        
-        <Route element={<CompanyRouteGuard />}>
-          <Route
-            path="/company/:companyId/members"
-            element={<ViewMembers />}
-          ></Route>
-        </Route>
+          <Route element={<CompanyRouteGuard />}>
+            <Route
+              path="/company/:companyId/members"
+              element={<ViewMembers />}
+            ></Route>
+          </Route>
         </Route>
 
         <Route element={<ProtectedRoutes />}>
