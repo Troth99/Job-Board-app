@@ -11,6 +11,7 @@ export default function ResetPassword() {
 
   const resetPasswordHandler = () => {
     //to do reset password handler service 
+    
   };
 
   const { values, register, formHandler, errors } = useForm(
