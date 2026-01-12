@@ -10,7 +10,7 @@ export default function ResetPassword() {
   const { validateForm } = useValidation();
 
   const resetPasswordHandler = () => {
-    //to do reset password handler service
+    //to do reset password handler service 
   };
 
   const { values, register, formHandler, errors } = useForm(
