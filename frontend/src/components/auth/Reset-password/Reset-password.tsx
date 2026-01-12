@@ -9,7 +9,9 @@ const initialValues = {
 export default function ResetPassword() {
   const { validateForm } = useValidation();
 
-  const resetPasswordHandler = () => {};
+  const resetPasswordHandler = () => {
+    //to do reset password handler service
+  };
 
   const { values, register, formHandler, errors } = useForm(
     resetPasswordHandler,
