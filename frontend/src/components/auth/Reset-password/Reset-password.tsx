@@ -12,7 +12,6 @@ export default function ResetPassword() {
         <input type="password" placeholder="Confirm new password" required />
         <button type="submit">Reset Password</button>
       </form>
-      {/* Място за съобщения за успех или грешка */}
     </div>
   );
 }
