@@ -26,7 +26,7 @@ export function useValidation() {
     confirmPassword: string
   ): string | undefined => {
     if (!confirmPassword) return "Confirm password is required.";
-    if (password !== confirmPassword) return "Passwords do not match.";
+    if (password !== confirmPassword) return "Confirm password do not match.";
     return undefined;
   };
 
