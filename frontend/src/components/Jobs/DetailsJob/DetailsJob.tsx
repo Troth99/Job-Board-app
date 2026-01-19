@@ -22,11 +22,13 @@ function DetailsJob() {
     currentStatus
   );
   const [statusLoading, setStatusLoading] = useState(false);
-    const [candidates, setCandidates] = useState<Candidate[]>([]);
-    const { getUserRole, userRole } = useCompany();
-    const { getJobById, updateJob, deleteJob, getApplicationsByJobId } = useJobs();
-    const [loadingApplications, setLoadingApplications] = useState<boolean>(false);
-  
+  const [candidates, setCandidates] = useState<Candidate[]>([]);
+  const { getUserRole, userRole } = useCompany();
+  const { getJobById, updateJob, deleteJob, getApplicationsByJobId } =
+    useJobs();
+  const [loadingApplications, setLoadingApplications] =
+    useState<boolean>(false);
+
   if (!jobId) {
     console.error("Job Id is missing");
     return;
@@ -59,24 +61,24 @@ function DetailsJob() {
     }
   };
 
-  const fetchApllications = async() => {
+  const fetchApllications = async () => {
     try {
-        setLoadingApplications(true);
-      const result = await getApplicationsByJobId(jobId)
-      setCandidates(result)
+      setLoadingApplications(true);
+      const result = await getApplicationsByJobId(jobId);
+      setCandidates(result);
     } catch (error) {
-      console.error('Error fetching candidates')
-    }finally{
-        setLoadingApplications(false);
+      console.error("Error fetching candidates");
+    } finally {
+      setLoadingApplications(false);
     }
-  }
+  };
   useEffect(() => {
     if (companyId) {
       fetchRole();
     }
     if (jobId) {
       fetchCurrentJob();
-      fetchApllications()
+      fetchApllications();
     }
   }, [companyId, jobStatus, jobId]);
 
@@ -190,7 +192,12 @@ function DetailsJob() {
             </div>
           </div>
 
-<CandidateApplications jobId={jobId} candidates={candidates} loading={loadingApplications} setCandidates={setCandidates} />
+          <CandidateApplications
+            jobId={jobId}
+            candidates={candidates}
+            loading={loadingApplications}
+            setCandidates={setCandidates}
+          />
           {canEditOrDelete && (
             <div className="job-actions">
               <h3>Job Actions</h3>
