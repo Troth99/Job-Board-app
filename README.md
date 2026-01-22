@@ -1,8 +1,34 @@
-# Job Board App — Full Stack (React + Node.js + MongoDB)
+
+
+# Job Board App
 
 ## 📝 Overview
+A modern full-stack job board for posting, searching, and managing job listings, companies, and users. The project is split into **frontend** (React + Vite) and **backend** (Node.js + Express + MongoDB).
 
-A modern job board platform for posting, searching, and managing job listings, companies, and users. The project is split into two main modules: **frontend** (React + Vite) and **backend** (Node.js + Express + MongoDB).
+---
+
+## 🚀 Features
+- User registration, login, JWT authentication
+- Create, edit, and delete job postings
+- Company and member management
+- Filter and search jobs by category, keywords, employment type
+- Protected routes (middleware)
+- Responsive, modern UI
+- Form validation (frontend + backend)
+- Toast notifications for success/error
+- Pagination and search
+- Password reset and change
+- Profile editing and image upload
+
+---
+
+## 🛠️ Technologies
+
+**Frontend:**  
+- React 19, Vite, TypeScript, Redux Toolkit, React Router, ESLint, CSS Modules, React Toastify
+
+**Backend:**  
+- Node.js, Express, MongoDB (Mongoose), JWT, bcrypt, dotenv, multer, express-validator
 
 ---
 
@@ -10,176 +36,141 @@ A modern job board platform for posting, searching, and managing job listings, c
 
 ```
 Job-Board-app/
-│
-├── backend/      # Node.js/Express/MongoDB REST API
+├── backend/
 │   ├── src/
-│   │   ├── controllers/      # API logic (job, user, company, category)
-│   │   ├── middleware/       # JWT, CORS, error handling
-│   │   ├── models/           # Mongoose schemas (User, Job, Company, Category)
-│   │   ├── routes/           # Express routes
-│   │   ├── services/         # Business logic (jobService, companyService)
-│   │   ├── utils/            # Utility functions (token, validation)
-│   │   └── index.js          # Main entry point
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── utils/
+│   │   └── index.js
 │   ├── package.json
-│   └── .env                  # Configuration (MONGO_URI, JWT_SECRET)
-│
-├── frontend/     # React + Vite SPA
+│   └── .env
+├── frontend/
 │   ├── src/
-│   │   ├── components/       # UI components (Jobs, Company, Profile, Auth)
-│   │   ├── hooks/            # Custom React hooks (useJobs, useCompany, useForm)
-│   │   ├── services/         # API requests (api.ts, jobService.tsx)
-│   │   ├── context/          # Global contexts (Auth, Company)
-│   │   ├── styles/           # CSS files
-│   │   ├── interfaces/       # TypeScript interfaces
-│   │   ├── App.tsx           # Main component with routes
-│   ├── public/               # Static files
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── context/
+│   │   ├── redux/
+│   │   ├── interfaces/
+│   │   ├── utils/
+│   │   └── App.tsx
+│   ├── public/
 │   ├── package.json
-│   └── vite.config.js
-│
+│   ├── vite.config.js
+│   └── tsconfig.json
 ├── README.md
 └── LICENSE
 ```
 
 ---
 
-## 🚀 Technologies
-
-- **Frontend:** React 19, Vite, TypeScript, Redux Toolkit, React Router, ESLint, CSS Modules, React Toastify
-- **Backend:** Node.js, Express, MongoDB (Mongoose), JWT, bcrypt, dotenv, multer, express-validator
-- **Dev tools:** Nodemon, ESLint
-
----
-
-## 🔑 Main Features
-
-- User registration and login (JWT authentication)
-- Create, edit, and delete job postings
-- Company and member management
-- Filter and search jobs by category, keywords, and employment type
-- Protected routes (middleware protect)
-- Responsive and modern UI
-- Form validation (frontend + backend)
-- Toast notifications for success/error
-- Pagination and search
-
----
-
-## 🖥️ Local Development Setup
+## ⚡ Installation & Setup
 
 ### 1. Clone the repository
-
-```powershell
+```sh
 git clone <repo-url>
 cd Job-Board-app
 ```
 
-### 2. Setup backend
-
-```powershell
+### 2. Backend Setup
+```sh
 cd backend
 npm install
 ```
-
-#### .env file (example):
-
+Create a `.env` file:
 ```
 PORT=5000
-MONGO_URI=mongodb+srv://jobboard_admin:zQvzM90QIPYF1WWg@cluster0.mcnhlci.mongodb.net/jobboard?retryWrites=true&w=majority
-JWT_SECRET=Df83hfh29fhf7hfsdjfhs9fhsf8fhsfhs93fh
-JWT_REFRESH_SECRET=1231adaseawq23awdaw22d2ads2c2c2
-
+MONGO_URI=your_mongo_uri
+JWT_SECRET=your_jwt_secret
+JWT_REFRESH_SECRET=your_refresh_secret
+EMAIL_FROM=your@email.com
+FRONTEND_URL=https://your-frontend-url.vercel.app
+SENDGRID_API_KEY=your_sendgrid_key
 ```
-
-#### Start backend:
-
-```powershell
+Start backend:
+```sh
 npm run dev
 ```
-Backend will start on port 5000 (or as configured).
 
-### 3. Setup frontend
-
-```powershell
+### 3. Frontend Setup
+```sh
 cd ../frontend
 npm install
 npm run dev
 ```
-Frontend will start on port 5173 (Vite).
 
 ---
 
-## 🗂️ Important npm scripts
+## 🏃‍♂️ Running Locally
 
-**Backend:**
-- `npm run dev` — start backend with nodemon (auto-reload)
-- `npm start` — start backend with node
-
-**Frontend:**
-- `npm run dev` — start Vite dev server
-- `npm run build` — build for production
-- `npm run preview` — preview production build
-- `npm run lint` — lint code
+- Backend: `http://localhost:5000`
+- Frontend: `http://localhost:5173`
 
 ---
 
-## 🏗️ Code Structure
+## 🌐 Deployment
 
-**Backend:**
-- `controllers/` — API logic (jobController, userController, companyController)
-- `models/` — Mongoose schemas (User, Job, Company, Category)
-- `routes/` — Express routes (jobRoutes, userRoutes, companyRoutes)
-- `middleware/` — JWT, CORS, error handling
-- `services/` — business logic (jobService, companyService)
-- `utils/` — utility functions (token, validation)
+- **Frontend:** Vercel (SPA routing, automatic deploy on main branch changes)
+- **Backend:** Render.com, Heroku, or other Node.js hosting
+- **MongoDB:** MongoDB Atlas
 
-**Frontend:**
-- `components/` — UI components (Jobs, Company, Profile, Auth, Header, Footer)
-- `hooks/` — custom React hooks (useJobs, useCompany, useForm, useApiRequester)
-- `services/` — API requests (api.ts, jobService.tsx)
-- `context/` — global contexts (Auth, Company)
-- `styles/` — CSS files
-- `interfaces/` — TypeScript interfaces (Job, Company, User)
+---
+
+## 🔗 API Endpoints (examples)
+- `POST /api/users/register` — register
+- `POST /api/users/login` — login
+- `GET /api/jobs` — all jobs
+- `POST /api/jobs` — create job (auth)
+- `POST /api/users/forgot-password` — request password reset
+- `POST /api/users/reset-password/:token` — reset password
+
+---
+
+## 🖥️ Usage
+
+- Register and login
+- Create or edit your profile
+- Post and manage job listings
+- Apply for jobs
+- Manage company and members
 
 ---
 
 ## 🧪 Testing
 
-- Use Postman or Thunder Client to test the API.
-- For frontend — start the dev server and test in your browser.
-- For production build — use `npm run build` and `npm run preview`.
+- Test API with Postman or Thunder Client
+- Test UI in browser
+- For production build: `npm run build` and `npm run preview` (frontend)
 
 ---
 
 ## 🛡️ Security
 
-- All protected routes use JWT middleware.
-- Passwords are hashed with bcrypt.
-- CORS is configured for frontend/backend communication.
+- JWT middleware for protected routes
+- bcrypt for password hashing
+- CORS configured for frontend/backend communication
 
 ---
 
 ## 🌐 Live Deployment
 
-The frontend is deployed and publicly accessible at:
-
-**Production URL:** [https://job-board-three-omega.vercel.app/](https://job-board-three-omega.vercel.app/)
-
-You can visit the live site to explore all features and UI.
+**Frontend:** [https://job-board-three-omega.vercel.app/](https://job-board-three-omega.vercel.app/)
 
 ---
 
-## 📋 Deployment
+## 📋 Contribution
 
-- **Frontend:** Vercel, Netlify, or other static hosting.
-- **Backend:** Render.com, Heroku, or other Node.js hosting.
-- **MongoDB:** MongoDB Atlas (cloud).
+- Fork, feature branch, pull request
+- Follow code style (ESLint, Prettier)
+- Write clear commit messages
 
 ---
 
-## 🛠️ Additional Information
+## 📄 License
 
-- Use Postman or Thunder Client for API testing.
-- For production, add CORS, rate limiting, and security best practices.
-- For questions and suggestions — open an issue on GitHub.
+MIT
 
 ---
