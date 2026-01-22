@@ -2,9 +2,22 @@ import User from "../models/User.js";
 import crypto from "crypto"
 import sgMail from "@sendgrid/mail"
 import dotenv from 'dotenv';
-dotenv.config();
 
+const envFile = process.env.NODE_ENV ==='production' ? ".env.production" : ".env.development";
+
+dotenv.config({path: envFile });
+
+console.log('sending_Api_key', process.env.SENDGRID_API_KEY);
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
+if(!process.env.SENDGRID_API_KEY) {
+  console.error('SendGri Api is missing!')
+};
+
+if(!process.env.FRONTEND_URL){
+  console.error('Frontend_URL is missing!');
+}
+
 
 export const forgotPassword = async (req, res) => {
 
@@ -12,7 +25,6 @@ export const forgotPassword = async (req, res) => {
 
     try {
         const user = await User.findOne({ email })
-        console.log(user)
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }

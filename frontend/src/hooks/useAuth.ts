@@ -91,6 +91,7 @@ export default function useAuth() {
       setLoading(false)
     }
   }
+  
   return {
     loading,
     loginUser,
