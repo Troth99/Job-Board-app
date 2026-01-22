@@ -44,7 +44,6 @@ export function CompanyMembers() {
         return;
       }
       const result = await addMemberToCompany(companyId, response.userId);
-      console.log(result);
 
       if (result.success) {
         setShowModal(false);

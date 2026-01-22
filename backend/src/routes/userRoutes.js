@@ -22,7 +22,7 @@ router.delete('/me/avatar', protect, deleteUserProfileImage)
 router.delete("/me", protect, deleteUserProfile);
 router.put("/change-password", protect, changePasswordController);
 router.post('/forgot-password', forgotPassword)
-router.post('/reset-password', resetPasswordController)
+router.post('/reset-password/:token', resetPasswordController)
 
 
 

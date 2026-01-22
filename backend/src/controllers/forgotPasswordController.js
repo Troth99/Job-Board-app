@@ -6,8 +6,6 @@ import dotenv from 'dotenv';
 const envFile = process.env.NODE_ENV ==='production' ? ".env.production" : ".env.development";
 
 dotenv.config({path: envFile });
-
-console.log('sending_Api_key', process.env.SENDGRID_API_KEY);
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 if(!process.env.SENDGRID_API_KEY) {
