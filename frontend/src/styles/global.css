@@ -61,3 +61,12 @@ body {
 body[data-theme="dark"] .error-message {
   color: #ff6b6b;
 }
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main-content {
+  flex: 1;
+}

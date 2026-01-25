@@ -1,10 +1,10 @@
 .filter-jobs-container {
+  width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   padding: 40px 20px;
   min-height: 100vh;
 }
-
 .filter-header {
   display: flex;
   justify-content: space-between;
@@ -215,11 +215,6 @@
 
 [data-theme="dark"] .no-jobs-message p {
   color: #95a5a6;
-}
-.jobs-list-area {
-  display: flex;
-  flex-direction: column;
-  min-height: 600px; /* или колкото искаш */
 }
 
 .pagination {

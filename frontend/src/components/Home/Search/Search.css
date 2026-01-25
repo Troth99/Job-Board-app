@@ -160,21 +160,24 @@ body[data-theme="dark"] .search-btn:hover svg {
 }
 
 /* Modern, visually appealing style for 'No jobs found' message */
+
 .search-no-jobs-f1 {
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: #007bff;
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-top: 64px;
-  margin-bottom: 64px;
-  padding: 32px 0;
+  width: 100%;
+  font-size: 1.2rem;
+  color: #888;
+  padding: 2rem 0;
 
   animation: fadeIn 0.7s cubic-bezier(.4,0,.2,1);
 }
+.search-results-container {
+  width: 100%;
+}
+
 [data-theme="dark"] .search-results-container{
   background-color: #23272f;
   color: #e6edf3;

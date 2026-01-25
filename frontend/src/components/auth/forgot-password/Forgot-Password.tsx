@@ -14,17 +14,31 @@ export function ForgotPassowrd() {
   const { sendResetPasswordLink } = useAuth();
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    if (timer > 0) {
-      interval = setInterval(() => {
-        setTimer((prev) => prev - 1);
-      }, 1000);
+    const saved = localStorage.getItem("resetTimer");
+    if (saved) {
+      const remaining = Math.floor((parseInt(saved) - Date.now()) / 1000);
+      if (remaining > 0) {
+        setTimer(remaining);
+      } else {
+        localStorage.removeItem("resetTimer");
+      }
     }
+  }, []);
 
-    return () => {
-      if (interval) clearInterval(interval);
-    };
+  //Dynamic timer reducer
+
+  useEffect(() => {
+    if (timer > 0) {
+      let interval = setInterval(() => {
+        setTimer((prev) => {
+          if (prev === 1) {
+            localStorage.removeItem("resetTimer");
+          }
+          return prev - 1;
+        });
+      }, 1000);
+      return () => clearInterval(interval);
+    }
   }, [timer]);
 
   const resetLinkSendHandler = async (values: { email: string }) => {
@@ -32,7 +46,11 @@ export function ForgotPassowrd() {
       await sendResetPasswordLink(values.email);
       setSuccess("Reset link has been sent to your email.");
       setTimer(60);
-    } catch (error) {
+      localStorage.setItem("resetTimer", (Date.now() + 60000).toString());
+    } catch (error: any) {
+      if (error.message === "User not found") {
+        setErrors({ email: error.message });
+      }
       console.error("Failed to send reset password email");
     }
   };
@@ -40,7 +58,7 @@ export function ForgotPassowrd() {
   const { values, register, formHandler, errors, setErrors } = useForm(
     resetLinkSendHandler,
     initialFormValue,
-    validateForm
+    validateForm,
   );
 
   return (
