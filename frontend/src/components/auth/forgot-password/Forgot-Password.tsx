@@ -32,7 +32,11 @@ export function ForgotPassowrd() {
       await sendResetPasswordLink(values.email);
       setSuccess("Reset link has been sent to your email.");
       setTimer(60);
-    } catch (error) {
+    } catch (error: any) {
+      if(error.message === 'User not found') {
+        setErrors({email: error.message})
+    
+      }
       console.error("Failed to send reset password email");
     }
   };

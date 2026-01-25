@@ -102,7 +102,10 @@ export default function useAuth() {
    
       return response;
     } catch (error: any) {
-      throw new Error("Sending password link failed", error);
+      if(error.message === 'User not found'){
+       throw new Error(error.message)
+      }
+      throw new Error("Sending password link failed", error.message);
     } finally {
       setLoading(false);
     }
