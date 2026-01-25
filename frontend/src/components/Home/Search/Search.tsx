@@ -1,16 +1,10 @@
 import { useState } from "react";
 import "./Search.css";
 import "./Responsive.css";
-import { Job } from "../../../interfaces/Job.model";
-import useJobs from "../../../hooks/useJobs";
-import SearchResults from "./SearchResults/SearchResults";
 import { useNavigate } from "react-router";
 
-interface searchProps {
-  onSearch: (query: string) => void;
-}
 
-export default function Search({ onSearch }: searchProps) {
+export default function Search() {
   const [search, setSearch] = useState<string>("");
   const navigate = useNavigate();
 
@@ -19,6 +13,10 @@ export default function Search({ onSearch }: searchProps) {
   };
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const cleaned = search.trim().replace(/\s+/g, ' ');
+    if(!cleaned) {
+      return
+    }
     navigate(`/search?query=${encodeURIComponent(search)}`);
   };
 
