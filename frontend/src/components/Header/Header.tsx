@@ -34,7 +34,7 @@ useEffect(() => {
   };
   return (
     <header className={`header ${theme}`}>
-      <div className="logo">JB</div>
+      <Link className="logo" to="/">JB</Link>
 
       <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
         <ul>
