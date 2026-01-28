@@ -1,39 +1,35 @@
-.members-list-page {
+/* --- Layout & Card --- */
+.member-list-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-
 .members-list-container {
   min-height: 80vh;
   margin: 2rem auto;
   max-width: 1000px;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   padding: 2.5rem 2rem;
 }
-
 .members-list-container h2 {
   text-align: center;
   margin-bottom: 2rem;
   color: #333;
 }
-
 .members-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem;
   justify-content: center;
 }
-
 .member-card {
   background: linear-gradient(90deg, #f0f4ff 60%, #e0e7ff 100%);
   border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(60,80,180,0.10);
+  box-shadow: 0 4px 24px rgba(60, 80, 180, 0.1);
   padding: 1.2rem 2.2rem 1.2rem 1.2rem;
   min-width: 340px;
-  max-width: 540px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -41,11 +37,12 @@
   margin-bottom: 0.5rem;
   border-left: 7px solid #6a8dff;
   position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.2s, border-color 0.2s;
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s;
 }
 .member-card:hover {
-  box-shadow: 0 8px 32px rgba(60,80,180,0.18);
+  box-shadow: 0 8px 32px rgba(60, 80, 180, 0.18);
   border-left: 7px solid #3b5bdb;
 }
 .member-avatar {
@@ -60,7 +57,7 @@
   font-weight: bold;
   color: #fff;
   margin-right: 2.1rem;
-  box-shadow: 0 2px 12px rgba(60,80,180,0.10);
+  box-shadow: 0 2px 12px rgba(60, 80, 180, 0.1);
   border: 3px solid #fff;
 }
 .member-info {
@@ -95,7 +92,7 @@
   background: #e0e7ff;
   color: #3b5bdb;
   letter-spacing: 0.03em;
-  box-shadow: 0 1px 4px rgba(60,80,180,0.07);
+  box-shadow: 0 1px 4px rgba(60, 80, 180, 0.07);
 }
 .role-badge.role-admin {
   background: #ffe3e3;
@@ -117,62 +114,95 @@
   flex-direction: column;
   gap: 0.1rem;
 }
+
+/* --- Actions & Buttons --- */
 .member-actions {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
   margin-left: 1.5rem;
+  position: relative;
 }
-.action-btn {
-  background: #fff;
-  border: 1.5px solid #dbeafe;
+.action-btn,
+.change-role-btn,
+.kick-btn {
   border-radius: 8px;
-  padding: 0.5rem 1.1rem;
-  font-size: 1.1rem;
-  color: #3b5bdb;
+  font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.18s, color 0.18s, border 0.18s;
+  border: 1.5px solid #dbeafe;
+  background: #fff;
+  color: #3b5bdb;
+  padding: 0.5rem 1.1rem;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    border 0.18s;
 }
-.action-btn.edit:hover {
+.action-btn.edit:hover,
+.change-role-btn:hover {
   background: #e0e7ff;
   color: #222;
   border-color: #3b5bdb;
 }
-.action-btn.remove {
+.action-btn.remove,
+.kick-btn {
   color: #c62828;
   border-color: #ffe3e3;
+  background: #fff;
 }
-.action-btn.remove:hover {
+.action-btn.remove:hover,
+.kick-btn:hover {
   background: #ffe3e3;
   color: #fff;
   border-color: #c62828;
 }
-.change-role-btn, .kick-btn {
-  padding: 0.45rem 1.1rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 0.97rem;
+
+/* --- Dropdown --- */
+.custom-dropdown {
+  position: absolute;
+  left: 110%;
+  top: 0;
+  background: #fff;
+  border: 1.5px solid #dbeafe;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(60, 80, 180, 0.18);
+  z-index: 30;
+  min-width: 150px;
+  padding: 0.3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  animation: dropdown-fade-in 0.18s ease;
+}
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-30%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.dropdown-option {
+  padding: 0.7rem 1.2rem;
   cursor: pointer;
-  transition: background 0.18s, color 0.18s;
+  transition:
+    background 0.15s,
+    color 0.15s;
+  color: #222;
+  font-size: 1.05rem;
+  border: none;
+  background: transparent;
+  text-align: left;
 }
-.change-role-btn {
-  background: #e3f0ff;
-  color: #1565c0;
-}
-.change-role-btn:hover {
-  background: #1565c0;
-  color: #fff;
-}
-.kick-btn {
-  background: #ffe3e3;
-  color: #c62828;
-}
-.kick-btn:hover {
-  background: #c62828;
-  color: #fff;
+.dropdown-option:hover {
+  background: #e0e7ff;
+  color: #3b5bdb;
 }
 
+/* --- Responsive --- */
 @media (max-width: 1000px) {
   .members-list-container {
     max-width: 98vw;
@@ -202,18 +232,26 @@
     margin-left: 0;
     margin-top: 1rem;
   }
+  .custom-dropdown {
+    left: 0;
+    top: 110%;
+    min-width: unset;
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+  }
 }
 
+/* --- Dark Theme --- */
 [data-theme="dark"] .members-list-container {
   background: #23272f;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 [data-theme="dark"] .members-list-container h2 {
   color: #e0e6f0;
 }
 [data-theme="dark"] .member-card {
   background: linear-gradient(90deg, #23272f 60%, #2c313a 100%);
-  box-shadow: 0 2px 16px rgba(60,80,180,0.18);
+  box-shadow: 0 2px 16px rgba(60, 80, 180, 0.18);
 }
 [data-theme="dark"] .member-avatar {
   background: linear-gradient(135deg, #23272f 0%, #3b5bdb 100%);
@@ -229,7 +267,7 @@
 [data-theme="dark"] .role-badge {
   background: #263859;
   color: #90caf9;
-  box-shadow: 0 1px 4px rgba(60,80,180,0.13);
+  box-shadow: 0 1px 4px rgba(60, 80, 180, 0.13);
 }
 [data-theme="dark"] .role-badge.role-admin {
   background: #3a2323;
@@ -246,40 +284,41 @@
 [data-theme="dark"] .member-info {
   border-right: 1.5px solid #23272f;
 }
-[data-theme="dark"] .action-btn {
+[data-theme="dark"] .action-btn,
+[data-theme="dark"] .change-role-btn,
+[data-theme="dark"] .kick-btn {
   background: #23272f;
   color: #90caf9;
   border-color: #263859;
 }
-[data-theme="dark"] .action-btn.edit:hover {
+[data-theme="dark"] .action-btn.edit:hover,
+[data-theme="dark"] .change-role-btn:hover {
   background: #263859;
   color: #fff;
   border-color: #90caf9;
 }
-[data-theme="dark"] .action-btn.remove {
+[data-theme="dark"] .action-btn.remove,
+[data-theme="dark"] .kick-btn {
   color: #ff8a80;
   border-color: #3a2323;
 }
-[data-theme="dark"] .action-btn.remove:hover {
+[data-theme="dark"] .action-btn.remove:hover,
+[data-theme="dark"] .kick-btn:hover {
   background: #3a2323;
   color: #fff;
   border-color: #ff8a80;
 }
-[data-theme="dark"] .change-role-btn {
+[data-theme="dark"] .custom-dropdown {
+  background: #23272f;
+  border: 1.5px solid #263859;
+  box-shadow: 0 8px 32px rgba(60, 80, 180, 0.28);
+}
+[data-theme="dark"] .dropdown-option {
+  color: #e0e6f0;
+}
+[data-theme="dark"] .dropdown-option:hover {
   background: #263859;
   color: #90caf9;
-}
-[data-theme="dark"] .change-role-btn:hover {
-  background: #90caf9;
-  color: #23272f;
-}
-[data-theme="dark"] .kick-btn {
-  background: #3a2323;
-  color: #ff8a80;
-}
-[data-theme="dark"] .kick-btn:hover {
-  background: #ff8a80;
-  color: #23272f;
 }
 
 .footer {

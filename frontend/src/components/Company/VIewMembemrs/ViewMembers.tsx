@@ -5,9 +5,11 @@ import useCompany from "../../../hooks/useCompany";
 import { formatDate } from "../../../utils/formData";
 import Spinner from "../../Spinner/Spinner";
 
+const availableRoles = ["admin", "recruiter", "member"];
 export function ViewMembers() {
   const { companyId } = useParams();
-  const { getCompanyMembers, loading } = useCompany();
+  const [showOptions, setShowOptions] = useState<string | null>(null);
+  const { getCompanyMembers, loading, changeMemberRole } = useCompany();
   const [members, setMembers] = useState([]);
 
   useEffect(() => {
@@ -23,6 +25,12 @@ export function ViewMembers() {
   if (loading) {
     return <Spinner overlay={true} />;
   }
+
+  const changeRoleHandler = async (memberId: string, newRole: string) => {
+    try {
+      await changeMemberRole(companyId, memberId, newRole);
+    } catch (error) {}
+  };
   return (
     <div className="member-list-page">
       <div className="members-list-container">
@@ -50,9 +58,31 @@ export function ViewMembers() {
                 </div>
               </div>
               <div className="member-actions">
-                <button className="action-btn edit" title="Change Role">
+                <button
+                  className="action-btn edit"
+                  title="Change Role"
+                  onClick={() => setShowOptions(member._id)}
+                >
                   Change Role
                 </button>
+                {showOptions === member._id && (
+                  <div className="custom-dropdown">
+                    {availableRoles
+                      .filter((role) => role !== "owner")
+                      .map((role) => (
+                        <div
+                          key={role}
+                          className="dropdown-option"
+                          onClick={() => {
+                            changeRoleHandler(member._id, role);
+                            setShowOptions(null);
+                          }}
+                        >
+                          {role}
+                        </div>
+                      ))}
+                  </div>
+                )}
                 <button className="action-btn remove" title="Remove Member">
                   Kick
                 </button>
