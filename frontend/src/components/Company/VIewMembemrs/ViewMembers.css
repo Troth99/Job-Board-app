@@ -28,42 +28,125 @@
 }
 
 .member-card {
-  background: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
-  padding: 2rem 1.5rem;
-  min-width: 260px;
-  max-width: 320px;
+  background: linear-gradient(90deg, #f0f4ff 60%, #e0e7ff 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(60,80,180,0.10);
+  padding: 1.2rem 2.2rem 1.2rem 1.2rem;
+  min-width: 340px;
+  max-width: 540px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  transition: box-shadow 0.2s;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  border-left: 7px solid #6a8dff;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 .member-card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+  box-shadow: 0 8px 32px rgba(60,80,180,0.18);
+  border-left: 7px solid #3b5bdb;
+}
+.member-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b5bdb 0%, #6a8dff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 2.1rem;
+  box-shadow: 0 2px 12px rgba(60,80,180,0.10);
+  border: 3px solid #fff;
 }
 .member-info {
-  margin-bottom: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  border-right: 1.5px solid #dbeafe;
+  padding-right: 1.5rem;
 }
 .member-name {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #222;
-  margin-bottom: 0.3rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2d3a5a;
+  margin-bottom: 0.1rem;
+  letter-spacing: 0.01em;
 }
 .member-email {
-  font-size: 0.98rem;
-  color: #666;
-  margin-bottom: 0.2rem;
+  font-size: 1.01rem;
+  color: #4b5563;
+  margin-bottom: 0.1rem;
 }
 .member-role {
-  font-size: 0.95rem;
-  color: #007bff;
-  font-weight: 500;
+  margin: 0.2rem 0 0.5rem 0;
+}
+.role-badge {
+  display: inline-block;
+  padding: 0.22em 1.1em;
+  border-radius: 16px;
+  font-size: 1.01rem;
+  font-weight: 600;
+  background: #e0e7ff;
+  color: #3b5bdb;
+  letter-spacing: 0.03em;
+  box-shadow: 0 1px 4px rgba(60,80,180,0.07);
+}
+.role-badge.role-admin {
+  background: #ffe3e3;
+  color: #c62828;
+}
+.role-badge.role-owner {
+  background: #e3ffe3;
+  color: #2e7d32;
+}
+.role-badge.role-member {
+  background: #e0e7ff;
+  color: #3b5bdb;
+}
+.member-meta {
+  font-size: 0.93rem;
+  color: #6b7280;
+  margin-top: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
 }
 .member-actions {
   display: flex;
+  flex-direction: column;
   gap: 0.7rem;
+  margin-left: 1.5rem;
+}
+.action-btn {
+  background: #fff;
+  border: 1.5px solid #dbeafe;
+  border-radius: 8px;
+  padding: 0.5rem 1.1rem;
+  font-size: 1.1rem;
+  color: #3b5bdb;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+}
+.action-btn.edit:hover {
+  background: #e0e7ff;
+  color: #222;
+  border-color: #3b5bdb;
+}
+.action-btn.remove {
+  color: #c62828;
+  border-color: #ffe3e3;
+}
+.action-btn.remove:hover {
+  background: #ffe3e3;
+  color: #fff;
+  border-color: #c62828;
 }
 .change-role-btn, .kick-btn {
   padding: 0.45rem 1.1rem;
@@ -102,6 +185,22 @@
     min-width: 90vw;
     max-width: 98vw;
     padding: 1.2rem 0.7rem;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left-width: 4px;
+  }
+  .member-avatar {
+    margin-bottom: 0.7rem;
+    margin-right: 0;
+  }
+  .member-info {
+    border-right: none;
+    padding-right: 0;
+  }
+  .member-actions {
+    flex-direction: row;
+    margin-left: 0;
+    margin-top: 1rem;
   }
 }
 
@@ -113,8 +212,13 @@
   color: #e0e6f0;
 }
 [data-theme="dark"] .member-card {
-  background: #2c313a;
-  box-shadow: 0 1px 8px rgba(0,0,0,0.18);
+  background: linear-gradient(90deg, #23272f 60%, #2c313a 100%);
+  box-shadow: 0 2px 16px rgba(60,80,180,0.18);
+}
+[data-theme="dark"] .member-avatar {
+  background: linear-gradient(135deg, #23272f 0%, #3b5bdb 100%);
+  color: #e0e6f0;
+  border-color: #23272f;
 }
 [data-theme="dark"] .member-name {
   color: #e0e6f0;
@@ -122,8 +226,44 @@
 [data-theme="dark"] .member-email {
   color: #b0b8c6;
 }
-[data-theme="dark"] .member-role {
+[data-theme="dark"] .role-badge {
+  background: #263859;
   color: #90caf9;
+  box-shadow: 0 1px 4px rgba(60,80,180,0.13);
+}
+[data-theme="dark"] .role-badge.role-admin {
+  background: #3a2323;
+  color: #ff8a80;
+}
+[data-theme="dark"] .role-badge.role-owner {
+  background: #233a23;
+  color: #a5d6a7;
+}
+[data-theme="dark"] .role-badge.role-member {
+  background: #263859;
+  color: #90caf9;
+}
+[data-theme="dark"] .member-info {
+  border-right: 1.5px solid #23272f;
+}
+[data-theme="dark"] .action-btn {
+  background: #23272f;
+  color: #90caf9;
+  border-color: #263859;
+}
+[data-theme="dark"] .action-btn.edit:hover {
+  background: #263859;
+  color: #fff;
+  border-color: #90caf9;
+}
+[data-theme="dark"] .action-btn.remove {
+  color: #ff8a80;
+  border-color: #3a2323;
+}
+[data-theme="dark"] .action-btn.remove:hover {
+  background: #3a2323;
+  color: #fff;
+  border-color: #ff8a80;
 }
 [data-theme="dark"] .change-role-btn {
   background: #263859;

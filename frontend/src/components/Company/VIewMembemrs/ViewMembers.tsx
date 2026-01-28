@@ -14,15 +14,15 @@ export function ViewMembers() {
     const fetchMembers = async () => {
       if (companyId) {
         const data = await getCompanyMembers(companyId);
-        console.log(data)
+        console.log(data);
         setMembers(data);
       }
     };
     fetchMembers();
   }, [companyId]);
- if(loading) {
-    return <Spinner overlay={true} />
- }
+  if (loading) {
+    return <Spinner overlay={true} />;
+  }
   return (
     <div className="member-list-page">
       <div className="members-list-container">
@@ -34,15 +34,28 @@ export function ViewMembers() {
                 <div className="member-name">
                   {member.userId?.name || member.userId?.email || member.userId}
                 </div>
-                <div className="member-email">
-                  {member.userId?.email || ''}
-                </div>
+                <div className="member-email">{member.userId?.email || ""}</div>
                 <div className="member-role">Role: {member.role}</div>
-                <div className="member-invited">Invited By: {member.invitedBy?.name || member.invitedBy?.email || member.invitedBy}</div>
-                <div className="member-invitedAt">Invited At: {formatDate(member.invitedAt)}</div>
-                <div className="member-updatedAt">Updated At: {formatDate(member.updatedAt)}</div>
+                <div className="member-invited">
+                  Invited By:{" "}
+                  {member.invitedBy?.name ||
+                    member.invitedBy?.email ||
+                    member.invitedBy}
+                </div>
+                <div className="member-invitedAt">
+                  Invited At: {formatDate(member.invitedAt)}
+                </div>
+                <div className="member-updatedAt">
+                  Updated At: {formatDate(member.updatedAt)}
+                </div>
               </div>
               <div className="member-actions">
+                <button className="action-btn edit" title="Change Role">
+                  Change Role
+                </button>
+                <button className="action-btn remove" title="Remove Member">
+                  Kick
+                </button>
               </div>
             </div>
           ))}
