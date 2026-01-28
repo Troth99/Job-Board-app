@@ -4,13 +4,14 @@ import { useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
 import { formatDate } from "../../../utils/formData";
 import Spinner from "../../Spinner/Spinner";
+import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 
 const availableRoles = ["admin", "recruiter", "member"];
 export function ViewMembers() {
   const { companyId } = useParams();
   const [showOptions, setShowOptions] = useState<string | null>(null);
   const { getCompanyMembers, loading, changeMemberRole } = useCompany();
-  const [members, setMembers] = useState([]);
+  const [members, setMembers] = useState<CompanyMember[]>([]);
 
   useEffect(() => {
     const fetchMembers = async () => {
@@ -29,6 +30,11 @@ export function ViewMembers() {
   const changeRoleHandler = async (memberId: string, newRole: string) => {
     try {
       await changeMemberRole(companyId, memberId, newRole);
+      setMembers((prevMembers: CompanyMember[]) =>
+        prevMembers.map((m) =>
+          m._id === memberId ? { ...m, role: newRole } : m
+        )
+      );
     } catch (error) {}
   };
   return (
