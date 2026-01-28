@@ -186,18 +186,17 @@ export default function useCompany() {
 
 };
 const changeMemberRole = async (companyId: string, memberId: string, role: string) =>{
-  setLoading(true);
-  setError(null);
-
 try {
   const response = await request(`${API_BASE}/companies/${companyId}/members/${memberId}/role`, "PATCH", {role})
   return response
 } catch (error) {
   setError('Error occured while changing the role.')
   console.error(error)
-}finally{
-  setLoading(false)
 }
+}
+
+const kickMemberFromCompany = async (companyId: string, memberId: string) =>  {
+
 }
   return {
     loading,

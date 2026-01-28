@@ -17,7 +17,6 @@ export function ViewMembers() {
     const fetchMembers = async () => {
       if (companyId) {
         const data = await getCompanyMembers(companyId);
-        console.log(data);
         setMembers(data);
       }
     };
@@ -28,6 +27,7 @@ export function ViewMembers() {
   }
 
   const changeRoleHandler = async (memberId: string, newRole: string) => {
+    if(!companyId) return
     try {
       await changeMemberRole(companyId, memberId, newRole);
       setMembers((prevMembers: CompanyMember[]) =>
@@ -35,7 +35,9 @@ export function ViewMembers() {
           m._id === memberId ? { ...m, role: newRole } : m
         )
       );
-    } catch (error) {}
+    } catch (error) {
+      console.error('Failed to update the role.', error)
+    }
   };
   return (
     <div className="member-list-page">
@@ -68,6 +70,8 @@ export function ViewMembers() {
                   className="action-btn edit"
                   title="Change Role"
                   onClick={() => setShowOptions(member._id)}
+                  disabled={member.role === "owner"}
+                  style={member.role === "owner" ? { opacity: 0.6, cursor: "not-allowed" } : {}}
                 >
                   Change Role
                 </button>

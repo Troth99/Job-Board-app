@@ -160,10 +160,7 @@ export const changeMemberRoleController = async (req, res) => {
   }
 
   try {
-      console.log("req.user:", req.user);
-  console.log("companyId:", companyId);
-  console.log("memberId:", memberId);
-  console.log("role:", role);
+
     const actingMember = await CompanyMember.findOne({ companyId, userId: req.user._id });
     if (!actingMember || actingMember.role !== "owner") {
       return res.status(403).json({ message: "Only owner can change roles" });
