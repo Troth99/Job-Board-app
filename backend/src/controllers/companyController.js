@@ -150,3 +150,40 @@ await User.findByIdAndUpdate(userId, { $set: { company: companyId } });
 
   }
 }
+
+export const changeMemberRoleController = async (req, res) => {
+  const { companyId, memberId } = req.params;
+  const { role } = req.body;
+
+  if (!role || !["admin", "owner",, "recruiter", "member"].includes(role)) {
+    return res.status(400).json({ message: "Invalid or missing role" });
+  }
+
+  try {
+      console.log("req.user:", req.user);
+  console.log("companyId:", companyId);
+  console.log("memberId:", memberId);
+  console.log("role:", role);
+    const actingMember = await CompanyMember.findOne({ companyId, userId: req.user._id });
+    if (!actingMember || actingMember.role !== "owner") {
+      return res.status(403).json({ message: "Only owner can change roles" });
+    }
+
+    if (actingMember._id.toString() === memberId) {
+      return res.status(403).json({ message: "Owner cannot change their own role" });
+    }
+
+    const member = await CompanyMember.findOneAndUpdate(
+      { companyId, _id: memberId },
+      { $set: { role } },
+      { new: true }
+    ).populate('userId', 'name email');
+
+    if (!member) {
+      return res.status(404).json({ message: "Member not found" });
+    }
+    res.status(200).json({ message: "Role updated successfully", member });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
