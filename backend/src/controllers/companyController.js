@@ -121,11 +121,11 @@ export const addMemberToCompany = async (req, res) => {
   const { companyId } = req.params;
   const { userId } = req.body;
 
-const company = await Company.findById(companyId);
+  const company = await Company.findById(companyId);
 
-if (company.members.some(id => id.toString() === userId.toString())) {
-  return res.status(409).json({ message: "User is already a member" });
-}
+  if (company.members.some(id => id.toString() === userId.toString())) {
+    return res.status(409).json({ message: "User is already a member" });
+  }
   try {
     //Add userId to the array from the company
     await Company.findByIdAndUpdate(
@@ -142,8 +142,8 @@ if (company.members.some(id => id.toString() === userId.toString())) {
       joinedAt: new Date(),
     })
 
-await User.findByIdAndUpdate(userId, { $set: { company: companyId } });   
- res.status(200).json({ message: "Member added successfully" });
+    await User.findByIdAndUpdate(userId, { $set: { company: companyId } });
+    res.status(200).json({ message: "Member added successfully" });
 
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -155,7 +155,7 @@ export const changeMemberRoleController = async (req, res) => {
   const { companyId, memberId } = req.params;
   const { role } = req.body;
 
-  if (!role || !["admin", "owner",, "recruiter", "member"].includes(role)) {
+  if (!role || !["admin", "owner", , "recruiter", "member"].includes(role)) {
     return res.status(400).json({ message: "Invalid or missing role" });
   }
 
@@ -184,3 +184,41 @@ export const changeMemberRoleController = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const kickMemberFromCompanyController = async (req, res) => {
+  const { companyId, memberId } = req.params;
+  const userId = req.user._id
+
+  if (!companyId || !memberId) {
+    return res.status(400).json({ message: "Invalid or missing id" });
+  }
+
+  try {
+    const member = await CompanyMember.findById(memberId)
+
+    if (!member) {
+      return res.status(404).json({ message: "Member not found" });
+
+    }
+
+    const actingMember = await CompanyMember.findOne({ companyId, userId })
+
+    if (!actingMember || (actingMember.role !== "owner" && actingMember.role !== "admin")) {
+      return res.status(403).json({ message: "Only owner or admin can kick members." });
+    }
+    if (
+      (actingMember.role === "owner" || actingMember.role === "admin") &&
+      member.userId.toString() === req.user._id.toString()
+    ) {
+      return res.status(403).json({ message: "Owners and admins cannot kick themselves" });
+    }
+
+    await Company.findOneAndUpdate(companyId, { $pull: { members: member.userId } });
+    await CompanyMember.findByIdAndDelete(memberId);
+    await User.findByIdAndUpdate(member.userId, { $unset: { company: '' } })
+    res.status(200).json({ message: "Member kicked successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+
+  }
+}
