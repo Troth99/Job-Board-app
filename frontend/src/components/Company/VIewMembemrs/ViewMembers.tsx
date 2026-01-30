@@ -27,16 +27,16 @@ export function ViewMembers() {
   }
 
   const changeRoleHandler = async (memberId: string, newRole: string) => {
-    if(!companyId) return
+    if (!companyId) return;
     try {
       await changeMemberRole(companyId, memberId, newRole);
       setMembers((prevMembers: CompanyMember[]) =>
         prevMembers.map((m) =>
-          m._id === memberId ? { ...m, role: newRole } : m
-        )
+          m._id === memberId ? { ...m, role: newRole } : m,
+        ),
       );
     } catch (error) {
-      console.error('Failed to update the role.', error)
+      console.error("Failed to update the role.", error);
     }
   };
   return (
@@ -44,25 +44,25 @@ export function ViewMembers() {
       <div className="members-list-container">
         <h2>Company Members</h2>
         <div className="members-cards">
-          {members.map((member: any, idx: number) => (
+          {members.map((member: CompanyMember, idx: number) => (
             <div className="member-card" key={member._id || idx}>
               <div className="member-info">
                 <div className="member-name">
-                  {member.userId?.name || member.userId?.email || member.userId}
+                  {member.userId?.name || member.userId?.email || member._id}
                 </div>
-                <div className="member-email">{member.userId?.email || ""}</div>
+                <div className="member-email">{member.userId?.email}</div>
                 <div className="member-role">Role: {member.role}</div>
                 <div className="member-invited">
                   Invited By:{" "}
                   {member.invitedBy?.name ||
                     member.invitedBy?.email ||
-                    member.invitedBy}
+                    member.invitedBy?._id}
                 </div>
                 <div className="member-invitedAt">
-                  Invited At: {formatDate(member.invitedAt)}
+                  {member.invitedAt && <span>Invited At: {formatDate(member.invitedAt)}</span>}
                 </div>
                 <div className="member-updatedAt">
-                  Updated At: {formatDate(member.updatedAt)}
+                  {member.updatedAt && <span>Updated At: {formatDate(member.updatedAt)}</span>}
                 </div>
               </div>
               <div className="member-actions">
@@ -71,7 +71,11 @@ export function ViewMembers() {
                   title="Change Role"
                   onClick={() => setShowOptions(member._id)}
                   disabled={member.role === "owner"}
-                  style={member.role === "owner" ? { opacity: 0.6, cursor: "not-allowed" } : {}}
+                  style={
+                    member.role === "owner"
+                      ? { opacity: 0.6, cursor: "not-allowed" }
+                      : {}
+                  }
                 >
                   Change Role
                 </button>
