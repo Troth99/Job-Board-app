@@ -10,7 +10,12 @@ const availableRoles = ["admin", "recruiter", "member"];
 export function ViewMembers() {
   const { companyId } = useParams();
   const [showOptions, setShowOptions] = useState<string | null>(null);
-  const { getCompanyMembers, loading, changeMemberRole } = useCompany();
+  const {
+    getCompanyMembers,
+    loading,
+    changeMemberRole,
+    kickMemberFromCompany,
+  } = useCompany();
   const [members, setMembers] = useState<CompanyMember[]>([]);
 
   useEffect(() => {
@@ -39,6 +44,18 @@ export function ViewMembers() {
       console.error("Failed to update the role.", error);
     }
   };
+
+  const kickMemberHandler = async (memberId: string) => {
+    if (!companyId) return;
+    try {
+      await kickMemberFromCompany(companyId, memberId);
+      setMembers((prevMembers: CompanyMember[]) =>
+        prevMembers.filter((m) => m._id !== memberId),
+      );
+    } catch (error) {
+      console.error('Failed to kick member from the company', error)
+    }
+  };
   return (
     <div className="member-list-page">
       <div className="members-list-container">
@@ -59,10 +76,14 @@ export function ViewMembers() {
                     member.invitedBy?._id}
                 </div>
                 <div className="member-invitedAt">
-                  {member.invitedAt && <span>Invited At: {formatDate(member.invitedAt)}</span>}
+                  {member.invitedAt && (
+                    <span>Invited At: {formatDate(member.invitedAt)}</span>
+                  )}
                 </div>
                 <div className="member-updatedAt">
-                  {member.updatedAt && <span>Updated At: {formatDate(member.updatedAt)}</span>}
+                  {member.updatedAt && (
+                    <span>Updated At: {formatDate(member.updatedAt)}</span>
+                  )}
                 </div>
               </div>
               <div className="member-actions">
@@ -97,7 +118,9 @@ export function ViewMembers() {
                       ))}
                   </div>
                 )}
-                <button className="action-btn remove" title="Remove Member">
+                <button className="action-btn remove" title="Remove Member"
+                onClick={() =>kickMemberHandler(member._id)}
+                >
                   Kick
                 </button>
               </div>

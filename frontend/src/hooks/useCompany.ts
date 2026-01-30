@@ -196,7 +196,14 @@ try {
 }
 
 const kickMemberFromCompany = async (companyId: string, memberId: string) =>  {
+try {
+  const response = await request(`${API_BASE}/companies/${companyId}/member/${memberId}`, "DELETE", {})
+  return response
+} catch (error) {
+    setError('Error occured while changing the role.')
+    console.error(error)
 
+}
 }
   return {
     loading,
@@ -213,6 +220,7 @@ const kickMemberFromCompany = async (companyId: string, memberId: string) =>  {
     checkUser,
     addMemberToCompany,
     getCompanyMembers,
-    changeMemberRole
+    changeMemberRole,
+    kickMemberFromCompany
   };
 }

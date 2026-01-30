@@ -195,7 +195,6 @@ export const kickMemberFromCompanyController = async (req, res) => {
 
   try {
     const member = await CompanyMember.findById(memberId)
-
     if (!member) {
       return res.status(404).json({ message: "Member not found" });
 
@@ -213,10 +212,12 @@ export const kickMemberFromCompanyController = async (req, res) => {
       return res.status(403).json({ message: "Owners and admins cannot kick themselves" });
     }
 
-    await Company.findOneAndUpdate(companyId, { $pull: { members: member.userId } });
+    await Company.findOneAndUpdate({ _id: companyId }, { $pull: { members: member.userId } });
+
     await CompanyMember.findByIdAndDelete(memberId);
     await User.findByIdAndUpdate(member.userId, { $unset: { company: '' } })
-    res.status(200).json({ message: "Member kicked successfully" });
+
+    return res.status(200).json({ message: "Member kicked successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
 
