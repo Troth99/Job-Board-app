@@ -5,6 +5,7 @@ import useCompany from "../../../hooks/useCompany";
 import { formatDate } from "../../../utils/formData";
 import Spinner from "../../Spinner/Spinner";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
+import { useRole } from "../../../context/RoleContext";
 
 const availableRoles = ["admin", "recruiter", "member"];
 export function ViewMembers() {
@@ -16,6 +17,7 @@ export function ViewMembers() {
     changeMemberRole,
     kickMemberFromCompany,
   } = useCompany();
+  const {userRole} = useRole()
   const [members, setMembers] = useState<CompanyMember[]>([]);
 
   useEffect(() => {
@@ -53,7 +55,7 @@ export function ViewMembers() {
         prevMembers.filter((m) => m._id !== memberId),
       );
     } catch (error) {
-      console.error('Failed to kick member from the company', error)
+      console.error("Failed to kick member from the company", error);
     }
   };
   return (
@@ -67,7 +69,6 @@ export function ViewMembers() {
                 <div className="member-name">
                   {member.userId?.name || member.userId?.email || member._id}
                 </div>
-                <div className="member-email">{member.userId?.email}</div>
                 <div className="member-role">Role: {member.role}</div>
                 <div className="member-invited">
                   Invited By:{" "}
@@ -87,42 +88,54 @@ export function ViewMembers() {
                 </div>
               </div>
               <div className="member-actions">
-                <button
-                  className="action-btn edit"
-                  title="Change Role"
-                  onClick={() => setShowOptions(member._id)}
-                  disabled={member.role === "owner"}
-                  style={
-                    member.role === "owner"
-                      ? { opacity: 0.6, cursor: "not-allowed" }
-                      : {}
-                  }
-                >
-                  Change Role
-                </button>
-                {showOptions === member._id && (
-                  <div className="custom-dropdown">
-                    {availableRoles
-                      .filter((role) => role !== "owner")
-                      .map((role) => (
-                        <div
-                          key={role}
-                          className="dropdown-option"
-                          onClick={() => {
-                            changeRoleHandler(member._id, role);
-                            setShowOptions(null);
-                          }}
-                        >
-                          {role}
-                        </div>
-                      ))}
-                  </div>
+                {userRole === "owner" && member.role !== "owner" && (
+                  <>
+                    <button
+                      className="action-btn edit"
+                      title="Change Role"
+                      onClick={() => setShowOptions(member._id)}
+                    >
+                      Change Role
+                    </button>
+                    {showOptions === member._id && (
+                      <div className="custom-dropdown">
+                        {availableRoles
+                          .filter((role) => role !== "owner")
+                          .map((role) => (
+                            <div
+                              key={role}
+                              className="dropdown-option"
+                              onClick={() => {
+                                changeRoleHandler(member._id, role);
+                                setShowOptions(null);
+                              }}
+                            >
+                              {role}
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </>
                 )}
-                <button className="action-btn remove" title="Remove Member"
-                onClick={() =>kickMemberHandler(member._id)}
-                >
-                  Kick
-                </button>
+                {userRole === "owner" && member.role === "owner" && (
+                  <button
+                    className="action-btn edit"
+                    title="Change Role"
+                    disabled
+                    style={{ opacity: 0.6, cursor: "not-allowed" }}
+                  >
+                    Change Role
+                  </button>
+                )}
+                {(userRole === "owner" || userRole === "admin" || userRole === "recruiter" || userRole === "member") && (
+                  <button
+                    className="action-btn remove"
+                    title="Remove Member"
+                    onClick={() => kickMemberHandler(member._id)}
+                  >
+                    Kick
+                  </button>
+                )}
               </div>
             </div>
           ))}

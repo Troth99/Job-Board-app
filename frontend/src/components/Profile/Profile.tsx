@@ -48,7 +48,6 @@ useEffect(() => {
   const postJobNavigation = () => {
     navigate(`/company/${company?._id}/post-job`);
   };
-  console.log("MyProfile render");
 
   if (userLoading || !userData) {
     return <Spinner overlay={true} />;
