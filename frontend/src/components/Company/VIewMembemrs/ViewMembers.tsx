@@ -127,7 +127,7 @@ export function ViewMembers() {
                     Change Role
                   </button>
                 )}
-                {(userRole === "owner" || userRole === "admin" || userRole === "recruiter" || userRole === "member") && (
+                {(userRole === "owner" || userRole === "admin") && (
                   <button
                     className="action-btn remove"
                     title="Remove Member"
