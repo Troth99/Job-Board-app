@@ -17,12 +17,13 @@ function MainLayoutContent({ children, hideHeaderFooter }: Props) {
   const { setCompany } = useCompanyContext();
 
   // Set company to localStorage if the user is part of a company
-  useEffect(() => {
-    const controller = new AbortController()
-    let isMounted = true;
+    useEffect(() => {
+      const controller = new AbortController();
+      let isMounted = true;
 
     const fetchCompany = async () => {
       const user = getUserFromLocalStorage();
+        console.log("[MainLayout] User from localStorage:", user);
       if (!user?.accessToken) return;
 
       try {
@@ -31,17 +32,17 @@ function MainLayoutContent({ children, hideHeaderFooter }: Props) {
           "GET",
           {}
         );
-        if (isMounted && companyMembership?._id) {
+          console.log("[MainLayout] companyMembership from API:", companyMembership);
+          if (isMounted && companyMembership?._id) {
           setCompany(companyMembership);
           // Get fresh user data from localStorage (might have been updated by token refresh)
           const freshUser = getUserFromLocalStorage();
-          localStorage.setItem(
-            "user",
-            JSON.stringify({ ...freshUser, company: companyMembership._id })
-          );
+            const newUserData = { ...freshUser, company: companyMembership._id };
+            localStorage.setItem("user", JSON.stringify(newUserData));
+            console.log("[MainLayout] Updated user in localStorage:", newUserData);
         }
       } catch (error) {
-        console.error(error);
+          console.error("[MainLayout] Error fetching company:", error);
       }
     };
     fetchCompany();

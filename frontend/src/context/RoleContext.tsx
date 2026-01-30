@@ -14,8 +14,8 @@ export const RoleProvider = ({ children }: { children: ReactNode }) => {
   const { getUserRole } = useCompany();
   const { userData } = useUserData();
 
-  console.log(userRole)
   useEffect(() => {
+
     if (!userData || !userData.company) {
       setUserRole(null);
       return;
@@ -29,7 +29,7 @@ export const RoleProvider = ({ children }: { children: ReactNode }) => {
       }
     }
     fetchRole();
-  }, [userData?.company]);
+  }, [userData]);
 
   return (
     <RoleContext.Provider value={{ userRole, setUserRole }}>

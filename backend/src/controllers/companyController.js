@@ -67,9 +67,12 @@ export const getMyCompanyController = async (req, res) => {
   try {
     if (!req.user || !req.user._id) return res.status(401).json({ message: "Unauthorized" });
 
-    const company = await Company.findOne({ createdBy: req.user._id }).populate('createdBy', 'name email');
+   const membership = await CompanyMember.findOne({ userId: req.user._id });
+    if (!membership) {
+      return res.status(200).json(null);
+    }  
+    const company = await Company.findById(membership.companyId).populate('createdBy', 'name email');
     if (!company) {
-
       return res.status(200).json(null);
     }
 

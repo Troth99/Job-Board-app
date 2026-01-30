@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 type UserDataType = any;
 
 interface UserDataContextType {
@@ -15,6 +15,14 @@ export const useUserData = () => {
 
 export const UserDataProvider = ({ children }: { children: ReactNode }) => {
   const [userData, setUserData] = useState<UserDataType>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUserData(JSON.parse(storedUser));
+    }
+  }, []);
+
   return (
     <UserDataContext.Provider value={{ userData, setUserData }}>
       {children}
