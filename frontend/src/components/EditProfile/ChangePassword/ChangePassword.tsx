@@ -17,7 +17,7 @@ const initialForm: changePasswordForm = {
   confirmPassword: "",
 };
 
-//Change password functionallity via hash backend
+//Change password functionallity
 export default function ChangePassword() {
   const [loading, setLoading] = useState<boolean>(false);
   const { validate } = useChangePasswordValidation();
