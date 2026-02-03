@@ -58,6 +58,8 @@ export function ViewMembers() {
       console.error("Failed to kick member from the company", error);
     }
   };
+
+
   return (
     <div className="member-list-page">
       <div className="members-list-container">
