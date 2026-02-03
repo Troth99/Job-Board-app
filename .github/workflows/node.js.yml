@@ -37,28 +37,7 @@ jobs:
       - name: Build backend
         run: cd backend && npm run build || echo "No build script for backend"
 
-  deploy-frontend:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Install dependencies
-        run: cd frontend && npm ci
-      - name: Build
-        run: cd frontend && npm run build
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./frontend
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
+  
   deploy-backend:
     needs: build
     runs-on: ubuntu-latest
