@@ -37,7 +37,7 @@ jobs:
       - name: Build backend
         run: cd backend && npm run build || echo "No build script for backend"
 
-  
+
   deploy-backend:
     needs: build
     runs-on: ubuntu-latest
