@@ -16,7 +16,9 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://job-board-three-omega.vercel.app"  
+    "https://job-board-three-omega.vercel.app", // main domain
+    "https://job-board-74qdhf074-svezhens-projects.vercel.app", //preview domain
+    "https://job-board-6t11trexl-svezhens-projects.vercel.app" //Production deployment
   ],
   credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'], 
