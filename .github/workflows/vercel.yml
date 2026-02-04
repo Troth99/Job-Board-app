@@ -3,7 +3,7 @@ name: Vercel Production Deployment
 on:
   push:
     branches:
-      - new-feature
+      - main
 
 jobs:
   deploy-production:
@@ -13,11 +13,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Pull Vercel Project Settings
-        run: npx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         working-directory: frontend
 
       - name: Build with Vercel
         run: npx vercel build
+        working-directory: frontend
 
       - name: Deploy to Vercel (Production)
         uses: amondnet/vercel-action@v25
@@ -25,6 +26,6 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: "--prod"
+          vercel-args: '--prod'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           scope: ${{ secrets.VERCEL_ORG_ID }}
