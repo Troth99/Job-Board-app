@@ -11,7 +11,7 @@ export function RoleGuard({ allowedRoles, children }: {
   if (userRole == null) {
     return <>{children}</>;
   }
-console.log(userRole)
+
   if (!allowedRoles.includes(userRole)) {
     return <Navigate to="/not-authorized" />;
   }

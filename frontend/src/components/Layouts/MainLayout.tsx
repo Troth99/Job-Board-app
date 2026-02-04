@@ -3,7 +3,10 @@ import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Outlet } from "react-router";
 import { getUserFromLocalStorage } from "../../hooks/useAuth";
-import { CompanyProvider, useCompanyContext } from "../../context/CompanyContext";
+import {
+  CompanyProvider,
+  useCompanyContext,
+} from "../../context/CompanyContext";
 import useApiRequester from "../../hooks/useApiRequester";
 import { API_BASE } from "../../services/api";
 
@@ -17,47 +20,44 @@ function MainLayoutContent({ children, hideHeaderFooter }: Props) {
   const { setCompany } = useCompanyContext();
 
   // Set company to localStorage if the user is part of a company
-    useEffect(() => {
-      const controller = new AbortController();
-      let isMounted = true;
+  useEffect(() => {
+    const controller = new AbortController();
+    let isMounted = true;
 
     const fetchCompany = async () => {
       const user = getUserFromLocalStorage();
-        console.log("[MainLayout] User from localStorage:", user);
       if (!user?.accessToken) return;
 
       try {
         const companyMembership = await request(
           `${API_BASE}/companies/my-company`,
           "GET",
-          {}
+          {},
         );
-          console.log("[MainLayout] companyMembership from API:", companyMembership);
-          if (isMounted && companyMembership?._id) {
+        if (isMounted && companyMembership?._id) {
           setCompany(companyMembership);
           // Get fresh user data from localStorage (might have been updated by token refresh)
           const freshUser = getUserFromLocalStorage();
-            const newUserData = { ...freshUser, company: companyMembership._id };
-            localStorage.setItem("user", JSON.stringify(newUserData));
-            console.log("[MainLayout] Updated user in localStorage:", newUserData);
+          const newUserData = { ...freshUser, company: companyMembership._id };
+          localStorage.setItem("user", JSON.stringify(newUserData));
         }
       } catch (error) {
-          console.error("[MainLayout] Error fetching company:", error);
+        console.error("[MainLayout] Error fetching company:", error);
       }
     };
     fetchCompany();
 
     return () => {
       isMounted = false;
-      controller.abort()
+      controller.abort();
     };
   }, []);
 
   return (
     <div className="app-container">
-      {!hideHeaderFooter && <Header  />}
-        {children}
-        <Outlet /> 
+      {!hideHeaderFooter && <Header />}
+      {children}
+      <Outlet />
       {!hideHeaderFooter && <Footer />}
     </div>
   );
