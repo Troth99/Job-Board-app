@@ -49,3 +49,4 @@ jobs:
           vercel-args: '--prod'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           scope: ${{ secrets.VERCEL_ORG_ID }}
+          working-directory: frontend
