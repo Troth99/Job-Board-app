@@ -1,6 +1,7 @@
 .post-job-container {
   font-family: 'Arial', sans-serif;
   max-width: 800px;
+  width: 100%;
   margin: 5em auto 10em auto;
   padding: 30px;
   background-color: #cfcacaa8;
