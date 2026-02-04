@@ -35,3 +35,4 @@ jobs:
           vercel-args: '--prebuilt'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           scope: ${{ secrets.VERCEL_ORG_ID }}
+          working-directory: frontend
