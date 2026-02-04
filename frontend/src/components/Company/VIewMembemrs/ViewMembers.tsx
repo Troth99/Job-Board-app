@@ -47,7 +47,7 @@ export function ViewMembers() {
     }
   };
 
-//Kick member
+
   
   const kickMemberHandler = async (memberId: string) => {
     if (!companyId) return;
