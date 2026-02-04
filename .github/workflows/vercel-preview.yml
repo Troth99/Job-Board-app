@@ -13,19 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Ensure Vercel Project Settings are committed
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          cd frontend
-          if [ -f .vercel/project.json ]; then
-            git add .vercel/project.json
-            git commit -m "Add Vercel project settings for frontend" || echo "No changes to commit"
-            git push || echo "No changes to push"
-          fi
 
       - name: Install dependencies
         run: npm install
+        working-directory: frontend
+
+      - name: Pull Vercel Project Settings
+        run: npx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
         working-directory: frontend
 
       - name: Build with Vercel
