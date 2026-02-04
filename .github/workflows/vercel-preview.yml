@@ -2,9 +2,9 @@
 name: Vercel Preview Deployment
 
 on:
-  push:
+  pull_request:
     branches:
-      - new-feature
+      - main
 
 jobs:
   deploy-preview:
