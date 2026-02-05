@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createNotification } from "../controllers/notificationsContoller.js";
+import { createNotification, getUserNotifications, markAsRead } from "../controllers/notificationsContoller.js";
 
 
 
