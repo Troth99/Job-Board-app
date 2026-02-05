@@ -9,10 +9,8 @@ export const createNotification = async (req, res) => {
             .populate("user", "name email firstName lastName")
             .populate("sender", "name email")
             .populate("company", "name");
-        console.log(populated)
         res.status(201).json(populated)
     } catch (error) {
-        console.log(error.message)
         res.status(400).json({ error: error.message });
     };
 
