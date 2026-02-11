@@ -1,5 +1,24 @@
 import Notification from "../models/Notification.js"
-import { clients } from "../routes/notificationRoutes.js";
+// SSE stream handler
+export const clients = new Map()
+
+export const sseStream = (req, res) => {
+    const userId = req.params.userId;
+
+    res.set({
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        Connection: 'keep-alive'
+    });
+    res.flushHeaders();
+
+    clients.set(userId, res);
+
+    req.on('close', () => {
+        clients.delete(userId);
+        res.end();
+    });
+};
 
 
 //Create notification
@@ -13,7 +32,7 @@ export const createNotification = async (req, res) => {
 
         const userId = populated.user._id.toString();
         const clientRes = clients.get(userId)
-        console.log("SSE clients:", Array.from(clients.keys()));
+        
         if (clientRes) {
             clientRes.write(`data: ${JSON.stringify(populated)}\n\n`);
         }

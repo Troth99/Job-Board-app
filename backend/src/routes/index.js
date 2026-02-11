@@ -14,5 +14,5 @@ router.use('/jobs', jobRoutes)
 router.use('/companies', companyRoutes)
 router.use('/categories', categoriesRoutes )
 router.use('/applications', applicationRoutes)
-router.use('/notification', notifications)
+router.use('/notifications', notifications)
 export default router;
