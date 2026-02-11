@@ -63,6 +63,10 @@ const ResetPassword = lazy(
   () => import("./components/auth/Reset-password/Reset-password")
 );
 
+const Notification = lazy(
+  () => import("./components/Notifications/Notifications")
+)
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
@@ -317,6 +321,18 @@ function App() {
               </RoleGuard>
             }
           />
+        </Route>
+        <Route element={<ProtectedRoutes />}>
+          <Route element={<MainLayout />}>
+            <Route
+              path="/notifications"
+              element={
+                <Suspense fallback={<FullPageSpinner />}>
+                  <Notification />
+                </Suspense>
+              }
+            />
+          </Route>
         </Route>
 
         <Route element={<MainLayout />}>
