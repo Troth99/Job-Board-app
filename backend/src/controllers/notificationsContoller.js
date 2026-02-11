@@ -1,4 +1,5 @@
 import Notification from "../models/Notification.js"
+
 // SSE stream handler
 export const clients = new Map()
 
@@ -53,6 +54,8 @@ export const getUserNotifications = async (req, res) => {
             .populate("company", "name")
             .sort({ createdAt: -1 });
 
+
+            //Add userId to fetch userId unread notificatitions
         res.json(notifications)
     } catch (error) {
         res.status(400).json({ error: err.message });

@@ -7,6 +7,7 @@ import { getRefreshToken } from "../../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated } from "../../redux/authSlice";
 import { RootState } from "../../redux/store";
+import { NotificationMailIcon } from "./NotificationMailIcon";
 
 export function Header() {
   const dispatch = useDispatch();
@@ -52,10 +53,7 @@ export function Header() {
         <div className="auth-buttons mobile-auth">
           {isAuthenticated ? (
             <>
-              <Link to="/notifications" className="notification-link">
-                <i className="fa-regular fa-envelope"></i>{" "}
-              </Link>
-
+           <NotificationMailIcon />
               <Link to="/profile" className="btn-profile">
                 Profile
               </Link>
@@ -76,9 +74,7 @@ export function Header() {
       <div className="auth-buttons desktop-auth">
         {isAuthenticated ? (
           <>
-            <Link to="/notifications" className="notification-link">
-              <i className="fa-regular fa-envelope"></i>{" "}
-            </Link>
+     <NotificationMailIcon />
 
             <Link to="/profile" className="btn-profile">
               Profile

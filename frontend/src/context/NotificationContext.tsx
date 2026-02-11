@@ -19,23 +19,24 @@ export function NotificationProvider({userId, children}: NotificationProviderPro
     const [notifications, setNotifications] = useState<Notification[]>([]);
     const [unreadCount, setUnreadCount] = useState(0);
 
-    useEffect(() => {
-      console.log(userId)
-        if (!userId) return;
+  useEffect(() => {
+    if (!userId) return;
 
-          console.log("SSE URL:", `${API_URL}/api/notification/stream/${userId}`);
-
+    // to do get backend notificaiton api
     const evtSource = new EventSource(`${API_URL}/api/notifications/stream/${userId}`);
-
 
     evtSource.onmessage = (event) => {
       const notification = JSON.parse(event.data);
       setNotifications((prev) => [notification, ...prev]);
-      setUnreadCount((prev) => prev + 1);
+      setUnreadCount((prev) => {
+        const newCount = prev + 1;
+        return newCount;
+      });
     };
+
     return () => evtSource.close();
   }, [userId]);
-   
+
   return (
      <NotificationContext.Provider value={{ notifications, unreadCount, setNotifications, setUnreadCount }}>
       {children}
