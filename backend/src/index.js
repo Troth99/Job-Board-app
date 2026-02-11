@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import routes from "./routes/index.js";
 import cors from "cors";
+import notificationRoutes from "./routes/notificationRoutes.js";
+
 
 
 
@@ -29,7 +31,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch(err => console.error('MongoDB connection error:', err))
 
 app.use('/api', routes)
-
+app.use('/api/notifications', notificationRoutes);
 app.use('/', (req, res) => {
   res.send('API is up and running!');
 });
