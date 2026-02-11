@@ -2,39 +2,39 @@ import { useEffect, useState } from "react";
 import { useThemeContext } from "../../context/ThemeContext";
 import "./Header.css";
 import "./Responsive.css";
-import { Link} from "react-router";
+import { Link } from "react-router";
 import { getRefreshToken } from "../../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
-import { setAuthenticated } from "../../redux/authSlice";  
+import { setAuthenticated } from "../../redux/authSlice";
 import { RootState } from "../../redux/store";
 
-
 export function Header() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const { theme, toggleTheme } = useThemeContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated); 
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated,
+  );
 
+  useEffect(() => {
+    const token = getRefreshToken();
 
-useEffect(() => {
-  const token = getRefreshToken();
-
-
-  if (!token) {
-    dispatch(setAuthenticated({ isAuthenticated: false, }));
-  } else {
-    dispatch(setAuthenticated({ isAuthenticated: true }));
-  }
-}, [dispatch]);
-
+    if (!token) {
+      dispatch(setAuthenticated({ isAuthenticated: false }));
+    } else {
+      dispatch(setAuthenticated({ isAuthenticated: true }));
+    }
+  }, [dispatch]);
 
   const hamburgerMenuHandler = () => {
     setIsMenuOpen((isMenuOpen) => !isMenuOpen);
   };
   return (
     <header className={`header ${theme}`}>
-      <Link className="logo" to="/">JB</Link>
+      <Link className="logo" to="/">
+        JB
+      </Link>
 
       <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
         <ul>
@@ -43,36 +43,55 @@ useEffect(() => {
           </li>
           <li>
             <Link to="/jobs">Jobs </Link>
-          </li> 
+          </li>
           <li>
             <Link to="/companies">Companies</Link>
           </li>
         </ul>
 
         <div className="auth-buttons mobile-auth">
-        {isAuthenticated ? (
-    <>
-      <Link to="/profile" className="btn-profile">Profile</Link>
-  
-    </>
-  ) : (
-    <>
-      <Link to="/login" className="btn-login">Login</Link>
-      <Link to="/register" className="btn-register">Register</Link>
-    </>
-  )}
+          {isAuthenticated ? (
+            <>
+              <Link to="/notifications" className="notification-link">
+                <i className="fa-regular fa-envelope"></i>{" "}
+              </Link>
+
+              <Link to="/profile" className="btn-profile">
+                Profile
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn-login">
+                Login
+              </Link>
+              <Link to="/register" className="btn-register">
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </nav>
 
-     <div className="auth-buttons desktop-auth">
+      <div className="auth-buttons desktop-auth">
         {isAuthenticated ? (
           <>
-            <Link to="/profile" className="btn-profile">Profile</Link>
+            <Link to="/notifications" className="notification-link">
+              <i className="fa-regular fa-envelope"></i>{" "}
+            </Link>
+
+            <Link to="/profile" className="btn-profile">
+              Profile
+            </Link>
           </>
         ) : (
           <>
-            <Link to="/login" className="btn-login">Login</Link>
-            <Link to="/register" className="btn-register">Register</Link>
+            <Link to="/login" className="btn-login">
+              Login
+            </Link>
+            <Link to="/register" className="btn-register">
+              Register
+            </Link>
           </>
         )}
       </div>
