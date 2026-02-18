@@ -67,6 +67,7 @@ body[data-theme="dark"] .error-message {
   display: flex;
   flex-direction: column;
 }
+
 .main-content {
   flex: 1;
 }

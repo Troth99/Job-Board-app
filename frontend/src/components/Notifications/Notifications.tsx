@@ -8,8 +8,8 @@ import { getUserFromLocalStorage } from "../../hooks/useAuth";
 
 function Notifications() {
   const [notifications, setNotifications] = useState<
-    Notification | undefined
-  >();
+    Notification[]
+  >([]);
   const { getAllNotificationsForUser } = useNotification();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -39,54 +39,54 @@ function Notifications() {
     <div className="notification-list">
       <h2 className="notification-list__title">Notifications</h2>
       <ul className="notification-list__items">
-        <li className="notification-item notification-item--unread">
-          <div className="notification-item__icon">
-            <i className="fa fa-envelope"></i>
-          </div>
-          <div className="notification-item__content">
-            <div className="notification-item__heading">New Message</div>
-            <div className="notification-item__text">
-              You have a new message from <b>Ivan Petrov</b>.
+        {Array.isArray(notifications) && notifications.length > 0 ? (
+          notifications.map((n) => (
+            <li
+              key={n._id}
+              className={`notification-item notification-item--${n.isRead ? "read" : "unread"}`}
+            >
+              <div className="notification-item__icon">
+                <i
+                  className={
+                    n.type === "message"
+                      ? "fa fa-envelope"
+                      : n.type === "application"
+                      ? "fa fa-briefcase"
+                      : n.type === "invitation"
+                      ? "fa fa-city"
+                      : "fa fa-bell"
+                  }
+                ></i>
+              </div>
+              <div className="notification-item__content">
+                <div className="notification-item__heading">
+                  {n.type === "message"
+                    ? "New Message"
+                    : n.type === "application"
+                    ? "Application Update"
+                    : n.type === "invitation"
+                    ? "Company Invitation"
+                    : "Notification"}
+                </div>
+                <div className="notification-item__text">{n.message}</div>
+                <div className="notification-item__meta">
+                  <span className="notification-item__time">
+                    {new Date(n.createdAt).toLocaleString()}
+                  </span>
+                </div>
+              </div>
+            </li>
+          ))
+        ) : (
+          <li className="notification-item notification-item--empty">
+            <div className="notification-item__content">
+              <div className="notification-item__heading">No notifications</div>
+              <div className="notification-item__text">
+                You have no notifications at the moment.
+              </div>
             </div>
-            <div className="notification-item__meta">
-              <span className="notification-item__time">
-                18.02.2026, 14:32:10
-              </span>
-            </div>
-          </div>
-        </li>
-        <li className="notification-item notification-item--unread">
-          <div className="notification-item__icon">
-            <i className="fa fa-briefcase"></i>
-          </div>
-          <div className="notification-item__content">
-            <div className="notification-item__heading">Application Update</div>
-            <div className="notification-item__text">
-              Your application for <b>Frontend Developer</b> was accepted!
-            </div>
-            <div className="notification-item__meta">
-              <span className="notification-item__time">
-                18.02.2026, 13:10:05
-              </span>
-            </div>
-          </div>
-        </li>
-        <li className="notification-item notification-item--unread">
-          <div className="notification-item__icon">
-            <i className="fa fa-city"></i>
-          </div>
-          <div className="notification-item__content">
-            <div className="notification-item__heading">Company Invitation</div>
-            <div className="notification-item__text">
-              You have a new invitation from <b>Acme Corp</b>.
-            </div>
-            <div className="notification-item__meta">
-              <span className="notification-item__time">
-                18.02.2026, 12:00:00
-              </span>
-            </div>
-          </div>
-        </li>
+          </li>
+        )}
       </ul>
     </div>
   );
