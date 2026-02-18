@@ -8,15 +8,19 @@ export function useNotification() {
 
   const getAllNotificationsForUser = async (userId: string) => {
     if (!userId) return;
+    setLoading(true)
     try {
-      const response = request(
+      const response = await request(
         `${API_BASE}/notifications/${userId}`,
         "GET",
         {},
       );
-
-      
-    } catch (error) {}
+      return response
+    } catch (error) {
+      console.error('Error fetching notifications for user.', error)
+    }finally {
+      setLoading(false)
+    }
   };
 
   return {
