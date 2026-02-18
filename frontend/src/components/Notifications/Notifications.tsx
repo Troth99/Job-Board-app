@@ -5,21 +5,24 @@ import { useEffect, useState } from "react";
 import { Notification } from "../../interfaces/Notification.model";
 import { useNotification } from "../../hooks/useNotification";
 import { getUserFromLocalStorage } from "../../hooks/useAuth";
+import { getName } from "./nameHelper";
+import { formatDate } from "../../utils/formData";
 
 function Notifications() {
-  const [notifications, setNotifications] = useState<
-    Notification[]
-  >([]);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
   const { getAllNotificationsForUser } = useNotification();
   const [loading, setLoading] = useState<boolean>(false);
 
   const userId = getUserFromLocalStorage()._id;
 
+
+  //To do read update for read messages.
+  
   const fetchNotificaitons = async () => {
     setLoading(true);
     try {
       const response = await getAllNotificationsForUser(userId);
-      console.log(response)
+      console.log(response);
       setNotifications(response);
     } catch (error) {
       console.error(
@@ -39,45 +42,7 @@ function Notifications() {
     <div className="notification-list">
       <h2 className="notification-list__title">Notifications</h2>
       <ul className="notification-list__items">
-        {Array.isArray(notifications) && notifications.length > 0 ? (
-          notifications.map((n) => (
-            <li
-              key={n._id}
-              className={`notification-item notification-item--${n.isRead ? "read" : "unread"}`}
-            >
-              <div className="notification-item__icon">
-                <i
-                  className={
-                    n.type === "message"
-                      ? "fa fa-envelope"
-                      : n.type === "application"
-                      ? "fa fa-briefcase"
-                      : n.type === "invitation"
-                      ? "fa fa-city"
-                      : "fa fa-bell"
-                  }
-                ></i>
-              </div>
-              <div className="notification-item__content">
-                <div className="notification-item__heading">
-                  {n.type === "message"
-                    ? "New Message"
-                    : n.type === "application"
-                    ? "Application Update"
-                    : n.type === "invitation"
-                    ? "Company Invitation"
-                    : "Notification"}
-                </div>
-                <div className="notification-item__text">{n.message}</div>
-                <div className="notification-item__meta">
-                  <span className="notification-item__time">
-                    {new Date(n.createdAt).toLocaleString()}
-                  </span>
-                </div>
-              </div>
-            </li>
-          ))
-        ) : (
+        {notifications.length === 0 && (
           <li className="notification-item notification-item--empty">
             <div className="notification-item__content">
               <div className="notification-item__heading">No notifications</div>
@@ -87,6 +52,47 @@ function Notifications() {
             </div>
           </li>
         )}
+        {notifications.map((n) => {
+          let icon = "fa fa-bell";
+          let heading = "Notification";
+          let text = n.message;
+          if (n.type === "message") {
+            icon = "fa fa-envelope";
+            heading = "New Message";
+            text = `You have a new message from <b>${getName(n.user)}</b>.`;
+          } else if (n.type === "application") {
+            icon = "fa fa-briefcase";
+            heading = "Application Update";
+            text = n.message;
+          } else if (n.type === "company_invite") {
+            icon = "fa fa-building";
+            heading = "Company Invitation";
+            text = `You have a new invitation from <b>${getName(n.company)}</b>.`;
+          }
+          return (
+            <li
+              key={n._id}
+              className={`notification-item notification-item--${n.isRead ? "read" : "unread"}`}
+              tabIndex={0}
+            >
+              <div className="notification-item__icon">
+                <i className={icon}></i>
+              </div>
+              <div className="notification-item__content">
+                <div className="notification-item__heading">{heading}</div>
+                <div
+                  className="notification-item__text"
+                  dangerouslySetInnerHTML={{ __html: text }}
+                />
+                <div className="notification-item__meta">
+                  <span className="notification-item__time">
+                  {formatDate(n.createdAt)}
+                  </span>
+                </div>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
