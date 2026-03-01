@@ -21,7 +21,7 @@ import { RoleGuard } from "./RouteGuards/RoleGuard";
 import useCompany from "./hooks/useCompany";
 import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
 import { ForgotPassowrd } from "./components/auth/forgot-password/Forgot-Password";
-import CompanyInvitationNotification from "./components/Notifications/companyInvitationNotification/companyInvitationNotification";
+import CompanyInvitationNotification from "./components/Notifications/companyInvitationNotification/CompanyInvitationNotification";
 
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 
@@ -69,7 +69,7 @@ const Notification = lazy(
 )
 
 const NotificatonCompanyINvite = lazy(
-  () => import("./components/Notifications/companyInvitationNotification/companyInvitationNotification")
+() => import("./components/Notifications/companyInvitationNotification/CompanyInvitationNotification")
 )
 
 

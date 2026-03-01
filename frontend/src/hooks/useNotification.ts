@@ -23,6 +23,18 @@ export function useNotification() {
     }
   };
 
+
+  const getNotificationById = async (id: string) => {
+    setLoading(true)
+    if(!id) return
+    const response = await request(`${API_BASE}/notifications/${id}`, "GET", {})
+    return response
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
   return {
     getAllNotificationsForUser,
   };

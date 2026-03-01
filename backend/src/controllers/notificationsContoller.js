@@ -77,4 +77,20 @@ export const markAsRead = async (req, res) => {
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
+    
+};
+
+export const getNotificationById = async (req, res) => {
+    try {
+        const notification = await Notification.findById(req.params.id)
+            .populate("user", "name email firstName lastName")
+            .populate("sender", "name email")
+            .populate("company", "name");
+        if (!notification) {
+            return res.status(404).json({ error: "Notification not found" });
+        }
+        res.json(notification);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 };
