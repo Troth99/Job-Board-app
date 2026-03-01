@@ -342,11 +342,13 @@ function App() {
         </Route>
 
         <Route element={<ProtectedRoutes />}>
+        <Route element={<MainLayout />}>
           <Route path="/company-invitation/:notificationId" element={
             <Suspense fallback={<FullPageSpinner />}>
               <CompanyInvitationNotification />
             </Suspense>
           } />
+          </Route>
         </Route>
 
         <Route element={<MainLayout />}>

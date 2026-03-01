@@ -7,6 +7,7 @@ import { useNotification } from "../../hooks/useNotification";
 import { getUserFromLocalStorage } from "../../hooks/useAuth";
 import { getName } from "./nameHelper";
 import { formatDate } from "../../utils/formData";
+import { useNavigate } from "react-router";
 
 function Notifications() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -14,8 +15,8 @@ function Notifications() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const userId = getUserFromLocalStorage()._id;
-
-
+  const navigate = useNavigate()
+  
   //To do read update for read messages.
   
   const fetchNotificaitons = async () => {
@@ -75,6 +76,8 @@ function Notifications() {
               key={n._id}
               className={`notification-item notification-item--${n.isRead ? "read" : "unread"}`}
               tabIndex={0}
+                    onClick={n.type === "company_invite" ? () => navigate(`/company-invitation/${n._id}`) : undefined}
+
             >
               <div className="notification-item__icon">
                 <i className={icon}></i>
