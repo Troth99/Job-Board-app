@@ -11,7 +11,7 @@ export function useNotification() {
     setLoading(true);
     try {
       const response = await request(
-        `${API_BASE}/notifications/${userId}`,
+        `${API_BASE}/notifications/user/${userId}`,
         "GET",
         {},
       );
