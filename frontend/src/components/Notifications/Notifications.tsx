@@ -68,6 +68,7 @@ function Notifications() {
             icon = "fa fa-building";
             heading = "Company Invitation";
             text = `You have a new invitation from <b>${getName(n.company)}</b>.`;
+            
           }
           return (
             <li

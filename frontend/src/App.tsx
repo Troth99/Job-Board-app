@@ -21,6 +21,7 @@ import { RoleGuard } from "./RouteGuards/RoleGuard";
 import useCompany from "./hooks/useCompany";
 import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
 import { ForgotPassowrd } from "./components/auth/forgot-password/Forgot-Password";
+import CompanyInvitationNotification from "./components/Notifications/companyInvitationNotification/companyInvitationNotification";
 
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 
@@ -66,6 +67,11 @@ const ResetPassword = lazy(
 const Notification = lazy(
   () => import("./components/Notifications/Notifications")
 )
+
+const NotificatonCompanyINvite = lazy(
+  () => import("./components/Notifications/companyInvitationNotification/companyInvitationNotification")
+)
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -333,6 +339,14 @@ function App() {
               }
             />
           </Route>
+        </Route>
+
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/company-invitation/:notificationId" element={
+            <Suspense fallback={<FullPageSpinner />}>
+              <CompanyInvitationNotification />
+            </Suspense>
+          } />
         </Route>
 
         <Route element={<MainLayout />}>
