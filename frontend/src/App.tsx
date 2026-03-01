@@ -22,6 +22,7 @@ import useCompany from "./hooks/useCompany";
 import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
 import { ForgotPassowrd } from "./components/auth/forgot-password/Forgot-Password";
 import CompanyInvitationNotification from "./components/Notifications/companyInvitationNotification/CompanyInvitationNotification";
+import { NotificationOwnerGuard } from "./RouteGuards/notificationGuard";
 
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 
@@ -343,11 +344,13 @@ function App() {
 
         <Route element={<ProtectedRoutes />}>
         <Route element={<MainLayout />}>
+        <Route element={<NotificationOwnerGuard />}>
           <Route path="/company-invitation/:notificationId" element={
             <Suspense fallback={<FullPageSpinner />}>
               <CompanyInvitationNotification />
             </Suspense>
           } />
+          </Route>
           </Route>
         </Route>
 

@@ -9,7 +9,7 @@ router.get('/stream/:userId', sseStream);
 
 router.post('/', createNotification);
 router.get("/:userId", getUserNotifications);
-router.get(':/id', getNotificationById)
+router.get('/:id', getNotificationById)
 router.patch("/read/:id", markAsRead);
 
 
