@@ -20,7 +20,7 @@ export function NotificationOwnerGuard() {
           return;
         }
         const notif = await getNotificationById(notificationId as string);
-        
+
         const notifUserId =
           notif?.user?._id?.toString?.() || notif?.user?.toString?.() || "";
 
@@ -40,7 +40,6 @@ export function NotificationOwnerGuard() {
       }
     }
     checkAccess();
-    // eslint-disable-next-line
   }, [notificationId, userId, getNotificationById]);
 
   if (allowed === null) return <Spinner inline />;

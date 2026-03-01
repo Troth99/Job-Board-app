@@ -57,27 +57,30 @@ function Notifications() {
           let icon = "fa fa-bell";
           let heading = "Notification";
           let text = n.message;
+          let onClickHandler = undefined;
+
           if (n.type === "message") {
             icon = "fa fa-envelope";
             heading = "New Message";
             text = `You have a new message from <b>${getName(n.user)}</b>.`;
+            onClickHandler = () => navigate(`/message/${n._id}`);
           } else if (n.type === "application") {
             icon = "fa fa-briefcase";
             heading = "Application Update";
             text = n.message;
+            onClickHandler = () => navigate(`/application-update/${n._id}`);
           } else if (n.type === "company_invite") {
             icon = "fa fa-building";
             heading = "Company Invitation";
             text = `You have a new invitation from <b>${getName(n.company)}</b>.`;
-            
+            onClickHandler = () => navigate(`/company-invitation/${n._id}`);
           }
           return (
             <li
               key={n._id}
               className={`notification-item notification-item--${n.isRead ? "read" : "unread"}`}
               tabIndex={0}
-                    onClick={n.type === "company_invite" ? () => navigate(`/company-invitation/${n._id}`) : undefined}
-
+              onClick={onClickHandler}
             >
               <div className="notification-item__icon">
                 <i className={icon}></i>

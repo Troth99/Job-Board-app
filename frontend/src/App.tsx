@@ -23,56 +23,58 @@ import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
 import { ForgotPassowrd } from "./components/auth/forgot-password/Forgot-Password";
 import CompanyInvitationNotification from "./components/Notifications/companyInvitationNotification/CompanyInvitationNotification";
 import { NotificationOwnerGuard } from "./RouteGuards/notificationGuard";
+import ApplicationUpdateNotification from "./components/Notifications/ApplicaitonUpdateNotification/ApplicationUpdateNotification";
+import NewmessageNotification from "./components/Notifications/NewMessageNotification/NewMessageNotification";
 
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 
 // Lazy loaded components
 const LoginComponent = lazy(() => import("./components/auth/Login/Login"));
 const RegisterComponent = lazy(
-  () => import("./components/auth/Register/Register")
+  () => import("./components/auth/Register/Register"),
 );
 const RegisterCompany = lazy(
-  () => import("./components/Company/RegisterCompany/RegisterCompany")
+  () => import("./components/Company/RegisterCompany/RegisterCompany"),
 );
 const MyProfile = lazy(() => import("./components/Profile/Profile"));
 const EditProfile = lazy(() => import("./components/EditProfile/EditProfile"));
 const ChangePassword = lazy(
-  () => import("./components/EditProfile/ChangePassword/ChangePassword")
+  () => import("./components/EditProfile/ChangePassword/ChangePassword"),
 );
 const PostJob = lazy(() => import("./components/Jobs/CreateJob/CreateJob"));
 const EditJob = lazy(() => import("./components/Jobs/EditJob/EditJob"));
 const DetailsJob = lazy(
-  () => import("./components/Jobs/DetailsJob/DetailsJob")
+  () => import("./components/Jobs/DetailsJob/DetailsJob"),
 );
 const ViewAllJobs = lazy(
-  () => import("./components/Jobs/ViewAllJobs/ViewAllJobs")
+  () => import("./components/Jobs/ViewAllJobs/ViewAllJobs"),
 );
 const ViewAllJobsForCompany = lazy(
   () =>
-    import("./components/Company/ViewAllJobsForCompany/ViewAllJobsForCompany")
+    import("./components/Company/ViewAllJobsForCompany/ViewAllJobsForCompany"),
 );
 const ViewAllCompanies = lazy(
-  () => import("./components/Company/ViewAllCompanies/ViewAllCompanies")
+  () => import("./components/Company/ViewAllCompanies/ViewAllCompanies"),
 );
 
 //lazy loaded components
 const MemberDashboard = lazy(
-  () => import("./components/Company/MemberDashboard/MemberDashboard")
+  () => import("./components/Company/MemberDashboard/MemberDashboard"),
 );
 const HomeSection = lazy(() => import("./components/Home/HomeSection"));
 
 const ResetPassword = lazy(
-  () => import("./components/auth/Reset-password/Reset-password")
+  () => import("./components/auth/Reset-password/Reset-password"),
 );
 
 const Notification = lazy(
-  () => import("./components/Notifications/Notifications")
-)
+  () => import("./components/Notifications/Notifications"),
+);
 
 const NotificatonCompanyINvite = lazy(
-() => import("./components/Notifications/companyInvitationNotification/CompanyInvitationNotification")
-)
-
+  () =>
+    import("./components/Notifications/companyInvitationNotification/CompanyInvitationNotification"),
+);
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -102,7 +104,7 @@ function App() {
       while (retries < maxRetries) {
         try {
           const response = await fetch(
-            "https://job-board-backend-7gfd.onrender.com/"
+            "https://job-board-backend-7gfd.onrender.com/",
           );
           if (response.ok) {
             setServerReady(true);
@@ -344,13 +346,20 @@ function App() {
 
         <Route element={<ProtectedRoutes />}>
         <Route element={<MainLayout />}>
-        <Route element={<NotificationOwnerGuard />}>
-          <Route path="/company-invitation/:notificationId" element={
-            <Suspense fallback={<FullPageSpinner />}>
-              <CompanyInvitationNotification />
-            </Suspense>
-          } />
-          </Route>
+          <Route element={<NotificationOwnerGuard />}>
+            <Route
+              path="/company-invitation/:notificationId"
+              element={<CompanyInvitationNotification />}
+            />
+            <Route
+              path="/message/:notificationId"
+              element={<NewmessageNotification />}
+            />
+            <Route
+              path="/application-update/:notificationId"
+              element={<ApplicationUpdateNotification />}
+            />
+            </Route>
           </Route>
         </Route>
 
