@@ -1,0 +1,260 @@
+@media (max-width: 600px) {
+  .company-invitation-notification {
+    padding: 10px 0;
+    min-height: 100vh;
+  }
+  .company-invitation-card {
+    width: 98vw;
+    min-width: unset;
+    max-width: 99vw;
+    padding: 18px 8px 18px 8px;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px 0 rgba(30,34,54,0.18);
+  }
+  .company-invitation-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .company-invitation-message,
+  .company-invitation-meta,
+  .company-invitation-question {
+    font-size: 1rem;
+    padding: 8px 4px;
+    word-break: break-word;
+  }
+  .company-invitation-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .company-invitation-actions {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .company-invitation-accept,
+  .company-invitation-decline {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+  .invited-by-details,
+  .invited-by-email {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+}
+/* Dark theme support using [data-theme="dark"] */
+[data-theme="dark"] .company-invitation-notification {
+  background: radial-gradient(circle at 60% 40%, #232946 0%, #1a1a2e 60%, #16161a 100%);
+}
+[data-theme="dark"] .company-invitation-card {
+  background: rgba(24, 27, 43, 0.97);
+  border-image: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%) 1;
+  box-shadow: 0 12px 48px 0 rgba(20, 23, 37, 0.28), 0 2px 8px 0 rgba(30,34,54,0.18);
+}
+[data-theme="dark"] .company-invitation-title {
+  color: #3b82f6;
+  text-shadow: 0 2px 8px #232946;
+}
+[data-theme="dark"] .company-invitation-icon {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  box-shadow: 0 2px 12px 0 #3b82f633;
+}
+[data-theme="dark"] .company-invitation-message {
+  color: #e0e7ef;
+}
+[data-theme="dark"] .company-invitation-meta {
+  color: #06b6d4;
+  background: #232946;
+  border-left: 4px solid #3b82f6;
+  box-shadow: 0 2px 8px 0 rgba(6,182,212,0.13);
+}
+[data-theme="dark"] .invited-by-details {
+  color: #3b82f6;
+}
+[data-theme="dark"] .invited-by-email {
+  color: #a1a1aa;
+}
+[data-theme="dark"] .company-invitation-question {
+  color: #e0e7ef;
+  background: linear-gradient(90deg, #232946 0%, #1a1a2e 100%);
+  border-left: 5px solid #3b82f6;
+  box-shadow: 0 2px 8px 0 rgba(59,130,246,0.10);
+}
+[data-theme="dark"] .company-invitation-accept {
+  background: linear-gradient(90deg, #22d3ee 0%, #16a34a 100%);
+  color: #fff;
+}
+[data-theme="dark"] .company-invitation-accept:hover {
+  background: linear-gradient(90deg, #16a34a 0%, #22d3ee 100%);
+}
+[data-theme="dark"] .company-invitation-decline {
+  background: linear-gradient(90deg, #f87171 0%, #fbbf24 100%);
+  color: #fff;
+}
+[data-theme="dark"] .company-invitation-decline:hover {
+  background: linear-gradient(90deg, #fbbf24 0%, #f87171 100%);
+}
+.company-invitation-notification {
+  min-height: 80dvh;
+  width: 100vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: radial-gradient(circle at 60% 40%, #e0e7ff 0%, #c7d2fe 60%, #f8fafc 100%);
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+  padding-top: 4vh;
+  box-sizing: border-box;
+}
+.company-invitation-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.company-invitation-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #2563eb;
+  margin: 0;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 8px #e0e7ff;
+}
+
+.company-invitation-card {
+  background: rgba(255,255,255,0.85);
+  border-radius: 32px;
+  box-shadow: 0 12px 48px 0 rgba(60,72,88,0.18), 0 2px 8px 0 rgba(60,72,88,0.10);
+  padding: 36px 36px 12px 36px;
+  min-width: 380px;
+  max-width: 540px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid transparent;
+  border-image: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%) 1;
+  backdrop-filter: blur(8px);
+  animation: fadeInCard 0.7s cubic-bezier(.4,2,.6,1) 1;
+}
+
+.company-invitation-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px 0 #2563eb33;
+}
+
+.company-invitation-message {
+  margin: 0 0 22px 0;
+  color: #334155;
+  font-size: 1.22rem;
+  line-height: 1.8;
+  text-align: center;
+  font-weight: 500;
+}
+
+.company-invitation-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 22px;
+  margin-top: 12px;
+  font-size: 1.11rem;
+  color: #2563eb;
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 14px 26px 14px 26px;
+  box-shadow: 0 2px 8px 0 rgba(25,118,210,0.09);
+  border-left: 4px solid #38bdf8;
+}
+
+.invited-by-details {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.invited-by-email {
+  font-size: 1.04rem;
+  color: #64748b;
+  margin-left: 2px;
+  font-style: italic;
+}
+
+.company-invitation-question {
+  margin: 32px 0 22px 0;
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #1e293b;
+  background: linear-gradient(90deg, #e0e7ff 0%, #f8fafc 100%);
+  padding: 18px 32px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 2px 8px 0 rgba(25,118,210,0.10);
+  border-left: 5px solid #2563eb;
+}
+
+.company-invitation-actions {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 32px;
+  margin-bottom: 50px;
+}
+
+
+.company-invitation-accept {
+  padding: 14px 44px;
+  background: linear-gradient(90deg, #43e97b 0%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.18rem;
+  box-shadow: 0 2px 8px 0 rgba(67,233,123,0.13);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+.company-invitation-accept:hover {
+  background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+  box-shadow: 0 6px 24px 0 rgba(67,233,123,0.18);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.company-invitation-decline {
+  padding: 14px 44px;
+  background: linear-gradient(90deg, #ff5858 );
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.18rem;
+  box-shadow: 0 2px 8px 0 rgba(255,88,88,0.13);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+.company-invitation-decline:hover {
+  background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+  box-shadow: 0 6px 24px 0 rgba(255,88,88,0.18);
+  transform: translateY(-2px) scale(1.04);
+}
+
+[data-theme="dark"] .company-invitation-notification {
+  background: radial-gradient(circle at 60% 40%, #232946 0%, #1a1a2e 60%, #16161a 100%);
+}
+
+[data-theme="dark"] .company-invitation-card {
+  background: rgba(21, 23, 34, 0.97);
+  border-image: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%) 1;
+  box-shadow: 0 12px 48px 0 rgba(30,34,54,0.28), 0 2px 8px 0 rgba(30,34,54,0.18);
+}

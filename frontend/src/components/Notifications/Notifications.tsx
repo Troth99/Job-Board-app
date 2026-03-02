@@ -1,4 +1,3 @@
-import { Footer } from "../Footer/Footer";
 import "./Notifications.css";
 import "./NotificationResponsive.css";
 import { useEffect, useState } from "react";
@@ -15,15 +14,14 @@ function Notifications() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const userId = getUserFromLocalStorage()._id;
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+
   //To do read update for read messages.
-  
+
   const fetchNotificaitons = async () => {
     setLoading(true);
     try {
       const response = await getAllNotificationsForUser(userId);
-      console.log(response);
       setNotifications(response);
     } catch (error) {
       console.error(
@@ -93,7 +91,7 @@ function Notifications() {
                 />
                 <div className="notification-item__meta">
                   <span className="notification-item__time">
-                  {formatDate(n.createdAt)}
+                    {formatDate(n.createdAt)}
                   </span>
                 </div>
               </div>

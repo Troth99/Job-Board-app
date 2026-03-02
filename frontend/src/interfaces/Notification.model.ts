@@ -13,15 +13,15 @@ export interface CompanyShort {
 
 export interface Notification {
   _id: string;
-  user: string | UserShort;
-  sender?: string | UserShort;
+  user: UserShort;
+  sender?: UserShort;
   type: string;
   message: string;
   isRead: boolean;
   actionRequired: boolean;
   actionType?: string;
   link?: string;
-  company?: string | CompanyShort;
+  company?:  CompanyShort;
   createdAt: string;
 }
 
