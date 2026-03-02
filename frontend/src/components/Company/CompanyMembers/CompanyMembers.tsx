@@ -45,6 +45,8 @@ export function CompanyMembers() {
       }
       const result = await addMemberToCompany(companyId, response.userId);
 
+      //to set notification for invitations for company
+
       if (result.success) {
         setShowModal(false);
       } else {
