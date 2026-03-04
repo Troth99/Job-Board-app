@@ -17,6 +17,7 @@ function Notifications() {
   const navigate = useNavigate();
 
   //To do read update for read messages.
+  // Add pagination for notifications
 
   const fetchNotificaitons = async () => {
     setLoading(true);
