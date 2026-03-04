@@ -4,6 +4,7 @@ import useCompany from "../../../hooks/useCompany";
 import useForm from "../../../hooks/useForm";
 import { useValidation } from "../../validators/useValidation";
 import "./CompanyMembers.css";
+import { useNotification } from "../../../hooks/useNotification";
 
 const initialValue = {
   email: "",
@@ -14,7 +15,8 @@ export function CompanyMembers() {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [userEmailExistError, setuserEmailExistError] = useState<string>("");
   const { validateEmail } = useValidation();
-  const { checkUser, addMemberToCompany } = useCompany();
+  const { checkUser } = useCompany();
+  const {createNotificationByEmail} = useNotification()
 
   const validators = (value: { email: string }) => {
     const errors: Partial<{ email: string }> = {};
@@ -43,15 +45,15 @@ export function CompanyMembers() {
         );
         return;
       }
-      const result = await addMemberToCompany(companyId, response.userId);
+      await createNotificationByEmail(values.email, {
+        sender: localStorage.getItem("userId"),
+        company: companyId,
+        message: "You have a new company invitation.",
+        type: "company_invite",
+        actionRequired: true,
+        actionType: "accept_reject"
+      });
 
-      //to set notification for invitations for company
-
-      if (result.success) {
-        setShowModal(false);
-      } else {
-        setuserEmailExistError("User is already a member");
-      }
     } catch (error: any) {
       setuserEmailExistError(
         "Failed to check if the user exists in the backend"

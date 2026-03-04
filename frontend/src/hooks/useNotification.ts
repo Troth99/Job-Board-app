@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import useApiRequester from "./useApiRequester";
 import { API_BASE } from "../services/api";
@@ -41,8 +42,48 @@ export function useNotification() {
     }
   };
 
+  const createNotification = async (notificationData: any) => {
+    setLoading(true);
+    try {
+      const response = await request(
+        `${API_BASE}/notifications`,
+        "POST",
+        notificationData
+      );
+      return response;
+    } catch (error) {
+      console.error("Error creating notification.", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const createNotificationByEmail = async (email: string, notificationData: any) => {
+    setLoading(true);
+    try {
+      const userRes = await request(
+        `${API_BASE}/users/check-user-exists`,
+        "POST",
+        { email }
+      );
+      const userId = userRes?.userId;
+      if (!userId) throw new Error("User not found by email");
+
+      const response = await createNotification({ ...notificationData, user: userId });
+      return response;
+    } catch (error) {
+      console.error("Error creating notification by email.", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     getAllNotificationsForUser,
     getNotificationById,
+    createNotification,
+    createNotificationByEmail
   };
 }
