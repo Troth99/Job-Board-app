@@ -78,6 +78,11 @@ export default function useForm<T extends FormValues>(
       [field]: undefined,
     }));
   };
+
+  const reset = () => {
+    setValues(initialValues);
+    setErrors({})
+  }
   return {
     values,
     register,
@@ -85,5 +90,6 @@ export default function useForm<T extends FormValues>(
     errors,
     setErrors,
     setFieldValue,
+    reset
   };
 }

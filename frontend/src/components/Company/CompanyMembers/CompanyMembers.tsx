@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
 import useForm from "../../../hooks/useForm";
@@ -16,7 +16,10 @@ export function CompanyMembers() {
   const [userEmailExistError, setuserEmailExistError] = useState<string>("");
   const { validateEmail } = useValidation();
   const { checkUser } = useCompany();
-  const {createNotificationByEmail} = useNotification()
+  const { createNotificationByEmail } = useNotification();
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validators = (value: { email: string }) => {
     const errors: Partial<{ email: string }> = {};
@@ -26,23 +29,31 @@ export function CompanyMembers() {
     }
     return errors;
   };
-
+useEffect(() => {
+  console.log("isSubmitting:", isSubmitting);
+});
   const addMemberHandler = async (values: { email: string }) => {
     setuserEmailExistError("");
+    setSuccessMessage("");
+    setIsSubmitting(true);
+
     if (!companyId || !values.email) {
       console.error("Data is missing");
+         setIsSubmitting(false);
       return;
     }
     try {
       const response = await checkUser(values.email);
       if (!response || response.message === "User does not exist") {
         setuserEmailExistError("User does not exist!");
+           setIsSubmitting(false);
         return;
       }
       if (!response.userId) {
         setuserEmailExistError(
-          "User ID not found! Backend must return userId."
+          "User ID not found! Backend must return userId.",
         );
+        setIsSubmitting(false);
         return;
       }
       await createNotificationByEmail(values.email, {
@@ -51,26 +62,31 @@ export function CompanyMembers() {
         message: "You have a new company invitation.",
         type: "company_invite",
         actionRequired: true,
-        actionType: "accept_reject"
+        actionType: "accept_reject",
       });
-
+      setSuccessMessage("Invitation sent successfully");
     } catch (error: any) {
+      setIsSubmitting(false);
       setuserEmailExistError(
-        "Failed to check if the user exists in the backend"
+        "Failed to check if the user exists in the backend",
       );
     }
   };
 
-  const { register, formHandler, errors, setErrors } = useForm(
+  const { register, formHandler, errors, setErrors, reset } = useForm(
     addMemberHandler,
     initialValue,
-    validators
+    validators,
   );
 
   const handleCloseModal = () => {
     setShowModal(false);
     setErrors({});
     setuserEmailExistError("");
+    setSuccessMessage("");
+    setIsSubmitting(false);
+    reset()
+  
   };
   return (
     <>
@@ -90,11 +106,14 @@ export function CompanyMembers() {
                 placeholder="Enter member email"
                 {...register("email")}
               />
+              {successMessage && (
+                <div className="success-message">{successMessage}</div>
+              )}
               {errors.email && (
                 <div className="error-message">{errors.email}</div>
               )}
               <div className="error-message">{userEmailExistError}</div>
-              <button type="submit">Add</button>
+              <button type="submit" disabled={isSubmitting}>Add</button>
             </form>
             <button className="modal-close-f2" onClick={handleCloseModal}>
               Close
@@ -104,7 +123,6 @@ export function CompanyMembers() {
       )}
 
       {/* Displaying Member List */}
-
     </>
   );
 }
