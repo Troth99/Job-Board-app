@@ -74,12 +74,18 @@ function Notifications() {
             text = `You have a new invitation from <b>${getName(n.company)}</b>.`;
             onClickHandler = () => navigate(`/company-invitation/${n._id}`);
           }
+
+  
+    
+          //To make remove notification handler
+
           return (
             <li
               key={n._id}
               className={`notification-item notification-item--${n.isRead ? "read" : "unread"}`}
               tabIndex={0}
               onClick={onClickHandler}
+              style={{ position: "relative" }}
             >
               <div className="notification-item__icon">
                 <i className={icon}></i>
@@ -96,6 +102,14 @@ function Notifications() {
                   </span>
                 </div>
               </div>
+              <button
+                className="notification-item__close"
+                aria-label="Remove notification"
+               
+                tabIndex={0}
+              >
+                ×
+              </button>
             </li>
           );
         })}
