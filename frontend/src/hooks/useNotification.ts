@@ -80,10 +80,23 @@ export function useNotification() {
     }
   };
 
+  const deleteNotification = async (id:string) => {
+    setLoading(true);
+    try {
+       const response = await request(`${API_BASE}/notifications/${id}`, "DELETE", {});
+       return response
+    } catch (error) {
+            console.error("Error deleting notification by email.", error);
+
+    }finally {
+      setLoading(false)
+    }
+  }
   return {
     getAllNotificationsForUser,
     getNotificationById,
     createNotification,
-    createNotificationByEmail
+    createNotificationByEmail,
+    deleteNotification
   };
 }

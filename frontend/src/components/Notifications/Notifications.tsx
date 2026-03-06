@@ -10,14 +10,16 @@ import { useNavigate } from "react-router";
 
 function Notifications() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
-  const { getAllNotificationsForUser } = useNotification();
+  const { getAllNotificationsForUser , deleteNotification} = useNotification();
   const [loading, setLoading] = useState<boolean>(false);
 
   const userId = getUserFromLocalStorage()._id;
   const navigate = useNavigate();
 
   //To do read update for read messages.
-  // Add pagination for notifications
+  // Add pagination for notifications.
+
+  //To update deleting notification indicator on top
 
   const fetchNotificaitons = async () => {
     setLoading(true);
@@ -76,10 +78,17 @@ function Notifications() {
           }
 
   
-          const removeNotificationHandler = (e:React.MouseEvent<HTMLButtonElement>, id: string) => {
+          const removeNotificationHandler = async (e:React.MouseEvent<HTMLButtonElement>, id: string) => {
              e.stopPropagation();
-             setNotifications((prev) => prev.filter((n) => n._id !== id))
-            console.log(notifications)
+             setLoading(true)
+             try {
+               await deleteNotification(id);
+               setNotifications((prev) => prev.filter((n) => n._id !== id))
+             } catch (error) {
+              console.error('Error deleting notification.',error)
+             }finally{
+              setLoading(false)
+             }
            }
        
 
