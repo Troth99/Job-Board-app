@@ -76,8 +76,12 @@ function Notifications() {
           }
 
   
-    
-          //To make remove notification handler
+          const removeNotificationHandler = (e:React.MouseEvent<HTMLButtonElement>, id: string) => {
+             e.stopPropagation();
+             setNotifications((prev) => prev.filter((n) => n._id !== id))
+            console.log(notifications)
+           }
+       
 
           return (
             <li
@@ -105,7 +109,7 @@ function Notifications() {
               <button
                 className="notification-item__close"
                 aria-label="Remove notification"
-               
+               onClick={(e) => removeNotificationHandler(e, n._id)}
                 tabIndex={0}
               >
                 ×
