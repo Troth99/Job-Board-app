@@ -7,10 +7,12 @@ import { getUserFromLocalStorage } from "../../hooks/useAuth";
 import { getName } from "./nameHelper";
 import { formatDate } from "../../utils/formData";
 import { useNavigate } from "react-router";
+import { useNotificationContext } from "../../context/NotificationContext";
 
 function Notifications() {
-  const [notifications, setNotifications] = useState<Notification[]>([]);
-  const { getAllNotificationsForUser , deleteNotification} = useNotification();
+  const { deleteNotification } = useNotification();
+  const { notifications, setNotifications, unreadCount, setUnreadCount } =
+    useNotificationContext();
   const [loading, setLoading] = useState<boolean>(false);
 
   const userId = getUserFromLocalStorage()._id;
@@ -19,26 +21,27 @@ function Notifications() {
   //To do read update for read messages.
   // Add pagination for notifications.
 
-  //To update deleting notification indicator on top
-
-  const fetchNotificaitons = async () => {
+ 
+  const removeNotificationHandler = async (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: string,
+  ) => {
+    e.stopPropagation();
     setLoading(true);
     try {
-      const response = await getAllNotificationsForUser(userId);
-      setNotifications(response);
+      const deleted = notifications.find((n) => n._id === id);
+      await deleteNotification(id);
+      setNotifications((prev) => prev.filter((n) => n._id !== id));
+
+      if (deleted && !deleted.isRead) {
+        setUnreadCount((prev) => Math.max(prev - 1, 0));
+      }
     } catch (error) {
-      console.error(
-        "Error getting Notifications in notification component.",
-        error,
-      );
+      console.error("Error deleting notification.", error);
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchNotificaitons();
-  }, []);
 
   return (
     <div className="notification-list">
@@ -77,21 +80,6 @@ function Notifications() {
             onClickHandler = () => navigate(`/company-invitation/${n._id}`);
           }
 
-  
-          const removeNotificationHandler = async (e:React.MouseEvent<HTMLButtonElement>, id: string) => {
-             e.stopPropagation();
-             setLoading(true)
-             try {
-               await deleteNotification(id);
-               setNotifications((prev) => prev.filter((n) => n._id !== id))
-             } catch (error) {
-              console.error('Error deleting notification.',error)
-             }finally{
-              setLoading(false)
-             }
-           }
-       
-
           return (
             <li
               key={n._id}
@@ -118,7 +106,7 @@ function Notifications() {
               <button
                 className="notification-item__close"
                 aria-label="Remove notification"
-               onClick={(e) => removeNotificationHandler(e, n._id)}
+                onClick={(e) => removeNotificationHandler(e, n._id)}
                 tabIndex={0}
               >
                 ×

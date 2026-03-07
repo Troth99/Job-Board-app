@@ -46,6 +46,7 @@ export function NotificationProvider({
     const fetchNotifications = async () => {
       try {
         const response = await getAllNotificationsForUser(userId);
+        console.log(response)
         if (Array.isArray(response)) {
           setNotifications(response);
         }
