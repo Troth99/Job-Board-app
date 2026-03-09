@@ -35,6 +35,6 @@ export function NotificationOwnerGuard() {
   }, [notificationId, userId, notifications]);
 
   if (allowed === null) return <Spinner inline />;
-  if (!allowed) return <Navigate to="/" replace />;
+ if (!allowed) return <Navigate to="/notifications" replace />;
   return <Outlet />;
 }

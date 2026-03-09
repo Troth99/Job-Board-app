@@ -8,11 +8,17 @@ import {
 } from "../../../interfaces/Notification.model";
 import { useNotification } from "../../../hooks/useNotification";
 import { useNavigate } from "react-router";
+import { getUserFromLocalStorage } from "../../../hooks/useAuth";
+import useCompany from "../../../hooks/useCompany";
 
 export default function CompanyInvitationNotification() {
   const { notificationId } = useParams();
   const { notifications, setNotifications, setUnreadCount } =
     useNotificationContext();
+
+  const { addMemberToCompany } = useCompany();
+
+  const user = getUserFromLocalStorage();
 
   //State only for the current OPEN notification.
   const [notification, setNotification] = useState<Notification | undefined>(
@@ -22,6 +28,8 @@ export default function CompanyInvitationNotification() {
 
   const { deleteNotification } = useNotification();
 
+  const companyId = notification?.company?._id;
+
   useEffect(() => {
     const currentNotification = notifications.find(
       (n) => n._id === notificationId,
@@ -29,7 +37,29 @@ export default function CompanyInvitationNotification() {
     setNotification(currentNotification);
   }, [notifications, notificationId]);
 
-  const acceptCompanyInvitationHandler = async () => {};
+  const acceptCompanyInvitationHandler = async () => {
+    if (!notification || !companyId) return;
+
+    if (user && user.company) {
+      alert(
+        "You are already part of a company. Please leave first in order to accept the invitation.",
+      );
+      return;
+    }
+
+    try {
+      await addMemberToCompany(companyId, user._id);
+      await deleteNotification(notification._id);
+      
+      setNotifications((prev) =>
+        prev.filter((n) => n._id !== notification._id),
+      );
+      if (!notification.isRead) setUnreadCount((prev) => Math.max(prev - 1, 0));
+      navigate("/profile");
+    } catch (error) {
+      console.error("Failed to accept notification invitation", error);
+    }
+  };
 
   const declineCompanyInvitationHandler = async () => {
     if (!notification) return;
@@ -86,9 +116,28 @@ export default function CompanyInvitationNotification() {
           Would you like to accept this invitation?
         </div>
         <div className="company-invitation-actions">
-          <button className="company-invitation-accept">Accept</button>
-          <button className="company-invitation-decline" onClick={declineCompanyInvitationHandler}>Decline</button>
+          <button
+            className="company-invitation-accept"
+            disabled={!!user.company}
+            title={
+              user.company ? "You must leave your company before joining." : ""
+            }
+            onClick={acceptCompanyInvitationHandler}
+          >
+            Accept
+          </button>
+          <button
+            className="company-invitation-decline"
+            onClick={declineCompanyInvitationHandler}
+          >
+            Decline
+          </button>
         </div>
+        {user.company && (
+          <div className="company-invitation-warning">
+            You must leave your company before joining.
+          </div>
+        )}
       </div>
     </div>
   );

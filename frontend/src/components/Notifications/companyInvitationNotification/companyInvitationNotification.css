@@ -210,7 +210,36 @@
   margin-bottom: 50px;
 }
 
+.company-invitation-accept {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+  margin-right: 1rem;
+}
 
+.company-invitation-accept:disabled {
+  background: #b0b8c1;
+  color: #f3f4f6;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.company-invitation-warning {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+  text-align: left;
+  max-width: 320px;
+  font-size: 16px;
+}
 .company-invitation-accept {
   padding: 14px 44px;
   background: linear-gradient(90deg, #43e97b 0%);

@@ -18,8 +18,9 @@ function Notifications() {
   const userId = getUserFromLocalStorage()._id;
   const navigate = useNavigate();
 
-  //To do read update for read messages.
   // Add pagination for notifications.
+
+  //When loging in the account notifications do not appear unless refresh 
 
   const removeNotificationHandler = async (
     e: React.MouseEvent<HTMLButtonElement>,
