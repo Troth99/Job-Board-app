@@ -92,11 +92,25 @@ export function useNotification() {
       setLoading(false)
     }
   }
+
+  const markAsRead = async (id: string) => {
+    setLoading(true);
+    try {
+      const response = await request(`${API_BASE}/notifications/read/${id}`, 'PATCH', {})
+      return response
+    } catch (error) {
+                  console.error("Error patching the mark as read.", error);
+
+    }finally {
+      setLoading(false)
+    }
+  }
   return {
     getAllNotificationsForUser,
     getNotificationById,
     createNotification,
     createNotificationByEmail,
-    deleteNotification
+    deleteNotification,
+    markAsRead
   };
 }

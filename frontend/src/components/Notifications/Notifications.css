@@ -17,11 +17,11 @@
 .notification-item__close:hover,
 .notification-item__close:focus {
 	color: #3730a3;
-	background: #e0e7ff;
+	background: #edeef3;
 }
 .notification-item--read {
-	background: #f3f4f6;
-	color: #9ca3af;
+	background: #cdd4e2;
+	color: #757e8d;
 	border-left: 4px solid #d1d5db;
 	opacity: 0.7;
 }
@@ -29,10 +29,10 @@
 .notification-item--read .notification-item__text,
 .notification-item--read .notification-item__meta,
 .notification-item--read .notification-item__icon i {
-	color: #9ca3af !important;
+	color: #242629 !important;
 }
 .notification-item--read .notification-item__icon {
-	background: #e5e7eb;
+	background: #c2c5cc;
 }
 .notification-item__icon i {
 	font-size: 2rem !important;

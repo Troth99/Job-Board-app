@@ -1,16 +1,16 @@
 import "./Notifications.css";
 import "./NotificationResponsive.css";
-import { useEffect, useState } from "react";
-import { Notification } from "../../interfaces/Notification.model";
+import { useState } from "react";
 import { useNotification } from "../../hooks/useNotification";
 import { getUserFromLocalStorage } from "../../hooks/useAuth";
 import { getName } from "./nameHelper";
 import { formatDate } from "../../utils/formData";
 import { useNavigate } from "react-router";
 import { useNotificationContext } from "../../context/NotificationContext";
+import { Notification } from "../../interfaces/Notification.model";
 
 function Notifications() {
-  const { deleteNotification } = useNotification();
+  const { deleteNotification, markAsRead } = useNotification();
   const { notifications, setNotifications, unreadCount, setUnreadCount } =
     useNotificationContext();
   const [loading, setLoading] = useState<boolean>(false);
@@ -21,7 +21,6 @@ function Notifications() {
   //To do read update for read messages.
   // Add pagination for notifications.
 
- 
   const removeNotificationHandler = async (
     e: React.MouseEvent<HTMLButtonElement>,
     id: string,
@@ -40,6 +39,36 @@ function Notifications() {
       console.error("Error deleting notification.", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleNotificationClick = async (n: Notification) => {
+    if (!n.isRead) {
+      try {
+        await markAsRead(n._id);
+        setNotifications((prev) =>
+          prev.map((notif) =>
+            notif._id === n._id ? { ...notif, isRead: true } : notif,
+          ),
+        );
+        setUnreadCount((prev) => Math.max(prev - 1, 0));
+      } catch (error) {
+        console.error("Failed to read notification", error);
+      }
+    }
+
+    switch (n.type) {
+      case "message":
+        navigate(`/message/${n._id}`);
+        break;
+      case "application":
+        navigate(`/application-update/${n._id}`);
+        break;
+      case "company_invite":
+        navigate(`/company-invitation/${n._id}`);
+        break;
+      default:
+        break;
     }
   };
 
@@ -67,17 +96,15 @@ function Notifications() {
             icon = "fa fa-envelope";
             heading = "New Message";
             text = `You have a new message from <b>${getName(n.user)}</b>.`;
-            onClickHandler = () => navigate(`/message/${n._id}`);
           } else if (n.type === "application") {
             icon = "fa fa-briefcase";
             heading = "Application Update";
             text = n.message;
-            onClickHandler = () => navigate(`/application-update/${n._id}`);
           } else if (n.type === "company_invite") {
             icon = "fa fa-building";
             heading = "Company Invitation";
             text = `You have a new invitation from <b>${getName(n.company)}</b>.`;
-            onClickHandler = () => navigate(`/company-invitation/${n._id}`);
+    
           }
 
           return (
@@ -85,7 +112,7 @@ function Notifications() {
               key={n._id}
               className={`notification-item notification-item--${n.isRead ? "read" : "unread"}`}
               tabIndex={0}
-              onClick={onClickHandler}
+              onClick={() => handleNotificationClick(n)}
               style={{ position: "relative" }}
             >
               <div className="notification-item__icon">
