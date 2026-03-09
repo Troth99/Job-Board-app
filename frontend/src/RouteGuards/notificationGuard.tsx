@@ -24,6 +24,8 @@ export function NotificationOwnerGuard() {
 
     if (notif && notifUserId === userId) {
       setAllowed(true);
+    } else if (notif === undefined) {
+      setAllowed(false);
     } else {
       if (!toast.isActive(toastId)) {
         toast.error("You don't have access to this page", { toastId });
