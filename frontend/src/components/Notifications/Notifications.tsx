@@ -20,7 +20,6 @@ function Notifications() {
 
   // Add pagination for notifications.
 
-  //When loging in the account notifications do not appear unless refresh 
 
   const removeNotificationHandler = async (
     e: React.MouseEvent<HTMLButtonElement>,

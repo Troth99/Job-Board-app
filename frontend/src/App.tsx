@@ -76,7 +76,11 @@ const NotificatonCompanyINvite = lazy(
     import("./components/Notifications/companyInvitationNotification/CompanyInvitationNotification"),
 );
 
-function App() {
+interface AppProps {
+  setUserId: (id: string) => void;
+}
+
+function App({ setUserId }: AppProps) {
   const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
   const dispatch = useDispatch();
@@ -160,7 +164,7 @@ function App() {
             element={
               <MainLayout hideHeaderFooter={true}>
                 <Suspense fallback={<FullPageSpinner />}>
-                  <LoginComponent />
+                 <LoginComponent setUserId={setUserId} />
                 </Suspense>
               </MainLayout>
             }

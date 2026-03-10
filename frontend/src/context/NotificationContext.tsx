@@ -32,6 +32,7 @@ export function NotificationProvider({
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
 
+
   useEffect(() => {
     const count = notifications.filter((n) => !n.isRead).length;
     setUnreadCount(count);
@@ -39,14 +40,12 @@ export function NotificationProvider({
 
   const { getAllNotificationsForUser } = useNotification();
 
+  // Fetch notifications every time userId changes (e.g. after login)
   useEffect(() => {
     if (!userId) return;
-
-    // to do get backend notificaiton api
     const fetchNotifications = async () => {
       try {
         const response = await getAllNotificationsForUser(userId);
-        console.log(response)
         if (Array.isArray(response)) {
           setNotifications(response);
         }
@@ -54,20 +53,20 @@ export function NotificationProvider({
         console.error("Error getting Notificaitons", error);
       }
     };
+    fetchNotifications();
+  }, [userId]);
+
+  // Keep real-time updates via EventSource
+  useEffect(() => {
+    if (!userId) return;
     const evtSource = new EventSource(
       `${API_URL}/api/notifications/stream/${userId}`,
     );
-
     evtSource.onmessage = (event) => {
       const notification = JSON.parse(event.data);
       setNotifications((prev) => [notification, ...prev]);
-      setUnreadCount((prev) => {
-        const newCount = prev + 1;
-        return newCount;
-      });
+      setUnreadCount((prev) => prev + 1);
     };
-
-    fetchNotifications();
     return () => evtSource.close();
   }, [userId]);
 

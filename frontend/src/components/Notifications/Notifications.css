@@ -1,7 +1,7 @@
 .notification-item__close {
 	position: absolute;
 	top: 10px;
-	right: 16px;
+	right: 0.7rem;
 	background: transparent;
 	border: none;
 	font-size: 1.5rem;
@@ -46,7 +46,6 @@
 
 .notification-list {
 	margin: 3rem auto;
-    width: 1700px;
 	background: rgba(255,255,255,0.85);
 	border-radius: 22px;
 	box-shadow: 0 8px 32px rgba(59,130,246,0.13), 0 2px 12px rgba(0,0,0,0.09);
@@ -86,12 +85,12 @@
 	background: linear-gradient(120deg, #f1f5f9 70%, #e0e7ff 100%);
 	box-shadow: 0 2px 16px rgba(99,102,241,0.10), 0 1px 4px rgba(59,130,246,0.06);
 	position: relative;
+	overflow: visible;
 	transition: background 0.22s, box-shadow 0.22s, transform 0.18s;
 	cursor: pointer;
 	gap: 1.3rem;
 	outline: none;
 	border: 1.5px solid #e0e7ff;
-	overflow: hidden;
 }
 
 .notification-item:last-child {
@@ -259,4 +258,43 @@
 
 [data-theme="dark"] .notification-item:hover .notification-item__text {
 	color: #38bdf8;
+}
+
+@media (max-width: 900px) {
+	.notification-list {
+		max-width: 98vw;
+		padding: 1.2rem 0.5rem 1rem 0.5rem;
+	}
+	.notification-item {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.4rem;
+		padding: 0.7rem 0.5rem 1.5rem 0.5rem;
+		position: relative;
+		min-width: 0;
+	}
+	.notification-item__close {
+		top: 8px;
+		right: 0.4rem;
+		font-size: 1.2rem;
+		max-width: 2.2rem;
+	}
+}
+@media (max-width: 600px) {
+	.notification-list {
+		max-width: 100vw;
+		padding: 0.5rem 0.1rem 0.5rem 0.1rem;
+		border-radius: 10px;
+	}
+	.notification-item {
+		padding: 0.5rem 0.2rem 1.2rem 0.2rem;
+		border-radius: 8px;
+		gap: 0.2rem;
+	}
+	.notification-item__close {
+		top: 4px;
+		right: 0.1rem;
+		font-size: 1rem;
+		max-width: 1.5rem;
+	}
 }
