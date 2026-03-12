@@ -53,6 +53,7 @@
 	border: 1.5px solid #e0e7ff;
 	backdrop-filter: blur(6px);
 	animation: fadeInCard 0.8s cubic-bezier(.4,0,.2,1);
+	max-width: 1700px;
 }
 
 @keyframes fadeInCard {
@@ -197,7 +198,7 @@
 }
 
 [data-theme="dark"] .notification-item {
-	background: linear-gradient(120deg, #27272a 70%, #18181b 100%);
+	background: linear-gradient(120deg, #848488 70%, #18181b 100%);
 	border: 1.5px solid #27272a;
 	box-shadow: 0 2px 16px rgba(30,41,59,0.13), 0 1px 4px rgba(0,0,0,0.18);
 }
@@ -210,7 +211,7 @@
 
 [data-theme="dark"] .notification-item:focus,
 [data-theme="dark"] .notification-item:hover {
-	background: #232323;
+	background: #ffffff36;
 	box-shadow: 0 4px 24px rgba(251,191,36,0.18);
 	border-color: #fbbf24;
 }

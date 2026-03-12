@@ -5,6 +5,8 @@ export function formatDate(dateString: string, locale: string = "en-US"): string
   return date.toLocaleDateString(locale, {
     day: "2-digit",
     month: "short",
-    year: "numeric"
+    year: "numeric",
+    hour: "2-digit",
+    minute: '2-digit'
   });
 }

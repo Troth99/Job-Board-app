@@ -1,24 +1,29 @@
 import "./Notifications.css";
 import "./NotificationResponsive.css";
 import { useState } from "react";
-import { useNotification } from "../../hooks/useNotification";
+import { useNotification, useSortedNotifications } from "../../hooks/useNotification";
 import { getUserFromLocalStorage } from "../../hooks/useAuth";
 import { getName } from "./nameHelper";
 import { formatDate } from "../../utils/formData";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { useNotificationContext } from "../../context/NotificationContext";
 import { Notification } from "../../interfaces/Notification.model";
+import { usePagination } from "../../hooks/usePagination";
 
 function Notifications() {
   const { deleteNotification, markAsRead } = useNotification();
   const { notifications, setNotifications, unreadCount, setUnreadCount } =
     useNotificationContext();
   const [loading, setLoading] = useState<boolean>(false);
+  
+  //pagination
+  const sortNotifications = useSortedNotifications(notifications)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const pageFromUrl = parseInt(searchParams.get('page') || '1')
+  const {totalPages, currentItems} = usePagination(sortNotifications, 5, pageFromUrl)
 
   const userId = getUserFromLocalStorage()._id;
   const navigate = useNavigate();
-
-  // Add pagination for notifications.
 
 
   const removeNotificationHandler = async (
@@ -86,11 +91,10 @@ function Notifications() {
             </div>
           </li>
         )}
-        {notifications.map((n) => {
+        {currentItems.map((n) => {
           let icon = "fa fa-bell";
           let heading = "Notification";
           let text = n.message;
-          let onClickHandler = undefined;
 
           if (n.type === "message") {
             icon = "fa fa-envelope";
@@ -141,6 +145,29 @@ function Notifications() {
             </li>
           );
         })}
+               {sortNotifications.length > 3 && (
+                <div className="pagination">
+                  <button
+                    onClick={() =>
+                      setSearchParams({ page: (pageFromUrl - 1).toString() })
+                    }
+                    disabled={pageFromUrl === 1}
+                  >
+                    Previous
+                  </button>
+                  <span>
+                    Page {pageFromUrl} of {totalPages}
+                  </span>
+                  <button
+                    onClick={() =>
+                      setSearchParams({ page: (pageFromUrl + 1).toString() })
+                    }
+                    disabled={pageFromUrl === totalPages}
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
       </ul>
     </div>
   );

@@ -1,12 +1,33 @@
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import useApiRequester from "./useApiRequester";
 import { API_BASE } from "../services/api";
+// Hook за сортиране на нотификации по дата (най-новите най-отгоре)
+import { Notification } from "../interfaces/Notification.model";
+
+export function useSortedNotifications(notifications: Notification[]) {
+  return useMemo(
+    () =>
+      [...notifications].sort(
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      ),
+    [notifications]
+  );
+}
 
 export function useNotification() {
   const { request } = useApiRequester();
   const [loading, setLoading] = useState<boolean>(false);
 
+  const sortingNotifications = (notifications: Notification[]) => {
+    return useMemo(
+      () => [...notifications].sort(
+        (a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      ),
+      [notifications]
+        
+    )
+  }
   const getAllNotificationsForUser = async (userId: string) => {
     if (!userId) return;
     setLoading(true);
@@ -105,6 +126,7 @@ export function useNotification() {
       setLoading(false)
     }
   }
+
   return {
     getAllNotificationsForUser,
     getNotificationById,
@@ -114,3 +136,4 @@ export function useNotification() {
     markAsRead
   };
 }
+
