@@ -90,11 +90,11 @@ useEffect(() => {
   };
   return (
     <>
-      <div className="content-header">
+   
         <button className="add-button" onClick={() => setShowModal(true)}>
           + Add Member
         </button>
-      </div>
+     
 
       {showModal && (
         <div className="modal-overlay">

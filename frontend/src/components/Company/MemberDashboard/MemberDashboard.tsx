@@ -7,6 +7,7 @@ import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
 import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
 import { useRole } from "../../../context/RoleContext";
+import { SendMessage } from "../SendMessage/SendMessage";
 
 
 export default function MemberDashboard() {
@@ -76,7 +77,11 @@ const {userRole} = useRole()
       {/* Main Content Area */}
       <div className="main-content">
         {/* Members Section */}
+           <div className="content-header">
         <CompanyMembers />
+          <SendMessage />
+
+           </div>
 
         {/* Jobs Section */}
         <CompanyJobsList

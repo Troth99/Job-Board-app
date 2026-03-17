@@ -82,7 +82,17 @@
 
 }
 
+
 .content-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin: 20px;
+  gap: 2em;
+}
+
+
+.content-header-jobs {
   display: flex;
   justify-content: space-between;
   align-items: center;
