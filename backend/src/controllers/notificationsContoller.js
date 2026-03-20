@@ -29,7 +29,7 @@ export const createNotification = async (req, res) => {
 
         if (req.body.email) {
             const foundUser = await User.findOne({ email: req.body.email });
-            console.log(foundUser)
+          
             if (foundUser) {
                 req.body.user = foundUser._id;
             } else {

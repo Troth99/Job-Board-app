@@ -19,15 +19,7 @@ export function useNotification() {
   const { request } = useApiRequester();
   const [loading, setLoading] = useState<boolean>(false);
 
-  const sortingNotifications = (notifications: Notification[]) => {
-    return useMemo(
-      () => [...notifications].sort(
-        (a,b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      ),
-      [notifications]
-        
-    )
-  }
+
   const getAllNotificationsForUser = async (userId: string) => {
     if (!userId) return;
     setLoading(true);
