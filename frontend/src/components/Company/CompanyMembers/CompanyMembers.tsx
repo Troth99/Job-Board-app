@@ -29,9 +29,7 @@ export function CompanyMembers() {
     }
     return errors;
   };
-useEffect(() => {
-  console.log("isSubmitting:", isSubmitting);
-});
+
   const addMemberHandler = async (values: { email: string }) => {
     setuserEmailExistError("");
     setSuccessMessage("");
@@ -90,11 +88,11 @@ useEffect(() => {
   };
   return (
     <>
-      <div className="content-header">
+   
         <button className="add-button" onClick={() => setShowModal(true)}>
           + Add Member
         </button>
-      </div>
+     
 
       {showModal && (
         <div className="modal-overlay">

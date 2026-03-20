@@ -1,0 +1,181 @@
+.send-message-modal-overlay-unique {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+
+.send-message-modal-unique {
+  background: #fff;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 16px;
+  min-width: 1040px;
+  max-width: 100vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  animation: send-message-modal-fadein 0.25s;
+}
+
+@keyframes send-message-modal-fadein {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+.send-message-modal-close-unique {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff3b3b 60%, #ffb347 100%);
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(255,59,59,0.18);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  border-radius: 50%;
+  z-index: 10;
+}
+.send-message-modal-close-unique:hover {
+  background: linear-gradient(135deg, #ffb347 60%, #ff3b3b 100%);
+  color: #fff;
+  transform: scale(1.15) rotate(12deg);
+  box-shadow: 0 4px 18px rgba(255,59,59,0.28);
+}
+
+/* Form styles */
+.send-message-form-unique {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.send-message-title-unique {
+  margin-bottom: 0.5em;
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #16a085;
+}
+.send-message-input-unique,
+.send-message-textarea-unique {
+  padding: 0.7em 1em;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  background: #f8fafc;
+  margin-bottom: 0.5em;
+}
+.send-message-textarea-unique {
+  min-height: 400px;
+  resize: vertical;
+}
+.send-message-submit-btn-unique {
+  background: #16a085;
+  color: #fff;
+  border: none;
+  padding: 0.7em 1.5em;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.send-message-submit-btn-unique:hover {
+  background: #1abc9c;
+}
+
+/* Open button */
+.send-message-btn-unique {
+  background: #16a085;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.send-message-btn-unique:hover {
+  background: #1abc9c;
+}
+
+/* Dark theme styles */
+[data-theme="dark"] .send-message-modal-unique {
+  background: #23272f;
+  color: #f8fafc;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+[data-theme="dark"] .send-message-title-unique {
+  color: #1abc9c;
+}
+[data-theme="dark"] .send-message-input-unique,
+[data-theme="dark"] .send-message-textarea-unique {
+  background: #181c22;
+  color: #f8fafc;
+  border: 1px solid #444b5a;
+}
+[data-theme="dark"] .send-message-modal-close-unique {
+  background: linear-gradient(135deg, #ff3b3b 60%, #ffb347 100%);
+  color: #fff;
+}
+[data-theme="dark"] .send-message-modal-close-unique:hover {
+  background: linear-gradient(135deg, #ffb347 60%, #ff3b3b 100%);
+}
+[data-theme="dark"] .send-message-submit-btn-unique {
+  background: #1abc9c;
+  color: #23272f;
+}
+[data-theme="dark"] .send-message-submit-btn-unique:hover {
+  background: #16a085;
+  color: #fff;
+}
+[data-theme="dark"] .send-message-btn-unique {
+  background: #1abc9c;
+  color: #23272f;
+}
+[data-theme="dark"] .send-message-btn-unique:hover {
+  background: #16a085;
+  color: #fff;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .send-message-modal-unique {
+    min-width: 90vw;
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    border-radius: 10px;
+    gap: 1em;
+  }
+  .send-message-title-unique {
+    font-size: 1.1em;
+  }
+  .send-message-input-unique,
+  .send-message-textarea-unique {
+    font-size: 0.95em;
+    padding: 0.5em 0.7em;
+  }
+  .send-message-submit-btn-unique {
+    font-size: 0.95em;
+    padding: 0.5em 1em;
+  }
+  .send-message-modal-close-unique {
+    width: 30px;
+    height: 30px;
+    font-size: 1.1rem;
+    top: 8px;
+    right: 8px;
+  }
+}
