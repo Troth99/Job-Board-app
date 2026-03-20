@@ -1,4 +1,5 @@
 import Notification from "../models/Notification.js"
+import User from "../models/User.js";
 
 // SSE stream handler
 export const clients = new Map()
@@ -25,6 +26,18 @@ export const sseStream = (req, res) => {
 //Create notification
 export const createNotification = async (req, res) => {
     try {
+
+   
+        if (req.body.email) {
+            const foundUser = await User.findOne({ email: req.body.email });
+            if (foundUser) {
+                req.body.user = foundUser._id;
+            } else {
+                return res.status(404).json({ error: "User not found" });
+            }
+
+        }
+
         const notification = await Notification.create(req.body);
         const populated = await Notification.findById(notification._id)
             .populate("user", "name email firstName lastName")
@@ -33,7 +46,7 @@ export const createNotification = async (req, res) => {
 
         const userId = populated.user._id.toString();
         const clientRes = clients.get(userId)
-        
+
         if (clientRes) {
             clientRes.write(`data: ${JSON.stringify(populated)}\n\n`);
         }
@@ -55,7 +68,7 @@ export const getUserNotifications = async (req, res) => {
             .sort({ createdAt: -1 });
 
 
-            //Add userId to fetch userId unread notificatitions
+        //Add userId to fetch userId unread notificatitions
         res.json(notifications)
     } catch (error) {
         res.status(400).json({ error: err.message });
@@ -77,7 +90,7 @@ export const markAsRead = async (req, res) => {
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
-    
+
 };
 
 export const getNotificationById = async (req, res) => {

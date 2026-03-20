@@ -32,7 +32,7 @@ export function SendMessage() {
               <input
                 className="send-message-input-unique"
                 type="text"
-                placeholder="Email or Username"
+                placeholder="Email"
                 value={recipient}
                 onChange={(e) => setRecipient(e.target.value)}
                 required
