@@ -29,9 +29,7 @@ export function CompanyMembers() {
     }
     return errors;
   };
-useEffect(() => {
-  console.log("isSubmitting:", isSubmitting);
-});
+
   const addMemberHandler = async (values: { email: string }) => {
     setuserEmailExistError("");
     setSuccessMessage("");

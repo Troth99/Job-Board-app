@@ -1,3 +1,4 @@
+import { useNotification } from "../../../hooks/useNotification";
 import "./SendMessage.css";
 
 import { useState } from "react";
@@ -6,11 +7,19 @@ export function SendMessage() {
   const [open, setOpen] = useState<Boolean>(false);
   const [recipient, setRecipient] = useState("");
   const [message, setMessage] = useState("");
+  const {createNotification} = useNotification()
 
-  const handleSend = () => {
 
-
-    //To do service with backend to send messages
+  const handleSend = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await createNotification({email: recipient, message: message, type: "message", })
+      setOpen(false)
+      setRecipient("");
+      setMessage("");
+    } catch (error) {
+      console.error("Error sending message.", error);
+    }
   };
   return (
     <>
@@ -44,7 +53,7 @@ export function SendMessage() {
                 onChange={(e) => setMessage(e.target.value)}
                 required
               />
-              <button type="submit" className="send-message-submit-btn-unique">
+              <button type="submit" className="send-message-submit-btn-unique" onClick={(e) => handleSend}>
                 Send
               </button>
             </form>
