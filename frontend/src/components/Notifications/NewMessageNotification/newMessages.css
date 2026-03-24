@@ -166,3 +166,31 @@
 .notification__btn--secondary:hover {
   background: #cacaca;
 }
+
+@media (max-width: 900px) {
+  .notification {
+    max-width: 98vw;
+    padding: 12px 4px;
+    min-height: 120px;
+    height: 350px;
+  }
+  .notification__body {
+    height: 200px;
+    padding: 10px 4px;
+    font-size: 0.98rem;
+  }
+}
+@media (max-width: 600px) {
+  .notification {
+    max-width: 100vw;
+    padding: 4px 1px;
+    border-radius: 8px;
+    min-height: 80px;
+    height: 180px;
+  }
+  .notification__body {
+    height: 90px;
+    padding: 6px 2px;
+    font-size: 0.93rem;
+  }
+}
