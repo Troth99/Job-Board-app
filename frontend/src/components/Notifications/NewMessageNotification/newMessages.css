@@ -1,3 +1,24 @@
+.notification__from-first {
+  color: #ff0b34ee;
+  font-weight: 700;
+}
+.notification__from-last {
+  color: #ff0b34ee;
+  font-weight: 700;
+}
+.notification__from-email {
+  color: #0a0a0a !important;
+  font-weight: 500;
+}
+[data-theme="dark"] .notification__from-first {
+  color: #a78bfa;
+}
+[data-theme="dark"] .notification__from-last {
+ color: #a78bfa !important;
+}
+[data-theme="dark"] .notification__from-email {
+ color: #bbee03 !important;
+}
 .notification {
   background: #fff;
   border-radius: 12px;
