@@ -229,6 +229,14 @@
   background: #cacaca;
 }
 
+.modal-reply-size {
+  width: 820px;
+  max-width: 95vw;
+  min-height: 320px;
+  padding: 32px 24px;
+}
+
+
 @media (max-width: 900px) {
   .notification {
     max-width: 98vw;
