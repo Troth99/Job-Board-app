@@ -5,11 +5,14 @@ import "./newMessages.css";
 import { Notification } from "../../../interfaces/Notification.model";
 import Spinner from "../../Spinner/Spinner";
 import { formatDate } from "../../../utils/formData";
+import { ModalReply } from "./ModalReply";
+
 
 export default function NewmessageNotification() {
   const [notification, setNotification] = useState<Notification | null>(null);
   const { getNotificationById } = useNotification();
   const [loading, setLoading] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
 
   const notificationId = useParams().notificationId;
 
@@ -32,6 +35,12 @@ export default function NewmessageNotification() {
     getCUrrentMessage();
   }, [notificationId]);
 
+  // Handler to open the reply modal
+  const modalReplyHandler = () => {
+    setOpen(true);
+    <ModalReply isOpen={open} onClose={() => setOpen(false)} />
+  }
+
   // Show loading spinner while fetching data
   if (loading) {
     return <Spinner inline={true} />;
@@ -42,37 +51,40 @@ export default function NewmessageNotification() {
     return null;
   }
   return (
-    <div
-      className="notification notification--message"
-      data-id="69bccc9b608cbda969c3360f"
-    >
-      <div className="notification__meta">
-        <span className="notification__from">
-          <span className="notification__from-label">Message from:</span>
-          <span className="notification__from-user">
-            <span className="notification__from-first">
-              {notification?.user?.firstName}
-            </span>
-            <span className="notification__from-last">
-              {notification?.user?.lastName}
-            </span>
-            <span className="notification__from-email">
-              &lt;{notification?.user?.email}&gt;
+    <>
+      <div
+        className="notification notification--message"
+        data-id="69bccc9b608cbda969c3360f"
+      >
+        <div className="notification__meta">
+          <span className="notification__from">
+            <span className="notification__from-label">Message from:</span>
+            <span className="notification__from-user">
+              <span className="notification__from-first">
+                {notification?.user?.firstName}
+              </span>
+              <span className="notification__from-last">
+                {notification?.user?.lastName}
+              </span>
+              <span className="notification__from-email">
+                &lt;{notification?.user?.email}&gt;
+              </span>
             </span>
           </span>
-        </span>
-        <span className="notification__date">
-          {formatDate(notification?.createdAt)}
-        </span>
+          <span className="notification__date">
+            {formatDate(notification?.createdAt)}
+          </span>
+        </div>
+        <div className="notification__body">
+          <p className="notification__message">{notification.message}</p>
+        </div>
+        <div className="notification__actions">
+          <button className="notification__btn notification__btn--reply" onClick={modalReplyHandler}>
+            Reply
+          </button>
+        </div>
       </div>
-      <div className="notification__body">
-        <p className="notification__message">{notification.message}</p>
-      </div>
-      <div className="notification__actions">
-        <button className="notification__btn notification__btn--reply">
-          Reply
-        </button>
-      </div>
-    </div>
+      <ModalReply isOpen={open} onClose={() => setOpen(false)} />
+    </>
   );
 }

@@ -1,3 +1,44 @@
+.notification__btn--reply {
+  background: #ffe066;
+  color: #23272a;
+  border: 1px solid #ffe066;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.notification__btn--reply:hover {
+  background: #ffd43b;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(255, 212, 59, 0.15);
+  border-color: #ffd43b;
+}
+
+[data-theme="dark"] .notification__btn--reply {
+  background: #fbbf24;
+  color: #23272a;
+  border: 1px solid #fbbf24;
+}
+
+[data-theme="dark"] .notification__btn--reply:hover {
+  background: #fde68a;
+  color: #18181b;
+  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.18);
+  border-color: #fde68a;
+}
+.notification__btn--reply {
+  background: #a3a19b;
+  color: #23272a;
+  border: 1px solid #ffe066;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.notification__btn--reply:hover {
+  background: #b9b8b5;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(255, 212, 59, 0.15);
+  border-color: #ffd43b;
+}
 .notification__from-first {
   color: #ff0b34ee;
   font-weight: 700;
