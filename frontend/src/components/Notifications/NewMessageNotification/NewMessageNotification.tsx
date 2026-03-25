@@ -7,12 +7,14 @@ import Spinner from "../../Spinner/Spinner";
 import { formatDate } from "../../../utils/formData";
 import { ModalReply } from "./ModalReply";
 
-
 export default function NewmessageNotification() {
   const [notification, setNotification] = useState<Notification | null>(null);
   const { getNotificationById } = useNotification();
   const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
+  const [replyToUserEmail, setReplyToUserEmail] = useState<string | undefined>(
+    "",
+  );
 
   const notificationId = useParams().notificationId;
 
@@ -38,8 +40,8 @@ export default function NewmessageNotification() {
   // Handler to open the reply modal
   const modalReplyHandler = () => {
     setOpen(true);
-    <ModalReply isOpen={open} onClose={() => setOpen(false)} />
-  }
+    setReplyToUserEmail(notification?.user?.email);
+  };
 
   // Show loading spinner while fetching data
   if (loading) {
@@ -50,6 +52,7 @@ export default function NewmessageNotification() {
   if (!notification) {
     return null;
   }
+
   return (
     <>
       <div
@@ -79,12 +82,15 @@ export default function NewmessageNotification() {
           <p className="notification__message">{notification.message}</p>
         </div>
         <div className="notification__actions">
-          <button className="notification__btn notification__btn--reply" onClick={modalReplyHandler}>
+          <button
+            className="notification__btn notification__btn--reply"
+            onClick={modalReplyHandler}
+          >
             Reply
           </button>
         </div>
       </div>
-      <ModalReply isOpen={open} onClose={() => setOpen(false)} />
+      <ModalReply isOpen={open} replyToUserEmail={replyToUserEmail} onClose={() => setOpen(false)} />
     </>
   );
 }
