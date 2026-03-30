@@ -16,31 +16,31 @@ export function ModalReply({
   if (!isOpen) return null;
 
   const [message, setMessage] = useState<string>("");
+  const [isSending, setIsSending] = useState(false);
   const {createNotification} = useNotification();
   const {error, validateMessage, setError} =useMessageValidation()
 
   //to make the form functional, you would typically add state to manage the reply message and then handle the submission logic to send the reply to the server or update the UI accordingly.
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if(!validateMessage(message)) {
+    if (!validateMessage(message)) {
       return;
     }
-
+    setIsSending(true);
     try {
       await createNotification({
         email: replyToUserEmail,
         message: message,
         type: "message",
-      })
-      setMessage("")
+      });
+      setMessage("");
       setError(null);
       onClose();
     } catch (error) {
       console.error("Error sending reply message.", error);
+    } finally {
+      setIsSending(false);
     }
-
-
-
     console.log("Reply submitted");
   };
 
@@ -65,8 +65,8 @@ export function ModalReply({
             onChange={e => setMessage(e.target.value)}
           ></textarea>
            <div className="error-message">{error}</div>
-          <button type="submit" className="modal-reply-send">
-            Send
+          <button type="submit" className="modal-reply-send" disabled={isSending}>
+            {isSending ? "Sending..." : "Send"}
           </button>
         </form>
       </div>
