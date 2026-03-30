@@ -4,6 +4,9 @@ import "./Responsive.css";
 import { useNavigate } from "react-router";
 
 
+// To fix css bug with search button
+
+
 export default function Search() {
   const [search, setSearch] = useState<string>("");
   const navigate = useNavigate();

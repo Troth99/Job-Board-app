@@ -26,7 +26,7 @@ export default function NewmessageNotification() {
       if (!notificationId) return;
       try {
         const result = await getNotificationById(notificationId);
-        console.log(result);
+
         setNotification(result);
       } catch (error) {
         console.error("Error fetching notification message:", error);
@@ -41,7 +41,7 @@ export default function NewmessageNotification() {
   // Handler to open the reply modal
   const modalReplyHandler = () => {
     setOpen(true);
-    setReplyToUserEmail(notification?.user?.email);
+    setReplyToUserEmail(notification?.sender?.email);
   };
 
   // Show loading spinner while fetching data
@@ -71,13 +71,13 @@ export default function NewmessageNotification() {
             <span className="notification__from-label">Message from:</span>
             <span className="notification__from-user">
               <span className="notification__from-first">
-                {notification?.user?.firstName}
+                {notification?.sender?.firstName}
               </span>
               <span className="notification__from-last">
-                {notification?.user?.lastName}
+                {notification?.sender?.lastName}
               </span>
               <span className="notification__from-email">
-                &lt;{notification?.user?.email}&gt;
+                &lt;{notification?.sender?.email}&gt;
               </span>
             </span>
           </span>

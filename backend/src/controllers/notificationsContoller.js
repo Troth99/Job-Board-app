@@ -41,7 +41,7 @@ export const createNotification = async (req, res) => {
         const notification = await Notification.create(req.body);
         const populated = await Notification.findById(notification._id)
             .populate("user", "name email firstName lastName")
-            .populate("sender", "name email")
+            .populate("sender", "firstName lastName email")
             .populate("company", "name");
 
         const userId = populated.user._id.toString();
@@ -63,7 +63,7 @@ export const getUserNotifications = async (req, res) => {
         const notifications = await Notification
             .find({ user: req.params.userId })
             .populate("user", "name email firstName lastName")
-            .populate("sender", "name email")
+            .populate("sender", "firstName lastName email")
             .populate("company", "name")
             .sort({ createdAt: -1 });
 
@@ -97,7 +97,7 @@ export const getNotificationById = async (req, res) => {
     try {
         const notification = await Notification.findById(req.params.id)
             .populate("user", "name email firstName lastName")
-            .populate("sender", "name email")
+           .populate("sender", "firstName lastName email")
             .populate("company", "name");
         if (!notification) {
             return res.status(404).json({ error: "Notification not found" });

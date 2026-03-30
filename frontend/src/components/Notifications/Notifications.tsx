@@ -103,7 +103,7 @@ function Notifications() {
           if (n.type === "message") {
             icon = "fa fa-envelope";
             heading = "New Message";
-            text = `You have a new message from <b>${getName(n.user)}</b>.`;
+            text = `You have a new message from <b>${getName(n.sender)}</b>.`;
           } else if (n.type === "application") {
             icon = "fa fa-briefcase";
             heading = "Application Update";

@@ -1,6 +1,7 @@
 import { use, useState } from "react";
 import { useMessageValidation } from "../../validators/useMessageValidation";
 import { useNotification } from "../../../hooks/useNotification";
+import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 
 interface ModalReplyProps {
   isOpen: boolean;
@@ -20,7 +21,9 @@ export function ModalReply({
   const [message, setMessage] = useState<string>("");
   const [isSending, setIsSending] = useState(false);
   const {createNotification} = useNotification();
-  const {error, validateMessage, setError} =useMessageValidation()
+  const {error, validateMessage, setError} =useMessageValidation();
+
+  const currentUserId = getUserFromLocalStorage()._id
 
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -36,6 +39,7 @@ export function ModalReply({
         email: replyToUserEmail,
         message: message,
         type: "message",
+        sender: currentUserId
       });
     
       //onSucess callback to notify the component that the message was sent.

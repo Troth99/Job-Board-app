@@ -1,3 +1,4 @@
+import { send } from "process";
 import useCompany from "../../../hooks/useCompany";
 import { useNotification } from "../../../hooks/useNotification";
 import useUserProfile from "../../../hooks/useProfile";
@@ -5,6 +6,7 @@ import { useValidation } from "../../validators/useValidation";
 import "./SendMessage.css";
 
 import { useState } from "react";
+import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 
 export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
   const [open, setOpen] = useState<Boolean>(false);
@@ -15,7 +17,9 @@ export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
   const [errors, setErrors] = useState<{ email?: string }>({});
   const { checkUser } = useCompany();
   const [isSending, setIsSending] = useState(false);
-  const {userData} = useUserProfile()
+  const {userData} = useUserProfile();
+
+  const currentUserId = getUserFromLocalStorage()._id
 
   // Get the current user's email from local storage to prevent sending messages to oneself
   const currentUserEmail = userData?.email;
@@ -50,6 +54,7 @@ export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
         email: recipient,
         message: message,
         type: "message",
+        sender: currentUserId, // Include sender's email for reference
       });
       // If the message was sent successfully, call the onSuccess callback and close the modal
       if (onSuccess) {
