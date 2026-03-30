@@ -5,7 +5,9 @@ import "./SendMessage.css";
 
 import { useState } from "react";
 
-export function SendMessage() {
+export function SendMessage(
+  { onSuccess }: { onSuccess?: () => void }
+) {
   const [open, setOpen] = useState<Boolean>(false);
   const [recipient, setRecipient] = useState("");
   const [message, setMessage] = useState("");
@@ -35,6 +37,9 @@ export function SendMessage() {
         message: message,
         type: "message",
       });
+      if(onSuccess) {
+        onSuccess();
+      }
       setOpen(false);
       setRecipient("");
       setMessage("");

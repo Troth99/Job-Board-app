@@ -20,6 +20,7 @@ export default function MemberDashboard() {
     loading: loadingRole,
   } = useCompany();
   const [localRole, setLocalRole] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 const {userRole} = useRole()
 
 
@@ -40,6 +41,13 @@ const {userRole} = useRole()
     return <Spinner inline={true} />;
   }
   return (
+    <>
+{success && (
+  <div className="success-message">
+    <span>Your message has been sent successfully!</span>
+    <button className="success-close" onClick={() => setSuccess(false)}>×</button>
+  </div>
+)}
     <div className="dashboard">
       {/* Sidebar */}
       <div className="sidebar">
@@ -79,7 +87,7 @@ const {userRole} = useRole()
         {/* Members Section */}
            <div className="content-header">
         <CompanyMembers />
-          <SendMessage />
+          <SendMessage onSuccess={() => setSuccess(true)} />
 
            </div>
 
@@ -89,6 +97,7 @@ const {userRole} = useRole()
           canPostJob={canPostJob}
           onPostJob={postJobHandlerNavigate}
         />
+        
         {/*announcements section 
   
   <div className="content-header">
@@ -106,5 +115,6 @@ const {userRole} = useRole()
   */}
       </div>
     </div>
+    </>
   );
 }
