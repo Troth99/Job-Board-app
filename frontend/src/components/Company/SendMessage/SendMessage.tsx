@@ -5,18 +5,18 @@ import "./SendMessage.css";
 
 import { useState } from "react";
 
-export function SendMessage(
-  { onSuccess }: { onSuccess?: () => void }
-) {
+export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
   const [open, setOpen] = useState<Boolean>(false);
   const [recipient, setRecipient] = useState("");
   const [message, setMessage] = useState("");
   const { createNotification } = useNotification();
   const { validateEmail } = useValidation();
   const [errors, setErrors] = useState<{ email?: string }>({});
-  const {checkUser} = useCompany()
+  const { checkUser } = useCompany();
+  const [isSending, setIsSending] = useState(false);
 
   const emailError = validateEmail(recipient);
+
   const handleSend = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -25,33 +25,42 @@ export function SendMessage(
       return;
     }
     try {
+      setIsSending(true);
+
       const userCheck = await checkUser(recipient);
       if (!userCheck || userCheck.message === "User does not exist") {
         setErrors({ email: "User with this email was not found." });
         return;
       }
 
-      
+      // Call the notification service to send the message
+   
       await createNotification({
         email: recipient,
         message: message,
         type: "message",
       });
-      if(onSuccess) {
+      // If the message was sent successfully, call the onSuccess callback and close the modal
+      if (onSuccess) {
         onSuccess();
       }
+
+      //  Reset form and close modal
       setOpen(false);
       setRecipient("");
       setMessage("");
     } catch (error: any) {
-      console.log(error)
+
+      // Handle errors from the notification service
+
       if (error?.response?.data?.error === "User not found") {
-      
         setErrors({ email: "User with this email was not found." });
       } else {
         setErrors({ email: "Error sending message." });
       }
       console.error("Error sending message.", error);
+    } finally {
+      setIsSending(false);
     }
   };
   return (
@@ -94,10 +103,10 @@ export function SendMessage(
               />
               <button
                 type="submit"
-                className="send-message-submit-btn-unique"
-                onClick={(e) => handleSend}
+                className="modal-reply-send"
+                disabled={isSending}
               >
-                Send
+                {isSending ? "Sending..." : "Send"}
               </button>
             </form>
           </div>
