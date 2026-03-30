@@ -25,7 +25,7 @@ function Notifications() {
   const userId = getUserFromLocalStorage()._id;
   const navigate = useNavigate();
 
-
+// Handler for removing a notification - deletes it from the server and updates the local state
   const removeNotificationHandler = async (
     e: React.MouseEvent<HTMLButtonElement>,
     id: string,
@@ -46,7 +46,7 @@ function Notifications() {
       setLoading(false);
     }
   };
-
+// Handler for when a notification is clicked - marks it as read and navigates to the appropriate page based on type
   const handleNotificationClick = async (n: Notification) => {
     if (!n.isRead) {
       try {
@@ -60,8 +60,10 @@ function Notifications() {
       } catch (error) {
         console.error("Failed to read notification", error);
       }
+
     }
 
+// Navigate to the appropriate page based on notification type
     switch (n.type) {
       case "message":
         navigate(`/message/${n._id}`);
@@ -78,6 +80,7 @@ function Notifications() {
   };
 
   return (
+    // The main notifications list component that displays all notifications and handles pagination, marking as read, and deletion.
     <div className="notification-list">
       <h2 className="notification-list__title">Notifications</h2>
       <ul className="notification-list__items">
@@ -96,6 +99,7 @@ function Notifications() {
           let heading = "Notification";
           let text = n.message;
 
+// We can customize the icon, heading, and text based on the notification type
           if (n.type === "message") {
             icon = "fa fa-envelope";
             heading = "New Message";
@@ -110,7 +114,7 @@ function Notifications() {
             text = `You have a new invitation from <b>${getName(n.company)}</b>.`;
     
           }
-
+// Each notification item is rendered with appropriate styling and click handlers for marking as read and deletion
           return (
             <li
               key={n._id}

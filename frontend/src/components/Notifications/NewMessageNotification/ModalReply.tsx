@@ -5,6 +5,7 @@ import { useNotification } from "../../../hooks/useNotification";
 interface ModalReplyProps {
   isOpen: boolean;
   onClose: () => void;
+  onScuccess: () => void;
   replyToUserEmail?: string;
 }
 
@@ -12,6 +13,7 @@ export function ModalReply({
   isOpen,
   onClose,
   replyToUserEmail,
+  onScuccess,
 }: ModalReplyProps) {
   if (!isOpen) return null;
 
@@ -20,19 +22,27 @@ export function ModalReply({
   const {createNotification} = useNotification();
   const {error, validateMessage, setError} =useMessageValidation()
 
-  //to make the form functional, you would typically add state to manage the reply message and then handle the submission logic to send the reply to the server or update the UI accordingly.
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateMessage(message)) {
       return;
     }
+
     setIsSending(true);
+    //back end service for sending the reply message - you would replace this with your actual API call
     try {
       await createNotification({
         email: replyToUserEmail,
         message: message,
         type: "message",
       });
+    
+      //onSucess callback to notify the component that the message was sent.
+      if(onScuccess) {
+        onScuccess();
+      }
+
       setMessage("");
       setError(null);
       onClose();

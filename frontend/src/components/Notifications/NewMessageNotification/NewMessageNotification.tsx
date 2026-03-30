@@ -12,6 +12,7 @@ export default function NewmessageNotification() {
   const { getNotificationById } = useNotification();
   const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
   const [replyToUserEmail, setReplyToUserEmail] = useState<string | undefined>(
     "",
   );
@@ -55,6 +56,12 @@ export default function NewmessageNotification() {
 
   return (
     <>
+{success && (
+  <div className="success-message">
+    <span>Your message has been sent successfully!</span>
+    <button className="success-close" onClick={() => setSuccess(false)}>×</button>
+  </div>
+)}
       <div
         className="notification notification--message"
         data-id="69bccc9b608cbda969c3360f"
@@ -90,7 +97,12 @@ export default function NewmessageNotification() {
           </button>
         </div>
       </div>
-      <ModalReply isOpen={open} replyToUserEmail={replyToUserEmail} onClose={() => setOpen(false)} />
+      <ModalReply
+        isOpen={open}
+        replyToUserEmail={replyToUserEmail}
+        onClose={() => setOpen(false)}
+        onScuccess={() => setSuccess(true)}
+      />
     </>
   );
 }
