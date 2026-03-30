@@ -76,18 +76,28 @@
 
 .main-content {
   flex-grow: 1;
-  padding: 20px;
+
   overflow-y: auto;
   background-color: #ecf0f1;
-  border-radius: 10px;
-  margin: 10px;
+
 }
 
+
 .content-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin: 20px;
+  gap: 2em;
+}
+
+
+.content-header-jobs {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  margin: 20px;
 }
 
 .content-header h3 {
@@ -139,6 +149,7 @@ ul {
   display: flex;
   gap: 1em;
   flex-wrap: wrap;
+  margin-right: 25px;
 }
 
 .buttons-for-jobs .add-button {

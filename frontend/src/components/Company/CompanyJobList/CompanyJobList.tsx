@@ -61,7 +61,7 @@ const viewAllJobsHandler = () =>{
   
   return (
     <>
-      <div className="content-header">
+      <div className="content-header-jobs">
         <h3>Most 5 recent Posted jobs</h3>
         <div className="buttons-for-jobs">
           {canPostJob && (

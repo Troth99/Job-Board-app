@@ -18,7 +18,7 @@ const initialFormValue = {
   password: "",
 };
 
-export default function LoginComponent() {
+export default function LoginComponent({ setUserId }: { setUserId: (id: string) => void }) {
   const [user, setUser] = useLocalStorage("user", {
     _id: "",
     accessToken: "",
@@ -47,6 +47,13 @@ export default function LoginComponent() {
         accessToken: user.accessToken,
         refreshToken: user.refreshToken,
       });
+
+      // trigger notification update context
+      setUserId(user.user._id);
+
+
+      //Temporally session storage to check if the user is commming from login page for the guard.
+      sessionStorage.setItem('fromLogin', 'true');
       navigate(from, { replace: true });
     } catch (err: any) {
       setErrors({
@@ -60,6 +67,7 @@ export default function LoginComponent() {
 
   const { values, register, formHandler, errors, setErrors } =
     useForm<LoginFormType>(loginSubmitHandler, initialFormValue, validateForm);
+
   return (
     <div className="login-wrapper">
       <div className="login-container">

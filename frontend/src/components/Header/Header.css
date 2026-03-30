@@ -140,7 +140,26 @@ body[data-theme="dark"] .btn-profile:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
 }
+.notification-link i {
+  font-size: 2rem; 
+    transition: color 0.2s, transform 0.2s;
 
+}
+
+.header.light .notification-link i {
+  color: #222; 
+}
+
+.header.dark .notification-link i {
+  color: #fff; 
+}
+.notification-link:hover {
+  background-color: #28a745;
+}
+.notification-link:hover i {
+  transform: scale(1.2) rotate(-10deg);
+  cursor: pointer;
+}
 /* === THEME TOGGLE === */
 .theme-toggle-btn {
   background: var(--accent-color, #007bff);

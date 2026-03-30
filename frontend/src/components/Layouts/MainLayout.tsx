@@ -56,8 +56,10 @@ function MainLayoutContent({ children, hideHeaderFooter }: Props) {
   return (
     <div className="app-container">
       {!hideHeaderFooter && <Header />}
-      {children}
-      <Outlet />
+      <main className="main-content">
+        {children}
+        <Outlet />
+      </main>
       {!hideHeaderFooter && <Footer />}
     </div>
   );

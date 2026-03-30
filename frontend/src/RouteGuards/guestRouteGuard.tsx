@@ -1,22 +1,23 @@
-import { Navigate, Outlet } from "react-router";
+import { Navigate, Outlet, useLocation } from "react-router";
 import { getAuthToken } from "../hooks/useAuth";
-import {toast } from "react-toastify"
+import { toast } from "react-toastify";
 import { useEffect } from "react";
 
+export default function GuestGuardRoute() {
+  const token = getAuthToken();
+  // sessionStorage flag to detect login navigation
+  const fromLogin = sessionStorage.getItem("fromLogin");
 
-export default function GuestGuardRoute () {
-    const token = getAuthToken();
-
-    useEffect(() => {
-        if(token) {
-            toast.info('You are already logged in!')
-        }
-    }, [token])
-    
-    if(token){
-        
-        return <Navigate to ="/profile" replace />
+  useEffect(() => {
+    if (token && !fromLogin) {
+      toast.info("You are already logged in!");
     }
+    if (fromLogin) sessionStorage.removeItem("fromLogin");
+  }, [token]);
 
-    return <Outlet />
+  if (token && !fromLogin) {
+    return <Navigate to="/profile" replace />;
+  }
+
+  return <Outlet />;
 }
