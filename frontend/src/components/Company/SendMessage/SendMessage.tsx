@@ -1,5 +1,6 @@
 import useCompany from "../../../hooks/useCompany";
 import { useNotification } from "../../../hooks/useNotification";
+import useUserProfile from "../../../hooks/useProfile";
 import { useValidation } from "../../validators/useValidation";
 import "./SendMessage.css";
 
@@ -14,8 +15,12 @@ export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
   const [errors, setErrors] = useState<{ email?: string }>({});
   const { checkUser } = useCompany();
   const [isSending, setIsSending] = useState(false);
+  const {userData} = useUserProfile()
 
+  // Get the current user's email from local storage to prevent sending messages to oneself
+  const currentUserEmail = userData?.email;
   const emailError = validateEmail(recipient);
+
 
   const handleSend = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,13 +33,19 @@ export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
       setIsSending(true);
 
       const userCheck = await checkUser(recipient);
+
       if (!userCheck || userCheck.message === "User does not exist") {
         setErrors({ email: "User with this email was not found." });
         return;
       }
 
+      // Prevent sending messages to oneself
+      if(recipient === currentUserEmail) {
+        setErrors({ email: "You cannot send a message to yourself." });
+        return;
+      }
       // Call the notification service to send the message
-   
+
       await createNotification({
         email: recipient,
         message: message,
@@ -50,7 +61,6 @@ export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
       setRecipient("");
       setMessage("");
     } catch (error: any) {
-
       // Handle errors from the notification service
 
       if (error?.response?.data?.error === "User not found") {
