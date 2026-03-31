@@ -1,0 +1,76 @@
+.abandon-modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.abandon-modal {
+  background: #fff;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  border-radius: 12px;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+  text-align: center;
+}
+
+.abandon-modal h3 {
+  margin-top: 0;
+  color: #b30000;
+  font-size: 1.5rem;
+}
+
+.abandon-modal p {
+  margin: 1.2rem 0 2rem 0;
+  color: #333;
+}
+
+.abandon-modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.abandon-modal-close-btn:hover {
+  color: #b30000;
+}
+
+.abandon-modal-btn-danger {
+  background: #b30000;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  transition: background 0.2s;
+}
+.abandon-modal-btn-danger:hover {
+  background: #d32f2f;
+}
+
+.abandon-modal-btn-secondary {
+  background: #eee;
+  color: #333;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  transition: background 0.2s;
+}
+.abandon-modal-btn-secondary:hover {
+  background: #ccc;
+}

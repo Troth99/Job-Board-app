@@ -8,6 +8,7 @@ import Spinner from "../../Spinner/Spinner";
 import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
 import { useRole } from "../../../context/RoleContext";
 import { SendMessage } from "../SendMessage/SendMessage";
+import { AbandonCompanyModal } from "../DangerButtons/AbandonCompany/AbandonCompanyModal";
 
 
 export default function MemberDashboard() {
@@ -21,18 +22,25 @@ export default function MemberDashboard() {
   } = useCompany();
   const [localRole, setLocalRole] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
-const {userRole} = useRole()
+  const { userRole } = useRole();
 
+  const [abandonModalOpen, setAbandonModalOpen] = useState(false);
 
   useEffect(() => {
     if (!companyId) return;
     getCompanyById(companyId);
-  getUserRole(companyId).then(setLocalRole);
+    getUserRole(companyId).then(setLocalRole);
   }, [companyId]);
 
   const postJobHandlerNavigate = () => {
     navigate(`/company/${companyId}/post-job`);
   };
+
+
+  //TODO: implement the actual abandon company logic, this is just a placeholder for now
+  const handleAbandonCompany = () => {
+    // Here you would typically call an API to abandon the company
+  }
 
   const canPostJob =
     localRole === "admin" || localRole === "owner" || localRole === "recruiter";
@@ -42,68 +50,75 @@ const {userRole} = useRole()
   }
   return (
     <>
-{success && (
-  <div className="success-message">
-    <span>Your message has been sent successfully!</span>
-    <button className="success-close" onClick={() => setSuccess(false)}>×</button>
-  </div>
-)}
-    <div className="dashboard">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <div className="sidebar-header">
-          <h2>
-            Welcome to <span className="company-name">{company?.name}</span>{" "}
-            dashboard.
-          </h2>
-          <p className="user-role">Role: {localRole}</p>
+      {success && (
+        <div className="success-message">
+          <span>Your message has been sent successfully!</span>
+          <button className="success-close" onClick={() => setSuccess(false)}>
+            ×
+          </button>
         </div>
-        <div className="sidebar-nav">
-          <div className="job-card-dashboard-image">
-            <img
-              src={
-                company?.logo && company.logo.trim().startsWith("http")
-                  ? company.logo
-                  : "/assets/defaultCompany.png"
-              }
-              alt={
-                company?.logo && company.logo.trim() !== ""
-                  ? company.name
-                  : "Default Company Logo"
-              }
-              className="company-logo"
-            />
+      )}
+      <div className="dashboard">
+        {/* Sidebar */}
+        <div className="sidebar">
+          <div className="sidebar-header">
+            <h2>
+              Welcome to <span className="company-name">{company?.name}</span>{" "}
+              dashboard.
+            </h2>
+            <p className="user-role">Role: {localRole}</p>
           </div>
-          <ul>
-            <li>
-              <Link to={`/company/${companyId}/members`}>Members</Link>
-            </li>
-            {/* ...тук могат да се добавят още менюта... */}
-          </ul>
-          <div className="sidebar-danger-actions">
-            <button className="sidebar-btn-danger">Abandon company</button>
-            <button className="sidebar-btn-danger">Leave company</button>
+          <div className="sidebar-nav">
+            <div className="job-card-dashboard-image">
+              <img
+                src={
+                  company?.logo && company.logo.trim().startsWith("http")
+                    ? company.logo
+                    : "/assets/defaultCompany.png"
+                }
+                alt={
+                  company?.logo && company.logo.trim() !== ""
+                    ? company.name
+                    : "Default Company Logo"
+                }
+                className="company-logo"
+              />
+            </div>
+            <ul>
+              <li>
+                <Link to={`/company/${companyId}/members`}>Members</Link>
+              </li>
+           {/* Here can be added more menu items */}
+            </ul>
+            <div className="sidebar-danger-actions">
+              <button
+                className="sidebar-btn-danger"
+                onClick={() => setAbandonModalOpen(true)  }
+              >
+                Abandon company
+              </button>
+
+              <button className="sidebar-btn-danger">Leave company</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Content Area */}
-      <div className="main-content">
-        {/* Members Section */}
-           <div className="content-header">
-        <CompanyMembers />
-          <SendMessage onSuccess={() => setSuccess(true)} />
+        {/* Main Content Area */}
+        <div className="main-content">
+          {/* Members Section */}
+          <div className="content-header">
+            <CompanyMembers />
+            <SendMessage onSuccess={() => setSuccess(true)} />
+          </div>
 
-           </div>
+          {/* Jobs Section */}
+          <CompanyJobsList
+            companyId={companyId!}
+            canPostJob={canPostJob}
+            onPostJob={postJobHandlerNavigate}
+          />
 
-        {/* Jobs Section */}
-        <CompanyJobsList
-          companyId={companyId!}
-          canPostJob={canPostJob}
-          onPostJob={postJobHandlerNavigate}
-        />
-        
-        {/*announcements section 
+          {/*announcements section 
   
   <div className="content-header">
     <h3>Announcements</h3>
@@ -118,8 +133,19 @@ const {userRole} = useRole()
   
 
   */}
+        </div>
       </div>
-    </div>
+
+      <AbandonCompanyModal
+        isOpen={abandonModalOpen}
+        onClose={() => setAbandonModalOpen(false)}
+        onConfirm={() => {
+    
+          setAbandonModalOpen(false);
+          navigate("/"); 
+        }}
+        isOwner={localRole === "owner"}
+      />
     </>
   );
 }
