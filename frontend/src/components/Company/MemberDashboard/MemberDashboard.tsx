@@ -78,7 +78,12 @@ const {userRole} = useRole()
             <li>
               <Link to={`/company/${companyId}/members`}>Members</Link>
             </li>
+            {/* ...тук могат да се добавят още менюта... */}
           </ul>
+          <div className="sidebar-danger-actions">
+            <button className="sidebar-btn-danger">Abandon company</button>
+            <button className="sidebar-btn-danger">Leave company</button>
+          </div>
         </div>
       </div>
 

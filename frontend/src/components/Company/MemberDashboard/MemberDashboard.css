@@ -1,3 +1,30 @@
+/* Danger actions pinned to bottom of sidebar */
+.sidebar-danger-actions {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 20px 20px 20px;
+}
+/* Danger sidebar button style */
+.sidebar-btn-danger {
+  margin-top: auto;
+  width: 100%;
+  width: 100%;
+  background: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.sidebar-btn-danger:hover {
+  background: #d9363e;
+}
 .dashboard {
   display: flex;
   min-height: 100vh;
