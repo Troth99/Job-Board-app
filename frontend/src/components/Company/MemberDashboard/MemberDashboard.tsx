@@ -9,8 +9,6 @@ import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
 import { SendMessage } from "../SendMessage/SendMessage";
 import { AbandonCompanyModal } from "../DangerButtons/AbandonCompany/AbandonCompanyModal";
 import { LeaveCompanyModal } from "../DangerButtons/LeaveCompany/LeaveCompanyModal";
-import { useLocalStorage } from "../../../hooks/useLocalStorage";
-import { get } from "http";
 import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { useUserData } from "../../../context/UseDataContext";
@@ -36,6 +34,8 @@ export default function MemberDashboard() {
   const { setUserData, userData } = useUserData();
   const { setUserRole } = useRole();
 
+  const [submitting, setSubmitting] = useState<boolean>(false);
+
   useEffect(() => {
     if (!companyId) return;
     getCompanyById(companyId);
@@ -55,22 +55,30 @@ export default function MemberDashboard() {
     if (!companyId || !localRole) {
       return;
     }
+    setSubmitting(true);
+
     const members = await getCompanyMembers(companyId);
-    const myMember = members.find((m: CompanyMember) => m.userId._id === user?._id);
+    const myMember = members.find(
+      (m: CompanyMember) => m.userId._id === user?._id,
+    );
     const myMemberId = myMember?._id;
     if (!myMemberId) {
       console.error("Current user is not a member of the company");
       return;
     }
     try {
+      await new Promise((resolve => setTimeout(resolve, 4000)));
       await kickMemberFromCompany(companyId, myMemberId);
-      // Обнови userData в контекста
+
+      // Update user data in context and local storage
       if (userData) {
         setUserData({ ...userData, company: null });
       }
-      // Обнови ролята в контекста
+
+      // Update role in context
       setUserRole(null);
-      // Обнови localStorage
+
+      // Update localStorage
       if (user) {
         delete user.company;
         localStorage.setItem("user", JSON.stringify(user));
@@ -79,6 +87,8 @@ export default function MemberDashboard() {
       navigate("/");
     } catch (error) {
       console.error("Error leaving company:", error);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -174,8 +184,6 @@ export default function MemberDashboard() {
  
     </div>
     </div>
-  
-  
 
   */}
         </div>
@@ -196,6 +204,7 @@ export default function MemberDashboard() {
         onClose={() => setLeaveModalOpen(false)}
         onConfirm={handleLeaveCompany}
         isOwner={localRole === "owner"}
+        submitting={submitting}
       />
     </>
   );

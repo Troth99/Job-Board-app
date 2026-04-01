@@ -73,6 +73,16 @@
   margin: 0 0.5rem;
   transition: background 0.2s;
 }
+
+.abandon-modal-btn-danger:disabled {
+  background: #e57373;
+  color: #fff;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.abandon-modal-btn-danger:hover:disabled {
+  background: #e57373;
+}
 .abandon-modal-btn-danger:hover {
   background: #d32f2f;
 }

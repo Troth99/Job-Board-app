@@ -4,10 +4,11 @@ interface LeaveCompanyModalProps {
   onClose: () => void;
   onConfirm: () => void;
   isOwner: boolean;
+  submitting: boolean;
 }
 
 
-export function LeaveCompanyModal({ onClose, isOwner, isOpen, onConfirm }: LeaveCompanyModalProps) {
+export function LeaveCompanyModal({ onClose, isOwner, isOpen, onConfirm, submitting }: LeaveCompanyModalProps) {
 
   if (!isOpen) return null;
 
@@ -25,8 +26,8 @@ export function LeaveCompanyModal({ onClose, isOwner, isOpen, onConfirm }: Leave
             <div className="abandon-modal-subtitle">Are you sure you want to leave the company?</div>
             <p>This action is irreversible and you will lose access to company resources.</p>
             <div className="abandon-modal-btns-row">
-              <button className="abandon-modal-btn-danger" onClick={onConfirm}>
-                Yes, leave
+              <button className="abandon-modal-btn-danger" onClick={onConfirm} disabled={submitting}>
+                {submitting ? "Leaving..." : "Yes, leave"}
               </button>
               <button className="abandon-modal-btn-secondary" onClick={onClose}>
                 Cancel
