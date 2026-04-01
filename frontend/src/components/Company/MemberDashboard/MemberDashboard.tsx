@@ -6,9 +6,9 @@ import useCompany from "../../../hooks/useCompany";
 import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
 import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
-import { useRole } from "../../../context/RoleContext";
 import { SendMessage } from "../SendMessage/SendMessage";
 import { AbandonCompanyModal } from "../DangerButtons/AbandonCompany/AbandonCompanyModal";
+import { LeaveCompanyModal } from "../DangerButtons/LeaveCompany/LeaveCompanyModal";
 
 
 export default function MemberDashboard() {
@@ -22,9 +22,10 @@ export default function MemberDashboard() {
   } = useCompany();
   const [localRole, setLocalRole] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
-  const { userRole } = useRole();
+
 
   const [abandonModalOpen, setAbandonModalOpen] = useState(false);
+  const [leaveModalOpen, setLeaveModalOpen] = useState(false);
 
   useEffect(() => {
     if (!companyId) return;
@@ -98,7 +99,9 @@ export default function MemberDashboard() {
                 Abandon company
               </button>
 
-              <button className="sidebar-btn-danger">Leave company</button>
+              <button className="sidebar-btn-danger"
+                onClick={() => setLeaveModalOpen(true)}
+              >Leave company</button>
             </div>
           </div>
         </div>
@@ -145,6 +148,17 @@ export default function MemberDashboard() {
           navigate("/"); 
         }}
         isOwner={localRole === "owner"}
+      />
+
+      <LeaveCompanyModal 
+        isOpen={leaveModalOpen}
+        onClose={() => setLeaveModalOpen(false)}
+        onConfirm={() => {
+          setLeaveModalOpen(false);
+          navigate("/")
+        }}
+        isOwner={localRole === "owner"}
+    
       />
     </>
   );
