@@ -9,7 +9,12 @@ import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
 import { SendMessage } from "../SendMessage/SendMessage";
 import { AbandonCompanyModal } from "../DangerButtons/AbandonCompany/AbandonCompanyModal";
 import { LeaveCompanyModal } from "../DangerButtons/LeaveCompany/LeaveCompanyModal";
-
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import { get } from "http";
+import { getUserFromLocalStorage } from "../../../hooks/useAuth";
+import { CompanyMember } from "../../../interfaces/CompanyMember.model";
+import { useUserData } from "../../../context/UseDataContext";
+import { useRole } from "../../../context/RoleContext";
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
@@ -22,10 +27,14 @@ export default function MemberDashboard() {
   } = useCompany();
   const [localRole, setLocalRole] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
-
+  const { kickMemberFromCompany, getCompanyMembers } = useCompany();
 
   const [abandonModalOpen, setAbandonModalOpen] = useState(false);
   const [leaveModalOpen, setLeaveModalOpen] = useState(false);
+
+  const user = getUserFromLocalStorage();
+  const { setUserData, userData } = useUserData();
+  const { setUserRole } = useRole();
 
   useEffect(() => {
     if (!companyId) return;
@@ -37,11 +46,41 @@ export default function MemberDashboard() {
     navigate(`/company/${companyId}/post-job`);
   };
 
-
   //TODO: implement the actual abandon company logic, this is just a placeholder for now
   const handleAbandonCompany = () => {
     // Here you would typically call an API to abandon the company
-  }
+  };
+
+  const handleLeaveCompany = async () => {
+    if (!companyId || !localRole) {
+      return;
+    }
+    const members = await getCompanyMembers(companyId);
+    const myMember = members.find((m: CompanyMember) => m.userId._id === user?._id);
+    const myMemberId = myMember?._id;
+    if (!myMemberId) {
+      console.error("Current user is not a member of the company");
+      return;
+    }
+    try {
+      await kickMemberFromCompany(companyId, myMemberId);
+      // Обнови userData в контекста
+      if (userData) {
+        setUserData({ ...userData, company: null });
+      }
+      // Обнови ролята в контекста
+      setUserRole(null);
+      // Обнови localStorage
+      if (user) {
+        delete user.company;
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+      setLeaveModalOpen(false);
+      navigate("/");
+    } catch (error) {
+      console.error("Error leaving company:", error);
+    }
+  };
 
   const canPostJob =
     localRole === "admin" || localRole === "owner" || localRole === "recruiter";
@@ -89,19 +128,22 @@ export default function MemberDashboard() {
               <li>
                 <Link to={`/company/${companyId}/members`}>Members</Link>
               </li>
-           {/* Here can be added more menu items */}
+              {/* Here can be added more menu items */}
             </ul>
             <div className="sidebar-danger-actions">
               <button
                 className="sidebar-btn-danger"
-                onClick={() => setAbandonModalOpen(true)  }
+                onClick={() => setAbandonModalOpen(true)}
               >
                 Abandon company
               </button>
 
-              <button className="sidebar-btn-danger"
+              <button
+                className="sidebar-btn-danger"
                 onClick={() => setLeaveModalOpen(true)}
-              >Leave company</button>
+              >
+                Leave company
+              </button>
             </div>
           </div>
         </div>
@@ -143,22 +185,17 @@ export default function MemberDashboard() {
         isOpen={abandonModalOpen}
         onClose={() => setAbandonModalOpen(false)}
         onConfirm={() => {
-    
           setAbandonModalOpen(false);
-          navigate("/"); 
+          navigate("/");
         }}
         isOwner={localRole === "owner"}
       />
 
-      <LeaveCompanyModal 
+      <LeaveCompanyModal
         isOpen={leaveModalOpen}
         onClose={() => setLeaveModalOpen(false)}
-        onConfirm={() => {
-          setLeaveModalOpen(false);
-          navigate("/")
-        }}
+        onConfirm={handleLeaveCompany}
         isOwner={localRole === "owner"}
-    
       />
     </>
   );
