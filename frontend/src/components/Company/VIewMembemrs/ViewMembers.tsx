@@ -37,11 +37,9 @@ export function ViewMembers() {
     if (!companyId) return;
     try {
       await changeMemberRole(companyId, memberId, newRole);
-      setMembers((prevMembers: CompanyMember[]) =>
-        prevMembers.map((m) =>
-          m._id === memberId ? { ...m, role: newRole } : m,
-        ),
-      );
+      
+      const data = await getCompanyMembers(companyId);
+      setMembers(data); 
     } catch (error) {
       console.error("Failed to update the role.", error);
     }
@@ -97,7 +95,7 @@ export function ViewMembers() {
                     <button
                       className="action-btn edit"
                       title="Change Role"
-                      onClick={() => setShowOptions(member._id)}
+                      onClick={() => setShowOptions(showOptions === member._id ? null : member._id)}
                     >
                       Change Role
                     </button>
