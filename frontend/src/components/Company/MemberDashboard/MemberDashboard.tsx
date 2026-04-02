@@ -138,6 +138,13 @@ export default function MemberDashboard() {
               <li>
                 <Link to={`/company/${companyId}/members`}>Members</Link>
               </li>
+
+              {localRole === "owner" && 
+                <li>
+                  <button className="promote-ownership-btn">Promote ownership</button>
+                </li>
+
+              }
               {/* Here can be added more menu items */}
             </ul>
             <div className="sidebar-danger-actions">

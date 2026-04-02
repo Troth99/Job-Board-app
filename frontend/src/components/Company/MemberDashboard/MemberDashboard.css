@@ -1,3 +1,25 @@
+/* Promote Ownership Button as Member List Item */
+.promote-ownership-list-item {
+  padding: 15px 20px;
+  border-bottom: 1px solid #34495e;
+}
+
+.promote-ownership-btn {
+  width: 100%;
+  background: #1abc9c;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.promote-ownership-btn:hover {
+  background: #16a085;
+}
 /* Danger actions pinned to bottom of sidebar */
 .sidebar-danger-actions {
   margin-top: auto;
