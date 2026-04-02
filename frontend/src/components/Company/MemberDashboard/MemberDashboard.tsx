@@ -13,6 +13,7 @@ import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { useUserData } from "../../../context/UseDataContext";
 import { useRole } from "../../../context/RoleContext";
+import { PromoteOwnerShipModal } from "../PromoteOwnershipModal/PromoteOwnerShipModal";
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
@@ -35,6 +36,9 @@ export default function MemberDashboard() {
   const { setUserRole } = useRole();
 
   const [submitting, setSubmitting] = useState<boolean>(false);
+
+  const [promoteOwnershipModalOpen, setPromoteOwnershipModalOpen] =
+    useState<boolean>(false);
 
   useEffect(() => {
     if (!companyId) return;
@@ -67,7 +71,7 @@ export default function MemberDashboard() {
       return;
     }
     try {
-      await new Promise((resolve => setTimeout(resolve, 4000)));
+      await new Promise((resolve) => setTimeout(resolve, 4000));
       await kickMemberFromCompany(companyId, myMemberId);
 
       // Update user data in context and local storage
@@ -139,12 +143,16 @@ export default function MemberDashboard() {
                 <Link to={`/company/${companyId}/members`}>Members</Link>
               </li>
 
-              {localRole === "owner" && 
+              {localRole === "owner" && (
                 <li>
-                  <button className="promote-ownership-btn">Promote ownership</button>
+                  <button
+                    className="promote-ownership-btn"
+                    onClick={() => setPromoteOwnershipModalOpen(true)}
+                  >
+                    Promote ownership
+                  </button>
                 </li>
-
-              }
+              )}
               {/* Here can be added more menu items */}
             </ul>
             <div className="sidebar-danger-actions">
@@ -196,6 +204,8 @@ export default function MemberDashboard() {
         </div>
       </div>
 
+ { /* Modals to move them to a different component later, but for now it's easier to keep them here */ }
+ 
       <AbandonCompanyModal
         isOpen={abandonModalOpen}
         onClose={() => setAbandonModalOpen(false)}
@@ -212,6 +222,11 @@ export default function MemberDashboard() {
         onConfirm={handleLeaveCompany}
         isOwner={localRole === "owner"}
         submitting={submitting}
+      />
+
+      <PromoteOwnerShipModal
+        isOpen={promoteOwnershipModalOpen}
+        onClose={() => setPromoteOwnershipModalOpen(false)}
       />
     </>
   );
