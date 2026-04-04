@@ -34,6 +34,8 @@ export default function MemberDashboard() {
   const [abandonModalOpen, setAbandonModalOpen] = useState(false);
   const [leaveModalOpen, setLeaveModalOpen] = useState(false);
 
+  //TODO: move the modals to a different component later, but for now it's easier to keep them here since they are closely related to the member dashboard and need access to its state and functions.
+
   // Get current user data and role from context and local storage
   const user = getUserFromLocalStorage();
   const { setUserData, userData } = useUserData();
