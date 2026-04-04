@@ -23,11 +23,13 @@ export default function MemberDashboard() {
     getCompanyById,
     getUserRole,
     loading: loadingRole,
+    getCompanyMembers,
+    kickMemberFromCompany
   } = useCompany();
   const [localRole, setLocalRole] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
-  const { kickMemberFromCompany, getCompanyMembers } = useCompany();
-
+  const [members, setMembers] = useState<CompanyMember[]>([]);
+ 
   const [abandonModalOpen, setAbandonModalOpen] = useState(false);
   const [leaveModalOpen, setLeaveModalOpen] = useState(false);
 
@@ -46,6 +48,14 @@ export default function MemberDashboard() {
     getUserRole(companyId).then(setLocalRole);
   }, [companyId]);
 
+  useEffect(() => {
+    const fetchMembers = async () => {
+      if (!companyId) return;
+      const membersResult = await getCompanyMembers(companyId);
+      setMembers(membersResult)
+    }
+    fetchMembers()
+  }, [companyId])
   const postJobHandlerNavigate = () => {
     navigate(`/company/${companyId}/post-job`);
   };
@@ -227,6 +237,7 @@ export default function MemberDashboard() {
       <PromoteOwnerShipModal
         isOpen={promoteOwnershipModalOpen}
         onClose={() => setPromoteOwnershipModalOpen(false)}
+        companyMembers={members}
       />
     </>
   );
