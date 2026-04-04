@@ -5,16 +5,20 @@ import "./PromoteOwnerShipModal.css";
 interface PromoteOwnershipModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onPromoteSuccess: () => void;
   companyMembers: CompanyMember[];
-  changeMemberRole: (memberId: string, newRole: string) => Promise<void>;
+  transferOwnership: (memberId: string) => Promise<void>;
+  myMemberId?: string;
 }
 
 //Todo: implement the promote ownership modal, which will be opened when the owner clicks on the "Promote ownership" button in the member dashboard. The modal will allow the owner to select a member to promote to ownership and confirm the action.
 export function PromoteOwnerShipModal({
   isOpen,
   onClose,
+  onPromoteSuccess,
   companyMembers,
-  changeMemberRole,
+  myMemberId,
+  transferOwnership,
 }: PromoteOwnershipModalProps) {
   if (!isOpen) return null;
 
@@ -23,18 +27,17 @@ export function PromoteOwnerShipModal({
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
       if (selectedMemberId) {
         setLoading(true);
-        await changeMemberRole(selectedMemberId, "owner");
+        await transferOwnership(selectedMemberId);
+        onPromoteSuccess();
       }
     } catch (error) {
       console.error("Failed to promote member to owner", error);
     } finally {
       setLoading(false);
     }
-    onClose();
   };
   return (
     <div id="promote-owner-modal" className="promote-owner-modal__backdrop">

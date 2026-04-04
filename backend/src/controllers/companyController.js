@@ -233,4 +233,36 @@ export const kickMemberFromCompanyController = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
-}
+};
+
+export const transferOwnershipController = async (req, res) => {
+    const { companyId } = req.params;
+  const { newOwnerMemberId } = req.body;
+  console.log("userId from token:", req.user._id, "companyId:", companyId);
+  try {
+   
+    const oldOwner = await CompanyMember.findOne({ companyId, userId: req.user._id, role: "owner" });
+    if (!oldOwner) {
+      return res.status(403).json({ message: "Only current owner can transfer ownership" });
+    }
+  
+    const newOwner = await CompanyMember.findOne({ companyId, _id: newOwnerMemberId });
+    if (!newOwner) {
+      return res.status(404).json({ message: "New owner member not found" });
+    }
+    if (newOwner.role === "owner") {
+      return res.status(400).json({ message: "Selected member is already owner" });
+    }
+
+    newOwner.role = "owner";
+    await newOwner.save();
+
+    oldOwner.role = "member";
+    await oldOwner.save();
+  
+    res.status(200).json({ message: "Ownership transferred successfully", newOwner, oldOwner });
+  } catch (error) {
+  
+    res.status(500).json({ message: error.message });
+  }
+};

@@ -25,24 +25,45 @@ export default function MemberDashboard() {
     loading: loadingRole,
     getCompanyMembers,
     kickMemberFromCompany,
-    changeMemberRole
+    transferOwnership,
   } = useCompany();
   const [localRole, setLocalRole] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [members, setMembers] = useState<CompanyMember[]>([]);
- 
+
   const [abandonModalOpen, setAbandonModalOpen] = useState(false);
   const [leaveModalOpen, setLeaveModalOpen] = useState(false);
 
+  // Get current user data and role from context and local storage
   const user = getUserFromLocalStorage();
   const { setUserData, userData } = useUserData();
   const { setUserRole } = useRole();
 
   const [submitting, setSubmitting] = useState<boolean>(false);
 
-  const [promoteOwnershipModalOpen, setPromoteOwnershipModalOpen] =
-    useState<boolean>(false);
+  const [promoteOwnershipModalOpen, setPromoteOwnershipModalOpen] = useState<boolean>(false);
+  const [refreshingAfterTransfer, setRefreshingAfterTransfer] = useState<boolean>(false);
 
+  // Find the current user's membership in the company to determine their role and permissions
+  const myMember = members.find((m) => m.userId._id === user?._id);
+  const myMemberId = myMember?._id;
+
+  //   
+  const handlePromoteOwnershipModalClose = async () => {
+    setPromoteOwnershipModalOpen(false);
+    setRefreshingAfterTransfer(true);
+    try {
+      if (!companyId) return;
+      const updatedMembers = await getCompanyMembers(companyId);
+      const updatedRole = await getUserRole(companyId);
+      setMembers(updatedMembers);
+      setLocalRole(updatedRole);
+    } catch (error) {
+      console.error("Error updating company members and role after ownership transfer:", error);
+    } finally {
+      setRefreshingAfterTransfer(false);
+    }
+  };
   useEffect(() => {
     if (!companyId) return;
     getCompanyById(companyId);
@@ -53,10 +74,10 @@ export default function MemberDashboard() {
     const fetchMembers = async () => {
       if (!companyId) return;
       const membersResult = await getCompanyMembers(companyId);
-      setMembers(membersResult)
-    }
-    fetchMembers()
-  }, [companyId])
+      setMembers(membersResult);
+    };
+    fetchMembers();
+  }, [companyId]);
   const postJobHandlerNavigate = () => {
     navigate(`/company/${companyId}/post-job`);
   };
@@ -110,8 +131,8 @@ export default function MemberDashboard() {
   const canPostJob =
     localRole === "admin" || localRole === "owner" || localRole === "recruiter";
 
-  if (loadingRole) {
-    return <Spinner inline={true} />;
+  if (loadingRole || refreshingAfterTransfer) {
+    return <Spinner overlay={true} />;
   }
   return (
     <>
@@ -215,8 +236,8 @@ export default function MemberDashboard() {
         </div>
       </div>
 
- { /* Modals to move them to a different component later, but for now it's easier to keep them here */ }
- 
+      {/* Modals to move them to a different component later, but for now it's easier to keep them here */}
+
       <AbandonCompanyModal
         isOpen={abandonModalOpen}
         onClose={() => setAbandonModalOpen(false)}
@@ -238,9 +259,12 @@ export default function MemberDashboard() {
       <PromoteOwnerShipModal
         isOpen={promoteOwnershipModalOpen}
         onClose={() => setPromoteOwnershipModalOpen(false)}
+        onPromoteSuccess={handlePromoteOwnershipModalClose}
         companyMembers={members}
-          changeMemberRole={(memberId: string, newRole: string) => changeMemberRole(companyId!, memberId, newRole)}
-
+        transferOwnership={(memberId: string) =>
+          transferOwnership(companyId!, memberId)
+        }
+        myMemberId={myMemberId}
       />
     </>
   );

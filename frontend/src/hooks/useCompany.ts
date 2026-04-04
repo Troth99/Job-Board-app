@@ -85,7 +85,7 @@ export default function useCompany() {
       const response = await request(
         `${API_BASE}/companies/my-company`,
         "GET",
-        {}
+        {},
       );
       setCompany(response);
       return response;
@@ -105,7 +105,7 @@ export default function useCompany() {
       const response = await request(
         `${API_BASE}/companies/${companyId}/members`,
         "GET",
-        {}
+        {},
       );
       const user = getUserFromLocalStorage();
       const userId = user._id;
@@ -140,7 +140,7 @@ export default function useCompany() {
       const response = await request(
         `${API_BASE}/users/check-user-exists`,
         "POST",
-        { email }
+        { email },
       );
       return response;
     } catch (error) {
@@ -153,7 +153,7 @@ export default function useCompany() {
       const response = await request(
         `${API_BASE}/companies/${companyId}/add-member`,
         "POST",
-        { userId }
+        { userId },
       );
       return { success: true, ...response };
     } catch (error: any) {
@@ -167,44 +167,69 @@ export default function useCompany() {
   };
 
   const getCompanyMembers = async (companyId: string) => {
-  setLoading(true);
-  setError(null);
-  try {
-    const response = await request(
-      `${API_BASE}/companies/${companyId}/members`,
-      "GET",
-      {}
-    );
-    return response;
-  } catch (err) {
-    setError("Error fetching company members");
-    console.error(err);
-    return [];
-  } finally {
-    setLoading(false);
-  }
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await request(
+        `${API_BASE}/companies/${companyId}/members`,
+        "GET",
+        {},
+      );
+      return response;
+    } catch (err) {
+      setError("Error fetching company members");
+      console.error(err);
+      return [];
+    } finally {
+      setLoading(false);
+    }
+  };
+  const changeMemberRole = async (
+    companyId: string,
+    memberId: string,
+    role: string,
+  ) => {
+    try {
+      const response = await request(
+        `${API_BASE}/companies/${companyId}/members/${memberId}/role`,
+        "PATCH",
+        { role },
+      );
+      return response;
+    } catch (error) {
+      setError("Error occured while changing the role.");
+      console.error(error);
+    }
+  };
 
-};
-const changeMemberRole = async (companyId: string, memberId: string, role: string) =>{
-try {
-  const response = await request(`${API_BASE}/companies/${companyId}/members/${memberId}/role`, "PATCH", {role})
-  return response
-} catch (error) {
-  setError('Error occured while changing the role.')
-  console.error(error)
-}
-}
+  const kickMemberFromCompany = async (companyId: string, memberId: string) => {
+    try {
+      const response = await request(
+        `${API_BASE}/companies/${companyId}/member/${memberId}`,
+        "DELETE",
+        {},
+      );
+      return response;
+    } catch (error) {
+      setError("Error occured while changing the role.");
+      console.error(error);
+    }
+  };
 
-const kickMemberFromCompany = async (companyId: string, memberId: string) =>  {
-try {
-  const response = await request(`${API_BASE}/companies/${companyId}/member/${memberId}`, "DELETE", {})
-  return response
-} catch (error) {
-    setError('Error occured while changing the role.')
-    console.error(error)
+  const transferOwnership = async (companyId: string, newOwnerId: string) => {
+    try {
+      const response = await request(
+        `${API_BASE}/companies/${companyId}/transfer-ownership`,
+        "POST",
+        { newOwnerMemberId: newOwnerId },
+      );
+      return response;
+    } catch (error) {
+      setError("Error occured while transferring ownership.");
+      console.error(error);
+    }
+  };
 
-}
-}
   return {
     loading,
     error,
@@ -221,6 +246,7 @@ try {
     addMemberToCompany,
     getCompanyMembers,
     changeMemberRole,
-    kickMemberFromCompany
+    kickMemberFromCompany,
+    transferOwnership,
   };
 }
