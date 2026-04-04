@@ -24,7 +24,8 @@ export default function MemberDashboard() {
     getUserRole,
     loading: loadingRole,
     getCompanyMembers,
-    kickMemberFromCompany
+    kickMemberFromCompany,
+    changeMemberRole
   } = useCompany();
   const [localRole, setLocalRole] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -238,6 +239,8 @@ export default function MemberDashboard() {
         isOpen={promoteOwnershipModalOpen}
         onClose={() => setPromoteOwnershipModalOpen(false)}
         companyMembers={members}
+          changeMemberRole={(memberId: string, newRole: string) => changeMemberRole(companyId!, memberId, newRole)}
+
       />
     </>
   );
