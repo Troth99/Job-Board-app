@@ -1,4 +1,4 @@
-import { P } from "react-router/dist/development/instrumentation-iAqbU5Q4";
+import "./PromoteOwnerShipModal.css"
 
 interface PromoteOwnershipModalProps {
     isOpen: boolean;
@@ -11,6 +11,20 @@ export function PromoteOwnerShipModal( {isOpen, onClose} :PromoteOwnershipModalP
 
     console.log("Promote ownership modal opened");
     return (
-       <h1>Promote Ownership Modal</h1>
+      <div id="promote-owner-modal" className="promote-owner-modal__backdrop">
+  <div className="promote-owner-modal__container">
+    <button className="promote-owner-modal__close" aria-label="Close" onClick={onClose}>×</button>
+    <h2 className="promote-owner-modal__title">Promote Member to Owner</h2>
+    <form className="promote-owner-modal__form">
+      <label htmlFor="promote-owner-select" className="promote-owner-modal__label">
+        Select member:
+      </label>
+      <select id="promote-owner-select" className="promote-owner-modal__select">
+        {/* <option>Member 1</option> ... */}
+      </select>
+      <button type="submit" className="promote-owner-modal__submit">Promote</button>
+    </form>
+  </div>
+</div>
     )
 }
