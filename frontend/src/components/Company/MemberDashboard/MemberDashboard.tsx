@@ -190,12 +190,7 @@ export default function MemberDashboard() {
               {/* Here can be added more menu items */}
             </ul>
             <div className="sidebar-danger-actions">
-              <button
-                className="sidebar-btn-danger"
-                onClick={() => setAbandonModalOpen(true)}
-              >
-                Abandon company
-              </button>
+          
 
               <button
                 className="sidebar-btn-danger"

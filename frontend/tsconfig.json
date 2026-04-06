@@ -16,6 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "ignoreDeprecations": "6.0",
   "include": ["src"],
   "exclude": ["node_modules"]
 }
