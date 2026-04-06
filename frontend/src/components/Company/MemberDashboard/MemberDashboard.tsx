@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+// Handler for navigating to post job page
+
+import { useState } from "react";
 import "./MemberDashboard.css";
 import "./Responsive.css";
 import { useNavigate, useParams } from "react-router";
@@ -8,32 +10,29 @@ import Spinner from "../../Spinner/Spinner";
 import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
 import { SendMessage } from "../SendMessage/SendMessage";
 import { getUserFromLocalStorage } from "../../../hooks/useAuth";
-import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { useUserData } from "../../../context/UseDataContext";
 import { useRole } from "../../../context/RoleContext";
 import { MemberDashboardModals } from "./Modals";
 import { MemberDashboardSideBar } from "./MemberSidebar";
+import { useCompanyMember } from "../../../hooks/useCompanyMember";
+import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
   const navigate = useNavigate();
   const {
     company,
-    getCompanyById,
-    getUserRole,
     loading: loadingRole,
     getCompanyMembers,
     kickMemberFromCompany,
     transferOwnership,
   } = useCompany();
-  const [localRole, setLocalRole] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
-  const [members, setMembers] = useState<CompanyMember[]>([]);
 
   const [abandonModalOpen, setAbandonModalOpen] = useState(false);
   const [leaveModalOpen, setLeaveModalOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  //TODO: move the modals to a different component later, but for now it's easier to keep them here since they are closely related to the member dashboard and need access to its state and functions.
+  const { members, localRole, loading, refresh } = useCompanyMember(companyId);
 
   // Get current user data and role from context and local storage
   const user = getUserFromLocalStorage();
@@ -41,26 +40,24 @@ export default function MemberDashboard() {
   const { setUserRole } = useRole();
 
   const [submitting, setSubmitting] = useState<boolean>(false);
-
   const [promoteOwnershipModalOpen, setPromoteOwnershipModalOpen] =
     useState<boolean>(false);
   const [refreshingAfterTransfer, setRefreshingAfterTransfer] =
     useState<boolean>(false);
-
+    
   // Find the current user's membership in the company to determine their role and permissions
-  const myMember = members.find((m) => m.userId._id === user?._id);
+  const myMember = members.find((m: CompanyMember) => m.userId._id === user?._id);
   const myMemberId = myMember?._id;
 
+  const postJobHandlerNavigate = () => {
+    navigate(`/company/${companyId}/post-job`);
+  };
   //
   const handlePromoteOwnershipModalClose = async () => {
     setPromoteOwnershipModalOpen(false);
     setRefreshingAfterTransfer(true);
     try {
-      if (!companyId) return;
-      const updatedMembers = await getCompanyMembers(companyId);
-      const updatedRole = await getUserRole(companyId);
-      setMembers(updatedMembers);
-      setLocalRole(updatedRole);
+      await refresh();
     } catch (error) {
       console.error(
         "Error updating company members and role after ownership transfer:",
@@ -69,23 +66,6 @@ export default function MemberDashboard() {
     } finally {
       setRefreshingAfterTransfer(false);
     }
-  };
-  useEffect(() => {
-    if (!companyId) return;
-    getCompanyById(companyId);
-    getUserRole(companyId).then(setLocalRole);
-  }, [companyId]);
-
-  useEffect(() => {
-    const fetchMembers = async () => {
-      if (!companyId) return;
-      const membersResult = await getCompanyMembers(companyId);
-      setMembers(membersResult);
-    };
-    fetchMembers();
-  }, [companyId]);
-  const postJobHandlerNavigate = () => {
-    navigate(`/company/${companyId}/post-job`);
   };
 
   //TODO: implement the actual abandon company logic, this is just a placeholder for now
@@ -98,34 +78,27 @@ export default function MemberDashboard() {
       return;
     }
     setSubmitting(true);
-
-    const members = await getCompanyMembers(companyId);
-    const myMember = members.find(
-      (m: CompanyMember) => m.userId._id === user?._id,
-    );
-    const myMemberId = myMember?._id;
-    if (!myMemberId) {
-      console.error("Current user is not a member of the company");
-      return;
-    }
     try {
+      const membersList = await getCompanyMembers(companyId);
+      const myMember = membersList.find((m: CompanyMember) => m.userId._id === user?._id);
+      const myMemberId = myMember?._id;
+      if (!myMemberId) {
+        console.error("Current user is not a member of the company");
+        return;
+      }
       await new Promise((resolve) => setTimeout(resolve, 4000));
       await kickMemberFromCompany(companyId, myMemberId);
-
       // Update user data in context and local storage
       if (userData) {
         setUserData({ ...userData, company: null });
       }
-
-      // Update role in context
       setUserRole(null);
-
-      // Update localStorage
       if (user) {
         delete user.company;
         localStorage.setItem("user", JSON.stringify(user));
       }
       setLeaveModalOpen(false);
+      await refresh();
       navigate("/");
     } catch (error) {
       console.error("Error leaving company:", error);
