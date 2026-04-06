@@ -7,13 +7,11 @@ import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
 import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
 import { SendMessage } from "../SendMessage/SendMessage";
-import { AbandonCompanyModal } from "../DangerButtons/AbandonCompany/AbandonCompanyModal";
-import { LeaveCompanyModal } from "../DangerButtons/LeaveCompany/LeaveCompanyModal";
 import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { useUserData } from "../../../context/UseDataContext";
 import { useRole } from "../../../context/RoleContext";
-import { PromoteOwnerShipModal } from "../PromoteOwnershipModal/PromoteOwnerShipModal";
+import { MemberDashboardModals } from "./Modals";
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
@@ -43,14 +41,16 @@ export default function MemberDashboard() {
 
   const [submitting, setSubmitting] = useState<boolean>(false);
 
-  const [promoteOwnershipModalOpen, setPromoteOwnershipModalOpen] = useState<boolean>(false);
-  const [refreshingAfterTransfer, setRefreshingAfterTransfer] = useState<boolean>(false);
+  const [promoteOwnershipModalOpen, setPromoteOwnershipModalOpen] =
+    useState<boolean>(false);
+  const [refreshingAfterTransfer, setRefreshingAfterTransfer] =
+    useState<boolean>(false);
 
   // Find the current user's membership in the company to determine their role and permissions
   const myMember = members.find((m) => m.userId._id === user?._id);
   const myMemberId = myMember?._id;
 
-  //   
+  //
   const handlePromoteOwnershipModalClose = async () => {
     setPromoteOwnershipModalOpen(false);
     setRefreshingAfterTransfer(true);
@@ -61,7 +61,10 @@ export default function MemberDashboard() {
       setMembers(updatedMembers);
       setLocalRole(updatedRole);
     } catch (error) {
-      console.error("Error updating company members and role after ownership transfer:", error);
+      console.error(
+        "Error updating company members and role after ownership transfer:",
+        error,
+      );
     } finally {
       setRefreshingAfterTransfer(false);
     }
@@ -190,7 +193,12 @@ export default function MemberDashboard() {
               {/* Here can be added more menu items */}
             </ul>
             <div className="sidebar-danger-actions">
-          
+              <button
+                className="sidebar-btn-danger"
+                onClick={() => setAbandonModalOpen(true)}
+              >
+                Abandon company
+              </button>
 
               <button
                 className="sidebar-btn-danger"
@@ -232,36 +240,23 @@ export default function MemberDashboard() {
   */}
         </div>
       </div>
-
-      {/* Modals to move them to a different component later, but for now it's easier to keep them here */}
-
-      <AbandonCompanyModal
-        isOpen={abandonModalOpen}
-        onClose={() => setAbandonModalOpen(false)}
-        onConfirm={() => {
-          setAbandonModalOpen(false);
-          navigate("/");
-        }}
-        isOwner={localRole === "owner"}
-      />
-
-      <LeaveCompanyModal
-        isOpen={leaveModalOpen}
-        onClose={() => setLeaveModalOpen(false)}
-        onConfirm={handleLeaveCompany}
+{/* Modals for abandoning/leaving company and promoting ownership */}
+      <MemberDashboardModals
+        abandonModalOpen={abandonModalOpen}
+        setAbandonModalOpen={setAbandonModalOpen}
+        leaveModalOpen={leaveModalOpen}
+        setLeaveModalOpen={setLeaveModalOpen}
+        handleLeaveCompany={handleLeaveCompany}
         isOwner={localRole === "owner"}
         submitting={submitting}
-      />
-
-      <PromoteOwnerShipModal
-        isOpen={promoteOwnershipModalOpen}
-        onClose={() => setPromoteOwnershipModalOpen(false)}
-        onPromoteSuccess={handlePromoteOwnershipModalClose}
+        promoteOwnershipModalOpen={promoteOwnershipModalOpen}
+        setPromoteOwnershipModalOpen={setPromoteOwnershipModalOpen}
+        handlePromoteOwnershipModalClose={handlePromoteOwnershipModalClose}
         companyMembers={members}
-        transferOwnership={(memberId: string) =>
-          transferOwnership(companyId!, memberId)
+        transferOwnership={async (memberId: string) =>
+          await transferOwnership(companyId!, memberId)
         }
-        myMemberId={myMemberId}
+        myMemberId={myMemberId || ""}
       />
     </>
   );
