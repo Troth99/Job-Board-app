@@ -87,7 +87,9 @@ export default function MemberDashboard() {
       }
       await new Promise((resolve) => setTimeout(resolve, 4000));
       await kickMemberFromCompany(companyId, myMemberId);
+
       // Update user data in context and local storage
+      
       if (userData) {
         setUserData({ ...userData, company: null });
       }
