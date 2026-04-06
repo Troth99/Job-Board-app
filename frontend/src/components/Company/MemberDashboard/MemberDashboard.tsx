@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./MemberDashboard.css";
 import "./Responsive.css";
-import { Link, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
 import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
@@ -12,6 +12,7 @@ import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { useUserData } from "../../../context/UseDataContext";
 import { useRole } from "../../../context/RoleContext";
 import { MemberDashboardModals } from "./Modals";
+import { MemberDashboardSideBar } from "./MemberSidebar";
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
@@ -151,64 +152,15 @@ export default function MemberDashboard() {
       )}
       <div className="dashboard">
         {/* Sidebar */}
-        <div className="sidebar">
-          <div className="sidebar-header">
-            <h2>
-              Welcome to <span className="company-name">{company?.name}</span>{" "}
-              dashboard.
-            </h2>
-            <p className="user-role">Role: {localRole}</p>
-          </div>
-          <div className="sidebar-nav">
-            <div className="job-card-dashboard-image">
-              <img
-                src={
-                  company?.logo && company.logo.trim().startsWith("http")
-                    ? company.logo
-                    : "/assets/defaultCompany.png"
-                }
-                alt={
-                  company?.logo && company.logo.trim() !== ""
-                    ? company.name
-                    : "Default Company Logo"
-                }
-                className="company-logo"
-              />
-            </div>
-            <ul>
-              <li>
-                <Link to={`/company/${companyId}/members`}>Members</Link>
-              </li>
 
-              {localRole === "owner" && (
-                <li>
-                  <button
-                    className="promote-ownership-btn"
-                    onClick={() => setPromoteOwnershipModalOpen(true)}
-                  >
-                    Promote ownership
-                  </button>
-                </li>
-              )}
-              {/* Here can be added more menu items */}
-            </ul>
-            <div className="sidebar-danger-actions">
-              <button
-                className="sidebar-btn-danger"
-                onClick={() => setAbandonModalOpen(true)}
-              >
-                Abandon company
-              </button>
-
-              <button
-                className="sidebar-btn-danger"
-                onClick={() => setLeaveModalOpen(true)}
-              >
-                Leave company
-              </button>
-            </div>
-          </div>
-        </div>
+        <MemberDashboardSideBar
+          company={company}
+          localRole={localRole || ""}
+          companyId={companyId!}
+          setPromoteOwnershipModalOpen={setPromoteOwnershipModalOpen}
+          setAbandonModalOpen={setAbandonModalOpen}
+          setLeaveModalOpen={setLeaveModalOpen}
+        />
 
         {/* Main Content Area */}
         <div className="main-content">
@@ -240,7 +192,7 @@ export default function MemberDashboard() {
   */}
         </div>
       </div>
-{/* Modals for abandoning/leaving company and promoting ownership */}
+      {/* Modals for abandoning/leaving company and promoting ownership */}
       <MemberDashboardModals
         abandonModalOpen={abandonModalOpen}
         setAbandonModalOpen={setAbandonModalOpen}
