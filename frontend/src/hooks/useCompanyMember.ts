@@ -5,7 +5,7 @@ import { CompanyMember } from "../interfaces/CompanyMember.model";
 
 
 export function useCompanyMember(companyId? :string | undefined) {
- const { getCompanyById, getUserRole, getCompanyMembers } = useCompany();
+ const { getCompanyById, getUserRole, getCompanyMembers, company } = useCompany();
   const [members, setMembers] = useState<CompanyMember[]>([]);
   const [localRole, setLocalRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -27,6 +27,6 @@ export function useCompanyMember(companyId? :string | undefined) {
     refresh();
   }, [companyId]);
 
-  return { members, localRole, loading, refresh };
+  return { members, localRole, loading, refresh, company };
 
 }

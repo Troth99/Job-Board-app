@@ -6,9 +6,14 @@ import "./showJobs.css";
 interface ShowCompanyJobsProps {
   jobs: Job[];
   onJobClick?: (jobId: string) => void;
+  isReadOnly?: boolean;
 }
 
-export function ShowJobs({ jobs, onJobClick }: ShowCompanyJobsProps) {
+export function ShowJobs({
+  jobs,
+  onJobClick,
+  isReadOnly = false,
+}: ShowCompanyJobsProps) {
   const { companyId } = useParams<{ companyId: string; jobId: string }>();
   const navigate = useNavigate();
 
@@ -30,9 +35,9 @@ export function ShowJobs({ jobs, onJobClick }: ShowCompanyJobsProps) {
           <div
             className="job-card-member"
             key={job._id}
-            onClick={() => handleJobClick(job._id)}
+            onClick={isReadOnly ? undefined : () => handleJobClick(job._id)}
             style={{
-              cursor: "pointer",
+              cursor: isReadOnly ? "default" : "pointer",
               marginBottom: "20px",
               border: "1px solid #ccc",
             }}
@@ -60,10 +65,10 @@ export function ShowJobs({ jobs, onJobClick }: ShowCompanyJobsProps) {
           </div>
         ))
       ) : (
-           <div className="no-jobs-message">
-              <i className="fa-solid fa-briefcase"></i>
-              <h3>No jobs found</h3>
-            </div>
+        <div className="no-jobs-message">
+          <i className="fa-solid fa-briefcase"></i>
+          <h3>No jobs found</h3>
+        </div>
       )}
     </div>
   );

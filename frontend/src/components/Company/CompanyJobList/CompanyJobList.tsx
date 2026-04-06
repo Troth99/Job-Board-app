@@ -10,12 +10,14 @@ interface CompanyJobsListProps {
   companyId: string;
   canPostJob: boolean;
   onPostJob: () => void;
+  isReadOnly?: boolean;
 }
 
 export function CompanyJobsList({
   companyId,
   canPostJob,
   onPostJob,
+  isReadOnly,
 }: CompanyJobsListProps) {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -81,7 +83,7 @@ const viewAllJobsHandler = () =>{
         {loading ? (
           <LoadingIndicator size="small" message="Loading jobs..." />
         ) : (
-          <ShowJobs jobs={jobs} />
+          <ShowJobs jobs={jobs} isReadOnly={isReadOnly} />
         )}
       </div>
     </>

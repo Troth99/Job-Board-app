@@ -21,7 +21,6 @@ export default function MemberDashboard() {
   const { companyId } = useParams();
   const navigate = useNavigate();
   const {
-    company,
     loading: loadingRole,
     getCompanyMembers,
     kickMemberFromCompany,
@@ -32,7 +31,7 @@ export default function MemberDashboard() {
   const [leaveModalOpen, setLeaveModalOpen] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const { members, localRole, loading, refresh } = useCompanyMember(companyId);
+  const { members, localRole, loading, refresh, company } = useCompanyMember(companyId);
 
   // Get current user data and role from context and local storage
   const user = getUserFromLocalStorage();
@@ -110,7 +109,7 @@ export default function MemberDashboard() {
   const canPostJob =
     localRole === "admin" || localRole === "owner" || localRole === "recruiter";
 
-  if (loadingRole || refreshingAfterTransfer) {
+  if (!loading || refreshingAfterTransfer) {
     return <Spinner overlay={true} />;
   }
   return (
@@ -148,6 +147,7 @@ export default function MemberDashboard() {
             companyId={companyId!}
             canPostJob={canPostJob}
             onPostJob={postJobHandlerNavigate}
+            isReadOnly={localRole === "member"}
           />
 
           {/*announcements section 
