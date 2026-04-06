@@ -111,7 +111,7 @@ export default function MemberDashboard() {
   const canPostJob =
     localRole === "admin" || localRole === "owner" || localRole === "recruiter";
 
-  if (loading || refreshingAfterTransfer) {
+  if (loading || refreshingAfterTransfer ||!localRole) {
     return <Spinner overlay={true} />;
   }
   return (
