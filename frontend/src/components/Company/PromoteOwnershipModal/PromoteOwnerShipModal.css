@@ -1,0 +1,115 @@
+
+[data-theme="dark"] #promote-owner-modal.promote-owner-modal__backdrop {
+  background: rgba(0,0,0,0.75);
+}
+
+[data-theme="dark"] .promote-owner-modal__container {
+  background: #181a1b;
+  color: #f1f1f1;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+
+[data-theme="dark"] .promote-owner-modal__close {
+  color: #aaa;
+}
+[data-theme="dark"] .promote-owner-modal__close:hover {
+  color: #fff;
+}
+
+[data-theme="dark"] .promote-owner-modal__title {
+  color: #f1f1f1;
+}
+
+[data-theme="dark"] .promote-owner-modal__label {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .promote-owner-modal__select {
+  background: #23272a;
+  color: #f1f1f1;
+  border: 1px solid #444;
+}
+
+[data-theme="dark"] .promote-owner-modal__submit {
+  background: #2563eb;
+  color: #fff;
+}
+[data-theme="dark"] .promote-owner-modal__submit:hover {
+  background: #1e40af;
+}
+#promote-owner-modal.promote-owner-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.promote-owner-modal__container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  min-width: 420px;
+  max-width: 50vw;
+  position: relative;
+}
+
+.promote-owner-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.promote-owner-modal__close:hover {
+  color: #222;
+}
+
+.promote-owner-modal__title {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.promote-owner-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.promote-owner-modal__label {
+  font-weight: 500;
+}
+
+.promote-owner-modal__select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.promote-owner-modal__submit {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.promote-owner-modal__submit:hover {
+  background: #0056b3;
+}
+

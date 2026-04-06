@@ -10,6 +10,7 @@ import { useNotification } from "../../../hooks/useNotification";
 import { useNavigate } from "react-router";
 import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 import useCompany from "../../../hooks/useCompany";
+import { useUserData } from "../../../context/UseDataContext";
 
 export default function CompanyInvitationNotification() {
   const { notificationId } = useParams();
@@ -17,6 +18,7 @@ export default function CompanyInvitationNotification() {
     useNotificationContext();
 
   const { addMemberToCompany } = useCompany();
+  const {userData, setUserData} = useUserData();
 
   const user = getUserFromLocalStorage();
 
@@ -49,6 +51,19 @@ export default function CompanyInvitationNotification() {
 
     try {
       await addMemberToCompany(companyId, user._id);
+
+      // Update user data in context and local storage
+      if(userData) {
+        setUserData({
+          ...userData,
+          company: notification.company as CompanyShort,
+        });
+      }
+
+      if(user) {
+        user.company = companyId;
+        localStorage.setItem("user", JSON.stringify(user));
+      };
       await deleteNotification(notification._id);
       
       setNotifications((prev) =>

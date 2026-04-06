@@ -67,10 +67,10 @@ export const getMyCompanyController = async (req, res) => {
   try {
     if (!req.user || !req.user._id) return res.status(401).json({ message: "Unauthorized" });
 
-   const membership = await CompanyMember.findOne({ userId: req.user._id });
+    const membership = await CompanyMember.findOne({ userId: req.user._id });
     if (!membership) {
       return res.status(200).json(null);
-    }  
+    }
     const company = await Company.findById(membership.companyId).populate('createdBy', 'name email');
     if (!company) {
       return res.status(200).json(null);
@@ -200,29 +200,69 @@ export const kickMemberFromCompanyController = async (req, res) => {
     const member = await CompanyMember.findById(memberId)
     if (!member) {
       return res.status(404).json({ message: "Member not found" });
-
     }
 
     const actingMember = await CompanyMember.findOne({ companyId, userId })
-
-    if (!actingMember || (actingMember.role !== "owner" && actingMember.role !== "admin")) {
-      return res.status(403).json({ message: "Only owner or admin can kick members." });
+    if (!actingMember) {
+      return res.status(403).json({ message: "Not a member of this company." });
     }
-    if (
-      (actingMember.role === "owner" || actingMember.role === "admin") &&
-      member.userId.toString() === req.user._id.toString()
-    ) {
-      return res.status(403).json({ message: "Owners and admins cannot kick themselves" });
+
+    //To kick myself if im not an Owner
+    if (actingMember.userId.toString() === member.userId.toString()) {
+      if (actingMember.role === "owner") {
+        return res.status(403).json({ message: "Owner cannot leave the company. Transfer ownership first." });
+      }
+    } else {
+      //If you want to kick someone else, you have to be owner or admin
+
+      if (actingMember.role !== "owner" && actingMember.role !== "admin") {
+        return res.status(403).json({ message: "Only owner or admin can kick other members." });
+      }
+
+      // Prevent owner/admin from kicking themselves (additional protection)
+      if (member.userId.toString() === req.user._id.toString()) {
+        return res.status(403).json({ message: "Owners and admins cannot kick themselves" });
+      }
     }
 
     await Company.findOneAndUpdate({ _id: companyId }, { $pull: { members: member.userId } });
-
     await CompanyMember.findByIdAndDelete(memberId);
     await User.findByIdAndUpdate(member.userId, { $unset: { company: '' } })
 
     return res.status(200).json({ message: "Member kicked successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
-
   }
-}
+};
+
+export const transferOwnershipController = async (req, res) => {
+    const { companyId } = req.params;
+  const { newOwnerMemberId } = req.body;
+  console.log("userId from token:", req.user._id, "companyId:", companyId);
+  try {
+   
+    const oldOwner = await CompanyMember.findOne({ companyId, userId: req.user._id, role: "owner" });
+    if (!oldOwner) {
+      return res.status(403).json({ message: "Only current owner can transfer ownership" });
+    }
+  
+    const newOwner = await CompanyMember.findOne({ companyId, _id: newOwnerMemberId });
+    if (!newOwner) {
+      return res.status(404).json({ message: "New owner member not found" });
+    }
+    if (newOwner.role === "owner") {
+      return res.status(400).json({ message: "Selected member is already owner" });
+    }
+
+    newOwner.role = "owner";
+    await newOwner.save();
+
+    oldOwner.role = "member";
+    await oldOwner.save();
+  
+    res.status(200).json({ message: "Ownership transferred successfully", newOwner, oldOwner });
+  } catch (error) {
+  
+    res.status(500).json({ message: error.message });
+  }
+};

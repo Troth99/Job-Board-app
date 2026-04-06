@@ -1,10 +1,65 @@
+/* Promote Ownership Button as Member List Item */
+.promote-ownership-list-item {
+  padding: 15px 20px;
+  border-bottom: 1px solid #34495e;
+}
+
+.promote-ownership-btn {
+  width: 100%;
+  background: #1abc9c;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+
+/* Promote Ownership Button as Member List Item */
+.promote-ownership-list-item {
+  padding: 15px 20px;
+  border-bottom: 1px solid #34495e;
+}
+.promote-ownership-btn, .sidebar-btn-danger {
+  width: 100%;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.promote-ownership-btn {
+  background: #1abc9c;
+  font-size: 18px;
+}
+.promote-ownership-btn:hover {
+  background: #16a085;
+}
+.sidebar-btn-danger {
+  background: #ff4d4f;
+}
+.sidebar-btn-danger:hover {
+  background: #d9363e;
+}
+.sidebar-danger-actions {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 20px 20px 20px;
+}
 .dashboard {
   display: flex;
   min-height: 100vh;
   background-color: #f8fafaef;
   color: #2c3e50;
 }
-
 .sidebar {
   width: 350px;
   min-width: 350px;
@@ -16,24 +71,20 @@
   background-color: #2c3e50;
   color: #fff;
 }
-
 .sidebar-header {
   padding: 20px;
   text-align: center;
 }
-
 .sidebar-header h2 {
   font-size: 24px;
   font-weight: bold;
   color: #fff;
 }
-
 .company-name {
   color: #1abc9c;
   font-weight: 700;
   text-transform: capitalize;
 }
-
 .sidebar-nav {
   flex-grow: 1;
   padding: 0;
@@ -42,69 +93,50 @@
   flex-direction: column;
   align-items: center;
 }
-
 .sidebar-nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   width: 100%;
 }
-
 .sidebar-nav ul li {
   padding: 15px 20px;
   border-bottom: 1px solid #34495e;
 }
-
 .sidebar-nav ul li a {
   color: #ecf0f1;
   text-decoration: none;
   display: block;
   font-size: 18px;
 }
-
 .sidebar-nav ul li a:hover {
   background-color: #34495e;
 }
-
 .sidebar-nav ul li a.active {
   background-color: #16a085;
 }
-
 .user-role {
   color: #67fa05;
 }
-
 .main-content {
   flex-grow: 1;
-
   overflow-y: auto;
   background-color: #ecf0f1;
-
 }
-
-
-.content-header {
+.content-header, .content-header-jobs {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
   margin: 20px;
   gap: 2em;
 }
-
-
 .content-header-jobs {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  margin: 20px;
 }
-
 .content-header h3 {
   font-size: 22px;
   font-weight: bold;
 }
-
 .add-button {
   background-color: #16a085;
   color: #fff;
@@ -115,11 +147,9 @@
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
-
 .add-button:hover {
   background-color: #1abc9c;
 }
-
 .members-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -127,7 +157,6 @@
   margin-top: 20px;
   margin-bottom: 25px;
 }
-
 .member-card {
   display: flex;
   align-items: center;
@@ -138,12 +167,11 @@
   background-color: #fff;
   transition: transform 0.2s ease-in-out;
 }
-
 .member-card:hover {
   transform: scale(1.05);
 }
 ul {
-    list-style-type: none; 
+  list-style-type: none;
 }
 .buttons-for-jobs {
   display: flex;
@@ -151,7 +179,6 @@ ul {
   flex-wrap: wrap;
   margin-right: 25px;
 }
-
 .buttons-for-jobs .add-button {
   white-space: nowrap;
   flex-shrink: 0;
@@ -161,24 +188,20 @@ ul {
   height: 50px;
   border-radius: 50%;
 }
-
 .member-info h4 {
   font-size: 18px;
   font-weight: 600;
 }
-
 .member-info p {
   font-size: 14px;
   color: #7f8c8d;
 }
-
 .announcement-list {
   display: flex;
   flex-direction: column;
   gap: 2em;
   margin-top: 20px;
 }
-
 .announcement-card {
   display: flex;
   flex-direction: column;
@@ -188,12 +211,10 @@ ul {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   background-color: #fff;
 }
-
 .announcement-card h4 {
   font-size: 18px;
   font-weight: 600;
 }
-
 .announcement-card p {
   font-size: 14px;
   color: #7f8c8d;
@@ -224,72 +245,56 @@ ul {
   transform: scale(1.15) rotate(12deg);
   box-shadow: 0 4px 18px rgba(255,59,59,0.28);
 }
+
+/* Dark theme styles */
 [data-theme="dark"] .dashboard {
   background-color: #181818;
   color: #ecf0f1;
 }
-
 [data-theme="dark"] .sidebar {
   background-color: #2c3e50;
   color: #ecf0f1;
 }
-
 [data-theme="dark"] .sidebar-header h2 {
   color: #80aaff;
 }
-
 [data-theme="dark"] .sidebar-nav ul li a {
   color: #f5fafd;
 }
-
-[data-theme="dark"] .sidebar-nav ul li a:hover {
-  color: #3498db;
-}
-
+[data-theme="dark"] .sidebar-nav ul li a:hover,
 [data-theme="dark"] .sidebar-nav ul li a.active {
   color: #3498db;
 }
-
 [data-theme="dark"] .user-role {
   color: greenyellow;
 }
-
 [data-theme="dark"] .main-content {
   background-color: #181818;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
-
 [data-theme="dark"] .content-header h3 {
   color: #ecf0f1;
 }
-
 [data-theme="dark"] .add-button {
   background-color: #3498db;
   color: white;
 }
-
 [data-theme="dark"] .add-button:hover {
   background-color: #2980b9;
 }
-
-[data-theme="dark"] .members-list {}
 [data-theme="dark"] .member-card {
   background-color: #34495e;
 }
-
 [data-theme="dark"] .member-card:hover {
   background-color: #2c3e50;
 }
-
 [data-theme="dark"] .member-card img {
   border-radius: 50%;
   margin-right: 15px;
 }
-
 [data-theme="dark"] .member-card h4 {
   color: #ecf0f1;
 }
-
 [data-theme="dark"] .member-card p {
   color: #bdc3c7;
 }
