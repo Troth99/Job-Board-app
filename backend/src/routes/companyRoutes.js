@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addMemberToCompany, changeMemberRoleController, createCompanyController, getCompaniesController, getCompanyByIdController, getCompanyMembersController, getMyCompanyController, kickMemberFromCompanyController, transferOwnershipController } from "../controllers/companyController.js";
+import { addMemberToCompany, changeMemberRoleController, createCompanyController, getCompaniesController, getCompanyByIdController, getCompanyMembersController, getMyCompanyController, kickMemberFromCompanyController, transferOwnershipController, AbandonCompanyController } from "../controllers/companyController.js";
 import { protect } from "../middleware/authMiddleware.js";
 import { getMemberRole } from "../services/companyService.js";
 
@@ -17,5 +17,8 @@ router.get("/:id", getCompanyByIdController);
 router.patch('/:companyId/members/:memberId/role', protect, changeMemberRoleController)
 router.post('/:companyId/transfer-ownership', protect, transferOwnershipController);
 router.delete('/:companyId/member/:memberId', protect, kickMemberFromCompanyController);
+
+// Route for abandoning (deleting) a company
+router.delete('/:companyId/abandon', protect, AbandonCompanyController);
 
 export default router;

@@ -16,6 +16,7 @@ import { MemberDashboardModals } from "./Modals";
 import { MemberDashboardSideBar } from "./MemberSidebar";
 import { useCompanyMember } from "../../../hooks/useCompanyMember";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
+import { toast } from "react-toastify";
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
@@ -25,6 +26,7 @@ export default function MemberDashboard() {
     getCompanyMembers,
     kickMemberFromCompany,
     transferOwnership,
+    abandonCompany
   } = useCompany();
 
   const [abandonModalOpen, setAbandonModalOpen] = useState(false);
@@ -67,9 +69,29 @@ export default function MemberDashboard() {
     }
   };
 
-  //TODO: implement the actual abandon company logic, this is just a placeholder for now
-  const handleAbandonCompany = () => {
-    // Here you would typically call an API to abandon the company
+  const handleAbandonCompany = async () => {
+    if(!companyId) return;
+    setSubmitting(true);
+    setAbandonModalOpen(false);
+
+    try {
+      const abandonResponse = await abandonCompany(companyId);
+      toast.success("Company abandoned successfully");
+      if(userData) {
+        setUserData({ ...userData, company: null });
+      }
+
+      if(user) {
+        delete user.company;
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+      navigate("/");
+    } catch (error) {
+      console.error("Error abandoning company:", error);
+      toast.error("Failed to abandon company");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleLeaveCompany = async () => {
@@ -184,6 +206,7 @@ export default function MemberDashboard() {
           await transferOwnership(companyId!, memberId)
         }
         myMemberId={myMemberId || ""}
+        handleAbandonCompany={handleAbandonCompany}
       />
     </>
   );

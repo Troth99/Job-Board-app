@@ -8,6 +8,7 @@ type ModalsProps = {
   leaveModalOpen: boolean;
   setLeaveModalOpen: (open: boolean) => void;
   handleLeaveCompany: () => void;
+  handleAbandonCompany: () => void;
   isOwner: boolean;
   submitting: boolean;
   promoteOwnershipModalOpen: boolean;
@@ -24,9 +25,7 @@ export function MemberDashboardModals(props: ModalsProps) {
       <AbandonCompanyModal
         isOpen={props.abandonModalOpen}
         onClose={() => props.setAbandonModalOpen(false)}
-        onConfirm={() => {
-          props.setAbandonModalOpen(false);
-        }}
+        onConfirm={props.handleAbandonCompany}
         isOwner={props.isOwner}
       />
 
