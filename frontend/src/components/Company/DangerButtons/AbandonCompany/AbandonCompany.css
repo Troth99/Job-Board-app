@@ -1,3 +1,44 @@
+/* --- Dark Theme --- */
+[data-theme="dark"] .abandon-modal {
+  background: #23272f;
+  color: #e0e6f0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+}
+[data-theme="dark"] .abandon-modal h3 {
+  color: #ff8a80;
+}
+[data-theme="dark"] .abandon-modal p {
+  color: #e0e6f0;
+}
+[data-theme="dark"] .abandon-modal-close-btn {
+  color: #b0b8c6;
+}
+[data-theme="dark"] .abandon-modal-close-btn:hover {
+  color: #ff8a80;
+}
+[data-theme="dark"] .abandon-modal-btn-danger {
+  background: #d32f2f;
+  color: #fff;
+}
+[data-theme="dark"] .abandon-modal-btn-danger:hover {
+  background: #b30000;
+}
+[data-theme="dark"] .abandon-modal-btn-secondary {
+  background: #263859;
+  color: #e0e6f0;
+}
+[data-theme="dark"] .abandon-modal-btn-secondary:hover {
+  background: #3a2323;
+  color: #ff8a80;
+}
+[data-theme="dark"] .abandon-modal-warning {
+  color: #ff8a80;
+}
+[data-theme="dark"] .input-abandon input {
+  background: #23272f;
+  color: #e0e6f0;
+  border: 1px solid #263859;
+}
 .abandon-modal-backdrop {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
