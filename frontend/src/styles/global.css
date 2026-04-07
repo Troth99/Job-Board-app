@@ -70,4 +70,5 @@ body[data-theme="dark"] .error-message {
 
 .main-content {
   flex: 1;
+  overflow: hidden;
 }

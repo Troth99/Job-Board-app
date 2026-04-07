@@ -35,6 +35,7 @@ fetchRecentJobs()
 },[])
 
 
+//To refractor css on home page and add more content on home page
 
     if(loading || categories.length <= 0 ){
       return <FullPageSpinner/>

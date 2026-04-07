@@ -1,24 +1,22 @@
 .body-spinner {
-    position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #ffffff; 
+  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px; 
+  gap: 20px;
   z-index: 9999;
   flex-direction: row;
-
 }
 
 .body-spinner .spinner-body {
   width: 50px;
   height: 50px;
   border: 6px solid rgba(0, 123, 255, 0.2);
-  border-top: 6px solid #007bff; 
+  border-top: 6px solid #007bff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -29,11 +27,9 @@
   }
 }
 
-
 [data-theme="dark"] .body-spinner {
-  background: #0d1117; 
+  background: #0d1117;
 }
-
 
 [data-theme="dark"] .spinner-body {
   border: 6px solid rgba(30, 144, 255, 0.2);

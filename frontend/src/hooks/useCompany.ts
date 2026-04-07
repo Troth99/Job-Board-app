@@ -230,6 +230,21 @@ export default function useCompany() {
     }
   };
 
+  const abandonCompany = async (companyId: string) => {
+
+    try {
+      const response = await request(
+        `${API_BASE}/companies/${companyId}/abandon`,
+        "DELETE",
+        {},
+      );
+      return response;
+    } catch (error) {
+      setError("Error occured while abandoning the company.");
+      console.error(error);
+    }
+
+  }
   return {
     loading,
     error,
@@ -248,5 +263,6 @@ export default function useCompany() {
     changeMemberRole,
     kickMemberFromCompany,
     transferOwnership,
+    abandonCompany,
   };
 }

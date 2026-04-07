@@ -2,6 +2,9 @@ import { Types } from "mongoose";
 import { Company } from "../models/Company.js";
 import { createCompanyService, getCompaniesService, getCompanyByIdService } from "../services/companyService.js"
 import { CompanyMember } from "../models/CompanyMember.js";
+import Jobs from "../models/Jobs.js";
+import Application from "../models/Application.js";
+import Notification from "../models/Notification.js";
 import User from "../models/User.js";
 
 
@@ -236,16 +239,16 @@ export const kickMemberFromCompanyController = async (req, res) => {
 };
 
 export const transferOwnershipController = async (req, res) => {
-    const { companyId } = req.params;
+  const { companyId } = req.params;
   const { newOwnerMemberId } = req.body;
   console.log("userId from token:", req.user._id, "companyId:", companyId);
   try {
-   
+
     const oldOwner = await CompanyMember.findOne({ companyId, userId: req.user._id, role: "owner" });
     if (!oldOwner) {
       return res.status(403).json({ message: "Only current owner can transfer ownership" });
     }
-  
+
     const newOwner = await CompanyMember.findOne({ companyId, _id: newOwnerMemberId });
     if (!newOwner) {
       return res.status(404).json({ message: "New owner member not found" });
@@ -259,10 +262,35 @@ export const transferOwnershipController = async (req, res) => {
 
     oldOwner.role = "member";
     await oldOwner.save();
-  
+
     res.status(200).json({ message: "Ownership transferred successfully", newOwner, oldOwner });
   } catch (error) {
-  
+
     res.status(500).json({ message: error.message });
   }
 };
+
+
+export const AbandonCompanyController = async (req, res) => {
+  const { companyId } = req.params;
+  const userId = req.user._id;
+
+  const owner = await CompanyMember.findOne({ companyId, userId, role: "owner" });
+  if (!owner) {
+    return res.status(403).json({ message: "Only the owner can abandon the company." });
+  }
+
+  const jobs = await Jobs.find({ company: companyId });
+  const jobIds = jobs.map(job => job._id);
+
+  await Application.deleteMany({ jobId: { $in: jobIds } });
+  await Jobs.deleteMany({ company: companyId });
+  await CompanyMember.deleteMany({ companyId });
+  await Notification.deleteMany({ company: companyId });
+  await Company.findByIdAndDelete(companyId);
+
+  // Unset company field for all users who were members
+  await User.updateMany({ company: companyId }, { $unset: { company: "" } });
+
+  return res.status(200).json({ message: "Company and all related data deleted successfully." });
+}
