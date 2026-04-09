@@ -1,0 +1,15 @@
+/* Container.css */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 1.2rem;
+  }
+}

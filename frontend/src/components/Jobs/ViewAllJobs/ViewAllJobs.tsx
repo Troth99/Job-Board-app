@@ -5,6 +5,7 @@ import "./ViewAllJobs.css";
 import { usePagination } from "../../../hooks/usePagination";
 import { useNavigate, useSearchParams } from "react-router";
 import { Job } from "../../../interfaces/Job.model";
+import { Container } from "../../Container/Container";
 
 function ViewAllJobs() {
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -35,6 +36,7 @@ function ViewAllJobs() {
     return <Spinner overlay={true} />;
   }
   return (
+    <Container> 
     <div className="jobs-list-modern">
       {currentItems.length > 0 ? (
         currentItems.map((job) => (
@@ -91,6 +93,7 @@ function ViewAllJobs() {
         </div>
       )}
     </div>
+    </Container>
   );
 }
 

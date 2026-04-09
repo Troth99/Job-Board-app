@@ -9,6 +9,7 @@ import Spinner from "../../Spinner/Spinner";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { ApplyForJobModal } from "../ApplyForJobModal/ApplyForJobModal";
 import { getUserFromLocalStorage } from "../../../hooks/useAuth";
+import { Container } from "../../Container/Container";
 
 export function CandidateJobView() {
   const { jobId } = useParams();
@@ -17,13 +18,13 @@ export function CandidateJobView() {
   const [token] = useLocalStorage<string>("user", "");
   const isLoggedIn = !!token;
   const [showApplyModal, setShowApplyModal] = useState(false);
- const user = getUserFromLocalStorage()
+  const user = getUserFromLocalStorage();
   if (!jobId) {
     return;
   }
 
-const isCompanyMember = jobData?.company?.members?.includes(user._id);
-  console.log(isCompanyMember)
+  const isCompanyMember = jobData?.company?.members?.includes(user._id);
+  console.log(isCompanyMember);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,143 +46,149 @@ const isCompanyMember = jobData?.company?.members?.includes(user._id);
     return <Spinner overlay={true} />;
   }
   return (
-    <div className="candidate-job-view-container">
-      <div className="company-details-card">
-        <div className="company-header">
-          <img
-            src={
-              jobData?.company?.logo &&
-              jobData.company.logo.trim().startsWith("http")
-                ? jobData.company.logo
-                : "/assets/defaultCompany.png"
-            }
-            alt={
-              jobData?.company?.logo && jobData.company.logo.trim() !== ""
-                ? jobData.company.name
-                : "Default Company Logo"
-            }
-            className="company-logo"
-          />
-          <div>
-            <h3 className="company-name">{jobData?.company?.name}</h3>
-            <span className="company-industry">
-              Industry: {jobData?.company?.industry}
+    <Container>
+      <div className="candidate-job-view-container">
+        <div className="company-details-card">
+          <div className="company-header">
+            <img
+              src={
+                jobData?.company?.logo &&
+                jobData.company.logo.trim().startsWith("http")
+                  ? jobData.company.logo
+                  : "/assets/defaultCompany.png"
+              }
+              alt={
+                jobData?.company?.logo && jobData.company.logo.trim() !== ""
+                  ? jobData.company.name
+                  : "Default Company Logo"
+              }
+              className="company-logo"
+            />
+            <div>
+              <h3 className="company-name">{jobData?.company?.name}</h3>
+              <span className="company-industry">
+                Industry: {jobData?.company?.industry}
+              </span>
+              <span className="company-size">
+                Size: {jobData?.company?.size} employers
+              </span>
+              <span className="company-founded">
+                Founded: {formatDate(jobData?.company?.createdAt ?? "")}
+              </span>
+            </div>
+          </div>
+          <div className="company-meta">
+            <span className="company-location">
+              Location: {jobData?.company?.location}
             </span>
-            <span className="company-size">
-              Size: {jobData?.company?.size} employers
-            </span>
-            <span className="company-founded">
-              Founded: {formatDate(jobData?.company?.createdAt ?? "")}
+            <span className="company-website">
+              Website:{" "}
+              <a
+                href={jobData?.company?.website}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {jobData?.company?.website}{" "}
+              </a>
             </span>
           </div>
+          <div className="company-description-data">
+            <p>{jobData?.company?.description}</p>
+          </div>
         </div>
-        <div className="company-meta">
-          <span className="company-location">
-            Location: {jobData?.company?.location}
+        <div className="job-header">
+          <h2 className="job-title">{jobData?.title}</h2>
+          <span className="job-category">
+            Category: {jobData?.category?.name}
           </span>
-          <span className="company-website">
-            Website:{" "}
-            <a
-              href={jobData?.company?.website}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {jobData?.company?.website}{" "}
-            </a>
+          <span className="job-type">Type: {jobData?.employmentType}</span>
+        </div>
+        <div className="job-meta">
+          <span className="job-location">Location: {jobData?.location}</span>
+          <span className="job-salary">Salary: {jobData?.salary}</span>
+          <span className="job-date">
+            Posted at: {formatDate(jobData?.createdAt ?? "")}
+          </span>
+          <span className="job-date">
+            Posted by: {jobData?.createdBy?.email}
           </span>
         </div>
-        <div className="company-description-data">
-          <p>{jobData?.company?.description}</p>
+        <div className="job-description">
+          <h3>Job Description & Expectations</h3>
+          <p>{jobData?.description}</p>
         </div>
-      </div>
-      <div className="job-header">
-        <h2 className="job-title">{jobData?.title}</h2>
-        <span className="job-category">
-          Category: {jobData?.category?.name}
+        <div className="job-skills">
+          <h3>Required skills</h3>
+          <ul>
+            {Array.isArray(jobData?.skills)
+              ? jobData.skills.map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))
+              : null}
+          </ul>
+        </div>
+        <div className="job-benefits">
+          <h3>Benefits</h3>
+          <ul>
+            {Array.isArray(jobData?.benefits)
+              ? jobData.benefits.map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))
+              : null}
+          </ul>
+        </div>
+        <div className="job-benefits">
+          <h3>Tags</h3>
+          <ul>
+            {Array.isArray(jobData?.tags)
+              ? jobData.tags.map((item: string, index: number) => (
+                  <li key={index}>{item}</li>
+                ))
+              : null}
+          </ul>
+        </div>
+        <span
+          className={`job-status ${jobData?.isActive ? "active" : "closed"}`}
+        >
+          Status: {jobData?.isActive ? "Active" : "Closed"}
         </span>
-        <span className="job-type">Type: {jobData?.employmentType}</span>
-      </div>
-      <div className="job-meta">
-        <span className="job-location">Location: {jobData?.location}</span>
-        <span className="job-salary">Salary: {jobData?.salary}</span>
-        <span className="job-date">
-          Posted at: {formatDate(jobData?.createdAt ?? "")}
-        </span>
-        <span className="job-date">Posted by: {jobData?.createdBy?.email}</span>
-      </div>
-      <div className="job-description">
-        <h3>Job Description & Expectations</h3>
-        <p>{jobData?.description}</p>
-      </div>
-      <div className="job-skills">
-        <h3>Required skills</h3>
-        <ul>
-          {Array.isArray(jobData?.skills)
-            ? jobData.skills.map((item: string, index: number) => (
-                <li key={index}>{item}</li>
-              ))
-            : null}
-        </ul>
-      </div>
-      <div className="job-benefits">
-        <h3>Benefits</h3>
-        <ul>
-          {Array.isArray(jobData?.benefits)
-            ? jobData.benefits.map((item: string, index: number) => (
-                <li key={index}>{item}</li>
-              ))
-            : null}
-        </ul>
-      </div>
-      <div className="job-benefits">
-        <h3>Tags</h3>
-        <ul>
-          {Array.isArray(jobData?.tags)
-            ? jobData.tags.map((item: string, index: number) => (
-                <li key={index}>{item}</li>
-              ))
-            : null}
-        </ul>
-      </div>
-      <span className={`job-status ${jobData?.isActive ? "active" : "closed"}`}>
-        Status: {jobData?.isActive ? "Active" : "Closed"}
-      </span>
-      <div className="job-apply">
-        {isLoggedIn ? (
-          <>
-          {!isCompanyMember && (
-            <button
-              className="apply-button"
-              onClick={() => setShowApplyModal(true)}
-            >
-              Apply Now
-            </button>
+        <div className="job-apply">
+          {isLoggedIn ? (
+            <>
+              {!isCompanyMember && (
+                <button
+                  className="apply-button"
+                  onClick={() => setShowApplyModal(true)}
+                >
+                  Apply Now
+                </button>
+              )}
+              {showApplyModal && (
+                <ApplyForJobModal
+                  jobId={jobId}
+                  jobTitle={jobData?.title}
+                  onClose={() => setShowApplyModal(false)}
+                />
+              )}
+            </>
+          ) : (
+            <>
+              <button className="apply-button" disabled>
+                You must log in in order to apply for job
+              </button>
+              <div style={{ marginTop: "8px" }}>
+                <Link
+                  to="/login"
+                  state={{ from: location.pathname }}
+                  className="login-btn"
+                >
+                  Log in to apply
+                </Link>
+              </div>
+            </>
           )}
-            {showApplyModal && (
-              <ApplyForJobModal
-                jobId={jobId}
-                jobTitle={jobData?.title}
-                onClose={() => setShowApplyModal(false)}
-              />
-            )}
-          </>
-        ) : (
-          <>
-            <button className="apply-button" disabled>
-              You must log in in order to apply for job
-            </button>
-            <div style={{ marginTop: "8px" }}>
-              <Link
-                to="/login"
-                state={{ from: location.pathname }}
-                className="login-btn"
-              >
-                Log in to apply
-              </Link>
-            </div>
-          </>
-        )}
+        </div>
       </div>
-    </div>
+    </Container>
   );
 }

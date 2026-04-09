@@ -9,6 +9,7 @@ import FullPageSpinner from "../FullPageSpinner/FullPageSpinner";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Job } from "../../interfaces/Job.model";
+import { Container } from "../Container/Container";
 
 export default function HomeSection() {
   const categories = useSelector(
@@ -44,10 +45,11 @@ fetchRecentJobs()
   return (
     <div>
       <Hero />
-
+      <Container>
       <CategoriesSection />
         <h1 className="recent-posted-jobs-text">Recent posted jobs.</h1>
       <RecentJobs recentJobs={recentJobs} />
+    </Container>
     </div>
   );
 }
