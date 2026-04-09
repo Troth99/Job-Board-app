@@ -11,6 +11,7 @@ import ImageUpload from "../../features/UploadProfileImage/UploadProfileImage";
 import { useRole } from "../../context/RoleContext";
 import { useUserData } from "../../context/UseDataContext";
 import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
+import { Container } from "../Container/Container";
 
 
 interface ProfileProps {
@@ -54,7 +55,7 @@ useEffect(() => {
   }
 
   return (
-
+    <Container>
     <div className="profile-container">
       <div className="profile-header">
         <h1>My Profile</h1>
@@ -171,5 +172,6 @@ useEffect(() => {
 
       {/* Hidden file input for uploading avatar */}
     </div>
+    </Container>
   );
 }
