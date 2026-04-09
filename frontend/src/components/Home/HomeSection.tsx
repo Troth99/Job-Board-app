@@ -47,7 +47,10 @@ fetchRecentJobs()
       <Hero />
       <Container>
       <CategoriesSection />
-        <h1 className="recent-posted-jobs-text">Recent posted jobs.</h1>
+        <h1 className="recent-posted-jobs-text">Discover the Latest Opportunities</h1>
+        {/* Alternative ideas for section title:
+          <h1 className="recent-posted-jobs-text">Hot Jobs Right Now</h1>
+        */}
       <RecentJobs recentJobs={recentJobs} />
     </Container>
     </div>
