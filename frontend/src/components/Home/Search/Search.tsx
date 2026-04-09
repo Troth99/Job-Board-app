@@ -5,9 +5,11 @@ import { useNavigate } from "react-router";
 
 
 // To fix css bug with search button
+interface SearchProps {
+  onSearch: (query: string) => void;
+}
 
-
-export default function Search() {
+export default function Search({ onSearch }: SearchProps) {
   const [search, setSearch] = useState<string>("");
   const navigate = useNavigate();
 
@@ -20,7 +22,8 @@ export default function Search() {
     if(!cleaned) {
       return
     }
-    navigate(`/search?query=${encodeURIComponent(search)}`);
+    onSearch(cleaned);
+    navigate(`/search?query=${encodeURIComponent(cleaned)}`);
   };
 
   return (

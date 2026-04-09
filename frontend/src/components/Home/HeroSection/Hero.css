@@ -1,3 +1,53 @@
+/* DARK THEME SUPPORT */
+[data-theme="dark"] .custom-hero {
+  background: #181c24;
+  box-shadow: 0 4px 32px rgba(37,99,235,0.13);
+}
+
+[data-theme="dark"] .custom-hero h1,
+[data-theme="dark"] .custom-hero-subtitle {
+  color: #e6edf3;
+}
+
+[data-theme="dark"] .custom-hero .accent {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .custom-hero-bg path {
+  stroke: #60a5fa !important;
+}
+[data-theme="dark"] .custom-hero-bg circle {
+  fill: #60a5fa !important;
+}
+[data-theme="dark"] .custom-hero-bg2 ellipse {
+  fill: #60a5fa !important;
+  opacity: 0.10 !important;
+}
+[data-theme="dark"] .custom-hero-scroll-indicator svg circle {
+  stroke: #60a5fa !important;
+}
+[data-theme="dark"] .custom-hero-scroll-indicator svg path {
+  stroke: #60a5fa !important;
+}
+.custom-hero-scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounceDown 1.6s infinite;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(16px);
+  }
+}
 
 .hero {
   position: relative;
@@ -11,38 +61,56 @@
 }
 
 
-.hero::before {
-  content: "";
+
+/* Modern dev.bg-inspired Hero section */
+.custom-hero {
+  background: #f5f6fa;
+  padding: 60px 0 40px 0;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 4px 32px rgba(37,99,235,0.07);
+}
+
+.custom-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+.custom-hero .accent {
+  color: #2563eb;
+}
+
+.custom-hero-subtitle {
+  font-size: 1.25rem;
+  color: #444;
+  margin-bottom: 32px;
+}
+
+.custom-hero-search {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.custom-hero {
+  position: relative;
+  background: #f5f6fa;
+  overflow: hidden;
+}
+.custom-hero-bg {
   position: absolute;
-  top: 0;
   left: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(-45deg, #2a8ff3, #00e1ff, #1ee0ff, #0294f5);
-  background-size: 400% 400%;
-  animation: moveBG 18s ease-in-out infinite;
+  height: 180px;
   z-index: 0;
-  opacity: 0.6;
+  pointer-events: none;
 }
-
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.custom-hero > * {
   position: relative;
-  z-index: 2;
-  color: #0b2239;
+  z-index: 1;
 }
-
-.hero p {
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
-  opacity: 0.9;
-  position: relative;
-  z-index: 2;
-}
-
-
 body[data-theme="dark"] .hero {
   background: #111; 
   color: #e6edf3; 
