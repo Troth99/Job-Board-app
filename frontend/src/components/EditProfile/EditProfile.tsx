@@ -52,7 +52,7 @@ export default function EditProfile() {
   const { validateForm } = useValidation();
   const navigate = useNavigate();
 
-  const formAction = async (values: any) => {
+  const formAction = async (values: ProfileData) => {
     setButtonLoading(true);
     try {
       await updateUserProfile(values);
