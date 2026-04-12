@@ -58,12 +58,16 @@ export default function RecentJobs({ recentJobs }: RecentJobsProps) {
         </ul>
       ) : (
         <p className="recentjobs-no-jobs">No jobs available.</p>
-      )}
+      )}  
+
+          <div className="recentjobs-view-all-wrapper">
+              
+            <Link to="/jobs" className="recentjobs-view-all-link">
+              View All Jobs
+            </Link>
+          </div>
+    
     </div>
-    <button>
-      <Link to="/jobs" className="view-all-jobs-link">
-        View All Jobs
-      </Link>
-    </button>
+
   );
 }

@@ -282,6 +282,47 @@
   text-align: right;
 }
 
+
+/*button view all jobs*/
+
+.recentjobs-view-all-link {
+  display: inline-block;
+  padding: 0.65em 2.2em;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, #2563eb 60%, #60a5fa 100%);
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(37,99,235,0.10);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  margin: 32px auto 0 auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.recentjobs-view-all-link:hover,
+.recentjobs-view-all-link:focus {
+  background: linear-gradient(90deg, #1e40af 60%, #2563eb 100%);
+  box-shadow: 0 8px 32px rgba(37,99,235,0.18);
+  transform: translateY(-2px) scale(1.03);
+  color: #fff;
+  text-decoration: none;
+}
+
+button .recentjobs-view-all-link {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.recentjobs-view-all-wrapper {
+  width: 100%;
+  display: flex;
+
+  margin-top: 32px;
+}
 @media (max-width: 900px) {
   .recentjobs-card-content {
     flex-direction: column;

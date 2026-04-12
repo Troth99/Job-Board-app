@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Job } from "../../interfaces/Job.model";
 import { Container } from "../Container/Container";
+import { HomeStats } from "./HomeStats/HomeStats";
 
 export default function HomeSection() {
   const categories = useSelector(
@@ -52,6 +53,7 @@ fetchRecentJobs()
           <h1 className="recent-posted-jobs-text">Hot Jobs Right Now</h1>
         */}
       <RecentJobs recentJobs={recentJobs} />
+      <HomeStats></HomeStats>
     </Container>
     </div>
   );
