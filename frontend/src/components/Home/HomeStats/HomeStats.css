@@ -1,0 +1,122 @@
+.home-stats-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: nowrap;
+}
+.stats-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fafbfc;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  text-align: center;
+}
+
+.stats-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a2a3a;
+}
+
+.stats-desc {
+  color: #4a4a4a;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem 2.5rem;
+  text-align: center;
+  min-width: 180px;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2b7cff;
+  margin-bottom: 0.5rem;
+}
+
+
+.stat-label {
+  font-size: 1.2rem;
+  color: #222;
+  font-weight: 500;
+}
+
+
+.stat-info {
+  font-size: 0.98rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+[data-theme="dark"] .stats-section {
+  background: #181c24;
+  color: #e6e6e6;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .stat-card {
+  background: #232a36;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+[data-theme="dark"] .stat-value {
+  color: #6ea8ff;
+}
+
+[data-theme="dark"] .stat-label {
+  color: #c7d0e0;
+}
+
+[data-theme="dark"] .stat-info {
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .stats-title {
+  color: #e6e6e6;
+}
+
+[data-theme="dark"] .stats-desc {
+  color: #b0b0b0;
+}
+
+@media (max-width: 900px) {
+  .home-stats-container {
+    gap: 1rem;
+  }
+  .stat-card {
+    padding: 1.2rem 1rem;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 650px) {
+  .home-stats-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .stat-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
