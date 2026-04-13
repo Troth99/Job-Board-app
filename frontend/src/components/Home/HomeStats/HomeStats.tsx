@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import "./HomeStats.css";
 
 
 
 export function HomeStats() {
+
+
   return (
 <div className="stats-section">
   <h2 className="stats-title">Platform Statistics</h2>

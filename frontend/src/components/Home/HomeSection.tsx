@@ -11,14 +11,18 @@ import { RootState } from "../../redux/store";
 import { Job } from "../../interfaces/Job.model";
 import { Container } from "../Container/Container";
 import { HomeStats } from "./HomeStats/HomeStats";
+import useStatistics from "../../hooks/useStatistics";
+import { StatsResponse } from "../../interfaces/ApplicationStatistic.model";
 
 export default function HomeSection() {
   const categories = useSelector(
     (state: RootState) => state.categories.categories
   );
   const [recentJobs, setRecentJobs] = useState<Job[]>([]);
+  const [applicationStatistics, setApplicationStatistics] = useState<StatsResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const { getRecentJobs } = useJobs();
+  const { getApllicationStatistics } = useStatistics();
   
 const fetchRecentJobs = async () => {
 
@@ -32,8 +36,22 @@ const fetchRecentJobs = async () => {
   }
 }
 
+const fetchApplicationStatistics = async () => { 
+  try {
+    const statisticData = await getApllicationStatistics()
+    console.log(statisticData)
+    setApplicationStatistics(statisticData)
+  } catch (error) {
+    console.error('Failed to fetch application statistics.')
+  } finally{
+    setLoading(false)
+  }
+}
+
+
 useEffect(() => {
 fetchRecentJobs()
+fetchApplicationStatistics()
 },[])
 
 
