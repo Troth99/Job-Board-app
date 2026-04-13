@@ -71,7 +71,7 @@ fetchApplicationStatistics()
           <h1 className="recent-posted-jobs-text">Hot Jobs Right Now</h1>
         */}
       <RecentJobs recentJobs={recentJobs} />
-      <HomeStats></HomeStats>
+      <HomeStats statistics={applicationStatistics}></HomeStats>
     </Container>
     </div>
   );

@@ -18,6 +18,8 @@ export function Header() {
     (state: RootState) => state.auth.isAuthenticated,
   );
 
+//To Refractor css styles of header and footer
+
   useEffect(() => {
     const token = getRefreshToken();
 
