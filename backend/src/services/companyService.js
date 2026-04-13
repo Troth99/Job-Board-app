@@ -1,4 +1,4 @@
-import { Company } from "../models/Company.js";
+import  Company  from "../models/Company.js";
 import { CompanyMember } from "../models/CompanyMember.js";
 
 export const createCompanyService = async (data) => {

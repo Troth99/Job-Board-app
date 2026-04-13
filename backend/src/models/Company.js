@@ -46,4 +46,4 @@ const companySchema = new Schema(
   { timestamps: true }
 );
 
-export const Company = model('Company', companySchema)
+export default model('Company', companySchema)
