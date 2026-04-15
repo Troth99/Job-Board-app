@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import "./Footer.css"
 import "./Responsive.css"
 
@@ -7,7 +8,10 @@ export function Footer() {
   <div className="footer-top">
     <div className="footer-logo-desc">
       {/* Замени src с път към твоето лого */}
-      <img src="/assets/logo.png" alt="JobBoard Logo" className="footer-logo" />
+        <div className="logo">
+        JB
+      </div>
+
       <p className="footer-desc">
         JobBoard is a platform dedicated to connecting job seekers with their dream jobs in all industries. We provide a comprehensive job board, company profiles, and valuable resources to help you navigate your career path. Whether you're looking for your next opportunity or want to stay updated on trends in your field, JobBoard is here to support you every step of the way.
       </p>
@@ -27,7 +31,7 @@ export function Footer() {
       </div>
       <div>
         <h4>General</h4>
-        <a href="#">IT Events</a>
+        <a href="#">Events</a>
         <a href="#">Partners</a>
         <a href="#">Podcast</a>
       </div>

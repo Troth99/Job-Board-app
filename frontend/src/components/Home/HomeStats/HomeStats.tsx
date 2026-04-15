@@ -6,7 +6,7 @@ import { StatsResponse } from "../../../interfaces/ApplicationStatistic.model";
 
 export function HomeStats({ statistics }: { statistics: StatsResponse | null }) {
 
-
+//To do if there are over 1000 jobs, users or companies to show 1k+ instead of the exact number o with 100 etc
   return (
 <div className="stats-section">
   <h2 className="stats-title">Platform Statistics</h2>

@@ -1,5 +1,28 @@
+.footer-desc {
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 18px;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #b0b0b0;
+  margin-top: 32px;
+  padding-top: 16px;
+  text-align: center;
+  color: #444;
+  font-size: 15px;
+}
+
+.footer-bottom .referenced {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: #7a7f87;
+}
 .footer {
-  background: #23272f;
+  background: #d0d0d1;
   color: #fff;
   padding: 40px 0 20px 0;
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -25,7 +48,7 @@
 }
 .footer-desc {
   font-size: 15px;
-  color: #b0b8c1;
+  color: #232425;
   margin-bottom: 18px;
 }
 
@@ -78,17 +101,83 @@
   color: #00bfae;
 }
 
-.footer-bottom {
-  border-top: 1px solid #333842;
-  margin-top: 32px;
-  padding-top: 16px;
-  text-align: center;
-  color: #b0b8c1;
-  font-size: 14px;
+.footer-socials .social-icons a {
+  color: #1976d2;
+  background: transparent;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
 }
-.footer-bottom .referenced {
-  display: block;
-  margin-top: 4px;
-  font-size: 13px;
+.footer-socials .social-icons a:hover {
+  color: #fff;
+  background: #1976d2;
+  box-shadow: 0 0 12px rgba(30, 144, 255, 0.6);
+  border-radius: 6px;
+}
+
+
+.footer {
+  background: #d1d1d1;
+  color: #222;
+}
+
+.footer-links a,
+.footer-bottom {
+  color: #222;
+}
+
+.footer-links a:hover,
+.social-icons a:hover {
+  color: #1976d2;
+}
+
+.footer-logo {
+  color: #1976d2;
+}
+
+.footer-links h4,
+.footer-socials h4 {
+  color: #111;
+}
+
+.footer-bottom {
+  border-top: 1px solid #b0b0b0;
+}
+
+.social-icons a {
+  color: #444;
+}
+
+body[data-theme="dark"] .footer {
+  background: #181a1b;
+  color: #e6edf3;
+}
+
+body[data-theme="dark"] .footer-links a {
+  color: #e6edf3;
+  transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+body[data-theme="dark"] .footer-links a:hover,
+body[data-theme="dark"] .social-icons a:hover {
+  background: rgba(30, 144, 255, 0.18);
+  color: #1e90ff;
+  box-shadow: 0 0 12px rgba(30, 144, 255, 0.6);
+  border-radius: 6px;
+}
+
+body[data-theme="dark"] .footer-links h4,
+body[data-theme="dark"] .footer-socials h4 {
+  color: #fff;
+}
+
+body[data-theme="dark"] .footer-desc {
+  color: #b0b8c1;
+}
+
+body[data-theme="dark"] .footer-bottom {
+  border-top: 1px solid #23272f;
+  color: #b0b8c1;
+}
+
+body[data-theme="dark"] .footer-bottom .referenced {
   color: #7a7f87;
 }
