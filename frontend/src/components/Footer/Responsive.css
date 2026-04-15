@@ -1,64 +1,42 @@
-
-@media (max-width: 1024px) {
-  footer {
-    position: relative;
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-  .links {
-    padding-bottom: 1.5rem;
-  }
-
-  footer a {
-    display: inline-block;
-    margin: 0.5rem 0.8rem;
-    font-size: 0.95rem;
-  }
-
-  footer p {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 768px) {
-  footer {
-    position: relative;
-    padding: 1.2rem 1rem;
-  }
-
-  .links {
-    display: flex;
+@media (max-width: 900px) {
+  .footer-top {
     flex-direction: column;
-    gap: 0.6rem;
-    padding-bottom: 1rem;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 0 12px;
   }
-
-  footer a {
-    margin: 0;
-    font-size: 0.9rem;
+  .footer-links {
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
   }
-
-  footer p {
-    font-size: 0.8rem;
+  .footer-logo-desc,
+  .footer-socials {
+    width: 100%;
+    min-width: unset;
+    margin-bottom: 18px;
+  }
+  .footer-links div {
+    min-width: unset;
   }
 }
 
-
-@media (max-width: 480px) {
-  footer {
-    padding: 1rem 0.8rem;
+@media (max-width: 600px) {
+  .footer {
+    padding: 28px 0 12px 0;
   }
-
-  .links {
-    gap: 0.4rem;
+  .footer-logo {
+    width: 90px;
   }
-
-  footer a {
-    font-size: 0.85rem;
+  .footer-desc {
+    font-size: 14px;
   }
-
-  footer p {
-    font-size: 0.75rem;
+  .footer-links h4,
+  .footer-socials h4 {
+    font-size: 15px;
+  }
+  .footer-bottom {
+    font-size: 12px;
+    padding-top: 10px;
   }
 }
