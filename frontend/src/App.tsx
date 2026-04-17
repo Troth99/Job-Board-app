@@ -25,6 +25,7 @@ import CompanyInvitationNotification from "./components/Notifications/companyInv
 import { NotificationOwnerGuard } from "./RouteGuards/notificationGuard";
 import ApplicationUpdateNotification from "./components/Notifications/ApplicaitonUpdateNotification/ApplicationUpdateNotification";
 import NewmessageNotification from "./components/Notifications/NewMessageNotification/NewMessageNotification";
+import { footerRoutes } from "./Routes/FooterRoutes";
 
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 
@@ -75,6 +76,9 @@ const NotificatonCompanyINvite = lazy(
   () =>
     import("./components/Notifications/companyInvitationNotification/CompanyInvitationNotification"),
 );
+
+
+// to refractor and move to a separate file
 
 interface AppProps {
   setUserId: (id: string) => void;
@@ -377,6 +381,9 @@ function App({ setUserId }: AppProps) {
             }
           />
         </Route>
+
+        {/* Footer routes */}
+        {footerRoutes}
       </Routes>
     </div>
   );

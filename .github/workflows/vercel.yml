@@ -14,24 +14,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install latest Vercel CLI
+        run: npm install -g vercel@latest
 
       - name: Pull Vercel Project Settings
         run:  vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         working-directory: frontend
 
       - name: Install dependencies
-        run:  install
+        run:  npm install
         working-directory: frontend
 
-      - name: Install latest Vercel CLI
-        run: npm install -g vercel@latest
 
       - name: Build with Vercel
         run:  vercel build
         working-directory: frontend
 
       - name: Deploy to Vercel (Production)
-        uses: amondnet/vercel-action@latest
+        uses: amondnet/vercel-action@v42.2.0
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
