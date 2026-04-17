@@ -19,7 +19,6 @@ header {
   color: #1976d2;
   cursor: pointer;
   text-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
-  margin-right: 2rem;
   transition: color 0.3s, text-shadow 0.3s;
 }
 
