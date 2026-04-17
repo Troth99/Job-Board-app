@@ -1,5 +1,5 @@
 export interface StatsResponse {
-  jobsCount: number;
-  usersCount: number;
-  companiesCount: number;
+  jobsCount: number | string;
+  usersCount: number | string;
+  companiesCount: number | string;
 }
