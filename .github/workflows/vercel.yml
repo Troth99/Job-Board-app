@@ -15,6 +15,9 @@ jobs:
         uses: actions/checkout@v3
 
 
+      - name: Install latest Vercel CLI
+        run: npm install -g vercel@latest
+
       - name: Pull Vercel Project Settings
         run:  vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         working-directory: frontend
@@ -22,9 +25,6 @@ jobs:
       - name: Install dependencies
         run:  install
         working-directory: frontend
-
-      - name: Install latest Vercel CLI
-        run: npm install -g vercel@latest
 
       - name: Build with Vercel
         run:  vercel build
