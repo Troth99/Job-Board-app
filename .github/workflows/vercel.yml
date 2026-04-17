@@ -23,7 +23,7 @@ jobs:
         working-directory: frontend
 
       - name: Install dependencies
-        run:  install
+        run: npm install
         working-directory: frontend
 
       - name: Build with Vercel
