@@ -16,22 +16,22 @@ jobs:
 
 
       - name: Pull Vercel Project Settings
-        run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        run:  vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         working-directory: frontend
 
       - name: Install dependencies
-        run: npm install
+        run:  install
         working-directory: frontend
 
       - name: Install latest Vercel CLI
         run: npm install -g vercel@latest
 
       - name: Build with Vercel
-        run: npx vercel build
+        run:  vercel build
         working-directory: frontend
 
       - name: Deploy to Vercel (Production)
-        uses: amondnet/vercel-action@v25
+        uses: amondnet/vercel-action@v42
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
