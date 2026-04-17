@@ -1,12 +1,10 @@
 import { useDispatch } from "react-redux";
 import useAuth from "../../../hooks/useAuth";
 import { setAuthenticated } from "../../../redux/authSlice";
-import { useNavigate } from "react-router";
 import { useState } from "react";
 
 export function LogOut() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [loadingButton, setLoadingButton] = useState<boolean>(false);
   const { logOut } = useAuth();
 
