@@ -31,7 +31,7 @@ jobs:
         working-directory: frontend
 
       - name: Deploy to Vercel (Production)
-        uses: amondnet/vercel-action@latest
+        uses: amondnet/vercel-action@v42.2.0
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
