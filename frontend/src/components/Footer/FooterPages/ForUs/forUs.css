@@ -1,0 +1,397 @@
+/* ════════════════════════════════════════════════════════
+   ForUs page  —  light + dark + responsive
+   ════════════════════════════════════════════════════════ */
+
+/* ── Page wrapper ─────────────────────────────────────── */
+.for-us-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  color: #1a1a1a;
+  font-family: inherit;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.for-us-hero {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+}
+
+.for-us-badge {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #2563eb;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+
+.for-us-hero h1 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.1rem;
+  color: #111827;
+}
+
+.for-us-hero p {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+/* ── Section shared ───────────────────────────────────── */
+.for-us-section,
+.for-us-how,
+.for-us-why {
+  margin-top: 4rem;
+}
+
+.for-us-section h2,
+.for-us-how h2,
+.for-us-why h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.for-us-section-sub {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.97rem;
+  margin-bottom: 2.2rem;
+}
+
+/* ── Feature cards ────────────────────────────────────── */
+.for-us-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.4rem;
+}
+
+.for-us-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.6rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.for-us-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.for-us-card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.9rem;
+}
+
+.for-us-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.for-us-card p {
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #4b5563;
+}
+
+/* ── Steps ────────────────────────────────────────────── */
+.for-us-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.for-us-step {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.4rem 1.6rem;
+}
+
+.for-us-step-number {
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: #2563eb;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.for-us-step h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.for-us-step p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* ── Why grid ─────────────────────────────────────────── */
+.for-us-why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.for-us-why-item {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
+
+.for-us-why-item span {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.for-us-why-item p {
+  margin: 0;
+  color: #374151;
+}
+
+/* ── CTA ──────────────────────────────────────────────── */
+.for-us-cta {
+  margin-top: 4.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 3.5rem 2rem;
+}
+
+.for-us-cta h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+
+.for-us-cta p {
+  font-size: 1rem;
+  opacity: 0.88;
+  margin-bottom: 1.8rem;
+}
+
+.for-us-cta-btn {
+  display: inline-block;
+  background: #fff;
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 0.97rem;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.for-us-cta-btn:hover {
+  background: #e8f0fe;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* ════════════════════════════════════════════════════════
+   Dark Theme  —  [data-theme="dark"]
+   ════════════════════════════════════════════════════════ */
+
+[data-theme="dark"] .for-us-page {
+  color: #e6edf3;
+}
+
+[data-theme="dark"] .for-us-badge {
+  background: #1e2d4a;
+  color: #80aaff;
+}
+
+[data-theme="dark"] .for-us-hero h1 {
+  color: #e6edf3;
+}
+
+[data-theme="dark"] .for-us-hero p {
+  color: #b2b8c2;
+}
+
+[data-theme="dark"] .for-us-section h2,
+[data-theme="dark"] .for-us-how h2,
+[data-theme="dark"] .for-us-why h2 {
+  color: #e6edf3;
+}
+
+[data-theme="dark"] .for-us-section-sub {
+  color: #b2b8c2;
+}
+
+/* Cards */
+[data-theme="dark"] .for-us-card {
+  background: #23272f;
+  border-color: #444;
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.06);
+}
+
+[data-theme="dark"] .for-us-card:hover {
+  box-shadow: 0 6px 24px rgba(30, 144, 255, 0.14);
+}
+
+[data-theme="dark"] .for-us-card h3 {
+  color: #80aaff;
+}
+
+[data-theme="dark"] .for-us-card p {
+  color: #b2b8c2;
+}
+
+/* Steps */
+[data-theme="dark"] .for-us-step {
+  background: #23272f;
+  border-color: #444;
+}
+
+[data-theme="dark"] .for-us-step-number {
+  background: #4e9eff;
+}
+
+[data-theme="dark"] .for-us-step h3 {
+  color: #e6edf3;
+}
+
+[data-theme="dark"] .for-us-step p {
+  color: #b2b8c2;
+}
+
+/* Why grid */
+[data-theme="dark"] .for-us-why-item {
+  background: #23272f;
+  border-color: #444;
+}
+
+[data-theme="dark"] .for-us-why-item p {
+  color: #b2b8c2;
+}
+
+/* CTA stays blue — just tweak btn */
+[data-theme="dark"] .for-us-cta-btn {
+  background: #1e2d4a;
+  color: #80aaff;
+}
+
+[data-theme="dark"] .for-us-cta-btn:hover {
+  background: #253553;
+  box-shadow: 0 4px 14px rgba(78, 158, 255, 0.3);
+}
+
+/* ════════════════════════════════════════════════════════
+   Responsive
+   ════════════════════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .for-us-hero {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .for-us-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .for-us-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .for-us-why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .for-us-cta h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .for-us-page {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .for-us-hero {
+    padding: 2.5rem 0.5rem 2rem;
+  }
+
+  .for-us-hero h1 {
+    font-size: 1.55rem;
+  }
+
+  .for-us-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .for-us-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .for-us-step {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .for-us-cta {
+    padding: 2.5rem 1.2rem;
+  }
+
+  .for-us-section h2,
+  .for-us-how h2,
+  .for-us-why h2 {
+    font-size: 1.35rem;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .for-us-hero h1 {
+    font-size: 1.35rem;
+  }
+
+  .for-us-card {
+    padding: 1.2rem;
+  }
+
+  .for-us-cta h2 {
+    font-size: 1.2rem;
+  }
+
+  .for-us-cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
