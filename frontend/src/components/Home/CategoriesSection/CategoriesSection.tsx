@@ -25,12 +25,14 @@ const handleCategoryClick = (cat: Category) => {
 };
 
   return (
-    <div className="categories-section">
-      <div className="categories-grid">
+    
+    <div className="custom-categories-section">
+      <h2 className="custom-categories-title">Browse by Category</h2>
+      <div className="custom-categories-grid">
         {visibleCategories.map((cat) => (
-          <div key={cat.name} className="category-card" onClick={() => handleCategoryClick(cat)}>
-            <div className="card-body">
-              <div className="one-line">
+          <div key={cat.name} className="custom-category-card" onClick={() => handleCategoryClick(cat)}>
+            <div className="custom-card-body">
+              <div className="custom-one-line">
                 <span>{cat.shortName}</span>
               </div>
             </div>
@@ -39,7 +41,7 @@ const handleCategoryClick = (cat: Category) => {
       </div>
 
       {reduxCategories.length > 8 && (
-        <button className="show-all-btn" onClick={() => setOpenModal(true)}>
+        <button className="custom-show-all-btn" onClick={() => setOpenModal(true)}>
           View All Categories
         </button>
       )}

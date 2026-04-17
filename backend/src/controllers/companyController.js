@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
-import { Company } from "../models/Company.js";
 import { createCompanyService, getCompaniesService, getCompanyByIdService } from "../services/companyService.js"
 import { CompanyMember } from "../models/CompanyMember.js";
+import  Company  from "../models/Company.js";
 import Jobs from "../models/Jobs.js";
 import Application from "../models/Application.js";
 import Notification from "../models/Notification.js";

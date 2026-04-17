@@ -5,6 +5,7 @@ import companyRoutes  from './companyRoutes.js'
 import categoriesRoutes from './categoriesRoutes.js';
 import applicationRoutes from "./applicationRoutes.js"
 import notifications from "./notificationRoutes.js"
+import statsRoutes from "./statsRoutes.js";
 
 const router = Router();
 
@@ -15,4 +16,6 @@ router.use('/companies', companyRoutes)
 router.use('/categories', categoriesRoutes )
 router.use('/applications', applicationRoutes)
 router.use('/notifications', notifications)
+router.use('/application', statsRoutes)
+
 export default router;

@@ -1,108 +1,39 @@
-@media (max-width: 480px) {
-  .categories-section {
-    padding: 1rem;
+@media (max-width: 600px) {
+  .custom-categories-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    max-width: 220px;
   }
-
-  .categories-grid {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem 0;
-  }
-
-  .categories-grid > div {
-    min-width: 100%; 
-    padding: 0.7rem 1rem; 
-  }
-
-  .show-all-btn {
-    width: 100%;
-    font-size: 1rem;
-    padding: 1rem 0;
-  }
-
-  .one-line {
-    font-size: 0.9rem;
+  .custom-category-card {
+    padding: 12px 0;
+    font-size: 0.98rem;
+    border-radius: 12px;
   }
 }
 
-@media (max-width: 768px) {
-  .categories-section {
-    padding: 1.5rem;
+@media (min-width: 601px) and (max-width: 900px) {
+  .custom-categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 400px;
   }
-
-  .categories-grid {
-    flex-direction: column;
-    gap: 1rem; 
-    padding: 1rem 0;
-  }
-
-  .categories-grid > div {
-    min-width: 100%;
-    padding: 0.8rem 1.2rem; 
-  }
-
-  .show-all-btn {
-    width: 100%;
+  .custom-category-card {
+    padding: 14px 0;
     font-size: 1rem;
-    padding: 1rem 0;
-  }
-
-  .one-line {
-    font-size: 1rem;
+    border-radius: 13px;
   }
 }
 
-@media (max-width: 1024px) {
-  .categories-section {
-    padding: 1.8rem;
+@media (min-width: 901px) {
+  .custom-categories-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 800px;
   }
-
-  .categories-grid {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1rem 1rem;
-  }
-
-  .categories-grid > div {
-    min-width: 100%; 
-    padding: 0.9rem 1.4rem; 
-  }
-
-  .show-all-btn {
-    width: 100%;
+  .custom-category-card {
+    padding: 16px 0;
     font-size: 1rem;
-    padding: 1rem 1.5rem;
-  }
-
-  .one-line {
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .categories-section {
-    padding: 2rem;
-  }
-
-  .categories-grid {
-    flex-direction: row;
-    gap: 1.5rem;
-    padding: 1rem 2rem;
-  }
-
-  .categories-grid > div {
-    min-width: 220px; 
-    padding: 1rem 1.6rem; 
-  }
-
-  .show-all-btn {
-    width: 50%; 
-    font-size: 1rem;
-    padding: 1rem 1.5rem;
-  }
-
-  .one-line {
-    font-size: 1rem;
+    border-radius: 14px;
   }
 }
 
