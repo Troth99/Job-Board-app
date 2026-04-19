@@ -15,21 +15,21 @@ export function Footer() {
     <div className="footer-links">
       <div>
         <h4>For the Users</h4>
-        <a href="#">For us</a>
-        <a href="#">Contacts</a>
-        <a href="#">For Employers</a>
+        <Link to="/for-us">For Us</Link>
+        <Link to="/contacts">Contacts</Link>
+        <Link to="/for-employers">For Employers</Link>
       </div>
       <div>
         <h4>Legal Information</h4>
-        <a href="#">Terms and Conditions</a>
-        <a href="#">Privacy</a>
-        <a href="#">Cookies</a>
+        <Link to="/terms-and-conditions">Terms and Conditions</Link>
+        <Link to="/privacy">Privacy</Link>
+        <Link to="/cookies">Cookies</Link>
       </div>
       <div>
-        <h4>General</h4>
-        <a href="#">Events</a>
-        <a href="#">Partners</a>
-        <a href="#">Podcast</a>
+        <h4>Career Advice</h4>
+        <Link to="/career-advice/cv-tips">CV Tips</Link>
+        <Link to="/career-advice/interview-preparation">Interview Preparation</Link>
+        <Link to="/career-advice/salary-negotiation">Salary Negotiation</Link>
       </div>
     </div>
     <div className="footer-socials">
@@ -56,7 +56,6 @@ export function Footer() {
   </div>
   <div className="footer-bottom">
     <p>&copy; {new Date().getFullYear()} JobBoard. All rights reserved.</p>
-    <span className="referenced">Referenced on Jobboardfinder</span>
   </div>
 </footer>
   );
