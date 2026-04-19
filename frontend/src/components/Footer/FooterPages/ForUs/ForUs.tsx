@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-import "./ForUs.css"
+import "./forUs.css"
 import { Container } from "../../../Container/Container"
 
 export default function ForUs() {
