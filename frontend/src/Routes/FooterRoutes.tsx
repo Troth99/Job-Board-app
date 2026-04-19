@@ -20,6 +20,13 @@ const TermsAndConditionsPage = lazy(
   () => import("../components/Footer/FooterPages/TOS/termsAndConditions"),
 );
 
+const PrivacyPage = lazy(
+  () => import("../components/Footer/FooterPages/Privacy/Privacy"),
+);
+const CookiesPage = lazy(
+  () => import("../components/Footer/FooterPages/Cookies/Cookies"),
+);
+
 export const footerRoutes = [
   <Route element={<MainLayout />} key="footer-layout">
     <Route
@@ -59,5 +66,24 @@ export const footerRoutes = [
         </Suspense>
       }
       />
+      <Route 
+      key="privacy"
+      path="/privacy"
+      element={
+        <Suspense fallback={<Spinner />}>
+          <PrivacyPage />
+        </Suspense>
+      }
+      />
+      <Route 
+      key="cookies"
+      path="/cookies"
+      element={
+        <Suspense fallback={<Spinner />}>
+          <CookiesPage />
+        </Suspense>
+      }
+      />
+
   </Route>,
 ];

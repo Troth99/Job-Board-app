@@ -22,14 +22,14 @@ export function Footer() {
       <div>
         <h4>Legal Information</h4>
         <Link to="/terms-and-conditions">Terms and Conditions</Link>
-        <a href="#">Privacy</a>
-        <a href="#">Cookies</a>
+        <Link to="/privacy">Privacy</Link>
+        <Link to="/cookies">Cookies</Link>
       </div>
       <div>
         <h4>Career Advice</h4>
-        <a href="/career-advice/cv-tips">CV Tips</a>
-        <a href="/career-advice/interview-preparation">Interview Preparation</a>
-        <a href="/career-advice/salary-negotiation">Salary Negotiation</a>
+        <Link to="/career-advice/cv-tips">CV Tips</Link>
+        <Link to="/career-advice/interview-preparation">Interview Preparation</Link>
+        <Link to="/career-advice/salary-negotiation">Salary Negotiation</Link>
       </div>
     </div>
     <div className="footer-socials">
