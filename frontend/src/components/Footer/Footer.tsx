@@ -21,7 +21,7 @@ export function Footer() {
       </div>
       <div>
         <h4>Legal Information</h4>
-        <a href="#">Terms and Conditions</a>
+        <Link to="/terms-and-conditions">Terms and Conditions</Link>
         <a href="#">Privacy</a>
         <a href="#">Cookies</a>
       </div>

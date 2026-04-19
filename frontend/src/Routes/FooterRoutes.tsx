@@ -1,21 +1,23 @@
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
 import Spinner from "../components/Spinner/Spinner";
-import ForUs from "../components/Footer/FooterPages/ForUs/ForUs";
 import MainLayout from "../components/Layouts/MainLayout";
-import Contacts from "../components/Footer/FooterPages/Contacts/Contacts";
-import ForEmployers from "../components/Footer/FooterPages/ForEmployers/ForEmployers";
 
-const forUsPage = lazy(
+
+const ForUsPage = lazy(
   () => import("../components/Footer/FooterPages/ForUs/ForUs"),
 );
 
-const contactsPage = lazy(
+const ContactsPage = lazy(
   () => import("../components/Footer/FooterPages/Contacts/Contacts"),
 );
 
-const forEmployersPage = lazy(
+const ForEmployersPage = lazy(
   () => import("../components/Footer/FooterPages/ForEmployers/ForEmployers"),
+);
+
+const TermsAndConditionsPage = lazy(
+  () => import("../components/Footer/FooterPages/TOS/termsAndConditions"),
 );
 
 export const footerRoutes = [
@@ -25,7 +27,7 @@ export const footerRoutes = [
       path="/for-us"
       element={
         <Suspense fallback={<Spinner />}>
-          <ForUs />
+          <ForUsPage />
         </Suspense>
       }
     />
@@ -35,7 +37,7 @@ export const footerRoutes = [
       path="/contacts"
       element={
         <Suspense fallback={<Spinner />}>
-          <Contacts />
+          <ContactsPage />
         </Suspense>
       }
     />
@@ -44,9 +46,18 @@ export const footerRoutes = [
       path="/for-employers"
       element={
         <Suspense fallback={<Spinner />}>
-          <ForEmployers />
+          <ForEmployersPage />
         </Suspense>
       }
     />
+    <Route
+      key="terms-and-conditions"
+      path="/terms-and-conditions"
+      element={
+        <Suspense fallback={<Spinner />}>
+          <TermsAndConditionsPage />
+        </Suspense>
+      }
+      />
   </Route>,
 ];
