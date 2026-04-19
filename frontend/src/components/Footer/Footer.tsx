@@ -17,7 +17,7 @@ export function Footer() {
         <h4>For the Users</h4>
         <Link to="/for-us">For Us</Link>
         <Link to="/contacts">Contacts</Link>
-        <a href="#">For Employers</a>
+        <Link to="/for-employers">For Employers</Link>
       </div>
       <div>
         <h4>Legal Information</h4>
@@ -26,10 +26,10 @@ export function Footer() {
         <a href="#">Cookies</a>
       </div>
       <div>
-        <h4>General</h4>
-        <a href="#">Events</a>
-        <a href="#">Partners</a>
-        <a href="#">Podcast</a>
+        <h4>Career Advice</h4>
+        <a href="/career-advice/cv-tips">CV Tips</a>
+        <a href="/career-advice/interview-preparation">Interview Preparation</a>
+        <a href="/career-advice/salary-negotiation">Salary Negotiation</a>
       </div>
     </div>
     <div className="footer-socials">
@@ -56,7 +56,6 @@ export function Footer() {
   </div>
   <div className="footer-bottom">
     <p>&copy; {new Date().getFullYear()} JobBoard. All rights reserved.</p>
-    <span className="referenced">Referenced on Jobboardfinder</span>
   </div>
 </footer>
   );

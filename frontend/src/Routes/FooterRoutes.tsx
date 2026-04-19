@@ -4,6 +4,7 @@ import Spinner from "../components/Spinner/Spinner";
 import ForUs from "../components/Footer/FooterPages/ForUs/ForUs";
 import MainLayout from "../components/Layouts/MainLayout";
 import Contacts from "../components/Footer/FooterPages/Contacts/Contacts";
+import ForEmployers from "../components/Footer/FooterPages/ForEmployers/ForEmployers";
 
 const forUsPage = lazy(
   () => import("../components/Footer/FooterPages/ForUs/ForUs"),
@@ -11,6 +12,10 @@ const forUsPage = lazy(
 
 const contactsPage = lazy(
   () => import("../components/Footer/FooterPages/Contacts/Contacts"),
+);
+
+const forEmployersPage = lazy(
+  () => import("../components/Footer/FooterPages/ForEmployers/ForEmployers"),
 );
 
 export const footerRoutes = [
@@ -31,6 +36,15 @@ export const footerRoutes = [
       element={
         <Suspense fallback={<Spinner />}>
           <Contacts />
+        </Suspense>
+      }
+    />
+    <Route
+      key="for-employers"
+      path="/for-employers"
+      element={
+        <Suspense fallback={<Spinner />}>
+          <ForEmployers />
         </Suspense>
       }
     />
