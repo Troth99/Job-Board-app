@@ -1,0 +1,594 @@
+.salary-neg-page {
+	padding: 2rem 0 4rem;
+	font-family: inherit;
+}
+
+/* Hero */
+.salary-neg-hero {
+	text-align: center;
+	padding: 3.5rem 1rem 2.5rem;
+	background: #f5f6fa;
+	border-radius: 0 0 32px 32px;
+	box-shadow: 0 4px 32px rgba(37, 99, 235, 0.07);
+	margin-bottom: 2rem;
+}
+
+.salary-neg-badge {
+	display: inline-block;
+	background: linear-gradient(90deg, #2563eb 0%, #00bfae 100%);
+	color: #fff;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding: 0.3rem 1rem;
+	border-radius: 999px;
+	margin-bottom: 1.2rem;
+	box-shadow: 0 2px 12px rgba(37, 99, 235, 0.18);
+}
+
+.salary-neg-hero h1 {
+	font-size: clamp(1.8rem, 4vw, 2.7rem);
+	font-weight: 800;
+	line-height: 1.2;
+	margin-bottom: 1rem;
+	color: #1a2a3a;
+}
+
+.salary-neg-hero p {
+	max-width: 700px;
+	margin: 0 auto;
+	font-size: 1.05rem;
+	line-height: 1.7;
+	color: #4a5568;
+}
+
+/* Sections */
+.salary-neg-section {
+	margin-top: 1.2rem;
+	padding: 1.5rem;
+	background: #fff;
+	border-radius: 18px;
+	box-shadow: 0 2px 12px rgba(37, 99, 235, 0.07);
+	border-left: 5px solid #2563eb;
+	transition: box-shadow 0.2s;
+}
+
+.salary-neg-section:hover {
+	box-shadow: 0 8px 32px rgba(37, 99, 235, 0.13);
+}
+
+.salary-neg-section h2 {
+	margin: 0 0 0.5rem;
+	font-size: 1.18rem;
+	font-weight: 700;
+	color: #1a2a3a;
+}
+
+.salary-neg-section > p {
+	margin: 0 0 0.6rem;
+	font-size: 0.96rem;
+	line-height: 1.72;
+	color: #4a5568;
+}
+
+/* Grid */
+.salary-neg-grid {
+	margin-top: 0.9rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 1rem;
+}
+
+/* Cards */
+.salary-neg-card {
+	background: #fafbfc;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+	padding: 1rem 1.15rem;
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.salary-neg-card:hover {
+	transform: translateY(-3px) scale(1.01);
+	box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);
+}
+
+.salary-neg-card h3 {
+	margin: 0 0 0.45rem;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #2563eb;
+}
+
+.salary-neg-card p {
+	margin: 0;
+	font-size: 0.93rem;
+	color: #4a5568;
+}
+
+.salary-neg-card ul,
+.salary-neg-checklist ul {
+	margin: 0.3rem 0 0;
+	padding-left: 1.15rem;
+}
+
+.salary-neg-card li,
+.salary-neg-checklist li {
+	margin-bottom: 0.4rem;
+	font-size: 0.93rem;
+	line-height: 1.6;
+	color: #374151;
+}
+
+/* Highlight example box */
+.salary-neg-example {
+	margin-top: 1rem;
+	padding: 0.9rem 1.1rem;
+	border-left: 4px solid #00bfae;
+	background: #f0fafb;
+	border-radius: 10px;
+}
+
+.salary-neg-example strong {
+	display: block;
+	font-size: 0.88rem;
+	font-weight: 700;
+	margin-bottom: 0.3rem;
+	color: #1a2a3a;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.salary-neg-example p {
+	margin: 0;
+	font-size: 0.94rem;
+	color: #374151;
+	line-height: 1.65;
+}
+
+/* Checklist */
+.salary-neg-checklist {
+	margin-top: 0.9rem;
+	background: #fafbfc;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+	padding: 1rem 1.15rem;
+}
+
+/* CTA */
+.salary-neg-cta {
+	margin-top: 3.5rem;
+	text-align: center;
+	border-radius: 24px;
+	padding: 3rem 2rem;
+	color: #fff;
+	background: linear-gradient(135deg, #2563eb 0%, #00bfae 100%);
+	box-shadow: 0 8px 32px rgba(37, 99, 235, 0.2);
+}
+
+.salary-neg-cta h2 {
+	font-size: 1.8rem;
+	font-weight: 800;
+	margin-bottom: 0.5rem;
+}
+
+.salary-neg-cta p {
+	max-width: 520px;
+	margin: 0 auto 1.4rem;
+	font-size: 1rem;
+	opacity: 0.9;
+}
+
+.salary-neg-cta-actions {
+	display: flex;
+	justify-content: center;
+	gap: 0.9rem;
+	flex-wrap: wrap;
+}
+
+.salary-neg-btn-primary,
+.salary-neg-btn-secondary {
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 0.95rem;
+	padding: 0.75rem 1.4rem;
+	border-radius: 22px;
+	transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.salary-neg-btn-primary {
+	background: #fff;
+	color: #2563eb;
+	box-shadow: 0 2px 12px rgba(37, 99, 235, 0.15);
+}
+
+.salary-neg-btn-primary:hover {
+	background: #e0e7ff;
+	transform: scale(1.04);
+	box-shadow: 0 6px 20px rgba(37, 99, 235, 0.22);
+}
+
+.salary-neg-btn-secondary {
+	background: rgba(255, 255, 255, 0.15);
+	color: #fff;
+	border: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+
+.salary-neg-btn-secondary:hover {
+	background: rgba(255, 255, 255, 0.26);
+	transform: scale(1.04);
+}
+
+/* Dark theme */
+[data-theme="dark"] .salary-neg-hero {
+	background: #181c24;
+	box-shadow: 0 4px 32px rgba(37, 99, 235, 0.13);
+}
+
+[data-theme="dark"] .salary-neg-hero h1 {
+	color: #e6edf3;
+}
+
+[data-theme="dark"] .salary-neg-hero p {
+	color: #a0aec0;
+}
+
+[data-theme="dark"] .salary-neg-section {
+	background: #232a36;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+	border-left-color: #60a5fa;
+}
+
+[data-theme="dark"] .salary-neg-section:hover {
+	box-shadow: 0 8px 32px rgba(96, 165, 250, 0.13);
+}
+
+[data-theme="dark"] .salary-neg-section h2 {
+	color: #e6edf3;
+}
+
+[data-theme="dark"] .salary-neg-section > p {
+	color: #a0aec0;
+}
+
+[data-theme="dark"] .salary-neg-card {
+	background: #1e293b;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .salary-neg-card:hover {
+	box-shadow: 0 6px 20px rgba(96, 165, 250, 0.15);
+}
+
+[data-theme="dark"] .salary-neg-card h3 {
+	color: #60a5fa;
+}
+
+[data-theme="dark"] .salary-neg-card p,
+[data-theme="dark"] .salary-neg-card li,
+[data-theme="dark"] .salary-neg-checklist li {
+	color: #a0aec0;
+}
+
+[data-theme="dark"] .salary-neg-example {
+	background: #162032;
+	border-left-color: #00bfae;
+}
+
+[data-theme="dark"] .salary-neg-example strong {
+	color: #e6edf3;
+}
+
+[data-theme="dark"] .salary-neg-example p {
+	color: #a0aec0;
+}
+
+[data-theme="dark"] .salary-neg-checklist {
+	background: #1e293b;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .salary-neg-cta {
+	background: linear-gradient(135deg, #1d4ed8 0%, #0e9488 100%);
+	box-shadow: 0 8px 32px rgba(96, 165, 250, 0.2);
+}
+
+[data-theme="dark"] .salary-neg-btn-primary {
+	background: #232a36;
+	color: #60a5fa;
+}
+
+[data-theme="dark"] .salary-neg-btn-primary:hover {
+	background: #1e293b;
+	box-shadow: 0 6px 20px rgba(96, 165, 250, 0.25);
+}
+
+@media (max-width: 900px) {
+	.salary-neg-hero {
+		padding-top: 2.5rem;
+	}
+}
+
+@media (max-width: 640px) {
+	.salary-neg-page {
+		padding-top: 1rem;
+	}
+
+	.salary-neg-hero {
+		padding: 2rem 0.5rem 1.8rem;
+		border-radius: 0 0 20px 20px;
+	}
+
+	.salary-neg-cta {
+		padding: 2rem 1rem;
+		border-radius: 16px;
+	}
+
+	.salary-neg-cta h2 {
+		font-size: 1.45rem;
+	}
+}
+
+
+.salary-neg-hero {
+	text-align: center;
+	padding: 4rem 1rem 2.5rem;
+}
+
+.salary-neg-badge {
+	display: inline-block;
+	background: #e8f0fe;
+	color: #2563eb;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	padding: 0.3rem 0.9rem;
+	border-radius: 999px;
+	margin-bottom: 1.2rem;
+}
+
+.salary-neg-hero h1 {
+	font-size: clamp(1.9rem, 4vw, 2.8rem);
+	font-weight: 800;
+	line-height: 1.2;
+	margin-bottom: 1rem;
+	color: #111827;
+}
+
+.salary-neg-hero p {
+	max-width: 760px;
+	margin: 0 auto;
+	font-size: 1.03rem;
+	line-height: 1.7;
+	color: #4b5563;
+}
+
+.salary-neg-section {
+	margin-top: 1rem;
+	padding: 1.35rem;
+	border: 1px solid #e5e7eb;
+	border-radius: 12px;
+	background: #ffffff;
+}
+
+.salary-neg-section h2 {
+	margin: 0 0 0.6rem;
+	font-size: 1.2rem;
+	color: #111827;
+}
+
+.salary-neg-section p {
+	margin: 0;
+	font-size: 0.95rem;
+	line-height: 1.72;
+	color: #4b5563;
+}
+
+.salary-neg-grid {
+	margin-top: 0.9rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 0.9rem;
+}
+
+.salary-neg-card {
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	padding: 1rem 1.1rem;
+}
+
+.salary-neg-card h3 {
+	margin: 0 0 0.4rem;
+	font-size: 1rem;
+	color: #111827;
+}
+
+.salary-neg-card p {
+	margin: 0;
+	font-size: 0.93rem;
+	color: #4b5563;
+}
+
+.salary-neg-card ul,
+.salary-neg-checklist ul {
+	margin: 0.3rem 0 0;
+	padding-left: 1.1rem;
+}
+
+.salary-neg-card li,
+.salary-neg-checklist li {
+	margin-bottom: 0.38rem;
+	font-size: 0.93rem;
+	line-height: 1.6;
+	color: #4b5563;
+}
+
+.salary-neg-example {
+	margin-top: 0.9rem;
+	padding: 0.9rem 1rem;
+	border-left: 4px solid #2563eb;
+	background: #f3f7ff;
+	border-radius: 8px;
+}
+
+.salary-neg-example strong {
+	display: block;
+	font-size: 0.9rem;
+	margin-bottom: 0.25rem;
+	color: #1f2937;
+}
+
+.salary-neg-example p {
+	margin: 0;
+}
+
+.salary-neg-checklist {
+	margin-top: 0.9rem;
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 10px;
+	padding: 0.95rem 1rem;
+}
+
+.salary-neg-cta {
+	margin-top: 4rem;
+	text-align: center;
+	border-radius: 16px;
+	padding: 3rem 1.8rem;
+	color: #fff;
+	background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.salary-neg-cta h2 {
+	font-size: 1.75rem;
+	font-weight: 800;
+	margin-bottom: 0.45rem;
+}
+
+.salary-neg-cta p {
+	max-width: 560px;
+	margin: 0 auto 1.35rem;
+	font-size: 0.98rem;
+	opacity: 0.9;
+}
+
+.salary-neg-cta-actions {
+	display: flex;
+	justify-content: center;
+	gap: 0.8rem;
+	flex-wrap: wrap;
+}
+
+.salary-neg-btn-primary,
+.salary-neg-btn-secondary {
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 0.95rem;
+	padding: 0.72rem 1.25rem;
+	border-radius: 8px;
+	transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.salary-neg-btn-primary {
+	background: #fff;
+	color: #2563eb;
+}
+
+.salary-neg-btn-primary:hover {
+	background: #e8f0fe;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+.salary-neg-btn-secondary {
+	background: rgba(255, 255, 255, 0.14);
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.salary-neg-btn-secondary:hover {
+	background: rgba(255, 255, 255, 0.24);
+}
+
+/* Dark theme */
+[data-theme="dark"] .salary-neg-page {
+	color: #e6edf3;
+}
+
+[data-theme="dark"] .salary-neg-badge {
+	background: #1e2d4a;
+	color: #80aaff;
+}
+
+[data-theme="dark"] .salary-neg-hero h1,
+[data-theme="dark"] .salary-neg-section h2,
+[data-theme="dark"] .salary-neg-card h3,
+[data-theme="dark"] .salary-neg-example strong {
+	color: #e6edf3;
+}
+
+[data-theme="dark"] .salary-neg-hero p,
+[data-theme="dark"] .salary-neg-section p,
+[data-theme="dark"] .salary-neg-card p,
+[data-theme="dark"] .salary-neg-card li,
+[data-theme="dark"] .salary-neg-checklist li {
+	color: #b2b8c2;
+}
+
+[data-theme="dark"] .salary-neg-section,
+[data-theme="dark"] .salary-neg-card,
+[data-theme="dark"] .salary-neg-checklist {
+	background: #23272f;
+	border-color: #444;
+}
+
+[data-theme="dark"] .salary-neg-example {
+	background: #1f2d45;
+	border-left-color: #4e9eff;
+}
+
+[data-theme="dark"] .salary-neg-btn-primary {
+	background: #1e2d4a;
+	color: #80aaff;
+}
+
+[data-theme="dark"] .salary-neg-btn-primary:hover {
+	background: #253553;
+	box-shadow: 0 4px 14px rgba(78, 158, 255, 0.3);
+}
+
+[data-theme="dark"] .salary-neg-btn-secondary {
+	background: rgba(13, 17, 23, 0.34);
+	border-color: rgba(128, 170, 255, 0.45);
+	color: #d7e3ff;
+}
+
+[data-theme="dark"] .salary-neg-btn-secondary:hover {
+	background: rgba(13, 17, 23, 0.48);
+}
+
+@media (max-width: 900px) {
+	.salary-neg-hero {
+		padding-top: 3rem;
+	}
+}
+
+@media (max-width: 640px) {
+	.salary-neg-page {
+		padding-top: 1.3rem;
+	}
+
+	.salary-neg-hero {
+		padding: 2rem 0.4rem 1.8rem;
+	}
+
+	.salary-neg-cta {
+		padding: 2rem 1rem;
+	}
+
+	.salary-neg-cta h2 {
+		font-size: 1.4rem;
+	}
+}

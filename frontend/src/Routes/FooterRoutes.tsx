@@ -26,6 +26,15 @@ const PrivacyPage = lazy(
 const CookiesPage = lazy(
   () => import("../components/Footer/FooterPages/Cookies/Cookies"),
 );
+const CVTipsPage = lazy(
+  () => import("../components/Footer/FooterPages/CareerAdvice/CVTips/CVTips"),
+);
+const InterviewPreparationPage = lazy(
+  () => import("../components/Footer/FooterPages/CareerAdvice/interviewPreparation/InterviewPreparation"),
+);
+const SalaryNegotiationPage = lazy(
+  () => import("../components/Footer/FooterPages/CareerAdvice/SalaryNegotiation/SalaryNegotiation"),
+);
 
 export const footerRoutes = [
   <Route element={<MainLayout />} key="footer-layout">
@@ -84,6 +93,33 @@ export const footerRoutes = [
         </Suspense>
       }
       />
-
+      <Route 
+      key="cv-tips"
+      path="/career-advice/cv-tips"
+      element={
+        <Suspense fallback={<Spinner />}>
+          <CVTipsPage />
+        </Suspense>
+      }
+      />
+      <Route 
+      key="interview-preparation"
+      path="/career-advice/interview-preparation"
+      element={
+        <Suspense fallback={<Spinner />}>
+          <InterviewPreparationPage />
+        </Suspense>
+      }
+      />
+      <Route 
+      key="salary-negotiation"
+      path="/career-advice/salary-negotiation"
+      element={
+        <Suspense fallback={<Spinner />}>
+         <SalaryNegotiationPage />
+        </Suspense>
+      }
+      />
+"
   </Route>,
 ];

@@ -371,6 +371,9 @@ function App({ setUserId }: AppProps) {
           </Route>
         </Route>
 
+        {/* Footer routes */}
+        {footerRoutes}
+
         <Route element={<MainLayout />}>
           <Route
             path="*"
@@ -381,9 +384,6 @@ function App({ setUserId }: AppProps) {
             }
           />
         </Route>
-
-        {/* Footer routes */}
-        {footerRoutes}
       </Routes>
     </div>
   );
