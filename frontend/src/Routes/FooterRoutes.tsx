@@ -17,7 +17,7 @@ const ForEmployersPage = lazy(
 );
 
 const TermsAndConditionsPage = lazy(
-  () => import("../components/Footer/FooterPages/TOS/TermsAndConditions"),
+  () => import("../components/Footer/FooterPages/TOS/termsAndConditions"),
 );
 
 const PrivacyPage = lazy(
