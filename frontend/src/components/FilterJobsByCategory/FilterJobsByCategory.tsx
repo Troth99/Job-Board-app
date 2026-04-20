@@ -10,7 +10,7 @@ import { employmentOptions } from "../Jobs/formSelectedInputs";
 import { useJobFilters } from "../../hooks/useJobFilters";
 import { Job } from "../../interfaces/Job.model";
 
-export function FilterJobByCategory() {
+export default function FilterJobByCategory() {
   const [searchParams, setSearchParams] = useSearchParams();
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
   const { categoryName } = useParams<{ categoryName: string }>();

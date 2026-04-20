@@ -8,16 +8,12 @@ import GuestGuardRoute from "./RouteGuards/guestRouteGuard";
 import CompanyRouteGuard from "./RouteGuards/companyRouteGuard";
 import { PageNotFound } from "./components/404/404";
 import CompanyRegisterGuard from "./RouteGuards/companyRegisterGuard";
-import { JobEditRouteGuard } from "./RouteGuards/jobEditRouteGuard";
 import { useDispatch } from "react-redux";
 import useCategories from "./hooks/useCategories";
 import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
 import { LogOut } from "./components/auth/Logout/Logout";
-import { CandidateJobView } from "./components/Jobs/CandidateJobView/CandidateJobView";
-import { FilterJobByCategory } from "./components/FilterJobsByCategory/FilterJobsByCategory";
 import { lazy, Suspense } from "react";
 import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
-import { RoleGuard } from "./RouteGuards/RoleGuard";
 import useCompany from "./hooks/useCompany";
 import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
 import { ForgotPassowrd } from "./components/auth/forgot-password/Forgot-Password";
@@ -26,6 +22,7 @@ import { NotificationOwnerGuard } from "./RouteGuards/notificationGuard";
 import ApplicationUpdateNotification from "./components/Notifications/ApplicaitonUpdateNotification/ApplicationUpdateNotification";
 import NewmessageNotification from "./components/Notifications/NewMessageNotification/NewMessageNotification";
 import { footerRoutes } from "./Routes/FooterRoutes";
+import { jobsRoutes } from "./Routes/JobsRoutes";
 
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 
@@ -42,18 +39,7 @@ const EditProfile = lazy(() => import("./components/EditProfile/EditProfile"));
 const ChangePassword = lazy(
   () => import("./components/EditProfile/ChangePassword/ChangePassword"),
 );
-const PostJob = lazy(() => import("./components/Jobs/CreateJob/CreateJob"));
-const EditJob = lazy(() => import("./components/Jobs/EditJob/EditJob"));
-const DetailsJob = lazy(
-  () => import("./components/Jobs/DetailsJob/DetailsJob"),
-);
-const ViewAllJobs = lazy(
-  () => import("./components/Jobs/ViewAllJobs/ViewAllJobs"),
-);
-const ViewAllJobsForCompany = lazy(
-  () =>
-    import("./components/Company/ViewAllJobsForCompany/ViewAllJobsForCompany"),
-);
+
 const ViewAllCompanies = lazy(
   () => import("./components/Company/ViewAllCompanies/ViewAllCompanies"),
 );
@@ -151,11 +137,7 @@ function App({ setUserId }: AppProps) {
               </Suspense>
             }
           />
-          <Route path="job/:jobId" element={<CandidateJobView />} />
-          <Route
-            path="category/:categoryName"
-            element={<FilterJobByCategory />}
-          />
+        
         </Route>
 
         <Route element={<MainLayout />}>
@@ -204,15 +186,10 @@ function App({ setUserId }: AppProps) {
           />
         </Route>
 
+             {/* Job routes */}
+              {jobsRoutes}
+
         <Route element={<MainLayout />}>
-          <Route
-            path="/jobs"
-            element={
-              <Suspense fallback={<FullPageSpinner />}>
-                <ViewAllJobs />
-              </Suspense>
-            }
-          />
           <Route
             path="/companies"
             element={
@@ -277,16 +254,6 @@ function App({ setUserId }: AppProps) {
                 </Suspense>
               }
             />
-            <Route
-              path="/company/:companyId/job/:jobId/details"
-              element={
-                <RoleGuard allowedRoles={JOB_ALLOWED_ROLES}>
-                  <Suspense fallback={<FullPageSpinner />}>
-                    <DetailsJob />
-                  </Suspense>
-                </RoleGuard>
-              }
-            />
           </Route>
         </Route>
         <Route element={<MainLayout />}>
@@ -298,47 +265,8 @@ function App({ setUserId }: AppProps) {
           </Route>
         </Route>
 
-        <Route element={<ProtectedRoutes />}>
-          <Route element={<MainLayout />}>
-            <Route
-              path="/company/:companyId/post-job"
-              element={
-                <RoleGuard allowedRoles={JOB_ALLOWED_ROLES}>
-                  <Suspense fallback={<FullPageSpinner />}>
-                    <PostJob />
-                  </Suspense>
-                </RoleGuard>
-              }
-            />
-          </Route>
-        </Route>
+   
 
-        <Route element={<ProtectedRoutes />}>
-          <Route element={<MainLayout />}>
-            <Route
-              path="/company/:companyId/jobs"
-              element={
-                <Suspense fallback={<FullPageSpinner />}>
-                  <ViewAllJobsForCompany />
-                </Suspense>
-              }
-            />
-          </Route>
-        </Route>
-        <Route element={<MainLayout />}>
-          <Route
-            path="/company/:companyId/job/:jobId/edit"
-            element={
-              <RoleGuard allowedRoles={JOB_ALLOWED_ROLES}>
-                <JobEditRouteGuard>
-                  <Suspense fallback={<FullPageSpinner />}>
-                    <EditJob />
-                  </Suspense>
-                </JobEditRouteGuard>
-              </RoleGuard>
-            }
-          />
-        </Route>
         <Route element={<ProtectedRoutes />}>
           <Route element={<MainLayout />}>
             <Route
@@ -349,6 +277,7 @@ function App({ setUserId }: AppProps) {
                 </Suspense>
               }
             />
+            
           </Route>
         </Route>
 
