@@ -94,19 +94,21 @@ export const jobsRoutes = [
       />
     </Route>
   </Route>,
-  <Route element={<MainLayout />}>
-    <Route
-      path="/company/:companyId/job/:jobId/edit"
-      element={
-        <RoleGuard allowedRoles={JOB_ALLOWED_ROLES}>
-          <JobEditRouteGuard>
-            <Suspense fallback={<FullPageSpinner />}>
-              <EditJob />
-            </Suspense>
-          </JobEditRouteGuard>
-        </RoleGuard>
-      }
-    />
+  <Route element={<ProtectedRoutes />}>
+    <Route element={<MainLayout />}>
+      <Route
+        path="/company/:companyId/job/:jobId/edit"
+        element={
+          <RoleGuard allowedRoles={JOB_ALLOWED_ROLES}>
+            <JobEditRouteGuard>
+              <Suspense fallback={<FullPageSpinner />}>
+                <EditJob />
+              </Suspense>
+            </JobEditRouteGuard>
+          </RoleGuard>
+        }
+      />
+    </Route>
   </Route>,
 
   // Placeholder for future job-related routes

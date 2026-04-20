@@ -5,6 +5,7 @@ import { getAuthToken, getUserFromLocalStorage } from "../hooks/useAuth";
 import useJobs from "../hooks/useJobs";
 import useCompany from "../hooks/useCompany";
 import { Job } from "../interfaces/Job.model";
+import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
 
 
 export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
@@ -13,6 +14,7 @@ export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
   const { companyId, jobId } = useParams<{ companyId: string; jobId: string }>()
   const user = getUserFromLocalStorage();
   const [loading, setLoading] = useState(true)
+  const [isAuthorized, setIsAuthorized] = useState(false)
   const [currentJob, setCurrentJob] = useState<Job>()
   const { getCompanyById, getUserRole, company, userRole } = useCompany();
   const { getJobById } = useJobs();
@@ -71,10 +73,10 @@ export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {
 
   // Check access after company and role data loads
   useEffect(() => {
-    if (loading || !company || !currentJob || userRole === null) return;
+    if (loading || !company || !currentJob || userRole === undefined) return;
  
 if (!company?.members?.some(member => member._id === user._id)) {
-  toast.error("You are not a member of this company.");
+  toast.error("You are not part of this company.");
   navigate("/");
   return;
 }
@@ -96,7 +98,11 @@ if (!company?.members?.some(member => member._id === user._id)) {
       navigate('/')
       return;
     }
+
+    setIsAuthorized(true);
   }, [company, userRole, currentJob, loading]);
+
+  if (loading || !isAuthorized) return <FullPageSpinner />;
 
   return <>{children}</>; 
 };
