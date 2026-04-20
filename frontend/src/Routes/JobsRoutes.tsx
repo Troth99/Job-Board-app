@@ -5,6 +5,7 @@ import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
 import { RoleGuard } from "../RouteGuards/RoleGuard";
 import ProtectedRoutes from "../RouteGuards/authRouteGuard";
 import { JobEditRouteGuard } from "../RouteGuards/jobEditRouteGuard";
+import { JobDetailsRouteGuard } from "../RouteGuards/jobDetailsRouteGuard";
 
 const ViewAllJobs = lazy(() => {
   return import("../components/Jobs/ViewAllJobs/ViewAllJobs");
@@ -43,16 +44,7 @@ export const jobsRoutes = [
         </Suspense>
       }
     />
-    <Route
-      path="/company/:companyId/job/:jobId/details"
-      element={
-        <RoleGuard allowedRoles={JOB_ALLOWED_ROLES}>
-          <Suspense fallback={<FullPageSpinner />}>
-            <DetailsJob />
-          </Suspense>
-        </RoleGuard>
-      }
-    />
+
 
     <Route
       path="job/:jobId"
@@ -96,6 +88,18 @@ export const jobsRoutes = [
   </Route>,
   <Route element={<ProtectedRoutes />}>
     <Route element={<MainLayout />}>
+      <Route
+        path="/company/:companyId/job/:jobId/details"
+        element={
+          <RoleGuard allowedRoles={JOB_ALLOWED_ROLES}>
+            <JobDetailsRouteGuard>
+              <Suspense fallback={<FullPageSpinner />}>
+                <DetailsJob />
+              </Suspense>
+            </JobDetailsRouteGuard>
+          </RoleGuard>
+        }
+      />
       <Route
         path="/company/:companyId/job/:jobId/edit"
         element={
