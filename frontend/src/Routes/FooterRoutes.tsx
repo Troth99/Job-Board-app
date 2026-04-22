@@ -3,23 +3,18 @@ import { Route } from "react-router";
 import Spinner from "../components/Spinner/Spinner";
 import MainLayout from "../components/Layouts/MainLayout";
 
-
 const ForUsPage = lazy(
   () => import("../components/Footer/FooterPages/ForUs/ForUs"),
 );
-
 const ContactsPage = lazy(
   () => import("../components/Footer/FooterPages/Contacts/Contacts"),
 );
-
 const ForEmployersPage = lazy(
   () => import("../components/Footer/FooterPages/ForEmployers/ForEmployers"),
 );
-
 const TermsAndConditionsPage = lazy(
   () => import("../components/Footer/FooterPages/TOS/terms-and-conditions"),
 );
-
 const PrivacyPage = lazy(
   () => import("../components/Footer/FooterPages/Privacy/Privacy"),
 );
@@ -120,6 +115,5 @@ export const footerRoutes = [
         </Suspense>
       }
       />
-"
   </Route>,
 ];

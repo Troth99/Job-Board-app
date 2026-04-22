@@ -10,30 +10,22 @@ import { JobDetailsRouteGuard } from "../RouteGuards/jobDetailsRouteGuard";
 const ViewAllJobs = lazy(() => {
   return import("../components/Jobs/ViewAllJobs/ViewAllJobs");
 });
-
 const DetailsJob = lazy(() => {
   return import("../components/Jobs/DetailsJob/DetailsJob");
 });
-
 const PostJob = lazy(() => import("../components/Jobs/CreateJob/CreateJob"));
-
 const EditJob = lazy(() => import("../components/Jobs/EditJob/EditJob"));
-
 const ViewAllJobsForCompany = lazy(
   () =>
     import("../components/Company/ViewAllJobsForCompany/ViewAllJobsForCompany"),
 );
-
 const CandidateJobView = lazy(
   () => import("../components/Jobs/CandidateJobView/CandidateJobView"),
 );
-
 const FilterJobByCategory = lazy(
   () => import("../components/FilterJobsByCategory/FilterJobsByCategory"),
 );
-
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
-
 export const jobsRoutes = [
   <Route element={<MainLayout />}>
     <Route
@@ -44,8 +36,6 @@ export const jobsRoutes = [
         </Suspense>
       }
     />
-
-
     <Route
       path="job/:jobId"
       element={
@@ -115,6 +105,4 @@ export const jobsRoutes = [
     </Route>
   </Route>,
 
-  // Placeholder for future job-related routes
-  //refractor from app.tsx
 ];

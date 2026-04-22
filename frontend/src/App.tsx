@@ -4,7 +4,6 @@ import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import { Route, Routes } from "react-router";
 import MainLayout from "./components/Layouts/MainLayout";
 import ProtectedRoutes from "./RouteGuards/authRouteGuard";
-import GuestGuardRoute from "./RouteGuards/guestRouteGuard";
 import CompanyRouteGuard from "./RouteGuards/companyRouteGuard";
 import { PageNotFound } from "./components/404/404";
 import CompanyRegisterGuard from "./RouteGuards/companyRegisterGuard";
@@ -16,21 +15,20 @@ import { lazy, Suspense } from "react";
 import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
 import useCompany from "./hooks/useCompany";
 import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
-import { ForgotPassowrd } from "./components/auth/forgot-password/Forgot-Password";
 import CompanyInvitationNotification from "./components/Notifications/companyInvitationNotification/CompanyInvitationNotification";
 import { NotificationOwnerGuard } from "./RouteGuards/notificationGuard";
 import ApplicationUpdateNotification from "./components/Notifications/ApplicaitonUpdateNotification/ApplicationUpdateNotification";
 import NewmessageNotification from "./components/Notifications/NewMessageNotification/NewMessageNotification";
 import { footerRoutes } from "./Routes/FooterRoutes";
 import { jobsRoutes } from "./Routes/JobsRoutes";
+import { authRoutes } from "./Routes/AuthRoutes";
 
-const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
+interface AppProps {
+  setUserId: (id: string) => void;
+}
 
 // Lazy loaded components
-const LoginComponent = lazy(() => import("./components/auth/Login/Login"));
-const RegisterComponent = lazy(
-  () => import("./components/auth/Register/Register"),
-);
+
 const RegisterCompany = lazy(
   () => import("./components/Company/RegisterCompany/RegisterCompany"),
 );
@@ -66,16 +64,12 @@ const NotificatonCompanyINvite = lazy(
 
 // to refractor and move to a separate file
 
-interface AppProps {
-  setUserId: (id: string) => void;
-}
 
-function App({ setUserId }: AppProps) {
+function App( { setUserId }: AppProps) {
   const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
   const dispatch = useDispatch();
   const { getCategories } = useCategories();
-  const { userRole } = useCompany();
 
   useEffect(() => {
     async function loadCategories() {
@@ -144,47 +138,8 @@ function App({ setUserId }: AppProps) {
           <Route path="/search" element={<SearchResults />} />
         </Route>
 
-        <Route element={<GuestGuardRoute />}>
-          <Route
-            path="/login"
-            element={
-              <MainLayout hideHeaderFooter={true}>
-                <Suspense fallback={<FullPageSpinner />}>
-                 <LoginComponent setUserId={setUserId} />
-                </Suspense>
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <MainLayout hideHeaderFooter={true}>
-                <Suspense fallback={<FullPageSpinner />}>
-                  <RegisterComponent />
-                </Suspense>
-              </MainLayout>
-            }
-          />
-          <Route
-            path="/auth/forgot-password"
-            element={
-              <MainLayout>
-                <ForgotPassowrd></ForgotPassowrd>
-              </MainLayout>
-            }
-          />
-
-          <Route
-            path="/reset-password/:token"
-            element={
-              <MainLayout>
-                <Suspense fallback={<FullPageSpinner />}>
-                  <ResetPassword />
-                </Suspense>
-              </MainLayout>
-            }
-          />
-        </Route>
+            {/* Auth routes */}
+            {authRoutes(setUserId)}
 
              {/* Job routes */}
               {jobsRoutes}
