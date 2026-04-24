@@ -13,15 +13,11 @@ import { setCategories } from "./components/Home/CategoriesSection/categoriesSli
 import { LogOut } from "./components/auth/Logout/Logout";
 import { lazy, Suspense } from "react";
 import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
-import useCompany from "./hooks/useCompany";
 import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
-import CompanyInvitationNotification from "./components/Notifications/companyInvitationNotification/CompanyInvitationNotification";
-import { NotificationOwnerGuard } from "./RouteGuards/notificationGuard";
-import ApplicationUpdateNotification from "./components/Notifications/ApplicaitonUpdateNotification/ApplicationUpdateNotification";
-import NewmessageNotification from "./components/Notifications/NewMessageNotification/NewMessageNotification";
 import { footerRoutes } from "./Routes/FooterRoutes";
 import { jobsRoutes } from "./Routes/JobsRoutes";
 import { authRoutes } from "./Routes/AuthRoutes";
+import { notificationsRoutes } from "./Routes/NotificationRoutes";
 
 interface AppProps {
   setUserId: (id: string) => void;
@@ -48,24 +44,10 @@ const MemberDashboard = lazy(
 );
 const HomeSection = lazy(() => import("./components/Home/HomeSection"));
 
-const ResetPassword = lazy(
-  () => import("./components/auth/Reset-password/Reset-password"),
-);
-
-const Notification = lazy(
-  () => import("./components/Notifications/Notifications"),
-);
-
-const NotificatonCompanyINvite = lazy(
-  () =>
-    import("./components/Notifications/companyInvitationNotification/CompanyInvitationNotification"),
-);
-
 
 // to refractor and move to a separate file
 
-
-function App( { setUserId }: AppProps) {
+function App({ setUserId }: AppProps) {
   const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
   const dispatch = useDispatch();
@@ -131,18 +113,17 @@ function App( { setUserId }: AppProps) {
               </Suspense>
             }
           />
-        
         </Route>
 
         <Route element={<MainLayout />}>
           <Route path="/search" element={<SearchResults />} />
         </Route>
 
-            {/* Auth routes */}
-            {authRoutes(setUserId)}
+        {/* Auth routes */}
+        {authRoutes(setUserId)}
 
-             {/* Job routes */}
-              {jobsRoutes}
+        {/* Job routes */}
+        {jobsRoutes}
 
         <Route element={<MainLayout />}>
           <Route
@@ -220,40 +201,8 @@ function App( { setUserId }: AppProps) {
           </Route>
         </Route>
 
-   
-
-        <Route element={<ProtectedRoutes />}>
-          <Route element={<MainLayout />}>
-            <Route
-              path="/notifications"
-              element={
-                <Suspense fallback={<FullPageSpinner />}>
-                  <Notification />
-                </Suspense>
-              }
-            />
-            
-          </Route>
-        </Route>
-
-        <Route element={<ProtectedRoutes />}>
-        <Route element={<MainLayout />}>
-          <Route element={<NotificationOwnerGuard />}>
-            <Route
-              path="/company-invitation/:notificationId"
-              element={<CompanyInvitationNotification />}
-            />
-            <Route
-              path="/message/:notificationId"
-              element={<NewmessageNotification />}
-            />
-            <Route
-              path="/application-update/:notificationId"
-              element={<ApplicationUpdateNotification />}
-            />
-            </Route>
-          </Route>
-        </Route>
+        {/* Notification routes */}
+        {notificationsRoutes}
 
         {/* Footer routes */}
         {footerRoutes}
