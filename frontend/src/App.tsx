@@ -3,45 +3,24 @@ import "./styles/global.css";
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import { Route, Routes } from "react-router";
 import MainLayout from "./components/Layouts/MainLayout";
-import ProtectedRoutes from "./RouteGuards/authRouteGuard";
-import CompanyRouteGuard from "./RouteGuards/companyRouteGuard";
 import { PageNotFound } from "./components/404/404";
-import CompanyRegisterGuard from "./RouteGuards/companyRegisterGuard";
 import { useDispatch } from "react-redux";
 import useCategories from "./hooks/useCategories";
 import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
 import { lazy, Suspense } from "react";
 import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
-import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
 import { footerRoutes } from "./Routes/FooterRoutes";
 import { jobsRoutes } from "./Routes/JobsRoutes";
 import { authRoutes } from "./Routes/AuthRoutes";
 import { notificationsRoutes } from "./Routes/NotificationRoutes";
 import { ProfileRoutes } from "./Routes/ProfileRoutes";
+import { CompanyRoutes } from "./Routes/CompanyRoutes";
 
 interface AppProps {
   setUserId: (id: string) => void;
 }
-
-// Lazy loaded components
-
-const RegisterCompany = lazy(
-  () => import("./components/Company/RegisterCompany/RegisterCompany"),
-);
-
-
-const ViewAllCompanies = lazy(
-  () => import("./components/Company/ViewAllCompanies/ViewAllCompanies"),
-);
-
 //lazy loaded components
-const MemberDashboard = lazy(
-  () => import("./components/Company/MemberDashboard/MemberDashboard"),
-);
 const HomeSection = lazy(() => import("./components/Home/HomeSection"));
-
-
-// to refractor and move to a separate file
 
 function App({ setUserId }: AppProps) {
   const [loading, setLoading] = useState(true);
@@ -121,54 +100,12 @@ function App({ setUserId }: AppProps) {
         {/* Job routes */}
         {jobsRoutes}
 
-        <Route element={<MainLayout />}>
-          <Route
-            path="/companies"
-            element={
-              <Suspense fallback={<FullPageSpinner />}>
-                <ViewAllCompanies />
-              </Suspense>
-            }
-          />
-        </Route>
+  
                    {/* Profile routes */}
             {ProfileRoutes}
 
-        <Route element={<ProtectedRoutes />}>
-          <Route element={<CompanyRegisterGuard />}>
-            <Route element={<MainLayout />}>
-              <Route
-                path="/register/company"
-                element={
-                  <Suspense fallback={<FullPageSpinner />}>
-                    <RegisterCompany />
-                  </Suspense>
-                }
-              />
-            </Route>
-          </Route>
-        </Route>
-
-        <Route element={<CompanyRouteGuard />}>
-          <Route element={<MainLayout />}>
-            <Route
-              path="/company/:companyId/dashboard"
-              element={
-                <Suspense fallback={<FullPageSpinner />}>
-                  <MemberDashboard />
-                </Suspense>
-              }
-            />
-          </Route>
-        </Route>
-        <Route element={<MainLayout />}>
-          <Route element={<CompanyRouteGuard />}>
-            <Route
-              path="/company/:companyId/members"
-              element={<ViewMembers />}
-            ></Route>
-          </Route>
-        </Route>
+        {/* Company routes */}
+        {CompanyRoutes}
 
         {/* Notification routes */}
         {notificationsRoutes}

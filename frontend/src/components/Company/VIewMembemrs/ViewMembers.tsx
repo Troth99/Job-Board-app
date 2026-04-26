@@ -8,7 +8,8 @@ import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { useRole } from "../../../context/RoleContext";
 
 const availableRoles = ["admin", "recruiter", "member"];
-export function ViewMembers() {
+
+export default function ViewMembers() {
   const { companyId } = useParams();
   const [showOptions, setShowOptions] = useState<string | null>(null);
   const {

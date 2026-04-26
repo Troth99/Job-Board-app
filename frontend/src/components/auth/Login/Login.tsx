@@ -18,6 +18,9 @@ const initialFormValue = {
   password: "",
 };
 
+//And to refractor styling
+//To make login with google and apple, we need to implement the backend first. So I will implement it later.
+
 export default function LoginComponent({ setUserId }: { setUserId: (id: string) => void }) {
   const [user, setUser] = useLocalStorage("user", {
     _id: "",
