@@ -10,7 +10,6 @@ import CompanyRegisterGuard from "./RouteGuards/companyRegisterGuard";
 import { useDispatch } from "react-redux";
 import useCategories from "./hooks/useCategories";
 import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
-import { LogOut } from "./components/auth/Logout/Logout";
 import { lazy, Suspense } from "react";
 import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
 import { ViewMembers } from "./components/Company/VIewMembemrs/ViewMembers";
@@ -18,6 +17,7 @@ import { footerRoutes } from "./Routes/FooterRoutes";
 import { jobsRoutes } from "./Routes/JobsRoutes";
 import { authRoutes } from "./Routes/AuthRoutes";
 import { notificationsRoutes } from "./Routes/NotificationRoutes";
+import { ProfileRoutes } from "./Routes/ProfileRoutes";
 
 interface AppProps {
   setUserId: (id: string) => void;
@@ -28,11 +28,7 @@ interface AppProps {
 const RegisterCompany = lazy(
   () => import("./components/Company/RegisterCompany/RegisterCompany"),
 );
-const MyProfile = lazy(() => import("./components/Profile/Profile"));
-const EditProfile = lazy(() => import("./components/EditProfile/EditProfile"));
-const ChangePassword = lazy(
-  () => import("./components/EditProfile/ChangePassword/ChangePassword"),
-);
+
 
 const ViewAllCompanies = lazy(
   () => import("./components/Company/ViewAllCompanies/ViewAllCompanies"),
@@ -135,35 +131,8 @@ function App({ setUserId }: AppProps) {
             }
           />
         </Route>
-
-        <Route element={<ProtectedRoutes />}>
-          <Route path="/profile" element={<MainLayout />}>
-            <Route
-              index
-              element={
-                <Suspense fallback={<FullPageSpinner />}>
-                  <MyProfile LogOutComponnent={LogOut} />
-                </Suspense>
-              }
-            />
-            <Route
-              path="setthings"
-              element={
-                <Suspense fallback={<FullPageSpinner />}>
-                  <EditProfile />
-                </Suspense>
-              }
-            />
-            <Route
-              path="change-password"
-              element={
-                <Suspense fallback={<FullPageSpinner />}>
-                  <ChangePassword />
-                </Suspense>
-              }
-            />
-          </Route>
-        </Route>
+                   {/* Profile routes */}
+            {ProfileRoutes}
 
         <Route element={<ProtectedRoutes />}>
           <Route element={<CompanyRegisterGuard />}>
