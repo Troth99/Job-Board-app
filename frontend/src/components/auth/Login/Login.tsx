@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router";
 import "./Login.css";
 import "./Responsive.css";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { useValidation } from "../../validators/useValidation";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
@@ -36,10 +36,6 @@ export default function LoginComponent({ setUserId }: { setUserId: (id: string) 
   const location = useLocation();
   const from = location.state?.from || "/";
 
-  useEffect(() => {
-    focusRef.current?.focus();
-  }, []);
-
   const loginSubmitHandler = async (formValues: LoginFormType) => {
     setLoading(true);
     try {
@@ -72,64 +68,124 @@ export default function LoginComponent({ setUserId }: { setUserId: (id: string) 
     useForm<LoginFormType>(loginSubmitHandler, initialFormValue, validateForm);
 
   return (
-    <div className="login-wrapper">
-      <div className="login-container">
-        <div className="login-content">
-          <Link to="/" className="logo">
-            JB
-          </Link>
-          <h2>Login to Your Account</h2>
-          <form id="loginForm" onSubmit={formHandler}>
-            <div
-              className={`login-input-wrap ${
-                errors.email ? "input-error" : ""
-              }`}
-            >
-              <i className="fa-solid fa-envelope"></i>
-              <input
-                ref={focusRef}
-                placeholder="Email address"
-                {...register("email")}
-              />
-              {errors && <div className="error-message">{errors.email}</div>}
+  <section className="login-shell">
+    <div className="login-page">
+      <aside className="login-brand-panel">
+        <Link to="/" className="login-brand-logo">
+          JB
+        </Link>
+
+        <div className="login-brand-copy">
+          <span className="login-eyebrow">Job Board Platform</span>
+          <h1>Find your next role faster.</h1>
+          <p>
+            Sign in to manage your profile, track applications, and explore
+            opportunities from trusted companies.
+          </p>
+        </div>
+
+        <div className="login-brand-points">
+          <div className="login-point">
+            <span className="login-point-icon">
+              <i className="fa-solid fa-briefcase"></i>
+            </span>
+            <div>
+              <h3>Curated opportunities</h3>
+              <p>Browse jobs from companies actively hiring.</p>
             </div>
-            <div
-              className={`login-input-wrap ${
-                errors.password ? "input-error" : ""
-              }`}
-            >
-              <i className="fa-solid fa-lock"></i>
-              <input
-                type="password"
-                placeholder="Password"
-                {...register("password")}
-              />
-              {errors && <div className="error-message">{errors.password}</div>}
+          </div>
+
+          <div className="login-point">
+            <span className="login-point-icon">
+              <i className="fa-solid fa-filter"></i>
+            </span>
+            <div>
+              <h3>Smart filtering</h3>
+              <p>Reach the right positions faster with clear search tools.</p>
             </div>
-            <button type="submit" className="btn-login" disabled={loading}>
-              {loading ? "Logging in..." : "Login"}
+          </div>
+
+          <div className="login-point">
+            <span className="login-point-icon">
+              <i className="fa-solid fa-bolt"></i>
+            </span>
+            <div>
+              <h3>Faster workflow</h3>
+              <p>Keep your saved jobs, notifications, and profile in one place.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div className="login-card">
+        <div className="login-card-inner">
+          <div className="login-card-header">
+            <span className="login-card-badge">Welcome back</span>
+            <h2>Sign in to your account</h2>
+            <p>
+              Continue to your dashboard, saved jobs, and application activity.
+            </p>
+          </div>
+
+          <form className="login-form" onSubmit={formHandler}>
+            <div className="login-field">
+              <label htmlFor="email">Email address</label>
+              <div
+                className={`login-input-wrap ${
+                  errors.email ? "input-error" : ""
+                }`}
+              >
+                <i className="fa-solid fa-envelope"></i>
+                <input
+                  id="email"
+                  ref={focusRef}
+                  type="email"
+                  placeholder="Enter your email"
+                  {...register("email")}
+                />
+              </div>
+              {errors.email && <div className="error-message">{errors.email}</div>}
+            </div>
+
+            <div className="login-field">
+              <div className="login-field-row">
+                <label htmlFor="password">Password</label>
+                <Link to="/auth/forgot-password" className="login-inline-link">
+                  Forgot password?
+                </Link>
+              </div>
+
+              <div
+                className={`login-input-wrap ${
+                  errors.password ? "input-error" : ""
+                }`}
+              >
+                <i className="fa-solid fa-lock"></i>
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  {...register("password")}
+                />
+              </div>
+              {errors.password && (
+                <div className="error-message">{errors.password}</div>
+              )}
+            </div>
+
+            <button type="submit" className="btn-login-loginform" disabled={loading || authLoading}>
+              {loading || authLoading ? "Signing in..." : "Sign In"}
             </button>
           </form>
 
-          <div className="social-login">
-            <button className="btn-google">
-              <i className="fa-brands fa-google"></i> Login with Google
-            </button>
-            <button className="btn-apple">
-              <i className="fa-brands fa-apple"></i> Login with Apple
-            </button>
-          </div>
-
-          <div className="login-links">
+          <div className="login-footer">
             <p>
-           <Link to="/auth/forgot-password">Forgot password?</Link>
-            </p>
-            <p>
-              Don't have an account? <Link to="/register">Register</Link>
+              Don't have an account? <Link to="/register">Create one</Link>
             </p>
           </div>
         </div>
       </div>
     </div>
-  );
+  </section>
+);
 }
