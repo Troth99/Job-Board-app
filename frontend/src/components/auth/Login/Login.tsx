@@ -7,6 +7,7 @@ import { useValidation } from "../../validators/useValidation";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import useForm from "../../../hooks/useForm";
 import { Container } from "../../Container/Container";
+import LoginSocialIcons from "./LoginSocialIcons";
 
 export interface LoginFormType {
   email: string;
@@ -201,7 +202,7 @@ export default function LoginComponent({
                   {loading || authLoading ? "Signing in..." : "Sign In"}
                 </button>
               </form>
-
+                  <LoginSocialIcons />
               <div className="login-footer">
                 <p>
                   Don't have an account? <Link to="/register">Create one</Link>
