@@ -3,17 +3,23 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import routes from "./routes/index.js";
 import cors from "cors";
-import notificationRoutes from "./routes/notificationRoutes.js";
-
-
-
-
 
 const app = express()
 
 dotenv.config()
+
+const currentEnv = process.env.NODE_ENV || 'development';
+console.log(`Current environment: ${currentEnv}`);
+dotenv.config({ path: `.env.${currentEnv}`, override: true });
+
 app.use(express.json());
 
+//To add passport and session management, you can uncomment the following lines and install the required packages (passport, express-session, passport-local, etc.):
+// import passport from 'passport';
+// import session from 'express-session';
+// app.use(session({ secret: 'your_secret_key', resave: false, saveUninitialized: false }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use(cors({
   origin: [
