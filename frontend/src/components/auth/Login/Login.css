@@ -1,6 +1,6 @@
 .login-shell {
-  min-height: 100vh;
-  padding: 2rem;
+  min-height: 100dvh;
+  padding: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,7 @@
 }
 .login-page {
   width: min(1120px, 100%);
-  min-height: 680px;
+  min-height: 620px;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   background: rgba(255, 255, 255, 0.9);
@@ -23,7 +23,7 @@
 
 .login-brand-panel {
   position: relative;
-  padding: 3.5rem;
+  padding: 2.5rem;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(240, 247, 255, 0.96) 100%);
   border-right: 1px solid #e2e8f0;
@@ -131,7 +131,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2.5rem;
+  padding: 1.75rem;
   background:
     linear-gradient(180deg, rgba(250, 252, 255, 0.94) 0%, rgba(255, 255, 255, 0.98) 100%);
 }
@@ -139,7 +139,7 @@
 .login-card-inner {
   width: 100%;
   max-width: 430px;
-  padding: 2.2rem;
+  padding: 1.8rem;
   border-radius: 24px;
   border: 1px solid #dbe4f0;
   background: #ffffff;
@@ -310,6 +310,35 @@
   margin-top: 0.45rem;
 }
 
+.login-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid #d0dcff;
+  border-radius: 12px;
+  background: #f7faff;
+  color: #1976d2;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.login-back-btn:hover {
+  background: #eaf2ff;
+  border-color: #b7caff;
+  transform: translateY(-1px);
+}
+
+.login-back-btn:active {
+  transform: translateY(0);
+}
+
+.login-back-btn i {
+  font-size: 0.82rem;
+}
 body[data-theme="dark"] .login-shell {
   background:
     radial-gradient(circle at top left, rgba(96, 165, 250, 0.12), transparent 30%),
@@ -412,4 +441,15 @@ body[data-theme="dark"] .btn-login-loginform {
 body[data-theme="dark"] .btn-login-loginform:hover {
   background: linear-gradient(135deg, #009688, #0284c7);
   box-shadow: 0 18px 28px rgba(0, 191, 174, 0.24);
+}
+
+body[data-theme="dark"] .login-back-btn {
+  background: #23272f;
+  border-color: #334155;
+  color: #5eead4;
+}
+
+body[data-theme="dark"] .login-back-btn:hover {
+  background: #2a303b;
+  border-color: #475569;
 }
