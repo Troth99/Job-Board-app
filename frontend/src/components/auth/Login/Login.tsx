@@ -7,7 +7,8 @@ import { useValidation } from "../../validators/useValidation";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import useForm from "../../../hooks/useForm";
 import { Container } from "../../Container/Container";
-import LoginSocialIcons from "./LoginSocialIcons";
+import LoginSocialIcons from "./LoginElements/LoginSocialIcons";
+import LeftSideLogin from "./LoginElements/LeftSideLogin";
 
 export interface LoginFormType {
   email: string;
@@ -77,59 +78,7 @@ export default function LoginComponent({
       <Container>
         <div className="login-page">
           <aside className="login-brand-panel">
-            <Link to="/" className="login-back-btn">
-              <i className="fa-solid fa-arrow-left"></i>
-              Back to home
-            </Link>
-            <Link to="/" className="login-brand-logo">
-              JB
-            </Link>
-
-            <div className="login-brand-copy">
-              <span className="login-eyebrow">Job Board Platform</span>
-              <h1>Find your next role faster.</h1>
-              <p>
-                Sign in to manage your profile, track applications, and explore
-                opportunities from trusted companies.
-              </p>
-            </div>
-
-            <div className="login-brand-points">
-              <div className="login-point">
-                <span className="login-point-icon">
-                  <i className="fa-solid fa-briefcase"></i>
-                </span>
-                <div>
-                  <h3>Curated opportunities</h3>
-                  <p>Browse jobs from companies actively hiring.</p>
-                </div>
-              </div>
-
-              <div className="login-point">
-                <span className="login-point-icon">
-                  <i className="fa-solid fa-filter"></i>
-                </span>
-                <div>
-                  <h3>Smart filtering</h3>
-                  <p>
-                    Reach the right positions faster with clear search tools.
-                  </p>
-                </div>
-              </div>
-
-              <div className="login-point">
-                <span className="login-point-icon">
-                  <i className="fa-solid fa-bolt"></i>
-                </span>
-                <div>
-                  <h3>Faster workflow</h3>
-                  <p>
-                    Keep your saved jobs, notifications, and profile in one
-                    place.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <LeftSideLogin/>
           </aside>
 
           <div className="login-card">
@@ -142,7 +91,6 @@ export default function LoginComponent({
                   activity.
                 </p>
               </div>
-
               <form className="login-form" onSubmit={formHandler}>
                 <div className="login-field">
                   <label htmlFor="email">Email address</label>
