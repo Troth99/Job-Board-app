@@ -70,6 +70,9 @@ export default function LoginComponent({
     }
   };
 
+    //To attach the button login with google and page with auth callback 
+
+    
   const { values, register, formHandler, errors, setErrors } =
     useForm<LoginFormType>(loginSubmitHandler, initialFormValue, validateForm);
 
