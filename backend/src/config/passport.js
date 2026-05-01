@@ -1,6 +1,12 @@
+import dotenv from 'dotenv';
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import User from '../models/User.js';
+
+dotenv.config();
+const currentEnv = process.env.NODE_ENV || 'development';
+dotenv.config({ path: `.env.${currentEnv}`, override: true });
+
 
 passport.use(
     new GoogleStrategy(
