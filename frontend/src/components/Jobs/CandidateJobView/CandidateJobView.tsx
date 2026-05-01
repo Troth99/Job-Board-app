@@ -11,7 +11,7 @@ import { ApplyForJobModal } from "../ApplyForJobModal/ApplyForJobModal";
 import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 import { Container } from "../../Container/Container";
 
-export function CandidateJobView() {
+export default function CandidateJobView() {
   const { jobId } = useParams();
   const { loading, getJobById } = useJobs();
   const [jobData, setJobData] = useState<Job>();

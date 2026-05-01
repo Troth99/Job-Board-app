@@ -1,10 +1,15 @@
 /* Notification badge (responsive/mobile) */
 @media (max-width: 600px) {
+  .notification-link {
+    width: 42px;
+    height: 42px;
+  }
+
   .notification-badge {
-    top: 5px !important;
-    right: 140px !important;
-    padding: 0.5px 3.5px !important;
-    font-size: 0.62rem !important;
-    min-width: 11px !important;
+    top: -4px !important;
+    right: -4px !important;
+    padding: 0.05rem 0.3rem !important;
+    font-size: 0.65rem !important;
+    min-width: 1rem !important;
   }
 }

@@ -7,7 +7,7 @@ import useAuth from "../../../hooks/useAuth";
 const initialFormValue = {
   email: "",
 };
-export function ForgotPassowrd() {
+export default function ForgotPassowrd() {
   const [timer, setTimer] = useState<number>(0);
   const [success, setSuccess] = useState<string>("");
   const { validateForm } = useValidation();

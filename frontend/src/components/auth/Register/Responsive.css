@@ -5,11 +5,11 @@
     border-radius: 15px;
   }
 
-  .logo {
+  .register-container .logo {
     display: none !important;
   }
 
-  h2 {
+  .register-container h2 {
     font-size: 1rem;
   }
 
@@ -29,7 +29,7 @@
     font-size: 0.75rem;
   }
 
-  .btn-register {
+  .register-container .btn-register {
     font-size: 0.85rem;
     padding: 0.6rem;
   }

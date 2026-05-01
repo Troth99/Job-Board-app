@@ -58,10 +58,17 @@ nav ul li a:hover {
   gap: 1rem;
 }
 
-.auth-buttons a {
+.auth-buttons .btn-login,
+.auth-buttons .btn-register,
+.auth-buttons .btn-profile {
+  min-width: 120px;
   padding: 0.5rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50px;
   font-weight: bold;
+  line-height: 1.2;
   color: #fff;
   text-decoration: none;
   background: #1976d2;
@@ -69,7 +76,9 @@ nav ul li a:hover {
   transition: background 0.3s, box-shadow 0.3s, color 0.3s, transform 0.3s;
 }
 
-.auth-buttons a:hover {
+.auth-buttons .btn-login:hover,
+.auth-buttons .btn-register:hover,
+.auth-buttons .btn-profile:hover {
   background: #115293;
   color: #fff;
   transform: translateY(-2px) scale(1.08);
@@ -143,10 +152,14 @@ body[data-theme="dark"] nav ul li a:hover {
   color: #00bfae;
   box-shadow: 0 0 12px rgba(0, 191, 174, 0.08);
 }
-body[data-theme="dark"] .auth-buttons a {
+body[data-theme="dark"] .auth-buttons .btn-login,
+body[data-theme="dark"] .auth-buttons .btn-register,
+body[data-theme="dark"] .auth-buttons .btn-profile {
   background: #00bfae;
 }
-body[data-theme="dark"] .auth-buttons a:hover {
+body[data-theme="dark"] .auth-buttons .btn-login:hover,
+body[data-theme="dark"] .auth-buttons .btn-register:hover,
+body[data-theme="dark"] .auth-buttons .btn-profile:hover {
   background: #008e7c;
   color: #fff;
   box-shadow: 0 0 18px rgba(0, 191, 174, 0.13);
