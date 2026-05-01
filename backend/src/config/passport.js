@@ -39,7 +39,7 @@ passport.use(
                 user = await User.create({
                     googleId: profile.id,
                     firstName: profile.name?.givenName || 'User',
-                    lastName: profile.name?.familyName || '',
+                    lastName: profile.name?.familyName || undefined,
                     email: email || '',
                     phoneNumber: '',
                     location: '',
