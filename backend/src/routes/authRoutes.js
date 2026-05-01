@@ -9,27 +9,28 @@ const router = Router();
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 // Step 2: Google returns the user here after login
-router.get('/google/callback',
-    passport.authenticate('google', { session: false, failureRedirect: `${process.env.FRONTEND_URL}/login` }),
-    async (req, res) => {
+router.get('/google/callback', (req, res, next) => {
+    passport.authenticate('google', { session: false }, async (err, user) => {
+        if (err || !user) {
+            console.error('OAuth error:', err);
+            return res.redirect(`${process.env.FRONTEND_URL}/login?error=oauth_failed`);
+        }
         try {
-            const accessToken = generateAccessToken(req.user._id);
-            const refreshToken = generateRefreshToken(req.user._id);
+            const accessToken = generateAccessToken(user._id);
+            const refreshToken = generateRefreshToken(user._id);
 
-            //create a new refresh token in the database
             await RefreshToken.create({
-                userId: req.user._id,
+                userId: user._id,
                 token: refreshToken,
                 expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
             });
 
-            // Redirect to frontend with tokens in URL
             res.redirect(`${process.env.FRONTEND_URL}/oauth-callback?accessToken=${accessToken}&refreshToken=${refreshToken}`);
         } catch (error) {
             console.error('OAuth callback error:', error);
             res.redirect(`${process.env.FRONTEND_URL}/login?error=oauth_failed`);
         }
-    }
-);
+    })(req, res, next);
+});
 
 export default router;
