@@ -17,6 +17,11 @@ const ResetPassowrd = lazy(
 const ForgotPassowrd = lazy(    
     () => import("../components/auth/forgot-password/Forgot-Password"),
 );
+
+const OAuthCallback = lazy(
+  () => import("../components/auth/OAuthCallback/OAuthCallback"),
+);
+
 export const authRoutes = (setUserId: (id: string) => void) => [
   <Route element={<GuestGuardRoute />}>
     <Route
@@ -57,6 +62,16 @@ export const authRoutes = (setUserId: (id: string) => void) => [
                   </MainLayout>
                 }
               />
+    <Route
+      path="/oauth-callback"
+      element={
+        <MainLayout hideHeaderFooter={true}>
+          <Suspense fallback={<FullPageSpinner />}>
+            <OAuthCallback setUserId={setUserId} />
+          </Suspense>
+        </MainLayout>
+      }
+    />
     
 
   </Route>,

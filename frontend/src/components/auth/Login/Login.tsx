@@ -145,15 +145,17 @@ export default function LoginComponent({
                   )}
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn-login-loginform"
-                  disabled={loading || authLoading}
-                >
-                  {loading || authLoading ? "Signing in..." : "Sign In"}
-                </button>
-              </form>
+                <div className="login-submit-actions">
+                  <button
+                    type="submit"
+                    className="btn-login-loginform"
+                    disabled={loading || authLoading}
+                  >
+                    {loading || authLoading ? "Signing in..." : "Sign In"}
+                  </button>
                   <LoginSocialIcons />
+                </div>
+              </form>
               <div className="login-footer">
                 <p>
                   Don't have an account? <Link to="/register">Create one</Link>

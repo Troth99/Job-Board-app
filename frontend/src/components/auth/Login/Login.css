@@ -288,6 +288,59 @@
   box-shadow: none;
 }
 
+.login-submit-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.45rem;
+}
+
+.login-submit-actions .btn-login-loginform {
+  flex: 1;
+  width: auto;
+  margin-top: 0;
+}
+
+.login-submit-actions .login-social-icons {
+  flex: 1;
+  margin-top: 0;
+}
+
+.login-submit-actions .login-social-icons .social-btn {
+  width: 100%;
+  height: 54px;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 700;
+  gap: 0.5rem;
+}
+
+.login-submit-actions .login-social-icons .social-btn-google {
+  color: #334155;
+}
+
+.login-submit-actions .login-social-icons .social-btn-google i {
+  color: #ea4335;
+}
+
+.social-btn-label {
+  display: inline-block;
+}
+
+@media (max-width: 640px) {
+  .login-submit-actions {
+    flex-direction: column;
+  }
+
+  .login-submit-actions .btn-login-loginform,
+  .login-submit-actions .login-social-icons {
+    width: 100%;
+  }
+}
+
 .login-footer {
   margin-top: 1.5rem;
   text-align: center;

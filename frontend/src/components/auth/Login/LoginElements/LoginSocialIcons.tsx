@@ -1,13 +1,13 @@
 import './LoginSocialIcons.css'
+import { API_BASE } from '../../../../services/api';
+
+
 
 
 export default function LoginSocialIcons() {
 
-
-
-    const hnadleGoogleLogin = () => {
-
-        console.log("Google login clicked");
+  const hnadleGoogleLogin = () => {
+    window.location.href = `${API_BASE}/auth/google`;
     }
 
     const facebookkLoginHandler = () => {
@@ -16,7 +16,7 @@ export default function LoginSocialIcons() {
     }
 
   return (
-    <div className="login-social login-social-icons">
+     <div className="login-social login-social-icons">
       <button
         type="button"
         className="social-btn social-btn-google"
@@ -25,26 +25,9 @@ export default function LoginSocialIcons() {
         onClick={hnadleGoogleLogin}
       >
         <i className="fa-brands fa-google" aria-hidden="true"></i>
+        <span className="social-btn-label">Sign in with Google</span>
       </button>
 
-      <button
-        type="button"
-        className="social-btn social-btn-facebook"
-        aria-label="Continue with Facebook"
-        title="Continue with Facebook"
-        onClick={facebookkLoginHandler}
-      >
-        <i className="fa-brands fa-facebook-f" aria-hidden="true"></i>
-      </button>
-
-      <button
-        type="button"
-        className="social-btn social-btn-apple"
-        aria-label="Continue with Apple"
-        title="Continue with Apple"
-      >
-        <i className="fa-brands fa-apple" aria-hidden="true"></i>
-      </button>
     </div>
   );
 }
