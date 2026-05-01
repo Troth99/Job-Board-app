@@ -95,7 +95,9 @@ body[data-theme="dark"] .hamburger span {
     margin-top: 1.5rem;
   }
 
-  .mobile-auth a {
+  .mobile-auth .btn-login,
+  .mobile-auth .btn-register,
+  .mobile-auth .btn-profile {
     width: 80%;
     text-align: center;
     padding: 0.8rem;
@@ -114,6 +116,11 @@ body[data-theme="dark"] .hamburger span {
     background: #28a745;
     color: #fff;
     max-width: 120px;
+  }
+
+  .mobile-auth .notification-link {
+    width: auto;
+    margin-bottom: 0.25rem;
   }
 
   /* Hide desktop auth on mobile */

@@ -61,7 +61,7 @@
   z-index: 2;
 }
 
-.logo {
+.register-container .logo {
   font-size: 2rem;
   font-weight: bold;
   color: #007bff;
@@ -75,14 +75,14 @@
   to { text-shadow: 0 0 24px rgba(0, 123, 255, 0.8); }
 }
 
-h2 {
+.register-container h2 {
   margin-bottom: 1rem;
   color: #0b2239;
   font-weight: 600;
   font-size: 1.3rem;
 }
 
-form {
+.register-container form {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -133,7 +133,7 @@ form {
   pointer-events: none;
 }
 
-.btn-register:disabled {
+.register-container .btn-register:disabled {
   background-color: #c0c0c0;
   cursor: not-allowed;
   opacity: 0.6;
@@ -164,7 +164,7 @@ form {
   position: relative;
 }
 
-input[type="checkbox"] {
+.checkbox-container input[type="checkbox"] {
   width: 16px;
   height: 16px;
   accent-color: #007bff;
@@ -180,7 +180,7 @@ input[type="checkbox"] {
 }
 
 /* Register button */
-.btn-register {
+.register-container .btn-register {
   background: linear-gradient(90deg, #007bff, #00bfff);
   color: #fff;
   padding: 0.8rem;
@@ -200,7 +200,7 @@ input[type="checkbox"] {
   50% { box-shadow: 0 6px 28px rgba(0, 123, 255, 0.6); }
 }
 
-.btn-register:hover {
+.register-container .btn-register:hover {
   background: linear-gradient(90deg, #009dff, #00ccff);
   transform: scale(1.03);
 }
@@ -233,12 +233,12 @@ input[type="checkbox"] {
   box-shadow: 0 12px 35px rgba(0,0,0,0.4);
 }
 
-[data-theme="dark"] .logo {
+[data-theme="dark"] .register-container .logo {
   color: #80aaff;
   text-shadow: 0 0 12px rgba(130,170,255,0.6);
 }
 
-[data-theme="dark"] h2 {
+[data-theme="dark"] .register-container h2 {
   color: #c7d3f0;
 }
 
@@ -256,12 +256,12 @@ input[type="checkbox"] {
   box-shadow: 0 0 12px rgba(0,123,255,0.6);
 }
 
-[data-theme="dark"] .btn-register {
+[data-theme="dark"] .register-container .btn-register {
   background: linear-gradient(90deg,#007bff,#00bfff);
   color: #fff;
 }
 
-[data-theme="dark"] .btn-register:hover {
+[data-theme="dark"] .register-container .btn-register:hover {
   background: linear-gradient(90deg,#009dff,#00ccff);
 }
 
