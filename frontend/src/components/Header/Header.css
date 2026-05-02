@@ -20,6 +20,14 @@ header {
   cursor: pointer;
   text-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
   transition: color 0.3s, text-shadow 0.3s;
+  text-decoration: none;
+  display: inline-block;
+  animation: logo-spin 4s linear infinite;
+}
+
+@keyframes logo-spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
 }
 
 .nav {

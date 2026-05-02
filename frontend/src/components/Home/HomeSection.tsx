@@ -39,7 +39,6 @@ const fetchRecentJobs = async () => {
 const fetchApplicationStatistics = async () => { 
   try {
     const statisticData = await getApllicationStatistics()
-    console.log(statisticData)
     setApplicationStatistics(statisticData)
   } catch (error) {
     console.error('Failed to fetch application statistics.')
@@ -54,8 +53,6 @@ fetchRecentJobs()
 fetchApplicationStatistics()
 },[])
 
-
-//To refractor css on home page and add more content on home page
 
     if(loading || categories.length <= 0 ){
       return <FullPageSpinner/>
