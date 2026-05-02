@@ -1,40 +1,45 @@
-@media (max-width: 420px) {
-  .register-container {
-    width: 95%;
-    padding: 1rem 1rem !important;
-    border-radius: 15px;
+@media (max-width: 980px) {
+  .register-page {
+    grid-template-columns: 1fr;
   }
 
-  .register-container .logo {
-    display: none !important;
+  .register-brand-panel {
+    display: none;
   }
 
-  .register-container h2 {
-    font-size: 1rem;
+  .register-form {
+    grid-template-columns: 1fr;
   }
 
-  .input-wrap input {
-    padding: 0.5rem 1rem 0.5rem 2rem;
-    font-size: 0.85rem;
+  .register-form .register-field,
+  .register-form .register-submit-actions {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .register-shell {
+    padding: 1rem;
   }
 
-  .input-wrap i {
-    left: 7px;
-    font-size: 0.95rem;
-    top: 15px
+  .register-page {
+    border-radius: 22px;
   }
 
-  .show-hide-btn {
-    right: 8px;
-    font-size: 0.75rem;
+  .register-brand-panel {
+    padding: 1.5rem 1.25rem 0.75rem;
   }
 
-  .register-container .btn-register {
-    font-size: 0.85rem;
-    padding: 0.6rem;
+  .register-card {
+    padding: 1rem;
   }
 
-  .links {
-    font-size: 0.75rem;
+  .register-card-inner {
+    padding: 1.35rem;
+    border-radius: 18px;
+  }
+
+  .register-card-header h2 {
+    font-size: 1.75rem;
   }
 }

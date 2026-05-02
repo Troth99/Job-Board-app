@@ -14,6 +14,8 @@ import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
 import { Container } from "../Container/Container";
 
 
+
+//To refractor styling and add edit profile page and company registration page. 
 interface ProfileProps {
   LogOutComponnent: React.ComponentType;
 }
