@@ -1,3 +1,17 @@
+
+.required-field-add {
+	display: flex;
+	margin-left: 0.25rem;
+	color: #ef4444;
+	font-size: 0.9rem;
+	font-weight: 700;
+	margin-left: 10px;
+}
+.register-field label {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
 .register-shell {
 	min-height: 100dvh;
 	padding: 0.75rem;

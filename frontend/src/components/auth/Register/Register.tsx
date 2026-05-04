@@ -93,7 +93,8 @@ export default function RegisterComponent() {
 
               <form className="register-form" onSubmit={formHandler}>
                 <div className="register-field">
-                  <label htmlFor="firstName">First name</label>
+                  <label htmlFor="firstName">First name <span className="required-field-add">*</span></label>
+                 
                   <div
                     className={`register-input-wrap ${
                       errors.firstName ? "input-error" : ""
@@ -104,7 +105,7 @@ export default function RegisterComponent() {
                       id="firstName"
                       type="text"
                       placeholder="First name"
-                      required
+                    
                       {...register("firstName")}
                     />
                   </div>
@@ -114,7 +115,7 @@ export default function RegisterComponent() {
                 </div>
 
                 <div className="register-field">
-                  <label htmlFor="lastName">Last name</label>
+                  <label htmlFor="lastName">Last name <span className="required-field-add">*</span></label>
                   <div
                     className={`register-input-wrap ${
                       errors.lastName ? "input-error" : ""
@@ -125,7 +126,7 @@ export default function RegisterComponent() {
                       id="lastName"
                       type="text"
                       placeholder="Last name"
-                      required
+                  
                       {...register("lastName")}
                     />
                   </div>
@@ -135,7 +136,7 @@ export default function RegisterComponent() {
                 </div>
 
                 <div className="register-field">
-                  <label htmlFor="email">Email address</label>
+                  <label htmlFor="email">Email address <span className="required-field-add">*</span></label>
                   <div
                     className={`register-input-wrap ${
                       errors.email ? "input-error" : ""
@@ -146,7 +147,7 @@ export default function RegisterComponent() {
                       id="email"
                       type="email"
                       placeholder="Email address"
-                      required
+                    
                       {...register("email")}
                     />
                   </div>
@@ -182,7 +183,7 @@ export default function RegisterComponent() {
                 </div>
 
                 <div className="register-field">
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Password <span className="required-field-add">*</span></label>
                   <div
                     className={`register-input-wrap ${
                       errors.password ? "input-error" : ""
@@ -193,7 +194,7 @@ export default function RegisterComponent() {
                       id="password"
                       type="password"
                       placeholder="Password"
-                      required
+                
                       {...register("password")}
                     />
                   </div>
@@ -203,7 +204,8 @@ export default function RegisterComponent() {
                 </div>
 
                 <div className="register-field">
-                  <label htmlFor="confirmPassword">Confirm Password</label>
+                  <label htmlFor="confirmPassword">Confirm Password <span className="required-field-add">*</span></label>
+             
                   <div
                     className={`register-input-wrap ${
                       errors.confirmPassword ? "input-error" : ""
@@ -214,7 +216,7 @@ export default function RegisterComponent() {
                       id="confirmPassword"
                       type="password"
                       placeholder="Confirm Password"
-                      required
+               
                       {...register("confirmPassword")}
                     />
                   </div>
