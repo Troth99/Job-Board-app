@@ -54,6 +54,7 @@ export default function RegisterComponent() {
           accessToken: user.accessToken,
           refreshToken: user.refreshToken,
         });
+        reset()
         navigate("/");
       }
     } catch (err: any) {
@@ -68,7 +69,7 @@ export default function RegisterComponent() {
     }
   };
 
-  const { values, register, formHandler, errors, setErrors } =
+  const { values, register, formHandler, errors, setErrors, reset } =
     useForm<registerFormType>(
       registerHandler,
       intialValueRegister,
@@ -80,7 +81,7 @@ export default function RegisterComponent() {
       <Container>
         <div className="register-page">
           <aside className="register-brand-panel">
-        <LeftSideOfRegister/>
+            <LeftSideOfRegister />
           </aside>
 
           <div className="register-card">
@@ -218,12 +219,18 @@ export default function RegisterComponent() {
                     />
                   </div>
                   {errors.confirmPassword && (
-                    <div className="error-message">{errors.confirmPassword}</div>
+                    <div className="error-message">
+                      {errors.confirmPassword}
+                    </div>
                   )}
                 </div>
 
                 <div className="register-submit-actions">
-                  <button type="submit" className="btn-register-form" disabled={loading}>
+                  <button
+                    type="submit"
+                    className="btn-register-form"
+                    disabled={loading}
+                  >
                     {loading ? "Creating account..." : "Create Account"}
                   </button>
                 </div>
@@ -237,7 +244,7 @@ export default function RegisterComponent() {
             </div>
           </div>
         </div>
-                 </Container>
+      </Container>
     </section>
   );
 }
