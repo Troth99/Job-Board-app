@@ -39,7 +39,8 @@
   .job-title-button,
   .edit-image-button,
   .edit-profile-button,
-  .create-company-button-f1 {
+  .create-company-button-f1,
+  .logout-button {
     width: 100%;
   }
 

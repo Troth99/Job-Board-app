@@ -1,22 +1,19 @@
 import "./Profile.css";
 import "./Responsive.css";
 import { useEffect } from "react";
-import { formatDate } from "../../utils/formData";
-import defaultAvatar from "../../assets/personAvatar.jpg";
 import Spinner from "../Spinner/Spinner";
 import useUserProfile from "../../hooks/useProfile";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import useCompany from "../../hooks/useCompany";
-import ImageUpload from "../../features/UploadProfileImage/UploadProfileImage";
 import { useRole } from "../../context/RoleContext";
 import { useUserData } from "../../context/UseDataContext";
-import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
 import { Container } from "../Container/Container";
 import { RoleAndCompanySection } from "./RoleAndCompanySection/RoleAndCompanySection";
 import JobPosting from "./JobPosting/JobPosting";
 import ProfileContainer from "./ProfileContainer/ProfileContainer";
 
-//To refractor styling and add edit profile page and company registration page.
+//To do better spiiner loading for userData roles
+
 interface ProfileProps {
   LogOutComponnent: React.ComponentType;
 }
@@ -32,15 +29,15 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const navigate = useNavigate();
   const { setUserData } = useUserData();
 
-  // Fetch company data on mount
   useEffect(() => {
-    if (!userData || !userData.company) return;
     if (userData) {
       setUserData(userData);
     }
-    if (userData?.company) {
-      getCompanyById(userData.company);
-    }
+  }, [userData]);
+
+  useEffect(() => {
+    if (!userData?.company) return;
+    getCompanyById(userData.company);
   }, [userData?.company]);
 
   const registerCompanyNavigation = () => {
@@ -51,11 +48,30 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     navigate(`/company/${company?._id}/post-job`);
   };
 
-  if (userLoading || !userData) {
+  const hasCompanyId = Boolean(userData?.company);
+
+  const isProfileReady =
+    !userLoading &&
+    !!userData;
+
+  if (!isProfileReady || !userData) {
     return <Spinner overlay={true} />;
   }
 
-  const completionPercentage = 0; // Placeholder for actual completion logic
+  const completionChecks = [
+    Boolean(userData.firstName),
+    Boolean(userData.lastName),
+    Boolean(userData.email),
+    Boolean(userData.phoneNumber),
+    Boolean(userData.location),
+    Boolean(avatar),
+  ];
+  const totalCompletionFields = completionChecks.length;
+  const completedFields = completionChecks.filter(Boolean).length;
+  const completionPercentage = Math.round(
+    (completedFields / totalCompletionFields) * 100,
+  );
+
   return (
     <Container maxwith="1520px" padding="0 12px">
       <div className="profile-container">
@@ -66,15 +82,26 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
             handleFileChange={handleFileChange}
             userRole={userRole}
             company={company}
-            completionPercentage={0}
-            completedFields={0}
+            hasCompanyId={hasCompanyId}
+            completionPercentage={completionPercentage}
+            completedFields={completedFields}
+            totalCompletionFields={totalCompletionFields}
           />
 
-          <RoleAndCompanySection
-            userRole={userRole}
-            company={company}
-            companyLoading={companyLoading}
-          />
+          {userLoading ? (
+            <div className="profile-side-card" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Spinner />
+            </div>
+          ) : (
+            <RoleAndCompanySection
+              userRole={userRole}
+              company={company}
+              companyLoading={companyLoading}
+              hasCompanyId={hasCompanyId}
+            />
+          )}
+
+          
         </section>
 
         <section className="profile-bottom-grid">
@@ -93,7 +120,13 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
               </li>
               <li>
                 <span>Company access</span>
-                <strong>{company ? "Enabled" : "Not enabled"}</strong>
+                <strong>
+                  {!hasCompanyId
+                    ? "Not enabled"
+                    : company
+                      ? "Enabled"
+                      : "Loading..."}
+                </strong>
               </li>
               <li>
                 <span>Role summary</span>

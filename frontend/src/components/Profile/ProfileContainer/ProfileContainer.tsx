@@ -9,8 +9,10 @@ interface ProfileContainerProps {
   handleFileChange: (file: File) => void;
   userRole: string | null | undefined;
   company: any;
+  hasCompanyId: boolean;
   completionPercentage: number;
   completedFields: number;
+  totalCompletionFields: number;
 }
 
 export default function ProfileContainer({
@@ -19,9 +21,17 @@ export default function ProfileContainer({
   handleFileChange,
   userRole,
   company,
+  hasCompanyId,
   completionPercentage,
   completedFields,
+  totalCompletionFields,
 }: ProfileContainerProps) {
+  const companyStatusLabel = !hasCompanyId
+    ? "No company"
+    : company
+      ? "In company"
+      : "Loading company...";
+
   return (
     <div className="profile-main-card">
       <div className="profile-identity-block">
@@ -38,14 +48,14 @@ export default function ProfileContainer({
 
           <div className="profile-tags">
             <span className="profile-tag">{userRole || "Job seeker"}</span>
-            <span className="profile-tag">{company ? "In company" : "No company"}</span>
+            <span className="profile-tag">{companyStatusLabel}</span>
             <span className="profile-tag">
               Joined: {userData?.createdAt ? formatDate(userData.createdAt) : "-"}
             </span>
           </div>
 
           <div className="completion-mini-row">
-            <span>{completedFields} of 7 sections complete</span>
+            <span>{completedFields} of {totalCompletionFields} sections complete</span>
             <strong>{completionPercentage}%</strong>
           </div>
           <div className="completion-track">

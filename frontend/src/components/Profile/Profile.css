@@ -155,6 +155,14 @@
 
 .profile-side-card {
   padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.Profile-Data-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .profile-side-card h3,
@@ -205,6 +213,34 @@
 
 .company-empty-state {
   border-style: dashed;
+}
+
+/* TODO: Saved Jobs placeholder — replace with real list when backend is ready */
+.saved-jobs-placeholder {
+  margin-top: 0.75rem;
+  margin-top: 0.75rem;
+  padding: 1.2rem 0.85rem;
+  border-radius: 0.72rem;
+  border: 2px dashed rgba(26, 63, 92, 0.25);
+  background: rgba(255, 255, 255, 0.45);
+  text-align: center;
+}
+
+.saved-jobs-placeholder__icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.saved-jobs-placeholder h3 {
+  margin: 0 0 0.3rem;
+  color: var(--pf-title);
+  font-size: 1rem;
+}
+
+.saved-jobs-placeholder p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--pf-muted, #8a9bb0);
 }
 
 .profile-kpi-row {
@@ -288,6 +324,8 @@
   background: linear-gradient(135deg, var(--pf-primary) 0%, var(--pf-accent) 100%);
   color: #fff;
   padding: 0.62rem 1rem;
+  font-size: 0.875rem;
+  font-family: inherit;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
@@ -308,6 +346,30 @@
   justify-content: center;
 }
 
+.logout-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0.62rem;
+  background: linear-gradient(135deg, #d94848 0%, #b81f1f 100%);
+  color: #fff;
+  padding: 0.62rem 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.logout-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(184, 31, 31, 0.3);
+}
+
+.logout-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 [data-theme="dark"] .profile-container {
   --pf-bg: linear-gradient(145deg, #0d1c2a 0%, #10263a 55%, #133730 100%);
   --pf-surface: rgba(13, 31, 46, 0.84);
@@ -324,6 +386,7 @@
 [data-theme="dark"] .profile-info-grid div,
 [data-theme="dark"] .role-change,
 [data-theme="dark"] .company-registration,
+[data-theme="dark"] .saved-jobs-placeholder,
 [data-theme="dark"] .profile-activity-card li {
   background: rgba(7, 20, 32, 0.62);
 }
