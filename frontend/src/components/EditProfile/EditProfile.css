@@ -1,4 +1,4 @@
-.profile-container {
+.profile-body .profile-container {
   font-family: 'Arial', sans-serif;
   max-width: 1200px;
   margin: 0 auto;
@@ -12,7 +12,7 @@
   margin-top: 5em;
 }
 
-.profile-header h1 {
+.profile-body .profile-header h1 {
   text-align: center;
   font-size: 36px;
   margin-bottom: 20px;
@@ -21,7 +21,7 @@
   letter-spacing: 2px;
 }
 
-.profile-image {
+.profile-body .profile-image {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +29,7 @@
   margin-top: 30px;
 }
 
-.profile-image img {
+.profile-body .profile-image img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -38,12 +38,12 @@
   transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-.profile-image img:hover {
+.profile-body .profile-image img:hover {
   border-color: #3498db;
   transform: scale(1.1);
 }
 
-.edit-image-button {
+.profile-body .edit-image-button {
   margin-top: 10px;
   padding: 12px 25px;
   background-color: #3498db;
@@ -55,12 +55,12 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.edit-image-button:hover {
+.profile-body .edit-image-button:hover {
   background-color: #2980b9;
   transform: scale(1.05);
 }
 
-.profile-details {
+.profile-body .profile-details {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -69,7 +69,7 @@
   text-align: center;
 }
 
-.profile-details div {
+.profile-body .profile-details div {
   display: flex;
   flex-direction: column; 
   align-items: stretch;  
@@ -79,13 +79,13 @@
   width: 30%;
 }
 
-.profile-details strong {
+.profile-body .profile-details strong {
   color: #34495e;
   font-weight: bold;
 }
 
-.profile-details input,
-.profile-details textarea {
+.profile-body .profile-details input,
+.profile-body .profile-details textarea {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -95,7 +95,7 @@
   box-sizing: border-box;
 }
 
-.profile-details button {
+.profile-body .profile-details button {
   background-color: #3498db;
   color: white;
   padding: 8px 16px;
@@ -107,17 +107,17 @@
   margin-left: 10px;
 }
 
-.profile-details button:hover {
+.profile-body .profile-details button:hover {
   background-color: #2980b9;
   transform: scale(1.05);
 }
 
-.edit-profile-button-container {
+.profile-body .edit-profile-button-container {
   margin-top: 40px; 
   text-align: center;
 }
 
-.edit-profile-button {
+.profile-body .edit-profile-button {
   text-decoration: none;
   background-color: #3498db;
   color: white;
@@ -129,13 +129,13 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.edit-profile-button:hover {
+.profile-body .edit-profile-button:hover {
   background-color: #2980b9;
   transform: scale(1.05);
 }
 
-.role-change,
-.company-registration {
+.profile-body .role-change,
+.profile-body .company-registration {
   margin-top: 30px;
   padding: 12px;
   background-color: #ecf0f1;
@@ -143,27 +143,27 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.role-change h3,
-.company-registration h3 {
+.profile-body .role-change h3,
+.profile-body .company-registration h3 {
   font-size: 24px;
   color: #2980b9;
 }
 
-.role-change p,
-.company-registration p {
+.profile-body .role-change p,
+.profile-body .company-registration p {
   font-size: 18px;
   color: #8e44ad;
 }
 
-.delete-image-container,
-.change-password-container,
-.delete-profile-container,
-.check-profile-logs-container {
+.profile-body .delete-image-container,
+.profile-body .change-password-container,
+.profile-body .delete-profile-container,
+.profile-body .check-profile-logs-container {
   margin-top: 30px; 
   text-align: center;
 }
 
-.button-container {
+.profile-body .button-container {
   margin-top: 30px; 
   padding: 20px;
   background-color: #5f626470; 
@@ -171,10 +171,10 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
-.delete-image-button,
-.change-password-button,
-.delete-profile-button,
-.check-profile-logs-button {
+.profile-body .delete-image-button,
+.profile-body .change-password-button,
+.profile-body .delete-profile-button,
+.profile-body .check-profile-logs-button {
   background-color: #e74c3c;
   color: white;
   padding: 12px 25px;
@@ -189,26 +189,26 @@
   outline: none;
 }
 
-.delete-image-button:hover,
-.change-password-button:hover,
-.delete-profile-button:hover,
-.check-profile-logs-button:hover
+.profile-body .delete-image-button:hover,
+.profile-body .change-password-button:hover,
+.profile-body .delete-profile-button:hover,
+.profile-body .check-profile-logs-button:hover
  {
   background-color: #c0392b;
   transform: scale(1.05);
   border: 2px solid #c0392b; 
 }
-.delete-image-button:active,
-.change-password-button:active,
-.delete-profile-button:active,
-.check-profile-logs-button:active {
+.profile-body .delete-image-button:active,
+.profile-body .change-password-button:active,
+.profile-body .delete-profile-button:active,
+.profile-body .check-profile-logs-button:active {
   transform: translateY(1px);
 }
-.delete-image-button:disabled {
+.profile-body .delete-image-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-.error-message {
+.profile-body .error-message {
   margin-top: 4px;      
   color: #ff4d4f;
   font-size: 0.9rem;

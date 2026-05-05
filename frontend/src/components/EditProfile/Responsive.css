@@ -1,33 +1,33 @@
 @media (max-width: 992px) {
-  .profile-container {
+  .profile-body .profile-container {
     padding: 25px;
     margin-top: 3em;
   }
 
-  .profile-header h1 {
+  .profile-body .profile-header h1 {
     font-size: 30px;
   }
 
-  .profile-details div {
+  .profile-body .profile-details div {
     width: 90%;
     margin-bottom: 12px;
   }
 
-  .profile-details input,
-  .profile-details textarea {
+  .profile-body .profile-details input,
+  .profile-body .profile-details textarea {
     font-size: 15px;
     padding: 10px;
   }
 
-  .button-container {
+  .profile-body .button-container {
     padding: 18px;
   }
 
-  .delete-image-button,
-  .change-password-button,
-  .delete-profile-button,
-  .check-profile-logs-button,
-  .edit-profile-button {
+  .profile-body .delete-image-button,
+  .profile-body .change-password-button,
+  .profile-body .delete-profile-button,
+  .profile-body .check-profile-logs-button,
+  .profile-body .edit-profile-button {
     width: 90%;
     font-size: 15px;
     padding: 10px;
@@ -36,35 +36,35 @@
 
 /* Small screens (phones) */
 @media (max-width: 768px) {
-  .profile-container {
+  .profile-body .profile-container {
     padding: 20px;
     margin-top: 2.5em;
   }
 
-  .profile-header h1 {
+  .profile-body .profile-header h1 {
     font-size: 26px;
   }
 
-  .profile-details div {
+  .profile-body .profile-details div {
     width: 100%;
     margin-bottom: 10px;
   }
 
-  .profile-details input,
-  .profile-details textarea {
+  .profile-body .profile-details input,
+  .profile-body .profile-details textarea {
     font-size: 14px;
     padding: 8px;
   }
 
-  .button-container {
+  .profile-body .button-container {
     padding: 15px;
   }
 
-  .delete-image-button,
-  .change-password-button,
-  .delete-profile-button,
-  .check-profile-logs-button,
-  .edit-profile-button {
+  .profile-body .delete-image-button,
+  .profile-body .change-password-button,
+  .profile-body .delete-profile-button,
+  .profile-body .check-profile-logs-button,
+  .profile-body .edit-profile-button {
     width: 100%;
     font-size: 14px;
     padding: 8px;
@@ -73,35 +73,35 @@
 
 /* Extra small screens (very small phones) */
 @media (max-width: 480px) {
-  .profile-container {
+  .profile-body .profile-container {
     padding: 15px;
     margin-top: 2em;
   }
 
-  .profile-header h1 {
+  .profile-body .profile-header h1 {
     font-size: 22px;
   }
 
-  .profile-details div {
+  .profile-body .profile-details div {
     width: 100%;
     margin-bottom: 8px;
   }
 
-  .profile-details input,
-  .profile-details textarea {
+  .profile-body .profile-details input,
+  .profile-body .profile-details textarea {
     font-size: 13px;
     padding: 6px;
   }
 
-  .button-container {
+  .profile-body .button-container {
     padding: 10px;
   }
 
-  .delete-image-button,
-  .change-password-button,
-  .delete-profile-button,
-  .check-profile-logs-button,
-  .edit-profile-button {
+  .profile-body .delete-image-button,
+  .profile-body .change-password-button,
+  .profile-body .delete-profile-button,
+  .profile-body .check-profile-logs-button,
+  .profile-body .edit-profile-button {
     width: 100%;
     font-size: 13px;
     padding: 6px;
