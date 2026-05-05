@@ -78,6 +78,12 @@
   color: #222;
 }
 
+.custom-hero h2 {
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #222;
+}
+
 .custom-hero .accent {
   color: #2563eb;
 }

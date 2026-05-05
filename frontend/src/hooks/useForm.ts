@@ -41,10 +41,7 @@ export default function useForm<T extends FormValues>(
     const { name } = e.target;
     const formErrors = validateForm(values);
     // Only update the specific field's error on blur
-    setErrors((prev) => ({
-      ...prev,
-      [name]: (formErrors as any)[name],
-    }));
+  
   };
 
   const formHandler = async (e: React.FormEvent) => {

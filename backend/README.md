@@ -436,5 +436,4 @@ generateRefreshToken(userId)  // JWT signed with JWT_REFRESH_SECRET,  expires 7d
 | **Authorization guards on jobs** | No ownership check on job edit/delete — any authenticated user can edit any job |
 | **Application status guard** | `PATCH /:id/status` has no `protect` middleware — anyone can change status |
 | **Delete application guard** | `DELETE /:id` has no `protect` middleware |
-| **Rate limiting** | No rate limiter on `/login`, `/register`, `/forgot-password` — vulnerable to brute force |
 | **Notification cleanup** | No TTL index or cron to purge old read notifications |

@@ -24,6 +24,9 @@ export default function Hero() {
       <h1 style={{position: 'relative', zIndex: 1}}>
         <span className="accent">Job Board</span> for your next career move.
       </h1>
+      <h2 style={{position: 'relative', zIndex: 1}}>
+        <span>Your Next Opportunity</span> Starts Here.
+      </h2>
       
       <p className="custom-hero-subtitle" style={{position: 'relative', zIndex: 1}}>
         Search by keyword in all job postings

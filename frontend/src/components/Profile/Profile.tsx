@@ -1,21 +1,19 @@
 import "./Profile.css";
 import "./Responsive.css";
-import {  useEffect } from "react";
-import { formatDate } from "../../utils/formData";
-import defaultAvatar from "../../assets/personAvatar.jpg";
+import { useEffect } from "react";
 import Spinner from "../Spinner/Spinner";
 import useUserProfile from "../../hooks/useProfile";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import useCompany from "../../hooks/useCompany";
-import ImageUpload from "../../features/UploadProfileImage/UploadProfileImage";
 import { useRole } from "../../context/RoleContext";
 import { useUserData } from "../../context/UseDataContext";
-import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
 import { Container } from "../Container/Container";
+import { RoleAndCompanySection } from "./RoleAndCompanySection/RoleAndCompanySection";
+import JobPosting from "./JobPosting/JobPosting";
+import ProfileContainer from "./ProfileContainer/ProfileContainer";
 
+//To do better spiiner loading for userData roles
 
-
-//To refractor styling and add edit profile page and company registration page. 
 interface ProfileProps {
   LogOutComponnent: React.ComponentType;
 }
@@ -31,18 +29,16 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const navigate = useNavigate();
   const { setUserData } = useUserData();
 
+  useEffect(() => {
+    if (userData) {
+      setUserData(userData);
+    }
+  }, [userData]);
 
-  // Fetch company data on mount
-useEffect(() => {
-  if (!userData || !userData.company) return;
-  if(userData){
-
-    setUserData(userData)
-  }
-  if (userData?.company) {
+  useEffect(() => {
+    if (!userData?.company) return;
     getCompanyById(userData.company);
-  }
-}, [userData?.company]);
+  }, [userData?.company]);
 
   const registerCompanyNavigation = () => {
     navigate("/register/company");
@@ -52,128 +48,98 @@ useEffect(() => {
     navigate(`/company/${company?._id}/post-job`);
   };
 
-  if (userLoading || !userData) {
+  const hasCompanyId = Boolean(userData?.company);
+
+  const isProfileReady =
+    !userLoading &&
+    !!userData;
+
+  if (!isProfileReady || !userData) {
     return <Spinner overlay={true} />;
   }
 
+  const completionChecks = [
+    Boolean(userData.firstName),
+    Boolean(userData.lastName),
+    Boolean(userData.email),
+    Boolean(userData.phoneNumber),
+    Boolean(userData.location),
+    Boolean(avatar),
+  ];
+  const totalCompletionFields = completionChecks.length;
+  const completedFields = completionChecks.filter(Boolean).length;
+  const completionPercentage = Math.round(
+    (completedFields / totalCompletionFields) * 100,
+  );
+
   return (
-    <Container>
-    <div className="profile-container">
-      <div className="profile-header">
-        <h1>My Profile</h1>
-      </div>
+    <Container maxwith="1520px" padding="0 12px">
+      <div className="profile-container">
+        <section className="profile-top-grid">
+          <ProfileContainer
+            userData={userData}
+            avatar={avatar}
+            handleFileChange={handleFileChange}
+            userRole={userRole}
+            company={company}
+            hasCompanyId={hasCompanyId}
+            completionPercentage={completionPercentage}
+            completedFields={completedFields}
+            totalCompletionFields={totalCompletionFields}
+          />
 
-      {/* Profile image section */}
- <div className="profile-image">
-  <img src={avatar || defaultAvatar} alt="Profile" />
-  <ImageUpload onFileChange={handleFileChange} />
-</div>
-      {/* Profile info */}
-      <div className="profile-info">
-        <div>
-          <strong>First name:</strong> {userData?.firstName}
-        </div>
-        <div>
-          <strong>Last name:</strong> {userData?.lastName}
-        </div>
-        <div>
-          <strong>Email:</strong> {userData?.email}
-        </div>
-        <div>
-          <strong>Phone:</strong> {userData?.phoneNumber}
-        </div>
-        <div>
-          <strong>Location:</strong> {userData?.location}
-        </div>
-        <div>
-          <strong>Created at:</strong>{" "}
-          {userData?.createdAt && formatDate(userData.createdAt)}
-        </div>
-      </div>
+          {userLoading ? (
+            <div className="profile-side-card" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Spinner />
+            </div>
+          ) : (
+            <RoleAndCompanySection
+              userRole={userRole}
+              company={company}
+              companyLoading={companyLoading}
+              hasCompanyId={hasCompanyId}
+            />
+          )}
 
-      {/* Edit profile button */}
-      <div className="edit-profile-button-container">
-        <Link to="/profile/setthings" className="edit-profile-button">
-          User settings
-        </Link>
-      </div>
+          
+        </section>
 
+        <section className="profile-bottom-grid">
+          <JobPosting
+            company={company}
+            postJobNavigation={postJobNavigation}
+            registerCompanyNavigation={registerCompanyNavigation}
+          />
 
-      {/* Role and company section */}
-<div className="Profile-Data-info">
-  {(userRole === undefined || companyLoading) ? (
-    <LoadingIndicator message="Loading..." size="medium" />
-  ) : (
-    <>
-      <div className="role-change">
-        <h3>Role:</h3>
-        <p>
-          {userRole
-            ? `${userRole} of ${company?.name}`
-            : "Not part of a company yet."}
-        </p>
-      </div>
-      <div className="company-registration">
-        {company ? (
-          <>
-            <h3>{company.name}</h3>
-            <p>Industry: {company.industry}</p>
-            <p>Location: {company.location}</p>
-            <button
-              className="create-company-button-f1"
-              onClick={() => navigate(`/company/${company._id}/dashboard`)}
-            >
-              Go to Dashboard
-            </button>
-          </>
-        ) : (
-          <>
-            <h3>Company Registration</h3>
-            <p>Status: Not Registered</p>
-          </>
-        )}
-      </div>
-    </>
-  )}
-</div>
-      {/* Job posting and application section */}
-      <div className="job-posting">
-        <h3>
-          {company
-            ? "You are part of a company. You can post your job offer."
-            : "You must register a company before you post a job."}
-        </h3>
-        <div className="job-title-options">
-          <button
-            className="job-title-button"
-            onClick={() => {
-              if (company) {
-                postJobNavigation();
-              } else {
-                registerCompanyNavigation();
-              }
-            }}
-          >
-            {company ? "Post a Job" : "Register Company"}
-          </button>
-        </div>
+          <div className="profile-activity-card">
+            <h3>Recent account activity</h3>
+            <ul>
+              <li>
+                <span>Profile completion</span>
+                <strong>{completionPercentage}% complete</strong>
+              </li>
+              <li>
+                <span>Company access</span>
+                <strong>
+                  {!hasCompanyId
+                    ? "Not enabled"
+                    : company
+                      ? "Enabled"
+                      : "Loading..."}
+                </strong>
+              </li>
+              <li>
+                <span>Role summary</span>
+                <strong>{userRole || "No company role"}</strong>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-        <div className="job-description-info">
-          <p>
-            {company
-              ? "Click 'Post a Job' to hire your team."
-              : "Click 'Register Company' to hire your team."}
-          </p>
+        <div className="logout-container">
+          <LogOutComponnent />
         </div>
       </div>
-
-      {/* Logout button */}
-      <div className="logout-container">
-        <LogOutComponnent />
-      </div>
-
-      {/* Hidden file input for uploading avatar */}
-    </div>
     </Container>
   );
 }
