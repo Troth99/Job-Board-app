@@ -1,6 +1,6 @@
 import "./Profile.css";
 import "./Responsive.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import useUserProfile from "../../hooks/useProfile";
 import { useNavigate } from "react-router";
@@ -28,6 +28,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const { loading: companyLoading, company, getCompanyById } = useCompany();
   const navigate = useNavigate();
   const { setUserData } = useUserData();
+  const [isCompanyReady, setIsCompanyReady] = useState(false);
 
   useEffect(() => {
     if (userData) {
@@ -43,8 +44,28 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     const companyId =
       typeof companyValue === "string" ? companyValue : companyValue?._id;
 
-    if (!companyId) return;
-    getCompanyById(companyId);
+    if (!userData) {
+      setIsCompanyReady(false);
+      return;
+    }
+
+    if (!companyId) {
+      setIsCompanyReady(true);
+      return;
+    }
+
+    let isMounted = true;
+    setIsCompanyReady(false);
+
+    getCompanyById(companyId).finally(() => {
+      if (isMounted) {
+        setIsCompanyReady(true);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
   }, [userData?.company]);
 
   const registerCompanyNavigation = () => {
@@ -61,7 +82,8 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
 
   const isProfileReady =
     !userLoading &&
-    !!userData;
+    !!userData &&
+    isCompanyReady;
 
   if (!isProfileReady || !userData) {
     return <Spinner overlay={true} />;
@@ -97,18 +119,12 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
             totalCompletionFields={totalCompletionFields}
           />
 
-          {userLoading ? (
-            <div className="profile-side-card" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Spinner />
-            </div>
-          ) : (
-            <RoleAndCompanySection
-              userRole={userRole}
-              company={company}
-              companyLoading={companyLoading}
-              hasCompanyId={hasCompanyId}
-            />
-          )}
+          <RoleAndCompanySection
+            userRole={userRole}
+            company={company}
+            companyLoading={companyLoading}
+            hasCompanyId={hasCompanyId}
+          />
 
           
         </section>

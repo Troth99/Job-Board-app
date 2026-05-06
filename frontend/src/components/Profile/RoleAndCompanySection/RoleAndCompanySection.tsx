@@ -11,17 +11,12 @@ interface RoleAndCompanySectionProps {
 export function RoleAndCompanySection({
   userRole,
   company,
-  companyLoading,
   hasCompanyId,
 }: RoleAndCompanySectionProps) {
   const navigate = useNavigate();
-  const showLoading = hasCompanyId && (userRole === undefined || companyLoading || !company);
 
   return (
     <div className="Profile-Data-info">
-      {showLoading ? (
-        <LoadingIndicator message="Loading..." size="medium" />
-      ) : (
         <>
         
           <div className="role-change">
@@ -60,7 +55,6 @@ export function RoleAndCompanySection({
             <p>Coming soon — save jobs to revisit them later.</p>
           </div>
         </>
-      )}
     </div>
   );
 }
