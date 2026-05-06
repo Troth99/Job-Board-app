@@ -50,6 +50,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
 
   //refactor to use hasCompanyId instead of company for better loading state handling and to avoid showing "No company" when company data is still loading
   const hasCompanyId = Boolean(userData?.company);
+  console.log("User Data:", userData);
 
   const isProfileReady =
     !userLoading &&
