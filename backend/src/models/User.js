@@ -59,7 +59,15 @@ const userSchema = new mongoose.Schema({
     },
     resetPasswordExpire:{
         type:Date
-    }
+    },
+
+    savedJobs: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Job'
+        }
+    ]
+
 });
 
 // has password before save
