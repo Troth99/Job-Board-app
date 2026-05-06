@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router";
-
 import useJobs from "../../../hooks/useJobs";
-import "./CandidateJob.css";
+import "./JobDetailsView.css";
 import { useEffect, useState } from "react";
 import { Job } from "../../../interfaces/Job.model";
 import { formatDate } from "../../../utils/formData";
@@ -10,6 +9,7 @@ import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { ApplyForJobModal } from "../ApplyForJobModal/ApplyForJobModal";
 import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 import { Container } from "../../Container/Container";
+import AddToFavourites from "./AddToFavourites/FavoriteButton";
 
 export default function CandidateJobView() {
   const { jobId } = useParams();
@@ -77,6 +77,8 @@ export default function CandidateJobView() {
               </span>
             </div>
           </div>
+          <div>
+          </div>
           <div className="company-meta">
             <span className="company-location">
               Location: {jobData?.company?.location}
@@ -92,10 +94,13 @@ export default function CandidateJobView() {
               </a>
             </span>
           </div>
+          
           <div className="company-description-data">
             <p>{jobData?.company?.description}</p>
           </div>
         </div>
+            <AddToFavourites />
+
         <div className="job-header">
           <h2 className="job-title">{jobData?.title}</h2>
           <span className="job-category">

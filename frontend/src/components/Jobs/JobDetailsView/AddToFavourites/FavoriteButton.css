@@ -1,0 +1,47 @@
+.favorite-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border: 1px solid #f1b5bd;
+  border-radius: 999px;
+  background: #fff5f7;
+  color: #c2185b;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.favorite-button:hover {
+  background: #ffe3e8;
+  border-color: #e91e63;
+  transform: translateY(-1px);
+}
+.favorite-button-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+.favorite-button-text {
+  line-height: 1;
+}
+
+.favorite-button.active {
+  background: #e91e63;
+  color: white;
+  border-color: #e91e63;
+}
+.favorite-button.active:hover {
+  background: #d81b60;
+  border-color: #d81b60;
+}
+
+body[data-theme="dark"] .favorite-button {
+  background: #2a1b22;
+  color: #ff8fab;
+  border-color: #7a2e43;
+}
+
+body[data-theme="dark"] .favorite-button:hover {
+  background: #3a202a;
+  border-color: #ff5c8a;
+}
