@@ -36,8 +36,15 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   }, [userData]);
 
   useEffect(() => {
-    if (!userData?.company) return;
-    getCompanyById(userData.company);
+    const companyValue = userData?.company as
+      | string
+      | { _id?: string }
+      | undefined;
+    const companyId =
+      typeof companyValue === "string" ? companyValue : companyValue?._id;
+
+    if (!companyId) return;
+    getCompanyById(companyId);
   }, [userData?.company]);
 
   const registerCompanyNavigation = () => {
