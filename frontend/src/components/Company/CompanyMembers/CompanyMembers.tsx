@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router";
 import useCompany from "../../../hooks/useCompany";
 import useForm from "../../../hooks/useForm";
@@ -64,10 +64,11 @@ export function CompanyMembers() {
       });
       setSuccessMessage("Invitation sent successfully");
     } catch (error: any) {
-      setIsSubmitting(false);
       setuserEmailExistError(
         "Failed to check if the user exists in the backend",
       );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -95,25 +96,40 @@ export function CompanyMembers() {
      
 
       {showModal && (
-        <div className="modal-overlay">
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="company-members-modal-overlay">
+          <div
+            className="company-members-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
             <h3>Add Member</h3>
-            <form onSubmit={formHandler}>
+            <form className="company-members-form" onSubmit={formHandler}>
               <input
                 type="email"
                 placeholder="Enter member email"
                 {...register("email")}
               />
               {successMessage && (
-                <div className="success-message">{successMessage}</div>
+                <div className="company-members-success-message">
+                  {successMessage}
+                </div>
               )}
               {errors.email && (
                 <div className="error-message">{errors.email}</div>
               )}
               <div className="error-message">{userEmailExistError}</div>
-              <button type="submit" disabled={isSubmitting}>Add</button>
+              <button
+                className="company-members-submit"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                Add
+              </button>
             </form>
-            <button className="modal-close-f2" onClick={handleCloseModal}>
+            <button
+              className="company-members-close"
+              onClick={handleCloseModal}
+              type="button"
+            >
               Close
             </button>
           </div>
