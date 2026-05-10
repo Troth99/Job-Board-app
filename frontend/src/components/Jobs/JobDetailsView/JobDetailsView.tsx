@@ -23,6 +23,11 @@ export default function CandidateJobView() {
     return;
   }
 
+//to devide the company members from the candidates, so the company members will not be able to apply for the job and see the apply button
+
+//to refractor css and add more styles to the job details page, to make it more user friendly and responsive and detials
+
+
   const isCompanyMember = jobData?.company?.members?.includes(user._id);
   useEffect(() => {
     const fetchData = async () => {
