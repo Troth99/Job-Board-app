@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addJobToFavourites } from "../controllers/AddJobToFavourites.js";
+import { addJobToFavourites, getSavedJobs, removeJobFromFavourites } from "../controllers/AddJobToFavourites.js";
 import { protect } from "../middleware/authMiddleware.js";
 
 
@@ -8,6 +8,8 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const router = Router();
 
-router.post('/saved-jobs/:jobId', protect, addJobToFavourites)
+router.post('/saved-jobs/:jobId', protect, addJobToFavourites);
+router.delete('/saved-jobs/:jobId', protect, removeJobFromFavourites);
+router.get('/saved-jobs', protect, getSavedJobs);
 
 export default router;

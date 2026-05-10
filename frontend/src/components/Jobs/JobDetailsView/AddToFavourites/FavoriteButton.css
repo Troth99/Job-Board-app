@@ -45,3 +45,10 @@ body[data-theme="dark"] .favorite-button:hover {
   background: #3a202a;
   border-color: #ff5c8a;
 }
+
+.favorite-button.loading {
+  opacity: 0.75;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+}

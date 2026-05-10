@@ -180,10 +180,37 @@ export default function useJobs() {
 const addJobToFavorites = async (jobId: string) => {
   setLoading(true);
   try {
-    const response = await request(`${API_BASE}/favourites/saved-jobs`, "POST", { jobId });
+    const response = await request(`${API_BASE}/favourites/saved-jobs/${jobId}`, "POST");
     return response;
   } catch (error) {
     console.error("Failed to add job to favorites.");
+  } finally {
+    setLoading(false);
+  }
+}
+
+const deleteJobFromFavorites = async (jobId: string) => {
+  setLoading(true);
+
+try {
+  const response = await request(`${API_BASE}/favourites/saved-jobs/${jobId}`, "DELETE", {});
+  return response;
+} catch (error) {
+  console.error("Failed to remove job from favorites.");
+}finally {
+  setLoading(false);
+}
+
+
+}
+const getAllFavoriteJobs = async () => {
+  setLoading(true);
+
+  try {
+    const response = await request(`${API_BASE}/favourites/saved-jobs`, "GET", {});
+    return response;
+  } catch (error) {
+    console.error("Failed to get favorite jobs.");
   } finally {
     setLoading(false);
   }
@@ -201,6 +228,9 @@ const addJobToFavorites = async (jobId: string) => {
     createApplication,
     getApplicationsByJobId,
     updateApplicationStatus,
-    deleteApplication
+    deleteApplication,
+    addJobToFavorites,
+    getAllFavoriteJobs,
+    deleteJobFromFavorites
   };
 }

@@ -24,7 +24,6 @@ export default function CandidateJobView() {
   }
 
   const isCompanyMember = jobData?.company?.members?.includes(user._id);
-  console.log(isCompanyMember);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -99,7 +98,7 @@ export default function CandidateJobView() {
             <p>{jobData?.company?.description}</p>
           </div>
         </div>
-            <AddToFavourites />
+            <AddToFavourites jobId={jobId} />
 
         <div className="job-header">
           <h2 className="job-title">{jobData?.title}</h2>

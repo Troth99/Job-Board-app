@@ -1,35 +1,33 @@
-import { useState } from "react";
 import "./FavoriteButton.css";
+import { useFavoritesContext } from "../../../../context/FavouritesJobs";
 
+export default function AddToFavourites({ jobId }: { jobId: string }) {
+  const { isFavorite, addToFavorites, removeFromFavorites, loading } =
+    useFavoritesContext();
+  const saved = isFavorite(jobId);
 
-export default function AddToFavourites() {
-    const [isFavorite, setIsFavorite] = useState(false);
-
-    const addJobToFavorites = () => {
-       try {
-       
-   
-       } catch (error) {
-         console.error("Failed to add job to favorites:", error);
-       }
+  const handleClick = async () => {
+    if (saved) {
+      await removeFromFavorites(jobId);
+    } else {
+      await addToFavorites(jobId);
     }
-    return (
-  <button
-    type="button"
-    className={`favorite-button ${isFavorite ? "active" : ""}`}
-    onClick={() => {
-        setIsFavorite((prev) => !prev);
-        addJobToFavorites();
-    }}
-    aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
-    title={isFavorite ? "Remove from favorites" : "Add to favorites"}
-  >
-    <span className="favorite-button-icon">
-      {isFavorite ? "♥" : "♡"}
-    </span>
-    <span className="favorite-button-text">
-      {isFavorite ? "In favorites" : "Add to favorites"}
-    </span>
-  </button>
-    )
+  };
+  return (
+      <span style={{ cursor: loading ? "not-allowed" : "default", display: "inline-block" }}>
+
+    <button
+      type="button"
+      className={`favorite-button ${saved ? "active" : ""} ${loading ? "loading" : ""}`}
+      onClick={handleClick}
+      aria-label={saved ? "Remove from favorites" : "Add to favorites"}
+      title={saved ? "Remove from favorites" : "Add to favorites"}
+    >
+      <span className="favorite-button-icon">{saved ? "♥" : "♡"}</span>
+      <span className="favorite-button-text">
+        {saved ? "In favorites" : "Add to favorites"}
+      </span>
+    </button>
+      </span>
+  );
 }
