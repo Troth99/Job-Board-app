@@ -176,6 +176,18 @@ export default function useJobs() {
     setLoading(false);
   }
 };
+
+const addJobToFavorites = async (jobId: string) => {
+  setLoading(true);
+  try {
+    const response = await request(`${API_BASE}/favourites/saved-jobs`, "POST", { jobId });
+    return response;
+  } catch (error) {
+    console.error("Failed to add job to favorites.");
+  } finally {
+    setLoading(false);
+  }
+}
   return {
     loading,
     getRecentJobs,
