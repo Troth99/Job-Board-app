@@ -10,6 +10,7 @@ import { ApplyForJobModal } from "../ApplyForJobModal/ApplyForJobModal";
 import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 import { Container } from "../../Container/Container";
 import AddToFavourites from "./AddToFavourites/FavoriteButton";
+import { CompanyDetails } from "./CompanyDetails/CompanyDetails";
 
 export default function CandidateJobView() {
   const { jobId } = useParams();
@@ -52,58 +53,8 @@ export default function CandidateJobView() {
   return (
     <Container>
       <div className="candidate-job-view-container">
-        <div className="company-details-card">
-          <div className="company-header">
-            <img
-              src={
-                jobData?.company?.logo &&
-                jobData.company.logo.trim().startsWith("http")
-                  ? jobData.company.logo
-                  : "/assets/defaultCompany.png"
-              }
-              alt={
-                jobData?.company?.logo && jobData.company.logo.trim() !== ""
-                  ? jobData.company.name
-                  : "Default Company Logo"
-              }
-              className="company-logo"
-            />
-            <div>
-              <h3 className="company-name">{jobData?.company?.name}</h3>
-              <span className="company-industry">
-                Industry: {jobData?.company?.industry}
-              </span>
-              <span className="company-size">
-                Size: {jobData?.company?.size} employers
-              </span>
-              <span className="company-founded">
-                Founded: {formatDate(jobData?.company?.createdAt ?? "")}
-              </span>
-            </div>
-          </div>
-          <div>
-          </div>
-          <div className="company-meta">
-            <span className="company-location">
-              Location: {jobData?.company?.location}
-            </span>
-            <span className="company-website">
-              Website:{" "}
-              <a
-                href={jobData?.company?.website}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {jobData?.company?.website}{" "}
-              </a>
-            </span>
-          </div>
-          
-          <div className="company-description-data">
-            <p>{jobData?.company?.description}</p>
-          </div>
-        </div>
-            <AddToFavourites jobId={jobId} />
+        {jobData?.company && <CompanyDetails company={jobData.company} />}
+        <AddToFavourites jobId={jobId} />
 
         <div className="job-header">
           <h2 className="job-title">{jobData?.title}</h2>
