@@ -203,6 +203,20 @@ try {
 
 
 }
+const getJobsPage = async (page: number, limit: number) => {
+setLoading(true);
+
+try {
+  const resposne = await request(`${API_BASE}/jobs?page=${page}&limit=${limit}`, "GET", {});
+  return resposne;
+} catch (error) {
+  console.error("Failed to fetch jobs page.");
+}finally {
+  setLoading(false);
+}
+
+}
+
 const getAllFavoriteJobs = async () => {
   setLoading(true);
 
@@ -231,6 +245,7 @@ const getAllFavoriteJobs = async () => {
     deleteApplication,
     addJobToFavorites,
     getAllFavoriteJobs,
-    deleteJobFromFavorites
+    deleteJobFromFavorites,
+    getJobsPage
   };
 }

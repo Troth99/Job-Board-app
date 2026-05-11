@@ -2,35 +2,39 @@ import { useEffect, useState } from "react";
 import useJobs from "../../../hooks/useJobs";
 import Spinner from "../../Spinner/Spinner";
 import "./ViewAllJobs.css";
-import { usePagination } from "../../../hooks/usePagination";
 import { useNavigate, useSearchParams } from "react-router";
 import { Job } from "../../../interfaces/Job.model";
 import { Container } from "../../Container/Container";
 
+const ITEMS_PER_PAGE = 5;
+
 function ViewAllJobs() {
   const [jobs, setJobs] = useState<Job[]>([]);
-  const { loading, getAllJobs } = useJobs();
+const [totalPages, setTotalPages] = useState<number>(1);
+const [totalJobs, setTotalJobs] = useState<number>(0);
+  const { loading, getJobsPage } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
 
-  const { currentItems, totalPages } = usePagination(jobs, 5, pageFromUrl);
 
   const navigate = useNavigate();
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await getAllJobs();
-        const sortedJobs = response.sort(
+        const response = await getJobsPage(pageFromUrl, ITEMS_PER_PAGE);
+        const sortedJobs = response.jobs.sort(
           (a: Job, b: Job) => new Date(b.createdAt ?? '').getTime() - new Date(a.createdAt ?? '').getTime()
         );
         setJobs(sortedJobs);
+        setTotalPages(response.totalPages);
+        setTotalJobs(response.totalJobs);
       } catch (error) {
         console.error("Failed to set jobs.");
       }
     };
     fetchJobs();
-  }, []);
+  }, [pageFromUrl]);
 
   //to refractor return tsx and css, to make a fetch on jobs when goes to next page instead of fetching all jobs and 
   // then paginating them on the client side, to make it more efficient and faster, especially when we have a 
@@ -41,8 +45,8 @@ function ViewAllJobs() {
   return (
     <Container> 
     <div className="jobs-list-modern">
-      {currentItems.length > 0 ? (
-        currentItems.map((job) => (
+      {jobs.length > 0 ? (
+        jobs.map((job) => (
           <div
             className="job-card-modern"
             key={job._id}
@@ -72,7 +76,7 @@ function ViewAllJobs() {
       ) : (
         <p className="no-jobs-modern">No jobs found.</p>
       )}
-      {jobs.length > 5 && (
+      {totalJobs > ITEMS_PER_PAGE && (
         <div className="pagination">
           <button
             onClick={() =>
