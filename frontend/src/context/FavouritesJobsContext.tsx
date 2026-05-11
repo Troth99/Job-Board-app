@@ -12,6 +12,7 @@ interface FavoritesContextType {
   isFavorite: (jobId: string) => boolean;
   addToFavorites: (jobId: string) => Promise<void>;
   removeFromFavorites: (jobId: string) => Promise<void>;
+  isLoggedIn: boolean;
   loading?: boolean;
 }
 
@@ -30,9 +31,10 @@ export function FavoritesProvider({
   const [loading, setLoading] = useState(false);
   const { getAllFavoriteJobs, addJobToFavorites, deleteJobFromFavorites } =
     useJobs();
+  const isLoggedIn = Boolean(userId);
 
   useEffect(() => {
-    if (!userId) {
+    if (!isLoggedIn) {
       setSavedJobIds([]);
       return;
     }
@@ -50,11 +52,12 @@ export function FavoritesProvider({
       }
     };
     fetch();
-  }, [userId]);
+  }, [isLoggedIn, userId]);
 
   const isFavorite = (jobId: string) => savedJobIds.includes(jobId);
 
   const addToFavorites = async (jobId: string) => {
+    if (!isLoggedIn) return;
     setLoading(true);
     try {
       await addJobToFavorites(jobId);
@@ -65,6 +68,7 @@ export function FavoritesProvider({
   };
 
   const removeFromFavorites = async (jobId: string) => {
+    if (!isLoggedIn) return;
     setLoading(true);
     try {
       await deleteJobFromFavorites(jobId);
@@ -81,6 +85,7 @@ export function FavoritesProvider({
         isFavorite,
         addToFavorites,
         removeFromFavorites,
+        isLoggedIn,
         loading,
       }}
     >

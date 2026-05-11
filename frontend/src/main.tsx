@@ -10,7 +10,7 @@ import { RoleProvider } from "./context/RoleContext";
 import { NotificationProvider } from "./context/NotificationContext";
 import { getUserFromLocalStorage } from "./hooks/useAuth";
 import { useState } from "react";
-import { FavoritesProvider } from "./context/FavouritesJobs";
+import { FavoritesProvider } from "./context/FavouritesJobsContext";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Root element not found");
