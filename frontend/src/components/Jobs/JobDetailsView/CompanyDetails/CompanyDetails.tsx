@@ -1,62 +1,59 @@
 import { Company } from "../../../../hooks/useCompany";
 import { formatDate } from "../../../../utils/formData";
-
-
+import "./CompanyDetails.css";
 
 export function CompanyDetails({ company }: { company: Company }) {
+  const rawLogo = company?.logo?.trim();
+  const logoSrc = rawLogo ? rawLogo : "/assets/defaultCompany.png";
+
+  const rawWebsite = company?.website?.trim();
+  const website = rawWebsite
+    ? rawWebsite.startsWith("http://") || rawWebsite.startsWith("https://")
+      ? rawWebsite
+      : `https://${rawWebsite}`
+    : "";
+  const hasWebsite = website.length > 0;
+
   return (
-  <div className="company-details-card">
-          <div className="company-header">
-            <img
-              src={
-                company?.logo &&
-                company.logo.trim().startsWith("http")
-                  ? company.logo
-                  : "/assets/defaultCompany.png"
-              }
-              alt={
-                company?.logo && company.logo.trim() !== ""
-                  ? company.name
-                  : "Default Company Logo"
-              }
-              className="company-logo"
-            />
-            <div>
-              <h3 className="company-name">{company?.name}</h3>
-              <span className="company-industry">
-                Industry: {company?.industry}
-              </span>
-              <span className="company-size">
-                Size: {company?.size} employers
-              </span>
-              <span className="company-founded">
-                Founded: {formatDate(company?.createdAt ?? "")}
-              </span>
-            </div>
-          </div>
-          <div>
-          </div>
-          <div className="company-meta">
-            <span className="company-location">
-              Location: {company?.location}
+    <section className="company-details-card">
+      <div className="company-header">
+        <img
+          src={logoSrc}
+          alt={company?.name || "Company logo"}
+          className="company-logo"
+        />
+        <div className="company-main">
+          <h3 className="company-name">{company?.name || "Unknown company"}</h3>
+
+          <p className="company-subline">
+            <span>Industry: {company?.industry || "N/A"}</span>
+            <span>Team size: {company?.size || "N/A"}</span>
+            <span>
+              Founded: {formatDate(company?.createdAt ?? "") || "N/A"}
             </span>
-            <span className="company-website">
-              Website:{" "}
-              <a
-                href={company?.website}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {company?.website}{" "}
-              </a>
-            </span>
-          </div>
-          
-          <div className="company-description-data">
-            <p>{company?.description}</p>
-          </div>
+          </p>
         </div>
+      </div>
 
+      <div className="company-meta">
+        <span className="company-location">
+          Location: {company?.location || "N/A"}
+        </span>
+        <span className="company-website">
+          Website:{" "}
+          {hasWebsite ? (
+            <a href={website} target="_blank" rel="noopener noreferrer">
+              {website}
+            </a>
+          ) : (
+            "N/A"
+          )}
+        </span>
+      </div>
 
-    )
-    }
+      <p className="company-description-data">
+        {company?.description || "No company description available."}
+      </p>
+    </section>
+  );
+}

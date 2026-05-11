@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router";
+import { Link, useLocation, useParams } from "react-router";
 import useJobs from "../../../hooks/useJobs";
 import "./JobDetailsView.css";
 import { useEffect, useState } from "react";
@@ -12,8 +12,24 @@ import { Container } from "../../Container/Container";
 import AddToFavourites from "./AddToFavourites/FavoriteButton";
 import { CompanyDetails } from "./CompanyDetails/CompanyDetails";
 
+function normalizeToArray(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value.filter(Boolean).map(String);
+  }
+
+  if (typeof value === "string") {
+    return value
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
 export default function CandidateJobView() {
   const { jobId } = useParams();
+  const location = useLocation();
   const { loading, getJobById } = useJobs();
   const [jobData, setJobData] = useState<Job>();
   const [token] = useLocalStorage<string>("user", "");
@@ -24,12 +40,11 @@ export default function CandidateJobView() {
     return;
   }
 
-//to devide the company members from the candidates, so the company members will not be able to apply for the job and see the apply button
-
-//to refractor css and add more styles to the job details page, to make it more user friendly and responsive and detials
-
-
   const isCompanyMember = jobData?.company?.members?.includes(user._id);
+  const skills = normalizeToArray(jobData?.skills);
+  const benefits = normalizeToArray(jobData?.benefits);
+  const tags = normalizeToArray(jobData?.tags);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,103 +67,147 @@ export default function CandidateJobView() {
   }
   return (
     <Container>
-      <div className="candidate-job-view-container">
-        {jobData?.company && <CompanyDetails company={jobData.company} />}
-        <AddToFavourites jobId={jobId} />
+      <section className="job-details-page">
+        <div className="job-board-layout">
+          <aside className="job-sidebar">
+            {jobData?.company && <CompanyDetails company={jobData.company} />}
 
-        <div className="job-header">
-          <h2 className="job-title">{jobData?.title}</h2>
-          <span className="job-category">
-            Category: {jobData?.category?.name}
-          </span>
-          <span className="job-type">Type: {jobData?.employmentType}</span>
-        </div>
-        <div className="job-meta">
-          <span className="job-location">Location: {jobData?.location}</span>
-          <span className="job-salary">Salary: {jobData?.salary}</span>
-          <span className="job-date">
-            Posted at: {formatDate(jobData?.createdAt ?? "")}
-          </span>
-          <span className="job-date">
-            Posted by: {jobData?.createdBy?.email}
-          </span>
-        </div>
-        <div className="job-description">
-          <h3>Job Description & Expectations</h3>
-          <p>{jobData?.description}</p>
-        </div>
-        <div className="job-skills">
-          <h3>Required skills</h3>
-          <ul>
-            {Array.isArray(jobData?.skills)
-              ? jobData.skills.map((item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                ))
-              : null}
-          </ul>
-        </div>
-        <div className="job-benefits">
-          <h3>Benefits</h3>
-          <ul>
-            {Array.isArray(jobData?.benefits)
-              ? jobData.benefits.map((item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                ))
-              : null}
-          </ul>
-        </div>
-        <div className="job-benefits">
-          <h3>Tags</h3>
-          <ul>
-            {Array.isArray(jobData?.tags)
-              ? jobData.tags.map((item: string, index: number) => (
-                  <li key={index}>{item}</li>
-                ))
-              : null}
-          </ul>
-        </div>
-        <span
-          className={`job-status ${jobData?.isActive ? "active" : "closed"}`}
-        >
-          Status: {jobData?.isActive ? "Active" : "Closed"}
-        </span>
-        <div className="job-apply">
-          {isLoggedIn ? (
-            <>
-              {!isCompanyMember && (
-                <button
-                  className="apply-button"
-                  onClick={() => setShowApplyModal(true)}
-                >
-                  Apply Now
-                </button>
-              )}
-              {showApplyModal && (
-                <ApplyForJobModal
-                  jobId={jobId}
-                  jobTitle={jobData?.title}
-                  onClose={() => setShowApplyModal(false)}
-                />
-              )}
-            </>
-          ) : (
-            <>
-              <button className="apply-button" disabled>
-                You must log in in order to apply for job
-              </button>
-              <div style={{ marginTop: "8px" }}>
-                <Link
-                  to="/login"
-                  state={{ from: location.pathname }}
-                  className="login-btn"
-                >
-                  Log in to apply
-                </Link>
+            <section className="job-card job-card--compact job-card--sticky">
+              <h2>Quick info</h2>
+              <ul className="summary-list">
+                <li className="summary-item">
+                  <span className="summary-label">Status</span>
+                  <span
+                    className={
+                      jobData?.isActive ? "job-status-pill is-active" : "job-status-pill is-closed"
+                    }
+                  >
+                    {jobData?.isActive ? "Active vacancy" : "Closed vacancy"}
+                  </span>
+                </li>
+                <li className="summary-item">
+                  <span className="summary-label">Posted</span>
+                  <span>{formatDate(jobData?.createdAt ?? "") || "N/A"}</span>
+                </li>
+                <li className="summary-item">
+                  <span className="summary-label">Category</span>
+                  <span>{jobData?.category?.name || "N/A"}</span>
+                </li>
+                <li className="summary-item">
+                  <span className="summary-label">Type</span>
+                  <span>{jobData?.employmentType || "N/A"}</span>
+                </li>
+                <li className="summary-item">
+                  <span className="summary-label">Location</span>
+                  <span>{jobData?.location || "N/A"}</span>
+                </li>
+                <li className="summary-item">
+                  <span className="summary-label">Salary</span>
+                  <span>{jobData?.salary || "N/A"}</span>
+                </li>
+              </ul>
+
+              <div className="job-top-actions">
+                <AddToFavourites jobId={jobId} />
               </div>
-            </>
-          )}
+
+              <section className="job-apply">
+                {isLoggedIn ? (
+                  !isCompanyMember ? (
+                    <button className="apply-button" onClick={() => setShowApplyModal(true)}>
+                      Apply now
+                    </button>
+                  ) : (
+                    <button className="apply-button" disabled>
+                      Company members cannot apply
+                    </button>
+                  )
+                ) : (
+                  <div className="auth-cta">
+                    <button className="apply-button" disabled>
+                      You need an account to apply
+                    </button>
+                    <Link to="/login" state={{ from: location.pathname }} className="login-btn">
+                      Log in and continue
+                    </Link>
+                  </div>
+                )}
+              </section>
+            </section>
+          </aside>
+
+          <main className="job-main">
+            <header className="job-hero">
+              <h1 className="job-title">{jobData?.title || "Untitled position"}</h1>
+              <p className="job-subtitle">Posted by {jobData?.createdBy?.email || "N/A"}</p>
+              <div className="job-hero-meta">
+                <span className="meta-chip">Category: {jobData?.category?.name || "N/A"}</span>
+                <span className="meta-chip">Type: {jobData?.employmentType || "N/A"}</span>
+                <span className="meta-chip">Location: {jobData?.location || "N/A"}</span>
+                <span className="meta-chip">Salary: {jobData?.salary || "N/A"}</span>
+              </div>
+            </header>
+
+            <section className="job-card">
+              <h2>Job description</h2>
+              <p>{jobData?.description || "No description provided yet."}</p>
+            </section>
+
+            <section className="job-card">
+              <h2>Required skills</h2>
+              {skills.length > 0 ? (
+                <ul className="chip-list">
+                  {skills.map((item, index) => (
+                    <li key={item + "-" + index} className="chip-item">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="empty-text">No skills listed.</p>
+              )}
+            </section>
+
+            <section className="job-card">
+              <h2>Benefits</h2>
+              {benefits.length > 0 ? (
+                <ul className="chip-list">
+                  {benefits.map((item, index) => (
+                    <li key={item + "-" + index} className="chip-item">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="empty-text">No benefits listed.</p>
+              )}
+            </section>
+
+            <section className="job-card">
+              <h2>Tags</h2>
+              {tags.length > 0 ? (
+                <ul className="chip-list">
+                  {tags.map((item, index) => (
+                    <li key={item + "-" + index} className="chip-item chip-tag">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="empty-text">No tags listed.</p>
+              )}
+            </section>
+          </main>
         </div>
-      </div>
+
+        {showApplyModal && (
+          <ApplyForJobModal
+            jobId={jobId}
+            jobTitle={jobData?.title}
+            onClose={() => setShowApplyModal(false)}
+          />
+        )}
+      </section>
     </Container>
   );
 }

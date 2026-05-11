@@ -32,6 +32,9 @@ function ViewAllJobs() {
     fetchJobs();
   }, []);
 
+  //to refractor return tsx and css, to make a fetch on jobs when goes to next page instead of fetching all jobs and 
+  // then paginating them on the client side, to make it more efficient and faster, especially when we have a 
+  // large number of jobs.
   if (loading) {
     return <Spinner overlay={true} />;
   }
