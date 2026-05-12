@@ -1,4 +1,4 @@
-import {useLocation, useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import useJobs from "../../../hooks/useJobs";
 import "./JobDetailsView.css";
 import { useEffect, useState } from "react";
@@ -84,13 +84,6 @@ export default function CandidateJobView() {
           <main className="job-main">
             <header className="job-hero">
               <h1 className="job-title">{jobData?.title || "Untitled position"}</h1>
-              <p className="job-subtitle">Posted by {jobData?.createdBy?.email || "N/A"}</p>
-              <div className="job-hero-meta">
-                <span className="meta-chip">Category: {jobData?.category?.name || "N/A"}</span>
-                <span className="meta-chip">Type: {jobData?.employmentType || "N/A"}</span>
-                <span className="meta-chip">Location: {jobData?.location || "N/A"}</span>
-                <span className="meta-chip">Salary: {jobData?.salary || "N/A"}</span>
-              </div>
             </header>
 
             <section className="job-card">
