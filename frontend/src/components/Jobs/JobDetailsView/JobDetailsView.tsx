@@ -1,16 +1,15 @@
-import { Link, useLocation, useParams } from "react-router";
+import {useLocation, useParams } from "react-router";
 import useJobs from "../../../hooks/useJobs";
 import "./JobDetailsView.css";
 import { useEffect, useState } from "react";
 import { Job } from "../../../interfaces/Job.model";
-import { formatDate } from "../../../utils/formData";
 import Spinner from "../../Spinner/Spinner";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { ApplyForJobModal } from "../ApplyForJobModal/ApplyForJobModal";
 import { getUserFromLocalStorage } from "../../../hooks/useAuth";
 import { Container } from "../../Container/Container";
-import AddToFavourites from "./AddToFavourites/FavoriteButton";
 import { CompanyDetails } from "./CompanyDetails/CompanyDetails";
+import { QucikInfoSection } from "./CompanyDetails/qucikInfoSection/QuicnInfoSection";
 
 function normalizeToArray(value: unknown): string[] {
   if (Array.isArray(value)) {
@@ -72,68 +71,14 @@ export default function CandidateJobView() {
           <aside className="job-sidebar">
             {jobData?.company && <CompanyDetails company={jobData.company} />}
 
-            <section className="job-card job-card--compact job-card--sticky">
-              <h2>Quick info</h2>
-              <ul className="summary-list">
-                <li className="summary-item">
-                  <span className="summary-label">Status</span>
-                  <span
-                    className={
-                      jobData?.isActive ? "job-status-pill is-active" : "job-status-pill is-closed"
-                    }
-                  >
-                    {jobData?.isActive ? "Active vacancy" : "Closed vacancy"}
-                  </span>
-                </li>
-                <li className="summary-item">
-                  <span className="summary-label">Posted</span>
-                  <span>{formatDate(jobData?.createdAt ?? "") || "N/A"}</span>
-                </li>
-                <li className="summary-item">
-                  <span className="summary-label">Category</span>
-                  <span>{jobData?.category?.name || "N/A"}</span>
-                </li>
-                <li className="summary-item">
-                  <span className="summary-label">Type</span>
-                  <span>{jobData?.employmentType || "N/A"}</span>
-                </li>
-                <li className="summary-item">
-                  <span className="summary-label">Location</span>
-                  <span>{jobData?.location || "N/A"}</span>
-                </li>
-                <li className="summary-item">
-                  <span className="summary-label">Salary</span>
-                  <span>{jobData?.salary || "N/A"}</span>
-                </li>
-              </ul>
-
-              <div className="job-top-actions">
-                <AddToFavourites jobId={jobId} />
-              </div>
-
-              <section className="job-apply">
-                {isLoggedIn ? (
-                  !isCompanyMember ? (
-                    <button className="apply-button" onClick={() => setShowApplyModal(true)}>
-                      Apply now
-                    </button>
-                  ) : (
-                    <button className="apply-button" disabled>
-                      Company members cannot apply
-                    </button>
-                  )
-                ) : (
-                  <div className="auth-cta">
-                    <button className="apply-button" disabled>
-                      You need an account to apply
-                    </button>
-                    <Link to="/login" state={{ from: location.pathname }} className="login-btn">
-                      Log in and continue
-                    </Link>
-                  </div>
-                )}
-              </section>
-            </section>
+          <QucikInfoSection
+            jobData={jobData}
+            isLoggedIn={isLoggedIn}
+            isCompanyMember={isCompanyMember}
+            setShowApplyModal={setShowApplyModal}
+            jobId={jobId}
+            location={location}
+          />
           </aside>
 
           <main className="job-main">
