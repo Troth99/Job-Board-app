@@ -1,0 +1,168 @@
+import { useState } from "react";
+import { API_BASE } from "../../services/api";
+import useApiRequester from "../useApiRequester";
+import { getUserFromLocalStorage } from "../useAuth";
+
+export interface Member {
+  _id: string;
+  email: string;
+}
+
+interface RegisterCompanyInterface {
+  name: string;
+  industry: string;
+  location: string;
+  description: string;
+}
+
+export interface Company {
+  _id: string;
+  name: string;
+  industry: string;
+  location: string;
+  logo: string;
+  members?: Member[];
+  description: string;
+  size: string;
+  website: string;
+  createdAt: string;
+}
+
+export default function useCompanies() {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [company, setCompany] = useState<Company | null>(null);
+  const [companies, setCompanies] = useState<Company[]>([]);
+  const { request } = useApiRequester();
+
+  const createCompany = async (data: RegisterCompanyInterface) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await request(`${API_BASE}/companies`, "POST", data);
+      return response;
+    } catch (err) {
+      setError("Error creating company");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getCompanies = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await request(`${API_BASE}/companies`, "GET", {});
+      setCompanies(response);
+    } catch (err) {
+      setError("Error fetching companies");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getCompanyById = async (id: string) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await request(`${API_BASE}/companies/${id}`, "GET", {});
+      setCompany(response);
+    } catch (err) {
+      setError("Error fetching company data");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getMyCompany = async (): Promise<Company | null> => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await request(
+        `${API_BASE}/companies/my-company`,
+        "GET",
+        {}
+      );
+      setCompany(response);
+      return response;
+    } catch (err) {
+      setError("Error fetching my company data");
+      console.error(err);
+      return null;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getCompanyFromLocalStorage = (): string | null => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      const companyId = parsedUser?.company;
+      if (companyId) {
+        return companyId;
+      }
+    }
+    return null;
+  };
+
+  const checkUser = async (email: string) => {
+    if (!email) return;
+    try {
+      const response = await request(
+        `${API_BASE}/users/check-user-exists`,
+        "POST",
+        { email }
+      );
+      return response;
+    } catch (error) {
+      console.error("Failed to check if the user exists in the backend", error);
+    }
+  };
+
+  const transferOwnership = async (companyId: string, newOwnerId: string) => {
+    try {
+      const response = await request(
+        `${API_BASE}/companies/${companyId}/transfer-ownership`,
+        "POST",
+        { newOwnerMemberId: newOwnerId }
+      );
+      return response;
+    } catch (error) {
+      setError("Error occured while transferring ownership.");
+      console.error(error);
+    }
+  };
+
+  const abandonCompany = async (companyId: string) => {
+    try {
+      const response = await request(
+        `${API_BASE}/companies/${companyId}/abandon`,
+        "DELETE",
+        {}
+      );
+      return response;
+    } catch (error) {
+      setError("Error occured while abandoning the company.");
+      console.error(error);
+    }
+  };
+
+  return {
+    loading,
+    error,
+    company,
+    companies,
+    createCompany,
+    getCompanies,
+    getCompanyById,
+    getCompanyFromLocalStorage,
+    getMyCompany,
+    checkUser,
+    transferOwnership,
+    abandonCompany,
+  };
+}
