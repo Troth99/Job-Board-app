@@ -1,6 +1,7 @@
 import { useCategories as useCategoriesHook } from "./categories";
 
 export { useCategories } from "./categories";
+export type { Category } from "./categories/useCategories";
 
 export default function useCategories() {
   const categoriesMethods = useCategoriesHook();

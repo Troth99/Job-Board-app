@@ -19,6 +19,14 @@ export interface Job {
   employmentType?: string;
   benefits?: string[];
   applicationDeadline?: string;
+  workMode?: string;
+  experienceLevel?: string;
+  requiredExperienceYears?: string;
+  openings?: string;
+  contractType?: string;
+  workSchedule?: string;
+  languageRequirements?: string;
+  educationLevel?: string;
   views?: number;
   isActive: boolean;
   tags?: string;
@@ -38,5 +46,14 @@ export interface valuesInterface {
   benefits: string[];
   tags: string;
   email: string;
+  workMode?: string;
+  experienceLevel?: string;
+  requiredExperienceYears?: string;
+  applicationDeadline?: string;
+  openings?: string;
+  contractType?: string;
+  workSchedule?: string;
+  languageRequirements?: string;
+  educationLevel?: string;
   [key: string]: any;
 }

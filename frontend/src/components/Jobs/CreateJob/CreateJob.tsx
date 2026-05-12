@@ -10,6 +10,12 @@ import { jobPostValidations } from "../../validators/postJobValidation";
 import useForm from "../../../hooks/useForm";
 import { valuesInterface } from "../../../interfaces/Job.model";
 
+//To add backend Logic and refracto the form in multiple files and components, to make it more 
+// readable and maintainable, also to add more fields to the form, such as work mode, experience level, 
+// required experience years, application deadline, openings, contract type, work schedule, language requirements, 
+// education level, etc... and to add validation for these fields as well. Also to add a success message 
+// when the job is posted successfully and to navigate the user to the company dashboard after posting the job.
+
 const initialValues = {
   title: "",
   description: "",
@@ -25,6 +31,15 @@ const initialValues = {
   benefits: [],
   tags: "",
   email: "",
+  workMode: "",
+  experienceLevel: "",
+  requiredExperienceYears: "",
+  applicationDeadline: "",
+  openings: "",
+  contractType: "",
+  workSchedule: "",
+  languageRequirements: "",
+  educationLevel: "",
 };
 function PostJob() {
   const { companyId } = useParams();
@@ -102,6 +117,21 @@ function PostJob() {
         </div>
 
         <div className="form-group">
+          <label htmlFor="workMode">Work Mode</label>
+          <select
+            id="workMode"
+            value={register("workMode").value}
+            onChange={(e) => setFieldValue("workMode", e.target.value)}
+          >
+            <option value="">Select Work Mode</option>
+            <option value="On-site">On-site</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Remote">Remote</option>
+          </select>
+          <div className="error-message">{errors.workMode}</div>
+        </div>
+
+        <div className="form-group">
           <label htmlFor="salary">Category</label>
           <JobCategorySelect
             value={register("category").value?._id}
@@ -116,13 +146,106 @@ function PostJob() {
           onChange={(e) => setFieldValue("employmentType", e.target.value)}
         />
         </div>
+
+        <div className="form-group">
+          <label htmlFor="experienceLevel">Experience Requirement</label>
+          <select
+            id="experienceLevel"
+            value={register("experienceLevel").value}
+            onChange={(e) => setFieldValue("experienceLevel", e.target.value)}
+          >
+            <option value="">Select Experience Requirement</option>
+            <option value="No prior experience required">No prior experience required</option>
+            <option value="Some experience preferred (6+ months)">Some experience preferred (6+ months)</option>
+            <option value="1+ year relevant experience">1+ year relevant experience</option>
+            <option value="2+ years relevant experience">2+ years relevant experience</option>
+            <option value="3+ years relevant experience">3+ years relevant experience</option>
+            <option value="5+ years relevant experience">5+ years relevant experience</option>
+            <option value="Supervisory experience required">Supervisory experience required</option>
+            <option value="Management experience required">Management experience required</option>
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="requiredExperienceYears">Required Experience (years)</label>
+          <input
+            type="number"
+            id="requiredExperienceYears"
+            min="0"
+            placeholder="e.g., 2"
+            {...register("requiredExperienceYears")}
+          />
+          <div className="error-message">{errors.requiredExperienceYears}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="applicationDeadline">Application Deadline</label>
+          <input
+            type="date"
+            id="applicationDeadline"
+            {...register("applicationDeadline")}
+          />
+          <div className="error-message">{errors.applicationDeadline}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="openings">Open Positions</label>
+          <input
+            type="number"
+            id="openings"
+            min="1"
+            placeholder="e.g., 3"
+            {...register("openings")}
+          />
+          <div className="error-message">{errors.openings}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="contractType">Contract Type</label>
+          <input
+            type="text"
+            id="contractType"
+            placeholder="e.g., Permanent, Temporary, Internship"
+            {...register("contractType")}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="workSchedule">Work Schedule</label>
+          <input
+            type="text"
+            id="workSchedule"
+            placeholder="e.g., Morning shift, 09:00-18:00"
+            {...register("workSchedule")}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="languageRequirements">Language Requirements</label>
+          <input
+            type="text"
+            id="languageRequirements"
+            placeholder="e.g., English B2, German A2"
+            {...register("languageRequirements")}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="educationLevel">Education Level</label>
+          <input
+            type="text"
+            id="educationLevel"
+            placeholder="e.g., High School, Bachelor, Not required"
+            {...register("educationLevel")}
+          />
+        </div>
       
         <div className="form-group">
-          <label htmlFor="skills">Skills (comma separated)</label>
+          <label htmlFor="skills">Requirements (comma separated)</label>
           <input
             type="text"
             id="skills"
-            placeholder="e.g., React, Node.js, CSS"
+            placeholder="e.g., Customer service, Driving license B, Excel"
             {...register("skills")}
           />
           <div className="error-message">{errors.skills}</div>
@@ -143,7 +266,7 @@ function PostJob() {
           <input
             type="text"
             id="tags"
-            placeholder="e.g., Frontend, Remote"
+            placeholder="e.g., Full-time, Weekend shifts, Immediate start"
             {...register("tags")}
           />
           <div className="error-message">{errors.tags}</div>

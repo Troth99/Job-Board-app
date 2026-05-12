@@ -11,7 +11,6 @@ const normalize = (arr: any) =>
     : [];
 
 export function jobPostValidations(form: valuesInterface) {
-console.log("Normalized skills:", normalize(form.skills));
   let errors: Record<string, string> = {};
 
   if (!form.title || form.title.trim().length === 0) {
@@ -39,6 +38,24 @@ if (normalize(form.skills).filter(Boolean).length === 0) {
   }
   if (!form.email || form.email.trim().length === 0) {
     errors.email = "Email is required.";
+  }
+
+  if (
+    form.requiredExperienceYears &&
+    Number(form.requiredExperienceYears) < 0
+  ) {
+    errors.requiredExperienceYears = "Experience years cannot be negative.";
+  }
+
+  if (form.openings && Number(form.openings) <= 0) {
+    errors.openings = "Open positions must be at least 1.";
+  }
+
+  if (form.applicationDeadline) {
+    const selectedDate = new Date(form.applicationDeadline);
+    if (Number.isNaN(selectedDate.getTime())) {
+      errors.applicationDeadline = "Invalid application deadline date.";
+    }
   }
 
   return errors;
