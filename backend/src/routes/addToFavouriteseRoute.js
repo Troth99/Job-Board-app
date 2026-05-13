@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addJobToFavourites, getSavedJobs, removeJobFromFavourites } from "../controllers/AddJobToFavourites.js";
+import { addJobToFavourites, getSavedJobs, removeJobFromFavourites } from "../controllers/addJobToFavourites.js";
 import { protect } from "../middleware/authMiddleware.js";
 
 
