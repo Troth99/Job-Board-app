@@ -2,7 +2,7 @@ export interface QuickInfoSectionProps {
   jobData?: {
     isActive?: boolean;
     createdAt?: string;
-    category?: { name: string };
+    category?: { name: string } | string;
     employmentType?: string;
     location?: string;
     salary?: string;

@@ -35,6 +35,7 @@ const initialValues = {
   workSchedule: "",
   languageRequirements: "",
   educationLevel: "",
+  additionalInfo: "",
 };
 function PostJob() {
   const { companyId } = useParams();
@@ -92,6 +93,17 @@ function PostJob() {
             {...register("description")}
           ></textarea>
           <div className="error-message">{errors.description}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="additionalInfo">
+            Additional Information <span className="optional-badge">Optional</span>
+          </label>
+          <textarea
+            id="additionalInfo"
+            placeholder="e.g., We are happy to review your application and contact shortlisted candidates."
+            {...register("additionalInfo")}
+          ></textarea>
         </div>
 
         <div className="form-group">
@@ -259,6 +271,7 @@ function PostJob() {
           />
           <div className="error-message">{errors.email}</div>
         </div>
+
         <button type="submit" className="post-job-button" disabled={loading}>
           {loading ? "Posting job..." : "Post job"}
         </button>

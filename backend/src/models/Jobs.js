@@ -114,6 +114,12 @@ const jobSchema = new Schema({
     type: String,
   },
 
+  additionalInfo: {
+    type: String,
+    default: "",
+    trim: true,
+  },
+
   views: { type: Number, default: 0 },
 
   isActive: { type: Boolean, default: true },

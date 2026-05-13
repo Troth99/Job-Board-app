@@ -16,6 +16,7 @@ export interface Job {
   category?: Category | string;
   createdAt?: string;
   skills?: string;
+  requirements?: string;
   employmentType?: string;
   benefits?: string | string[];
   applicationDeadline?: string;
@@ -31,6 +32,7 @@ export interface Job {
   isActive: boolean;
   tags?: string;
   email?: string;
+  additionalInfo?: string;
   updatedAt?: string;
 }
 
@@ -55,5 +57,6 @@ export interface valuesInterface {
   workSchedule?: string;
   languageRequirements?: string;
   educationLevel?: string;
+  additionalInfo?: string;
   [key: string]: any;
 }

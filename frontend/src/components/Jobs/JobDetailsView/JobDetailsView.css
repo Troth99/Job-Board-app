@@ -172,6 +172,55 @@ body[data-theme="dark"] {
   margin: 0;
 }
 
+.details-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.details-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 88px;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--job-border) 92%, transparent);
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--job-surface-2) 82%, transparent),
+      var(--job-surface)
+    );
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.details-list li:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--job-brand) 36%, var(--job-border));
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--job-brand) 14%, transparent);
+}
+
+.details-list li span {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--job-text-soft) 88%, var(--job-text-strong));
+}
+
+.details-list li strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--job-text-strong);
+}
+
 .chip-list {
   list-style: none;
   display: flex;
@@ -199,6 +248,45 @@ body[data-theme="dark"] {
 .empty-text {
   color: var(--job-text-soft);
   opacity: 0.85;
+}
+
+.job-card--more-info {
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--job-brand) 12%, transparent), transparent 44%),
+    var(--job-surface);
+}
+
+.more-info-text,
+.more-info-note,
+.more-info-contact {
+  margin: 0;
+}
+
+.more-info-text {
+  font-size: 1rem;
+  color: var(--job-text-strong);
+}
+
+.more-info-note {
+  margin-top: 10px;
+  color: var(--job-text-soft);
+}
+
+.more-info-contact {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed color-mix(in srgb, var(--job-border) 82%, transparent);
+  color: var(--job-text-soft);
+}
+
+.more-info-contact a {
+  color: var(--job-brand);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.more-info-contact a:hover {
+  text-decoration: underline;
 }
 
 .job-apply {
@@ -309,6 +397,16 @@ body[data-theme="dark"] {
 
   .summary-item span:last-child {
     text-align: left;
+  }
+
+  .details-list li {
+    min-height: auto;
+    padding: 10px 12px;
+  }
+
+  .details-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .job-title {

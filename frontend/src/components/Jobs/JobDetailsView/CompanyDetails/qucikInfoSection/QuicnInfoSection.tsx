@@ -6,6 +6,10 @@ import { QuickInfoSectionProps } from "./QuickInfoSection.types";
 
 
 export function QucikInfoSection( { jobData, isLoggedIn, isCompanyMember, setShowApplyModal, jobId, location }: QuickInfoSectionProps) {
+    const categoryLabel =
+      typeof jobData?.category === "string"
+        ? jobData.category
+        : jobData?.category?.name || "N/A";
 
     return (
             <section className="job-card job-card--compact job-card--sticky">
@@ -27,7 +31,7 @@ export function QucikInfoSection( { jobData, isLoggedIn, isCompanyMember, setSho
                 </li>
                 <li className="summary-item">
                   <span className="summary-label">Category</span>
-                  <span>{jobData?.category?.name || "N/A"}</span>
+                  <span>{categoryLabel}</span>
                 </li>
                 <li className="summary-item">
                   <span className="summary-label">Type</span>

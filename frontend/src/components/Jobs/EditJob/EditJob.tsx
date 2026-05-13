@@ -28,6 +28,7 @@ const initialValues = {
   benefits: "",
   tags: "",
   email: "",
+  additionalInfo: "",
 };
 
 export default function EditJob() {
@@ -142,6 +143,14 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                    {...register("description")}
               ></textarea>
                    <div className="error-message">{errors.description}</div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="additionalInfo">Additional Information</label>
+              <textarea
+                id="additionalInfo"
+                placeholder="e.g., We are happy to review your application and contact shortlisted candidates."
+                {...register("additionalInfo")}
+              ></textarea>
             </div>
             <div className="form-group">
               <label htmlFor="location">Location</label>
