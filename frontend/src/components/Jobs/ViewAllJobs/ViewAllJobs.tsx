@@ -8,15 +8,31 @@ import { Container } from "../../Container/Container";
 
 const ITEMS_PER_PAGE = 5;
 
+const formatPostedDate = (date?: string) => {
+  if (!date) {
+    return "Recently posted";
+  }
+
+  const parsedDate = new Date(date);
+  if (Number.isNaN(parsedDate.getTime())) {
+    return "Recently posted";
+  }
+
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  }).format(parsedDate);
+};
+
 function ViewAllJobs() {
   const [jobs, setJobs] = useState<Job[]>([]);
-const [totalPages, setTotalPages] = useState<number>(1);
-const [totalJobs, setTotalJobs] = useState<number>(0);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [totalJobs, setTotalJobs] = useState<number>(0);
   const { loading, getJobsPage } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
-
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -24,7 +40,9 @@ const [totalJobs, setTotalJobs] = useState<number>(0);
       try {
         const response = await getJobsPage(pageFromUrl, ITEMS_PER_PAGE);
         const sortedJobs = response.jobs.sort(
-          (a: Job, b: Job) => new Date(b.createdAt ?? '').getTime() - new Date(a.createdAt ?? '').getTime()
+          (a: Job, b: Job) =>
+            new Date(b.createdAt ?? "").getTime() -
+            new Date(a.createdAt ?? "").getTime()
         );
         setJobs(sortedJobs);
         setTotalPages(response.totalPages);
@@ -40,63 +58,118 @@ const [totalJobs, setTotalJobs] = useState<number>(0);
     return <Spinner overlay={true} />;
   }
   return (
-    <Container> 
-    <div className="jobs-list-modern">
-      {jobs.length > 0 ? (
-        jobs.map((job) => (
-          <div
-            className="job-card-modern"
-            key={job._id}
-            onClick={() => navigate(`/job/${job._id}`)}
-          >
-            <div className="job-header-modern">
-              <span className="job-company-modern">
-                {typeof job.company === "string"
-                  ? job.company
-                  : job.company?.name ?? ""}
-              </span>
-              <span className="job-location-modern">{job.location}</span>
-            </div>
-            <h2 className="job-title-modern">{job.title}</h2>
-            <div className="job-info-modern">
-              <span className="job-type-modern">{job.employmentType}</span>
-              <span className="job-salary-modern">{job.salary}</span>
-              <span className="job-status-modern">
-                {job.isActive ? "Active" : "Closed"}
-              </span>
-            </div>
-            <span className="job-apply-btn-modern">
-              Posted by: {job.createdBy?.firstName} {job.createdBy?.lastName}
-            </span>
+    <Container>
+      <section className="jobs-board-page">
+        <header className="jobs-board-hero">
+          <div>
+            <p className="jobs-board-kicker">Opportunities</p>
+            <h1 className="jobs-board-title">Browse all open roles</h1>
+            <p className="jobs-board-subtitle">
+              Fresh listings in one place, sorted by newest first so the latest
+              opportunities stay visible.
+            </p>
           </div>
-        ))
-      ) : (
-        <p className="no-jobs-modern">No jobs found.</p>
-      )}
-      {totalJobs > ITEMS_PER_PAGE && (
-        <div className="pagination">
-          <button
-            onClick={() =>
-              setSearchParams({ page: (pageFromUrl - 1).toString() })
-            }
-            disabled={pageFromUrl === 1}
-          >
-            Previous
-          </button>
-          <span>
-            Page {pageFromUrl} of {totalPages}
-          </span>
-          <button
-            onClick={() =>
-              setSearchParams({ page: (pageFromUrl + 1).toString() })
-            }
-            disabled={pageFromUrl === totalPages}
-          >
-            Next
-          </button>
+          <div className="jobs-board-stats" aria-label="Job listing statistics">
+            <div className="jobs-board-stat-card">
+              <span className="jobs-board-stat-value">{totalJobs}</span>
+              <span className="jobs-board-stat-label">Total jobs</span>
+            </div>
+            <div className="jobs-board-stat-card">
+              <span className="jobs-board-stat-value">{pageFromUrl}</span>
+              <span className="jobs-board-stat-label">Current page</span>
+            </div>
+          </div>
+        </header>
+
+        <div className="jobs-list-modern">
+          {jobs.length > 0 ? (
+            jobs.map((job) => (
+              <article
+                className="job-card-modern"
+                key={job._id}
+                onClick={() => navigate(`/job/${job._id}`)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    navigate(`/job/${job._id}`);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+              >
+                <div className="job-card-topline">
+                  <span className="job-company-modern">
+                    {typeof job.company === "string"
+                      ? job.company
+                      : job.company?.name ?? "Company"
+                    }
+                  </span>
+                  <span
+                    className={`job-status-modern ${job.isActive ? "is-active" : "is-closed"}`}
+                  >
+                    {job.isActive ? "Active" : "Closed"}
+                  </span>
+                </div>
+
+                <div className="job-card-main">
+                  <div className="job-header-modern">
+                    <h2 className="job-title-modern">{job.title}</h2>
+                    <span className="job-location-modern">{job.location}</span>
+                  </div>
+
+                  <div className="job-info-modern">
+                    <span className="job-pill job-type-modern">{job.employmentType}</span>
+                    <span className="job-pill job-salary-modern">{job.salary || "Salary not specified"}</span>
+                    <span className="job-pill job-date-modern">
+                      {formatPostedDate(job.createdAt)}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="job-card-footer">
+                  <span className="job-posted-by-modern">
+                    Posted by {job.createdBy?.firstName || "Unknown"} {job.createdBy?.lastName || "recruiter"}
+                  </span>
+                  <span className="job-apply-btn-modern">View details</span>
+                </div>
+              </article>
+            ))
+          ) : (
+            <div className="no-jobs-modern">
+              <p className="no-jobs-title">No jobs found.</p>
+              <p className="no-jobs-text">
+                Try again later or adjust the filters from the previous page.
+              </p>
+            </div>
+          )}
+
+          {totalJobs > ITEMS_PER_PAGE && (
+            <nav className="jobs-pagination" aria-label="Job pages">
+              <button
+                className="jobs-pagination-button"
+                onClick={() =>
+                  setSearchParams({ page: (pageFromUrl - 1).toString() })
+                }
+                disabled={pageFromUrl === 1}
+              >
+                Previous
+              </button>
+              <span className="jobs-pagination-status">
+                Page {pageFromUrl} of {totalPages}
+              </span>
+              <button
+                className="jobs-pagination-button"
+                onClick={() =>
+                  setSearchParams({ page: (pageFromUrl + 1).toString() })
+                }
+                disabled={pageFromUrl === totalPages}
+              >
+                Next
+              </button>
+            </nav>
+          )}
         </div>
-      )}
-    </div>
+      </section>
     </Container>
   );
 }
