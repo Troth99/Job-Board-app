@@ -41,6 +41,102 @@
   color: #0d2c4a;
 }
 
+.post-job-container .back-link {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.15rem;
+  border-radius: 22px;
+  border: 1px solid rgba(10, 132, 255, 0.2);
+  background:
+    radial-gradient(circle at top right, rgba(10, 132, 255, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(10, 132, 255, 0.12), rgba(0, 166, 166, 0.08)),
+    rgba(255, 255, 255, 0.86);
+  color: #0d4b87;
+  text-decoration: none;
+  box-shadow: 0 16px 34px rgba(10, 132, 255, 0.14);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.post-job-container .back-link__spark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  min-height: 72px;
+  padding: 0.7rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0a84ff, #00a6a6);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.post-job-container .back-link__content {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.post-job-container .back-link__title {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #082d4e;
+}
+
+.post-job-container .back-link__text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #527193;
+}
+
+.post-job-container .back-link__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: #0a84ff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(10, 132, 255, 0.14);
+}
+
+.post-job-container .back-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(10, 132, 255, 0.38);
+  color: #073a69;
+  box-shadow: 0 22px 42px rgba(10, 132, 255, 0.22);
+}
+
+.post-job-container .back-link:hover .back-link__arrow {
+  transform: translateX(3px);
+}
+
+.post-job-container .back-link:focus-visible {
+  outline: none;
+  border-color: var(--post-focus);
+  box-shadow: 0 0 0 4px rgba(11, 127, 219, 0.18);
+}
+
+.post-job-container .back-link__arrow,
+.post-job-container .back-link__spark {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
 .post-job-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -183,6 +279,36 @@
   color: var(--post-text);
 }
 
+[data-theme="dark"] .post-job-container .back-link {
+  border-color: rgba(76, 166, 255, 0.24);
+  background:
+    radial-gradient(circle at top right, rgba(124, 196, 255, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(35, 132, 255, 0.16), rgba(18, 176, 166, 0.12)),
+    rgba(16, 28, 44, 0.9);
+  color: #b9d9ff;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme="dark"] .post-job-container .back-link__title {
+  color: #e6f2ff;
+}
+
+[data-theme="dark"] .post-job-container .back-link__text {
+  color: #a7bdd8;
+}
+
+[data-theme="dark"] .post-job-container .back-link__arrow {
+  background: rgba(12, 24, 38, 0.92);
+  color: #7cc4ff;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme="dark"] .post-job-container .back-link:hover {
+  border-color: rgba(76, 166, 255, 0.4);
+  color: #e6f2ff;
+  box-shadow: 0 20px 42px rgba(8, 18, 31, 0.38);
+}
+
 [data-theme="dark"] .post-job-form input,
 [data-theme="dark"] .post-job-form textarea,
 [data-theme="dark"] .post-job-form select {
@@ -223,6 +349,24 @@
 @media (max-width: 520px) {
   .post-job-container h2 {
     font-size: 1.45rem;
+  }
+
+  .post-job-container .back-link {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .post-job-container .back-link__spark {
+    min-width: 0;
+    width: fit-content;
+    min-height: 40px;
+    padding: 0.55rem 0.8rem;
+    border-radius: 999px;
+  }
+
+  .post-job-container .back-link__arrow {
+    width: 100%;
+    border-radius: 14px;
   }
 
   .post-job-form input,
