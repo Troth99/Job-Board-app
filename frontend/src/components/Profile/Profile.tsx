@@ -29,6 +29,12 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const navigate = useNavigate();
   const { setUserData } = useUserData();
   const [isCompanyReady, setIsCompanyReady] = useState(false);
+  const companyValue = userData?.company as
+    | string
+    | { _id?: string }
+    | undefined;
+  const companyId =
+    typeof companyValue === "string" ? companyValue : companyValue?._id;
 
   useEffect(() => {
     if (userData) {
@@ -37,13 +43,6 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   }, [userData]);
 
   useEffect(() => {
-    const companyValue = userData?.company as
-      | string
-      | { _id?: string }
-      | undefined;
-    const companyId =
-      typeof companyValue === "string" ? companyValue : companyValue?._id;
-
     if (!userData) {
       setIsCompanyReady(false);
       return;
@@ -66,7 +65,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     return () => {
       isMounted = false;
     };
-  }, [userData?.company]);
+  }, [companyId, userData]);
 
   const registerCompanyNavigation = () => {
     navigate("/register/company");
@@ -76,17 +75,23 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     navigate(`/company/${company?._id}/post-job`);
   };
 
-  //refactor to use hasCompanyId instead of company for better loading state handling and to avoid showing "No company" when company data is still loading
-  const hasCompanyId = Boolean(userData?.company);
+  const hasCompanyId = Boolean(companyId);
 
-
-  const isProfileReady =
-    !userLoading &&
-    !!userData &&
-    isCompanyReady;
-
-  if (!isProfileReady || !userData) {
+  if (userLoading || (!!userData && !isCompanyReady)) {
     return <Spinner overlay={true} />;
+  }
+
+  if (!userData) {
+    return (
+      <Container maxwith="820px" padding="0 12px">
+        <div className="profile-container">
+          <div className="profile-activity-card">
+            <h3>Unable to load profile</h3>
+            <p>This account data could not be loaded right now.</p>
+          </div>
+        </div>
+      </Container>
+    );
   }
 
   const completionChecks = [
@@ -110,9 +115,6 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
             userData={userData}
             avatar={avatar}
             handleFileChange={handleFileChange}
-            userRole={userRole}
-            company={company}
-            hasCompanyId={hasCompanyId}
             completionPercentage={completionPercentage}
             completedFields={completedFields}
             totalCompletionFields={totalCompletionFields}
@@ -145,7 +147,11 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
               <li>
                 <span>Company access</span>
                 <strong>
-                  {!hasCompanyId ? "Not enabled" : "Enabled"}
+                  {!hasCompanyId
+                    ? "Not enabled"
+                    : company
+                      ? "Enabled"
+                      : "Loading..."}
                 </strong>
               </li>
               <li>
