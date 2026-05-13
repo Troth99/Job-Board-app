@@ -1,7 +1,7 @@
 import "./CreateJob.css";
 import { useState } from "react";
 import "./CreateJob.css";
-import { EmploymentTypeSelect, JobCategorySelect } from "../formSelectedInputs";
+import { EmploymentTypeSelect, ExperienceLevelSelect, JobCategorySelect } from "../formSelectedInputs";
 import useJobs from "../../../hooks/useJobs";
 import { showSuccess } from "../../../utils/toast";
 import { useNavigate, useParams } from "react-router";
@@ -9,12 +9,6 @@ import { useNavigate, useParams } from "react-router";
 import { jobPostValidations } from "../../validators/postJobValidation";
 import useForm from "../../../hooks/useForm";
 import { valuesInterface } from "../../../interfaces/Job.model";
-
-//To add backend Logic and refracto the form in multiple files and components, to make it more 
-// readable and maintainable, also to add more fields to the form, such as work mode, experience level, 
-// required experience years, application deadline, openings, contract type, work schedule, language requirements, 
-// education level, etc... and to add validation for these fields as well. Also to add a success message 
-// when the job is posted successfully and to navigate the user to the company dashboard after posting the job.
 
 const initialValues = {
   title: "",
@@ -73,37 +67,7 @@ function PostJob() {
     <div className="post-job-container">
       <h2>Post a New Job</h2>
       <form className="post-job-form" onSubmit={formHandler}>
-        <div className="form-group">
-          <label htmlFor="title">Job Title</label>
-          <input
-            type="text"
-            id="title"
-            {...register("title")}
-            placeholder="Job Title"
-          />
-          <div className="error-message">{errors.title}</div>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="description">Job Description</label>
-          <textarea
-            id="description"
-            placeholder="Job Description"
-            {...register("description")}
-          ></textarea>
-          <div className="error-message">{errors.description}</div>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="location">Location</label>
-          <input
-            type="text"
-            id="location"
-            placeholder="Location"
-            {...register("location")}
-          />
-          <div className="error-message">{errors.location}</div>
-        </div>
+   
 
         <div className="form-group">
           <label htmlFor="salary">Salary</label>
@@ -149,21 +113,10 @@ function PostJob() {
 
         <div className="form-group">
           <label htmlFor="experienceLevel">Experience Requirement</label>
-          <select
-            id="experienceLevel"
-            value={register("experienceLevel").value}
-            onChange={(e) => setFieldValue("experienceLevel", e.target.value)}
-          >
-            <option value="">Select Experience Requirement</option>
-            <option value="No prior experience required">No prior experience required</option>
-            <option value="Some experience preferred (6+ months)">Some experience preferred (6+ months)</option>
-            <option value="1+ year relevant experience">1+ year relevant experience</option>
-            <option value="2+ years relevant experience">2+ years relevant experience</option>
-            <option value="3+ years relevant experience">3+ years relevant experience</option>
-            <option value="5+ years relevant experience">5+ years relevant experience</option>
-            <option value="Supervisory experience required">Supervisory experience required</option>
-            <option value="Management experience required">Management experience required</option>
-          </select>
+        <ExperienceLevelSelect
+          value={register("experienceLevel").value}
+          onChange={(e) => setFieldValue("experienceLevel", e.target.value)}
+        />
         </div>
 
         <div className="form-group">

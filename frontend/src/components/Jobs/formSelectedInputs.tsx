@@ -50,6 +50,20 @@ export const employmentOptions = [
   { value: "Apprenticeship", label: "Apprenticeship" },
   { value: "Hybrid", label: "Hybrid" },
 ];
+
+//For Experience requirement options, we can use the same select component as employment type, just with different options. So I will implement it later when I implement the experience requirement field in the form.
+
+export const experienceOptions = [
+  { value: "No prior experience required", label: "No prior experience required" },
+  { value: "Some experience preferred (6+ months)", label: "Some experience preferred (6+ months)" },
+  { value: "1+ year relevant experience", label: "1+ year relevant experience" },
+  { value: "2+ years relevant experience", label: "2+ years relevant experience" },
+  { value: "3+ years relevant experience", label: "3+ years relevant experience" },
+  { value: "5+ years relevant experience", label: "5+ years relevant experience" },
+  { value: "Supervisory experience required", label: "Supervisory experience required" },
+  { value: "Management experience required", label: "Management experience required" },
+]
+
 export  function JobCategorySelect({ value, onChange }: Props) {
 
   return (
@@ -90,5 +104,15 @@ export  function EmploymentTypeSelect({ value, onChange }: Props) {
   );
 }
 
-
-
+export function ExperienceLevelSelect({ value, onChange }: Props) {
+  return (
+    <select id="experienceLevel" name="experienceLevel" value={value} onChange={onChange}>
+      <option value="">Select Experience Level</option>
+      {experienceOptions.map((opt) => (
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
+  );
+}
