@@ -6,7 +6,74 @@ const jobSchema = new Schema({
   description: { type: String, required: true },
   location: { type: String, required: true, trim: true },
   salary: { type: String, trim: true },
-  logo: { type: String },
+
+  workMode: { 
+    type: String, 
+    default: "", 
+    required: true 
+  },
+
+  category: { 
+    type: Types.ObjectId, 
+    ref: "Category", 
+    required: true 
+  },
+
+  employmentType: { 
+    type: String, 
+    default: "Full-time", 
+    required: true 
+  },
+
+  experienceLevel: {
+    type: String,
+    default: '',
+    trim: true,
+    required: true
+  },
+
+  applicationDeadline: {
+    type: Date
+  },
+
+  openings: {
+    type: Number,
+    default: 1,
+    min: 1,
+    required: true
+  },
+
+  contractType: {
+    type: String,
+    default: '',
+    trim: true,
+  },
+  
+  workSchedule: {
+    type: String,
+    default: "",
+    trim: true,
+  },
+
+  languageRequirements: {
+    type: String,
+    default: '',
+    trim: true,
+  },
+
+  educationLevel: {
+    type: String,
+    default: "",
+    trim: true,
+    required: true
+  },
+
+  requirements: {
+    type: String,
+    default: '',
+    trim: true,
+    required: true
+  },
 
   createdBy: {
     type: Types.ObjectId,
@@ -32,16 +99,25 @@ const jobSchema = new Schema({
     default: "Full-time",
   },
 
-  benefits: [{ type: String }],
-
-  applicationDeadline: { type: Date },
-
-  tags: [{ type: String }],
-
-  skills: [{ type: String }],
+  benefits: {
+    type: String,
+    default: '',
+    trim: true,
+  },
+  tags: {
+    type: String,
+    default: '',
+    trim: true,
+  },
 
   email: {
     type: String,
+  },
+
+  additionalInfo: {
+    type: String,
+    default: "",
+    trim: true,
   },
 
   views: { type: Number, default: 0 },

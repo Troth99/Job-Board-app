@@ -10,6 +10,10 @@ import { CandidateApplications } from "../CandidateApplications/CandidateApplica
 import { Candidate } from "../../../interfaces/Apllication.model";
 import { Container } from "../../Container/Container";
 
+
+//toReractor
+
+
 function DetailsJob() {
   const { companyId, jobId } = useParams<{
     companyId: string;
@@ -24,7 +28,8 @@ function DetailsJob() {
   );
   const [statusLoading, setStatusLoading] = useState(false);
   const [candidates, setCandidates] = useState<Candidate[]>([]);
-  const { getUserRole, userRole } = useCompany();
+  const [localRole, setLocalRole] = useState<string | null>(null);
+  const { getUserRole } = useCompany();
   const { getJobById, updateJob, deleteJob, getApplicationsByJobId } =
     useJobs();
   const [loadingApplications, setLoadingApplications] =
@@ -53,12 +58,11 @@ function DetailsJob() {
   const fetchRole = async () => {
     try {
       if (companyId) {
-        await getUserRole(companyId);
+        const role = await getUserRole(companyId);
+        setLocalRole(role);
       }
     } catch (error) {
       console.error("Error fetching role:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -119,7 +123,7 @@ function DetailsJob() {
       setStatusLoading(false);
     }
   };
-  const canEditOrDelete = userRole === "admin" || userRole === "owner";
+  const canEditOrDelete = localRole === "admin" || localRole === "owner";
 
   const deleteJobHandler = async () => {
     if (confirm("Are you sure you want to delete this job ?")) {
@@ -137,6 +141,11 @@ function DetailsJob() {
       }
     }
   };
+  const categoryLabel =
+    typeof jobDetails?.category === "string"
+      ? jobDetails.category
+      : jobDetails?.category?.name || "N/A";
+
   return (
     <>
       <Container>
@@ -163,7 +172,7 @@ function DetailsJob() {
               </div>
               <div className="job-category-type">
                 <div>
-                  <strong>Job Category:</strong> {jobDetails?.category?.name}
+                  <strong>Job Category:</strong> {categoryLabel}
                 </div>
                 <div>
                   <strong>Employment Type:</strong> {jobDetails?.employmentType}

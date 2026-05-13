@@ -1,12 +1,17 @@
 import "./CreateJob.css";
 import { useState } from "react";
 import "./CreateJob.css";
-import { EmploymentTypeSelect, JobCategorySelect } from "../formSelectedInputs";
+import {
+  EmploymentTypeSelect,
+  ExperienceLevelSelect,
+  JobCategorySelect,
+  WorkModeSelect,
+} from "../formSelectedInputs";
 import useJobs from "../../../hooks/useJobs";
 import { showSuccess } from "../../../utils/toast";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 
-import { jobPostValidations } from "../../validators/postJobValidation";
+import { jobPostValidations } from "../../validators/createJobValidation";
 import useForm from "../../../hooks/useForm";
 import { valuesInterface } from "../../../interfaces/Job.model";
 
@@ -15,17 +20,27 @@ const initialValues = {
   description: "",
   location: "",
   salary: "",
-  category: {
-    _id: "",
-    name: "",
-    shortName: "",
-  },
+  category: "",
   employmentType: "",
-  skills: "",
-  benefits: [],
+  requirements: "",
+  benefits: "",
   tags: "",
   email: "",
+  workMode: "",
+  experienceLevel: "",
+  requiredExperienceYears: "",
+  applicationDeadline: "",
+  openings: "",
+  contractType: "",
+  workSchedule: "",
+  languageRequirements: "",
+  educationLevel: "",
+  additionalInfo: "",
 };
+
+//make a sample example with information how to psot a job and tamstamp and explanation on the forms.
+//add a different route to it and add a link to it from company dashboard. Add a button to post job in company dashboard and link it to the route of create job form.
+
 function PostJob() {
   const { companyId } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
@@ -57,6 +72,20 @@ function PostJob() {
   return (
     <div className="post-job-container">
       <h2>Post a New Job</h2>
+      <Link to={`/how-to-post-job`} className="back-link">
+        <span className="back-link__spark" aria-hidden="true">
+          Guide
+        </span>
+        <span className="back-link__content">
+          <span className="back-link__title">Need help filling the form?</span>
+          <span className="back-link__text">
+            Open the job posting guide with examples for every field.
+          </span>
+        </span>
+        <span className="back-link__arrow" aria-hidden="true">
+          &rarr;
+        </span>
+      </Link>
       <form className="post-job-form" onSubmit={formHandler}>
         <div className="form-group">
           <label htmlFor="title">Job Title</label>
@@ -77,6 +106,18 @@ function PostJob() {
             {...register("description")}
           ></textarea>
           <div className="error-message">{errors.description}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="additionalInfo">
+            Additional Information{" "}
+            <span className="optional-badge">Optional</span>
+          </label>
+          <textarea
+            id="additionalInfo"
+            placeholder="e.g., We are happy to review your application and contact shortlisted candidates."
+            {...register("additionalInfo")}
+          ></textarea>
         </div>
 
         <div className="form-group">
@@ -102,51 +143,138 @@ function PostJob() {
         </div>
 
         <div className="form-group">
+          <label htmlFor="workMode">Work Mode</label>
+          <WorkModeSelect
+            value={register("workMode").value}
+            onChange={(e) => setFieldValue("workMode", e.target.value)}
+          />
+          <div className="error-message">{errors.workMode}</div>
+        </div>
+
+        <div className="form-group">
           <label htmlFor="salary">Category</label>
           <JobCategorySelect
-            value={register("category").value?._id}
+            value={register("category").value || ""}
             onChange={(e) => setFieldValue("category", e.target.value)}
           />
+          <div className="error-message">
+            {typeof errors.category === "string" ? errors.category : ""}
+          </div>
         </div>
 
-    <div className="form-group">
-          <label htmlFor="salary">Employment Type</label>
-      <EmploymentTypeSelect
-          value={register("employmentType").value}
-          onChange={(e) => setFieldValue("employmentType", e.target.value)}
-        />
-        </div>
-      
         <div className="form-group">
-          <label htmlFor="skills">Skills (comma separated)</label>
+          <label htmlFor="salary">Employment Type</label>
+          <EmploymentTypeSelect
+            value={register("employmentType").value}
+            onChange={(e) => setFieldValue("employmentType", e.target.value)}
+          />
+          <div className="error-message">{errors.employmentType}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="experienceLevel">Experience Requirement</label>
+          <ExperienceLevelSelect
+            value={register("experienceLevel").value}
+            onChange={(e) => setFieldValue("experienceLevel", e.target.value)}
+          />
+          <div className="error-message">{errors.experienceLevel}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="applicationDeadline">
+            Application Deadline{" "}
+            <span className="optional-badge">Optional</span>
+          </label>
+          <input
+            type="date"
+            id="applicationDeadline"
+            {...register("applicationDeadline")}
+          />
+          <div className="error-message">{errors.applicationDeadline}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="openings">Open Positions</label>
+          <input
+            type="number"
+            id="openings"
+            min="1"
+            placeholder="e.g., 3"
+            {...register("openings")}
+          />
+          <div className="error-message">{errors.openings}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="contractType">
+            Contract Type <span className="optional-badge">Optional</span>
+          </label>
           <input
             type="text"
-            id="skills"
-            placeholder="e.g., React, Node.js, CSS"
-            {...register("skills")}
+            id="contractType"
+            placeholder="e.g., Permanent, Temporary, Internship"
+            {...register("contractType")}
           />
-          <div className="error-message">{errors.skills}</div>
         </div>
 
         <div className="form-group">
-          <label htmlFor="benefits">Benefits (comma separated)</label>
+          <label htmlFor="workSchedule">
+            Work Schedule <span className="optional-badge">Optional</span>
+          </label>
+          <input
+            type="text"
+            id="workSchedule"
+            placeholder="e.g., Morning shift, 09:00-18:00"
+            {...register("workSchedule")}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="languageRequirements">
+            Language Requirements{" "}
+            <span className="optional-badge">Optional</span>
+          </label>
+          <input
+            type="text"
+            id="languageRequirements"
+            placeholder="e.g., English B2, German A2"
+            {...register("languageRequirements")}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="educationLevel">Education Level</label>
+          <input
+            type="text"
+            id="educationLevel"
+            placeholder="e.g., High School, Bachelor, Not required"
+            {...register("educationLevel")}
+          />
+          <div className="error-message">{errors.educationLevel}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="requirements">Requirements (comma separated)</label>
+          <input
+            type="text"
+            id="requirements"
+            placeholder="e.g., Customer service, Driving license B, Excel"
+            {...register("requirements")}
+          />
+          <div className="error-message">{errors.requirements}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="benefits">
+            Benefits (comma separated){" "}
+            <span className="optional-badge">Optional</span>
+          </label>
           <input
             type="text"
             id="benefits"
             placeholder="e.g., Health Insurance, Remote Work"
             {...register("benefits")}
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="tags">Tags (comma separated)</label>
-          <input
-            type="text"
-            id="tags"
-            placeholder="e.g., Frontend, Remote"
-            {...register("tags")}
-          />
-          <div className="error-message">{errors.tags}</div>
         </div>
 
         <div className="form-group">
@@ -159,6 +287,7 @@ function PostJob() {
           />
           <div className="error-message">{errors.email}</div>
         </div>
+
         <button type="submit" className="post-job-button" disabled={loading}>
           {loading ? "Posting job..." : "Post job"}
         </button>

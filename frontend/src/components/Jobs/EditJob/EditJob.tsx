@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
-import "./EditJob.css"
-
+import "../CreateJob/CreateJob.css";
 import { useNavigate, useParams } from "react-router";
 import useJobs from "../../../hooks/useJobs";
-import { EmploymentTypeSelect, JobEditCategory } from "../formSelectedInputs";
-
+import {
+  EmploymentTypeSelect,
+  ExperienceLevelSelect,
+  JobEditCategory,
+  WorkModeSelect,
+} from "../formSelectedInputs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import Spinner from "../../Spinner/Spinner";
 import { valuesInterface } from "../../../interfaces/Job.model";
 import useForm from "../../../hooks/useForm";
-import { useValidation } from "../../validators/useValidation";
-import { jobPostValidations } from "../../validators/postJobValidation";
+import { jobPostValidations } from "../../validators/createJobValidation";
 
 const initialValues = {
   title: "",
@@ -24,10 +26,20 @@ const initialValues = {
   shortName: ""
 },
   employmentType: "",
-  skills: "",
-  benefits: [],
+  requirements: "",
+  benefits: "",
   tags: "",
   email: "",
+  workMode: "",
+  experienceLevel: "",
+  requiredExperienceYears: "",
+  applicationDeadline: "",
+  openings: "",
+  contractType: "",
+  workSchedule: "",
+  languageRequirements: "",
+  educationLevel: "",
+  additionalInfo: "",
 };
 
 export default function EditJob() {
@@ -35,7 +47,7 @@ export default function EditJob() {
   const [jobData, setJobData] = useState<valuesInterface>(initialValues);
   const [pending, setPending] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const categories = useSelector(
     (state: RootState) => state.categories.categories
@@ -48,13 +60,21 @@ export default function EditJob() {
     }
     try {
       const currentJob = await getJobById(jobId);
-     
-      if(currentJob.category){
+
+      if (Array.isArray(currentJob.benefits)) {
+        currentJob.benefits = currentJob.benefits.join(", ");
+      }
+
+      if (!currentJob.requirements && currentJob.skills) {
+        currentJob.requirements = currentJob.skills;
+      }
+
+      if (currentJob.category && typeof currentJob.category === "string") {
         const selectedCategory = categories.find(
-          (category) => category._id === currentJob.category
+          (category) => category._id === currentJob.category,
         );
-        if(selectedCategory) {
-          currentJob.category = selectedCategory
+        if (selectedCategory) {
+          currentJob.category = selectedCategory;
         }
       }
       setJobData(currentJob);
@@ -72,155 +92,253 @@ export default function EditJob() {
       setLoading(false);
     };
     fetchData();
-  }, [jobId]);
-
-const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  const selectedCategoryId = e.target.value;
-
-  const selectedCategory = categories.find(
-    (category) => category._id === selectedCategoryId
-  );
-
-  if (selectedCategory) {
-  
-    setJobData((prevData) => ({
-      ...prevData,
-      category: selectedCategory, 
-    }));
-  }
-};
+  }, [jobId, categories.length]);
 
   const editSubmitHandler = async (values: valuesInterface) => {
-
     setPending(true);
-
-    const jobToUpdate = {
-      ...values,
-      updatedAt: new Date().toISOString(),
-    };
 
     try {
       if (!jobId) {
         console.error("Job ID is missing.");
         return;
       }
-      await updateJob(jobId, jobToUpdate );
-      navigate(`/company/${companyId}/job/${jobId}/details`)
+      await updateJob(jobId, {
+        ...values,
+        updatedAt: new Date().toISOString(),
+      });
+      navigate(`/company/${companyId}/job/${jobId}/details`);
     } catch (error) {
-      console.error('Failed to fetch', error)
+      console.error("Failed to update job", error);
+    } finally {
+      setPending(false);
     }
   };
 
-  const {register, errors, formHandler, values } = useForm(editSubmitHandler, jobData, jobPostValidations)
+  const { register, errors, formHandler, setFieldValue } = useForm(
+    editSubmitHandler,
+    jobData,
+    jobPostValidations,
+  );
+
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCategoryId = e.target.value;
+    const selectedCategory = categories.find(
+      (category) => category._id === selectedCategoryId,
+    );
+
+    if (selectedCategory) {
+      setFieldValue("category", selectedCategory);
+    }
+  };
+
   return (
     <>
       {loading ? (
         <Spinner overlay={true} />
       ) : (
-        <div className="edit-job-container">
-          <h2 className="edit-job-title">Edit Job</h2>
-          <form className="edit-job-form" onSubmit={formHandler}>
+        <div className="post-job-container">
+          <h2>Edit Job</h2>
+          <form className="post-job-form" onSubmit={formHandler}>
             <div className="form-group">
               <label htmlFor="title">Job Title</label>
               <input
                 type="text"
                 id="title"
                 placeholder="Job Title"
-               {...register("title")}
+                {...register("title")}
               />
               <div className="error-message">{errors.title}</div>
             </div>
+
             <div className="form-group">
               <label htmlFor="description">Job Description</label>
               <textarea
                 id="description"
                 placeholder="Job Description"
-                   {...register("description")}
+                {...register("description")}
               ></textarea>
-                   <div className="error-message">{errors.description}</div>
+              <div className="error-message">{errors.description}</div>
             </div>
+
+            <div className="form-group">
+              <label htmlFor="additionalInfo">
+                Additional Information <span className="optional-badge">Optional</span>
+              </label>
+              <textarea
+                id="additionalInfo"
+                placeholder="e.g., We are happy to review your application and contact shortlisted candidates."
+                {...register("additionalInfo")}
+              ></textarea>
+            </div>
+
             <div className="form-group">
               <label htmlFor="location">Location</label>
               <input
                 type="text"
                 id="location"
-            
                 placeholder="Location"
-                 {...register("location")}
+                {...register("location")}
               />
-                   <div className="error-message">{errors.location}</div>
+              <div className="error-message">{errors.location}</div>
             </div>
+
             <div className="form-group">
               <label htmlFor="salary">Salary</label>
               <input
                 type="text"
                 id="salary"
-       
                 placeholder="Salary"
-                  {...register("salary")}
+                {...register("salary")}
               />
-                   <div className="error-message">{errors.salary}</div>
+              <div className="error-message">{errors.salary}</div>
             </div>
+
+            <div className="form-group">
+              <label htmlFor="workMode">Work Mode</label>
+              <WorkModeSelect
+                value={register("workMode").value}
+                onChange={(e) => setFieldValue("workMode", e.target.value)}
+              />
+              <div className="error-message">{errors.workMode}</div>
+            </div>
+
             <div className="form-group">
               <label htmlFor="category">Job Category</label>
               <JobEditCategory
-                value={jobData.category}
+                value={typeof register("category").value === "string" ? null : register("category").value}
                 categories={categories}
                 onChange={handleCategoryChange}
               />
+              <div className="error-message">
+                {typeof errors.category === "string" ? errors.category : ""}
+              </div>
             </div>
+
             <div className="form-group">
               <label htmlFor="employmentType">Employment Type</label>
               <EmploymentTypeSelect
-                value={jobData.employmentType}
-                onChange={handleCategoryChange}
+                value={register("employmentType").value}
+                onChange={(e) => setFieldValue("employmentType", e.target.value)}
               />
+              <div className="error-message">{errors.employmentType}</div>
             </div>
+
             <div className="form-group">
-              <label htmlFor="skills">Skills (comma separated)</label>
+              <label htmlFor="experienceLevel">Experience Requirement</label>
+              <ExperienceLevelSelect
+                value={register("experienceLevel").value}
+                onChange={(e) => setFieldValue("experienceLevel", e.target.value)}
+              />
+              <div className="error-message">{errors.experienceLevel}</div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="applicationDeadline">
+                Application Deadline <span className="optional-badge">Optional</span>
+              </label>
+              <input
+                type="date"
+                id="applicationDeadline"
+                {...register("applicationDeadline")}
+              />
+              <div className="error-message">{errors.applicationDeadline}</div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="openings">Open Positions</label>
+              <input
+                type="number"
+                id="openings"
+                min="1"
+                placeholder="e.g., 3"
+                {...register("openings")}
+              />
+              <div className="error-message">{errors.openings}</div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="contractType">
+                Contract Type <span className="optional-badge">Optional</span>
+              </label>
               <input
                 type="text"
-                id="skills"     
-                placeholder="e.g., React, Node.js, CSS"
-               {...register("skills")}
+                id="contractType"
+                placeholder="e.g., Permanent, Temporary, Internship"
+                {...register("contractType")}
               />
-                   <div className="error-message">{errors.skills}</div>
             </div>
+
             <div className="form-group">
-              <label htmlFor="benefits">Benefits (comma separated)</label>
+              <label htmlFor="workSchedule">
+                Work Schedule <span className="optional-badge">Optional</span>
+              </label>
+              <input
+                type="text"
+                id="workSchedule"
+                placeholder="e.g., Morning shift, 09:00-18:00"
+                {...register("workSchedule")}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="languageRequirements">
+                Language Requirements <span className="optional-badge">Optional</span>
+              </label>
+              <input
+                type="text"
+                id="languageRequirements"
+                placeholder="e.g., English B2, German A2"
+                {...register("languageRequirements")}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="educationLevel">Education Level</label>
+              <input
+                type="text"
+                id="educationLevel"
+                placeholder="e.g., High School, Bachelor, Not required"
+                {...register("educationLevel")}
+              />
+              <div className="error-message">{errors.educationLevel}</div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="requirements">Requirements (comma separated)</label>
+              <input
+                type="text"
+                id="requirements"
+                placeholder="e.g., Customer service, Driving license B, Excel"
+                {...register("requirements")}
+              />
+              <div className="error-message">{errors.requirements}</div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="benefits">
+                Benefits (comma separated) <span className="optional-badge">Optional</span>
+              </label>
               <input
                 type="text"
                 id="benefits"
-       
                 placeholder="e.g., Health Insurance, Remote Work"
-               {...register("benefits")}
+                {...register("benefits")}
               />
-                   <div className="error-message">{errors.benefits}</div>
             </div>
-            <div className="form-group">
-              <label htmlFor="tags">Tags (comma separated)</label>
-              <input
-                type="text"
-                id="tags"
-         
-                placeholder="e.g., Frontend, Remote"
-                 {...register("tags")}
-              />
-                   <div className="error-message">{errors.tags}</div>
-            </div>
+
             <div className="form-group">
               <label htmlFor="contactEmail">Contact Email</label>
               <input
                 type="email"
                 id="contactEmail"
-    
                 placeholder="Contact Email"
-               {...register("email")}
+                {...register("email")}
               />
-                   <div className="error-message">{errors.email}</div>
+              <div className="error-message">{errors.email}</div>
             </div>
-            <div className="edit-job-actions">
-              <button type="submit" className="edit-job-save-btn" disabled={pending}>
+
+            <div>
+              <button type="submit" className="post-job-button" disabled={pending}>
                 {pending ? "Saving..." : "Save Changes"}
               </button>
             </div>

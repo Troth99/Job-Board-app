@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import "./companyInvitationNotification.css";
 import { useParams } from "react-router";
 import { useNotificationContext } from "../../../context/NotificationContext";
-import {
-  CompanyShort,
-  Notification,
-} from "../../../interfaces/Notification.model";
+import { Notification } from "../../../interfaces/Notification.model";
 import { useNotification } from "../../../hooks/useNotification";
 import { useNavigate } from "react-router";
 import { getUserFromLocalStorage } from "../../../hooks/useAuth";
@@ -56,7 +53,7 @@ export default function CompanyInvitationNotification() {
       if(userData) {
         setUserData({
           ...userData,
-          company: notification.company as CompanyShort,
+          company: companyId,
         });
       }
 

@@ -1,18 +1,101 @@
-button[type="submit"] {
+.company-members-modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(10, 15, 26, 0.72);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1200;
+	padding: 16px;
+}
+
+.company-members-modal-content {
+	position: relative;
+	width: min(480px, 100%);
+	background: #111722;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 10px;
+	padding: 24px;
+	box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+	color: #f5f7fa;
+}
+
+.company-members-modal-content h3 {
+	margin: 0 0 12px;
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.company-members-form {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.company-members-form input[type="email"] {
+	width: 100%;
+	height: 42px;
+	padding: 0 12px;
+	border: 1px solid #c3c9d4;
+	border-radius: 4px;
+	font-size: 1rem;
+	box-sizing: border-box;
+}
+
+.company-members-success-message {
+	color: #39d98a;
+	font-weight: 700;
+	margin-top: -2px;
+}
+
+.company-members-submit {
 	background: #4f8cff;
 	color: #fff;
 	border: none;
 	padding: 0.7em 2em;
 	border-radius: 6px;
-	font-weight: bold;
+	font-weight: 700;
 	transition: background 0.2s, opacity 0.2s;
 	cursor: pointer;
+	width: fit-content;
 }
 
-button[type="submit"]:disabled {
+.company-members-submit:hover:not(:disabled) {
+	background: #3f78e6;
+}
+
+.company-members-submit:disabled {
 	background: #bfc9d9;
 	color: #888;
 	cursor: not-allowed;
 	opacity: 0.7;
 	box-shadow: none;
+}
+
+.company-members-close {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	width: 38px;
+	height: 38px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #ff4d4f 0%, #c1121f 100%);
+	border: none;
+	border-radius: 50%;
+	color: #ffffff;
+	font-size: 1rem;
+	font-weight: 700;
+	cursor: pointer;
+	padding: 0;
+	line-height: 1;
+	box-shadow: 0 8px 18px rgba(193, 18, 31, 0.28);
+	transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.company-members-close:hover {
+	transform: scale(1.06);
+	box-shadow: 0 10px 22px rgba(193, 18, 31, 0.34);
+	filter: brightness(1.06);
 }

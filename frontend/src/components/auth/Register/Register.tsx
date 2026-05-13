@@ -44,7 +44,7 @@ export default function RegisterComponent() {
       setLoading(false);
       return;
     }
-
+  
     try {
       const user = await registerUser(formValues);
 

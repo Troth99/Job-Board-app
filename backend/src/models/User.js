@@ -31,17 +31,11 @@ const userSchema = new mongoose.Schema({
     },
     phoneNumber: {
         type: String,
-        required: function() {
-            return !this.googleId; // Phone number is required if googleId is not present
-        },
         trim: true,
     },
 
     location: {
         type: String,
-        required: function() {
-            return !this.googleId; // Location is required if googleId is not present
-        }
     },
     password: {
         type: String,
@@ -65,7 +59,15 @@ const userSchema = new mongoose.Schema({
     },
     resetPasswordExpire:{
         type:Date
-    }
+    },
+
+    savedJobs: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Job'
+        }
+    ]
+
 });
 
 // has password before save

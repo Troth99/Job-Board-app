@@ -48,20 +48,20 @@ export default function useForm<T extends FormValues>(
     e.preventDefault();
     const formErrors = validateForm(values);
     setErrors(formErrors);
-    
     if (Object.keys(formErrors).length > 0) {
       return;
     }
     await callBack(values);
-    
   };
 
   const register = (fieldName: keyof T & string) => {
+    const fieldValue = values[fieldName];
     return {
       name: fieldName,
       onChange: changeHandler,
       onBlur: blurHandler,
-      value: values[fieldName],
+      // Keep inputs controlled for their entire lifetime.
+      value: fieldValue ?? "",
     };
   };
 

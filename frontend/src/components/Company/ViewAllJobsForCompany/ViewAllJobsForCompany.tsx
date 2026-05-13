@@ -22,16 +22,14 @@ export function ViewAllJobsForCompany() {
         if (!companyId) {
           throw new Error("Company id is missing.");
         }
-        const response = await getJobsByCompany(companyId);
-        console.log(response);
-        setCompanyJobs(response);
-        return response;
+        const jobs = await getJobsByCompany(companyId);
+        setCompanyJobs(jobs);
       } catch (error) {
         console.error("Failed to fetch jobs from current company.");
       }
     };
     fetchJobsByCompany();
-  }, []);
+  }, [companyId]);
 
   if (loading) {
     return <Spinner overlay={true} />;

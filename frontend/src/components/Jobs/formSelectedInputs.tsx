@@ -43,18 +43,37 @@ export const employmentOptions = [
   { value: "Contract", label: "Contract" },
   { value: "Freelance", label: "Freelance" },
   { value: "Temporary", label: "Temporary" },
-  { value: "Remote", label: "Remote" },
-  { value: "On-site", label: "On-site" },
   { value: "Volunteer", label: "Volunteer" },
   { value: "Seasonal", label: "Seasonal" },
   { value: "Apprenticeship", label: "Apprenticeship" },
-  { value: "Hybrid", label: "Hybrid" },
 ];
+
+//For Experience requirement options, we can use the same select component as employment type, just with different options. So I will implement it later when I implement the experience requirement field in the form.
+
+export const experienceOptions = [
+  { value: "No prior experience required", label: "No prior experience required" },
+  { value: "Some experience preferred (6+ months)", label: "Some experience preferred (6+ months)" },
+  { value: "1+ year relevant experience", label: "1+ year relevant experience" },
+  { value: "2+ years relevant experience", label: "2+ years relevant experience" },
+  { value: "3+ years relevant experience", label: "3+ years relevant experience" },
+  { value: "5+ years relevant experience", label: "5+ years relevant experience" },
+  { value: "Supervisory experience required", label: "Supervisory experience required" },
+  { value: "Management experience required", label: "Management experience required" },
+]
+
+export const workModeOptions = [
+  { value: "On-site", label: "On-site" },
+  { value: "Hybrid", label: "Hybrid" },
+  { value: "Remote", label: "Remote" },
+];
+
 export  function JobCategorySelect({ value, onChange }: Props) {
 
   return (
     <select name="category" value={value } onChange={onChange}>
-      <option value="">Select a category</option>
+      <option value="" disabled>
+        Select category
+      </option>
       {categories.map((cat) => (
         <option key={cat.value} value={cat.value}>
           {cat.label}
@@ -80,7 +99,9 @@ export  function JobEditCategory({ value, categories, onChange }: JobCategorySel
 export  function EmploymentTypeSelect({ value, onChange }: Props) {
   return (
     <select id="employmentType" name="employmentType" value={value} onChange={onChange}>
-      <option value="">Select Employment Type</option>
+      <option value="" disabled>
+        Select employment type
+      </option>
       {employmentOptions.map((opt) => (
         <option key={opt.value} value={opt.value}>
           {opt.label}
@@ -90,5 +111,32 @@ export  function EmploymentTypeSelect({ value, onChange }: Props) {
   );
 }
 
+export function ExperienceLevelSelect({ value, onChange }: Props) {
+  return (
+    <select id="experienceLevel" name="experienceLevel" value={value} onChange={onChange}>
+      <option value="" disabled>
+        Select experience level
+      </option>
+      {experienceOptions.map((opt) => (
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
+  );
+}
 
-
+export function WorkModeSelect({ value, onChange }: Props) {
+  return (
+    <select id="workMode" name="workMode" value={value} onChange={onChange}>
+      <option value="" disabled>
+        Select work mode
+      </option>
+      {workModeOptions.map((opt) => (
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
+  );
+}

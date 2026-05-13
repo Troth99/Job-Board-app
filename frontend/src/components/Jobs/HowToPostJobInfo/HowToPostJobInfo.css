@@ -1,0 +1,250 @@
+.post-job-guide {
+	width: min(1180px, 100%);
+	margin: 0 auto;
+	padding: 28px 16px 56px;
+	color: var(--guide-text, #122033);
+}
+
+.post-job-guide__hero {
+	padding: 28px;
+	border: 1px solid #d8e2ef;
+	border-radius: 28px;
+	background:
+		radial-gradient(circle at top right, rgba(24, 119, 242, 0.12), transparent 34%),
+		radial-gradient(circle at left bottom, rgba(15, 118, 110, 0.1), transparent 28%),
+		linear-gradient(180deg, #f7fbff, #ffffff);
+	box-shadow: 0 22px 52px rgba(15, 23, 42, 0.08);
+}
+
+.post-job-guide__eyebrow,
+.post-job-guide__section-label {
+	margin: 0 0 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	font-size: 0.76rem;
+	font-weight: 800;
+	color: #0f766e;
+}
+
+.post-job-guide__hero h1,
+.post-job-guide__section-heading h2,
+.post-job-guide__panel h2 {
+	margin: 0;
+	letter-spacing: -0.04em;
+	color: #0f172a;
+}
+
+.post-job-guide__hero h1 {
+	font-size: clamp(2rem, 4.5vw, 3.2rem);
+	line-height: 1;
+}
+
+.post-job-guide__intro {
+	max-width: 66ch;
+	margin: 14px 0 0;
+	color: #526072;
+	line-height: 1.7;
+	font-size: 1rem;
+}
+
+.post-job-guide__callout {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	margin-top: 20px;
+	padding: 12px 16px;
+	border-radius: 999px;
+	background: rgba(21, 94, 239, 0.1);
+	color: #155eef;
+	font-size: 0.92rem;
+	font-weight: 700;
+}
+
+.post-job-guide__section {
+	margin-top: 28px;
+}
+
+.post-job-guide__section-heading {
+	margin-bottom: 16px;
+}
+
+.post-job-guide__grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.post-job-guide__card,
+.post-job-guide__panel {
+	padding: 22px;
+	border-radius: 24px;
+	border: 1px solid #d8e2ef;
+	background: linear-gradient(180deg, #ffffff, #f8fbff);
+	box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.post-job-guide__card-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 14px;
+}
+
+.post-job-guide__card h3 {
+	margin: 0;
+	font-size: 1.1rem;
+	color: #0f172a;
+}
+
+.post-job-guide__card p,
+.post-job-guide__panel p {
+	margin: 0;
+	color: #475569;
+	line-height: 1.7;
+}
+
+.post-job-guide__card p + p,
+.post-job-guide__sample-block p + p {
+	margin-top: 10px;
+}
+
+.post-job-guide__badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 34px;
+	padding: 0 12px;
+	border-radius: 999px;
+	font-size: 0.82rem;
+	font-weight: 800;
+}
+
+.post-job-guide__badge.is-required {
+	background: #e8f7ef;
+	color: #127a41;
+}
+
+.post-job-guide__badge.is-optional {
+	background: #eef4ff;
+	color: #155eef;
+}
+
+.post-job-guide__example {
+	padding-top: 6px;
+	border-top: 1px solid #e6edf6;
+}
+
+.post-job-guide__footer-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+	gap: 18px;
+	margin-top: 28px;
+}
+
+.post-job-guide__rules {
+	margin: 12px 0 0;
+	padding-left: 20px;
+	color: #475569;
+	line-height: 1.7;
+}
+
+.post-job-guide__rules li + li {
+	margin-top: 10px;
+}
+
+.post-job-guide__panel--sample {
+	background:
+		linear-gradient(180deg, rgba(21, 94, 239, 0.06), rgba(255, 255, 255, 0.96)),
+		#ffffff;
+}
+
+.post-job-guide__sample-block {
+	margin-top: 14px;
+	padding: 18px;
+	border-radius: 18px;
+	background: #f4f8fd;
+	border: 1px solid #d8e2ef;
+}
+
+body[data-theme="dark"] .post-job-guide {
+	--guide-text: #e6edf7;
+}
+
+body[data-theme="dark"] .post-job-guide__hero,
+body[data-theme="dark"] .post-job-guide__card,
+body[data-theme="dark"] .post-job-guide__panel {
+	border-color: #2a3952;
+	background:
+		radial-gradient(circle at top right, rgba(124, 196, 255, 0.08), transparent 34%),
+		linear-gradient(180deg, #162133, #111827);
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+}
+
+body[data-theme="dark"] .post-job-guide__hero h1,
+body[data-theme="dark"] .post-job-guide__section-heading h2,
+body[data-theme="dark"] .post-job-guide__panel h2,
+body[data-theme="dark"] .post-job-guide__card h3 {
+	color: #e6edf7;
+}
+
+body[data-theme="dark"] .post-job-guide__intro,
+body[data-theme="dark"] .post-job-guide__card p,
+body[data-theme="dark"] .post-job-guide__panel p,
+body[data-theme="dark"] .post-job-guide__rules {
+	color: #a8b5c7;
+}
+
+body[data-theme="dark"] .post-job-guide__callout {
+	background: rgba(124, 196, 255, 0.14);
+	color: #7cc4ff;
+}
+
+body[data-theme="dark"] .post-job-guide__badge.is-required {
+	background: #183928;
+	color: #93e4b7;
+}
+
+body[data-theme="dark"] .post-job-guide__badge.is-optional {
+	background: rgba(124, 196, 255, 0.14);
+	color: #7cc4ff;
+}
+
+body[data-theme="dark"] .post-job-guide__example,
+body[data-theme="dark"] .post-job-guide__sample-block {
+	border-color: #2a3952;
+}
+
+body[data-theme="dark"] .post-job-guide__sample-block {
+	background: #18263a;
+}
+
+@media (max-width: 900px) {
+	.post-job-guide__grid,
+	.post-job-guide__footer-layout {
+		grid-template-columns: 1fr;
+	}
+
+	.post-job-guide {
+		padding: 20px 10px 40px;
+	}
+
+	.post-job-guide__hero,
+	.post-job-guide__card,
+	.post-job-guide__panel {
+		padding: 18px;
+	}
+}
+
+@media (max-width: 600px) {
+	.post-job-guide__card-top {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.post-job-guide__callout {
+		flex-direction: column;
+		align-items: flex-start;
+		border-radius: 18px;
+	}
+}

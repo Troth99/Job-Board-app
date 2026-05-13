@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import useJobs from "../../../hooks/useJobs";
 import { ShowJobs } from "../../../showJobs/showJobs";
-import Spinner from "../../Spinner/Spinner";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
 import { Job } from "../../../interfaces/Job.model";
 import { useNavigate } from "react-router";
@@ -25,13 +24,13 @@ export function CompanyJobsList({
   const navigate = useNavigate()
 
   useEffect(() => {
-    const controller = new AbortController();
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await getJobsByCompany(companyId);
-        if (response.length > 0) {
-          const sortedJobs = response.sort((a: Job, b: Job) => {
+        const companyJobs = await getJobsByCompany(companyId);
+
+        if (companyJobs.length > 0) {
+          const sortedJobs = companyJobs.sort((a: Job, b: Job) => {
             const aCreatedAt = a.createdAt
               ? new Date(a.createdAt).getTime()
               : 0;
@@ -53,8 +52,6 @@ export function CompanyJobsList({
       }
     };
     fetchData();
-
-    return () => controller.abort();
   }, [companyId]);
 
 const viewAllJobsHandler = () =>{

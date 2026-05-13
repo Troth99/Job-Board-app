@@ -46,14 +46,12 @@ export function useValidation() {
 
   const validatePhoneNumber = (phoneNumber: string): string | undefined => {
     const regex = /^[0-9]{10}$/;
-    if (!phoneNumber) return "Phone number is required.";
-    if (!regex.test(phoneNumber)) return "Phone number must be 10 digits.";
+    if(phoneNumber && !regex.test(phoneNumber)) return "Phone number must be 10 digits.";
     return undefined;
   };
 
   const validateLocation = (location: string): string | undefined => {
-    if (!location) return "Location is required.";
-    if (location.length < 3) return "Location must be at least 3 characters.";
+    if(location && location.length < 3) return "Location must be at least 3 characters.";
     return undefined;
   };
 

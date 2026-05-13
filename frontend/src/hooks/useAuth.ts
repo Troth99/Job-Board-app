@@ -2,8 +2,7 @@ import { useState } from "react";
 import useApiRequester from "./useApiRequester";
 import { API_BASE } from "../services/api";
 import { LoginFormType } from "../components/auth/Login/Login";
-import { error } from "console";
-import ResetPassword from "../components/auth/Reset-password/Reset-password";
+
 
 export interface registerFormType {
   firstName: string;

@@ -72,3 +72,47 @@ body[data-theme="dark"] .error-message {
   flex: 1;
   overflow: hidden;
 }
+
+/* Pagination Styles */
+.pagination {
+  margin-top: auto;
+  padding: 30px 0;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 20px !important;
+}
+
+.pagination button {
+  padding: 10px 20px !important;
+  background-color: var(--accent-color) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  transition: background-color 0.3s !important;
+  font-weight: 500 !important;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: var(--accent-hover) !important;
+  transform: translateY(-2px) !important;
+}
+
+.pagination button:disabled {
+  background-color: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+}
+
+.pagination button:disabled:hover {
+  transform: none !important;
+}
+
+.pagination span {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: var(--text-color) !important;
+}

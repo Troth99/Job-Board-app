@@ -1,268 +1,33 @@
-import { useState, useEffect } from "react";
-import { API_BASE } from "../services/api";
-import useApiRequester from "./useApiRequester";
-import { getUserFromLocalStorage } from "./useAuth";
+import useCompaniesDefault, { type Company, type Member } from "./companies/useCompanies";
+import { useMembers as useMembersHook } from "./members";
 
-export interface Member {
-  _id: string;
-  email: string;
-}
-
-interface RegisterCompanyInterface {
-  name: string;
-  industry: string;
-  location: string;
-  description: string;
-}
-
-export interface Company {
-  _id: string;
-  name: string;
-  industry: string;
-  location: string;
-  logo: string;
-  members?: Member[];
-  description: string;
-  size: string;
-  website: string;
-  createdAt: string;
-}
+export { default as useCompanies, type Company, type Member } from "./companies/useCompanies";
+export { useMembers } from "./members";
 
 export default function useCompany() {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  const [company, setCompany] = useState<Company | null>(null);
-  const [companies, setCompanies] = useState<Company[]>([]);
-  const [userRole, setUserRole] = useState<string | null>(null);
-  const { request } = useApiRequester();
+  const companiesMethods = useCompaniesDefault();
+  const membersMethods = useMembersHook();
 
-  const createCompany = async (data: RegisterCompanyInterface) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await request(`${API_BASE}/companies`, "POST", data);
-      return response;
-    } catch (err) {
-      setError("Error creating company");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getCompanies = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await request(`${API_BASE}/companies`, "GET", {});
-      setCompanies(response);
-    } catch (err) {
-      setError("Error fetching companies");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getCompanyById = async (id: string) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await request(`${API_BASE}/companies/${id}`, "GET", {});
-      setCompany(response);
-    } catch (err) {
-      setError("Error fetching company data");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getMyCompany = async (): Promise<Company | null> => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await request(
-        `${API_BASE}/companies/my-company`,
-        "GET",
-        {},
-      );
-      setCompany(response);
-      return response;
-    } catch (err) {
-      setError("Error fetching my company data");
-      console.error(err);
-      return null;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getUserRole = async (companyId: string): Promise<string | null> => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await request(
-        `${API_BASE}/companies/${companyId}/members`,
-        "GET",
-        {},
-      );
-      const user = getUserFromLocalStorage();
-      const userId = user._id;
-      const member = response.find((m: any) => m.userId?._id === userId);
-      const role = member?.role || null;
-      setUserRole(role);
-      return role;
-    } catch (err) {
-      setError("Error fetching user role");
-      console.error(err);
-      return null;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getCompanyFromLocalStorage = (): string | null => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      const parsedUser = JSON.parse(user);
-      const companyId = parsedUser?.company;
-      if (companyId) {
-        return companyId;
-      }
-    }
-    return null;
-  };
-
-  const checkUser = async (email: string) => {
-    if (!email) return;
-    try {
-      const response = await request(
-        `${API_BASE}/users/check-user-exists`,
-        "POST",
-        { email },
-      );
-      return response;
-    } catch (error) {
-      console.error("Failed to check if the user exists in the backend", error);
-    }
-  };
-  const addMemberToCompany = async (companyId: string, userId: string) => {
-    setLoading(true);
-    try {
-      const response = await request(
-        `${API_BASE}/companies/${companyId}/add-member`,
-        "POST",
-        { userId },
-      );
-      return { success: true, ...response };
-    } catch (error: any) {
-      return {
-        success: false,
-        errorMessage: error?.message || "Failed to add member to the company",
-      };
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getCompanyMembers = async (companyId: string) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await request(
-        `${API_BASE}/companies/${companyId}/members`,
-        "GET",
-        {},
-      );
-      return response;
-    } catch (err) {
-      setError("Error fetching company members");
-      console.error(err);
-      return [];
-    } finally {
-      setLoading(false);
-    }
-  };
-  const changeMemberRole = async (
-    companyId: string,
-    memberId: string,
-    role: string,
-  ) => {
-    try {
-      const response = await request(
-        `${API_BASE}/companies/${companyId}/members/${memberId}/role`,
-        "PATCH",
-        { role },
-      );
-      return response;
-    } catch (error) {
-      setError("Error occured while changing the role.");
-      console.error(error);
-    }
-  };
-
-  const kickMemberFromCompany = async (companyId: string, memberId: string) => {
-    try {
-      const response = await request(
-        `${API_BASE}/companies/${companyId}/member/${memberId}`,
-        "DELETE",
-        {},
-      );
-      return response;
-    } catch (error) {
-      setError("Error occured while changing the role.");
-      console.error(error);
-    }
-  };
-
-  const transferOwnership = async (companyId: string, newOwnerId: string) => {
-    try {
-      const response = await request(
-        `${API_BASE}/companies/${companyId}/transfer-ownership`,
-        "POST",
-        { newOwnerMemberId: newOwnerId },
-      );
-      return response;
-    } catch (error) {
-      setError("Error occured while transferring ownership.");
-      console.error(error);
-    }
-  };
-
-  const abandonCompany = async (companyId: string) => {
-
-    try {
-      const response = await request(
-        `${API_BASE}/companies/${companyId}/abandon`,
-        "DELETE",
-        {},
-      );
-      return response;
-    } catch (error) {
-      setError("Error occured while abandoning the company.");
-      console.error(error);
-    }
-
-  }
   return {
-    loading,
-    error,
-    company,
-    companies,
-    userRole,
-    createCompany,
-    getCompanies,
-    getCompanyById,
-    getUserRole,
-    getCompanyFromLocalStorage,
-    getMyCompany,
-    checkUser,
-    addMemberToCompany,
-    getCompanyMembers,
-    changeMemberRole,
-    kickMemberFromCompany,
-    transferOwnership,
-    abandonCompany,
+    // Companies
+    loading: companiesMethods.loading,
+    error: companiesMethods.error,
+    company: companiesMethods.company,
+    companies: companiesMethods.companies,
+    createCompany: companiesMethods.createCompany,
+    getCompanies: companiesMethods.getCompanies,
+    getCompanyById: companiesMethods.getCompanyById,
+    getCompanyFromLocalStorage: companiesMethods.getCompanyFromLocalStorage,
+    getMyCompany: companiesMethods.getMyCompany,
+    checkUser: companiesMethods.checkUser,
+    transferOwnership: companiesMethods.transferOwnership,
+    abandonCompany: companiesMethods.abandonCompany,
+    // Members
+    userRole: membersMethods,
+    getUserRole: membersMethods.getUserRole,
+    addMemberToCompany: membersMethods.addMemberToCompany,
+    getCompanyMembers: membersMethods.getCompanyMembers,
+    changeMemberRole: membersMethods.changeMemberRole,
+    kickMemberFromCompany: membersMethods.kickMemberFromCompany,
   };
 }

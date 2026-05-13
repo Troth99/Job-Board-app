@@ -15,14 +15,18 @@ export const RoleProvider = ({ children }: { children: ReactNode }) => {
   const { userData } = useUserData();
 
   useEffect(() => {
+    const companyId =
+      typeof userData?.company === "string"
+        ? userData.company
+        : userData?.company?._id;
 
-    if (!userData || !userData.company) {
+    if (!userData || !companyId) {
       setUserRole(null);
       return;
     }
     async function fetchRole() {
       try {
-        const role = await getUserRole(userData.company);
+        const role = await getUserRole(companyId);
         setUserRole(role);
       } catch (err) {
         setUserRole(null);

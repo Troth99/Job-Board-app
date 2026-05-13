@@ -13,16 +13,26 @@ export interface Job {
     lastName?: string;
   };
   company?: Company | null;
-  category?: Category;
+  category?: Category | string;
   createdAt?: string;
   skills?: string;
+  requirements?: string;
   employmentType?: string;
-  benefits?: string[];
+  benefits?: string | string[];
   applicationDeadline?: string;
+  workMode?: string;
+  experienceLevel?: string;
+  requiredExperienceYears?: string;
+  openings?: string;
+  contractType?: string;
+  workSchedule?: string;
+  languageRequirements?: string;
+  educationLevel?: string;
   views?: number;
   isActive: boolean;
   tags?: string;
   email?: string;
+  additionalInfo?: string;
   updatedAt?: string;
 }
 
@@ -32,11 +42,21 @@ export interface valuesInterface {
   description: string;
   location: string;
   salary: string;
-  category: Category;
+  category: Category | string;
   employmentType: string;
-  skills: string;
-  benefits: string[];
+  requirements: string;
+  benefits: string;
   tags: string;
   email: string;
+  workMode?: string;
+  experienceLevel?: string;
+  requiredExperienceYears?: string;
+  applicationDeadline?: string;
+  openings?: string;
+  contractType?: string;
+  workSchedule?: string;
+  languageRequirements?: string;
+  educationLevel?: string;
+  additionalInfo?: string;
   [key: string]: any;
 }

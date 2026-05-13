@@ -10,6 +10,7 @@ import { RoleProvider } from "./context/RoleContext";
 import { NotificationProvider } from "./context/NotificationContext";
 import { getUserFromLocalStorage } from "./hooks/useAuth";
 import { useState } from "react";
+import { FavoritesProvider } from "./context/FavouritesJobsContext";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Root element not found");
@@ -24,10 +25,12 @@ function Main() {
         <UserDataProvider>
           <NotificationProvider userId={userId}>
             <RoleProvider>
-              <BrowserRouter>
-                <App setUserId={setUserId} />
-                <ToastContainer position="top-center" autoClose={3000} />
-              </BrowserRouter>
+              <FavoritesProvider userId={userId}>
+                <BrowserRouter>
+                  <App setUserId={setUserId} />
+                  <ToastContainer position="top-center" autoClose={3000} />
+                </BrowserRouter>
+              </FavoritesProvider>
             </RoleProvider>
           </NotificationProvider>
         </UserDataProvider>

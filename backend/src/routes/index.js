@@ -7,6 +7,7 @@ import applicationRoutes from "./applicationRoutes.js"
 import notifications from "./notificationRoutes.js"
 import statsRoutes from "./statsRoutes.js";
 import authRoutes from "./authRoutes.js";
+import addToFavouritesRoute from "./addToFavouriteseRoute.js";
 
 const router = Router();
 
@@ -19,5 +20,6 @@ router.use('/applications', applicationRoutes)
 router.use('/notifications', notifications)
 router.use('/application', statsRoutes)
 router.use('/auth', authRoutes)
+router.use('/favourites', addToFavouritesRoute)
 
 export default router;

@@ -20,10 +20,14 @@ const ViewAllJobsForCompany = lazy(
     import("../components/Company/ViewAllJobsForCompany/ViewAllJobsForCompany"),
 );
 const CandidateJobView = lazy(
-  () => import("../components/Jobs/CandidateJobView/CandidateJobView"),
+  () => import("../components/Jobs/JobDetailsView/JobDetailsView"),
 );
 const FilterJobByCategory = lazy(
   () => import("../components/FilterJobsByCategory/FilterJobsByCategory"),
+);
+
+const HowToPostJobInfo = lazy(
+  () => import("../components/Jobs/HowToPostJobInfo/HowToPostJobInfo"),
 );
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 export const jobsRoutes = [
@@ -52,6 +56,14 @@ export const jobsRoutes = [
         </Suspense>
         }
         />
+        <Route
+        path="how-to-post-job"
+        element={
+          <Suspense fallback={<FullPageSpinner />}>
+            <HowToPostJobInfo />
+          </Suspense>
+        }
+      />
   </Route>,
 
   <Route element={<ProtectedRoutes />}>
@@ -104,5 +116,7 @@ export const jobsRoutes = [
       />
     </Route>
   </Route>,
+
+  
 
 ];

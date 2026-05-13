@@ -1,6 +1,6 @@
 import "./Profile.css";
 import "./Responsive.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import useUserProfile from "../../hooks/useProfile";
 import { useNavigate } from "react-router";
@@ -28,6 +28,13 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const { loading: companyLoading, company, getCompanyById } = useCompany();
   const navigate = useNavigate();
   const { setUserData } = useUserData();
+  const [isCompanyReady, setIsCompanyReady] = useState(false);
+  const companyValue = userData?.company as
+    | string
+    | { _id?: string }
+    | undefined;
+  const companyId =
+    typeof companyValue === "string" ? companyValue : companyValue?._id;
 
   useEffect(() => {
     if (userData) {
@@ -36,9 +43,29 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   }, [userData]);
 
   useEffect(() => {
-    if (!userData?.company) return;
-    getCompanyById(userData.company);
-  }, [userData?.company]);
+    if (!userData) {
+      setIsCompanyReady(false);
+      return;
+    }
+
+    if (!companyId) {
+      setIsCompanyReady(true);
+      return;
+    }
+
+    let isMounted = true;
+    setIsCompanyReady(false);
+
+    getCompanyById(companyId).finally(() => {
+      if (isMounted) {
+        setIsCompanyReady(true);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [companyId, userData]);
 
   const registerCompanyNavigation = () => {
     navigate("/register/company");
@@ -48,14 +75,23 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     navigate(`/company/${company?._id}/post-job`);
   };
 
-  const hasCompanyId = Boolean(userData?.company);
+  const hasCompanyId = Boolean(companyId);
 
-  const isProfileReady =
-    !userLoading &&
-    !!userData;
-
-  if (!isProfileReady || !userData) {
+  if (userLoading || (!!userData && !isCompanyReady)) {
     return <Spinner overlay={true} />;
+  }
+
+  if (!userData) {
+    return (
+      <Container maxwith="820px" padding="0 12px">
+        <div className="profile-container">
+          <div className="profile-activity-card">
+            <h3>Unable to load profile</h3>
+            <p>This account data could not be loaded right now.</p>
+          </div>
+        </div>
+      </Container>
+    );
   }
 
   const completionChecks = [
@@ -64,7 +100,6 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     Boolean(userData.email),
     Boolean(userData.phoneNumber),
     Boolean(userData.location),
-    Boolean(avatar),
   ];
   const totalCompletionFields = completionChecks.length;
   const completedFields = completionChecks.filter(Boolean).length;
@@ -80,26 +115,17 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
             userData={userData}
             avatar={avatar}
             handleFileChange={handleFileChange}
-            userRole={userRole}
-            company={company}
-            hasCompanyId={hasCompanyId}
             completionPercentage={completionPercentage}
             completedFields={completedFields}
             totalCompletionFields={totalCompletionFields}
           />
 
-          {userLoading ? (
-            <div className="profile-side-card" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Spinner />
-            </div>
-          ) : (
-            <RoleAndCompanySection
-              userRole={userRole}
-              company={company}
-              companyLoading={companyLoading}
-              hasCompanyId={hasCompanyId}
-            />
-          )}
+          <RoleAndCompanySection
+            userRole={userRole}
+            company={company}
+            companyLoading={companyLoading}
+            hasCompanyId={hasCompanyId}
+          />
 
           
         </section>
