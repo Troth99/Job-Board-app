@@ -5,9 +5,9 @@ import User from '../models/User.js'
 /**
  * Middleware for protecting routes with JWT
  */
-
 export const protect = async (req, res, next) => {
   const authHeader = req.headers.authorization;
+
 
   if (!authHeader?.startsWith("Bearer ")) {
     return res.status(401).json({ message: "Unauthorized: No token" });
@@ -24,6 +24,7 @@ export const protect = async (req, res, next) => {
     }
 
     req.user = user;
+
     next();
   } catch (error) {
     // Don't log "jwt expired" errors - they're normal during token refresh
