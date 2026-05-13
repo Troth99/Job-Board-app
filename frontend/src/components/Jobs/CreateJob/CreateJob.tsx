@@ -256,17 +256,6 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="tags">Tags (comma separated)</label>
-          <input
-            type="text"
-            id="tags"
-            placeholder="e.g., Full-time, Weekend shifts, Immediate start"
-            {...register("tags")}
-          />
-          <div className="error-message">{errors.tags}</div>
-        </div>
-
-        <div className="form-group">
           <label htmlFor="contactEmail">Contact Email</label>
           <input
             type="email"

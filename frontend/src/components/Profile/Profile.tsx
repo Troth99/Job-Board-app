@@ -146,11 +146,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
               <li>
                 <span>Company access</span>
                 <strong>
-                  {!hasCompanyId
-                    ? "Not enabled"
-                    : company
-                      ? "Enabled"
-                      : "Loading..."}
+                  {!hasCompanyId ? "Not enabled" : "Enabled"}
                 </strong>
               </li>
               <li>

@@ -43,12 +43,9 @@ export const employmentOptions = [
   { value: "Contract", label: "Contract" },
   { value: "Freelance", label: "Freelance" },
   { value: "Temporary", label: "Temporary" },
-  { value: "Remote", label: "Remote" },
-  { value: "On-site", label: "On-site" },
   { value: "Volunteer", label: "Volunteer" },
   { value: "Seasonal", label: "Seasonal" },
   { value: "Apprenticeship", label: "Apprenticeship" },
-  { value: "Hybrid", label: "Hybrid" },
 ];
 
 //For Experience requirement options, we can use the same select component as employment type, just with different options. So I will implement it later when I implement the experience requirement field in the form.

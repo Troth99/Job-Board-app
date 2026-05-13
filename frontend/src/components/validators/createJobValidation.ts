@@ -61,8 +61,12 @@ export function jobPostValidations(form: valuesInterface) {
     errors.employmentType = "Employment type is required.";
   }
 
-  if (form.openings && Number(form.openings) <= 0) {
-    errors.openings = "Openings must be at least 1.";
+  if (!form.openings || form.openings.trim().length === 0) {
+    errors.openings = "Open positions is required.";
+  } else if (Number.isNaN(Number(form.openings))) {
+    errors.openings = "Open positions must be a valid number.";
+  } else if (Number(form.openings) <= 0) {
+    errors.openings = "Open positions must be at least 1.";
   }
 
     if(normalize(form.educationLevel).filter(Boolean).length === 0) {
@@ -91,10 +95,6 @@ export function jobPostValidations(form: valuesInterface) {
     Number(form.requiredExperienceYears) < 0
   ) {
     errors.requiredExperienceYears = "Experience years cannot be negative.";
-  }
-
-  if (form.openings && Number(form.openings) <= 0) {
-    errors.openings = "Open positions must be at least 1.";
   }
 
   if (form.applicationDeadline) {
