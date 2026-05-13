@@ -47,7 +47,12 @@ function PostJob() {
   const onSubmitHandler = async (values: valuesInterface) => {
     setLoading(true);
     try {
-      await createJob(values);
+      // Map 'skills' to 'requirements' for backend compatibility
+      const jobData = {
+        ...values,
+        requirements: values.skills,
+      };
+      await createJob(jobData);
       showSuccess("Job posted successfully!");
       navigate(`/company/${companyId}/dashboard`);
     } catch (error: unknown) {
@@ -149,17 +154,6 @@ function PostJob() {
         <div className="error-message">{errors.experienceLevel}</div>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="requiredExperienceYears">Required Experience (years)</label>
-          <input
-            type="number"
-            id="requiredExperienceYears"
-            min="0"
-            placeholder="e.g., 2"
-            {...register("requiredExperienceYears")}
-          />
-          <div className="error-message">{errors.requiredExperienceYears}</div>
-        </div>
 
         <div className="form-group">
           <label htmlFor="applicationDeadline">

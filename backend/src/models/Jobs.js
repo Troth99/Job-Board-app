@@ -25,16 +25,9 @@ const jobSchema = new Schema({
     required: true 
   },
 
-  experienceRequirement: { 
+  experienceLevel: {
     type: String,
-     default: "",
-      trim: true, 
-      required: true 
-    },
-
-  requiredExperience: {
-    type: String,
-    default: "",
+    default: '',
     trim: true,
     required: true
   },
@@ -43,15 +36,16 @@ const jobSchema = new Schema({
     type: Date
   },
 
-  openPositions: {
+  openings: {
     type: Number,
     default: 1,
-    min: 1
+    min: 1,
+    required: true
   },
 
-  contractkType: {
+  contractType: {
     type: String,
-    default: "",
+    default: '',
     trim: true,
   },
   
@@ -62,8 +56,9 @@ const jobSchema = new Schema({
   },
 
   languageRequirements: {
-    type: [String],
-    default: [],
+    type: String,
+    default: '',
+    trim: true,
   },
 
   educationLevel: {
@@ -74,8 +69,9 @@ const jobSchema = new Schema({
   },
 
   requirements: {
-    type: [String],
-    default: [],
+    type: String,
+    default: '',
+    trim: true,
     required: true
   },
 
@@ -103,7 +99,16 @@ const jobSchema = new Schema({
     default: "Full-time",
   },
 
-  benefits: [{ type: String }],
+  benefits: {
+    type: String,
+    default: '',
+    trim: true,
+  },
+  tags: {
+    type: String,
+    default: '',
+    trim: true,
+  },
 
   email: {
     type: String,

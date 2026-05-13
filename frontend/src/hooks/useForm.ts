@@ -48,12 +48,10 @@ export default function useForm<T extends FormValues>(
     e.preventDefault();
     const formErrors = validateForm(values);
     setErrors(formErrors);
-    
     if (Object.keys(formErrors).length > 0) {
       return;
     }
     await callBack(values);
-    
   };
 
   const register = (fieldName: keyof T & string) => {

@@ -73,19 +73,12 @@ export function jobPostValidations(form: valuesInterface) {
       errors.educationLevel = "Education level is required.";
     }
 
-  if (
-    !form.requiredExperienceYears ||
-    form.requiredExperienceYears.trim().length === 0
-  ) {
-    errors.requiredExperienceYears = "Required experience years is required.";
-  }
+
 
   if (normalize(form.skills).filter(Boolean).length === 0) {
     errors.skills = "Requirements are required.";
   }
-  if (normalize(form.tags).filter(Boolean).length === 0) {
-    errors.tags = "Tags are required.";
-  }
+
   if (!form.email || form.email.trim().length === 0) {
     errors.email = "Email is required.";
   }
