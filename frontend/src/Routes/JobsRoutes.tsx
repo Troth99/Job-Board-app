@@ -25,6 +25,10 @@ const CandidateJobView = lazy(
 const FilterJobByCategory = lazy(
   () => import("../components/FilterJobsByCategory/FilterJobsByCategory"),
 );
+
+const HowToPostJobInfo = lazy(
+  () => import("../components/Jobs/HowToPostJobInfo/HowToPostJobInfo"),
+);
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 export const jobsRoutes = [
   <Route element={<MainLayout />}>
@@ -52,6 +56,14 @@ export const jobsRoutes = [
         </Suspense>
         }
         />
+        <Route
+        path="how-to-post-job"
+        element={
+          <Suspense fallback={<FullPageSpinner />}>
+            <HowToPostJobInfo />
+          </Suspense>
+        }
+      />
   </Route>,
 
   <Route element={<ProtectedRoutes />}>
@@ -104,5 +116,7 @@ export const jobsRoutes = [
       />
     </Route>
   </Route>,
+
+  
 
 ];
