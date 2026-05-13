@@ -11,6 +11,10 @@ const normalize = (arr: any) =>
 
 export function jobPostValidations(form: valuesInterface) {
   let errors: Record<string, string> = {};
+  const openingsValue =
+    form.openings === undefined || form.openings === null
+      ? ""
+      : String(form.openings).trim();
 
   const hasCategory =
     typeof form.category === "string"
@@ -61,11 +65,11 @@ export function jobPostValidations(form: valuesInterface) {
     errors.employmentType = "Employment type is required.";
   }
 
-  if (!form.openings || form.openings.trim().length === 0) {
+  if (openingsValue.length === 0) {
     errors.openings = "Open positions is required.";
-  } else if (Number.isNaN(Number(form.openings))) {
+  } else if (Number.isNaN(Number(openingsValue))) {
     errors.openings = "Open positions must be a valid number.";
-  } else if (Number(form.openings) <= 0) {
+  } else if (Number(openingsValue) <= 0) {
     errors.openings = "Open positions must be at least 1.";
   }
 

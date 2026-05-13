@@ -55,11 +55,13 @@ export default function useForm<T extends FormValues>(
   };
 
   const register = (fieldName: keyof T & string) => {
+    const fieldValue = values[fieldName];
     return {
       name: fieldName,
       onChange: changeHandler,
       onBlur: blurHandler,
-      value: values[fieldName],
+      // Keep inputs controlled for their entire lifetime.
+      value: fieldValue ?? "",
     };
   };
 

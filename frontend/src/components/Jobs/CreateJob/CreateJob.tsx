@@ -37,6 +37,11 @@ const initialValues = {
   educationLevel: "",
   additionalInfo: "",
 };
+
+
+//make a sample example with information how to psot a job and tamstamp and explanation on the forms.
+//add a different route to it and add a link to it from company dashboard. Add a button to post job in company dashboard and link it to the route of create job form.
+
 function PostJob() {
   const { companyId } = useParams();
   const [loading, setLoading] = useState<boolean>(false);

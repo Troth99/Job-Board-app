@@ -1,5 +1,6 @@
 import { CompanyMember } from "../models/CompanyMember.js";
 import Jobs from "../models/Jobs.js";
+import Category from "../models/Category.js";
 import mongoose from "mongoose";
 import { createJobService, getJobById, getJobsByCategoryName, getRecentJobs } from "../services/jobService.js";
 
@@ -108,14 +109,50 @@ export const getRecentJobsController = async (req, res) => {
 
 export const updateJobController = async (req, res) => {
   const { id } = req.params;
-  const jobData = req.body;
+  const jobData = { ...req.body };
 
   try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid job ID format" });
+    }
 
     const job = await Jobs.findById(id).populate('category')
     if (!job) {
       return res.status(404).json({ message: "Job not found" });
     }
+
+    // Normalize category payload: accepts object, ObjectId string, or category name.
+    if (jobData.category) {
+      if (typeof jobData.category === "object") {
+        jobData.category = jobData.category._id || jobData.category.id;
+      }
+
+      if (typeof jobData.category === "string") {
+        const trimmedCategory = jobData.category.trim();
+        if (trimmedCategory.length > 0) {
+          if (mongoose.Types.ObjectId.isValid(trimmedCategory)) {
+            jobData.category = trimmedCategory;
+          } else {
+            let category = await Category.findOne({ name: trimmedCategory });
+            if (!category) {
+              category = await Category.create({
+                name: trimmedCategory,
+                shortName: trimmedCategory.toLowerCase().replace(/\s+/g, "-"),
+              });
+            }
+            jobData.category = category._id;
+          }
+        }
+      }
+    }
+
+    if (jobData.applicationDeadline === "") {
+      jobData.applicationDeadline = undefined;
+    }
+
+    // Prevent sensitive ownership fields from being overwritten.
+    delete jobData.createdBy;
+    delete jobData.company;
 
 
     Object.assign(job, jobData);
@@ -126,6 +163,9 @@ export const updateJobController = async (req, res) => {
     res.status(200).json(job);
   } catch (error) {
     console.error(error);
+    if (error.name === "ValidationError" || error.name === "CastError") {
+      return res.status(400).json({ message: error.message });
+    }
     res.status(500).json({ message: "Failed to update job", error: error.message });
   }
 };
