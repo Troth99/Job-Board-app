@@ -79,8 +79,8 @@ export function jobPostValidations(form: valuesInterface) {
 
 
 
-  if (normalize(form.skills).filter(Boolean).length === 0) {
-    errors.skills = "Requirements are required.";
+  if (normalize(form.requirements).filter(Boolean).length === 0) {
+    errors.requirements = "Requirements are required.";
   }
 
   if (!form.email || form.email.trim().length === 0) {

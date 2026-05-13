@@ -44,7 +44,7 @@ export interface valuesInterface {
   salary: string;
   category: Category | string;
   employmentType: string;
-  skills: string;
+  requirements: string;
   benefits: string;
   tags: string;
   email: string;

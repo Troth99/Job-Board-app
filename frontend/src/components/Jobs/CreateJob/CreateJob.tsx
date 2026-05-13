@@ -22,7 +22,7 @@ const initialValues = {
   salary: "",
   category: "",
   employmentType: "",
-  skills: "",
+  requirements: "",
   benefits: "",
   tags: "",
   email: "",
@@ -53,12 +53,7 @@ function PostJob() {
   const onSubmitHandler = async (values: valuesInterface) => {
     setLoading(true);
     try {
-      // Map 'skills' to 'requirements' for backend compatibility
-      const jobData = {
-        ...values,
-        requirements: values.skills,
-      };
-      await createJob(jobData);
+      await createJob(values);
       showSuccess("Job posted successfully!");
       navigate(`/company/${companyId}/dashboard`);
     } catch (error: unknown) {
@@ -244,14 +239,14 @@ function PostJob() {
         </div>
       
         <div className="form-group">
-          <label htmlFor="skills">Requirements (comma separated)</label>
+          <label htmlFor="requirements">Requirements (comma separated)</label>
           <input
             type="text"
-            id="skills"
+            id="requirements"
             placeholder="e.g., Customer service, Driving license B, Excel"
-            {...register("skills")}
+            {...register("requirements")}
           />
-          <div className="error-message">{errors.skills}</div>
+          <div className="error-message">{errors.requirements}</div>
         </div>
 
         <div className="form-group">

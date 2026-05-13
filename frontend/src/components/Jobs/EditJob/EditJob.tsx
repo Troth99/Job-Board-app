@@ -26,7 +26,7 @@ const initialValues = {
   shortName: ""
 },
   employmentType: "",
-  skills: "",
+  requirements: "",
   benefits: "",
   tags: "",
   email: "",
@@ -65,8 +65,8 @@ export default function EditJob() {
         currentJob.benefits = currentJob.benefits.join(", ");
       }
 
-      if (!currentJob.skills && currentJob.requirements) {
-        currentJob.skills = currentJob.requirements;
+      if (!currentJob.requirements && currentJob.skills) {
+        currentJob.requirements = currentJob.skills;
       }
 
       if (currentJob.category && typeof currentJob.category === "string") {
@@ -97,18 +97,15 @@ export default function EditJob() {
   const editSubmitHandler = async (values: valuesInterface) => {
     setPending(true);
 
-    const jobToUpdate = {
-      ...values,
-      requirements: values.skills,
-      updatedAt: new Date().toISOString(),
-    };
-
     try {
       if (!jobId) {
         console.error("Job ID is missing.");
         return;
       }
-      await updateJob(jobId, jobToUpdate);
+      await updateJob(jobId, {
+        ...values,
+        updatedAt: new Date().toISOString(),
+      });
       navigate(`/company/${companyId}/job/${jobId}/details`);
     } catch (error) {
       console.error("Failed to update job", error);
@@ -307,14 +304,14 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="skills">Requirements (comma separated)</label>
+              <label htmlFor="requirements">Requirements (comma separated)</label>
               <input
                 type="text"
-                id="skills"
+                id="requirements"
                 placeholder="e.g., Customer service, Driving license B, Excel"
-                {...register("skills")}
+                {...register("requirements")}
               />
-              <div className="error-message">{errors.skills}</div>
+              <div className="error-message">{errors.requirements}</div>
             </div>
 
             <div className="form-group">
