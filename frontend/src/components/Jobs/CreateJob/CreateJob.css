@@ -66,6 +66,21 @@
   color: var(--post-text);
 }
 
+.optional-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.45rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid #c7d8ef;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #58759c;
+  background: rgba(232, 241, 252, 0.8);
+  vertical-align: middle;
+}
+
 .post-job-form input,
 .post-job-form textarea,
 .post-job-form select {
@@ -174,6 +189,12 @@
   background: rgba(10, 20, 32, 0.92);
   color: #e6eef8;
   border-color: var(--post-border);
+}
+
+[data-theme="dark"] .optional-badge {
+  color: #b8cbe2;
+  border-color: #3f5d83;
+  background: rgba(30, 47, 70, 0.7);
 }
 
 [data-theme="dark"] .post-job-form input::placeholder,

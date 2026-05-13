@@ -11,7 +11,7 @@ import Spinner from "../../Spinner/Spinner";
 import { valuesInterface } from "../../../interfaces/Job.model";
 import useForm from "../../../hooks/useForm";
 import { useValidation } from "../../validators/useValidation";
-import { jobPostValidations } from "../../validators/postJobValidation";
+import { jobPostValidations } from "../../validators/createJobValidation";
 
 const initialValues = {
   title: "",
@@ -25,7 +25,7 @@ const initialValues = {
 },
   employmentType: "",
   skills: "",
-  benefits: [],
+  benefits: "",
   tags: "",
   email: "",
 };
@@ -48,6 +48,10 @@ export default function EditJob() {
     }
     try {
       const currentJob = await getJobById(jobId);
+
+      if (Array.isArray(currentJob.benefits)) {
+        currentJob.benefits = currentJob.benefits.join(", ");
+      }
      
       if(currentJob.category){
         const selectedCategory = categories.find(
@@ -164,7 +168,7 @@ const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
             <div className="form-group">
               <label htmlFor="category">Job Category</label>
               <JobEditCategory
-                value={jobData.category}
+                value={typeof jobData.category === "string" ? null : jobData.category}
                 categories={categories}
                 onChange={handleCategoryChange}
               />

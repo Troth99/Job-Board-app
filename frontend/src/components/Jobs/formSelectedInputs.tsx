@@ -64,11 +64,19 @@ export const experienceOptions = [
   { value: "Management experience required", label: "Management experience required" },
 ]
 
+export const workModeOptions = [
+  { value: "On-site", label: "On-site" },
+  { value: "Hybrid", label: "Hybrid" },
+  { value: "Remote", label: "Remote" },
+];
+
 export  function JobCategorySelect({ value, onChange }: Props) {
 
   return (
     <select name="category" value={value } onChange={onChange}>
-      <option value="">Select a category</option>
+      <option value="" disabled>
+        Select category
+      </option>
       {categories.map((cat) => (
         <option key={cat.value} value={cat.value}>
           {cat.label}
@@ -94,7 +102,9 @@ export  function JobEditCategory({ value, categories, onChange }: JobCategorySel
 export  function EmploymentTypeSelect({ value, onChange }: Props) {
   return (
     <select id="employmentType" name="employmentType" value={value} onChange={onChange}>
-      <option value="">Select Employment Type</option>
+      <option value="" disabled>
+        Select employment type
+      </option>
       {employmentOptions.map((opt) => (
         <option key={opt.value} value={opt.value}>
           {opt.label}
@@ -107,8 +117,25 @@ export  function EmploymentTypeSelect({ value, onChange }: Props) {
 export function ExperienceLevelSelect({ value, onChange }: Props) {
   return (
     <select id="experienceLevel" name="experienceLevel" value={value} onChange={onChange}>
-      <option value="">Select Experience Level</option>
+      <option value="" disabled>
+        Select experience level
+      </option>
       {experienceOptions.map((opt) => (
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
+  );
+}
+
+export function WorkModeSelect({ value, onChange }: Props) {
+  return (
+    <select id="workMode" name="workMode" value={value} onChange={onChange}>
+      <option value="" disabled>
+        Select work mode
+      </option>
+      {workModeOptions.map((opt) => (
         <option key={opt.value} value={opt.value}>
           {opt.label}
         </option>

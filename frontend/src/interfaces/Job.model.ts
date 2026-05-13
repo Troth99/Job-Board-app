@@ -13,11 +13,11 @@ export interface Job {
     lastName?: string;
   };
   company?: Company | null;
-  category?: Category;
+  category?: Category | string;
   createdAt?: string;
   skills?: string;
   employmentType?: string;
-  benefits?: string[];
+  benefits?: string | string[];
   applicationDeadline?: string;
   workMode?: string;
   experienceLevel?: string;
@@ -40,10 +40,10 @@ export interface valuesInterface {
   description: string;
   location: string;
   salary: string;
-  category: Category;
+  category: Category | string;
   employmentType: string;
   skills: string;
-  benefits: string[];
+  benefits: string;
   tags: string;
   email: string;
   workMode?: string;

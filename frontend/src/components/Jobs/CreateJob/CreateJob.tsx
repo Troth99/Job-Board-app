@@ -1,12 +1,17 @@
 import "./CreateJob.css";
 import { useState } from "react";
 import "./CreateJob.css";
-import { EmploymentTypeSelect, ExperienceLevelSelect, JobCategorySelect } from "../formSelectedInputs";
+import {
+  EmploymentTypeSelect,
+  ExperienceLevelSelect,
+  JobCategorySelect,
+  WorkModeSelect,
+} from "../formSelectedInputs";
 import useJobs from "../../../hooks/useJobs";
 import { showSuccess } from "../../../utils/toast";
 import { useNavigate, useParams } from "react-router";
 
-import { jobPostValidations } from "../../validators/postJobValidation";
+import { jobPostValidations } from "../../validators/createJobValidation";
 import useForm from "../../../hooks/useForm";
 import { valuesInterface } from "../../../interfaces/Job.model";
 
@@ -15,14 +20,10 @@ const initialValues = {
   description: "",
   location: "",
   salary: "",
-  category: {
-    _id: "",
-    name: "",
-    shortName: "",
-  },
+  category: "",
   employmentType: "",
   skills: "",
-  benefits: [],
+  benefits: "",
   tags: "",
   email: "",
   workMode: "",
@@ -67,7 +68,37 @@ function PostJob() {
     <div className="post-job-container">
       <h2>Post a New Job</h2>
       <form className="post-job-form" onSubmit={formHandler}>
-   
+         <div className="form-group">
+          <label htmlFor="title">Job Title</label>
+          <input
+            type="text"
+            id="title"
+            {...register("title")}
+            placeholder="Job Title"
+          />
+          <div className="error-message">{errors.title}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="description">Job Description</label>
+          <textarea
+            id="description"
+            placeholder="Job Description"
+            {...register("description")}
+          ></textarea>
+          <div className="error-message">{errors.description}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="location">Location</label>
+          <input
+            type="text"
+            id="location"
+            placeholder="Location"
+            {...register("location")}
+          />
+          <div className="error-message">{errors.location}</div>
+        </div>
 
         <div className="form-group">
           <label htmlFor="salary">Salary</label>
@@ -82,25 +113,22 @@ function PostJob() {
 
         <div className="form-group">
           <label htmlFor="workMode">Work Mode</label>
-          <select
-            id="workMode"
+          <WorkModeSelect
             value={register("workMode").value}
             onChange={(e) => setFieldValue("workMode", e.target.value)}
-          >
-            <option value="">Select Work Mode</option>
-            <option value="On-site">On-site</option>
-            <option value="Hybrid">Hybrid</option>
-            <option value="Remote">Remote</option>
-          </select>
+          />
           <div className="error-message">{errors.workMode}</div>
         </div>
 
         <div className="form-group">
           <label htmlFor="salary">Category</label>
           <JobCategorySelect
-            value={register("category").value?._id}
+            value={register("category").value || ""}
             onChange={(e) => setFieldValue("category", e.target.value)}
           />
+          <div className="error-message">
+            {typeof errors.category === "string" ? errors.category : ""}
+          </div>
         </div>
 
     <div className="form-group">
@@ -109,6 +137,7 @@ function PostJob() {
           value={register("employmentType").value}
           onChange={(e) => setFieldValue("employmentType", e.target.value)}
         />
+        <div className="error-message">{errors.employmentType}</div>
         </div>
 
         <div className="form-group">
@@ -117,6 +146,7 @@ function PostJob() {
           value={register("experienceLevel").value}
           onChange={(e) => setFieldValue("experienceLevel", e.target.value)}
         />
+        <div className="error-message">{errors.experienceLevel}</div>
         </div>
 
         <div className="form-group">
@@ -132,7 +162,9 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="applicationDeadline">Application Deadline</label>
+          <label htmlFor="applicationDeadline">
+            Application Deadline <span className="optional-badge">Optional</span>
+          </label>
           <input
             type="date"
             id="applicationDeadline"
@@ -154,7 +186,9 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="contractType">Contract Type</label>
+          <label htmlFor="contractType">
+            Contract Type <span className="optional-badge">Optional</span>
+          </label>
           <input
             type="text"
             id="contractType"
@@ -164,7 +198,9 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="workSchedule">Work Schedule</label>
+          <label htmlFor="workSchedule">
+            Work Schedule <span className="optional-badge">Optional</span>
+          </label>
           <input
             type="text"
             id="workSchedule"
@@ -174,7 +210,9 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="languageRequirements">Language Requirements</label>
+          <label htmlFor="languageRequirements">
+            Language Requirements <span className="optional-badge">Optional</span>
+          </label>
           <input
             type="text"
             id="languageRequirements"
@@ -191,6 +229,7 @@ function PostJob() {
             placeholder="e.g., High School, Bachelor, Not required"
             {...register("educationLevel")}
           />
+          <div className="error-message">{errors.educationLevel}</div>
         </div>
       
         <div className="form-group">
@@ -205,7 +244,9 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="benefits">Benefits (comma separated)</label>
+          <label htmlFor="benefits">
+            Benefits (comma separated) <span className="optional-badge">Optional</span>
+          </label>
           <input
             type="text"
             id="benefits"
