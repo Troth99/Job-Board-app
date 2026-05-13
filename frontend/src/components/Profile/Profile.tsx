@@ -78,7 +78,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
 
   //refactor to use hasCompanyId instead of company for better loading state handling and to avoid showing "No company" when company data is still loading
   const hasCompanyId = Boolean(userData?.company);
-  console.log("User Data:", userData);
+
 
   const isProfileReady =
     !userLoading &&
@@ -95,7 +95,6 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     Boolean(userData.email),
     Boolean(userData.phoneNumber),
     Boolean(userData.location),
-    Boolean(avatar),
   ];
   const totalCompletionFields = completionChecks.length;
   const completedFields = completionChecks.filter(Boolean).length;

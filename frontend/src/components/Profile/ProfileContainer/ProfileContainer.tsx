@@ -28,10 +28,9 @@ export default function ProfileContainer({
 }: ProfileContainerProps) {
   const companyStatusLabel = !hasCompanyId
     ? "No company"
-    : company
-      ? "In company"
-      : "Loading company...";
-
+    : company && company.name
+      ? company.name
+      : "No company";
   return (
     <div className="profile-main-card">
       <div className="profile-identity-block">
