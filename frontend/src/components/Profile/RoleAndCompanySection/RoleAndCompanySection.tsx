@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
 
 interface RoleAndCompanySectionProps {
@@ -49,6 +49,9 @@ export function RoleAndCompanySection({
           </div>
 
           {/* TODO: Saved Jobs — изисква savedJobs: [ObjectId] в User модела + GET /users/:id/saved-jobs */}
+          <Link to="/favourite-jobs" className="saved-jobs-link">
+            <h3>Saved Jobs</h3>
+          </Link>
           <div className="saved-jobs-placeholder">
             <div className="saved-jobs-placeholder__icon">🔖</div>
             <h3>Saved Jobs</h3>
