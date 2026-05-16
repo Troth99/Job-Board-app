@@ -16,7 +16,10 @@ const fetchFavoriteJobs = async () => {
     setLoading(true);
 try {
     const response = await getAllFavoriteJobs();
-    setFavoriteJobs(response.savedJobs);
+    console.log(response.savedJobs)
+    const sortedJobs = response.savedJobs.sort((a: { createdAt: string }, b: { createdAt: string }) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    console.log(sortedJobs)
+    setFavoriteJobs(sortedJobs);
     setLoading(false);
 } catch (error) {
    console.error("Error fetching favorite jobs:", error); 

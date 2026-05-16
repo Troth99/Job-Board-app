@@ -45,7 +45,7 @@ export function FavoritesProvider({
         const res = await getAllFavoriteJobs();
 
         if (res?.savedJobs) {
-          setSavedJobIds(res.savedJobs.map((j: any) => j._id ?? j));
+      setSavedJobIds(res.savedJobs.map((j: any) => j._id));
         }
       } finally {
         setLoading(false);
