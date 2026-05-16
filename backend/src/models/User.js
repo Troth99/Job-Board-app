@@ -61,12 +61,12 @@ const userSchema = new mongoose.Schema({
         type:Date
     },
 
-    savedJobs: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Job'
-        },
-    ]
+   savedJobs: [
+  {
+    job: { type: mongoose.Schema.Types.ObjectId, ref: 'Job' },
+    addedAt: { type: Date, default: Date.now }
+  }
+]
 
 });
 

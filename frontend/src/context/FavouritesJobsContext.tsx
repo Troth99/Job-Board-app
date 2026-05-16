@@ -1,104 +1,116 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import useJobs from "../hooks/useJobs";
 
-interface FavoritesContextType {
-  savedJobIds: string[];
-  isFavorite: (jobId: string) => boolean;
-  addToFavorites: (jobId: string) => Promise<void>;
-  removeFromFavorites: (jobId: string) => Promise<void>;
-  isLoggedIn: boolean;
-  loading?: boolean;
-}
+  export interface SavedJob {
+    job: {
+      _id: string;
+      [key: string]: any;
+    };
+    addedAt: string;
+  }
 
-const FavouritesJobsContext = createContext<FavoritesContextType | undefined>(
-  undefined,
-);
+  interface FavoritesContextType {
+    savedJobs: SavedJob[];
+    isFavorite: (jobId: string) => boolean;
+    getAddedDate: (jobId: string) => string | undefined;
+    addToFavorites: (jobId: string) => Promise<void>;
+    removeFromFavorites: (jobId: string) => Promise<void>;
+    isLoggedIn: boolean;
+    loading?: boolean;
+  }
 
-export function FavoritesProvider({
-  userId,
-  children,
-}: {
-  userId: string;
-  children: ReactNode;
-}) {
-  const [savedJobIds, setSavedJobIds] = useState<string[]>([]);
-  const [loading, setLoading] = useState(false);
-  const { getAllFavoriteJobs, addJobToFavorites, deleteJobFromFavorites } =
-    useJobs();
-  const isLoggedIn = Boolean(userId);
+  const FavouritesJobsContext = createContext<FavoritesContextType | undefined>(
+    undefined,
+  );
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      setSavedJobIds([]);
-      return;
-    }
+  export function FavoritesProvider({
+    userId,
+    children,
+  }: {
+    userId: string;
+    children: ReactNode;
+  }) {
+    const [savedJobs, setSavedJobs] = useState<SavedJob[]>([]);
+    const [loading, setLoading] = useState(false);
+    const { getAllFavoriteJobs, addJobToFavorites, deleteJobFromFavorites } = useJobs();
+    const isLoggedIn = Boolean(userId);
 
-    const fetch = async () => {
+    useEffect(() => {
+      if (!isLoggedIn) {
+        setSavedJobs([]);
+        return;
+      }
+
+      const fetch = async () => {
+        setLoading(true);
+        try {
+          const res = await getAllFavoriteJobs();
+          if (res?.savedJobs) {
+            setSavedJobs(res.savedJobs);
+          }
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetch();
+    }, [isLoggedIn, userId]);
+
+    const isFavorite = (jobId: string) =>
+      savedJobs.some((j) => j.job && j.job._id === jobId);
+
+    const getAddedDate = (jobId: string) =>
+      savedJobs.find((j) => j.job && j.job._id === jobId)?.addedAt;
+
+    const addToFavorites = async (jobId: string) => {
+      if (!isLoggedIn) return;
       setLoading(true);
       try {
+        await addJobToFavorites(jobId);
         const res = await getAllFavoriteJobs();
-
         if (res?.savedJobs) {
-      setSavedJobIds(res.savedJobs.map((j: any) => j._id));
+          setSavedJobs(res.savedJobs);
         }
       } finally {
         setLoading(false);
       }
     };
-    fetch();
-  }, [isLoggedIn, userId]);
 
-  const isFavorite = (jobId: string) => savedJobIds.includes(jobId);
+    const removeFromFavorites = async (jobId: string) => {
+      if (!isLoggedIn) return;
+      setLoading(true);
+      try {
+        await deleteJobFromFavorites(jobId);
+        const res = await getAllFavoriteJobs();
+        if (res?.savedJobs) {
+          setSavedJobs(res.savedJobs);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const addToFavorites = async (jobId: string) => {
-    if (!isLoggedIn) return;
-    setLoading(true);
-    try {
-      await addJobToFavorites(jobId);
-      setSavedJobIds((prev) => [...prev, jobId]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const removeFromFavorites = async (jobId: string) => {
-    if (!isLoggedIn) return;
-    setLoading(true);
-    try {
-      await deleteJobFromFavorites(jobId);
-      setSavedJobIds((prev) => prev.filter((id) => id !== jobId));
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <FavouritesJobsContext.Provider
-      value={{
-        savedJobIds,
-        isFavorite,
-        addToFavorites,
-        removeFromFavorites,
-        isLoggedIn,
-        loading,
-      }}
-    >
-      {children}
-    </FavouritesJobsContext.Provider>
-  );
-}
-
-export function useFavoritesContext() {
-  const context = useContext(FavouritesJobsContext);
-  if (!context)
-    throw new Error(
-      "useFavoritesContext must be used within FavoritesProvider",
+    return (
+      <FavouritesJobsContext.Provider
+        value={{
+          savedJobs,
+          isFavorite,
+          getAddedDate,
+          addToFavorites,
+          removeFromFavorites,
+          isLoggedIn,
+          loading,
+        }}
+      >
+        {children}
+      </FavouritesJobsContext.Provider>
     );
-  return context;
-}
+  }
+
+  export function useFavoritesContext() {
+    const context = useContext(FavouritesJobsContext);
+    if (!context)
+      throw new Error(
+        "useFavoritesContext must be used within FavoritesProvider",
+      );
+    return context;
+  }
