@@ -90,6 +90,11 @@ export const removeJobFromFavourites = async (req, res) => {
 }
 
 export const getSavedJobs = async (req, res) => {
+
+    //To impletement pagination from frontend, we can use query parameters like page and 
+    // limit to determine which set of saved jobs to return. For example, if the frontend sends a 
+    // request to /api/saved-jobs?page=2&limit=10, we can calculate the skip value as (page - 1) * 
+    // limit and use it in our database query to return the appropriate subset of saved jobs.
     try {
         const userId = req.user._id;
 

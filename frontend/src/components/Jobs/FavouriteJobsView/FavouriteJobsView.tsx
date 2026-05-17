@@ -4,9 +4,11 @@ import useCategories from "../../../hooks/useCategories";
 import Spinner from "../../Spinner/Spinner";
 import { Container } from "../../Container/Container";
 import "./FavouriteJobsView.css";
+import type { SavedJob } from "../../../context/FavouritesJobsContext";
+import { useNavigate } from "react-router";
 
 function FavouriteJobsView() {
-  const [favoriteJobs, setFavoriteJobs] = useState([]);
+  const [favoriteJobs, setFavoriteJobs] = useState<SavedJob[]>([]);
   const [loading, setLoading] = useState(true);
   const [categoriesMap, setCategoriesMap] = useState<Record<string, string>>(
     {},
@@ -14,6 +16,8 @@ function FavouriteJobsView() {
 
   const { getAllFavoriteJobs } = useFavorites();
   const { getCategories } = useCategories();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -53,7 +57,13 @@ function FavouriteJobsView() {
       <div className="favourite-jobs-view">
         <div className="favourite-jobs-header">
           <h2 className="favourite-jobs-heading">
-            <span className="favourite-jobs-emoji" role="img" aria-label="bookmark">🔖</span>
+            <span
+              className="favourite-jobs-emoji"
+              role="img"
+              aria-label="bookmark"
+            >
+              🔖
+            </span>
             <span>Your Favourites Jobs</span>
             <span className="favourite-jobs-count">{favoriteJobs.length}</span>
           </h2>
@@ -65,13 +75,15 @@ function FavouriteJobsView() {
           <div>You have no favourite jobs.</div>
         ) : (
           <div className="favourite-jobs-modern-list">
-            {favoriteJobs.map((fav: any) => {
+            {favoriteJobs.map((fav) => {
               const job = fav.job || {};
-              const categoryName = categoriesMap[job.category] || "-";
+              const categoryName = categoriesMap[job.category as string] || "-";
               return (
                 <div
                   key={job._id || fav._id}
                   className="favourite-job-modern-card"
+                  onClick={() => job._id && navigate(`/job/${job._id}`)}
+                  style={{ cursor: "pointer" }}
                 >
                   <span
                     role="img"
@@ -81,28 +93,35 @@ function FavouriteJobsView() {
                     💼
                   </span>
                   <div className="favourite-job-info">
-                    <div className="favourite-job-title">{job.title || "-"}</div>
+                    <div className="favourite-job-title">
+                      {job.title || "-"}
+                    </div>
                     <div className="favourite-job-category">
-                      <span className="category-label">Category:</span> {categoryName}
+                      <span className="category-label">Category:</span>{" "}
+                      {categoryName}
                     </div>
                     {job.location && (
                       <div className="favourite-job-location">
-                        <span className="location-label">Location:</span> {job.location}
+                        <span className="location-label">Location:</span>{" "}
+                        {job.location}
                       </div>
                     )}
                     {job.salary && (
                       <div className="favourite-job-salary">
-                        <span className="salary-label">Salary:</span> {job.salary}
+                        <span className="salary-label">Salary:</span>{" "}
+                        {job.salary}
                       </div>
                     )}
                     {job.employmentType && (
                       <div className="favourite-job-type">
-                        <span className="type-label">Type:</span> {job.employmentType}
+                        <span className="type-label">Type:</span>{" "}
+                        {job.employmentType}
                       </div>
                     )}
                     {fav.addedAt && (
                       <div className="favourite-job-added">
-                        <span className="added-label">Added:</span> {new Date(fav.addedAt).toLocaleString()}
+                        <span className="added-label">Added:</span>{" "}
+                        {new Date(fav.addedAt).toLocaleString()}
                       </div>
                     )}
                   </div>
