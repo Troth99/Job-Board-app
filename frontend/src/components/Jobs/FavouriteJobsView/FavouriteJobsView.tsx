@@ -1,41 +1,119 @@
 import { useEffect, useState } from "react";
 import { useFavorites } from "../../../hooks/favorites";
-
+import useCategories from "../../../hooks/useCategories";
+import Spinner from "../../Spinner/Spinner";
+import { Container } from "../../Container/Container";
+import "./FavouriteJobsView.css";
 
 function FavouriteJobsView() {
-const [favoriteJobs, setFavoriteJobs] = useState([]);
-const [loading, setLoading] = useState(true);
+  const [favoriteJobs, setFavoriteJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [categoriesMap, setCategoriesMap] = useState<Record<string, string>>(
+    {},
+  );
 
-const { getAllFavoriteJobs } = useFavorites();
+  const { getAllFavoriteJobs } = useFavorites();
+  const { getCategories } = useCategories();
 
-useEffect(() => {
-    fetchFavoriteJobs();
-}, []);
+  useEffect(() => {
+    const fetchAll = async () => {
+      setLoading(true);
+      try {
+        const [favRes, cats] = await Promise.all([
+          getAllFavoriteJobs(),
+          getCategories(),
+        ]);
+        const sortedJobs = favRes.savedJobs
+          .slice()
+          .sort(
+            (a: any, b: any) =>
+              new Date(b.addedAt).getTime() - new Date(a.addedAt).getTime(),
+          );
+        setFavoriteJobs(sortedJobs);
+        const map: Record<string, string> = {};
+        cats.forEach((cat: any) => {
+          map[cat._id] = cat.name;
+        });
+        setCategoriesMap(map);
+      } catch (e) {
+        // handle error
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchAll();
+  }, []);
 
-const fetchFavoriteJobs = async () => {
-    setLoading(true);
-try {
-    const response = await getAllFavoriteJobs();
-
-    const sortedJobs = response.savedJobs.slice().sort((a: any, b: any) => new Date(b.addedAt).getTime() - new Date(a.addedAt).getTime());
-
-    setFavoriteJobs(sortedJobs);
-    console.log("Fetched favorite jobs:", sortedJobs);
-    setLoading(false);
-} catch (error) {
-   console.error("Error fetching favorite jobs:", error); 
-}finally{
-    setLoading(false);
+  // Removed unused fetchFavoriteJobs and unreachable loading code
+  if (loading) {
+    return <Spinner overlay={true} />;
+  }
+  return (
+    <Container>
+      <div className="favourite-jobs-view">
+        <div className="favourite-jobs-header">
+          <h2 className="favourite-jobs-heading">
+            <span className="favourite-jobs-emoji" role="img" aria-label="bookmark">🔖</span>
+            <span>Your Favourites Jobs</span>
+            <span className="favourite-jobs-count">{favoriteJobs.length}</span>
+          </h2>
+          <div className="favourite-jobs-subtitle">
+            All jobs you’ve saved in one place. Quick access to your top picks!
+          </div>
+        </div>
+        {favoriteJobs.length === 0 ? (
+          <div>You have no favourite jobs.</div>
+        ) : (
+          <div className="favourite-jobs-modern-list">
+            {favoriteJobs.map((fav: any) => {
+              const job = fav.job || {};
+              const categoryName = categoriesMap[job.category] || "-";
+              return (
+                <div
+                  key={job._id || fav._id}
+                  className="favourite-job-modern-card"
+                >
+                  <span
+                    role="img"
+                    aria-label="job"
+                    className="favourite-job-icon"
+                  >
+                    💼
+                  </span>
+                  <div className="favourite-job-info">
+                    <div className="favourite-job-title">{job.title || "-"}</div>
+                    <div className="favourite-job-category">
+                      <span className="category-label">Category:</span> {categoryName}
+                    </div>
+                    {job.location && (
+                      <div className="favourite-job-location">
+                        <span className="location-label">Location:</span> {job.location}
+                      </div>
+                    )}
+                    {job.salary && (
+                      <div className="favourite-job-salary">
+                        <span className="salary-label">Salary:</span> {job.salary}
+                      </div>
+                    )}
+                    {job.employmentType && (
+                      <div className="favourite-job-type">
+                        <span className="type-label">Type:</span> {job.employmentType}
+                      </div>
+                    )}
+                    {fav.addedAt && (
+                      <div className="favourite-job-added">
+                        <span className="added-label">Added:</span> {new Date(fav.addedAt).toLocaleString()}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </Container>
+  );
 }
-
-//To do - handle errors and loading state properly and display ui accordingly
-}
-    return (
-        <>
-        <h1>{favoriteJobs.length}</h1>
-        </>
-    )
-}
-
 
 export default FavouriteJobsView;
