@@ -72,7 +72,11 @@ function FavouriteJobsView() {
           </div>
         </div>
         {favoriteJobs.length === 0 ? (
-          <div>You have no favourite jobs.</div>
+          <div className="favourite-jobs-empty">
+            <span className="favourite-jobs-empty-icon" role="img" aria-label="empty">🗂️</span>
+            <div className="favourite-jobs-empty-title">You have no favourite jobs</div>
+            <div className="favourite-jobs-empty-desc">Start saving jobs to easily find them later!</div>
+          </div>
         ) : (
           <div className="favourite-jobs-modern-list">
             {favoriteJobs.map((fav) => {
