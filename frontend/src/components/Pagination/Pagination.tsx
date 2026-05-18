@@ -4,18 +4,21 @@ interface PagesProps {
     totalPages: number;
     totalItems: number;
     itemsPerPage: number;
+    currentItemsCount?: number;
     onPageChange: (page: number) => void;
 }
 
-function Pages({ currentPage, totalPages, totalItems, itemsPerPage, onPageChange }: PagesProps) {
+function Pages({ currentPage, totalPages, totalItems, itemsPerPage, currentItemsCount, onPageChange }: PagesProps) {
 
   if(totalItems <= itemsPerPage) {
     return null; // No pagination needed if all items fit on one page
   }
-
     return (
         <>
-        <div className="pagination-spacing">
+        <div className="pagination-spacing"
+      style={currentItemsCount === 1 ? { marginTop: "40rem" } : undefined}
+
+        >
             <nav className="jobs-pagination" aria-label="Job pages">
               <button
                 className="jobs-pagination-button"

@@ -48,7 +48,8 @@ export function RoleAndCompanySection({
             )}
           </div>
 
-          {/* TODO: Saved Jobs — изисква savedJobs: [ObjectId] в User модела + GET /users/:id/saved-jobs */}
+            {/*To implement 2 recent jobs in favourites added to profile page with button view all saved jobs*/}
+            
           <Link to="/favourite-jobs" className="saved-jobs-link">
             <h3>Saved Jobs</h3>
           </Link>

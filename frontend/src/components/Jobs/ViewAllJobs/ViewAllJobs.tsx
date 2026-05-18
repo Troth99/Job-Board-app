@@ -147,14 +147,16 @@ function ViewAllJobs() {
               </p>
             </div>
           )}
-
-          <Pagination
-            currentPage={pageFromUrl}
-            totalPages={totalPages}
-            totalItems={totalJobs}
-            itemsPerPage={ITEMS_PER_PAGE}
-            onPageChange={(page) => setSearchParams({ page: page.toString() })}
-          />
+          {jobs.length > 0 && (
+            <Pagination
+              currentPage={pageFromUrl}
+              totalPages={totalPages}
+              totalItems={totalJobs}
+              itemsPerPage={ITEMS_PER_PAGE}
+              currentItemsCount={jobs.length}
+              onPageChange={(page) => setSearchParams({ page: page.toString() })}
+            />
+          )}
         </div>
       </section>
     </Container>

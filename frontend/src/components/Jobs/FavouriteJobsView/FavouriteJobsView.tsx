@@ -44,7 +44,7 @@ function FavouriteJobsView() {
       }
     };
     fetchFavoriteJobs();
-  }, []);
+  }, [pageFromUrl]);
 
   // Removed unused fetchFavoriteJobs and unreachable loading code
   if (loading) {
@@ -142,14 +142,16 @@ function FavouriteJobsView() {
             })}
           </div>
         )}
-        
-       <Pagination
+        {favoriteJobs.length > 0 && (
+          <Pagination
             currentPage={pageFromUrl}
             totalPages={totalPages}
             totalItems={totalJobs}
             itemsPerPage={ITEMS_PER_PAGE}
+            currentItemsCount={favoriteJobs.length}
             onPageChange={(page) => setSearchParams({ page: page.toString() })}
           />
+        )}
       </div>
     </Container>
   );
