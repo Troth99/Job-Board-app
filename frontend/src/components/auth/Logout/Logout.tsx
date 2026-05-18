@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../hooks/common/useAuth";
 import { setAuthenticated } from "../../../redux/authSlice";
 import { useState } from "react";
 

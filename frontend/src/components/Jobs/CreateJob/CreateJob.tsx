@@ -7,12 +7,12 @@ import {
   JobCategorySelect,
   WorkModeSelect,
 } from "../formSelectedInputs";
-import useJobs from "../../../hooks/useJobs";
+import useJobs from "../../../hooks/utils/useJobs";
 import { showSuccess } from "../../../utils/toast";
 import { Link, useNavigate, useParams } from "react-router";
 
 import { jobPostValidations } from "../../validators/createJobValidation";
-import useForm from "../../../hooks/useForm";
+import useForm from "../../../hooks/common/useForm";
 import { valuesInterface } from "../../../interfaces/Job.model";
 
 const initialValues = {

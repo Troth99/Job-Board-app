@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useApiRequester from "./useApiRequester";
-import { API_BASE } from "../services/api";
-import { LoginFormType } from "../components/auth/Login/Login";
+import { API_BASE } from "../../services/api";
+import { LoginFormType } from "../../components/auth/Login/Login";
 
 
 export interface registerFormType {

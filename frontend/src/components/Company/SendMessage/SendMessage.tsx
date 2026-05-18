@@ -1,12 +1,12 @@
 import { send } from "process";
-import useCompany from "../../../hooks/useCompany";
-import { useNotification } from "../../../hooks/useNotification";
-import useUserProfile from "../../../hooks/useProfile";
+import useCompany from "../../../hooks/utils/useCompany";
+import { useNotification } from "../../../hooks/utils/useNotification";
+import useUserProfile from "../../../hooks/utils/useProfile";
 import { useValidation } from "../../validators/useValidation";
 import "./SendMessage.css";
 
 import { useState } from "react";
-import { getUserFromLocalStorage } from "../../../hooks/useAuth";
+import { getUserFromLocalStorage } from "../../../hooks/common/useAuth";
 
 export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
   const [open, setOpen] = useState<Boolean>(false);

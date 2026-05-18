@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router";
 import MainLayout from "./components/Layouts/MainLayout";
 import { PageNotFound } from "./components/404/404";
 import { useDispatch } from "react-redux";
-import useCategories from "./hooks/useCategories";
+import useCategories from "./hooks/utils/useCategories";
 import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
 import { lazy, Suspense } from "react";
 import SearchResults from "./components/Home/Search/SearchResults/SearchResults";

@@ -4,8 +4,8 @@ import "./Responsive.css";
 import { showSuccess } from "../../../utils/toast";
 import { useNavigate } from "react-router";
 import { validateCompany } from "../../validators/registerCompanyValidation";
-import useForm from "../../../hooks/useForm";
-import useCompany from "../../../hooks/useCompany";
+import useForm from "../../../hooks/common/useForm";
+import useCompany from "../../../hooks/utils/useCompany";
 
 export interface RegisterCompanyInterface extends Record<string, string> {
   name: string;

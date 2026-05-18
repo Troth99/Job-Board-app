@@ -1,5 +1,5 @@
 import React from "react";
-import { Category } from "../../hooks/useCategories";
+import { Category } from "../../hooks/utils/useCategories";
 
 interface Props {
   value: string | undefined;

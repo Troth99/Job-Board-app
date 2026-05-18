@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useJobs from "../../../hooks/useJobs";
+import useJobs from "../../../hooks/utils/useJobs";
 import Spinner from "../../Spinner/Spinner";
 import "./ViewAllJobs.css";
 import { useNavigate, useSearchParams } from "react-router";

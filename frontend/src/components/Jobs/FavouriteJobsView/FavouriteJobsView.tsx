@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useFavorites } from "../../../hooks/favorites";
-import useCategories from "../../../hooks/useCategories";
+import useCategories from "../../../hooks/utils/useCategories";
 import Spinner from "../../Spinner/Spinner";
 import { Container } from "../../Container/Container";
 import "./FavouriteJobsView.css";

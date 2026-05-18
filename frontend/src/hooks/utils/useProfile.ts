@@ -1,8 +1,8 @@
-import { useProfile as useProfileHook } from "./profile";
-import { useAvatar as useAvatarHook } from "./avatar";
+import { useProfile as useProfileHook } from "../profile";
+import { useAvatar as useAvatarHook } from "../avatar";
 
-export { useProfile } from "./profile";
-export { useAvatar } from "./avatar";
+export { useProfile } from "../profile";
+export { useAvatar } from "../avatar";
 
 export default function useUserProfile() {
   const profileMethods = useProfileHook();

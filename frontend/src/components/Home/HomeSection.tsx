@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Hero from "./HeroSection/Hero";
-import { Category } from "../../hooks/useCategories";
-import useJobs from "../../hooks/useJobs";
-import useCategories from "../../hooks/useCategories";
+import { Category } from "../../hooks/utils/useCategories";
+import useJobs from "../../hooks/utils/useJobs";
+import useCategories from "../../hooks/utils/useCategories";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import RecentJobs from "./RecentJobs/RecentJobs";
 import FullPageSpinner from "../FullPageSpinner/FullPageSpinner";

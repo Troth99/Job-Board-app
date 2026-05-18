@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useApiRequester from "../useApiRequester";
+import useApiRequester from "../common/useApiRequester";
 import { API_BASE } from "../../services/api";
 
 export interface Category {

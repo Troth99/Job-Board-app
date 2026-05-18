@@ -1,8 +1,8 @@
-import useCompaniesDefault, { type Company, type Member } from "./companies/useCompanies";
-import { useMembers as useMembersHook } from "./members";
+import useCompaniesDefault, { type Company, type Member } from "../companies/useCompanies";
+import { useMembers as useMembersHook } from "../members";
 
-export { default as useCompanies, type Company, type Member } from "./companies/useCompanies";
-export { useMembers } from "./members";
+export { default as useCompanies, type Company, type Member } from "../companies/useCompanies";
+export { useMembers } from "../members";
 
 export default function useCompany() {
   const companiesMethods = useCompaniesDefault();

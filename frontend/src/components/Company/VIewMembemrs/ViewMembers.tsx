@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./ViewMembers.css";
 import { useParams } from "react-router";
-import useCompany from "../../../hooks/useCompany";
+import useCompany from "../../../hooks/utils/useCompany";
 import { formatDate } from "../../../utils/formData";
 import Spinner from "../../Spinner/Spinner";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";

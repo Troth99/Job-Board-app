@@ -9,7 +9,7 @@ import {
   Notification,
   NotificationContextType,
 } from "../interfaces/Notification.model";
-import { useNotification } from "../hooks/useNotification";
+import { useNotification } from "../hooks/utils/useNotification";
 
 type NotificationProviderProps = {
   userId: string;

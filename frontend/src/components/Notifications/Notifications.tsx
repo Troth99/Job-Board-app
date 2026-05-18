@@ -1,8 +1,8 @@
 import "./Notifications.css";
 import "./NotificationResponsive.css";
 import { useState } from "react";
-import { useNotification, useSortedNotifications } from "../../hooks/useNotification";
-import { getUserFromLocalStorage } from "../../hooks/useAuth";
+import { useNotification, useSortedNotifications } from "../../hooks/utils/useNotification";
+import { getUserFromLocalStorage } from "../../hooks/common/useAuth";
 import { getName } from "./nameHelper";
 import { formatDate } from "../../utils/formData";
 import { useNavigate, useSearchParams } from "react-router";

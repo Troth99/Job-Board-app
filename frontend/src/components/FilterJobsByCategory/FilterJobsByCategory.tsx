@@ -1,6 +1,6 @@
 import { useNavigate, useParams, useSearchParams } from "react-router";
 import "./FilterJobsByCategory.css";
-import useJobs from "../../hooks/useJobs";
+import useJobs from "../../hooks/utils/useJobs";
 import { useEffect, useState } from "react";
 import { ShowJobs } from "../../showJobs/showJobs";
 import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";

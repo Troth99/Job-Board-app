@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./ForgotPassword.css";
-import useForm from "../../../hooks/useForm";
+import useForm from "../../../hooks/common/useForm";
 import { useValidation } from "../../validators/useValidation";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../hooks/common/useAuth";
 
 const initialFormValue = {
   email: "",
