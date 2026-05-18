@@ -5,6 +5,7 @@ import "./ViewAllJobs.css";
 import { useNavigate, useSearchParams } from "react-router";
 import { Job } from "../../../interfaces/Job.model";
 import { Container } from "../../Container/Container";
+import Pagination from "../../Pagination/Pagination";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -143,31 +144,13 @@ function ViewAllJobs() {
             </div>
           )}
 
-          {totalJobs > ITEMS_PER_PAGE && (
-            <nav className="jobs-pagination" aria-label="Job pages">
-              <button
-                className="jobs-pagination-button"
-                onClick={() =>
-                  setSearchParams({ page: (pageFromUrl - 1).toString() })
-                }
-                disabled={pageFromUrl === 1}
-              >
-                Previous
-              </button>
-              <span className="jobs-pagination-status">
-                Page {pageFromUrl} of {totalPages}
-              </span>
-              <button
-                className="jobs-pagination-button"
-                onClick={() =>
-                  setSearchParams({ page: (pageFromUrl + 1).toString() })
-                }
-                disabled={pageFromUrl === totalPages}
-              >
-                Next
-              </button>
-            </nav>
-          )}
+          <Pagination
+            currentPage={pageFromUrl}
+            totalPages={totalPages}
+            totalItems={totalJobs}
+            itemsPerPage={ITEMS_PER_PAGE}
+            onPageChange={(page) => setSearchParams({ page: page.toString() })}
+          />
         </div>
       </section>
     </Container>
