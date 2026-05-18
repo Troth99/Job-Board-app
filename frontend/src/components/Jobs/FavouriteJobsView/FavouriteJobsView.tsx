@@ -5,7 +5,10 @@ import Spinner from "../../Spinner/Spinner";
 import { Container } from "../../Container/Container";
 import "./FavouriteJobsView.css";
 import type { SavedJob } from "../../../context/FavouritesJobsContext";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
+import Pagination from "../../Pagination/Pagination";
+
+const ITEMS_PER_PAGE = 5;
 
 function FavouriteJobsView() {
   const [favoriteJobs, setFavoriteJobs] = useState<SavedJob[]>([]);
@@ -13,39 +16,34 @@ function FavouriteJobsView() {
   const [categoriesMap, setCategoriesMap] = useState<Record<string, string>>(
     {},
   );
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [totalJobs, setTotalJobs] = useState<number>(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
 
   const { getAllFavoriteJobs } = useFavorites();
-  const { getCategories } = useCategories();
+
 
   const navigate = useNavigate();
 
+
   useEffect(() => {
-    const fetchAll = async () => {
+    const fetchFavoriteJobs = async () => {
       setLoading(true);
+
       try {
-        const [favRes, cats] = await Promise.all([
-          getAllFavoriteJobs(),
-          getCategories(),
-        ]);
-        const sortedJobs = favRes.savedJobs
-          .slice()
-          .sort(
-            (a: any, b: any) =>
-              new Date(b.addedAt).getTime() - new Date(a.addedAt).getTime(),
-          );
-        setFavoriteJobs(sortedJobs);
-        const map: Record<string, string> = {};
-        cats.forEach((cat: any) => {
-          map[cat._id] = cat.name;
-        });
-        setCategoriesMap(map);
-      } catch (e) {
-        // handle error
-      } finally {
+        const response = await getAllFavoriteJobs(pageFromUrl, ITEMS_PER_PAGE);
+        setFavoriteJobs(response.savedJobs);
+        setTotalPages(response.totalPages);
+        setTotalJobs(response.totalJobs);
+      } catch (error) {
+        console.error("Failed to fetch favorite jobs.");
+      }finally{
         setLoading(false);
       }
     };
-    fetchAll();
+    fetchFavoriteJobs();
   }, []);
 
   // Removed unused fetchFavoriteJobs and unreachable loading code
@@ -144,6 +142,14 @@ function FavouriteJobsView() {
             })}
           </div>
         )}
+        
+       <Pagination
+            currentPage={pageFromUrl}
+            totalPages={totalPages}
+            totalItems={totalJobs}
+            itemsPerPage={ITEMS_PER_PAGE}
+            onPageChange={(page) => setSearchParams({ page: page.toString() })}
+          />
       </div>
     </Container>
   );

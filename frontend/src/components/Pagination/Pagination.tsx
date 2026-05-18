@@ -1,3 +1,4 @@
+import "./Pagination.css";
 interface PagesProps {
     currentPage: number;
     totalPages: number;
@@ -14,6 +15,7 @@ function Pages({ currentPage, totalPages, totalItems, itemsPerPage, onPageChange
 
     return (
         <>
+        <div className="pagination-spacing">
             <nav className="jobs-pagination" aria-label="Job pages">
               <button
                 className="jobs-pagination-button"
@@ -37,7 +39,7 @@ function Pages({ currentPage, totalPages, totalItems, itemsPerPage, onPageChange
                 Next
               </button>
             </nav>
-       
+       </div>
     </>
     )
 }
