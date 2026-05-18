@@ -1,6 +1,3 @@
-
-
-
 interface PagesProps {
     currentPage: number;
     totalPages: number;
@@ -10,7 +7,6 @@ interface PagesProps {
 }
 
 function Pages({ currentPage, totalPages, totalItems, itemsPerPage, onPageChange }: PagesProps) {
-
 
   if(totalItems <= itemsPerPage) {
     return null; // No pagination needed if all items fit on one page

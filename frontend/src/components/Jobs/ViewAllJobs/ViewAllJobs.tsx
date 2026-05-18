@@ -43,7 +43,7 @@ function ViewAllJobs() {
         const sortedJobs = response.jobs.sort(
           (a: Job, b: Job) =>
             new Date(b.createdAt ?? "").getTime() -
-            new Date(a.createdAt ?? "").getTime()
+            new Date(a.createdAt ?? "").getTime(),
         );
         setJobs(sortedJobs);
         setTotalPages(response.totalPages);
@@ -102,8 +102,7 @@ function ViewAllJobs() {
                   <span className="job-company-modern">
                     {typeof job.company === "string"
                       ? job.company
-                      : job.company?.name ?? "Company"
-                    }
+                      : (job.company?.name ?? "Company")}
                   </span>
                   <span
                     className={`job-status-modern ${job.isActive ? "is-active" : "is-closed"}`}
@@ -119,8 +118,12 @@ function ViewAllJobs() {
                   </div>
 
                   <div className="job-info-modern">
-                    <span className="job-pill job-type-modern">{job.employmentType}</span>
-                    <span className="job-pill job-salary-modern">{job.salary || "Salary not specified"}</span>
+                    <span className="job-pill job-type-modern">
+                      {job.employmentType}
+                    </span>
+                    <span className="job-pill job-salary-modern">
+                      {job.salary || "Salary not specified"}
+                    </span>
                     <span className="job-pill job-date-modern">
                       {formatPostedDate(job.createdAt)}
                     </span>
@@ -129,7 +132,8 @@ function ViewAllJobs() {
 
                 <div className="job-card-footer">
                   <span className="job-posted-by-modern">
-                    Posted by {job.createdBy?.firstName || "Unknown"} {job.createdBy?.lastName || "recruiter"}
+                    Posted by {job.createdBy?.firstName || "Unknown"}{" "}
+                    {job.createdBy?.lastName || "recruiter"}
                   </span>
                   <span className="job-apply-btn-modern">View details</span>
                 </div>

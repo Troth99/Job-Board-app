@@ -116,7 +116,7 @@ export default function useJobs() {
     }
   };
 
-  const getJobsPage = async (page: number, limit: number) => {
+  const getJobsPage =  async (page: number, limit: number) => {
     setLoading(true);
     try {
       const response = await request(
