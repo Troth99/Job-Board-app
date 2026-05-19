@@ -50,9 +50,15 @@ export function RoleAndCompanySection({
 
             {/*To implement 2 recent jobs in favourites added to profile page with button view all saved jobs*/}
             
+            <div className="recent-saved-jobs">
+              <h3>Recent Saved Jobs</h3>
+              <p>No saved jobs yet.</p>
+            </div>
+            <div className="recent-saved-jobs-btn">
           <Link to="/favourite-jobs" className="saved-jobs-link">
             <h3>Saved Jobs</h3>
           </Link>
+            </div>
           <div className="saved-jobs-placeholder">
             <div className="saved-jobs-placeholder__icon">🔖</div>
             <h3>Saved Jobs</h3>
