@@ -8,7 +8,6 @@ import { formatDate } from "../../utils/formData";
 import { useNavigate, useSearchParams } from "react-router";
 import { useNotificationContext } from "../../context/NotificationContext";
 import { Notification } from "../../interfaces/Notification.model";
-import { usePagination } from "../../hooks/usePagination";
 
 function Notifications() {
   const { deleteNotification, markAsRead } = useNotification();
@@ -20,7 +19,14 @@ function Notifications() {
   const sortNotifications = useSortedNotifications(notifications)
   const [searchParams, setSearchParams] = useSearchParams()
   const pageFromUrl = parseInt(searchParams.get('page') || '1')
-  const {totalPages, currentItems} = usePagination(sortNotifications, 5, pageFromUrl)
+
+//to add back the pagination, we need to calculate the total pages based on the number of notifications and the items per page. Then we can slice the sorted notifications array to get only the notifications for the current page.
+  const itemsPerPage = 3;
+  const totalPages = Math.ceil(sortNotifications.length / itemsPerPage);
+  const currentItems = sortNotifications.slice((pageFromUrl - 1) * itemsPerPage, pageFromUrl * itemsPerPage);
+  //to add back the pagination, we need to calculate the total pages based on the number of notifications and the items per page. Then we can slice the sorted notifications array to get only the notifications for the current page.
+  //to add back the pagination, we need to calculate the total pages based on the number of notifications and the items per page. Then we can slice the sorted notifications array to get only the notifications for the current page.
+
 
   const userId = getUserFromLocalStorage()._id;
   const navigate = useNavigate();
