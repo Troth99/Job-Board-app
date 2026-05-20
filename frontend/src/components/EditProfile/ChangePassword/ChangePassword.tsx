@@ -3,8 +3,8 @@ import "./ChangePassword.css";
 import { useChangePasswordValidation } from "../../validators/useChangePasswordValidation";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../../utils/toast";
-import useUserProfile from "../../../hooks/useProfile";
-import useForm from "../../../hooks/useForm";
+import useUserProfile from "../../../hooks/utils/useProfile";
+import useForm from "../../../hooks/shared/useForm";
 
 export interface changePasswordForm extends Record<string, string> {
   currentPassword: string;

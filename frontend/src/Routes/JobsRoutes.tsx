@@ -29,6 +29,11 @@ const FilterJobByCategory = lazy(
 const HowToPostJobInfo = lazy(
   () => import("../components/Jobs/HowToPostJobInfo/HowToPostJobInfo"),
 );
+
+const FavouriteJobsView = lazy(
+  () => import("../components/Jobs/FavouriteJobsView/FavouriteJobsView"),
+);
+
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];
 export const jobsRoutes = [
   <Route element={<MainLayout />}>
@@ -117,6 +122,17 @@ export const jobsRoutes = [
     </Route>
   </Route>,
 
-  
+  <Route element={<ProtectedRoutes />}>
+    <Route element={<MainLayout />}>
+      <Route
+        path="/favourite-jobs"
+        element={
+          <Suspense fallback={<FullPageSpinner />}>
+            <FavouriteJobsView />
+          </Suspense>
+        }
+      />
+    </Route>
+  </Route>,
 
 ];

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useLocalStorage } from "../hooks/shared/useLocalStorage";
 export const useTheme = () => {
   const [theme, setTheme] = useLocalStorage("theme", "light");
 

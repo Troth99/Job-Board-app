@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useApiRequester from "../useApiRequester";
+import useApiRequester from "../shared/useApiRequester";
 import { API_BASE } from "../../services/api";
 import { Job } from "../../interfaces/Job.model";
 
@@ -116,7 +116,7 @@ export default function useJobs() {
     }
   };
 
-  const getJobsPage = async (page: number, limit: number) => {
+  const getJobsPage =  async (page: number, limit: number) => {
     setLoading(true);
     try {
       const response = await request(

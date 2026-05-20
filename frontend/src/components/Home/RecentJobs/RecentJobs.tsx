@@ -7,8 +7,8 @@ interface RecentJobsProps {
   recentJobs: Job[];
 }
 
-//To add button for view all jbos udner the scrolled down section and add more details on the card like posted by and posted date
 
+//to fix a bug with company logo not showing in recent jobs section, added a check to see if the logo is a valid url, if not show default logo and alt text accordingly. Also added a view all jobs link at the bottom of the recent jobs section.
 
 export default function RecentJobs({ recentJobs }: RecentJobsProps) {
   return (

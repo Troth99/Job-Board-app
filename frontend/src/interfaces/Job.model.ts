@@ -1,5 +1,5 @@
-import { Category } from "../hooks/useCategories";
-import { Company } from "../hooks/useCompany";
+import { Category } from "../hooks/utils/useCategoriesIndex";
+import { Company } from "../hooks/utils/useCompany";
 
 export interface Job {
   _id?: string;

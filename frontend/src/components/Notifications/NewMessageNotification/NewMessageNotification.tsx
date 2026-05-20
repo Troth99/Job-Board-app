@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNotification } from "../../../hooks/useNotification";
+import { useNotification } from "../../../hooks/utils/useNotification";
 import { useParams } from "react-router";
 import "./newMessages.css";
 import { Notification } from "../../../interfaces/Notification.model";

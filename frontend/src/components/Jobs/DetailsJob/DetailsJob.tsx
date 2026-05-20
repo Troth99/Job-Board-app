@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from "react-router";
 import "./Details.css";
 import { useEffect, useState } from "react";
-import useJobs from "../../../hooks/useJobs";
+import useJobs from "../../../hooks/utils/useJobs";
 import Spinner from "../../Spinner/Spinner";
 import { formatDate } from "../../../utils/formData";
-import useCompany from "../../../hooks/useCompany";
+import useCompany from "../../../hooks/utils/useCompany";
 import { Job } from "../../../interfaces/Job.model";
 import { CandidateApplications } from "../CandidateApplications/CandidateApplications";
 import { Candidate } from "../../../interfaces/Apllication.model";

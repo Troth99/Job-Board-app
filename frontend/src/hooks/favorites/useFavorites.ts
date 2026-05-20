@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useApiRequester from "../useApiRequester";
+import useApiRequester from "../shared/useApiRequester";
 import { API_BASE } from "../../services/api";
 
 export default function useFavorites() {
@@ -39,11 +39,11 @@ export default function useFavorites() {
     }
   };
 
-  const getAllFavoriteJobs = async () => {
+  const getAllFavoriteJobs = async (page: number, limit: number) => {
     setLoading(true);
     try {
       const response = await request(
-        `${API_BASE}/favourites/saved-jobs`,
+      `${API_BASE}/favourites/saved-jobs?page=${page}&limit=${limit}`,
         "GET",
         {}
       );

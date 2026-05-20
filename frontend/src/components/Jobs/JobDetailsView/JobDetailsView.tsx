@@ -1,12 +1,12 @@
 import { useLocation, useParams } from "react-router";
-import useJobs from "../../../hooks/useJobs";
+import useJobs from "../../../hooks/utils/useJobs";
 import "./JobDetailsView.css";
 import { useEffect, useState } from "react";
 import { Job } from "../../../interfaces/Job.model";
 import Spinner from "../../Spinner/Spinner";
-import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import { useLocalStorage } from "../../../hooks/shared/useLocalStorage";
 import { ApplyForJobModal } from "../ApplyForJobModal/ApplyForJobModal";
-import { getUserFromLocalStorage } from "../../../hooks/useAuth";
+import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
 import { Container } from "../../Container/Container";
 import { CompanyDetails } from "./CompanyDetails/CompanyDetails";
 import { QucikInfoSection } from "./CompanyDetails/qucikInfoSection/QuicnInfoSection";

@@ -1,6 +1,6 @@
-import { useNotifications, } from "./notifications";
+import { useNotifications, } from "../notifications";
 
-export { useNotifications, useSortedNotifications } from "./notifications";
+export { useNotifications, useSortedNotifications } from "../notifications";
 
 export function useNotification() {
   const notificationMethods = useNotifications();

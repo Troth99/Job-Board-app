@@ -2,13 +2,13 @@ import "./Profile.css";
 import "./Responsive.css";
 import { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
-import useUserProfile from "../../hooks/useProfile";
+import useUserProfile from "../../hooks/utils/useProfile";
 import { useNavigate } from "react-router";
-import useCompany from "../../hooks/useCompany";
+import useCompany from "../../hooks/utils/useCompany";
 import { useRole } from "../../context/RoleContext";
 import { useUserData } from "../../context/UseDataContext";
 import { Container } from "../Container/Container";
-import { RoleAndCompanySection } from "./RoleAndCompanySection/RoleAndCompanySection";
+import { RoleAndCompanySection } from "./RoleAndCompanySection/ProfileRightPanel";
 import JobPosting from "./JobPosting/JobPosting";
 import ProfileContainer from "./ProfileContainer/ProfileContainer";
 

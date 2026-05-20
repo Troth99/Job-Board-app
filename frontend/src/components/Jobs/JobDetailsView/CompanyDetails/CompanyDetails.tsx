@@ -1,4 +1,4 @@
-import { Company } from "../../../../hooks/useCompany";
+import { Company } from "../../../../hooks/utils/useCompany";
 import { formatDate } from "../../../../utils/formData";
 import "./CompanyDetails.css";
 

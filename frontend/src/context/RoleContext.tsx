@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useUserData } from "./UseDataContext";
-import useCompany from "../hooks/useCompany";
+import useCompany from "../hooks/utils/useCompany";
 
 interface RoleContextType {
   userRole: string | null | undefined;

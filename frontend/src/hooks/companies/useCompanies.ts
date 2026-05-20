@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { API_BASE } from "../../services/api";
-import useApiRequester from "../useApiRequester";
-import { getUserFromLocalStorage } from "../useAuth";
+import useApiRequester from "../shared/useApiRequester";
+import { getUserFromLocalStorage } from "../shared/useAuth";
 
 export interface Member {
   _id: string;

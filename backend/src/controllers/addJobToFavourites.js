@@ -23,32 +23,27 @@ export const addJobToFavourites = async (req, res) => {
         }
 
         const isAlreadySaved = user.savedJobs.some(
-            (savedJobId) => savedJobId.toString() === jobId
+            (savedJob) => savedJob.job && savedJob.job.toString() === jobId
         );
 
-        if (isAlreadySaved) {
-            return res.status(200).json({
-                message: "Job already added to favourites",
-                savedJobs: user.savedJobs,
-            });
-        }
 
-        user.savedJobs.push(jobId);
+        if (isAlreadySaved) {
+
+            const populatedUser = await User.findById(userId).populate('savedJobs.job');
+            return res.status(200).json({ savedJobs: populatedUser.savedJobs });
+        }
+        user.savedJobs.push({ job: jobId, addedAt: new Date() });
         await user.save();
 
-        res.status(200).json({
-            message: "Job added to favourites",
-            savedJobs: user.savedJobs,
-        });
+        const populatedUser = await User.findById(userId).populate('savedJobs.job');
+
+        res.status(200).json({ savedJobs: populatedUser.savedJobs });
 
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Server error" });
     }
 }
-
-
-
 
 export const removeJobFromFavourites = async (req, res) => {
     try {
@@ -66,7 +61,7 @@ export const removeJobFromFavourites = async (req, res) => {
         }
 
         const isSaved = user.savedJobs.some(
-            (savedJobId) => savedJobId.toString() === jobId
+            (savedJob) => savedJob.job && savedJob.job.toString() === jobId
         );
 
         if (!isSaved) {
@@ -77,13 +72,15 @@ export const removeJobFromFavourites = async (req, res) => {
         }
 
         user.savedJobs = user.savedJobs.filter(
-            (savedJobId) => savedJobId.toString() !== jobId
+            (savedJob) => savedJob.job && savedJob.job.toString() !== jobId
         );
         await user.save();
 
+        const populatedUser = await User.findById(userId).populate('savedJobs.job');
+
         res.status(200).json({
             message: "Job removed from favourites",
-            savedJobs: user.savedJobs,
+            savedJobs: populatedUser.savedJobs,
         });
 
     } catch (error) {
@@ -93,19 +90,47 @@ export const removeJobFromFavourites = async (req, res) => {
 }
 
 export const getSavedJobs = async (req, res) => {
+
     try {
         const userId = req.user._id;
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 5;
+        const skip = (page - 1) * limit;
 
-        const user = await User.findById(userId).populate("savedJobs");
+        //Find User and populate savedJobs with pagination
+        const user = await User.findById(userId);
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
-        res.status(200).json({ savedJobs: user.savedJobs });
+        //Sort the jobs by addedAt
+        const sortedSavedJobs = [...user.savedJobs].sort(
+            (a, b) => new Date(b.addedAt) - new Date(a.addedAt)
+        );
+
+
+        const totalFavourites = user.savedJobs.length;
+        const totalPages = Math.ceil(totalFavourites / limit);
+
+        //Get the paginated saved jobs for the user
+        const paginatedSavedJobs = sortedSavedJobs.slice(skip, skip + limit);
+
+        //Fill the job details for each saved job
+        const populatedSavedJobs = await User.populate(paginatedSavedJobs, { path: "job" });
+
+
+        res.json({
+            savedJobs: populatedSavedJobs,
+            totalFavourites,
+            totalPages,
+            currentPage: page,
+        });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Server error" });
+        console.error("Error in getFavouriteJobs:", error);
+
+        res.status(500).json({ message: "Server error", error: error.message });
+
     }
 }
 

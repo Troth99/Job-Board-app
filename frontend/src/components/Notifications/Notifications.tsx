@@ -1,14 +1,15 @@
 import "./Notifications.css";
 import "./NotificationResponsive.css";
 import { useState } from "react";
-import { useNotification, useSortedNotifications } from "../../hooks/useNotification";
-import { getUserFromLocalStorage } from "../../hooks/useAuth";
+import { useNotification, useSortedNotifications } from "../../hooks/utils/useNotification";
+import { getUserFromLocalStorage } from "../../hooks/shared/useAuth";
 import { getName } from "./nameHelper";
 import { formatDate } from "../../utils/formData";
 import { useNavigate, useSearchParams } from "react-router";
 import { useNotificationContext } from "../../context/NotificationContext";
 import { Notification } from "../../interfaces/Notification.model";
-import { usePagination } from "../../hooks/usePagination";
+import { usePagination } from "../../hooks/shared/usePagination";
+
 
 function Notifications() {
   const { deleteNotification, markAsRead } = useNotification();

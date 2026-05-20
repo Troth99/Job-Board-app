@@ -4,8 +4,8 @@ import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../utils/toast";
 import { useValidation } from "../validators/useValidation";
-import useUserProfile from "../../hooks/useProfile";
-import useForm from "../../hooks/useForm";
+import useUserProfile from "../../hooks/utils/useProfile";
+import useForm from "../../hooks/shared/useForm";
 import { useState, useEffect } from "react";
 
 export interface ProfileData {

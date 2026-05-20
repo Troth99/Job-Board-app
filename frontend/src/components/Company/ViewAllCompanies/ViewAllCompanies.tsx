@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import useCompany from "../../../hooks/useCompany";
+import useCompany from "../../../hooks/utils/useCompany";
 import "./ViewAllCompanies.css";
 import { formatDate } from "../../../utils/formData";
 import { useSearchParams } from "react-router";
-import { usePagination } from "../../../hooks/usePagination";
 import Spinner from "../../Spinner/Spinner";
 
 export default function ViewAllCompanies() {
@@ -15,7 +14,6 @@ export default function ViewAllCompanies() {
   const sortedCompanies = [...companies].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   );
-  const { currentItems, totalPages } = usePagination(sortedCompanies, 5, pageFromUrl);
 
   useEffect(() => {
     const fetchAllCompanies = async () => {
@@ -28,6 +26,9 @@ export default function ViewAllCompanies() {
     fetchAllCompanies();
   }, []);
 
+  //To refcraftor entire page to implement pagination in backend and frontend and remove sorting in frontend as it will be sorted in backend by createdAt field in descending order. Also to add search functionality in backend and frontend to search companies by name, industry and location.
+
+
   if(loading){
     return <Spinner overlay={true} />
   }
@@ -36,7 +37,7 @@ export default function ViewAllCompanies() {
       {!loading && companies.length === 0 && <div>No companies found.</div>}
       {companies.length > 0 && (
         <div>
-          {currentItems.map((company) => (
+          {sortedCompanies.map((company) => (
             <div className="company-card-unique" key={company._id}>
               <img
                 src={

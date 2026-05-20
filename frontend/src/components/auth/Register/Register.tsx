@@ -2,10 +2,10 @@ import { Link, useNavigate } from "react-router";
 import "./Register.css";
 import "./Responsive.css";
 import { useState } from "react";
-import useAuth, { registerFormType } from "../../../hooks/useAuth";
+import useAuth, { registerFormType } from "../../../hooks/shared/useAuth";
 import { useValidation } from "../../validators/useValidation";
-import useForm from "../../../hooks/useForm";
-import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import useForm from "../../../hooks/shared/useForm";
+import { useLocalStorage } from "../../../hooks/shared/useLocalStorage";
 import { Container } from "../../Container/Container";
 import { LeftSideOfRegister } from "./RegisterElements/LeftSideOfRegister";
 

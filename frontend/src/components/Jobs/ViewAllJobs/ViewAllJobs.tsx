@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import useJobs from "../../../hooks/useJobs";
+import useJobs from "../../../hooks/utils/useJobs";
 import Spinner from "../../Spinner/Spinner";
 import "./ViewAllJobs.css";
 import { useNavigate, useSearchParams } from "react-router";
 import { Job } from "../../../interfaces/Job.model";
 import { Container } from "../../Container/Container";
+import Pagination from "../../Pagination/Pagination";
+import usePagination from "../../../hooks/shared/usePaginationState";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -27,11 +29,9 @@ const formatPostedDate = (date?: string) => {
 
 function ViewAllJobs() {
   const [jobs, setJobs] = useState<Job[]>([]);
-  const [totalPages, setTotalPages] = useState<number>(1);
   const [totalJobs, setTotalJobs] = useState<number>(0);
   const { loading, getJobsPage } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
-
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
 
   const navigate = useNavigate();
@@ -39,14 +39,16 @@ function ViewAllJobs() {
     const fetchJobs = async () => {
       try {
         const response = await getJobsPage(pageFromUrl, ITEMS_PER_PAGE);
+        console.log("response.jobs", response.jobs);
+
         const sortedJobs = response.jobs.sort(
           (a: Job, b: Job) =>
             new Date(b.createdAt ?? "").getTime() -
-            new Date(a.createdAt ?? "").getTime()
+          new Date(a.createdAt ?? "").getTime(),
         );
         setJobs(sortedJobs);
-        setTotalPages(response.totalPages);
         setTotalJobs(response.totalJobs);
+
       } catch (error) {
         console.error("Failed to set jobs.");
       }
@@ -101,8 +103,7 @@ function ViewAllJobs() {
                   <span className="job-company-modern">
                     {typeof job.company === "string"
                       ? job.company
-                      : job.company?.name ?? "Company"
-                    }
+                      : (job.company?.name ?? "Company")}
                   </span>
                   <span
                     className={`job-status-modern ${job.isActive ? "is-active" : "is-closed"}`}
@@ -118,8 +119,12 @@ function ViewAllJobs() {
                   </div>
 
                   <div className="job-info-modern">
-                    <span className="job-pill job-type-modern">{job.employmentType}</span>
-                    <span className="job-pill job-salary-modern">{job.salary || "Salary not specified"}</span>
+                    <span className="job-pill job-type-modern">
+                      {job.employmentType}
+                    </span>
+                    <span className="job-pill job-salary-modern">
+                      {job.salary || "Salary not specified"}
+                    </span>
                     <span className="job-pill job-date-modern">
                       {formatPostedDate(job.createdAt)}
                     </span>
@@ -128,7 +133,8 @@ function ViewAllJobs() {
 
                 <div className="job-card-footer">
                   <span className="job-posted-by-modern">
-                    Posted by {job.createdBy?.firstName || "Unknown"} {job.createdBy?.lastName || "recruiter"}
+                    Posted by {job.createdBy?.firstName || "Unknown"}{" "}
+                    {job.createdBy?.lastName || "recruiter"}
                   </span>
                   <span className="job-apply-btn-modern">View details</span>
                 </div>
@@ -142,31 +148,16 @@ function ViewAllJobs() {
               </p>
             </div>
           )}
-
-          {totalJobs > ITEMS_PER_PAGE && (
-            <nav className="jobs-pagination" aria-label="Job pages">
-              <button
-                className="jobs-pagination-button"
-                onClick={() =>
-                  setSearchParams({ page: (pageFromUrl - 1).toString() })
-                }
-                disabled={pageFromUrl === 1}
-              >
-                Previous
-              </button>
-              <span className="jobs-pagination-status">
-                Page {pageFromUrl} of {totalPages}
-              </span>
-              <button
-                className="jobs-pagination-button"
-                onClick={() =>
-                  setSearchParams({ page: (pageFromUrl + 1).toString() })
-                }
-                disabled={pageFromUrl === totalPages}
-              >
-                Next
-              </button>
-            </nav>
+          {jobs.length > 0 && (
+            <Pagination
+              currentPage={pageFromUrl}
+              totalPages={Math.ceil(totalJobs / ITEMS_PER_PAGE)}
+              totalItems={totalJobs}
+              itemsPerPage={ITEMS_PER_PAGE}
+              onPageChange={(page) =>
+                setSearchParams({ page: page.toString() })
+              }
+            />
           )}
         </div>
       </section>

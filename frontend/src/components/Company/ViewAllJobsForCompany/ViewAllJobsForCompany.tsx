@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import useJobs from "../../../hooks/useJobs";
+import useJobs from "../../../hooks/utils/useJobs";
 import { useParams, useSearchParams } from "react-router";
 import { ShowJobs } from "../showJobs/showCompanyJobs";
 import "./viewAllJobsForComapny.css";
 import { Job } from "../../../interfaces/Job.model";
-import { usePagination } from "../../../hooks/usePagination";
 import Spinner from "../../Spinner/Spinner";
+import { usePagination } from "../../../hooks/shared/usePagination";
 
 export function ViewAllJobsForCompany() {
   const { companyId } = useParams();

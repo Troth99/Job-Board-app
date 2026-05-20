@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../CreateJob/CreateJob.css";
 import { useNavigate, useParams } from "react-router";
-import useJobs from "../../../hooks/useJobs";
+import useJobs from "../../../hooks/utils/useJobs";
 import {
   EmploymentTypeSelect,
   ExperienceLevelSelect,
@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import Spinner from "../../Spinner/Spinner";
 import { valuesInterface } from "../../../interfaces/Job.model";
-import useForm from "../../../hooks/useForm";
+import useForm from "../../../hooks/shared/useForm";
 import { jobPostValidations } from "../../validators/createJobValidation";
 
 const initialValues = {

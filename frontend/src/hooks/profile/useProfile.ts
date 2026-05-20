@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { API_BASE } from "../../services/api";
-import useApiRequester from "../useApiRequester";
+import useApiRequester from "../shared/useApiRequester";
 
 interface User {
   firstName: string;
