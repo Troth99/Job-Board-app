@@ -5,7 +5,7 @@ import { RootState } from "../../../redux/store";
 import { useState } from "react";
 import { ShowMoreCategories } from "../../ShowMoreCategoriesOnHome/ShowMoreCategoriesOnhome";
 import { useNavigate } from "react-router";
-import { Category } from "../../../hooks/utils/useCategories";
+import { Category } from "../../../hooks/utils/useCategoriesIndex";
 
 export default function CategoriesSection() {
   const { categories: reduxCategories, showAll } = useSelector(

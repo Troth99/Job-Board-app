@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import { useFavorites } from "../../../hooks/favorites";
-import useCategories from "../../../hooks/utils/useCategories";
 import Spinner from "../../Spinner/Spinner";
 import { Container } from "../../Container/Container";
 import "./FavouriteJobsView.css";
 import type { SavedJob } from "../../../context/FavouritesJobsContext";
 import { useNavigate, useSearchParams } from "react-router";
 import Pagination from "../../Pagination/Pagination";
+import { useSelector } from "react-redux";
+import { CategoryInterface } from "../../../interfaces/CategoryModel";
 
 const ITEMS_PER_PAGE = 5;
 
 function FavouriteJobsView() {
   const [favoriteJobs, setFavoriteJobs] = useState<SavedJob[]>([]);
   const [loading, setLoading] = useState(true);
-  const [categoriesMap, setCategoriesMap] = useState<Record<string, string>>(
-    {},
-  );
+
   const [totalJobs, setTotalJobs] = useState<number>(0);
+
+  const { categories } = useSelector((state: any) => state.categories);
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
@@ -32,7 +34,6 @@ function FavouriteJobsView() {
       try {
         const response = await getAllFavoriteJobs(pageFromUrl, ITEMS_PER_PAGE);
         setFavoriteJobs(response.savedJobs);
-        // махаме setTotalPages
         setTotalJobs(response.totalJobs);
       } catch (error) {
         console.error("Failed to fetch favorite jobs.");
@@ -43,7 +44,6 @@ function FavouriteJobsView() {
     fetchFavoriteJobs();
   }, [pageFromUrl]);
 
-  // Removed unused fetchFavoriteJobs and unreachable loading code
   if (loading) {
     return <Spinner overlay={true} />;
   }
@@ -86,7 +86,8 @@ function FavouriteJobsView() {
           <div className="favourite-jobs-modern-list">
             {favoriteJobs.map((fav) => {
               const job = fav.job || {};
-              const categoryName = categoriesMap[job.category as string] || "-";
+              const categoryName =
+                categories.find((cat: CategoryInterface) => cat._id === job.category)?.name || "-";
               return (
                 <div
                   key={job._id || fav._id}

@@ -1,4 +1,4 @@
-import { Category } from "../hooks/utils/useCategories";
+import { Category } from "../hooks/utils/useCategoriesIndex";
 import { Company } from "../hooks/utils/useCompany";
 
 export interface Job {

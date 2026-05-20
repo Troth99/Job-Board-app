@@ -1,6 +1,6 @@
 
 import "./ShowMoreCategories.css"
-import { Category } from "../../hooks/utils/useCategories";
+import { Category } from "../../hooks/utils/useCategoriesIndex";
 
 type Props = {
   categories: any[];

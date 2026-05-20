@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Category } from "../../../hooks/utils/useCategories";
+import { Category } from "../../../hooks/utils/useCategoriesIndex";
 
 
 

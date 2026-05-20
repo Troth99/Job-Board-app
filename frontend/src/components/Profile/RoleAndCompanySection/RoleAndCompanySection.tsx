@@ -14,7 +14,13 @@ export function RoleAndCompanySection({
   company,
   hasCompanyId,
 }: RoleAndCompanySectionProps) {
-  const { savedJJobs } = useFavoritesContext();
+  const { savedJobs } = useFavoritesContext();
+
+
+  const recentSavedJobs = [...savedJobs]
+    .sort((a, b) => new Date(b.addedAt).getTime() - new Date(a.addedAt).getTime())
+    .slice(0, 2);
+    
   const navigate = useNavigate();
 
   return (
@@ -54,18 +60,30 @@ export function RoleAndCompanySection({
             
             <div className="recent-saved-jobs">
               <h3>Recent Saved Jobs</h3>
-              <p>No saved jobs yet.</p>
+
+              {recentSavedJobs.length === 0 ? (
+                <p>No saved jobs yet.</p>
+              ) : (
+                <ul>
+             {recentSavedJobs.map((fav) => (
+  <div key={fav.job?._id || fav._id}>
+    <span>{fav.job?.title || "-"}</span>
+   
+    <span>
+      {fav.addedAt
+        ? new Date(fav.addedAt).toLocaleString()
+        : ""}
+    </span>
+  </div>
+))}
+                </ul>
+              )}
             </div>
             <div className="recent-saved-jobs-btn">
           <Link to="/favourite-jobs" className="saved-jobs-link">
-            <h3>Saved Jobs</h3>
+            <h3>View all saved jobs</h3>
           </Link>
             </div>
-          <div className="saved-jobs-placeholder">
-            <div className="saved-jobs-placeholder__icon">🔖</div>
-            <h3>Saved Jobs</h3>
-            <p>Coming soon — save jobs to revisit them later.</p>
-          </div>
         </>
     </div>
   );
