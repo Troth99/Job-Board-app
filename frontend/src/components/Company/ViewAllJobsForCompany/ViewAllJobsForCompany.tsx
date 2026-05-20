@@ -5,7 +5,7 @@ import { ShowJobs } from "../showJobs/showCompanyJobs";
 import "./viewAllJobsForComapny.css";
 import { Job } from "../../../interfaces/Job.model";
 import Spinner from "../../Spinner/Spinner";
-import { usePagination } from "../../../hooks/usePagination";
+import { usePagination } from "../../../hooks/shared/usePagination";
 
 export function ViewAllJobsForCompany() {
   const { companyId } = useParams();

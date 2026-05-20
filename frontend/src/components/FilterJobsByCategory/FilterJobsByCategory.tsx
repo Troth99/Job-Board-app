@@ -8,7 +8,7 @@ import { FilterGroup } from "./FilterGroup/FilterGroup";
 import { employmentOptions } from "../Jobs/formSelectedInputs";
 import { useJobFilters } from "../../hooks/useJobFilters";
 import { Job } from "../../interfaces/Job.model";
-import { usePagination } from "../../hooks/usePagination";
+import { usePagination } from "../../hooks/shared/usePagination";
 
 export default function FilterJobByCategory() {
   const [searchParams, setSearchParams] = useSearchParams();

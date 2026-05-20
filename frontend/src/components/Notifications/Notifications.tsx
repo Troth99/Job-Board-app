@@ -8,7 +8,7 @@ import { formatDate } from "../../utils/formData";
 import { useNavigate, useSearchParams } from "react-router";
 import { useNotificationContext } from "../../context/NotificationContext";
 import { Notification } from "../../interfaces/Notification.model";
-import { usePagination } from "../../hooks/usePagination";
+import { usePagination } from "../../hooks/shared/usePagination";
 
 
 function Notifications() {
