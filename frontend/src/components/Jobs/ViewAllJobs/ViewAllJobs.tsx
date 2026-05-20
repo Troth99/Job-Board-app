@@ -6,7 +6,7 @@ import { useNavigate, useSearchParams } from "react-router";
 import { Job } from "../../../interfaces/Job.model";
 import { Container } from "../../Container/Container";
 import Pagination from "../../Pagination/Pagination";
-import usePagination from "../../../hooks/shared/usePagination";
+import usePagination from "../../../hooks/shared/usePaginationState";
 
 const ITEMS_PER_PAGE = 5;
 
