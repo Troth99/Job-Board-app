@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
-import useAuth from "../../../hooks/common/useAuth";
-import useForm from "../../../hooks/common/useForm";
+import useAuth from "../../../hooks/shared/useAuth";
+import useForm from "../../../hooks/shared/useForm";
 import { useValidation } from "../../validators/useValidation";
 import "./resetPassword.css";
 import { useState } from "react";

@@ -6,6 +6,7 @@ import { useNavigate, useSearchParams } from "react-router";
 import { Job } from "../../../interfaces/Job.model";
 import { Container } from "../../Container/Container";
 import Pagination from "../../Pagination/Pagination";
+import usePagination from "../../../hooks/shared/usePagination";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -28,11 +29,9 @@ const formatPostedDate = (date?: string) => {
 
 function ViewAllJobs() {
   const [jobs, setJobs] = useState<Job[]>([]);
-  const [totalPages, setTotalPages] = useState<number>(1);
   const [totalJobs, setTotalJobs] = useState<number>(0);
   const { loading, getJobsPage } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
-
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
 
   const navigate = useNavigate();
@@ -40,14 +39,16 @@ function ViewAllJobs() {
     const fetchJobs = async () => {
       try {
         const response = await getJobsPage(pageFromUrl, ITEMS_PER_PAGE);
+        console.log("response.jobs", response.jobs);
+
         const sortedJobs = response.jobs.sort(
           (a: Job, b: Job) =>
             new Date(b.createdAt ?? "").getTime() -
-            new Date(a.createdAt ?? "").getTime(),
+          new Date(a.createdAt ?? "").getTime(),
         );
         setJobs(sortedJobs);
-        setTotalPages(response.totalPages);
         setTotalJobs(response.totalJobs);
+
       } catch (error) {
         console.error("Failed to set jobs.");
       }
@@ -150,11 +151,12 @@ function ViewAllJobs() {
           {jobs.length > 0 && (
             <Pagination
               currentPage={pageFromUrl}
-              totalPages={totalPages}
+              totalPages={Math.ceil(totalJobs / ITEMS_PER_PAGE)}
               totalItems={totalJobs}
               itemsPerPage={ITEMS_PER_PAGE}
-              currentItemsCount={jobs.length}
-              onPageChange={(page) => setSearchParams({ page: page.toString() })}
+              onPageChange={(page) =>
+                setSearchParams({ page: page.toString() })
+              }
             />
           )}
         </div>

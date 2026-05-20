@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router";
 import useCompany from "../../../hooks/utils/useCompany";
-import useForm from "../../../hooks/common/useForm";
+import useForm from "../../../hooks/shared/useForm";
 import { useValidation } from "../../validators/useValidation";
 import "./CompanyMembers.css";
 import { useNotification } from "../../../hooks/utils/useNotification";

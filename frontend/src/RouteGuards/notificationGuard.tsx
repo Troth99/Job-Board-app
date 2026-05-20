@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUserFromLocalStorage } from "../hooks/common/useAuth";
+import { getUserFromLocalStorage } from "../hooks/shared/useAuth";
 import { useNotificationContext } from "../context/NotificationContext";
 import { Navigate, Outlet, useParams } from "react-router";
 import { toast } from "react-toastify";

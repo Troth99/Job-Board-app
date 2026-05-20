@@ -6,7 +6,7 @@ import { useValidation } from "../../validators/useValidation";
 import "./SendMessage.css";
 
 import { useState } from "react";
-import { getUserFromLocalStorage } from "../../../hooks/common/useAuth";
+import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
 
 export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
   const [open, setOpen] = useState<Boolean>(false);

@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify";
 import { UserDataProvider } from "./context/UseDataContext";
 import { RoleProvider } from "./context/RoleContext";
 import { NotificationProvider } from "./context/NotificationContext";
-import { getUserFromLocalStorage } from "./hooks/common/useAuth";
+import { getUserFromLocalStorage } from "./hooks/shared/useAuth";
 import { useState } from "react";
 import { FavoritesProvider } from "./context/FavouritesJobsContext";
 

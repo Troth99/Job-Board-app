@@ -9,7 +9,7 @@ import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
 import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
 import { SendMessage } from "../SendMessage/SendMessage";
-import { getUserFromLocalStorage } from "../../../hooks/common/useAuth";
+import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
 import { useUserData } from "../../../context/UseDataContext";
 import { useRole } from "../../../context/RoleContext";
 import { MemberDashboardModals } from "./Modals";

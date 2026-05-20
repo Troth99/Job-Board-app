@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
-import { getAuthToken, getUserFromLocalStorage } from "../hooks/common/useAuth";
+import { getAuthToken, getUserFromLocalStorage } from "../hooks/shared/useAuth";
 import { Navigate, Outlet } from "react-router";
 import { showCompanyWarning } from "../utils/toast";
 

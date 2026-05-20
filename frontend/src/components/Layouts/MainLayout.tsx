@@ -2,12 +2,12 @@ import { ReactNode, useEffect } from "react";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Outlet } from "react-router";
-import { getUserFromLocalStorage } from "../../hooks/common/useAuth";
+import { getUserFromLocalStorage } from "../../hooks/shared/useAuth";
 import {
   CompanyProvider,
   useCompanyContext,
 } from "../../context/CompanyContext";
-import useApiRequester from "../../hooks/common/useApiRequester";
+import useApiRequester from "../../hooks/shared/useApiRequester";
 import { API_BASE } from "../../services/api";
 
 interface Props {

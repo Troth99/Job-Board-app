@@ -12,7 +12,7 @@ import { showSuccess } from "../../../utils/toast";
 import { Link, useNavigate, useParams } from "react-router";
 
 import { jobPostValidations } from "../../validators/createJobValidation";
-import useForm from "../../../hooks/common/useForm";
+import useForm from "../../../hooks/shared/useForm";
 import { valuesInterface } from "../../../interfaces/Job.model";
 
 const initialValues = {

@@ -1,7 +1,7 @@
 import { use, useState } from "react";
 import { useMessageValidation } from "../../validators/useMessageValidation";
 import { useNotification } from "../../../hooks/utils/useNotification";
-import { getUserFromLocalStorage } from "../../../hooks/common/useAuth";
+import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
 
 interface ModalReplyProps {
   isOpen: boolean;
