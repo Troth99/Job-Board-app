@@ -16,7 +16,6 @@ function FavouriteJobsView() {
   const [categoriesMap, setCategoriesMap] = useState<Record<string, string>>(
     {},
   );
-  const [totalPages, setTotalPages] = useState<number>(1);
   const [totalJobs, setTotalJobs] = useState<number>(0);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -24,9 +23,7 @@ function FavouriteJobsView() {
 
   const { getAllFavoriteJobs } = useFavorites();
 
-
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchFavoriteJobs = async () => {
@@ -35,11 +32,11 @@ function FavouriteJobsView() {
       try {
         const response = await getAllFavoriteJobs(pageFromUrl, ITEMS_PER_PAGE);
         setFavoriteJobs(response.savedJobs);
-        setTotalPages(response.totalPages);
+        // махаме setTotalPages
         setTotalJobs(response.totalJobs);
       } catch (error) {
         console.error("Failed to fetch favorite jobs.");
-      }finally{
+      } finally {
         setLoading(false);
       }
     };
@@ -145,7 +142,7 @@ function FavouriteJobsView() {
         {favoriteJobs.length > 0 && (
           <Pagination
             currentPage={pageFromUrl}
-            totalPages={totalPages}
+            totalPages={Math.ceil(totalJobs / ITEMS_PER_PAGE)}
             totalItems={totalJobs}
             itemsPerPage={ITEMS_PER_PAGE}
             currentItemsCount={favoriteJobs.length}

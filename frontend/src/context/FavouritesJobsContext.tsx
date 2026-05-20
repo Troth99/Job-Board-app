@@ -23,6 +23,8 @@ export interface SavedJob {
     undefined,
   );
 
+  const ITEMS_PER_PAGE = 5;
+  const INITIAL_PAGE = 1;
   export function FavoritesProvider({
     userId,
     children,
@@ -44,7 +46,8 @@ export interface SavedJob {
       const fetch = async () => {
         setLoading(true);
         try {
-          const res = await getAllFavoriteJobs();
+          // Always provide page and limit (default 1, 5)
+          const res = await getAllFavoriteJobs(INITIAL_PAGE, ITEMS_PER_PAGE);
           if (res?.savedJobs) {
             setSavedJobs(res.savedJobs);
           }
@@ -66,7 +69,7 @@ export interface SavedJob {
       setLoading(true);
       try {
         await addJobToFavorites(jobId);
-        const res = await getAllFavoriteJobs();
+        const res = await getAllFavoriteJobs(INITIAL_PAGE, ITEMS_PER_PAGE);
         if (res?.savedJobs) {
           setSavedJobs(res.savedJobs);
         }
@@ -80,7 +83,7 @@ export interface SavedJob {
       setLoading(true);
       try {
         await deleteJobFromFavorites(jobId);
-        const res = await getAllFavoriteJobs();
+        const res = await getAllFavoriteJobs(INITIAL_PAGE, ITEMS_PER_PAGE);
         if (res?.savedJobs) {
           setSavedJobs(res.savedJobs);
         }

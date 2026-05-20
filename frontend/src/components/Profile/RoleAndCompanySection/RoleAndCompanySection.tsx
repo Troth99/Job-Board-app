@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
+import { useFavoritesContext } from "../../../context/FavouritesJobsContext";
 
 interface RoleAndCompanySectionProps {
   userRole: string | null | undefined;
@@ -13,6 +14,7 @@ export function RoleAndCompanySection({
   company,
   hasCompanyId,
 }: RoleAndCompanySectionProps) {
+  const { savedJJobs } = useFavoritesContext();
   const navigate = useNavigate();
 
   return (
