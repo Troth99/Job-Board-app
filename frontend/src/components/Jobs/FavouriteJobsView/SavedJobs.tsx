@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useFavorites } from "../../../hooks/favorites";
 import Spinner from "../../Spinner/Spinner";
 import { Container } from "../../Container/Container";
-import "./FavouriteJobsView.css";
+import "./SavedJobs.css";
 import type { SavedJob } from "../../../context/FavouritesJobsContext";
 import { useNavigate, useSearchParams } from "react-router";
 import Pagination from "../../Pagination/Pagination";
@@ -11,7 +11,7 @@ import { CategoryInterface } from "../../../interfaces/CategoryModel";
 
 const ITEMS_PER_PAGE = 5;
 
-function FavouriteJobsView() {
+function SavedJobs() {
   const [favoriteJobs, setFavoriteJobs] = useState<SavedJob[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -49,41 +49,41 @@ function FavouriteJobsView() {
   }
   return (
     <Container>
-      <div className="favourite-jobs-view">
-        <div className="favourite-jobs-header">
-          <h2 className="favourite-jobs-heading">
+      <div className="saved-jobs-view">
+        <div className="saved-jobs-header">
+          <h2 className="saved-jobs-heading">
             <span
-              className="favourite-jobs-emoji"
+              className="saved-jobs-emoji"
               role="img"
               aria-label="bookmark"
             >
               🔖
             </span>
-            <span>Your Favourites Jobs</span>
-            <span className="favourite-jobs-count">{favoriteJobs.length}</span>
+            <span>Your Saved Jobs</span>
+            <span className="saved-jobs-count">{favoriteJobs.length}</span>
           </h2>
-          <div className="favourite-jobs-subtitle">
+          <div className="saved-jobs-subtitle">
             All jobs you’ve saved in one place. Quick access to your top picks!
           </div>
         </div>
         {favoriteJobs.length === 0 ? (
-          <div className="favourite-jobs-empty">
+          <div className="saved-jobs-empty">
             <span
-              className="favourite-jobs-empty-icon"
+              className="saved-jobs-empty-icon"
               role="img"
               aria-label="empty"
             >
               🗂️
             </span>
-            <div className="favourite-jobs-empty-title">
-              You have no favourite jobs
+            <div className="saved-jobs-empty-title">
+              You have no saved jobs
             </div>
-            <div className="favourite-jobs-empty-desc">
+            <div className="saved-jobs-empty-desc">
               Start saving jobs to easily find them later!
             </div>
           </div>
         ) : (
-          <div className="favourite-jobs-modern-list">
+          <div className="saved-jobs-modern-list">
             {favoriteJobs.map((fav) => {
               const job = fav.job || {};
               const categoryName =
@@ -91,45 +91,45 @@ function FavouriteJobsView() {
               return (
                 <div
                   key={job._id || fav._id}
-                  className="favourite-job-modern-card"
+                  className="saved-job-modern-card"
                   onClick={() => job._id && navigate(`/job/${job._id}`)}
                   style={{ cursor: "pointer" }}
                 >
                   <span
                     role="img"
                     aria-label="job"
-                    className="favourite-job-icon"
+                    className="saved-job-icon"
                   >
                     💼
                   </span>
-                  <div className="favourite-job-info">
-                    <div className="favourite-job-title">
+                  <div className="saved-job-info">
+                    <div className="saved-job-title">
                       {job.title || "-"}
                     </div>
-                    <div className="favourite-job-category">
+                    <div className="saved-job-category">
                       <span className="category-label">Category:</span>{" "}
                       {categoryName}
                     </div>
                     {job.location && (
-                      <div className="favourite-job-location">
+                      <div className="saved-job-location">
                         <span className="location-label">Location:</span>{" "}
                         {job.location}
                       </div>
                     )}
                     {job.salary && (
-                      <div className="favourite-job-salary">
+                      <div className="saved-job-salary">
                         <span className="salary-label">Salary:</span>{" "}
                         {job.salary}
                       </div>
                     )}
                     {job.employmentType && (
-                      <div className="favourite-job-type">
+                      <div className="saved-job-type">
                         <span className="type-label">Type:</span>{" "}
                         {job.employmentType}
                       </div>
                     )}
                     {fav.addedAt && (
-                      <div className="favourite-job-added">
+                      <div className="saved-job-added">
                         <span className="added-label">Added:</span>{" "}
                         {new Date(fav.addedAt).toLocaleString()}
                       </div>
@@ -155,4 +155,4 @@ function FavouriteJobsView() {
   );
 }
 
-export default FavouriteJobsView;
+export default SavedJobs;
