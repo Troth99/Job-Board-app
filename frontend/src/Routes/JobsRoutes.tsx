@@ -31,7 +31,7 @@ const HowToPostJobInfo = lazy(
 );
 
 const FavouriteJobsView = lazy(
-  () => import("../components/Jobs/FavouriteJobsView/SavedJobs"),
+  () => import("../components/Jobs/SavedJobs/SavedJobs"),
 );
 
 const JOB_ALLOWED_ROLES = ["owner", "admin", "recruiter"];

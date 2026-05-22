@@ -31,7 +31,7 @@ export function ProfileRightPanel({
           <h3>Role:</h3>
           <p>
             {hasCompanyId && userRole
-              ? `${userRole} of ${company?.name}`
+              ? `${userRole.toUpperCase()} of ${company?.name}`
               : "Not part of a company yet."}
           </p>
         </div>

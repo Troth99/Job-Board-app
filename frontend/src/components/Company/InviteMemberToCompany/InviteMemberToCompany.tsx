@@ -37,14 +37,14 @@ export function CompanyMembers() {
 
     if (!companyId || !values.email) {
       console.error("Data is missing");
-         setIsSubmitting(false);
+      setIsSubmitting(false);
       return;
     }
     try {
       const response = await checkUser(values.email);
       if (!response || response.message === "User does not exist") {
         setuserEmailExistError("User does not exist!");
-           setIsSubmitting(false);
+        setIsSubmitting(false);
         return;
       }
       if (!response.userId) {
@@ -84,16 +84,13 @@ export function CompanyMembers() {
     setuserEmailExistError("");
     setSuccessMessage("");
     setIsSubmitting(false);
-    reset()
-  
+    reset();
   };
   return (
     <>
-   
-        <button className="add-button" onClick={() => setShowModal(true)}>
-          + Add Member
-        </button>
-     
+      <button className="add-button" onClick={() => setShowModal(true)}>
+        + Add Member
+      </button>
 
       {showModal && (
         <div className="company-members-modal-overlay">
