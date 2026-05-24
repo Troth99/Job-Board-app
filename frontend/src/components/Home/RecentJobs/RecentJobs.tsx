@@ -27,7 +27,7 @@ export default function RecentJobs({ recentJobs }: RecentJobsProps) {
                   <img
                       src={job.company?.logo}
                       alt={job.company?.name ? `${job.company.name} logo` : "/default-logo.png"}
-                      className="company-logo"
+                      className="company-logo-recentjobs-home-page"
                     />
                   </div>
                   <div className="recentjobs-card-main">

@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import useCompany from "../../../hooks/utils/useCompany";
 import useForm from "../../../hooks/shared/useForm";
 import { useValidation } from "../../validators/useValidation";
-import "./CompanyMembers.css";
+import "./InviteMemberToCompany.css";
 import { useNotification } from "../../../hooks/utils/useNotification";
 
 const initialValue = {
