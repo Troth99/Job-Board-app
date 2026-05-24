@@ -173,11 +173,14 @@ export const updateJobController = async (req, res) => {
 
 export const getJobsByCategoryController = async (req, res) => {
   try {
+    //make pagination for this endpoint later
     const { categoryName } = req.params;
+   
 
     const decodedCategoryName = decodeURIComponent(categoryName);
 
     const jobs = await getJobsByCategoryName(decodedCategoryName);
+
     res.status(200).json(jobs)
   } catch (error) {
     console.error("Error in getJobsByCategoryController:", error);
