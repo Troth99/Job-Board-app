@@ -24,7 +24,7 @@ app.use(session({
 app.use(passport.initialize());
 
 
-//to make a ping request so render never goes to sleep on vercel.
+
 
 app.use(cors({
   origin: [

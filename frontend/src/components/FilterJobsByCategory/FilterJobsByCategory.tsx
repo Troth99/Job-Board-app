@@ -37,6 +37,8 @@ const clearFilter = () => {
   setSelectedTypes([])
   setSelectedCompanies([])
 }
+
+  //make backend pagination for jobs by category and remove frontend pagination. Also add sorting by date posted, relevance, and company name. Add a dropdown to select sorting option and sort the jobs accordingly. Relevance is based on how well the job matches the selected filters. Date posted is based on the date the job was posted, with the most recent jobs appearing first. Company name is based on the alphabetical order of the company names.
   //Get company names, that have current posted jobs.
   const companyOptions = [
     ...new Set(
