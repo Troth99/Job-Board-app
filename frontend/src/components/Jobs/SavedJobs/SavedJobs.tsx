@@ -34,7 +34,8 @@ function SavedJobs() {
       try {
         const response = await getAllFavoriteJobs(pageFromUrl, ITEMS_PER_PAGE);
         setFavoriteJobs(response.savedJobs);
-        setTotalJobs(response.totalJobs);
+        setTotalJobs(response.totalSavedJobs);
+        console.log(response.totalSavedJobs);
       } catch (error) {
         console.error("Failed to fetch favorite jobs.");
       } finally {

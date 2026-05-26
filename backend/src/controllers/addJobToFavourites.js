@@ -110,8 +110,8 @@ export const getSavedJobs = async (req, res) => {
         );
 
 
-        const totalFavourites = user.savedJobs.length;
-        const totalPages = Math.ceil(totalFavourites / limit);
+        const totalSavedJobs = user.savedJobs.length;
+        const totalPages = Math.ceil(totalSavedJobs / limit);
 
         //Get the paginated saved jobs for the user
         const paginatedSavedJobs = sortedSavedJobs.slice(skip, skip + limit);
@@ -122,7 +122,7 @@ export const getSavedJobs = async (req, res) => {
 
         res.json({
             savedJobs: populatedSavedJobs,
-            totalFavourites,
+            totalSavedJobs: totalSavedJobs,
             totalPages,
             currentPage: page,
         });
