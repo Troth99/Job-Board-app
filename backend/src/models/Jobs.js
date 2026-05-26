@@ -42,13 +42,6 @@ const jobSchema = new Schema({
     min: 1,
     required: true
   },
-
-  contractType: {
-    type: String,
-    default: '',
-    trim: true,
-  },
-  
   workSchedule: {
     type: String,
     default: "",

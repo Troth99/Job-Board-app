@@ -205,17 +205,6 @@ function PostJob() {
           <div className="error-message">{errors.openings}</div>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="contractType">
-            Contract Type <span className="optional-badge">Optional</span>
-          </label>
-          <input
-            type="text"
-            id="contractType"
-            placeholder="e.g., Permanent, Temporary, Internship"
-            {...register("contractType")}
-          />
-        </div>
 
         <div className="form-group">
           <label htmlFor="workSchedule">
