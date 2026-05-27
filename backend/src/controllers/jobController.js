@@ -173,15 +173,18 @@ export const updateJobController = async (req, res) => {
 
 export const getJobsByCategoryController = async (req, res) => {
   try {
-    //make pagination for this endpoint later
+  
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 3;
+    const skip = (page - 1) * limit;
+
     const { categoryName } = req.params;
    
-
     const decodedCategoryName = decodeURIComponent(categoryName);
 
-    const jobs = await getJobsByCategoryName(decodedCategoryName);
+    const { jobs, totalCount } = await getJobsByCategoryName(decodedCategoryName, skip, limit);
 
-    res.status(200).json(jobs)
+    res.status(200).json({ jobs, totalCount });
   } catch (error) {
     console.error("Error in getJobsByCategoryController:", error);
     res.status(400).json({ message: error.message });

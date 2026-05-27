@@ -8,15 +8,20 @@ import { FilterGroup } from "./FilterGroup/FilterGroup";
 import { employmentOptions } from "../Jobs/formSelectedInputs";
 import { useJobFilters } from "../../hooks/useJobFilters";
 import { Job } from "../../interfaces/Job.model";
-import { usePagination } from "../../hooks/shared/usePagination";
+import Pagination from "../Pagination/Pagination";
+
+const ITEMS_PER_PAGE = 3;
 
 export default function FilterJobByCategory() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
+  const pageFromUrl = parseInt(searchParams.get("page") || "1", 3);
+
   const { categoryName } = useParams<{ categoryName: string }>();
   const [jobsData, setJobsData] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { getJobsByCategoryName } = useJobs();
+  const [totalCount, setTotalCount] = useState<number>(0);
+  
   const navigate = useNavigate();
   const {
     selectedTypes,
@@ -28,11 +33,7 @@ export default function FilterJobByCategory() {
     setSelectedCompanies,
   } = useJobFilters(jobsData);
 
-  const { totalPages, currentItems } = usePagination(
-    filteredJobs,
-    3,
-    pageFromUrl,
-  );
+
   const clearFilter = () => {
     setSelectedTypes([]);
     setSelectedCompanies([]);
@@ -53,8 +54,9 @@ export default function FilterJobByCategory() {
       if (!categoryName) return;
       setLoading(true);
       try {
-        const jobs = await getJobsByCategoryName(categoryName);
-        setJobsData(jobs);
+        const result = await getJobsByCategoryName(categoryName ,pageFromUrl, 3 );
+        setJobsData(result.jobs);
+        setTotalCount(result.totalCount);
       } catch (error) {
         console.error("Failed to fetch jobs");
       } finally {
@@ -62,7 +64,7 @@ export default function FilterJobByCategory() {
       }
     };
     getJobs();
-  }, [categoryName]);
+  }, [categoryName, pageFromUrl]);
 
   return (
     <div className="filter-jobs-container">
@@ -108,33 +110,19 @@ export default function FilterJobByCategory() {
           ) : jobsData.length > 0 ? (
             <>
               <ShowJobs
-                jobs={currentItems}
+                jobs={jobsData}
                 onJobClick={(jobId) => navigate(`/job/${jobId}`)}
               />
 
-              {filteredJobs.length > 3 && (
-                <div className="pagination">
-                  <button
-                    onClick={() =>
-                      setSearchParams({ page: (pageFromUrl - 1).toString() })
-                    }
-                    disabled={pageFromUrl === 1}
-                  >
-                    Previous
-                  </button>
-                  <span>
-                    Page {pageFromUrl} of {totalPages}
-                  </span>
-                  <button
-                    onClick={() =>
-                      setSearchParams({ page: (pageFromUrl + 1).toString() })
-                    }
-                    disabled={pageFromUrl === totalPages}
-                  >
-                    Next
-                  </button>
-                </div>
-              )}
+            {totalCount > ITEMS_PER_PAGE && (
+              <Pagination 
+                currentPage={pageFromUrl}
+                totalPages={Math.ceil(totalCount / ITEMS_PER_PAGE)}
+                totalItems={totalCount}
+                itemsPerPage={ITEMS_PER_PAGE}
+                onPageChange={(page) => setSearchParams({ page: page.toString() })}
+              />     
+            )}
             </>
           ) : (
             <div className="no-jobs-message">

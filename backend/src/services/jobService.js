@@ -86,12 +86,13 @@ export const getRecentJobs = async (limit = 5) => {
 };
 
 
-export const getJobsByCategoryName = async (categoryName) => {
+export const getJobsByCategoryName = async (categoryName, skip = 0, limit = 3) => {
   try {
     if (!categoryName) {
       throw new Error('Category name is requred.')
     }
 
+    //regex for case-insensitive search
     const category = await Category.findOne({
       name: { $regex: new RegExp(`^${categoryName}$`, 'i') }
     })
@@ -100,14 +101,18 @@ export const getJobsByCategoryName = async (categoryName) => {
       throw new Error("Category not found.")
     }
 
+    const totalCount = await Jobs.countDocuments({ category: category._id });
+    
     const jobs = await Jobs.find({ category: category._id })
+      .skip(skip)
+      .limit(limit)
       .populate("company", "name logo website")
       .populate("category", "name shortName")
       .populate("createdBy", "firstName lastName")
       .sort({ createdAt: -1 })
       .lean()
 
-    return jobs
+    return { jobs, totalCount };
   } catch (error) {
     console.error("Error in getJobsByCategoryName service:", error);
     throw error;
