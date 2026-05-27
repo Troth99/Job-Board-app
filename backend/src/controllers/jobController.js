@@ -53,6 +53,7 @@ export const getJobByIdController = async (req, res) => {
       return res.status(404).json({ message: "Job not found" });
     }
 
+   
     res.status(200).json(job);
   } catch (error) {
     console.error(error);
@@ -88,6 +89,7 @@ export const getAllJobsController = async (req, res) => {
 
     const totalJobs = await Jobs.countDocuments(filter);
     const totalPages = Math.ceil(totalJobs / limit);
+    console.log("Fetched jobs:", jobs);
     res.json({ jobs, totalJobs, totalPages, page, limit });
   } catch (error) {
     console.error(error);
@@ -106,6 +108,18 @@ export const getRecentJobsController = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+export const getMostRecentJobsByCompanyController = async (req, res) => {
+  
+  try{
+
+    //to Do
+  }
+    catch (error) {
+      console.error("Error in getMostRecentJobsByCompanyController:", error);
+      res.status(500).json({ message: "Server error" });
+    }
+}
 
 export const updateJobController = async (req, res) => {
   const { id } = req.params;
@@ -173,12 +187,18 @@ export const updateJobController = async (req, res) => {
 
 export const getJobsByCategoryController = async (req, res) => {
   try {
-    const { categoryName } = req.params;
+  
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 3;
+    const skip = (page - 1) * limit;
 
+    const { categoryName } = req.params;
+   
     const decodedCategoryName = decodeURIComponent(categoryName);
 
-    const jobs = await getJobsByCategoryName(decodedCategoryName);
-    res.status(200).json(jobs)
+    const { jobs, totalCount } = await getJobsByCategoryName(decodedCategoryName, skip, limit);
+
+    res.status(200).json({ jobs, totalCount });
   } catch (error) {
     console.error("Error in getJobsByCategoryController:", error);
     res.status(400).json({ message: error.message });

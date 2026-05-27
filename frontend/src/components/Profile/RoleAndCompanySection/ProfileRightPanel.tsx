@@ -2,18 +2,18 @@ import { Link, useNavigate } from "react-router";
 import { useFavoritesContext } from "../../../context/FavouritesJobsContext";
 import "./ProfileRightPanel.css";
 
-interface RoleAndCompanySectionProps {
+interface ProfileRightPanelProps {
   userRole: string | null | undefined;
   company: any;
   companyLoading: boolean;
   hasCompanyId: boolean;
 }
 
-export function RoleAndCompanySection({
+export function ProfileRightPanel({
   userRole,
   company,
   hasCompanyId,
-}: RoleAndCompanySectionProps) {
+}: ProfileRightPanelProps) {
   const { savedJobs } = useFavoritesContext();
 
   const recentSavedJobs = [...savedJobs]
@@ -31,7 +31,7 @@ export function RoleAndCompanySection({
           <h3>Role:</h3>
           <p>
             {hasCompanyId && userRole
-              ? `${userRole} of ${company?.name}`
+              ? `${userRole.toUpperCase()} of ${company?.name}`
               : "Not part of a company yet."}
           </p>
         </div>

@@ -8,7 +8,7 @@ import useCompany from "../../hooks/utils/useCompany";
 import { useRole } from "../../context/RoleContext";
 import { useUserData } from "../../context/UseDataContext";
 import { Container } from "../Container/Container";
-import { RoleAndCompanySection } from "./RoleAndCompanySection/ProfileRightPanel";
+import { ProfileRightPanel } from "./RoleAndCompanySection/ProfileRightPanel";
 import JobPosting from "./JobPosting/JobPosting";
 import ProfileContainer from "./ProfileContainer/ProfileContainer";
 
@@ -120,7 +120,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
             totalCompletionFields={totalCompletionFields}
           />
 
-          <RoleAndCompanySection
+          <ProfileRightPanel
             userRole={userRole}
             company={company}
             companyLoading={companyLoading}

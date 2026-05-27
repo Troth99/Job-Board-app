@@ -4,7 +4,7 @@ import "./Responsive.css";
 import { useNavigate } from "react-router";
 
 
-// To fix css bug with search button
+
 interface SearchProps {
   onSearch: (query: string) => void;
 }

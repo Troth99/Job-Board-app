@@ -5,7 +5,7 @@ import { useFavorites as useFavoritesHook } from "../favorites";
 export default function useJobs() {
   const jobsMethods = useJobsHook();
   const applicationsMethods = useApplicationsHook();
-  const favoritesMethods = useFavoritesHook();
+  const savedjobMethods = useFavoritesHook();
 
   return {
     // Jobs
@@ -25,8 +25,8 @@ export default function useJobs() {
     updateApplicationStatus: applicationsMethods.updateApplicationStatus,
     deleteApplication: applicationsMethods.deleteApplication,
     // Favorites
-    addJobToFavorites: favoritesMethods.addJobToFavorites,
-    deleteJobFromFavorites: favoritesMethods.deleteJobFromFavorites,
-    getAllFavoriteJobs: favoritesMethods.getAllFavoriteJobs,
+    addJobToFavorites: savedjobMethods.addJobToFavorites,
+    deleteJobFromFavorites: savedjobMethods.deleteJobFromFavorites,
+    getAllFavoriteJobs: savedjobMethods.getAllFavoriteJobs,
   };
 }

@@ -40,6 +40,7 @@ export default function useJobs() {
     setLoading(true);
     try {
       if (!companyId) throw new Error("Not part of a company.");
+      
       const response = await request(
         `${API_BASE}/jobs?company=${companyId}`,
         "GET"
@@ -87,12 +88,12 @@ export default function useJobs() {
     }
   };
 
-  const getJobsByCategoryName = async (categoryName: string) => {
+  const getJobsByCategoryName = async (categoryName: string, page: number, limit: number) => {
     setLoading(true);
     try {
       if (!categoryName) throw new Error("Category name is missing!");
       const response = await request(
-        `${API_BASE}/jobs/category/${categoryName}`,
+  `${API_BASE}/jobs/category/${categoryName}?page=${page}&limit=${limit}`,
         "GET",
         {}
       );

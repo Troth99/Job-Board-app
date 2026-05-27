@@ -32,14 +32,14 @@ function ViewAllJobs() {
   const [totalJobs, setTotalJobs] = useState<number>(0);
   const { loading, getJobsPage } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
-  const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
+  const pageFromUrl = parseInt(searchParams.get("page") || "1", 5);
 
   const navigate = useNavigate();
   useEffect(() => {
     const fetchJobs = async () => {
       try {
         const response = await getJobsPage(pageFromUrl, ITEMS_PER_PAGE);
-        console.log("response.jobs", response.jobs);
+       
 
         const sortedJobs = response.jobs.sort(
           (a: Job, b: Job) =>

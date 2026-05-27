@@ -21,11 +21,23 @@ export default function ViewMembers() {
   const {userRole} = useRole()
   const [members, setMembers] = useState<CompanyMember[]>([]);
 
+  
+  const sorterMembersByRole = (members: CompanyMember[]) => {
+    const rolePriority: { [key: string]: number } = {
+      owner: 1, 
+      admin: 2,
+      recruiter: 3,
+      member: 4,
+    };
+    return members.sort((a, b) => (rolePriority[a.role] || 5) - (rolePriority[b.role] || 5));
+  };
+
   useEffect(() => {
     const fetchMembers = async () => {
       if (companyId) {
         const data = await getCompanyMembers(companyId);
-        setMembers(data);
+        console.log("Fetched members:", data);
+        setMembers(sorterMembersByRole(data));
       }
     };
     fetchMembers();

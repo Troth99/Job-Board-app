@@ -1,11 +1,11 @@
-/* Row style for favourite jobs */
-.favourite-jobs-list-rows {
+/* Row style for saved jobs */
+.saved-jobs-list-rows {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   margin-top: 2.2rem;
 }
-.favourite-jobs-modern-list {
+.saved-jobs-modern-list {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -15,7 +15,7 @@
 
 /* Modern row with accent bar and icon */
 
-.favourite-job-row {
+.saved-job-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,7 +35,7 @@
     transform 0.18s;
   margin-bottom: 0.5rem;
 }
-.favourite-job-modern-card {
+.saved-job-modern-card {
   width: 100%;
   max-width: 900px;
   min-height: 210px;
@@ -51,26 +51,26 @@
   border: 2.5px solid var(--accent-color, #4f8cff33);
   position: relative;
 }
-.favourite-job-row:hover,
-.favourite-job-modern-card:hover {
+.saved-job-row:hover,
+.saved-job-modern-card:hover {
   box-shadow: 0 8px 36px 0 rgba(79, 140, 255, 0.22), 0 2px 12px 0 rgba(79, 140, 255, 0.13);
   background: #f0f6ff;
   border-color: var(--accent-hover, #b3d1ff);
   transform: translateY(-2px) scale(1.015);
 }
 
-/* Favourite Jobs Modern Card Styles (Optimized) */
-.favourite-jobs-view {
+/* Saved Jobs Modern Card Styles (Optimized) */
+.saved-jobs-view {
   padding: 2rem 0;
 }
-.favourite-jobs-modern-list {
+.saved-jobs-modern-list {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   margin-top: 2rem;
   align-items: center;
 }
-.favourite-job-modern-card {
+.saved-job-modern-card {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
@@ -85,32 +85,32 @@
   border: 1.5px solid var(--accent-color, #e6eaff);
   position: relative;
 }
-.favourite-job-modern-card:hover {
+.saved-job-modern-card:hover {
   box-shadow: 0 8px 32px rgba(79,140,255,0.13), 0 2px 8px rgba(0,0,0,0.07);
   border-color: var(--accent-hover, #b3d1ff);
   background: #f7faff;
 }
-.favourite-job-info {
+.saved-job-info {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   width: 100%;
 }
-.favourite-job-title {
+.saved-job-title {
   font-size: 1.32rem;
   font-weight: 800;
   color: var(--text-color, #1a2340);
   margin-bottom: 0.5rem;
 }
-.favourite-job-category,
-.favourite-job-location,
-.favourite-job-salary,
-.favourite-job-type,
-.favourite-job-added {
+.saved-job-category,
+.saved-job-location,
+.saved-job-salary,
+.saved-job-type,
+.saved-job-added {
   font-size: 1.07rem;
   margin-bottom: 0.18rem;
 }
-.favourite-job-icon {
+.saved-job-icon {
   font-size: 2.2rem;
   margin-right: 0.5rem;
   color: #4f8cff;
@@ -127,7 +127,7 @@
   margin-right: 0.2rem;
 }
 /* Empty state styles */
-.favourite-jobs-empty {
+.saved-jobs-empty {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,32 +137,32 @@
   margin-bottom: 3.5rem;
   color: var(--text-color, #222);
 }
-.favourite-jobs-empty-icon {
+.saved-jobs-empty-icon {
   font-size: 3.2rem;
   margin-bottom: 0.7rem;
   opacity: 0.7;
 }
-.favourite-jobs-empty-title {
+.saved-jobs-empty-title {
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 0.3rem;
 }
-.favourite-jobs-empty-desc {
+.saved-jobs-empty-desc {
   font-size: 1.08rem;
   color: #7b8fa6;
   margin-bottom: 0.2rem;
 }
-[data-theme="dark"] .favourite-jobs-empty-desc {
+[data-theme="dark"] .saved-jobs-empty-desc {
   color: #a0aec0;
 }
 /* Header styles */
-.favourite-jobs-header {
+.saved-jobs-header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 1.5rem;
 }
-.favourite-jobs-heading {
+.saved-jobs-heading {
   display: flex;
   align-items: center;
   font-size: 2.1rem;
@@ -172,12 +172,12 @@
   margin-bottom: 0.2rem;
   letter-spacing: -0.5px;
 }
-.favourite-jobs-emoji {
+.saved-jobs-emoji {
   font-size: 2.2rem;
   margin-right: 0.1em;
   filter: drop-shadow(0 2px 4px rgba(79, 140, 255, 0.1));
 }
-.favourite-jobs-count {
+.saved-jobs-count {
   background: var(--accent-color, #4f8cff);
   color: #fff;
   font-size: 1.1rem;
@@ -188,7 +188,7 @@
   box-shadow: 0 2px 8px rgba(79, 140, 255, 0.1);
   letter-spacing: 0;
 }
-.favourite-jobs-subtitle {
+.saved-jobs-subtitle {
   font-size: 1.13rem;
   color: #3a4663;
   margin-left: 0.2em;
@@ -197,29 +197,29 @@
   line-height: 1.5;
   letter-spacing: 0.01em;
 }
-[data-theme="dark"] .favourite-jobs-heading {
+[data-theme="dark"] .saved-jobs-heading {
   color: #e6edf3;
 }
-[data-theme="dark"] .favourite-jobs-subtitle {
+[data-theme="dark"] .saved-jobs-subtitle {
   color: #a0aec0;
 }
-[data-theme="dark"] .favourite-jobs-count {
+[data-theme="dark"] .saved-jobs-count {
   background: #4f8cff;
   color: #1e1e1e;
 }
-.favourite-job-added {
+.saved-job-added {
   font-size: 0.93rem;
   color: #7b8fa6;
   margin-top: 0.2rem;
 }
-[data-theme="dark"] .favourite-job-added {
+[data-theme="dark"] .saved-job-added {
   color: #a0aec0;
 }
 @media (max-width: 900px) {
-  .favourite-jobs-modern-list {
+  .saved-jobs-modern-list {
     gap: 1.2rem;
   }
-  .favourite-job-modern-card {
+  .saved-job-modern-card {
     max-width: 100%;
     min-width: 0;
     padding: 1.2rem 1rem 1rem 1rem;
@@ -227,41 +227,41 @@
     align-items: flex-start;
     gap: 0.7rem;
   }
-  .favourite-job-location {
+  .saved-job-location {
     margin-left: 0;
     min-width: 0;
     text-align: left;
   }
 }
 @media (max-width: 600px) {
-  .favourite-jobs-view {
+  .saved-jobs-view {
     padding: 1rem 0.2rem;
   }
-  .favourite-job-modern-card {
+  .saved-job-modern-card {
     padding: 1rem 0.7rem 0.7rem 0.7rem;
     border-radius: 12px;
     font-size: 0.97rem;
   }
-  .favourite-job-title {
+  .saved-job-title {
     font-size: 1.07rem;
   }
 }
-[data-theme="dark"] .favourite-job-modern-card {
+[data-theme="dark"] .saved-job-modern-card {
   background: #23272f;
   border: 1.5px solid #2a3959;
   box-shadow: 0 4px 24px rgba(78,158,255,0.07), 0 1.5px 6px rgba(0,0,0,0.13);
 }
 
 @media (max-width: 600px) {
-  .favourite-jobs-view {
+  .saved-jobs-view {
     padding: 1rem 0.2rem;
   }
-  .favourite-job-modern-card {
+  .saved-job-modern-card {
     padding: 1rem 0.7rem 0.7rem 0.7rem;
     border-radius: 12px;
     font-size: 0.97rem;
   }
-  .favourite-job-title {
+  .saved-job-title {
     font-size: 1.07rem;
   }
 }

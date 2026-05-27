@@ -294,3 +294,7 @@ export const AbandonCompanyController = async (req, res) => {
 
   return res.status(200).json({ message: "Company and all related data deleted successfully." });
 }
+
+export const updateCompanyControllr = async (req, res) => {
+  //edit company details like name, description, location, website, etc. but not members or createdBy
+}

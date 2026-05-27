@@ -24,26 +24,21 @@ export default function RecentJobs({ recentJobs }: RecentJobsProps) {
               <li key={job._id} className="recentjobs-card">
                 <div className="recentjobs-card-content">
                   <div className="recentjobs-card-image">
-                    <img
-                      src={
-                        job?.company?.logo &&
-                        job.company.logo.trim().startsWith("http")
-                          ? job.company.logo
-                          : "/assets/defaultCompany.png"
-                      }
-                      alt={
-                        job?.company?.logo && job.company.logo.trim() !== ""
-                          ? job.company.name
-                          : "Default Company Logo"
-                      }
-                      className="recentjobs-company-logo"
+                  <img
+                      src={job.company?.logo}
+                      alt={job.company?.name ? `${job.company.name} logo` : "/default-logo.png"}
+                      className="company-logo-recentjobs-home-page"
                     />
                   </div>
                   <div className="recentjobs-card-main">
                     <h3 className="recentjobs-title">{job.title}</h3>
                     <div className="recentjobs-company">{job.company?.name}</div>
                     <div className="recentjobs-location">{job.location}</div>
-                    <div className="recentjobs-category">{job.category?.name}</div>
+                    <div className="recentjobs-category">
+                      {typeof job.category === "string"
+                        ? job.category
+                        : job.category?.name}
+                    </div>
                   </div>
                   <div className="recentjobs-card-side">
                     <div className="recentjobs-date">Posted: {job.createdAt && formatDate(job.createdAt)}</div>

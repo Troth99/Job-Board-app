@@ -24,6 +24,15 @@ body {
   flex: 1;
 }
 
+:root {
+  --jobs-border: #e0e0e0;
+  --jobs-surface: #fff;
+  --jobs-text: #2c3e50;
+  --jobs-brand-strong: #16a085;
+  --jobs-surface-muted: #f8f9fa;
+  --jobs-text-soft: #7f8c8d;
+}
+
 /* Default Light Theme */
 :root {
   --bg-color: #f9f9f9;

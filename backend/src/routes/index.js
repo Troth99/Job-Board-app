@@ -8,6 +8,7 @@ import notifications from "./notificationRoutes.js"
 import statsRoutes from "./statsRoutes.js";
 import authRoutes from "./authRoutes.js";
 import addToFavouritesRoute from "./addToFavouriteseRoute.js";
+import pingRoute from "./pingRoute.js";
 
 const router = Router();
 
@@ -21,5 +22,7 @@ router.use('/notifications', notifications)
 router.use('/application', statsRoutes)
 router.use('/auth', authRoutes)
 router.use('/favourites', addToFavouritesRoute)
+router.use('/ping', pingRoute)
+
 
 export default router;

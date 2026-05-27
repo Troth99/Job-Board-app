@@ -21,19 +21,10 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
       </div>
       <div className="sidebar-nav">
         <div className="job-card-dashboard-image">
-          <img
-            src={
-              props.company?.logo &&
-              props.company.logo.trim().startsWith("http")
-                ? props.company.logo
-                : "/assets/defaultCompany.png"
-            }
-            alt={
-              props.company?.logo && props.company.logo.trim() !== ""
-                ? props.company.name
-                : "Default Company Logo"
-            }
-            className="company-logo"
+          <img 
+          src={props.company?.logo}
+          alt={props.company?.name || "./default-logo.png"}
+          className="company-logo"
           />
         </div>
         <ul>

@@ -1,5 +1,3 @@
-// Handler for navigating to post job page
-
 import { useState } from "react";
 import "./MemberDashboard.css";
 import "./Responsive.css";
@@ -7,7 +5,7 @@ import { useNavigate, useParams } from "react-router";
 import useCompany from "../../../hooks/utils/useCompany";
 import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
-import { CompanyMembers } from "../CompanyMembers/CompanyMembers";
+import { CompanyMembers } from "../InviteMemberToCompany/InviteMemberToCompany";
 import { SendMessage } from "../SendMessage/SendMessage";
 import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
 import { useUserData } from "../../../context/UseDataContext";

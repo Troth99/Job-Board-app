@@ -8,41 +8,42 @@ import { FilterGroup } from "./FilterGroup/FilterGroup";
 import { employmentOptions } from "../Jobs/formSelectedInputs";
 import { useJobFilters } from "../../hooks/useJobFilters";
 import { Job } from "../../interfaces/Job.model";
-import { usePagination } from "../../hooks/shared/usePagination";
+import Pagination from "../Pagination/Pagination";
+
+const ITEMS_PER_PAGE = 3;
 
 export default function FilterJobByCategory() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
+  const pageFromUrl = parseInt(searchParams.get("page") || "1", 3);
+
   const { categoryName } = useParams<{ categoryName: string }>();
   const [jobsData, setJobsData] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { getJobsByCategoryName } = useJobs();
+  const [totalCount, setTotalCount] = useState<number>(0);
+
   const navigate = useNavigate();
   const {
     selectedTypes,
     handleCompanyChange,
     handleTypeChange,
-    filteredJobs,
     selectedCompanies,
     setSelectedTypes,
-    setSelectedCompanies
+    filteredJobs,
+    setSelectedCompanies,
   } = useJobFilters(jobsData);
 
-  const { totalPages, currentItems } = usePagination(
-    filteredJobs,
-    3,
-    pageFromUrl
-  );
-const clearFilter = () => {
-  setSelectedTypes([])
-  setSelectedCompanies([])
-}
-  //Get company names, that have current posted jobs.
+  const clearFilter = () => {
+    setSelectedTypes([]);
+    setSelectedCompanies([]);
+  };
+
+  // Extract unique company names for the company filter options
   const companyOptions = [
     ...new Set(
       jobsData
         .map((job) => job.company?.name)
-        .filter((name): name is string => Boolean(name))
+        .filter((name): name is string => Boolean(name)),
     ),
   ];
 
@@ -51,8 +52,13 @@ const clearFilter = () => {
       if (!categoryName) return;
       setLoading(true);
       try {
-        const jobs = await getJobsByCategoryName(categoryName);
-        setJobsData(jobs);
+        const result = await getJobsByCategoryName(
+          categoryName,
+          pageFromUrl,
+          ITEMS_PER_PAGE,
+        );
+        setJobsData(result.jobs);
+        setTotalCount(result.totalCount);
       } catch (error) {
         console.error("Failed to fetch jobs");
       } finally {
@@ -60,7 +66,7 @@ const clearFilter = () => {
       }
     };
     getJobs();
-  }, [categoryName]);
+  }, [categoryName, pageFromUrl]);
 
   return (
     <div className="filter-jobs-container">
@@ -72,7 +78,7 @@ const clearFilter = () => {
           <p className="subtitle">Explore opportunities from {categoryName}</p>
         </div>
         <div className="filter-stats">
-          <span className="job-count">{jobsData.length} jobs found</span>
+          <span className="job-count">{totalCount} Total Jobs found</span>
         </div>
       </div>
 
@@ -94,7 +100,9 @@ const clearFilter = () => {
               selected={selectedCompanies}
               onChange={handleCompanyChange}
             />
-            <button className="clear-filters" onClick={clearFilter}>Clear All Filters</button>
+            <button className="clear-filters" onClick={clearFilter}>
+              Clear All Filters
+            </button>
           </div>
         </aside>
 
@@ -104,32 +112,20 @@ const clearFilter = () => {
           ) : jobsData.length > 0 ? (
             <>
               <ShowJobs
-                jobs={currentItems}
+                jobs={filteredJobs}
                 onJobClick={(jobId) => navigate(`/job/${jobId}`)}
               />
 
-              {filteredJobs.length > 3 && (
-                <div className="pagination">
-                  <button
-                    onClick={() =>
-                      setSearchParams({ page: (pageFromUrl - 1).toString() })
-                    }
-                    disabled={pageFromUrl === 1}
-                  >
-                    Previous
-                  </button>
-                  <span>
-                    Page {pageFromUrl} of {totalPages}
-                  </span>
-                  <button
-                    onClick={() =>
-                      setSearchParams({ page: (pageFromUrl + 1).toString() })
-                    }
-                    disabled={pageFromUrl === totalPages}
-                  >
-                    Next
-                  </button>
-                </div>
+              {filteredJobs.length > 0 && totalCount > ITEMS_PER_PAGE && filteredJobs.length === ITEMS_PER_PAGE && (
+                <Pagination
+                  currentPage={pageFromUrl}
+                  totalPages={Math.ceil(totalCount / ITEMS_PER_PAGE)}
+                  totalItems={totalCount}
+                  itemsPerPage={ITEMS_PER_PAGE}
+                  onPageChange={(page) =>
+                    setSearchParams({ page: page.toString() })
+                  }
+                />
               )}
             </>
           ) : (
