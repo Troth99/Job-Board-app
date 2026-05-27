@@ -7,6 +7,11 @@ import { Job } from "../../../interfaces/Job.model";
 import Spinner from "../../Spinner/Spinner";
 import { usePagination } from "../../../hooks/shared/usePagination";
 
+
+//make pagination for this component and also add total count of jobs in the company.
+//Add metadata for the pages in the application
+
+
 export function ViewAllJobsForCompany() {
   const { companyId } = useParams();
   const [companyJobs, setCompanyJobs] = useState<Job[]>([]);

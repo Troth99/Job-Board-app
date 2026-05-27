@@ -9,9 +9,6 @@ import { useRole } from "../../../context/RoleContext";
 
 const availableRoles = ["admin", "recruiter", "member"];
 
-
-//To Refractor css and sort by role members in owner, admin, recruiter, member order. 
-// Also added a dropdown to change role and a kick button to remove member from company. Only owner can change roles and kick members, admin can kick members but not change roles, recruiter and member have no permissions. Owner cannot change their own role or kick themselves from the company. Admin cannot change their own role or kick themselves from the company. Admin cannot change role of other admins or kick other admins from the company. Recruiter and member cannot change roles or kick anyone from the company.
 export default function ViewMembers() {
   const { companyId } = useParams();
   const [showOptions, setShowOptions] = useState<string | null>(null);
@@ -24,11 +21,23 @@ export default function ViewMembers() {
   const {userRole} = useRole()
   const [members, setMembers] = useState<CompanyMember[]>([]);
 
+  
+  const sorterMembersByRole = (members: CompanyMember[]) => {
+    const rolePriority: { [key: string]: number } = {
+      owner: 1, 
+      admin: 2,
+      recruiter: 3,
+      member: 4,
+    };
+    return members.sort((a, b) => (rolePriority[a.role] || 5) - (rolePriority[b.role] || 5));
+  };
+
   useEffect(() => {
     const fetchMembers = async () => {
       if (companyId) {
         const data = await getCompanyMembers(companyId);
-        setMembers(data);
+        console.log("Fetched members:", data);
+        setMembers(sorterMembersByRole(data));
       }
     };
     fetchMembers();

@@ -40,6 +40,7 @@ export default function useJobs() {
     setLoading(true);
     try {
       if (!companyId) throw new Error("Not part of a company.");
+      
       const response = await request(
         `${API_BASE}/jobs?company=${companyId}`,
         "GET"

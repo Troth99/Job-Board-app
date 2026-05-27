@@ -78,7 +78,7 @@ export default function FilterJobByCategory() {
           <p className="subtitle">Explore opportunities from {categoryName}</p>
         </div>
         <div className="filter-stats">
-          <span className="job-count">{totalCount} jobs found</span>
+          <span className="job-count">{totalCount} Total Jobs found</span>
         </div>
       </div>
 
