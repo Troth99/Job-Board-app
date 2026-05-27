@@ -21,26 +21,24 @@ export default function FilterJobByCategory() {
   const [loading, setLoading] = useState<boolean>(true);
   const { getJobsByCategoryName } = useJobs();
   const [totalCount, setTotalCount] = useState<number>(0);
-  
+
   const navigate = useNavigate();
   const {
     selectedTypes,
     handleCompanyChange,
     handleTypeChange,
-    filteredJobs,
     selectedCompanies,
     setSelectedTypes,
+    filteredJobs,
     setSelectedCompanies,
   } = useJobFilters(jobsData);
-
 
   const clearFilter = () => {
     setSelectedTypes([]);
     setSelectedCompanies([]);
   };
 
-  //make backend pagination for jobs by category and remove frontend pagination. Also add sorting by date posted, relevance, and company name. Add a dropdown to select sorting option and sort the jobs accordingly. Relevance is based on how well the job matches the selected filters. Date posted is based on the date the job was posted, with the most recent jobs appearing first. Company name is based on the alphabetical order of the company names.
-  //Get company names, that have current posted jobs.
+  // Extract unique company names for the company filter options
   const companyOptions = [
     ...new Set(
       jobsData
@@ -54,7 +52,11 @@ export default function FilterJobByCategory() {
       if (!categoryName) return;
       setLoading(true);
       try {
-        const result = await getJobsByCategoryName(categoryName ,pageFromUrl, 3 );
+        const result = await getJobsByCategoryName(
+          categoryName,
+          pageFromUrl,
+          ITEMS_PER_PAGE,
+        );
         setJobsData(result.jobs);
         setTotalCount(result.totalCount);
       } catch (error) {
@@ -76,7 +78,7 @@ export default function FilterJobByCategory() {
           <p className="subtitle">Explore opportunities from {categoryName}</p>
         </div>
         <div className="filter-stats">
-          <span className="job-count">{jobsData.length} jobs found</span>
+          <span className="job-count">{totalCount} jobs found</span>
         </div>
       </div>
 
@@ -110,19 +112,21 @@ export default function FilterJobByCategory() {
           ) : jobsData.length > 0 ? (
             <>
               <ShowJobs
-                jobs={jobsData}
+                jobs={filteredJobs}
                 onJobClick={(jobId) => navigate(`/job/${jobId}`)}
               />
 
-            {totalCount > ITEMS_PER_PAGE && (
-              <Pagination 
-                currentPage={pageFromUrl}
-                totalPages={Math.ceil(totalCount / ITEMS_PER_PAGE)}
-                totalItems={totalCount}
-                itemsPerPage={ITEMS_PER_PAGE}
-                onPageChange={(page) => setSearchParams({ page: page.toString() })}
-              />     
-            )}
+              {filteredJobs.length > 0 && totalCount > ITEMS_PER_PAGE && filteredJobs.length === ITEMS_PER_PAGE && (
+                <Pagination
+                  currentPage={pageFromUrl}
+                  totalPages={Math.ceil(totalCount / ITEMS_PER_PAGE)}
+                  totalItems={totalCount}
+                  itemsPerPage={ITEMS_PER_PAGE}
+                  onPageChange={(page) =>
+                    setSearchParams({ page: page.toString() })
+                  }
+                />
+              )}
             </>
           ) : (
             <div className="no-jobs-message">

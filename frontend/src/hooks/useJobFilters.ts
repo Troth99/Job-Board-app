@@ -47,6 +47,7 @@ export function useJobFilters(jobData: Job[]){
       selectedCompanies, 
       setSelectedCompanies,
       handleCompanyChange, 
-      filteredJobs 
+      filteredJobs
+    
     }
 }
