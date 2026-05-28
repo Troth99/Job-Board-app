@@ -112,8 +112,19 @@ export const getRecentJobsController = async (req, res) => {
 export const getMostRecentJobsByCompanyController = async (req, res) => {
   
   try{
+      const companyId = req.params.companyId.trim();
 
-    //to Do
+      if (!mongoose.isValidObjectId(companyId)) {
+        return res.status(400).json({ message: "Invalid company ID." });
+      }
+
+      const recentJobs = await Jobs.find({ company: companyId })
+        .sort({ createdAt: -1 })
+        .limit(5)
+        .populate("company")
+        .populate('createdBy', 'firstName lastName email');
+
+      res.status(200).json({ recentJobs });
   }
     catch (error) {
       console.error("Error in getMostRecentJobsByCompanyController:", error);
