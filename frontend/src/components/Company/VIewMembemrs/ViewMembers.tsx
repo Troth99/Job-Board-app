@@ -6,30 +6,37 @@ import { formatDate } from "../../../utils/formData";
 import Spinner from "../../Spinner/Spinner";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { useRole } from "../../../context/RoleContext";
+import { BsChatDots } from "react-icons/bs";
+import { SendMessage } from "../SendMessage/SendMessage";
 
 const availableRoles = ["admin", "recruiter", "member"];
+
+//refractor css
 
 export default function ViewMembers() {
   const { companyId } = useParams();
   const [showOptions, setShowOptions] = useState<string | null>(null);
+  const [showMessageModal, setShowMessageModal] = useState<string | null>(null);
+
   const {
     getCompanyMembers,
     loading,
     changeMemberRole,
     kickMemberFromCompany,
   } = useCompany();
-  const {userRole} = useRole()
+  const { userRole } = useRole();
   const [members, setMembers] = useState<CompanyMember[]>([]);
 
-  
   const sorterMembersByRole = (members: CompanyMember[]) => {
     const rolePriority: { [key: string]: number } = {
-      owner: 1, 
+      owner: 1,
       admin: 2,
       recruiter: 3,
       member: 4,
     };
-    return members.sort((a, b) => (rolePriority[a.role] || 5) - (rolePriority[b.role] || 5));
+    return members.sort(
+      (a, b) => (rolePriority[a.role] || 5) - (rolePriority[b.role] || 5),
+    );
   };
 
   useEffect(() => {
@@ -50,16 +57,14 @@ export default function ViewMembers() {
     if (!companyId) return;
     try {
       await changeMemberRole(companyId, memberId, newRole);
-      
+
       const data = await getCompanyMembers(companyId);
-      setMembers(data); 
+      setMembers(data);
     } catch (error) {
       console.error("Failed to update the role.", error);
     }
   };
 
-
-  
   const kickMemberHandler = async (memberId: string) => {
     if (!companyId) return;
     try {
@@ -72,6 +77,9 @@ export default function ViewMembers() {
     }
   };
 
+  const sendMessageHandler = (email: string) => {
+    setShowMessageModal(email);
+  };
 
   return (
     <div className="member-list-page">
@@ -102,13 +110,24 @@ export default function ViewMembers() {
                   )}
                 </div>
               </div>
+              <div className="member-email">
+                <BsChatDots
+                  className="message-icon"
+                  title="Message"
+                  onClick={() => sendMessageHandler(member.userId?.email || "")}
+                />
+              </div>
               <div className="member-actions">
                 {userRole === "owner" && member.role !== "owner" && (
                   <>
                     <button
                       className="action-btn edit"
                       title="Change Role"
-                      onClick={() => setShowOptions(showOptions === member._id ? null : member._id)}
+                      onClick={() =>
+                        setShowOptions(
+                          showOptions === member._id ? null : member._id,
+                        )
+                      }
                     >
                       Change Role
                     </button>
@@ -142,20 +161,30 @@ export default function ViewMembers() {
                     Change Role
                   </button>
                 )}
-                {(userRole === "owner" || userRole === "admin") && member.role !== "owner" && member.role !== "admin" && (
-                  <button
-                    className="action-btn remove"
-                    title="Remove Member"
-                    onClick={() => kickMemberHandler(member._id)}
-                  >
-                    Kick
-                  </button>
-                )}
+                {(userRole === "owner" || userRole === "admin") &&
+                  member.role !== "owner" &&
+                  member.role !== "admin" && (
+                    <button
+                      className="action-btn remove"
+                      title="Remove Member"
+                      onClick={() => kickMemberHandler(member._id)}
+                    >
+                      Kick
+                    </button>
+                  )}
               </div>
             </div>
           ))}
         </div>
       </div>
+      {/* Render the modal only once, outside the map, when showMessageModal is set */}
+      {showMessageModal && (
+        <SendMessage
+        autoOpen={true}
+          recipient={showMessageModal}
+          onClose={() => setShowMessageModal(null)}
+        />
+      )}
     </div>
   );
 }

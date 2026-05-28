@@ -12,9 +12,6 @@ interface CompanyJobsListProps {
   isReadOnly?: boolean;
 }
 
-//make a new endpoint to fech only 5 recent jobs for the company and use it in this component.
-//  Also sort the jobs by createdAt date in descending order so the most recent jobs are shown first. 
-// If there are no jobs for the company, show a message saying "No jobs posted yet." instead of showing an empty list.
 
 export function CompanyJobsList({
   companyId,

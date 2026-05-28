@@ -326,3 +326,15 @@
 .footer {
   margin-top: auto;
 }
+
+.message-icon {
+  margin-left: 0.5rem;
+  color: #506fff;
+  cursor: pointer;
+  font-size: 1.3em;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+.message-icon:hover {
+  color: #3246d3;
+}

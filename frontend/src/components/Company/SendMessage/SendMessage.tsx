@@ -1,4 +1,4 @@
-import { send } from "process";
+
 import useCompany from "../../../hooks/utils/useCompany";
 import { useNotification } from "../../../hooks/utils/useNotification";
 import useUserProfile from "../../../hooks/utils/useProfile";
@@ -8,9 +8,10 @@ import "./SendMessage.css";
 import { useState } from "react";
 import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
 
-export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
-  const [open, setOpen] = useState<Boolean>(false);
-  const [recipient, setRecipient] = useState("");
+export function SendMessage({ recipient: initialRecipient, onClose, autoOpen }: { recipient?: string, onClose?: () => void, autoOpen?: boolean }) {
+  const [open, setOpen] = useState<Boolean>(autoOpen || false);
+  const [recipient, setRecipient] = useState(initialRecipient || "");
+
   const [message, setMessage] = useState("");
   const { createNotification } = useNotification();
   const { validateEmail } = useValidation();
@@ -56,9 +57,9 @@ export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
         type: "message",
         sender: currentUserId, // Include sender's email for reference
       });
-      // If the message was sent successfully, call the onSuccess callback and close the modal
-      if (onSuccess) {
-        onSuccess();
+      // If the message was sent successfully, call the onClose callback and close the modal
+      if (onClose) {
+        onClose();
       }
 
       //  Reset form and close modal
@@ -89,7 +90,10 @@ export function SendMessage({ onSuccess }: { onSuccess?: () => void }) {
           <div className="send-message-modal-unique">
             <button
               className="send-message-modal-close-unique"
-              onClick={() => setOpen(false)}
+               onClick={() => {
+    setOpen(false);
+    if (onClose) onClose();
+  }}
             >
               ×
             </button>
