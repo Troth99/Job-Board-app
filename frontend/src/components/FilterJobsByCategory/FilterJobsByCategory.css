@@ -1,3 +1,15 @@
+/* Center loading indicator in jobs-list-area */
+.jobs-list-area {
+  position: relative;
+}
+.loading-indicator-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  width: 100%;
+  padding-top: 12em; 
+}
 .filter-jobs-container {
   width: 100%;
   max-width: 1400px;

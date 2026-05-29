@@ -12,6 +12,8 @@ import Pagination from "../Pagination/Pagination";
 
 const ITEMS_PER_PAGE = 3;
 
+//responsive css doesnt work on mobile
+
 export default function FilterJobByCategory() {
   const [searchParams, setSearchParams] = useSearchParams();
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 3);
@@ -108,7 +110,9 @@ export default function FilterJobByCategory() {
 
         <main className="jobs-list-area">
           {loading ? (
-            <LoadingIndicator message="Loading jobs..." size="medium" />
+            <div className="loading-indicator-center">
+              <LoadingIndicator message="Loading jobs..." size="medium" />
+            </div>
           ) : jobsData.length > 0 ? (
             <>
               <ShowJobs
