@@ -13,6 +13,7 @@ import { Container } from "../Container/Container";
 import { HomeStats } from "./HomeStats/HomeStats";
 import useStatistics from "../../hooks/useStatistics";
 import { StatsResponse } from "../../interfaces/ApplicationStatistic.model";
+import { Helmet } from "react-helmet-async";
 
 export default function HomeSection() {
   const categories = useSelector(
@@ -60,6 +61,10 @@ fetchApplicationStatistics()
 
   return (
     <div>
+      <Helmet>
+        <title>Home</title>
+        <meta name="description" content="Discover your next career opportunity with JobBoard. Explore recent job listings, browse by category, and access insightful application statistics. Start your job search today!" />
+      </Helmet>
       <Hero />
       <Container>
       <CategoriesSection />

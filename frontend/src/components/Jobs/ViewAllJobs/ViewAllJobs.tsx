@@ -7,6 +7,7 @@ import { Job } from "../../../interfaces/Job.model";
 import { Container } from "../../Container/Container";
 import Pagination from "../../Pagination/Pagination";
 import usePagination from "../../../hooks/shared/usePaginationState";
+import { Helmet } from "react-helmet-async";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -57,10 +58,19 @@ function ViewAllJobs() {
   }, [pageFromUrl]);
 
   if (loading) {
-    return <Spinner overlay={true} />;
+    return (
+    <Spinner overlay={true} />
+    );
   }
+  
   return (
     <Container>
+      
+      <Helmet>
+        <title>🔥 Browse All Jobs | Find Your Next Opportunity!</title>
+         <meta name="description" content="Browse all job listings and find your next opportunity. Fresh listings, sorted by newest first." />
+      </Helmet>
+      
       <section className="jobs-board-page">
         <header className="jobs-board-hero">
           <div>
