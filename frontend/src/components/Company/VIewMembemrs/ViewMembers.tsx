@@ -84,10 +84,13 @@ export default function ViewMembers() {
   return (
     <div className="member-list-page">
       <div className="members-list-container">
+      <div className="content-title-members-list">
         <h2>Company Members</h2>
+      </div>
+        
         <div className="members-cards">
           {members.map((member: CompanyMember, idx: number) => (
-            <div className="member-card" key={member._id || idx}>
+            <div className="member-card" key={member._id || idx} data-role={member.role}>
               <div className="member-info">
                 <div className="member-name">
                   {member.userId?.name || member.userId?.email || member._id}
@@ -110,68 +113,70 @@ export default function ViewMembers() {
                   )}
                 </div>
               </div>
-              <div className="member-email">
-                <BsChatDots
-                  className="message-icon"
-                  title="Message"
-                  onClick={() => sendMessageHandler(member.userId?.email || "")}
-                />
-              </div>
-              <div className="member-actions">
-                {userRole === "owner" && member.role !== "owner" && (
-                  <>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", width: "100%" }}>
+                <div className="member-email">
+                  <BsChatDots
+                    className="message-icon"
+                    title="Message"
+                    onClick={() => sendMessageHandler(member.userId?.email || "")}
+                  />
+                </div>
+                <div className="member-actions">
+                  {userRole === "owner" && member.role !== "owner" && (
+                    <>
+                      <button
+                        className="action-btn edit"
+                        title="Change Role"
+                        onClick={() =>
+                          setShowOptions(
+                            showOptions === member._id ? null : member._id,
+                          )
+                        }
+                      >
+                        Change Role
+                      </button>
+                      {showOptions === member._id && (
+                        <div className="custom-dropdown">
+                          {availableRoles
+                            .filter((role) => role !== "owner")
+                            .map((role) => (
+                              <div
+                                key={role}
+                                className="dropdown-option"
+                                onClick={() => {
+                                  changeRoleHandler(member._id, role);
+                                  setShowOptions(null);
+                                }}
+                              >
+                                {role}
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                    </>
+                  )}
+                  {userRole === "owner" && member.role === "owner" && (
                     <button
                       className="action-btn edit"
                       title="Change Role"
-                      onClick={() =>
-                        setShowOptions(
-                          showOptions === member._id ? null : member._id,
-                        )
-                      }
+                      disabled
+                      style={{ opacity: 0.6, cursor: "not-allowed" }}
                     >
                       Change Role
                     </button>
-                    {showOptions === member._id && (
-                      <div className="custom-dropdown">
-                        {availableRoles
-                          .filter((role) => role !== "owner")
-                          .map((role) => (
-                            <div
-                              key={role}
-                              className="dropdown-option"
-                              onClick={() => {
-                                changeRoleHandler(member._id, role);
-                                setShowOptions(null);
-                              }}
-                            >
-                              {role}
-                            </div>
-                          ))}
-                      </div>
-                    )}
-                  </>
-                )}
-                {userRole === "owner" && member.role === "owner" && (
-                  <button
-                    className="action-btn edit"
-                    title="Change Role"
-                    disabled
-                    style={{ opacity: 0.6, cursor: "not-allowed" }}
-                  >
-                    Change Role
-                  </button>
-                )}
-                {(userRole === "owner" || userRole === "admin") &&
-                  member.role !== "owner" &&
-                  member.role !== "admin" && (
-                    <button
-                      className="action-btn remove"
-                      title="Remove Member"
-                      onClick={() => kickMemberHandler(member._id)}
-                    >
-                      Kick
-                    </button>
                   )}
+                  {(userRole === "owner" || userRole === "admin") &&
+                    member.role !== "owner" &&
+                    member.role !== "admin" && (
+                      <button
+                        className="action-btn remove"
+                        title="Remove Member"
+                        onClick={() => kickMemberHandler(member._id)}
+                      >
+                        Kick
+                      </button>
+                    )}
+                </div>
               </div>
             </div>
           ))}

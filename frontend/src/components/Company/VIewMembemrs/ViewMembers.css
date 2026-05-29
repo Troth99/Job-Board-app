@@ -1,340 +1,241 @@
-/* --- Layout & Card --- */
+/* --- Responsive, Theme-aware Company Members List --- */
+
 .member-list-page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+	min-height: 100vh;
+	background: #f3f6fa;
+	padding: 40px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: background 0.3s;
 }
+
+[data-theme="dark"] .member-list-page {
+	background: #181c23;
+}
+
 .members-list-container {
-  min-height: 80vh;
-  margin: 2rem auto;
-  max-width: 1400px;
-  width: 98vw;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  padding: 2.5rem 2rem;
+	background: #fff;
+	border-radius: 18px;
+	box-shadow: 0 4px 24px rgba(60, 72, 100, 0.10);
+	padding: 44px 36px 36px 36px;
+	max-width: 1400px;
+	width: 100%;
+	margin: 0 auto;
+	transition: background 0.3s, box-shadow 0.3s;
 }
-.members-list-container h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #333;
-  width: 900px;
-}
-.members-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-  justify-content: center;
-}
-.member-card {
-  background: linear-gradient(90deg, #f0f4ff 60%, #e0e7ff 100%);
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(60, 80, 180, 0.1);
-  padding: 1.2rem 2.2rem 1.2rem 1.2rem;
-  min-width: 340px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  border-left: 7px solid #6a8dff;
-  position: relative;
-  transition:
-    box-shadow 0.2s,
-    border-color 0.2s;
-}
-.member-card:hover {
-  box-shadow: 0 8px 32px rgba(60, 80, 180, 0.18);
-  border-left: 7px solid #3b5bdb;
-}
-.member-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #3b5bdb 0%, #6a8dff 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.1rem;
-  font-weight: bold;
-  color: #fff;
-  margin-right: 2.1rem;
-  box-shadow: 0 2px 12px rgba(60, 80, 180, 0.1);
-  border: 3px solid #fff;
-}
-.member-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.18rem;
-  border-right: 1.5px solid #dbeafe;
-  padding-right: 1.5rem;
-}
-.member-name {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #2d3a5a;
-  margin-bottom: 0.1rem;
-  letter-spacing: 0.01em;
-}
-.member-email {
-  font-size: 1.01rem;
-  color: #4b5563;
-  margin-bottom: 0.1rem;
-}
-.member-role {
-  margin: 0.2rem 0 0.5rem 0;
-}
-.role-badge {
-  display: inline-block;
-  padding: 0.22em 1.1em;
-  border-radius: 16px;
-  font-size: 1.01rem;
-  font-weight: 600;
-  background: #e0e7ff;
-  color: #3b5bdb;
-  letter-spacing: 0.03em;
-  box-shadow: 0 1px 4px rgba(60, 80, 180, 0.07);
-}
-.role-badge.role-admin {
-  background: #ffe3e3;
-  color: #c62828;
-}
-.role-badge.role-owner {
-  background: #e3ffe3;
-  color: #2e7d32;
-}
-.role-badge.role-member {
-  background: #e0e7ff;
-  color: #3b5bdb;
-}
-.member-meta {
-  font-size: 0.93rem;
-  color: #6b7280;
-  margin-top: 0.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-/* --- Actions & Buttons --- */
-.member-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  margin-left: 1.5rem;
-  position: relative;
-}
-.action-btn,
-.change-role-btn,
-.kick-btn {
-  border-radius: 8px;
-  font-size: 1.05rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1.5px solid #dbeafe;
-  background: #fff;
-  color: #3b5bdb;
-  padding: 0.5rem 1.1rem;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    border 0.18s;
-}
-.action-btn.edit:hover,
-.change-role-btn:hover {
-  background: #e0e7ff;
-  color: #222;
-  border-color: #3b5bdb;
-}
-.action-btn.remove,
-.kick-btn {
-  color: #c62828;
-  border-color: #ffe3e3;
-  background: #fff;
-}
-.action-btn.remove:hover,
-.kick-btn:hover {
-  background: #ffe3e3;
-  color: #fff;
-  border-color: #c62828;
-}
-
-/* --- Dropdown --- */
-.custom-dropdown {
-  position: absolute;
-  left: 110%;
-  top: 0;
-  background: #fff;
-  border: 1.5px solid #dbeafe;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(60, 80, 180, 0.18);
-  z-index: 30;
-  min-width: 150px;
-  padding: 0.3rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  animation: dropdown-fade-in 0.18s ease;
-}
-@keyframes dropdown-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-30%) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-.dropdown-option {
-  padding: 0.7rem 1.2rem;
-  cursor: pointer;
-  transition:
-    background 0.15s,
-    color 0.15s;
-  color: #222;
-  font-size: 1.05rem;
-  border: none;
-  background: transparent;
-  text-align: left;
-}
-.dropdown-option:hover {
-  background: #e0e7ff;
-  color: #3b5bdb;
-}
-
-/* --- Responsive --- */
-@media (max-width: 1000px) {
-  .members-list-container {
-    max-width: 98vw;
-    padding: 1.2rem 0.5rem;
-  }
-  .members-cards {
-    gap: 1.2rem;
-  }
-  .member-card {
-    min-width: 90vw;
-    max-width: 98vw;
-    padding: 1.2rem 0.7rem;
-    flex-direction: column;
-    align-items: flex-start;
-    border-left-width: 4px;
-  }
-  .member-avatar {
-    margin-bottom: 0.7rem;
-    margin-right: 0;
-  }
-  .member-info {
-    border-right: none;
-    padding-right: 0;
-  }
-  .member-actions {
-    flex-direction: row;
-    margin-left: 0;
-    margin-top: 1rem;
-  }
-  .custom-dropdown {
-    left: 0;
-    top: 110%;
-    min-width: unset;
-    width: 100%;
-    border-radius: 0 0 12px 12px;
-  }
-}
-
-/* --- Dark Theme --- */
 [data-theme="dark"] .members-list-container {
-  background: #23272f;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+	background: #23272f;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.35);
 }
-[data-theme="dark"] .members-list-container h2 {
-  color: #e0e6f0;
+
+.content-title-members-list {
+	width: 100%;
+	margin-bottom: 32px;
+}
+.content-title-members-list h2 {
+	font-size: 2.3rem;
+	font-weight: 800;
+	letter-spacing: -1.5px;
+	margin: 0;
+	text-align: left;
+	color: #1e293b;
+	position: relative;
+	padding-bottom: 8px;
+	transition: color 0.3s;
+}
+[data-theme="dark"] .content-title-members-list h2 {
+	color: #f3f6fa;
+}
+.content-title-members-list h2::after {
+	content: "";
+	display: block;
+	width: 64px;
+	height: 4px;
+	border-radius: 2px;
+	margin-top: 7px;
+	background: linear-gradient(90deg, #14b8a6 0%, #38bdf8 100%);
+	opacity: 0.85;
+}
+
+.members-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 32px;
+	width: 100%;
+	align-items: stretch;
+  
+}
+
+.member-card {
+	background: #f8fafc;
+	border-radius: 16px;
+	box-shadow: 0 2px 12px rgba(60, 72, 100, 0.08);
+	padding: 32px 24px 24px 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: relative;
+	border-left: 6px solid var(--role-color, #6366f1);
+	transition: box-shadow 0.18s, transform 0.16s, background 0.3s;
+	min-width: 0;
+	height: 100%;
+	margin: 6px;
 }
 [data-theme="dark"] .member-card {
-  background: linear-gradient(90deg, #23272f 60%, #2c313a 100%);
-  box-shadow: 0 2px 16px rgba(60, 80, 180, 0.18);
+	background: #23272f;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.25);
 }
-[data-theme="dark"] .member-avatar {
-  background: linear-gradient(135deg, #23272f 0%, #3b5bdb 100%);
-  color: #e0e6f0;
-  border-color: #23272f;
+.member-card[data-role="owner"] { --role-color: #6366f1; }
+.member-card[data-role="admin"] { --role-color: #60a5fa; }
+.member-card[data-role="recruiter"] { --role-color: #34d399; }
+.member-card[data-role="member"] { --role-color: #a78bfa; }
+
+.member-info {
+	margin-bottom: 18px;
+	width: 100%;
+}
+.member-name {
+	font-size: 1.18rem;
+	font-weight: 700;
+	color: #22223b;
+	margin-bottom: 4px;
+	letter-spacing: -0.5px;
+	transition: color 0.3s;
 }
 [data-theme="dark"] .member-name {
-  color: #e0e6f0;
+	color: #f3f6fa;
 }
-[data-theme="dark"] .member-email {
-  color: #b0b8c6;
+.member-role {
+	font-size: 1.04rem;
+	color: var(--role-color, #6366f1);
+	font-weight: 600;
+	margin-bottom: 4px;
+	letter-spacing: 0.2px;
+	transition: color 0.3s;
 }
-[data-theme="dark"] .role-badge {
-  background: #263859;
-  color: #90caf9;
-  box-shadow: 0 1px 4px rgba(60, 80, 180, 0.13);
+.member-invited,
+.member-invitedAt,
+.member-updatedAt {
+	font-size: 0.97rem;
+	color: #6b7280;
+	margin-bottom: 2px;
+	transition: color 0.3s;
 }
-[data-theme="dark"] .role-badge.role-admin {
-  background: #3a2323;
-  color: #ff8a80;
-}
-[data-theme="dark"] .role-badge.role-owner {
-  background: #233a23;
-  color: #a5d6a7;
-}
-[data-theme="dark"] .role-badge.role-member {
-  background: #263859;
-  color: #90caf9;
-}
-[data-theme="dark"] .member-info {
-  border-right: 1.5px solid #23272f;
-}
-[data-theme="dark"] .action-btn,
-[data-theme="dark"] .change-role-btn,
-[data-theme="dark"] .kick-btn {
-  background: #23272f;
-  color: #90caf9;
-  border-color: #263859;
-}
-[data-theme="dark"] .action-btn.edit:hover,
-[data-theme="dark"] .change-role-btn:hover {
-  background: #263859;
-  color: #fff;
-  border-color: #90caf9;
-}
-[data-theme="dark"] .action-btn.remove,
-[data-theme="dark"] .kick-btn {
-  color: #ff8a80;
-  border-color: #3a2323;
-}
-[data-theme="dark"] .action-btn.remove:hover,
-[data-theme="dark"] .kick-btn:hover {
-  background: #3a2323;
-  color: #fff;
-  border-color: #ff8a80;
-}
-[data-theme="dark"] .custom-dropdown {
-  background: #23272f;
-  border: 1.5px solid #263859;
-  box-shadow: 0 8px 32px rgba(60, 80, 180, 0.28);
-}
-[data-theme="dark"] .dropdown-option {
-  color: #e0e6f0;
-}
-[data-theme="dark"] .dropdown-option:hover {
-  background: #263859;
-  color: #90caf9;
+[data-theme="dark"] .member-role,
+[data-theme="dark"] .member-invited,
+[data-theme="dark"] .member-invitedAt,
+[data-theme="dark"] .member-updatedAt {
+	color: #a5b4fc;
 }
 
-.footer {
-  margin-top: auto;
+.member-actions-row {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	width: 100%;
+	margin-top: 12px;
 }
-
+.member-email {
+	position: static;
+	margin-right: 8px;
+	display: flex;
+	align-items: center;
+}
 .message-icon {
-  margin-left: 0.5rem;
-  color: #506fff;
-  cursor: pointer;
-  font-size: 1.3em;
-  vertical-align: middle;
-  transition: color 0.2s;
+	font-size: 1.35rem;
+	color: #6366f1;
+	cursor: pointer;
+	transition: color 0.18s, transform 0.16s;
+	filter: drop-shadow(0 1px 4px rgba(99,102,241,0.13));
+}
+[data-theme="dark"] .message-icon {
+	color: #38bdf8;
 }
 .message-icon:hover {
-  color: #3246d3;
+	color: #14b8a6;
+	transform: scale(1.13) rotate(-8deg);
+}
+
+.member-actions {
+	display: flex;
+	gap: 10px;
+}
+.action-btn {
+	padding: 7px 18px;
+	border: none;
+	border-radius: 7px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+	box-shadow: 0 2px 8px rgba(99,102,241,0.07);
+}
+.action-btn.edit {
+	background: linear-gradient(90deg, #6366f1 60%, #a5b4fc 100%);
+	color: #fff;
+	border: 1.5px solid #6366f1;
+}
+.action-btn.edit:hover:not(:disabled) {
+	background: linear-gradient(90deg, #14b8a6 60%, #38bdf8 100%);
+	color: #fff;
+	box-shadow: 0 4px 16px rgba(20,184,166,0.13);
+}
+.action-btn.remove {
+	background: linear-gradient(90deg, #f87171 60%, #fca5a5 100%);
+	color: #fff;
+	border: 1.5px solid #f87171;
+}
+.action-btn.remove:hover {
+	background: linear-gradient(90deg, #dc2626 60%, #f87171 100%);
+	color: #fff;
+	box-shadow: 0 4px 16px rgba(248,113,113,0.13);
+}
+
+.custom-dropdown {
+	position: absolute;
+	top: 48px;
+	left: 0;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 12px rgba(60, 72, 100, 0.13);
+	z-index: 10;
+	min-width: 120px;
+	overflow: hidden;
+	margin-top: 4px;
+	transition: background 0.3s;
+}
+[data-theme="dark"] .custom-dropdown {
+	background: #23272f;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+.dropdown-option {
+	padding: 10px 18px;
+	font-size: 1rem;
+	color: #3b4252;
+	cursor: pointer;
+	transition: background 0.18s, color 0.18s;
+}
+[data-theme="dark"] .dropdown-option {
+	color: #f3f6fa;
+}
+.dropdown-option:hover {
+	background: #e0e7ff;
+	color: #14b8a6;
+}
+[data-theme="dark"] .dropdown-option:hover {
+	background: #181c23;
+	color: #38bdf8;
+}
+
+@media (max-width: 1000px) {
+	.members-list-container {
+		padding: 18px 6px;
+	}
+	.members-cards {
+		gap: 18px;
+	}
+	.member-card {
+		padding: 18px 10px 14px 10px;
+	}
 }
