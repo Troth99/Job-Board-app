@@ -14,6 +14,7 @@ import { HomeStats } from "./HomeStats/HomeStats";
 import useStatistics from "../../hooks/useStatistics";
 import { StatsResponse } from "../../interfaces/ApplicationStatistic.model";
 import { Helmet } from "react-helmet-async";
+import { generateSeoConfig, seoConfig } from "../../seo/seo";
 
 export default function HomeSection() {
   const categories = useSelector(
@@ -24,7 +25,7 @@ export default function HomeSection() {
   const [loading, setLoading] = useState<boolean>(true);
   const { getRecentJobs } = useJobs();
   const { getApllicationStatistics } = useStatistics();
-  
+  const seo = generateSeoConfig("home");
 const fetchRecentJobs = async () => {
 
   try {
@@ -54,17 +55,17 @@ fetchRecentJobs()
 fetchApplicationStatistics()
 },[])
 
-
-    if(loading || categories.length <= 0 ){
-      return <FullPageSpinner/>
-    }
-
   return (
     <div>
       <Helmet>
-        <title>Home</title>
-        <meta name="description" content="Discover your next career opportunity with JobBoard. Explore recent job listings, browse by category, and access insightful application statistics. Start your job search today!" />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
       </Helmet>
+
+      {loading || categories.length <= 0 ? (
+        <FullPageSpinner />
+      ) : (
+      <>
       <Hero />
       <Container>
       <CategoriesSection />
@@ -75,6 +76,8 @@ fetchApplicationStatistics()
       <RecentJobs recentJobs={recentJobs} />
       <HomeStats statistics={applicationStatistics}></HomeStats>
     </Container>
-    </div>
+    </>
+      )}
+      </div>
   );
 }
