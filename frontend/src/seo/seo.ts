@@ -36,5 +36,10 @@ export const seoConfig: Record<string, SeoConfig> = {
     profile: {
         title: "Your Profile | Job Board",
         description: "View and edit your profile, manage your job applications, and track your career progress on Job Board."
-    }
+    },
+    editProfile: {
+        title: "Edit Your Profile | Job Board",
+        description: "Update your profile information, upload your resume, and manage your job preferences on Job Board."   
+    },
+
 }

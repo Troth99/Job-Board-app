@@ -14,8 +14,8 @@ import ProfileContainer from "./ProfileContainer/ProfileContainer";
 import { Helmet } from "react-helmet-async";
 import { generateSeoConfig, seoConfig } from "../../seo/seo";
 
-//To do better spiiner loading for userData roles
 
+//metadata shows default index after refresh, need to fix that
 interface ProfileProps {
   LogOutComponnent: React.ComponentType;
 }
@@ -81,6 +81,8 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
 
   const seo = generateSeoConfig("profile");
 
+
+
   if (!userData) {
     return (
       <>
@@ -88,7 +90,6 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
           <title>{seo.title}</title>
           <meta name="description" content={seo.description} />
         </Helmet>
-
         <Container maxwith="820px" padding="0 12px">
           <div className="profile-container">
             <div className="profile-activity-card">

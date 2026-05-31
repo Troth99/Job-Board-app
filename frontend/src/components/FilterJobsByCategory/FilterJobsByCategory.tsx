@@ -9,6 +9,8 @@ import { employmentOptions } from "../Jobs/formSelectedInputs";
 import { useJobFilters } from "../../hooks/useJobFilters";
 import { Job } from "../../interfaces/Job.model";
 import Pagination from "../Pagination/Pagination";
+import { Helmet } from "react-helmet-async";
+import { generateSeoConfig } from "../../seo/seo";
 
 const ITEMS_PER_PAGE = 3;
 
@@ -23,6 +25,8 @@ export default function FilterJobByCategory() {
   const [loading, setLoading] = useState<boolean>(true);
   const { getJobsByCategoryName } = useJobs();
   const [totalCount, setTotalCount] = useState<number>(0);
+
+  const seo = generateSeoConfig("category", categoryName);
 
   const navigate = useNavigate();
   const {
@@ -71,6 +75,14 @@ export default function FilterJobByCategory() {
   }, [categoryName, pageFromUrl]);
 
   return (
+<>
+    <Helmet>
+      <title>{seo.title}</title>
+      <meta
+        name="description"
+        content={seo.description}
+      />
+    </Helmet>
     <div className="filter-jobs-container">
       <div className="filter-header">
         <div className="filter-title">
@@ -141,5 +153,6 @@ export default function FilterJobByCategory() {
         </main>
       </div>
     </div>
+    </>
   );
 }

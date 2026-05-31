@@ -7,6 +7,8 @@ import { useValidation } from "../validators/useValidation";
 import useUserProfile from "../../hooks/utils/useProfile";
 import useForm from "../../hooks/shared/useForm";
 import { useState, useEffect } from "react";
+import { generateSeoConfig } from "../../seo/seo";
+import { Helmet } from "react-helmet-async";
 
 export interface ProfileData {
   firstName: string;
@@ -35,7 +37,9 @@ export default function EditProfile() {
   } = useUserProfile();
 
   const [profileData, setProfileData] = useState<ProfileData>(initialProfileData);
+  const seo = generateSeoConfig("editProfile");
 
+  
   useEffect(() => {
     if (userData) {
       setProfileData({
@@ -108,6 +112,15 @@ export default function EditProfile() {
   };
 
   return (
+    <>
+        <Helmet>
+          <title>{seo.title}</title>
+          <meta
+            name="description"
+            content={seo.description}
+          />
+        </Helmet>
+        
     <div className="profile-body" style={{ position: "relative" }}>
       {!userData ? (
         <Spinner overlay={true} />
@@ -190,5 +203,6 @@ export default function EditProfile() {
         </div>
       )}
     </div>
+       </>
   );
 }
