@@ -56,7 +56,16 @@ export const seoConfig: Record<string, SeoConfig> = {
     companyDashboard: {
         title: "Company Dashboard | Job Board",
         description: "Manage your company profile, post job openings, and track applications with the Company Dashboard on Job Board."
-    }
+    },
 
+    //footer pages
+    forUs: {
+      title: "For Job Seekers | Job Board",
+      description: "Discover how Job Board can help you find your next opportunity. Explore job listings, create a profile, and take control of your career journey."
+    },
+    contacts: {
+      title: "Contact Us | Job Board",
+      description: "Have questions or need support? Contact the Job Board team for assistance with your job search, account, or any other inquiries."
+    },
 
 }

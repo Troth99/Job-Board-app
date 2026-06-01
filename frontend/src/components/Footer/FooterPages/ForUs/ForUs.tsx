@@ -1,9 +1,18 @@
 import { Link } from "react-router"
 import "./forUs.css"
 import { Container } from "../../../Container/Container"
+import { Helmet } from "react-helmet-async"
+import { generateSeoConfig } from "../../../../seo/seo";
 
 export default function ForUs() {
+  const seo = generateSeoConfig("forUs");
   return (
+    <>
+    <Helmet>
+      <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
+    </Helmet>
+   
     <div className="for-us-page">
       <Container>
 
@@ -182,5 +191,6 @@ export default function ForUs() {
 
    </Container>
     </div>
+  </>
   )
 }
