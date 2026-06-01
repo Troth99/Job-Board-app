@@ -41,5 +41,22 @@ export const seoConfig: Record<string, SeoConfig> = {
         title: "Edit Your Profile | Job Board",
         description: "Update your profile information, upload your resume, and manage your job preferences on Job Board."   
     },
+    notifications: {
+        title: "Your Notifications | Job Board",
+        description: "Stay updated with the latest job alerts, application statuses, and important updates on Job Board."
+    },
+    viewSavedJobs: {
+        title: "Your Saved Jobs | Job Board",
+        description: "View and manage your saved job listings, keep track of your favorite opportunities, and stay organized on Job Board."
+    },
+    postJob: {
+        title: "Post a Job | Job Board",
+        description: "Post your job openings and find the perfect candidates on Job Board. Reach a wide audience of job seekers and grow your team."
+    },
+    companyDashboard: {
+        title: "Company Dashboard | Job Board",
+        description: "Manage your company profile, post job openings, and track applications with the Company Dashboard on Job Board."
+    }
+
 
 }

@@ -8,7 +8,7 @@ import "./SendMessage.css";
 import { useState } from "react";
 import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
 
-export function SendMessage({ recipient: initialRecipient, onClose, autoOpen }: { recipient?: string, onClose?: () => void, autoOpen?: boolean }) {
+export function SendMessage({ recipient: initialRecipient, onClose, autoOpen, onSuccess }: { recipient?: string, onClose?: () => void, autoOpen?: boolean, onSuccess?: () => void }) {
   const [open, setOpen] = useState<Boolean>(autoOpen || false);
   const [recipient, setRecipient] = useState(initialRecipient || "");
 
@@ -57,6 +57,11 @@ export function SendMessage({ recipient: initialRecipient, onClose, autoOpen }: 
         type: "message",
         sender: currentUserId, // Include sender's email for reference
       });
+
+      if (onSuccess) {
+        onSuccess();
+      }
+
       // If the message was sent successfully, call the onClose callback and close the modal
       if (onClose) {
         onClose();

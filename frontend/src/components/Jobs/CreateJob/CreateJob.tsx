@@ -14,6 +14,8 @@ import { Link, useNavigate, useParams } from "react-router";
 import { jobPostValidations } from "../../validators/createJobValidation";
 import useForm from "../../../hooks/shared/useForm";
 import { valuesInterface } from "../../../interfaces/Job.model";
+import { generateSeoConfig } from "../../../seo/seo";
+import { Helmet } from "react-helmet-async";
 
 const initialValues = {
   title: "",
@@ -38,8 +40,6 @@ const initialValues = {
   additionalInfo: "",
 };
 
-//make a sample example with information how to psot a job and tamstamp and explanation on the forms.
-//add a different route to it and add a link to it from company dashboard. Add a button to post job in company dashboard and link it to the route of create job form.
 
 function PostJob() {
   const { companyId } = useParams();
@@ -69,7 +69,14 @@ function PostJob() {
   const { register, formHandler, errors, setFieldValue } =
     useForm<valuesInterface>(onSubmitHandler, initialValues, validateForm);
 
+    const seo = generateSeoConfig("postJob");
+
   return (
+    <>
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+      </Helmet>
     <div className="post-job-container">
       <h2>Post a New Job</h2>
       <Link to={`/how-to-post-job`} className="back-link">
@@ -282,6 +289,7 @@ function PostJob() {
         </button>
       </form>
     </div>
+     </>
   );
 }
 

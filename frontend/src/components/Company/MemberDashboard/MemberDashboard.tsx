@@ -15,6 +15,8 @@ import { MemberDashboardSideBar } from "./MemberSidebar";
 import { useCompanyMember } from "../../../hooks/utils/useCompanyMember";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { toast } from "react-toastify";
+import { generateSeoConfig } from "../../../seo/seo";
+import { Helmet } from "react-helmet-async";
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
@@ -43,6 +45,8 @@ export default function MemberDashboard() {
     useState<boolean>(false);
   const [refreshingAfterTransfer, setRefreshingAfterTransfer] =
     useState<boolean>(false);
+
+    const seo = generateSeoConfig("companyDashboard");
     
   // Find the current user's membership in the company to determine their role and permissions
   const myMember = members.find((m: CompanyMember) => m.userId._id === user?._id);
@@ -136,6 +140,10 @@ export default function MemberDashboard() {
   }
   return (
     <>
+    <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+    </Helmet>
       {success && (
         <div className="success-message">
           <span>Your message has been sent successfully!</span>

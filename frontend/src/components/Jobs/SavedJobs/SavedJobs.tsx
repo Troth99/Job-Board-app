@@ -8,6 +8,8 @@ import { useNavigate, useSearchParams } from "react-router";
 import Pagination from "../../Pagination/Pagination";
 import { useSelector } from "react-redux";
 import { CategoryInterface } from "../../../interfaces/CategoryModel";
+import { generateSeoConfig } from "../../../seo/seo";
+import { Helmet } from "react-helmet-async";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -27,6 +29,8 @@ function SavedJobs() {
 
   const navigate = useNavigate();
 
+  const seo = generateSeoConfig("viewSavedJobs");
+
   useEffect(() => {
     const fetchFavoriteJobs = async () => {
       setLoading(true);
@@ -45,115 +49,130 @@ function SavedJobs() {
     fetchFavoriteJobs();
   }, [pageFromUrl]);
 
-  if (loading) {
-    return <Spinner overlay={true} />;
-  }
   return (
-    <Container>
-      <div className="saved-jobs-view">
-        <div className="saved-jobs-header">
-          <h2 className="saved-jobs-heading">
-            <span
-              className="saved-jobs-emoji"
-              role="img"
-              aria-label="bookmark"
-            >
-              🔖
-            </span>
-            <span>Your Saved Jobs</span>
-            <span className="saved-jobs-count">{favoriteJobs.length}</span>
-          </h2>
-          <div className="saved-jobs-subtitle">
-            All jobs you’ve saved in one place. Quick access to your top picks!
-          </div>
-        </div>
-        {favoriteJobs.length === 0 ? (
-          <div className="saved-jobs-empty">
-            <span
-              className="saved-jobs-empty-icon"
-              role="img"
-              aria-label="empty"
-            >
-              🗂️
-            </span>
-            <div className="saved-jobs-empty-title">
-              You have no saved jobs
-            </div>
-            <div className="saved-jobs-empty-desc">
-              Start saving jobs to easily find them later!
-            </div>
-          </div>
-        ) : (
-          <div className="saved-jobs-modern-list">
-            {favoriteJobs.map((fav) => {
-              const job = fav.job || {};
-              const categoryName =
-                categories.find((cat: CategoryInterface) => cat._id === job.category)?.name || "-";
-              return (
-                <div
-                  key={job._id || fav._id}
-                  className="saved-job-modern-card"
-                  onClick={() => job._id && navigate(`/job/${job._id}`)}
-                  style={{ cursor: "pointer" }}
+    <>
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+      </Helmet>
+      {loading ? (
+        <Spinner overlay={true} />
+      ) : (
+        <Container>
+          <div className="saved-jobs-view">
+            <div className="saved-jobs-header">
+              <h2 className="saved-jobs-heading">
+                <span
+                  className="saved-jobs-emoji"
+                  role="img"
+                  aria-label="bookmark"
                 >
-                  <span
-                    role="img"
-                    aria-label="job"
-                    className="saved-job-icon"
-                  >
-                    💼
-                  </span>
-                  <div className="saved-job-info">
-                    <div className="saved-job-title">
-                      {job.title || "-"}
-                    </div>
-                    <div className="saved-job-category">
-                      <span className="category-label">Category:</span>{" "}
-                      {categoryName}
-                    </div>
-                    {job.location && (
-                      <div className="saved-job-location">
-                        <span className="location-label">Location:</span>{" "}
-                        {job.location}
-                      </div>
-                    )}
-                    {job.salary && (
-                      <div className="saved-job-salary">
-                        <span className="salary-label">Salary:</span>{" "}
-                        {job.salary}
-                      </div>
-                    )}
-                    {job.employmentType && (
-                      <div className="saved-job-type">
-                        <span className="type-label">Type:</span>{" "}
-                        {job.employmentType}
-                      </div>
-                    )}
-                    {fav.addedAt && (
-                      <div className="saved-job-added">
-                        <span className="added-label">Added:</span>{" "}
-                        {new Date(fav.addedAt).toLocaleString()}
-                      </div>
-                    )}
-                  </div>
+                  🔖
+                </span>
+                <span>Your Saved Jobs</span>
+                <span className="saved-jobs-count">{favoriteJobs.length}</span>
+              </h2>
+              <div className="saved-jobs-subtitle">
+                All jobs you’ve saved in one place. Quick access to your top
+                picks!
+              </div>
+            </div>
+            {favoriteJobs.length === 0 ? (
+              <div className="saved-jobs-empty">
+                <span
+                  className="saved-jobs-empty-icon"
+                  role="img"
+                  aria-label="empty"
+                >
+                  🗂️
+                </span>
+                <div className="saved-jobs-empty-title">
+                  You have no saved jobs
                 </div>
-              );
-            })}
+                <div className="saved-jobs-empty-desc">
+                  Start saving jobs to easily find them later!
+                </div>
+              </div>
+            ) : (
+              <div className="saved-jobs-modern-list">
+                {favoriteJobs.map((fav) => {
+                  const job = fav.job || {};
+                  const categoryName =
+                    categories.find(
+                      (cat: CategoryInterface) => cat._id === job.category,
+                    )?.name || "-";
+                  return (
+                    <div
+                      key={job._id || fav._id}
+                      className="saved-job-modern-card"
+                      onClick={() => job._id && navigate(`/job/${job._id}`)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <span
+                        role="img"
+                        aria-label="job"
+                        className="saved-job-icon"
+                      >
+                        💼
+                      </span>
+                      <div className="saved-job-info">
+                        <div className="saved-job-title">
+                          {job.title || "-"}
+                        </div>
+                        <div className="saved-job-category">
+                          <span className="category-label">Category:</span>{" "}
+                          {categoryName}
+                        </div>
+                        {job.location && (
+                          <div className="saved-job-location">
+                            <span className="location-label">Location:</span>{" "}
+                            {job.location}
+                          </div>
+                        )}
+                        {job.salary && (
+                          <div className="saved-job-salary">
+                            <span className="salary-label">Salary:</span>{" "}
+                            {job.salary}
+                          </div>
+                        )}
+                        {job.employmentType && (
+                          <div className="saved-job-type">
+                            <span className="type-label">Type:</span>{" "}
+                            {job.employmentType}
+                          </div>
+                        )}
+                        {fav.addedAt && (
+                          <div className="saved-job-added">
+                            <span className="added-label">Added:</span>{" "}
+                            {new Date(fav.addedAt).toLocaleString()}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {favoriteJobs.length > 0 && (
+              <Pagination
+                currentPage={pageFromUrl}
+                totalPages={Math.ceil(totalJobs / ITEMS_PER_PAGE)}
+                totalItems={totalJobs}
+                itemsPerPage={ITEMS_PER_PAGE}
+                currentItemsCount={favoriteJobs.length}
+                onPageChange={(page) =>
+                  setSearchParams({ page: page.toString() })
+                }
+              />
+            )}
           </div>
-        )}
-        {favoriteJobs.length > 0 && (
-          <Pagination
-            currentPage={pageFromUrl}
-            totalPages={Math.ceil(totalJobs / ITEMS_PER_PAGE)}
-            totalItems={totalJobs}
-            itemsPerPage={ITEMS_PER_PAGE}
-            currentItemsCount={favoriteJobs.length}
-            onPageChange={(page) => setSearchParams({ page: page.toString() })}
-          />
-        )}
-      </div>
-    </Container>
+        </Container>
+      )}
+    </>
   );
 }
 
 export default SavedJobs;
+function getSeoConfig(arg0: string) {
+  throw new Error("Function not implemented.");
+}
