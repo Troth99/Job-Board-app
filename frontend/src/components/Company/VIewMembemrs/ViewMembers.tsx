@@ -34,7 +34,7 @@ export default function ViewMembers() {
       recruiter: 3,
       member: 4,
     };
-    return members.sort(
+    return [...members].sort(
       (a, b) => (rolePriority[a.role] || 5) - (rolePriority[b.role] || 5),
     );
   };
@@ -59,7 +59,7 @@ export default function ViewMembers() {
       await changeMemberRole(companyId, memberId, newRole);
 
       const data = await getCompanyMembers(companyId);
-      setMembers(data);
+      setMembers(sorterMembersByRole(data));
     } catch (error) {
       console.error("Failed to update the role.", error);
     }
@@ -85,7 +85,16 @@ export default function ViewMembers() {
     <div className="member-list-page">
       <div className="members-list-container">
       <div className="content-title-members-list">
-        <h2>Company Members</h2>
+        <div className="members-title-row">
+          <div className="members-heading-block">
+            <span className="members-title-kicker">Team Management</span>
+            <h2>Company Members</h2>
+            <p className="members-title-subtitle">Manage team roles and access permissions.</p>
+          </div>
+          <div className="members-title-meta">
+            <span className="members-total-badge">{members.length} members</span>
+          </div>
+        </div>
       </div>
         
         <div className="members-cards">
@@ -113,7 +122,7 @@ export default function ViewMembers() {
                   )}
                 </div>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "12px", width: "100%" }}>
+              <div className="member-actions-row">
                 <div className="member-email">
                   <BsChatDots
                     className="message-icon"
@@ -121,7 +130,7 @@ export default function ViewMembers() {
                     onClick={() => sendMessageHandler(member.userId?.email || "")}
                   />
                 </div>
-                <div className="member-actions">
+                <div className="member-actions role-actions">
                   {userRole === "owner" && member.role !== "owner" && (
                     <>
                       <button
