@@ -1,9 +1,17 @@
 import { Link } from "react-router";
 import { Container } from "../../../../Container/Container";
 import "./CVTIps.css";
+import { generateSeoConfig } from "../../../../../seo/seo";
+import { Helmet } from "react-helmet-async";
 
 export default function CVTips() {
+    const seo = generateSeoConfig("cvTips");
     return (
+        <>
+        <Helmet>
+            <title>{seo.title}</title>
+            <meta name="description" content={seo.description} />
+        </Helmet>
         <div className="cv-tips-page">
             <Container>
                 <section className="cv-tips-hero">
@@ -154,5 +162,6 @@ export default function CVTips() {
                 </section>
             </Container>
         </div>
+            </>
     );
 }

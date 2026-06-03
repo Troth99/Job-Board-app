@@ -1,9 +1,17 @@
 import { Link } from "react-router";
 import { Container } from "../../../../Container/Container";
 import "./interviewPeparation.css";
+import { generateSeoConfig } from "../../../../../seo/seo";
+import { Helmet } from "react-helmet-async";
 
 export default function InterviewPreparation() {
+    const seo = generateSeoConfig("interviewPreparation");
     return (
+        <>
+        <Helmet>
+            <title>{seo.title}</title>
+            <meta name="description" content={seo.description} />
+        </Helmet>
         <div className="interview-prep-page">
             <Container>
                 <section className="interview-prep-hero">
@@ -134,5 +142,6 @@ export default function InterviewPreparation() {
                 </section>
             </Container>
         </div>
+         </>
     );
 }

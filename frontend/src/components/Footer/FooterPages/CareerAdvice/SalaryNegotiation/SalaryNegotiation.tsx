@@ -1,10 +1,18 @@
 
-import { Link } from "react-router";
+import { Helmet } from "react-helmet-async";
+import { generateSeoConfig } from "../../../../../seo/seo";
 import { Container } from "../../../../Container/Container";
 import "./salaryNegotiation.css";
 
 export default function SalaryNegotiation() {
+    const seo = generateSeoConfig("salaryNegotiation");
     return (
+        <>
+        
+        <Helmet>
+            <title>{seo.title}</title>
+            <meta name="description" content={seo.description} />
+        </Helmet>
         <div className="salary-neg-page">
             <Container>
                 <section className="salary-neg-hero">
@@ -192,5 +200,6 @@ export default function SalaryNegotiation() {
                 </section>
             </Container>
         </div>
+        </>
     );
 }

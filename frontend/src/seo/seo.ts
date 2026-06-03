@@ -67,5 +67,33 @@ export const seoConfig: Record<string, SeoConfig> = {
       title: "Contact Us | Job Board",
       description: "Have questions or need support? Contact the Job Board team for assistance with your job search, account, or any other inquiries."
     },
+    forEmployers: {
+      title: "For Employers | Job Board",
+      description: "Discover how Job Board can help you find the best candidates for your job openings. Post jobs, manage applications, and grow your team with ease."
+    },
+    termsAndConditions: {
+      title: "Terms and Conditions | Job Board",
+      description: "Read the terms and conditions for using Job Board. Understand your rights and responsibilities as a user of our job search platform."
+    },
+    privacy: {
+      title: "Privacy Policy | Job Board",
+      description: "Learn about our privacy practices and how we protect your personal information on Job Board. Your privacy is important to us."
+    },
+    cookies: {
+      title: "Cookie Policy | Job Board",
+      description: "Understand how Job Board uses cookies to enhance your experience. Learn about the types of cookies we use and how to manage them."
+    },
+    cvTips: {
+      title: "CV Tips | Job Board",
+      description: "Get expert advice on creating a standout CV. Learn how to highlight your skills, experience, and achievements to land your dream job."
+    },
+    interviewPreparation: {
+      title: "Interview Preparation | Job Board",
+      description: "Prepare for your next job interview with confidence. Get tips on common questions, body language, and how to make a great impression."
+    },
+    salaryNegotiation: {
+      title: "Salary Negotiation | Job Board",
+      description: "Learn how to negotiate your salary effectively. Get strategies for discussing compensation and ensuring you get the pay you deserve."
+    },
 
 }

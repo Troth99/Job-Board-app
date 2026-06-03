@@ -1,10 +1,20 @@
 import { Link } from "react-router"
 import "./forEmployers.css"
 import { Container } from "../../../Container/Container"
+import { generateSeoConfig } from "../../../../seo/seo";
+import { Helmet } from "react-helmet-async";
 
 export default function ForEmployers() {
 
+  const seo = generateSeoConfig("forEmployers");
     return (
+
+      <>
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+      </Helmet>
+    
      <div className="for-employers-page">
       <Container>
         <section className="for-employers-hero">
@@ -125,6 +135,6 @@ export default function ForEmployers() {
         </section>
       </Container>
     </div>
-
+  </>
     )
 }
