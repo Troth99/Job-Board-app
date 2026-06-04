@@ -166,19 +166,64 @@ export default function MemberDashboard() {
 
         {/* Main Content Area */}
         <div className="main-content">
-          {/* Members Section */}
-          <div className="content-header">
-            <CompanyMembers />
-            <SendMessage onSuccess={() => setSuccess(true)} />
+          <div id="overview-section" className="dashboard-panel dashboard-overview">
+            <p className="dashboard-kicker">Member workspace</p>
+            <h1 className="dashboard-title">Company member dashboard</h1>
+            <p className="dashboard-subtitle">
+              Manage your team, communication, and open positions from one place.
+            </p>
           </div>
 
-          {/* Jobs Section */}
-          <CompanyJobsList
-            companyId={companyId!}
-            canPostJob={canPostJob}
-            onPostJob={postJobHandlerNavigate}
-            isReadOnly={localRole === "member"}
-          />
+          {/* Members Section */}
+          <section id="team-section" className="dashboard-panel dashboard-section">
+            <div className="section-heading">
+              <h2>Team tools</h2>
+              <p>Invite members and send internal messages.</p>
+            </div>
+            <div className="content-header section-body">
+              <CompanyMembers />
+              <SendMessage onSuccess={() => setSuccess(true)} />
+            </div>
+          </section>
+
+          <section id="jobs-section" className="dashboard-panel dashboard-section">
+            <div className="section-heading">
+              <h2>Jobs board control</h2>
+              <p>Post new jobs and monitor recent openings for your company.</p>
+            </div>
+
+            {/* Jobs Section */}
+            <div className="section-body">
+              <CompanyJobsList
+                companyId={companyId!}
+                canPostJob={canPostJob}
+                onPostJob={postJobHandlerNavigate}
+                isReadOnly={localRole === "member"}
+              />
+            </div>
+          </section>
+
+          <section className="dashboard-panel dashboard-section dashboard-future-section">
+            <div className="section-heading">
+              <h2>Future modules</h2>
+              <p>Add more options here as your company workflow grows.</p>
+            </div>
+            <div className="future-module-grid">
+              <article className="future-module-card">
+                <h3>Announcements</h3>
+                <p>Share updates with all company members in one feed.</p>
+              </article>
+              <article className="future-module-card">
+                <h3>Calendar</h3>
+                <p>Track interviews, deadlines, and team milestones.</p>
+              </article>
+              <article className="future-module-card">
+                <h3>Insights</h3>
+                <p>Monitor hiring activity and member engagement trends.</p>
+              </article>
+            </div>
+          </section>
+         
 
           {/*announcements section 
   
