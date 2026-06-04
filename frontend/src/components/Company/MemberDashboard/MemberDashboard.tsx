@@ -167,10 +167,10 @@ export default function MemberDashboard() {
         {/* Main Content Area */}
         <div className="main-content">
           <div id="overview-section" className="dashboard-panel dashboard-overview">
-            <p className="dashboard-kicker">Member workspace</p>
-            <h1 className="dashboard-title">Company member dashboard</h1>
+            <p className="dashboard-kicker">Operational overview</p>
+            <h1 className="dashboard-title">Company dashboard</h1>
             <p className="dashboard-subtitle">
-              Manage your team, communication, and open positions from one place.
+              Streamline team coordination, internal communication, and hiring execution from a single control panel.
             </p>
           </div>
 

@@ -267,37 +267,40 @@
 .dashboard-overview {
   position: relative;
   overflow: hidden;
+  border-color: #d4dfec;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  box-shadow: 0 10px 24px rgba(14, 37, 66, 0.08);
 }
 
 .dashboard-overview::after {
   content: "";
   position: absolute;
-  inset: auto -40px -70px auto;
-  width: 190px;
-  height: 190px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(21, 94, 239, 0.16), transparent 65%);
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #8eb2d8, #6f95bf);
 }
 
 .dashboard-kicker {
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.75rem;
+  letter-spacing: 0.11em;
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--member-brand);
+  color: #48698d;
 }
 
 .dashboard-title {
-  margin-top: 8px;
-  font-size: clamp(1.4rem, 1rem + 1.2vw, 2rem);
-  color: var(--member-text);
+  margin-top: 6px;
+  font-size: clamp(1.35rem, 1.06rem + 1.02vw, 1.85rem);
+  color: #132c47;
+  line-height: 1.24;
 }
 
 .dashboard-subtitle {
-  margin-top: 8px;
-  max-width: 68ch;
-  line-height: 1.6;
-  color: var(--member-text-soft);
+  margin-top: 7px;
+  max-width: 74ch;
+  line-height: 1.55;
+  color: #5e7289;
 }
 
 .dashboard-section {
@@ -499,6 +502,14 @@ body[data-theme="dark"] .dashboard .company-name,
   color: #7eb8ff;
 }
 
+body[data-theme="dark"] .dashboard .user-role,
+[data-theme="dark"] .dashboard .user-role {
+  color: #b7f5e7;
+  background: rgba(46, 174, 155, 0.2);
+  border-color: rgba(91, 220, 201, 0.4);
+  box-shadow: inset 0 0 0 1px rgba(9, 24, 40, 0.2);
+}
+
 body[data-theme="dark"] .dashboard .sidebar-nav-list,
 [data-theme="dark"] .dashboard .sidebar-nav-list {
   background: rgba(20, 35, 57, 0.55);
@@ -580,6 +591,32 @@ body[data-theme="dark"] .dashboard-panel,
 [data-theme="dark"] .dashboard-panel {
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--member-surface-muted) 80%, transparent), var(--member-surface));
+}
+
+body[data-theme="dark"] .dashboard-overview,
+[data-theme="dark"] .dashboard-overview {
+  border-color: #334e6f;
+  background: linear-gradient(180deg, #16263d 0%, #142338 100%);
+}
+
+body[data-theme="dark"] .dashboard-overview::after,
+[data-theme="dark"] .dashboard-overview::after {
+  background: linear-gradient(180deg, #6f97c5, #4f739c);
+}
+
+body[data-theme="dark"] .dashboard-kicker,
+[data-theme="dark"] .dashboard-kicker {
+  color: #9eb4cf;
+}
+
+body[data-theme="dark"] .dashboard-title,
+[data-theme="dark"] .dashboard-title {
+  color: #e6eefb;
+}
+
+body[data-theme="dark"] .dashboard-subtitle,
+[data-theme="dark"] .dashboard-subtitle {
+  color: #a8b9cf;
 }
 
 body[data-theme="dark"] .dashboard .content-header-jobs,
