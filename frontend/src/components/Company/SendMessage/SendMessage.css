@@ -111,20 +111,21 @@
   width: fit-content;
   min-height: 42px;
   padding: 0.68em 1.8em;
-  border: 1px solid #2e78bf;
+  border: 1px solid rgba(12, 120, 174, 0.38);
   border-radius: 10px;
-  background: linear-gradient(135deg, #2f79bf, #225f9d);
+  background: linear-gradient(135deg, #0c78ae 0%, #11a08e 100%);
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 8px 16px rgba(34, 95, 157, 0.24);
+  box-shadow: 0 8px 16px rgba(12, 120, 174, 0.24);
   transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
 .send-message-form-unique .modal-reply-send:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(34, 95, 157, 0.3);
+  box-shadow: 0 10px 20px rgba(12, 120, 174, 0.3);
+  background: linear-gradient(135deg, #0f89c5 0%, #12b49f 100%);
   filter: saturate(1.04);
 }
 
@@ -181,8 +182,9 @@ body[data-theme="dark"] .send-message-textarea-unique:focus,
 
 body[data-theme="dark"] .send-message-form-unique .modal-reply-send,
 [data-theme="dark"] .send-message-form-unique .modal-reply-send {
-  border-color: #3d88d3;
-  background: linear-gradient(135deg, #3d88d3, #2a6fae);
+  border-color: rgba(78, 188, 245, 0.45);
+  background: linear-gradient(135deg, #4ebcf5 0%, #42d9ae 100%);
+  color: #0c2536;
 }
 
 @media (max-width: 760px) {
