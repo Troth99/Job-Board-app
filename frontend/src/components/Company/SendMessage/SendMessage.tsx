@@ -95,6 +95,7 @@ export function SendMessage({ recipient: initialRecipient, onClose, autoOpen, on
           <div className="send-message-modal-unique">
             <button
               className="send-message-modal-close-unique"
+              aria-label="Close send message modal"
                onClick={() => {
     setOpen(false);
     if (onClose) onClose();
