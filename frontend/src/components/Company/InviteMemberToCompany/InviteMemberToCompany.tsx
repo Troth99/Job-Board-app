@@ -126,8 +126,9 @@ export function CompanyMembers() {
               className="company-members-close"
               onClick={handleCloseModal}
               type="button"
+              aria-label="Close add member modal"
             >
-              Close
+              ×
             </button>
           </div>
         </div>
