@@ -15,6 +15,10 @@ type CompanyCalendarProps = {
     compact?: boolean;
 };
 
+//to add - click on event to see details in a modal
+//to add - ability to add events (interviews, deadlines) from the calendar view and not only from the job details page
+//to add plugin interaction to be able to click on event and see details in a modal, also to add events from the
+// calendar view and not only from the job details page
 export default function CompanyCalendar({ compact = false }: CompanyCalendarProps) {
 
 return (
