@@ -1,11 +1,12 @@
 import CompanyCalendar from "./CompanyCalendar";
 import "./CalendarModal.css";
+import { Container } from "../../../Container/Container";
 
 
 
 export function CalendarModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
     return (
-      <>
+      <Container>
         {isOpen && (
         <div className="calendar-modal-backdrop" role="dialog" aria-modal="true" aria-label="Company calendar">
           <div className="calendar-modal">
@@ -26,6 +27,7 @@ export function CalendarModal({ isOpen, onClose }: { isOpen: boolean; onClose: (
           </div>
         </div>
       )}
-      </>
+      </Container>
+      
     );
 }

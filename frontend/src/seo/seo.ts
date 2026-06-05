@@ -1,7 +1,11 @@
 export type SeoConfig = {
   title: string;
   description: string;
-
+  image?: string;
+  url?: string;
+  siteName?: string;
+  type?: string;
+  twitterCard?: string;
 };
 
 //Dynamically generate SEO config for each page
@@ -20,14 +24,24 @@ export const generateSeoConfig = (pageKey: string, dynamicValue?: string): SeoCo
   // Default fallback
   return {
     title: "Job Board",
-    description: "Find your next job opportunity."
+    description: "Find your next job opportunity.",
+    image: "https://job-board-three-omega.vercel.app/og-default.svg",
+    url: "https://job-board-three-omega.vercel.app/",
+    siteName: "Job Board",
+    type: "website",
+    twitterCard: "summary_large_image"
   };
 };
 
 export const seoConfig: Record<string, SeoConfig> = {
   home: {
     title: "Job Board - Find Your Next Opportunity",    
-    description: "Discover your next career move with our job board. Browse thousands of job listings, find the perfect fit, and take the next step in your professional journey."
+    description: "Discover your next career move with our job board. Browse thousands of job listings, find the perfect fit, and take the next step in your professional journey.",
+    image: "https://job-board-three-omega.vercel.app/og-default.svg",
+    url: "https://job-board-three-omega.vercel.app/",
+    siteName: "Job Board",
+    type: "website",
+    twitterCard: "summary_large_image"
    },
   viewAllJobs: {
     title: "Browse All Jobs | Find Your Next Opportunity!",

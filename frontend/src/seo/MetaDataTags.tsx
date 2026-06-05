@@ -1,0 +1,29 @@
+import { Helmet } from "react-helmet-async";
+import { SeoConfig } from "./seo";
+
+type SeoHeadProps = {
+  seo: SeoConfig;
+};
+
+export default function SeoHead({ seo }: SeoHeadProps) {
+  return (
+    <Helmet>
+      <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
+
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:description" content={seo.description} />
+      {seo.image && <meta property="og:image" content={seo.image} />}
+      {seo.url && <meta property="og:url" content={seo.url} />}
+      {seo.siteName && <meta property="og:site_name" content={seo.siteName} />}
+      {seo.type && <meta property="og:type" content={seo.type} />}
+
+      {seo.twitterCard && <meta name="twitter:card" content={seo.twitterCard} />}
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:description" content={seo.description} />
+      {seo.image && <meta name="twitter:image" content={seo.image} />}
+
+      {seo.url && <link rel="canonical" href={seo.url} />}
+    </Helmet>
+  );
+}

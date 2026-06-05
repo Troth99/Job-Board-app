@@ -13,8 +13,8 @@ import { Container } from "../Container/Container";
 import { HomeStats } from "./HomeStats/HomeStats";
 import useStatistics from "../../hooks/useStatistics";
 import { StatsResponse } from "../../interfaces/ApplicationStatistic.model";
-import { Helmet } from "react-helmet-async";
-import { generateSeoConfig, seoConfig } from "../../seo/seo";
+import { generateSeoConfig } from "../../seo/seo";
+import MetaData from "../../seo/MetaDataTags";
 
 export default function HomeSection() {
   const categories = useSelector(
@@ -57,10 +57,7 @@ fetchApplicationStatistics()
 
   return (
     <div>
-      <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-      </Helmet>
+      <MetaData seo={seo} />
 
       {loading || categories.length <= 0 ? (
         <FullPageSpinner />
