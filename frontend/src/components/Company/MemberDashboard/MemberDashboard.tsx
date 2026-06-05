@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import { generateSeoConfig } from "../../../seo/seo";
 import { Helmet } from "react-helmet-async";
 
+
 export default function MemberDashboard() {
   const { companyId } = useParams();
   const navigate = useNavigate();
@@ -29,9 +30,10 @@ export default function MemberDashboard() {
     abandonCompany
   } = useCompany();
 
-  const [abandonModalOpen, setAbandonModalOpen] = useState(false);
-  const [leaveModalOpen, setLeaveModalOpen] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [abandonModalOpen, setAbandonModalOpen] = useState<boolean>(false);
+  const [leaveModalOpen, setLeaveModalOpen] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
+
 
   const { members, localRole, loading, refresh, company } = useCompanyMember(companyId);
 
@@ -162,6 +164,7 @@ export default function MemberDashboard() {
           setPromoteOwnershipModalOpen={setPromoteOwnershipModalOpen}
           setAbandonModalOpen={setAbandonModalOpen}
           setLeaveModalOpen={setLeaveModalOpen}
+          
         />
 
         {/* Main Content Area */}
@@ -191,6 +194,7 @@ export default function MemberDashboard() {
               <h2>Jobs board control</h2>
               <p>Post new jobs and monitor recent openings for your company.</p>
             </div>
+
 
             {/* Jobs Section */}
             <div className="section-body">

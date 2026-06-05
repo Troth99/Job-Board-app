@@ -157,6 +157,48 @@
   box-shadow: none;
 }
 
+.sidebar-divider {
+  height: 1px;
+  margin: 2px 2px 0;
+  background: #cfdded;
+}
+
+.sidebar-mini-calendar {
+  margin: 2px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #cfdeef;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.sidebar-mini-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.sidebar-mini-calendar-header h3 {
+  margin: 0;
+  color: #173e69;
+  font-size: 0.9rem;
+}
+
+.sidebar-mini-calendar-toggle {
+  border-radius: 999px;
+  border: 1px solid #bcd2ea;
+  background: #e8f1fb;
+  color: #244d7b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  cursor: pointer;
+}
+
+.sidebar-mini-calendar-toggle:hover {
+  background: #daeaf9;
+}
+
 .dashboard .promote-ownership-btn {
   justify-content: center;
   text-align: center;

@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import CompanyCalendar from "./CompanyCalendar/CompanyCalendar";
 
 type MemberDashboardSideBarProps = {
   company: any;
@@ -10,6 +11,8 @@ type MemberDashboardSideBarProps = {
 };
 
 export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
+
+
   return (
     <div className="sidebar">
       <div className="sidebar-header">
@@ -54,12 +57,25 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
           {/* Here can be added more menu items */}
         </ul>
 
+        <div className="sidebar-divider" />
+        <section className="sidebar-mini-calendar" aria-label="Company calendar">
+          <div className="sidebar-mini-calendar-header">
+            <h3>Calendar</h3>
+            <button
+              type="button"
+              className="sidebar-mini-calendar-toggle"
+            >
+              View full calendar
+            </button>
+          </div>
+          <CompanyCalendar compact />
+        </section>
+
         <div className="sidebar-extension">
           <h3>Add more options</h3>
           <p>Use this block for quick links and new tools in the future.</p>
           <div className="sidebar-extension-chips">
             <span>Analytics</span>
-            <span>Calendar</span>
             <span>Reports</span>
           </div>
         </div>
