@@ -12,6 +12,7 @@ import { useUserData } from "../../../context/UseDataContext";
 import { useRole } from "../../../context/RoleContext";
 import { MemberDashboardModals } from "./Modals";
 import { MemberDashboardSideBar } from "./MemberSidebar";
+import { CalendarModal } from "./CompanyCalendar/CalendarModal";
 import { useCompanyMember } from "../../../hooks/utils/useCompanyMember";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { toast } from "react-toastify";
@@ -37,6 +38,8 @@ export default function MemberDashboard() {
 
   const { members, localRole, loading, refresh, company } = useCompanyMember(companyId);
 
+  const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
+
   // Get current user data and role from context and local storage
   const user = getUserFromLocalStorage();
   const { setUserData, userData } = useUserData();
@@ -57,7 +60,9 @@ export default function MemberDashboard() {
   const postJobHandlerNavigate = () => {
     navigate(`/company/${companyId}/post-job`);
   };
-  //
+  
+
+
   const handlePromoteOwnershipModalClose = async () => {
     setPromoteOwnershipModalOpen(false);
     setRefreshingAfterTransfer(true);
@@ -164,6 +169,8 @@ export default function MemberDashboard() {
           setPromoteOwnershipModalOpen={setPromoteOwnershipModalOpen}
           setAbandonModalOpen={setAbandonModalOpen}
           setLeaveModalOpen={setLeaveModalOpen}
+          isCalendarOpen={isCalendarOpen}
+          setIsCalendarOpen={setIsCalendarOpen}
           
         />
 
@@ -262,6 +269,11 @@ export default function MemberDashboard() {
         }
         myMemberId={myMemberId || ""}
         handleAbandonCompany={handleAbandonCompany}
+      />
+
+      <CalendarModal
+        isOpen={isCalendarOpen}
+        onClose={() => setIsCalendarOpen(false)}
       />
     </>
   );

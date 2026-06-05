@@ -8,6 +8,8 @@ type MemberDashboardSideBarProps = {
   setPromoteOwnershipModalOpen: (open: boolean) => void;
   setAbandonModalOpen: (open: boolean) => void;
   setLeaveModalOpen: (open: boolean) => void;
+  isCalendarOpen: boolean;
+  setIsCalendarOpen: (open: boolean) => void;
 };
 
 export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
@@ -64,6 +66,7 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
             <button
               type="button"
               className="sidebar-mini-calendar-toggle"
+              onClick={() => props.setIsCalendarOpen(true)}
             >
               View full calendar
             </button>
