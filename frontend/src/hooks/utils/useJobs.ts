@@ -13,6 +13,7 @@ export default function useJobs() {
     getRecentJobs: jobsMethods.getRecentJobs,
     createJob: jobsMethods.createJob,
     getJobsByCompany: jobsMethods.getJobsByCompany,
+    getRecentJobsByCompany: jobsMethods.getRecentJobsByCompany,
     getJobById: jobsMethods.getJobById,
     updateJob: jobsMethods.updateJob,
     getJobsByCategoryName: jobsMethods.getJobsByCategoryName,

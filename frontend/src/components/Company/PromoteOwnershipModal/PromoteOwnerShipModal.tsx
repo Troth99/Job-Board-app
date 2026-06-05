@@ -11,7 +11,6 @@ interface PromoteOwnershipModalProps {
   myMemberId?: string;
 }
 
-//Todo: implement the promote ownership modal, which will be opened when the owner clicks on the "Promote ownership" button in the member dashboard. The modal will allow the owner to select a member to promote to ownership and confirm the action.
 export function PromoteOwnerShipModal({
   isOpen,
   onClose,
@@ -44,7 +43,7 @@ export function PromoteOwnerShipModal({
       <div className="promote-owner-modal__container">
         <button
           className="promote-owner-modal__close"
-          aria-label="Close"
+          aria-label="Close promote ownership modal"
           onClick={onClose}
         >
           ×
@@ -77,7 +76,7 @@ export function PromoteOwnerShipModal({
           <button
             type="submit"
             className="promote-owner-modal__submit"
-            disabled={!selectedMemberId}
+            disabled={!selectedMemberId || loading}
           >
             {loading ? "Promoting..." : "Promote to Owner"}
           </button>

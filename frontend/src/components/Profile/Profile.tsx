@@ -11,9 +11,11 @@ import { Container } from "../Container/Container";
 import { ProfileRightPanel } from "./RoleAndCompanySection/ProfileRightPanel";
 import JobPosting from "./JobPosting/JobPosting";
 import ProfileContainer from "./ProfileContainer/ProfileContainer";
+import { Helmet } from "react-helmet-async";
+import { generateSeoConfig, seoConfig } from "../../seo/seo";
 
-//To do better spiiner loading for userData roles
 
+//metadata shows default index after refresh, need to fix that
 interface ProfileProps {
   LogOutComponnent: React.ComponentType;
 }
@@ -77,20 +79,26 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
 
   const hasCompanyId = Boolean(companyId);
 
-  if (userLoading || (!!userData && !isCompanyReady)) {
-    return <Spinner overlay={true} />;
-  }
+  const seo = generateSeoConfig("profile");
+
+
 
   if (!userData) {
     return (
-      <Container maxwith="820px" padding="0 12px">
-        <div className="profile-container">
-          <div className="profile-activity-card">
-            <h3>Unable to load profile</h3>
-            <p>This account data could not be loaded right now.</p>
+      <>
+        <Helmet>
+          <title>{seo.title}</title>
+          <meta name="description" content={seo.description} />
+        </Helmet>
+        <Container maxwith="820px" padding="0 12px">
+          <div className="profile-container">
+            <div className="profile-activity-card">
+              <h3>Unable to load profile</h3>
+              <p>This account data could not be loaded right now.</p>
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </>
     );
   }
 
@@ -108,64 +116,73 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   );
 
   return (
-    <Container maxwith="1520px" padding="0 12px">
-      <div className="profile-container">
-        <section className="profile-top-grid">
-          <ProfileContainer
-            userData={userData}
-            avatar={avatar}
-            handleFileChange={handleFileChange}
-            completionPercentage={completionPercentage}
-            completedFields={completedFields}
-            totalCompletionFields={totalCompletionFields}
-          />
+    <>
+      <Helmet>
+        <title>{seoConfig.profile.title}</title>
+        <meta name="description" content={seoConfig.profile.description} />
+      </Helmet>
 
-          <ProfileRightPanel
-            userRole={userRole}
-            company={company}
-            companyLoading={companyLoading}
-            hasCompanyId={hasCompanyId}
-          />
+      {userLoading || (!!userData && !isCompanyReady) ? (
+        <Spinner overlay={true} />
+      ) : (
+        <Container maxwith="1520px" padding="0 12px">
+          <div className="profile-container">
+            <section className="profile-top-grid">
+              <ProfileContainer
+                userData={userData}
+                avatar={avatar}
+                handleFileChange={handleFileChange}
+                completionPercentage={completionPercentage}
+                completedFields={completedFields}
+                totalCompletionFields={totalCompletionFields}
+              />
 
-          
-        </section>
+              <ProfileRightPanel
+                userRole={userRole}
+                company={company}
+                companyLoading={companyLoading}
+                hasCompanyId={hasCompanyId}
+              />
+            </section>
 
-        <section className="profile-bottom-grid">
-          <JobPosting
-            company={company}
-            postJobNavigation={postJobNavigation}
-            registerCompanyNavigation={registerCompanyNavigation}
-          />
+            <section className="profile-bottom-grid">
+              <JobPosting
+                company={company}
+                postJobNavigation={postJobNavigation}
+                registerCompanyNavigation={registerCompanyNavigation}
+              />
 
-          <div className="profile-activity-card">
-            <h3>Recent account activity</h3>
-            <ul>
-              <li>
-                <span>Profile completion</span>
-                <strong>{completionPercentage}% complete</strong>
-              </li>
-              <li>
-                <span>Company access</span>
-                <strong>
-                  {!hasCompanyId
-                    ? "Not enabled"
-                    : company
-                      ? "Enabled"
-                      : "Loading..."}
-                </strong>
-              </li>
-              <li>
-                <span>Role summary</span>
-                <strong>{userRole || "No company role"}</strong>
-              </li>
-            </ul>
+              <div className="profile-activity-card">
+                <h3>Recent account activity</h3>
+                <ul>
+                  <li>
+                    <span>Profile completion</span>
+                    <strong>{completionPercentage}% complete</strong>
+                  </li>
+                  <li>
+                    <span>Company access</span>
+                    <strong>
+                      {!hasCompanyId
+                        ? "Not enabled"
+                        : company
+                          ? "Enabled"
+                          : "Loading..."}
+                    </strong>
+                  </li>
+                  <li>
+                    <span>Role summary</span>
+                    <strong>{userRole || "No company role"}</strong>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <div className="logout-container">
+              <LogOutComponnent />
+            </div>
           </div>
-        </section>
-
-        <div className="logout-container">
-          <LogOutComponnent />
-        </div>
-      </div>
-    </Container>
+        </Container>
+      )}
+    </>
   );
 }

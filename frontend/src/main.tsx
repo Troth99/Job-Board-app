@@ -11,6 +11,7 @@ import { NotificationProvider } from "./context/NotificationContext";
 import { getUserFromLocalStorage } from "./hooks/shared/useAuth";
 import { useState } from "react";
 import { FavoritesProvider } from "./context/FavouritesJobsContext";
+import { HelmetProvider } from "react-helmet-async";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Root element not found");
@@ -20,22 +21,24 @@ function Main() {
   const [userId, setUserId] = useState(initialUser?._id || '')
 
   return (
-      <Provider store={store}>
-      <ThemeProvider>
-        <UserDataProvider>
-          <NotificationProvider userId={userId}>
-            <RoleProvider>
-              <FavoritesProvider userId={userId}>
-                <BrowserRouter>
-                  <App setUserId={setUserId} />
-                  <ToastContainer position="top-center" autoClose={3000} />
-                </BrowserRouter>
-              </FavoritesProvider>
-            </RoleProvider>
-          </NotificationProvider>
-        </UserDataProvider>
-      </ThemeProvider>
-    </Provider>
+    <HelmetProvider>
+      <Provider store={store}> 
+        <ThemeProvider>
+          <UserDataProvider>
+            <NotificationProvider userId={userId}>
+              <RoleProvider>
+                <FavoritesProvider userId={userId}>
+                  <BrowserRouter>
+                    <App setUserId={setUserId} />
+                    <ToastContainer position="top-center" autoClose={3000} />
+                  </BrowserRouter>
+                </FavoritesProvider>
+              </RoleProvider>
+            </NotificationProvider>
+          </UserDataProvider>
+        </ThemeProvider>
+      </Provider>
+    </HelmetProvider>
   )
 }
 ReactDOM.createRoot(rootElement).render(<Main />);

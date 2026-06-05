@@ -117,6 +117,22 @@ export default function useJobs() {
     }
   };
 
+  const getRecentJobsByCompany = async (companyId: string, limit?: number) => {
+    setLoading(true);
+    try {
+      if (!companyId) throw new Error("Company ID is missing.");
+
+      const response = await request(`${API_BASE}/jobs/recent-company-jobs/${companyId}?limit=${limit}`, "GET");
+
+     return response.recentJobs;
+    }catch (error) {
+      console.error("Failed to load recent jobs for the company.");
+    } finally {
+      setLoading(false);
+    }
+
+  }
+
   const getJobsPage =  async (page: number, limit: number) => {
     setLoading(true);
     try {
@@ -156,5 +172,6 @@ export default function useJobs() {
     getAllJobs,
     deleteJob,
     getJobsPage,
+    getRecentJobsByCompany,
   };
 }

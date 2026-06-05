@@ -1,8 +1,16 @@
+import { Helmet } from "react-helmet-async";
+import { generateSeoConfig } from "../../../../seo/seo";
 import { Container } from "../../../Container/Container";
 import "./Cookies.css";
 
 export default function Cookies() {
+    const seo = generateSeoConfig("cookies");
     return (
+        <>
+        <Helmet>
+            <title>{seo.title}</title>
+            <meta name="description" content={seo.description} />
+        </Helmet>
         <div className="cookies-page">
             <Container>
                 <section className="cookies-hero">
@@ -162,5 +170,6 @@ export default function Cookies() {
                 </section>
             </Container>
         </div>
+        </>
     );
 }

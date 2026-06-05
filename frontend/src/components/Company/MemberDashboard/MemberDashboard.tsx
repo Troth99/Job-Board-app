@@ -12,9 +12,13 @@ import { useUserData } from "../../../context/UseDataContext";
 import { useRole } from "../../../context/RoleContext";
 import { MemberDashboardModals } from "./Modals";
 import { MemberDashboardSideBar } from "./MemberSidebar";
+import { CalendarModal } from "./CompanyCalendar/CalendarModal";
 import { useCompanyMember } from "../../../hooks/utils/useCompanyMember";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { toast } from "react-toastify";
+import { generateSeoConfig } from "../../../seo/seo";
+import { Helmet } from "react-helmet-async";
+
 
 export default function MemberDashboard() {
   const { companyId } = useParams();
@@ -27,11 +31,14 @@ export default function MemberDashboard() {
     abandonCompany
   } = useCompany();
 
-  const [abandonModalOpen, setAbandonModalOpen] = useState(false);
-  const [leaveModalOpen, setLeaveModalOpen] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [abandonModalOpen, setAbandonModalOpen] = useState<boolean>(false);
+  const [leaveModalOpen, setLeaveModalOpen] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
+
 
   const { members, localRole, loading, refresh, company } = useCompanyMember(companyId);
+
+  const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
 
   // Get current user data and role from context and local storage
   const user = getUserFromLocalStorage();
@@ -43,6 +50,8 @@ export default function MemberDashboard() {
     useState<boolean>(false);
   const [refreshingAfterTransfer, setRefreshingAfterTransfer] =
     useState<boolean>(false);
+
+    const seo = generateSeoConfig("companyDashboard");
     
   // Find the current user's membership in the company to determine their role and permissions
   const myMember = members.find((m: CompanyMember) => m.userId._id === user?._id);
@@ -51,7 +60,9 @@ export default function MemberDashboard() {
   const postJobHandlerNavigate = () => {
     navigate(`/company/${companyId}/post-job`);
   };
-  //
+  
+
+
   const handlePromoteOwnershipModalClose = async () => {
     setPromoteOwnershipModalOpen(false);
     setRefreshingAfterTransfer(true);
@@ -136,6 +147,10 @@ export default function MemberDashboard() {
   }
   return (
     <>
+    <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+    </Helmet>
       {success && (
         <div className="success-message">
           <span>Your message has been sent successfully!</span>
@@ -154,23 +169,72 @@ export default function MemberDashboard() {
           setPromoteOwnershipModalOpen={setPromoteOwnershipModalOpen}
           setAbandonModalOpen={setAbandonModalOpen}
           setLeaveModalOpen={setLeaveModalOpen}
+          isCalendarOpen={isCalendarOpen}
+          setIsCalendarOpen={setIsCalendarOpen}
+          
         />
 
         {/* Main Content Area */}
         <div className="main-content">
-          {/* Members Section */}
-          <div className="content-header">
-            <CompanyMembers />
-            <SendMessage onSuccess={() => setSuccess(true)} />
+          <div id="overview-section" className="dashboard-panel dashboard-overview">
+            <p className="dashboard-kicker">Operational overview</p>
+            <h1 className="dashboard-title">Company dashboard</h1>
+            <p className="dashboard-subtitle">
+              Streamline team coordination, internal communication, and hiring execution from a single control panel.
+            </p>
           </div>
 
-          {/* Jobs Section */}
-          <CompanyJobsList
-            companyId={companyId!}
-            canPostJob={canPostJob}
-            onPostJob={postJobHandlerNavigate}
-            isReadOnly={localRole === "member"}
-          />
+          {/* Members Section */}
+          <section id="team-section" className="dashboard-panel dashboard-section">
+            <div className="section-heading">
+              <h2>Team tools</h2>
+              <p>Invite members and send internal messages.</p>
+            </div>
+            <div className="content-header section-body">
+              <CompanyMembers />
+              <SendMessage onSuccess={() => setSuccess(true)} />
+            </div>
+          </section>
+
+          <section id="jobs-section" className="dashboard-panel dashboard-section">
+            <div className="section-heading">
+              <h2>Jobs board control</h2>
+              <p>Post new jobs and monitor recent openings for your company.</p>
+            </div>
+
+
+            {/* Jobs Section */}
+            <div className="section-body">
+              <CompanyJobsList
+                companyId={companyId!}
+                canPostJob={canPostJob}
+                onPostJob={postJobHandlerNavigate}
+                isReadOnly={localRole === "member"}
+              />
+            </div>
+          </section>
+
+          <section className="dashboard-panel dashboard-section dashboard-future-section">
+            <div className="section-heading">
+              <h2>Future modules</h2>
+              <p>Add more options here as your company workflow grows.</p>
+            </div>
+            <div className="future-module-grid">
+              <article className="future-module-card">
+                <h3>Announcements</h3>
+                <p>Share updates with all company members in one feed.</p>
+              </article>
+              <article className="future-module-card">
+                <h3>Calendar</h3>
+                <p>Track interviews, deadlines, and team milestones.</p>
+              </article>
+              <article className="future-module-card">
+                <h3>Insights</h3>
+                <p>Monitor hiring activity and member engagement trends.</p>
+              </article>
+            </div>
+          </section>
+         
 
           {/*announcements section 
   
@@ -205,6 +269,11 @@ export default function MemberDashboard() {
         }
         myMemberId={myMemberId || ""}
         handleAbandonCompany={handleAbandonCompany}
+      />
+
+      <CalendarModal
+        isOpen={isCalendarOpen}
+        onClose={() => setIsCalendarOpen(false)}
       />
     </>
   );

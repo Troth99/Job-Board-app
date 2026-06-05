@@ -1,8 +1,16 @@
+import { Helmet } from "react-helmet-async";
+import { generateSeoConfig } from "../../../../seo/seo";
 import { Container } from "../../../Container/Container";
 import "./privacy.css";
 
 export default function Privacy() {
+    const seo = generateSeoConfig("privacy");
     return (
+        <>
+        <Helmet>
+            <title>{seo.title}</title>
+            <meta name="description" content={seo.description} />
+        </Helmet>
         <div className="privacy-page">
             <Container>
                 <section className="privacy-hero">
@@ -189,5 +197,6 @@ export default function Privacy() {
                 </section>
             </Container>
         </div>
+        </>
     );
 }

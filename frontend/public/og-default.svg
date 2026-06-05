@@ -1,0 +1,38 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Job Board social preview image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0B2E4F"/>
+      <stop offset="1" stop-color="#108A87"/>
+    </linearGradient>
+    <linearGradient id="pill" x1="140" y1="118" x2="390" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#13A3E0"/>
+      <stop offset="1" stop-color="#20C997"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="1060" cy="90" r="140" fill="#FFFFFF" fill-opacity="0.08"/>
+  <circle cx="1040" cy="530" r="210" fill="#FFFFFF" fill-opacity="0.07"/>
+  <circle cx="90" cy="560" r="150" fill="#FFFFFF" fill-opacity="0.06"/>
+
+  <rect x="120" y="116" width="270" height="72" rx="36" fill="url(#pill)"/>
+  <text x="170" y="161" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">Job Board</text>
+
+  <text x="120" y="286" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="74" font-weight="800">Find Your Next</text>
+  <text x="120" y="372" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="74" font-weight="800">Opportunity</text>
+
+  <text x="120" y="448" fill="#DDEEFF" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="500">
+    Discover jobs, apply faster, and grow your career.
+  </text>
+
+  <g transform="translate(860 226)">
+    <rect x="0" y="0" width="210" height="250" rx="24" fill="#FFFFFF" fill-opacity="0.14"/>
+    <rect x="28" y="34" width="154" height="18" rx="9" fill="#FFFFFF" fill-opacity="0.9"/>
+    <rect x="28" y="68" width="120" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.65"/>
+    <rect x="28" y="102" width="154" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.65"/>
+    <rect x="28" y="136" width="108" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.65"/>
+    <rect x="28" y="182" width="96" height="36" rx="18" fill="#20C997"/>
+    <text x="58" y="206" fill="#08314A" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">Apply</text>
+  </g>
+</svg>

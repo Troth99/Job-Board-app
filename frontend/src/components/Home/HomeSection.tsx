@@ -13,6 +13,8 @@ import { Container } from "../Container/Container";
 import { HomeStats } from "./HomeStats/HomeStats";
 import useStatistics from "../../hooks/useStatistics";
 import { StatsResponse } from "../../interfaces/ApplicationStatistic.model";
+import { generateSeoConfig } from "../../seo/seo";
+import MetaData from "../../seo/MetaDataTags";
 
 export default function HomeSection() {
   const categories = useSelector(
@@ -23,7 +25,7 @@ export default function HomeSection() {
   const [loading, setLoading] = useState<boolean>(true);
   const { getRecentJobs } = useJobs();
   const { getApllicationStatistics } = useStatistics();
-  
+  const seo = generateSeoConfig("home");
 const fetchRecentJobs = async () => {
 
   try {
@@ -53,13 +55,14 @@ fetchRecentJobs()
 fetchApplicationStatistics()
 },[])
 
-
-    if(loading || categories.length <= 0 ){
-      return <FullPageSpinner/>
-    }
-
   return (
     <div>
+      <MetaData seo={seo} />
+
+      {loading || categories.length <= 0 ? (
+        <FullPageSpinner />
+      ) : (
+      <>
       <Hero />
       <Container>
       <CategoriesSection />
@@ -70,6 +73,8 @@ fetchApplicationStatistics()
       <RecentJobs recentJobs={recentJobs} />
       <HomeStats statistics={applicationStatistics}></HomeStats>
     </Container>
-    </div>
+    </>
+      )}
+      </div>
   );
 }

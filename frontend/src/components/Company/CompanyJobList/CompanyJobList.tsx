@@ -12,9 +12,6 @@ interface CompanyJobsListProps {
   isReadOnly?: boolean;
 }
 
-//make a new endpoint to fech only 5 recent jobs for the company and use it in this component.
-//  Also sort the jobs by createdAt date in descending order so the most recent jobs are shown first. 
-// If there are no jobs for the company, show a message saying "No jobs posted yet." instead of showing an empty list.
 
 export function CompanyJobsList({
   companyId,
@@ -24,30 +21,16 @@ export function CompanyJobsList({
 }: CompanyJobsListProps) {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const { getJobsByCompany } = useJobs();
-  const navigate = useNavigate()
+  const { getRecentJobsByCompany } = useJobs();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const companyJobs = await getJobsByCompany(companyId);
-
-        if (companyJobs.length > 0) {
-          const sortedJobs = companyJobs.sort((a: Job, b: Job) => {
-            const aCreatedAt = a.createdAt
-              ? new Date(a.createdAt).getTime()
-              : 0;
-            const bCreatedAt = b.createdAt
-              ? new Date(b.createdAt).getTime()
-              : 0;
-            return bCreatedAt - aCreatedAt;
-          });
-
-          setJobs(sortedJobs.slice(0, 5));
-        } else {
-          setJobs([]);
-        }
+        const companyJobs = await getRecentJobsByCompany(companyId, 5);
+        setJobs(companyJobs);
+        console.log("Fetched company jobs:", companyJobs);
       } catch (error) {
         console.error("Failed to load jobs");
       }

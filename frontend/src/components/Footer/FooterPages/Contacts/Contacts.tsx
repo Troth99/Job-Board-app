@@ -1,14 +1,21 @@
+import { Helmet } from "react-helmet-async";
+import { generateSeoConfig } from "../../../../seo/seo";
 import { Container } from "../../../Container/Container"
 import "./contacts.css"
 
 export default function Contacts() {
-
+    const seo = generateSeoConfig("contacts");
 
     // To implement a fully functional contact form, we would typically add state management for the form fields, 
     // validation logic, and an API call to submit the form data to our backend. For this example, 
     // the form submission is prevented from refreshing the page, and no actual submission logic is included.
     
     return (
+        <>
+        <Helmet>
+            <title>{seo.title}</title>
+            <meta name="description" content={seo.description} />
+         </Helmet>
         <div className="contacts-page">
             <Container>
 
@@ -143,6 +150,7 @@ export default function Contacts() {
 
             </Container>
         </div>
+        </>
     )
 }
 

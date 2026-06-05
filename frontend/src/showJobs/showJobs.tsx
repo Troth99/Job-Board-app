@@ -33,35 +33,38 @@ export function ShowJobs({
       {jobs.length > 0 ? (
         jobs.map((job) => (
           <div
-            className="job-card-member"
+            className={`job-card-member ${isReadOnly ? "is-readonly" : "is-clickable"}`}
             key={job._id}
             onClick={isReadOnly ? undefined : () => handleJobClick(job._id)}
-            style={{
-              cursor: isReadOnly ? "default" : "pointer",
-              marginBottom: "20px",
-              border: "1px solid #ccc",
-            }}
           >
-            <h3>{job.title}</h3>
-            <p>
-              <strong>Description:</strong> {job.description}
+            <div className="job-card-header">
+              <h3 className="job-title">{job.title}</h3>
+              <span
+                className={`job-status-badge ${job.isActive ? "is-active" : "is-closed"}`}
+              >
+                {job.isActive ? "Active" : "Closed"}
+              </span>
+            </div>
+
+            <p className="job-description">
+              <span className="job-field-label">Description:</span> {job.description}
             </p>
-            <p>
-              <strong>Location:</strong> {job.location}
-            </p>
-            <p>
-              <strong>Work type:</strong> {job.employmentType}
-            </p>
-            <p>
-              <strong>Salary:</strong> {job.salary}
-            </p>
-            <p>
-              <strong>Posted At:</strong>{" "}
-              {formatDate(job.createdAt || "", "en-US")}
-            </p>
-            <p>
-              <strong>Status:</strong> {job.isActive ? "Active" : "Closed"}
-            </p>
+
+            <div className="job-meta-grid">
+              <p className="job-meta-item">
+                <span className="job-field-label">Location:</span> {job.location}
+              </p>
+              <p className="job-meta-item">
+                <span className="job-field-label">Work type:</span> {job.employmentType}
+              </p>
+              <p className="job-meta-item">
+                <span className="job-field-label">Salary:</span> {job.salary}
+              </p>
+              <p className="job-meta-item">
+                <span className="job-field-label">Posted At:</span>{" "}
+                {formatDate(job.createdAt || "", "en-US")}
+              </p>
+            </div>
           </div>
         ))
       ) : (

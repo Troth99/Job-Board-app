@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createJob, deleteJobController, getAllJobsController, getJobByIdController, getJobsByCategoryController, getRecentJobsController, updateJobController } from "../controllers/jobController.js";
+import { createJob, getMostRecentJobsByCompanyController, deleteJobController, getAllJobsController, getJobByIdController, getJobsByCategoryController, getRecentJobsController, updateJobController } from "../controllers/jobController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
 
@@ -9,6 +9,7 @@ router.get("/", getAllJobsController);
 router.get('/recent', getRecentJobsController)
 router.get("/:id", getJobByIdController);
 router.get('/category/:categoryName', getJobsByCategoryController)
+router.get('/recent-company-jobs/:companyId', protect, getMostRecentJobsByCompanyController)
 
 // protected routes
 router.post("/", protect,  createJob);

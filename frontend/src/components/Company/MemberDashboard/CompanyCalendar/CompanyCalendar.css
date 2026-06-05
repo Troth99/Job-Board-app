@@ -1,0 +1,37 @@
+.company-calendar-container .fc .fc-daygrid-day-frame { min-height: 64px; }
+.company-calendar-container .fc .fc-toolbar-title { font-size: 1.1rem; }
+.company-calendar-container .fc .fc-button { padding: 0.35rem 0.55rem; }
+
+.company-calendar-container.compact .fc {
+  font-size: 0.72rem;
+}
+
+.company-calendar-container.compact .fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 0.35rem;
+}
+
+.company-calendar-container.compact .fc .fc-toolbar-title {
+  font-size: 0.76rem;
+  line-height: 1.1;
+}
+
+.company-calendar-container.compact .fc .fc-button {
+  font-size: 0.62rem;
+  padding: 0.1rem 0.26rem;
+}
+
+.company-calendar-container.compact .fc .fc-daygrid-day-frame {
+  min-height: 18px;
+}
+
+.company-calendar-container.compact .fc .fc-col-header-cell-cushion,
+.company-calendar-container.compact .fc .fc-daygrid-day-number {
+  font-size: 0.68rem;
+  padding: 1px;
+}
+
+.company-calendar-container.compact .fc .fc-daygrid-event {
+  font-size: 0.6rem;
+  margin-top: 1px;
+  padding: 0 1px;
+}

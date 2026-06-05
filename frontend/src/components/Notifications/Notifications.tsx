@@ -10,6 +10,9 @@ import { useNotificationContext } from "../../context/NotificationContext";
 import { Notification } from "../../interfaces/Notification.model";
 import { usePagination } from "../../hooks/shared/usePagination";
 
+import { Helmet } from "react-helmet-async";
+import { generateSeoConfig } from "../../seo/seo";
+
 
 function Notifications() {
   const { deleteNotification, markAsRead } = useNotification();
@@ -22,6 +25,8 @@ function Notifications() {
   const [searchParams, setSearchParams] = useSearchParams()
   const pageFromUrl = parseInt(searchParams.get('page') || '1')
   const {totalPages, currentItems} = usePagination(sortNotifications, 5, pageFromUrl)
+
+  const seo = generateSeoConfig("notifications");
 
   const userId = getUserFromLocalStorage()._id;
   const navigate = useNavigate();
@@ -82,6 +87,11 @@ function Notifications() {
 
   return (
     // The main notifications list component that displays all notifications and handles pagination, marking as read, and deletion.
+    <>
+   <Helmet>
+     <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
+   </Helmet>
     <div className="notification-list">
       <h2 className="notification-list__title">Notifications</h2>
       <ul className="notification-list__items">
@@ -175,7 +185,12 @@ function Notifications() {
               )}
       </ul>
     </div>
+    </>
   );
 }
 
 export default Notifications;
+function getSeoConfig(arg0: string) {
+  throw new Error("Function not implemented.");
+}
+

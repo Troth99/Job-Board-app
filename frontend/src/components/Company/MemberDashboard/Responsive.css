@@ -59,3 +59,79 @@
   }
 }
 
+/* Dashboard refresh responsive layer */
+@media (max-width: 1100px) {
+  .dashboard {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+
+  .dashboard .main-content {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 920px) {
+  .dashboard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dashboard .sidebar {
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(143, 166, 196, 0.2);
+    padding-bottom: 16px;
+  }
+
+  .dashboard .job-card-dashboard-image {
+    justify-content: flex-start;
+  }
+
+  .dashboard .main-content {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard .main-content {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .dashboard-panel {
+    border-radius: 14px;
+    padding: 0.9rem;
+  }
+
+  .dashboard .content-header,
+  .dashboard .content-header-jobs {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard .buttons-for-jobs {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dashboard .buttons-for-jobs .add-button,
+  .dashboard .content-header .add-button {
+    width: 100%;
+  }
+
+  .sidebar-extension {
+    margin-inline: 0;
+  }
+
+  .dashboard .sidebar-danger-actions {
+    padding-inline: 0;
+  }
+
+  .success-message {
+    left: 10px;
+    right: 10px;
+    max-width: none;
+    top: 10px;
+  }
+}
+

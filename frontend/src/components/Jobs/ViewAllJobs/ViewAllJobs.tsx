@@ -7,6 +7,8 @@ import { Job } from "../../../interfaces/Job.model";
 import { Container } from "../../Container/Container";
 import Pagination from "../../Pagination/Pagination";
 import usePagination from "../../../hooks/shared/usePaginationState";
+import { Helmet } from "react-helmet-async";
+import { generateSeoConfig, seoConfig } from "../../../seo/seo";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -33,6 +35,7 @@ function ViewAllJobs() {
   const { loading, getJobsPage } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 5);
+  const seo = generateSeoConfig("viewAllJobs");
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -56,12 +59,18 @@ function ViewAllJobs() {
     fetchJobs();
   }, [pageFromUrl]);
 
-  if (loading) {
-    return <Spinner overlay={true} />;
-  }
+
   return (
     <Container>
-      <section className="jobs-board-page">
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+      </Helmet>
+      
+      {loading ? (
+        <Spinner overlay={true} />
+      ) : (
+            <section className="jobs-board-page">
         <header className="jobs-board-hero">
           <div>
             <p className="jobs-board-kicker">Opportunities</p>
@@ -161,6 +170,8 @@ function ViewAllJobs() {
           )}
         </div>
       </section>
+      )}
+  
     </Container>
   );
 }
