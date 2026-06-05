@@ -2,7 +2,7 @@ import "./Profile.css";
 import "./Responsive.css";
 import { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
-import useUserProfile from "../../hooks/utils/useProfile";
+import useUserProfile from "../../hooks/utils/useProfileUtils";
 import { useNavigate } from "react-router";
 import useCompany from "../../hooks/utils/useCompany";
 import { useRole } from "../../context/RoleContext";
@@ -22,6 +22,7 @@ interface ProfileProps {
 export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const {
     loading: userLoading,
+    isInitialized,
     userData,
     avatar,
     handleFileChange,
@@ -81,7 +82,11 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
 
   const seo = generateSeoConfig("profile");
 
+  const isProfilePending = userLoading || !isInitialized;
 
+  if (!userData && isProfilePending) {
+    return <Spinner overlay={true} />;
+  }
 
   if (!userData) {
     return (
@@ -122,7 +127,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
         <meta name="description" content={seoConfig.profile.description} />
       </Helmet>
 
-      {userLoading || (!!userData && !isCompanyReady) ? (
+      {userLoading || (!isInitialized && !userData) || (!!userData && !isCompanyReady) ? (
         <Spinner overlay={true} />
       ) : (
         <Container maxwith="1520px" padding="0 12px">

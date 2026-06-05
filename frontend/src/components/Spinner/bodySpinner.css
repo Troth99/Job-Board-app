@@ -1,15 +1,11 @@
 .body-spinner {
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #ffffff;
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 200px);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  z-index: 9999;
-  flex-direction: row;
+  padding: 50px 20px;
 }
 
 .body-spinner .spinner-body {
@@ -25,10 +21,6 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-[data-theme="dark"] .body-spinner {
-  background: #0d1117;
 }
 
 [data-theme="dark"] .spinner-body {

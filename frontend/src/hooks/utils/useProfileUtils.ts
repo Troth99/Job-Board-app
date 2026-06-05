@@ -11,6 +11,7 @@ export default function useUserProfile() {
   return {
     // Profile
     loading: profileMethods.loading,
+    isInitialized: profileMethods.isInitialized,
     userData: profileMethods.userData,
     error: profileMethods.error,
     getLoggedInUserData: profileMethods.getLoggedInUserData,
