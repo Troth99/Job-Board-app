@@ -1,7 +1,7 @@
 
 import useCompany from "../../../hooks/utils/useCompany";
 import { useNotification } from "../../../hooks/utils/useNotification";
-import useUserProfile from "../../../hooks/utils/useProfile";
+import useUserProfile from "../../../hooks/utils/useProfileUtils";
 import { useValidation } from "../../validators/useValidation";
 import "./SendMessage.css";
 

@@ -16,10 +16,8 @@ export default function Spinner({ overlay = false, inline = false }: SpinnerProp
   }
 
   return (
-      <div className="profile-body" style={{ position: "relative" }}>
-        <div className="body-spinner">
-          <div className="spinner-body"></div> 
-        </div>
+    <div className="body-spinner" role="status" aria-label="Loading">
+      <div className="spinner-body"></div>
     </div>
-      );
+  );
 }

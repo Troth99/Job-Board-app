@@ -21,6 +21,7 @@ interface ChangePasswordForm {
 export default function useProfile() {
   const { loading, error, request } = useApiRequester();
   const [userData, setUserData] = useState<User | null>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const getLoggedInUserData = async () => {
     try {
@@ -28,6 +29,8 @@ export default function useProfile() {
       setUserData(result);
     } catch (error) {
       console.error("Error fetching user profile:", error);
+    } finally {
+      setIsInitialized(true);
     }
   };
 
@@ -96,6 +99,7 @@ export default function useProfile() {
 
   return {
     loading,
+    isInitialized,
     userData,
     error,
     getLoggedInUserData,
