@@ -25,7 +25,7 @@ export const generateSeoConfig = (pageKey: string, dynamicValue?: string): SeoCo
   return {
     title: "Job Board",
     description: "Find your next job opportunity.",
-    image: "https://job-board-three-omega.vercel.app/og-default.png",
+    image: "https://job-board-three-omega.vercel.app/og-card-v2.png",
     url: "https://job-board-three-omega.vercel.app/",
     siteName: "Job Board",
     type: "website",
@@ -37,7 +37,7 @@ export const seoConfig: Record<string, SeoConfig> = {
   home: {
     title: "Job Board - Find Your Next Opportunity",    
     description: "Discover your next career move with our job board. Browse thousands of job listings, find the perfect fit, and take the next step in your professional journey.",
-    image: "https://job-board-three-omega.vercel.app/og-default.png",
+    image: "https://job-board-three-omega.vercel.app/og-card-v2.png",
     url: "https://job-board-three-omega.vercel.app/",
     siteName: "Job Board",
     type: "website",
