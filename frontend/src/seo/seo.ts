@@ -99,7 +99,8 @@ export const seoConfig: Record<string, SeoConfig> = {
     },
     cvTips: {
       title: "CV Tips | Job Board",
-      description: "Get expert advice on creating a standout CV. Learn how to highlight your skills, experience, and achievements to land your dream job."
+      description: "Get expert advice on creating a standout CV. Learn how to highlight your skills, experience, and achievements to land your dream job.",
+      url: "https://job-board-three-omega.vercel.app/career-advice/cv-tips"
     },
     interviewPreparation: {
       title: "Interview Preparation | Job Board",
