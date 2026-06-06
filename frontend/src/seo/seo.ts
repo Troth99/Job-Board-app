@@ -7,41 +7,41 @@ export type SeoConfig = {
   type?: string;
   twitterCard?: string;
 };
+const defaultSeoConfig: SeoConfig = {
+  title: "Job Board",
+  description: "Find your next job opportunity.",
+  image: "https://job-board-three-omega.vercel.app/og-card-v2.png",
+  url: "https://job-board-three-omega.vercel.app/",
+  siteName: "Job Board",
+  type: "website",
+  twitterCard: "summary_large_image"
+};
 
 //Dynamically generate SEO config for each page
-
 export const generateSeoConfig = (pageKey: string, dynamicValue?: string): SeoConfig => {
   if (pageKey === "category" && dynamicValue) {
-    return {
-      title: `Jobs from ${dynamicValue} | Job Board`,
-      description: `Explore the latest job opportunities in ${dynamicValue}. Find your next career move in ${dynamicValue} today!`
-    };
+  return {
+    ...defaultSeoConfig,
+    title: `Jobs from ${dynamicValue} | Job Board`,
+    description: `Explore the latest job opportunities in ${dynamicValue}. Find your next career move in ${dynamicValue} today!`
+  };
   }
   //if the pageKey exists in the seoConfig, return it
-  if (seoConfig[pageKey]) {
-    return seoConfig[pageKey];
-  }
-  // Default fallback
+if (seoConfig[pageKey]) {
   return {
-    title: "Job Board",
-    description: "Find your next job opportunity.",
-    image: "https://job-board-three-omega.vercel.app/og-card-v2.png",
-    url: "https://job-board-three-omega.vercel.app/",
-    siteName: "Job Board",
-    type: "website",
-    twitterCard: "summary_large_image"
+    ...defaultSeoConfig,
+    ...seoConfig[pageKey]
   };
+}
+  // Default fallback
+  return { ...defaultSeoConfig };
+
 };
 
 export const seoConfig: Record<string, SeoConfig> = {
   home: {
     title: "Job Board - Find Your Next Opportunity",    
     description: "Discover your next career move with our job board. Browse thousands of job listings, find the perfect fit, and take the next step in your professional journey.",
-    image: "https://job-board-three-omega.vercel.app/og-card-v2.png",
-    url: "https://job-board-three-omega.vercel.app/",
-    siteName: "Job Board",
-    type: "website",
-    twitterCard: "summary_large_image"
    },
   viewAllJobs: {
     title: "Browse All Jobs | Find Your Next Opportunity!",
