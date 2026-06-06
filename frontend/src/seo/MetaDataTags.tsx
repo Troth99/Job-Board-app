@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import { SeoConfig } from "./seo";
 
-type SeoHeadProps = {
+type MetaDataProps = {
   seo: SeoConfig;
 };
 
-export default function SeoHead({ seo }: SeoHeadProps) {
+export default function MetaData({ seo }: MetaDataProps) {
   return (
     <Helmet>
       <title>{seo.title}</title>
