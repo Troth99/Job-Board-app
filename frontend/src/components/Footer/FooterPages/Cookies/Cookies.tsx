@@ -1,16 +1,13 @@
-import { Helmet } from "react-helmet-async";
 import { generateSeoConfig } from "../../../../seo/seo";
 import { Container } from "../../../Container/Container";
 import "./Cookies.css";
+import MetaData from "../../../../seo/MetaDataTags";
 
 export default function Cookies() {
     const seo = generateSeoConfig("cookies");
     return (
         <>
-        <Helmet>
-            <title>{seo.title}</title>
-            <meta name="description" content={seo.description} />
-        </Helmet>
+      <MetaData seo={seo} />
         <div className="cookies-page">
             <Container>
                 <section className="cookies-hero">

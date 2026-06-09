@@ -6,9 +6,8 @@ import { useNavigate, useSearchParams } from "react-router";
 import { Job } from "../../../interfaces/Job.model";
 import { Container } from "../../Container/Container";
 import Pagination from "../../Pagination/Pagination";
-import usePagination from "../../../hooks/shared/usePaginationState";
-import { Helmet } from "react-helmet-async";
 import { generateSeoConfig, seoConfig } from "../../../seo/seo";
+import MetaData from "../../../seo/MetaDataTags";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -62,10 +61,8 @@ function ViewAllJobs() {
 
   return (
     <Container>
-      <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-      </Helmet>
+  <MetaData seo={seo} />
+
       
       {loading ? (
         <Spinner overlay={true} />

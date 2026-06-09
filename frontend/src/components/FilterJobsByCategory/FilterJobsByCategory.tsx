@@ -82,6 +82,9 @@ export default function FilterJobByCategory() {
         name="description"
         content={seo.description}
       />
+      {seo.url && <meta property="og:url" content={seo.url} />}
+      {seo.url && <link rel="canonical" href={seo.url} />}
+      {seo.noindex && <meta name="robots" content="noindex,nofollow" />}
     </Helmet>
     <div className="filter-jobs-container">
       <div className="filter-header">

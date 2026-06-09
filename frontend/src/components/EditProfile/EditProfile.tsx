@@ -8,7 +8,7 @@ import useUserProfile from "../../hooks/utils/useProfileUtils";
 import useForm from "../../hooks/shared/useForm";
 import { useState, useEffect } from "react";
 import { generateSeoConfig } from "../../seo/seo";
-import { Helmet } from "react-helmet-async";
+import MetaData from "../../seo/MetaDataTags";
 
 export interface ProfileData {
   firstName: string;
@@ -113,13 +113,7 @@ export default function EditProfile() {
 
   return (
     <>
-        <Helmet>
-          <title>{seo.title}</title>
-          <meta
-            name="description"
-            content={seo.description}
-          />
-        </Helmet>
+     <MetaData seo={seo} />
         
     <div className="profile-body" style={{ position: "relative" }}>
       {!userData ? (

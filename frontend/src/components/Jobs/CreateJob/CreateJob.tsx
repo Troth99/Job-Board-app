@@ -15,7 +15,7 @@ import { jobPostValidations } from "../../validators/createJobValidation";
 import useForm from "../../../hooks/shared/useForm";
 import { valuesInterface } from "../../../interfaces/Job.model";
 import { generateSeoConfig } from "../../../seo/seo";
-import { Helmet } from "react-helmet-async";
+import MetaData from "../../../seo/MetaDataTags";
 
 const initialValues = {
   title: "",
@@ -73,10 +73,8 @@ function PostJob() {
 
   return (
     <>
-      <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-      </Helmet>
+     <MetaData seo={seo} />
+
     <div className="post-job-container">
       <h2>Post a New Job</h2>
       <Link to={`/how-to-post-job`} className="back-link">

@@ -28,6 +28,7 @@ export default function MetaData({ seo }: MetaDataProps) {
       {seo.image && <meta name="twitter:image" content={seo.image} />}
 
       {seo.url && <link rel="canonical" href={seo.url} />}
-    </Helmet>
+{seo.noindex && <meta name="robots" content="noindex,nofollow" />}    
+</Helmet>
   );
 }

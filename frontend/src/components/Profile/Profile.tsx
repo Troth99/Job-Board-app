@@ -11,11 +11,9 @@ import { Container } from "../Container/Container";
 import { ProfileRightPanel } from "./RoleAndCompanySection/ProfileRightPanel";
 import JobPosting from "./JobPosting/JobPosting";
 import ProfileContainer from "./ProfileContainer/ProfileContainer";
-import { Helmet } from "react-helmet-async";
 import { generateSeoConfig, seoConfig } from "../../seo/seo";
+import MetaData from "../../seo/MetaDataTags";
 
-
-//metadata shows default index after refresh, need to fix that
 interface ProfileProps {
   LogOutComponnent: React.ComponentType;
 }
@@ -91,10 +89,8 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   if (!userData) {
     return (
       <>
-        <Helmet>
-          <title>{seo.title}</title>
-          <meta name="description" content={seo.description} />
-        </Helmet>
+      <MetaData seo={seo} />
+
         <Container maxwith="820px" padding="0 12px">
           <div className="profile-container">
             <div className="profile-activity-card">
@@ -122,10 +118,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
 
   return (
     <>
-      <Helmet>
-        <title>{seoConfig.profile.title}</title>
-        <meta name="description" content={seoConfig.profile.description} />
-      </Helmet>
+      <MetaData seo={seo} />
 
       {userLoading || (!isInitialized && !userData) || (!!userData && !isCompanyReady) ? (
         <Spinner overlay={true} />

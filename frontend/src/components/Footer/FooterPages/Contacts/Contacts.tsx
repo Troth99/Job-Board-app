@@ -1,7 +1,7 @@
-import { Helmet } from "react-helmet-async";
 import { generateSeoConfig } from "../../../../seo/seo";
 import { Container } from "../../../Container/Container"
 import "./contacts.css"
+import MetaData from "../../../../seo/MetaDataTags";
 
 export default function Contacts() {
     const seo = generateSeoConfig("contacts");
@@ -12,10 +12,7 @@ export default function Contacts() {
     
     return (
         <>
-        <Helmet>
-            <title>{seo.title}</title>
-            <meta name="description" content={seo.description} />
-         </Helmet>
+       <MetaData seo={seo} />
         <div className="contacts-page">
             <Container>
 

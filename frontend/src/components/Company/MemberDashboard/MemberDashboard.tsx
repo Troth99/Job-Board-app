@@ -17,7 +17,7 @@ import { useCompanyMember } from "../../../hooks/utils/useCompanyMember";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { toast } from "react-toastify";
 import { generateSeoConfig } from "../../../seo/seo";
-import { Helmet } from "react-helmet-async";
+import MetaData from "../../../seo/MetaDataTags";
 
 
 export default function MemberDashboard() {
@@ -147,10 +147,9 @@ export default function MemberDashboard() {
   }
   return (
     <>
-    <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-    </Helmet>
+     <MetaData seo={seo} />
+
+
       {success && (
         <div className="success-message">
           <span>Your message has been sent successfully!</span>

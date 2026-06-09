@@ -9,7 +9,8 @@ import Pagination from "../../Pagination/Pagination";
 import { useSelector } from "react-redux";
 import { CategoryInterface } from "../../../interfaces/CategoryModel";
 import { generateSeoConfig } from "../../../seo/seo";
-import { Helmet } from "react-helmet-async";
+import MetaData from "../../../seo/MetaDataTags";
+
 
 const ITEMS_PER_PAGE = 5;
 
@@ -51,10 +52,8 @@ function SavedJobs() {
 
   return (
     <>
-      <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-      </Helmet>
+  <MetaData seo={seo} />
+
       {loading ? (
         <Spinner overlay={true} />
       ) : (

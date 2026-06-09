@@ -8,6 +8,8 @@ import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { useRole } from "../../../context/RoleContext";
 import { BsChatDots } from "react-icons/bs";
 import { SendMessage } from "../SendMessage/SendMessage";
+import { generateSeoConfig } from "../../../seo/seo";
+import MetaData from "../../../seo/MetaDataTags";
 
 const availableRoles = ["admin", "recruiter", "member"];
 
@@ -17,6 +19,8 @@ export default function ViewMembers() {
   const { companyId } = useParams();
   const [showOptions, setShowOptions] = useState<string | null>(null);
   const [showMessageModal, setShowMessageModal] = useState<string | null>(null);
+
+  const seo = generateSeoConfig("companyMembers");
 
   const {
     getCompanyMembers,
@@ -82,6 +86,8 @@ export default function ViewMembers() {
   };
 
   return (
+    <>
+    <MetaData seo={seo} />
     <div className="member-list-page">
       <div className="members-list-container">
       <div className="content-title-members-list">
@@ -200,5 +206,6 @@ export default function ViewMembers() {
         />
       )}
     </div>
+    </>
   );
 }

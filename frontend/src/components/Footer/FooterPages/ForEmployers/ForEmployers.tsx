@@ -2,7 +2,7 @@ import { Link } from "react-router"
 import "./forEmployers.css"
 import { Container } from "../../../Container/Container"
 import { generateSeoConfig } from "../../../../seo/seo";
-import { Helmet } from "react-helmet-async";
+import MetaData from "../../../../seo/MetaDataTags";
 
 export default function ForEmployers() {
 
@@ -10,10 +10,7 @@ export default function ForEmployers() {
     return (
 
       <>
-      <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-      </Helmet>
+     <MetaData seo={seo} />
     
      <div className="for-employers-page">
       <Container>
