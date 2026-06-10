@@ -183,7 +183,7 @@ export default function useJobs() {
         throw new Error("Company ID is missing.");
       }
       const response = await request(
-        `${API_BASE}/jobs/calendar-events/${companyId}?startDate=${startDate}&endDate=${endDate}`,
+        `${API_BASE}/jobs/calendar-events-jobs/${companyId}?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`,
         "GET",
         {},
       );

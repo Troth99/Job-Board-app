@@ -239,6 +239,7 @@ export const getCalendarEventsForJobsController = async (req, res) => {
   return res.status(400).json({ message: "Invalid company ID." });
 }
 
+    //CLosing date for the job
     const deadlineFilter = { $ne: null };
 
     //Validate and parse the inputs
@@ -268,7 +269,7 @@ export const getCalendarEventsForJobsController = async (req, res) => {
       //Map jobs to callendar format
     const events = jobs.map((job) => ({
       id: job._id.toString(),
-      title: "Deadline: " + job.title,
+      title: "Closing date: " + job.title,
       date: job.applicationDeadline,
       allDay: true,
       extendedProps: {
