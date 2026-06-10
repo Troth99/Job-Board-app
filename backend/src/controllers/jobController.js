@@ -235,9 +235,9 @@ export const getCalendarEventsForJobsController = async (req, res) => {
     const companyId = req.params.companyId.trim();
     const { startDate, endDate } = req.query;
 
-    if (!companyId || !startDate || !endDate) {
-      return res.status(400).json({ message: "Company ID, startDate, and endDate are required." });
-    };
+  if (!companyId || !mongoose.isValidObjectId(companyId)) {
+  return res.status(400).json({ message: "Invalid company ID." });
+}
 
     const deadlineFilter = { $ne: null };
 
