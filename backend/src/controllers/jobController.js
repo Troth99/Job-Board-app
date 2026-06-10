@@ -53,7 +53,7 @@ export const getJobByIdController = async (req, res) => {
       return res.status(404).json({ message: "Job not found" });
     }
 
-   
+
     res.status(200).json(job);
   } catch (error) {
     console.error(error);
@@ -110,26 +110,26 @@ export const getRecentJobsController = async (req, res) => {
 };
 
 export const getMostRecentJobsByCompanyController = async (req, res) => {
-  
-  try{
-      const companyId = req.params.companyId.trim();
 
-      if (!mongoose.isValidObjectId(companyId)) {
-        return res.status(400).json({ message: "Invalid company ID." });
-      }
+  try {
+    const companyId = req.params.companyId.trim();
 
-      const recentJobs = await Jobs.find({ company: companyId })
-        .sort({ createdAt: -1 })
-        .limit(5)
-        .populate("company")
-        .populate('createdBy', 'firstName lastName email');
-
-      res.status(200).json({ recentJobs });
-  }
-    catch (error) {
-      console.error("Error in getMostRecentJobsByCompanyController:", error);
-      res.status(500).json({ message: "Server error" });
+    if (!mongoose.isValidObjectId(companyId)) {
+      return res.status(400).json({ message: "Invalid company ID." });
     }
+
+    const recentJobs = await Jobs.find({ company: companyId })
+      .sort({ createdAt: -1 })
+      .limit(5)
+      .populate("company")
+      .populate('createdBy', 'firstName lastName email');
+
+    res.status(200).json({ recentJobs });
+  }
+  catch (error) {
+    console.error("Error in getMostRecentJobsByCompanyController:", error);
+    res.status(500).json({ message: "Server error" });
+  }
 }
 
 export const updateJobController = async (req, res) => {
@@ -198,13 +198,13 @@ export const updateJobController = async (req, res) => {
 
 export const getJobsByCategoryController = async (req, res) => {
   try {
-  
+
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 3;
     const skip = (page - 1) * limit;
 
     const { categoryName } = req.params;
-   
+
     const decodedCategoryName = decodeURIComponent(categoryName);
 
     const { jobs, totalCount } = await getJobsByCategoryName(decodedCategoryName, skip, limit);
@@ -228,4 +228,60 @@ export const deleteJobController = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Failed to delete job", error: error.message });
   }
+
 };
+export const getCalendarEventsForJobsController = async (req, res) => {
+  try {
+    const companyId = req.params.companyId.trim();
+    const { startDate, endDate } = req.query;
+
+    if (!companyId || !startDate || !endDate) {
+      return res.status(400).json({ message: "Company ID, startDate, and endDate are required." });
+    };
+
+    const deadlineFilter = { $ne: null };
+
+    //Validate and parse the inputs
+    if (startDate) {
+      const paredStartDate = new Date(startDate);
+      if (Number.isNaN(paredStartDate.getTime())) {
+        return res.status(400).json({ message: "Invalid startDate format. Use ISO string." });
+      }
+      deadlineFilter.$gte = paredStartDate;
+    }
+
+    if (endDate) {
+      const paredEndDate = new Date(endDate);
+      if (Number.isNaN(paredEndDate.getTime())) {
+        return res.status(400).json({ message: "Invalid endDate format. Use ISO string." });
+      }
+      deadlineFilter.$lte = paredEndDate;
+    }
+
+    // Find jobs for the company with application deadlines within the specified range
+    const jobs = await Jobs.find({
+      company: companyId,
+      applicationDeadline: deadlineFilter,
+    }).select("_id title applicationDeadline location company isActive")
+      .sort({ applicationDeadline: 1 });
+
+      //Map jobs to callendar format
+    const events = jobs.map((job) => ({
+      id: job._id.toString(),
+      title: "Deadline: " + job.title,
+      date: job.applicationDeadline,
+      allDay: true,
+      extendedProps: {
+        jobId: job._id.toString(),
+        companyId: job.company?.toString(),
+        location: job.location,
+        isActive: job.isActive,
+      },
+    }));
+
+    res.status(200).json({ events, total: events.length });
+  } catch (error) {
+    console.error("Error in getCalendarEventsForJobsController:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+}
