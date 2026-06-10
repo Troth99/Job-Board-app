@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../hooks/shared/useAuth";
-import useJobs from "../hooks/utils/useJobs";
-import useCompany from "../hooks/utils/useCompany";
+import useJobs from "../hooks/utils/useJobBoard";
+import useCompany from "../hooks/utils/useCompanyMethods";
 import { Job } from "../interfaces/Job.model";
 import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
 

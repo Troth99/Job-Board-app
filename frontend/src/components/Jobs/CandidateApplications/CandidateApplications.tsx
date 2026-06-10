@@ -1,5 +1,5 @@
 import "./CandidateApplications.css";
-import useJobs from "../../../hooks/utils/useJobs";
+import useJobs from "../../../hooks/utils/useJobBoard";
 import { Candidate } from "../../../interfaces/Apllication.model";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
 import { formatDate } from "../../../utils/formData";

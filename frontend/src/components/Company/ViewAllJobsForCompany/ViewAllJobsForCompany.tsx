@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useJobs from "../../../hooks/utils/useJobs";
+import useJobs from "../../../hooks/utils/useJobBoard";
 import { useParams, useSearchParams } from "react-router";
 import { ShowJobs } from "../showJobs/showCompanyJobs";
 import "./viewAllJobsForComapny.css";

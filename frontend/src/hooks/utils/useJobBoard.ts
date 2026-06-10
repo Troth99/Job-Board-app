@@ -2,7 +2,7 @@ import { useJobs as useJobsHook } from "../jobs";
 import { useApplications as useApplicationsHook } from "../applications";
 import { useFavorites as useFavoritesHook } from "../favorites";
 
-export default function useJobs() {
+export default function useJobsMethods() {
   const jobsMethods = useJobsHook();
   const applicationsMethods = useApplicationsHook();
   const savedjobMethods = useFavoritesHook();

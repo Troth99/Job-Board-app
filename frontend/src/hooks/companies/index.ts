@@ -1,1 +1,1 @@
-export { default as useCompanies } from "./useCompanies";
+export { default as useCompanies } from "./useCompanyAPI";

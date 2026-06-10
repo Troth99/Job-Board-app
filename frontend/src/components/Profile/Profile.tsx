@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import useUserProfile from "../../hooks/utils/useProfileUtils";
 import { useNavigate } from "react-router";
-import useCompany from "../../hooks/utils/useCompany";
+import useCompany from "../../hooks/utils/useCompanyMethods";
 import { useRole } from "../../context/RoleContext";
 import { useUserData } from "../../context/UseDataContext";
 import { Container } from "../Container/Container";

@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./MemberDashboard.css";
 import "./Responsive.css";
 import { useNavigate, useParams } from "react-router";
-import useCompany from "../../../hooks/utils/useCompany";
+import useCompany from "../../../hooks/utils/useCompanyMethods";
 import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../Spinner/Spinner";
 import { CompanyMembers } from "../InviteMemberToCompany/InviteMemberToCompany";

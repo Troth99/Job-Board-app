@@ -5,7 +5,7 @@ import { getAuthToken, getUserFromLocalStorage } from "../hooks/shared/useAuth";
 import { Navigate, Outlet } from "react-router";
 import { showCompanyWarning } from "../utils/toast";
 
-import useCompany from "../hooks/utils/useCompany";
+import useCompany from "../hooks/utils/useCompanyMethods";
 
 export default function CompanyRouteGuard() {
   let { companyId } = useParams<{ companyId: string }>();

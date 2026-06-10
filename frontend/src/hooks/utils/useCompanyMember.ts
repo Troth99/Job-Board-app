@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useCompanies } from "../companies";
 import { useMembers } from "../members";
 import { CompanyMember } from "../../interfaces/CompanyMember.model";
-import type { Company } from "../companies/useCompanies";
+import type { Company } from "../companies/useCompanyAPI";
 
 export function useCompanyMember(companyId?: string | undefined) {
   const companiesMethods = useCompanies();

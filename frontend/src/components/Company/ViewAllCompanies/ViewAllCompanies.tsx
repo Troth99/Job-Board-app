@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import useCompany from "../../../hooks/utils/useCompany";
+import useCompany from "../../../hooks/utils/useCompanyMethods";
 import "./ViewAllCompanies.css";
 import { formatDate } from "../../../utils/formData";
 import { useSearchParams } from "react-router";

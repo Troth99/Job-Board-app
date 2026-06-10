@@ -1,5 +1,5 @@
 
-import useCompany from "../../../hooks/utils/useCompany";
+import useCompany from "../../../hooks/utils/useCompanyMethods";
 import { useNotification } from "../../../hooks/utils/useNotification";
 import useUserProfile from "../../../hooks/utils/useProfileUtils";
 import { useValidation } from "../../validators/useValidation";
