@@ -1,5 +1,5 @@
 
-import { Helmet } from "react-helmet-async";
+import MetaData from "../../../../seo/MetaDataTags";
 import { generateSeoConfig } from "../../../../seo/seo";
 import { Container } from "../../../Container/Container";
 import "./tos.css";
@@ -8,10 +8,8 @@ export default function TermsAndConditions() {
     const seo = generateSeoConfig("terms-and-conditions");
     return (
         <>
-        <Helmet>
-            <title>{seo.title}</title>
-            <meta name="description" content={seo.description} />
-        </Helmet>
+      <MetaData seo={seo} />
+
        
         <div className="tos-page">
             <Container>

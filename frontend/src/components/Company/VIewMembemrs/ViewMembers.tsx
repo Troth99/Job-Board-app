@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import "./ViewMembers.css";
 import { useParams } from "react-router";
-import useCompany from "../../../hooks/utils/useCompany";
+import useCompany from "../../../hooks/utils/useCompanyMethods";
 import { formatDate } from "../../../utils/formData";
 import Spinner from "../../Spinner/Spinner";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { useRole } from "../../../context/RoleContext";
 import { BsChatDots } from "react-icons/bs";
 import { SendMessage } from "../SendMessage/SendMessage";
+import { generateSeoConfig } from "../../../seo/seo";
+import MetaData from "../../../seo/MetaDataTags";
 
 const availableRoles = ["admin", "recruiter", "member"];
 
@@ -17,6 +19,8 @@ export default function ViewMembers() {
   const { companyId } = useParams();
   const [showOptions, setShowOptions] = useState<string | null>(null);
   const [showMessageModal, setShowMessageModal] = useState<string | null>(null);
+
+  const seo = generateSeoConfig("companyMembers");
 
   const {
     getCompanyMembers,
@@ -82,7 +86,13 @@ export default function ViewMembers() {
   };
 
   return (
-    <div className="member-list-page">
+    <>
+    <MetaData seo={seo} />
+
+ {loading ? (
+      <Spinner overlay={true} />
+    ) : (
+        <div className="member-list-page">
       <div className="members-list-container">
       <div className="content-title-members-list">
         <div className="members-title-row">
@@ -197,8 +207,13 @@ export default function ViewMembers() {
         autoOpen={true}
           recipient={showMessageModal}
           onClose={() => setShowMessageModal(null)}
-        />
-      )}
+          />
+        )}
     </div>
-  );
+ )
+
+ }
+  </>
+  )
 }
+ 

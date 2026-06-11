@@ -6,7 +6,7 @@ import { Notification } from "../../../interfaces/Notification.model";
 import { useNotification } from "../../../hooks/utils/useNotification";
 import { useNavigate } from "react-router";
 import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
-import useCompany from "../../../hooks/utils/useCompany";
+import useCompany from "../../../hooks/utils/useCompanyMethods";
 import { useUserData } from "../../../context/UseDataContext";
 
 export default function CompanyInvitationNotification() {

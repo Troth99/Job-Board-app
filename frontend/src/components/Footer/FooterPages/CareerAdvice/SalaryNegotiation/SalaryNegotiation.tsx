@@ -1,5 +1,5 @@
 
-import { Helmet } from "react-helmet-async";
+import MetaData from "../../../../../seo/MetaDataTags";
 import { generateSeoConfig } from "../../../../../seo/seo";
 import { Container } from "../../../../Container/Container";
 import "./salaryNegotiation.css";
@@ -9,10 +9,7 @@ export default function SalaryNegotiation() {
     return (
         <>
         
-        <Helmet>
-            <title>{seo.title}</title>
-            <meta name="description" content={seo.description} />
-        </Helmet>
+        <MetaData seo={seo} />
         <div className="salary-neg-page">
             <Container>
                 <section className="salary-neg-hero">

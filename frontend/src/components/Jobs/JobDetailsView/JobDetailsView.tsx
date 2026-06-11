@@ -1,5 +1,5 @@
 import { useLocation, useParams } from "react-router";
-import useJobs from "../../../hooks/utils/useJobs";
+import useJobs from "../../../hooks/utils/useJobBoard";
 import "./JobDetailsView.css";
 import { useEffect, useState } from "react";
 import { Job } from "../../../interfaces/Job.model";

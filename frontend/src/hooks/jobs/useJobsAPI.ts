@@ -12,7 +12,7 @@ export default function useJobs() {
     try {
       const recentJobs = await request(
         `${API_BASE}/jobs/recent?limit=${limit}`,
-        "GET"
+        "GET",
       );
       return recentJobs.jobs;
     } catch (error) {
@@ -40,14 +40,18 @@ export default function useJobs() {
     setLoading(true);
     try {
       if (!companyId) throw new Error("Not part of a company.");
-      
+
       const response = await request(
         `${API_BASE}/jobs?company=${companyId}`,
-        "GET"
+        "GET",
       );
-      
+
       //returning array of jobs so the components using array methods can work without issues. If response is not an array, it checks if response.jobs is an array and returns it. Otherwise, it returns an empty array.
-      return Array.isArray(response) ? response : Array.isArray(response?.jobs) ? response.jobs : [];
+      return Array.isArray(response)
+        ? response
+        : Array.isArray(response?.jobs)
+          ? response.jobs
+          : [];
     } catch (error) {
       console.error("Failed to fetch jobs.");
       throw error;
@@ -77,7 +81,7 @@ export default function useJobs() {
       const response = await request(
         `${API_BASE}/jobs/${jobId}`,
         "PUT",
-        jobData
+        jobData,
       );
       return response;
     } catch (error) {
@@ -88,14 +92,18 @@ export default function useJobs() {
     }
   };
 
-  const getJobsByCategoryName = async (categoryName: string, page: number, limit: number) => {
+  const getJobsByCategoryName = async (
+    categoryName: string,
+    page: number,
+    limit: number,
+  ) => {
     setLoading(true);
     try {
       if (!categoryName) throw new Error("Category name is missing!");
       const response = await request(
-  `${API_BASE}/jobs/category/${categoryName}?page=${page}&limit=${limit}`,
+        `${API_BASE}/jobs/category/${categoryName}?page=${page}&limit=${limit}`,
         "GET",
-        {}
+        {},
       );
       return response;
     } catch (error) {
@@ -122,24 +130,26 @@ export default function useJobs() {
     try {
       if (!companyId) throw new Error("Company ID is missing.");
 
-      const response = await request(`${API_BASE}/jobs/recent-company-jobs/${companyId}?limit=${limit}`, "GET");
+      const response = await request(
+        `${API_BASE}/jobs/recent-company-jobs/${companyId}?limit=${limit}`,
+        "GET",
+      );
 
-     return response.recentJobs;
-    }catch (error) {
+      return response.recentJobs;
+    } catch (error) {
       console.error("Failed to load recent jobs for the company.");
     } finally {
       setLoading(false);
     }
+  };
 
-  }
-
-  const getJobsPage =  async (page: number, limit: number) => {
+  const getJobsPage = async (page: number, limit: number) => {
     setLoading(true);
     try {
       const response = await request(
         `${API_BASE}/jobs?page=${page}&limit=${limit}`,
         "GET",
-        {}
+        {},
       );
       return response;
     } catch (error) {
@@ -161,6 +171,30 @@ export default function useJobs() {
     }
   };
 
+  const getCalendarEventsForJobs = async (
+    companyId: string,
+    startDate: string,
+    endDate: string,
+  ) => {
+    setLoading(true);
+    try {
+
+      if(!companyId) {
+        throw new Error("Company ID is missing.");
+      }
+      const response = await request(
+        `${API_BASE}/jobs/calendar-events-jobs/${companyId}?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`,
+        "GET",
+        {},
+      );
+      return response.events ?? [];
+    }catch (error) {
+      console.error("Failed to fetch calendar events for jobs.");
+      return [];
+    } finally {
+      setLoading(false);
+    }
+  };
   return {
     loading,
     getRecentJobs,
@@ -173,5 +207,6 @@ export default function useJobs() {
     deleteJob,
     getJobsPage,
     getRecentJobsByCompany,
+    getCalendarEventsForJobs
   };
 }

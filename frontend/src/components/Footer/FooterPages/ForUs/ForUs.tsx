@@ -1,18 +1,14 @@
 import { Link } from "react-router"
 import "./forUs.css"
 import { Container } from "../../../Container/Container"
-import { Helmet } from "react-helmet-async"
 import { generateSeoConfig } from "../../../../seo/seo";
+import MetaData from "../../../../seo/MetaDataTags";
 
 export default function ForUs() {
   const seo = generateSeoConfig("forUs");
   return (
     <>
-    <Helmet>
-      <title>{seo.title}</title>
-      <meta name="description" content={seo.description} />
-    </Helmet>
-   
+  <MetaData seo={seo} />
     <div className="for-us-page">
       <Container>
 

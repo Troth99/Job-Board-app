@@ -10,8 +10,8 @@ import { useNotificationContext } from "../../context/NotificationContext";
 import { Notification } from "../../interfaces/Notification.model";
 import { usePagination } from "../../hooks/shared/usePagination";
 
-import { Helmet } from "react-helmet-async";
 import { generateSeoConfig } from "../../seo/seo";
+import MetaData from "../../seo/MetaDataTags";
 
 
 function Notifications() {
@@ -88,10 +88,8 @@ function Notifications() {
   return (
     // The main notifications list component that displays all notifications and handles pagination, marking as read, and deletion.
     <>
-   <Helmet>
-     <title>{seo.title}</title>
-      <meta name="description" content={seo.description} />
-   </Helmet>
+   <MetaData seo={seo} />
+   
     <div className="notification-list">
       <h2 className="notification-list__title">Notifications</h2>
       <ul className="notification-list__items">

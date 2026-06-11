@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 import type { Job } from "../interfaces/Job.model";
-import useJobs from "../hooks/utils/useJobs";
+import useJobs from "../hooks/utils/useJobBoard";
 
 export interface SavedJob {
   _id?: string;

@@ -1,10 +1,10 @@
-import useCompaniesDefault, { type Company, type Member } from "../companies/useCompanies";
+import useCompaniesDefault, { type Company, type Member } from "../companies/useCompanyAPI";
 import { useMembers as useMembersHook } from "../members";
 
-export { default as useCompanies, type Company, type Member } from "../companies/useCompanies";
+export { default as useCompanies, type Company, type Member } from "../companies/useCompanyAPI";
 export { useMembers } from "../members";
 
-export default function useCompany() {
+export default function useCompanyMethods() {
   const companiesMethods = useCompaniesDefault();
   const membersMethods = useMembersHook();
 

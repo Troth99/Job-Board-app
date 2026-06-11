@@ -1,6 +1,6 @@
 import { useNavigate, useParams, useSearchParams } from "react-router";
 import "./FilterJobsByCategory.css";
-import useJobs from "../../hooks/utils/useJobs";
+import useJobs from "../../hooks/utils/useJobBoard";
 import { useEffect, useState } from "react";
 import { ShowJobs } from "../../showJobs/showJobs";
 import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
@@ -82,6 +82,9 @@ export default function FilterJobByCategory() {
         name="description"
         content={seo.description}
       />
+      {seo.url && <meta property="og:url" content={seo.url} />}
+      {seo.url && <link rel="canonical" href={seo.url} />}
+      {seo.noindex && <meta name="robots" content="noindex,nofollow" />}
     </Helmet>
     <div className="filter-jobs-container">
       <div className="filter-header">
