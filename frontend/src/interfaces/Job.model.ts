@@ -36,6 +36,7 @@ export interface Job {
   updatedAt?: string;
 }
 
+
 export interface valuesInterface {
   _id?: string;
   title: string;

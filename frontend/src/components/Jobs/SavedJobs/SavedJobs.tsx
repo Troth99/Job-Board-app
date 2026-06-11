@@ -11,6 +11,9 @@ import { CategoryInterface } from "../../../interfaces/CategoryModel";
 import { generateSeoConfig } from "../../../seo/seo";
 import MetaData from "../../../seo/MetaDataTags";
 
+//If i delete a job to remove it from saved jobs also from the job details page,
+//  also to add - click on event to see details in a modal, also to add events from the 
+// calendar view and not only from the job details page
 
 const ITEMS_PER_PAGE = 5;
 

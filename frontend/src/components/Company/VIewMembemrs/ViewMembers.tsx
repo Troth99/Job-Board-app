@@ -88,7 +88,11 @@ export default function ViewMembers() {
   return (
     <>
     <MetaData seo={seo} />
-    <div className="member-list-page">
+
+ {loading ? (
+      <Spinner overlay={true} />
+    ) : (
+        <div className="member-list-page">
       <div className="members-list-container">
       <div className="content-title-members-list">
         <div className="members-title-row">
@@ -203,9 +207,13 @@ export default function ViewMembers() {
         autoOpen={true}
           recipient={showMessageModal}
           onClose={() => setShowMessageModal(null)}
-        />
-      )}
+          />
+        )}
     </div>
-    </>
-  );
+ )
+
+ }
+  </>
+  )
 }
+ 

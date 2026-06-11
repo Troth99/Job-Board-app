@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import Hero from "./HeroSection/Hero";
-import { Category } from "../../hooks/utils/useCategoriesIndex";
 import useJobs from "../../hooks/utils/useJobBoard";
-import useCategories from "../../hooks/utils/useCategoriesIndex";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import RecentJobs from "./RecentJobs/RecentJobs";
 import FullPageSpinner from "../FullPageSpinner/FullPageSpinner";
@@ -54,6 +52,7 @@ useEffect(() => {
 fetchRecentJobs()
 fetchApplicationStatistics()
 },[])
+
 
   return (
     <div>
