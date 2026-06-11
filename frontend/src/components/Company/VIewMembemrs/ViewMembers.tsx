@@ -24,12 +24,12 @@ export default function ViewMembers() {
 
   const {
     getCompanyMembers,
-    loading,
     changeMemberRole,
     kickMemberFromCompany,
   } = useCompany();
   const { userRole } = useRole();
   const [members, setMembers] = useState<CompanyMember[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const sorterMembersByRole = (members: CompanyMember[]) => {
     const rolePriority: { [key: string]: number } = {
@@ -47,15 +47,12 @@ export default function ViewMembers() {
     const fetchMembers = async () => {
       if (companyId) {
         const data = await getCompanyMembers(companyId);
-        console.log("Fetched members:", data);
         setMembers(sorterMembersByRole(data));
+        setLoading(false);
       }
     };
     fetchMembers();
   }, [companyId]);
-  if (loading) {
-    return <Spinner overlay={true} />;
-  }
 
   const changeRoleHandler = async (memberId: string, newRole: string) => {
     if (!companyId) return;
