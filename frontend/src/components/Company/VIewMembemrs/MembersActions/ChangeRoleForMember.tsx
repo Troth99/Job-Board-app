@@ -12,7 +12,7 @@ export default function ChangeRoleForMember({
   member: CompanyMember;
   showOptions: string | null;
   setShowOptions: React.Dispatch<React.SetStateAction<string | null>>;
-  changeRoleHandler: (memberId: string, newRole: string) => void;
+  changeRoleHandler: (newRole: string) => void;
   availableRoles: string[];
 }) {
   return (
@@ -37,7 +37,7 @@ export default function ChangeRoleForMember({
                     key={role}
                     className="dropdown-option"
                     onClick={() => {
-                      changeRoleHandler(member._id, role);
+                      changeRoleHandler(role);
                       setShowOptions(null);
                     }}
                   >

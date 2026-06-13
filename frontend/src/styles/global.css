@@ -125,3 +125,107 @@ body[data-theme="dark"] .error-message {
   font-weight: 500 !important;
   color: var(--text-color) !important;
 }
+
+.Toastify__toast-container {
+  width: min(92vw, 420px);
+}
+
+.Toastify__toast {
+  min-height: 68px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #dbe4ee;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
+  color: #0f172a;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+  font-family: 'Roboto', sans-serif;
+}
+
+.Toastify__toast-body {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.Toastify__close-button {
+  color: #64748b;
+  opacity: 0.9;
+}
+
+.Toastify__close-button:hover {
+  color: #0f172a;
+}
+
+.Toastify__toast--success {
+  border-left: 4px solid #16a085;
+}
+
+.Toastify__toast--error {
+  border-left: 4px solid #ef4444;
+}
+
+.Toastify__toast--info {
+  border-left: 4px solid #0284c7;
+}
+
+.Toastify__toast--warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.Toastify__progress-bar {
+  height: 4px;
+}
+
+.Toastify__progress-bar--success {
+  background: linear-gradient(90deg, #16a085 0%, #0284c7 100%);
+}
+
+.Toastify__progress-bar--error {
+  background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+}
+
+.Toastify__progress-bar--info {
+  background: linear-gradient(90deg, #0284c7 0%, #38bdf8 100%);
+}
+
+.Toastify__progress-bar--warning {
+  background: linear-gradient(90deg, #f59e0b 0%, #f97316 100%);
+}
+
+[data-theme="dark"] .Toastify__toast,
+body[data-theme="dark"] .Toastify__toast {
+  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+  color: #f8fafc;
+  border-color: #334155;
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.55);
+}
+
+[data-theme="dark"] .Toastify__close-button,
+body[data-theme="dark"] .Toastify__close-button {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .Toastify__close-button:hover,
+body[data-theme="dark"] .Toastify__close-button:hover {
+  color: #f8fafc;
+}
+
+@media (max-width: 640px) {
+  .Toastify__toast-container {
+    width: calc(100vw - 24px);
+    left: 12px;
+    margin: 0;
+  }
+
+  .Toastify__toast {
+    padding: 12px 14px;
+    min-height: 60px;
+  }
+
+  .Toastify__toast-body {
+    font-size: 0.9rem;
+  }
+}

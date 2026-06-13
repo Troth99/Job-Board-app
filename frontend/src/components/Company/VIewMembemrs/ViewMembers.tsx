@@ -12,6 +12,7 @@ import MetaData from "../../../seo/MetaDataTags";
 import MembersCard from "./MembersCard";
 import ChangeRoleForMember from "./MembersActions/ChangeRoleForMember";
 import KickMemberFromCompany from "./MembersActions/KickMemberFromCompany";
+import { toast } from "react-toastify";
 
 const availableRoles = ["admin", "recruiter", "member"];
 
@@ -51,28 +52,35 @@ export default function ViewMembers() {
     fetchMembers();
   }, [companyId]);
 
-  const changeRoleHandler = async (memberId: string, newRole: string) => {
+  const changeRoleHandler = async (memberId: string, newRole: string, member: CompanyMember) => {
     if (!companyId) return;
+
+  const memberName = member.userId?.name || member.userId?.email || "Member";
     try {
       await changeMemberRole(companyId, memberId, newRole);
 
       const data = await getCompanyMembers(companyId);
       setMembers(sorterMembersByRole(data));
+        toast.success(`${memberName}'s role updated to ${newRole} successfully.`);
     } catch (error) {
       console.error("Failed to update the role.", error);
+      toast.error("Failed to update the role.");
     }
   };
 
-  const kickMemberHandler = async (memberId: string) => {
+  const kickMemberHandler = async (memberId: string, member: CompanyMember) => {
     if (!companyId) return;
     setLoading(true);
+    const memberName = member.userId?.name || member.userId?.email || "Member";
     try {
       await kickMemberFromCompany(companyId, memberId);
       setMembers((prevMembers: CompanyMember[]) =>
         prevMembers.filter((m) => m._id !== memberId),
       );
+      toast.success(`${memberName} has been removed from the company.`);
     } catch (error) {
       console.error("Failed to kick member from the company", error);
+      toast.error("Failed to remove the member.");
     } finally {
       setLoading(false);
     }
@@ -135,14 +143,16 @@ export default function ViewMembers() {
                         member={member}
                         showOptions={showOptions}
                         setShowOptions={setShowOptions}
-                        changeRoleHandler={changeRoleHandler}
+                        changeRoleHandler={(newRole) =>
+                          changeRoleHandler(member._id, newRole, member)
+                        }
                         availableRoles={availableRoles}
                       />
                       <KickMemberFromCompany
                         userRole={userRole}
                         member={member}
                         loading={loading}
-                        kickMemberHandler={kickMemberHandler}
+                        kickMemberHandler={() => kickMemberHandler(member._id, member)}
                       />
                     </div>
                   </div>
