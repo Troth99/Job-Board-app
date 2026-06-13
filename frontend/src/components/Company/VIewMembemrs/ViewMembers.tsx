@@ -15,8 +15,6 @@ import KickMemberFromCompany from "./MembersActions/KickMemberFromCompany";
 
 const availableRoles = ["admin", "recruiter", "member"];
 
-//refractor css
-
 export default function ViewMembers() {
   const { companyId } = useParams();
   const [showOptions, setShowOptions] = useState<string | null>(null);
@@ -84,6 +82,7 @@ export default function ViewMembers() {
     setShowMessageModal(email);
   };
 
+
   return (
     <>
       <MetaData seo={seo} />
@@ -142,6 +141,7 @@ export default function ViewMembers() {
                       <KickMemberFromCompany
                         userRole={userRole}
                         member={member}
+                        loading={loading}
                         kickMemberHandler={kickMemberHandler}
                       />
                     </div>

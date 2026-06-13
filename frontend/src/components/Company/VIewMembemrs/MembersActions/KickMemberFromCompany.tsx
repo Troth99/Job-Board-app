@@ -4,10 +4,12 @@ export default function KickMemberFromCompany({
   userRole,
   member,
   kickMemberHandler,
+  loading
 }: {
   userRole: string | null | undefined;
   member: CompanyMember;
   kickMemberHandler: (memberId: string) => void;
+  loading: boolean;
 }) {
   return (
     <>
@@ -17,9 +19,16 @@ export default function KickMemberFromCompany({
           <button
             className="action-btn remove"
             title="Remove Member"
-            onClick={() => kickMemberHandler(member._id)}
+            disabled={loading}
+            onClick={() => {
+              if (loading) {
+                return;
+              }
+
+              kickMemberHandler(member._id);
+            }}
           >
-            Kick
+            {loading ? "Removing..." : "Remove Member"}
           </button>
         )}
     </>
