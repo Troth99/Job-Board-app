@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./RegisterCompany.css";
 import "./Responsive.css";
 import { showSuccess } from "../../../utils/toast";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { validateCompany } from "../../validators/registerCompanyValidation";
 import useForm from "../../../hooks/shared/useForm";
 import useCompany from "../../../hooks/utils/useCompanyMethods";
@@ -16,6 +16,11 @@ export interface RegisterCompanyInterface extends Record<string, string> {
   logo: string;
   size: string;
   foundedYear: string;
+  phone: string;
+  email: string;
+  officeLocation: string;
+  sector: string;
+  whyWorkHere: string;
 }
 
 const initialValues: RegisterCompanyInterface = {
@@ -77,14 +82,14 @@ export default function RegisterCompany() {
 
   return (
     <div className="create-company-container">
-      <h2>Create Company</h2>
+      <h2>Register Company</h2>
       <form className="create-company-form" onSubmit={formHandler}>
         <div className="form-group">
           <label htmlFor="name">Company Name</label>
           <input
             type="text"
             id="name"
-            placeholder="Enter company name"
+            placeholder="Company name"
             {...register("name")}
           />
           <div className="error-message">{errors.name}</div>
@@ -95,7 +100,7 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="industry"
-            placeholder="Enter industry"
+            placeholder="Industry"
             {...register("industry")}
           />
           <div className="error-message">{errors.industry}</div>
@@ -106,20 +111,53 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="location"
-            placeholder="Enter location"
+            placeholder="Location"
             {...register("location")}
           />
           <div className="error-message">{errors.location}</div>
         </div>
 
         <div className="form-group">
+          <label htmlFor="officeLocation">Office Location</label>
+          <input
+            type="text"
+            id="officeLocation"
+            placeholder="Office location"
+            {...register("officeLocation")}
+          />
+          <div className="error-message">{errors.officeLocation}</div>
+        </div>
+
+        <div className="form-group">
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            placeholder="Enter description"
+            placeholder="Company description"
             {...register("description")}
           ></textarea>
           <div className="error-message">{errors.description}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="whyWorkHere">
+            Why Work Here <span className="optional-badge">Optional</span>
+          </label>
+          <textarea
+            id="whyWorkHere"
+            placeholder="e.g., Great company culture, Growth opportunities, Flexible schedule"
+            {...register("whyWorkHere")}
+          ></textarea>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="sector">Sector</label>
+          <input
+            type="text"
+            id="sector"
+            placeholder="Sector"
+            {...register("sector")}
+          />
+          <div className="error-message">{errors.sector}</div>
         </div>
 
         <div className="form-group">
@@ -127,7 +165,7 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="website"
-            placeholder="Enter website URL"
+            placeholder="Website URL"
             {...register("website")}
           />
           <div className="error-message">{errors.website}</div>
@@ -138,7 +176,7 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="logo"
-            placeholder="Enter logo URL"
+            placeholder="Logo URL"
             {...register("logo")}
           />
           <div className="error-message">{errors.logo}</div>
@@ -149,7 +187,7 @@ export default function RegisterCompany() {
           <input
             type="email"
             id="email"
-            placeholder="Enter contact email"
+            placeholder="Contact email"
             {...register("email")}
           />
           <div className="error-message">{errors.email}</div>
@@ -160,42 +198,10 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="phone"
-            placeholder="Enter contact phone number"
+            placeholder="Contact phone"
             {...register("phone")}
           />
           <div className="error-message">{errors.phone}</div>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="officeLocation">Office Location</label>
-          <input
-            type="text"
-            id="officeLocation"
-            placeholder="Enter office location"
-            {...register("officeLocation")}
-          />
-          <div className="error-message">{errors.officeLocation}</div>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="sector">Sector</label>
-          <input
-            type="text"
-            id="sector"
-            placeholder="Enter sector"
-            {...register("sector")}
-          />
-          <div className="error-message">{errors.sector}</div>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="whyWorkHere">Why Work Here</label>
-          <textarea
-            id="whyWorkHere"
-            placeholder="Enter reasons to work here"
-            {...register("whyWorkHere")}
-          ></textarea>
-          <div className="error-message">{errors.whyWorkHere}</div>
         </div>
 
         <div className="form-group">
@@ -203,7 +209,7 @@ export default function RegisterCompany() {
           <input
             type="text"
             id="size"
-            placeholder="Enter size (e.g. 10-50)"
+            placeholder="Company size (e.g. 10-50)"
             {...register("size")}
           />
           <div className="error-message">{errors.size}</div>
@@ -214,7 +220,7 @@ export default function RegisterCompany() {
           <input
             type="number"
             id="foundedYear"
-            placeholder="Enter founded year"
+            placeholder="Founded year"
             {...register("foundedYear")}
           />
           <div className="error-message">{errors.foundedYear}</div>
@@ -225,7 +231,7 @@ export default function RegisterCompany() {
           className="create-company-button"
           disabled={loading}
         >
-          {loading ? "Creating..." : "Create Company"}
+          {loading ? "Registering..." : "Register Company"}
         </button>
       </form>
     </div>

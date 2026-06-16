@@ -6,7 +6,6 @@ const requiredFields = [
   "phone",
   "officeLocation",
   "sector",
-  "whyWorkHere",
   "description",
   "website",
   "logo",
@@ -27,7 +26,7 @@ export function validateCompany(form: Record<string, string>) {
 
   for (const field of requiredFields) {
     if (!form[field] || form[field].trim().length === 0) {
-      errors[field] = `${formatFieldName(field)} is required.`;
+      errors[field] = `This field is required.`;
     }
   }
 
