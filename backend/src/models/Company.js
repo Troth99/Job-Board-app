@@ -15,28 +15,28 @@ const companySchema = new Schema(
     },
     description: {
       type: String,
-      default: "",
+      required: true,
     },
     phone: {
       type: String,
-      default: "",
+      required: true,
     },
     email: {
       type: String,
-      default: "",
+      required: true,
     },
     officeLocation: {
       type: String,
-      default: "",
+      required: true,
     },
     sector :  {
       type: String,
-      default: "",
+      required: true,
     },
 
     whyWorkHere: {
       type: String,
-      default: "",
+      required: true,
     },
   
     location: {

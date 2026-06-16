@@ -22,6 +22,11 @@ const initialValues: RegisterCompanyInterface = {
   name: "",
   industry: "",
   location: "",
+  email: "",
+  phone: "",
+  officeLocation: "",
+  sector: "",
+  whyWorkHere: "",
   description: "",
   website: "",
   logo: "",
@@ -137,6 +142,60 @@ export default function RegisterCompany() {
             {...register("logo")}
           />
           <div className="error-message">{errors.logo}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter contact email"
+            {...register("email")}
+          />
+          <div className="error-message">{errors.email}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="phone">Phone</label>
+          <input
+            type="text"
+            id="phone"
+            placeholder="Enter contact phone number"
+            {...register("phone")}
+          />
+          <div className="error-message">{errors.phone}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="officeLocation">Office Location</label>
+          <input
+            type="text"
+            id="officeLocation"
+            placeholder="Enter office location"
+            {...register("officeLocation")}
+          />
+          <div className="error-message">{errors.officeLocation}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="sector">Sector</label>
+          <input
+            type="text"
+            id="sector"
+            placeholder="Enter sector"
+            {...register("sector")}
+          />
+          <div className="error-message">{errors.sector}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="whyWorkHere">Why Work Here</label>
+          <textarea
+            id="whyWorkHere"
+            placeholder="Enter reasons to work here"
+            {...register("whyWorkHere")}
+          ></textarea>
+          <div className="error-message">{errors.whyWorkHere}</div>
         </div>
 
         <div className="form-group">
