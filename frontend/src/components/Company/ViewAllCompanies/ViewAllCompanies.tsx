@@ -89,29 +89,6 @@ export default function ViewAllCompanies() {
               </p>
             </div>
           ))}
-          {companies.length > 5 && (
-            <div className="pagination">
-              <button
-                onClick={() =>
-                  setSearchParams({ page: (pageFromUrl - 1).toString() })
-                }
-                disabled={pageFromUrl === 1}
-              >
-                Previous
-              </button>
-              <span>
-                Page {pageFromUrl} of {totalPages}
-              </span>
-              <button
-                onClick={() =>
-                  setSearchParams({ page: (pageFromUrl + 1).toString() })
-                }
-                disabled={pageFromUrl === totalPages}
-              >
-                Next
-              </button>
-            </div>
-          )}
         </div>
       )}
     </>
