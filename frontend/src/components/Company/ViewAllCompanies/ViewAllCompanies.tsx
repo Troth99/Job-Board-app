@@ -1,19 +1,22 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import useCompany from "../../../hooks/utils/useCompanyMethods";
 import "./ViewAllCompanies.css";
 import { formatDate } from "../../../utils/formData";
 import Spinner from "../../Spinner/Spinner";
 import Pagination from "../../Pagination/Pagination";
-import { useSearchParams } from "react-router";
+import { Meta, useSearchParams } from "react-router";
+import MetaData from "../../../seo/MetaDataTags";
+import { Container } from "../../Container/Container";
+import { generateCompaniesSeo } from "../../../seo/seo";
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 8;
 
 export default function ViewAllCompanies() {
   const { loading, companies, getCompanies } = useCompany();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchInput, setSearchInput] = useState(searchTerm);
+  const searchFromUrl = searchParams.get("search") || "";
+  const [searchInput, setSearchInput] = useState(searchFromUrl);
 
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
 
@@ -22,13 +25,15 @@ export default function ViewAllCompanies() {
     totalCompanies: 0,
   });
 
+  const seo = generateCompaniesSeo(searchFromUrl, pageFromUrl);
+
   useEffect(() => {
     const fetchAllCompanies = async () => {
       try {
         const data = await getCompanies(
           ITEMS_PER_PAGE,
           pageFromUrl,
-          searchTerm,
+          searchFromUrl,
         );
         if (!data) {
           return;
@@ -43,17 +48,59 @@ export default function ViewAllCompanies() {
       }
     };
     fetchAllCompanies();
-  }, [pageFromUrl, searchTerm]);
+  }, [pageFromUrl, searchFromUrl]);
 
-  if (loading) {
-    return <Spinner overlay={true} />;
-  }
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setSearchInput(event.target.value);
+  };
+
+  const handleSearchSubmit = () => {
+    setSearchParams((currentParams) => {
+      const nextParams = new URLSearchParams(currentParams);
+      nextParams.set("page", "1");
+      if (searchInput.trim()) {
+        nextParams.set("search", searchInput.trim());
+      } else {
+        nextParams.delete("search");
+      }
+      return nextParams;
+    });
+  };
+
+  const handleClearSearch = () => {
+    setSearchInput("");
+
+    setSearchParams((currentParams) => {
+      const nextParams = new URLSearchParams(currentParams);
+      nextParams.set("page", "1");
+      nextParams.delete("search");
+      return nextParams;
+    });
+  };
+
+  const handleSearchKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    if (event.key === "Enter") {
+      handleSearchSubmit();
+    }
+  };
+
 
   const companyCount = companies.length;
   const visibleCount = companies.length;
 
   return (
-    <section className="companies-directory">
+<>
+    <MetaData seo={seo} />
+
+    {loading ? (
+      <Spinner overlay={true} />
+    ) : (
+      <Container>
+            <section className="companies-directory">
       <header className="companies-hero">
         <div className="companies-hero-copy">
           <p className="companies-kicker">Company directory</p>
@@ -77,22 +124,15 @@ export default function ViewAllCompanies() {
           <input
             type="search"
             value={searchInput}
-            onChange={(event) => setSearchInput(event.target.value)}
+            onChange={handleSearchInputChange}
+            onKeyDown={handleSearchKeyDown}
             placeholder="Name, industry, location, size"
           />
         </label>
         <button
           type="button"
           className="companies-search-button"
-          onClick={() => {
-            setSearchTerm(searchInput);
-
-            setSearchParams((currentParams) => {
-              const nextParams = new URLSearchParams(currentParams);
-              nextParams.set("page", "1");
-              return nextParams;
-            });
-          }}
+          onClick={handleSearchSubmit}
         >
           Search
         </button>
@@ -100,15 +140,8 @@ export default function ViewAllCompanies() {
         <button
           type="button"
           className="companies-clear-button"
-          onClick={() => {
-            setSearchTerm("");
-            setSearchParams((currentParams) => {
-              const nextParams = new URLSearchParams(currentParams);
-              nextParams.set("page", "1");
-              return nextParams;
-            });
-          }}
-          disabled={!searchTerm}
+          onClick={handleClearSearch}
+          disabled={!searchInput && !searchFromUrl}
         >
           Clear filter
         </button>
@@ -214,5 +247,10 @@ export default function ViewAllCompanies() {
         onPageChange={(page) => setSearchParams({ page: page.toString() })}
       />
     </section>
+    </Container>
+    )}
+   
+  
+  </>
   );
 }
