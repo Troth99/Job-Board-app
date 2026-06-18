@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { UserDataProvider } from "./context/UseDataContext";
 import { RoleProvider } from "./context/RoleContext";
 import { NotificationProvider } from "./context/NotificationContext";

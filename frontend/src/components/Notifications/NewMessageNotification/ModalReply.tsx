@@ -1,10 +1,8 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import { useMessageValidation } from "../../validators/useMessageValidation";
 import { useNotification } from "../../../hooks/utils/useNotification";
 import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
 
-
-//To fix css bug with the modal - to add the modal css to the global styles and not only to the company calendar styles, also to add specific styles for the reply modal to avoid conflicts with the calendar modal styles. To add - click on event to see details in a modal, also to add events from the calendar view and not only from the job details page
 interface ModalReplyProps {
   isOpen: boolean;
   onClose: () => void;
@@ -61,9 +59,12 @@ export function ModalReply({
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content modal-reply-size">
-        <button className="close-btn" onClick={onClose}>
+    <div className="reply-modal-overlay" onClick={onClose}>
+      <div
+        className="reply-modal-content modal-reply-size"
+        onClick={e => e.stopPropagation()}
+      >
+        <button className="reply-modal-close-btn" onClick={onClose}>
           ×
         </button>
         <h2>Reply to message</h2>

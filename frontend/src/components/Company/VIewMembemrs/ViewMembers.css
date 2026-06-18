@@ -249,7 +249,7 @@
 
 .custom-dropdown {
 	position: absolute;
-	top: calc(100% + 8px);
+	bottom: calc(100% + 8px);
 	right: 0;
 	min-width: 170px;
 	z-index: 5;
@@ -265,20 +265,20 @@
 .custom-dropdown::before {
 	content: "";
 	position: absolute;
-	top: -6px;
+	bottom: -6px;
 	right: 18px;
 	width: 12px;
 	height: 12px;
 	background: inherit;
-	border-left: 1px solid #d6e1ec;
-	border-top: 1px solid #d6e1ec;
+	border-right: 1px solid #d6e1ec;
+	border-bottom: 1px solid #d6e1ec;
 	transform: rotate(45deg);
 }
 
 @keyframes role-dropdown-in {
 	from {
 		opacity: 0;
-		transform: translateY(-4px) scale(0.98);
+		transform: translateY(4px) scale(0.98);
 	}
 	to {
 		opacity: 1;

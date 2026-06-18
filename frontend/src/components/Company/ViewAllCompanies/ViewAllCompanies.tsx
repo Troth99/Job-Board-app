@@ -1,119 +1,256 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useCompany from "../../../hooks/utils/useCompanyMethods";
 import "./ViewAllCompanies.css";
 import { formatDate } from "../../../utils/formData";
-import { useSearchParams } from "react-router";
 import Spinner from "../../Spinner/Spinner";
+import Pagination from "../../Pagination/Pagination";
+import { Meta, useSearchParams } from "react-router";
+import MetaData from "../../../seo/MetaDataTags";
+import { Container } from "../../Container/Container";
+import { generateCompaniesSeo } from "../../../seo/seo";
+
+const ITEMS_PER_PAGE = 8;
 
 export default function ViewAllCompanies() {
   const { loading, companies, getCompanies } = useCompany();
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchFromUrl = searchParams.get("search") || "";
+  const [searchInput, setSearchInput] = useState(searchFromUrl);
+
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
 
+  const [pagination, setPagination] = useState({
+    totalPages: 1,
+    totalCompanies: 0,
+  });
 
-  const sortedCompanies = [...companies].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  );
+  const seo = generateCompaniesSeo(searchFromUrl, pageFromUrl);
 
   useEffect(() => {
     const fetchAllCompanies = async () => {
       try {
-        await getCompanies();
+        const data = await getCompanies(
+          ITEMS_PER_PAGE,
+          pageFromUrl,
+          searchFromUrl,
+        );
+        if (!data) {
+          return;
+        }
+
+        setPagination({
+          totalPages: data.totalPages,
+          totalCompanies: data.totalCompanies,
+        });
       } catch (error) {
-        console.error("Failed to fetch comapnies.");
+        console.error("Failed to fetch companies.");
       }
     };
     fetchAllCompanies();
-  }, []);
+  }, [pageFromUrl, searchFromUrl]);
 
-  //To refcraftor entire page to implement pagination in backend and frontend and remove sorting in frontend as it will be sorted in backend by createdAt field in descending order. Also to add search functionality in backend and frontend to search companies by name, industry and location.
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setSearchInput(event.target.value);
+  };
+
+  const handleSearchSubmit = () => {
+    setSearchParams((currentParams) => {
+      const nextParams = new URLSearchParams(currentParams);
+      nextParams.set("page", "1");
+      if (searchInput.trim()) {
+        nextParams.set("search", searchInput.trim());
+      } else {
+        nextParams.delete("search");
+      }
+      return nextParams;
+    });
+  };
+
+  const handleClearSearch = () => {
+    setSearchInput("");
+
+    setSearchParams((currentParams) => {
+      const nextParams = new URLSearchParams(currentParams);
+      nextParams.set("page", "1");
+      nextParams.delete("search");
+      return nextParams;
+    });
+  };
+
+  const handleSearchKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    if (event.key === "Enter") {
+      handleSearchSubmit();
+    }
+  };
 
 
-  if(loading){
-    return <Spinner overlay={true} />
-  }
+  const companyCount = companies.length;
+  const visibleCount = companies.length;
+
   return (
-    <>
-      {!loading && companies.length === 0 && <div>No companies found.</div>}
-      {companies.length > 0 && (
-        <div>
-          {sortedCompanies.map((company) => (
-            <div className="company-card-unique" key={company._id}>
-              <img
-                src={
-                  company?.logo && company.logo.trim().startsWith("http")
-                    ? company.logo
-                    : "/assets/defaultCompany.png"
-                }
-                alt={
-                  company?.logo && company.logo.trim() !== ""
-                    ? company.name
-                    : "Default Company Logo"
-                }
-                className="company-logo"
-                onError={(e) => {
-                  e.currentTarget.src = "/assets/defaultCompany.png";
-                }}
-              />
-              <h2 className="company-title-unique">{company.name}</h2>
-              <p className="company-industry-unique">
-                <span className="company-label-unique">Industry:</span>{" "}
-                {company.industry}
-              </p>
-              <p className="company-desc-unique">
-                <span className="company-label-unique">Description:</span>{" "}
-                {company.description}
-              </p>
-              <p className="company-location-unique">
-                <span className="company-label-unique">Location:</span>{" "}
-                {company.location}
-              </p>
-              <p className="company-website-unique">
-                <span className="company-label-unique">Website:</span>{" "}
-                <a
-                  href={company.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="company-link-unique"
-                >
-                  {company.website}
-                </a>
-              </p>
-              <p className="company-size-unique">
-                <span className="company-label-unique">Company Size:</span>{" "}
-                {company.size}
-              </p>
-              <p className="company-founded-unique">
-                <span className="company-label-unique">Founded Year:</span>{" "}
-                {formatDate(company.createdAt)}
-              </p>
-            </div>
-          ))}
-          {companies.length > 5 && (
-            <div className="pagination">
-              <button
-                onClick={() =>
-                  setSearchParams({ page: (pageFromUrl - 1).toString() })
-                }
-                disabled={pageFromUrl === 1}
+<>
+    <MetaData seo={seo} />
+
+    {loading ? (
+      <Spinner overlay={true} />
+    ) : (
+      <Container>
+            <section className="companies-directory">
+      <header className="companies-hero">
+        <div className="companies-hero-copy">
+          <p className="companies-kicker">Company directory</p>
+          <h1>Browse companies in one clean view.</h1>
+          <p className="companies-description">
+            Compare teams by industry, location, size, and website without
+            losing the visual language of the rest of the app.
+          </p>
+        </div>
+
+        <div className="companies-summary">
+          <span>Available companies</span>
+          <strong>{companyCount}</strong>
+          <small>{visibleCount} shown with the current filter</small>
+        </div>
+      </header>
+
+      <div className="companies-toolbar">
+        <label className="companies-search">
+          <span>Search</span>
+          <input
+            type="search"
+            value={searchInput}
+            onChange={handleSearchInputChange}
+            onKeyDown={handleSearchKeyDown}
+            placeholder="Name, industry, location, size"
+          />
+        </label>
+        <button
+          type="button"
+          className="companies-search-button"
+          onClick={handleSearchSubmit}
+        >
+          Search
+        </button>
+
+        <button
+          type="button"
+          className="companies-clear-button"
+          onClick={handleClearSearch}
+          disabled={!searchInput && !searchFromUrl}
+        >
+          Clear filter
+        </button>
+      </div>
+
+      {companyCount === 0 ? (
+        <div className="companies-empty-state">
+          <h2>No companies found.</h2>
+          <p>
+            Once companies are created, they will appear here in a structured
+            directory layout.
+          </p>
+        </div>
+      ) : companies.length === 0 ? (
+        <div className="companies-empty-state">
+          <h2>No matches for this filter.</h2>
+          <p>Try a different company name, city, industry, or team size.</p>
+        </div>
+      ) : (
+        <div className="companies-grid">
+          {companies.map((company) => {
+            const logoSrc =
+              company?.logo && company.logo.trim().startsWith("http")
+                ? company.logo
+                : "/assets/defaultCompany.png";
+
+            const website = company.website?.trim();
+            const websiteHref =
+              website &&
+              !website.startsWith("http://") &&
+              !website.startsWith("https://")
+                ? `https://${website}`
+                : website;
+
+            return (
+              <article
+                className="company-card-unique company-card"
+                key={company._id}
               >
-                Previous
-              </button>
-              <span>
-                Page {pageFromUrl} of {totalPages}
-              </span>
-              <button
-                onClick={() =>
-                  setSearchParams({ page: (pageFromUrl + 1).toString() })
-                }
-                disabled={pageFromUrl === totalPages}
-              >
-                Next
-              </button>
-            </div>
-          )}
+                <div className="company-card-top">
+                  <img
+                    src={logoSrc}
+                    alt={
+                      company?.logo && company.logo.trim() !== ""
+                        ? company.name
+                        : "Default Company Logo"
+                    }
+                    className="company-logo"
+                    onError={(e) => {
+                      e.currentTarget.src = "/assets/defaultCompany.png";
+                    }}
+                  />
+
+                  <div className="company-title-block">
+                    <h2 className="company-title-unique">{company.name}</h2>
+                    <div className="company-badges">
+                      <span>{company.industry || "Industry not set"}</span>
+                      <span>{company.size || "Size not set"}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="company-desc-unique">{company.description}</p>
+
+                <div className="company-details-grid">
+                  <p className="company-location-unique">
+                    <span className="company-label-unique">Location</span>
+                    {company.location}
+                  </p>
+                  <p className="company-founded-unique">
+                    <span className="company-label-unique">Added</span>
+                    {formatDate(company.createdAt)}
+                  </p>
+                </div>
+
+                <div className="company-footer-row">
+                  <p className="company-website-unique">
+                    <span className="company-label-unique">Website</span>
+                    {websiteHref ? (
+                      <a
+                        href={websiteHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="company-link-unique"
+                      >
+                        Visit site
+                      </a>
+                    ) : (
+                      <span className="company-muted-text">Not provided</span>
+                    )}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       )}
-    </>
+      <Pagination
+        currentPage={pageFromUrl}
+        totalPages={pagination.totalPages}
+        totalItems={pagination.totalCompanies}
+        itemsPerPage={ITEMS_PER_PAGE}
+        onPageChange={(page) => setSearchParams({ page: page.toString() })}
+      />
+    </section>
+    </Container>
+    )}
+   
+  
+  </>
   );
 }

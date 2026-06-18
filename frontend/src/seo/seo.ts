@@ -46,6 +46,28 @@ if (seoConfig[normalizedPageKey]) {
 
 };
 
+//Function to update SEO dynamically on the View all companies page based on search query
+export const generateCompaniesSeo = (
+  search?: string,
+  page?: number
+): SeoConfig => {
+  const normalizedSearch = search?.trim();
+
+  return {
+    ...defaultSeoConfig,
+    title: normalizedSearch
+      ? `Company results for "${normalizedSearch}" | Job Board`
+      : "Browse Companies | Job Board",
+    description: normalizedSearch
+      ? `Explore companies related to ${normalizedSearch} on Job Board.`
+      : "Browse companies by industry, location, size, and latest activity on Job Board.",
+    url: normalizedSearch
+      ? `${siteBaseUrl}/companies?page=${page || 1}&search=${encodeURIComponent(normalizedSearch)}`
+      : `${siteBaseUrl}/companies?page=${page || 1}`,
+    noindex: Boolean(normalizedSearch),
+  };
+};
+
 export const seoConfig: Record<string, SeoConfig> = {
   home: {
     title: "Job Board - Find Your Next Opportunity",    

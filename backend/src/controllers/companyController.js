@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 import { createCompanyService, getCompaniesService, getCompanyByIdService } from "../services/companyService.js"
 import { CompanyMember } from "../models/CompanyMember.js";
-import  Company  from "../models/Company.js";
+import Company from "../models/Company.js";
 import Jobs from "../models/Jobs.js";
 import Application from "../models/Application.js";
 import Notification from "../models/Notification.js";
@@ -31,14 +31,6 @@ export const createCompanyController = async (req, res) => {
   }
 }
 
-export const getCompaniesController = async (req, res) => {
-  try {
-    const companies = await getCompaniesService();
-    res.status(200).json(companies);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
 
 export const getCompanyByIdController = async (req, res) => {
   const companyId = req.params.id.trim()
@@ -293,6 +285,57 @@ export const AbandonCompanyController = async (req, res) => {
   await User.updateMany({ company: companyId }, { $unset: { company: "" } });
 
   return res.status(200).json({ message: "Company and all related data deleted successfully." });
+}
+
+export const getCompaniesController = async (req, res) => {
+  try {
+    const companies = await getCompaniesService();
+    res.status(200).json(companies);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getCompaniesByLimitController = async (req, res) => {
+
+  try {
+    const filter = {};
+    const limit = parseInt(req.query.limit) || 10 //default limit to 10 if not provided
+    const page = parseInt(req.query.page) || 1;
+    const skip = (page - 1) * limit;
+
+    const searchTerm = req.query.search?.trim();
+
+    if(searchTerm) {
+      filter.$or = [
+        { name: { $regex: searchTerm, $options: "i" } },
+        { industry: { $regex: searchTerm, $options: "i" } },
+        { location: { $regex: searchTerm, $options: "i" } },
+        { size: { $regex: searchTerm, $options: "i" } },
+        { description: { $regex: searchTerm, $options: "i" } }
+      ];
+    }
+
+    const totalCompanies = await Company.countDocuments(filter);
+
+    const companies = await Company
+    .find(filter)
+    .skip(skip)
+    .limit(limit);
+
+    res.status(200).json({
+      companies,
+      totalPages: Math.ceil(totalCompanies / limit),
+      currentPage: page,
+      totalCompanies,
+      limit
+    })
+
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+
 }
 
 export const updateCompanyControllr = async (req, res) => {
