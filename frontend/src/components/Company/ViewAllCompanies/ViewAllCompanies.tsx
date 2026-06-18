@@ -3,14 +3,25 @@ import useCompany from "../../../hooks/utils/useCompanyMethods";
 import "./ViewAllCompanies.css";
 import { formatDate } from "../../../utils/formData";
 import Spinner from "../../Spinner/Spinner";
+import Pagination from "../../Pagination/Pagination";
+import { useSearchParams } from "react-router";
+
+const ITEMS_PER_PAGE = 4;
 
 export default function ViewAllCompanies() {
   const { loading, companies, getCompanies } = useCompany();
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
+
+  const [pagination, setPagination] = useState({
+  totalPages: 1,
+  totalCompanies: 0,
+});
 
 
   const sortedCompanies = [...companies].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
 
   const filteredCompanies = useMemo(() => {
@@ -38,14 +49,21 @@ export default function ViewAllCompanies() {
   useEffect(() => {
     const fetchAllCompanies = async () => {
       try {
-        await getCompanies();
+        const data = await getCompanies(ITEMS_PER_PAGE, pageFromUrl);
+        if (!data) {
+          return;
+        }
+
+        setPagination({
+          totalPages: data.totalPages,
+          totalCompanies: data.totalCompanies,
+        });
       } catch (error) {
-        console.error("Failed to fetch comapnies.");
+        console.error("Failed to fetch companies.");
       }
     };
     fetchAllCompanies();
-  }, []);
-
+  }, [pageFromUrl]);
 
   if (loading) {
     return <Spinner overlay={true} />;
@@ -124,11 +142,18 @@ export default function ViewAllCompanies() {
                 : website;
 
             return (
-              <article className="company-card-unique company-card" key={company._id}>
+              <article
+                className="company-card-unique company-card"
+                key={company._id}
+              >
                 <div className="company-card-top">
                   <img
                     src={logoSrc}
-                    alt={company?.logo && company.logo.trim() !== "" ? company.name : "Default Company Logo"}
+                    alt={
+                      company?.logo && company.logo.trim() !== ""
+                        ? company.name
+                        : "Default Company Logo"
+                    }
                     className="company-logo"
                     onError={(e) => {
                       e.currentTarget.src = "/assets/defaultCompany.png";
@@ -179,6 +204,13 @@ export default function ViewAllCompanies() {
           })}
         </div>
       )}
+      <Pagination
+        currentPage={pageFromUrl}
+        totalPages={pagination.totalPages}
+        totalItems={pagination.totalCompanies}
+        itemsPerPage={ITEMS_PER_PAGE}
+        onPageChange={(page) => setSearchParams({ page: page.toString() })}
+      />
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addMemberToCompany, changeMemberRoleController, createCompanyController, getCompaniesController, getCompanyByIdController, getCompanyMembersController, getMyCompanyController, kickMemberFromCompanyController, transferOwnershipController, AbandonCompanyController } from "../controllers/companyController.js";
+import { addMemberToCompany, changeMemberRoleController, createCompanyController, getCompaniesByLimitController,getCompaniesController, getCompanyByIdController, getCompanyMembersController, getMyCompanyController, kickMemberFromCompanyController, transferOwnershipController, AbandonCompanyController } from "../controllers/companyController.js";
 import { protect } from "../middleware/authMiddleware.js";
 import { getMemberRole } from "../services/companyService.js";
 
@@ -8,7 +8,7 @@ import { getMemberRole } from "../services/companyService.js";
 const router = Router();
 
 router.post("/", protect, createCompanyController);
-router.get("/", getCompaniesController);
+router.get("/", getCompaniesByLimitController);
 router.get("/my-company", protect, getMyCompanyController);
 router.get('/:companyId/members/:userId/role', protect, getMemberRole);
 router.get('/:companyId/members', protect, getCompanyMembersController);

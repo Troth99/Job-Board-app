@@ -28,6 +28,14 @@ export interface Company {
   createdAt: string;
 }
 
+interface CompaniesResponse {
+  companies: Company[];
+  totalPages: number;
+  currentPage: number;
+  totalCompanies: number;
+  limit: number;
+}
+
 export default function useCompanies() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -49,12 +57,20 @@ export default function useCompanies() {
     }
   };
 
-  const getCompanies = async () => {
+  const getCompanies = async (
+    limit?: number,
+    page?: number
+  ): Promise<CompaniesResponse | undefined> => {
     setLoading(true);
     setError(null);
     try {
-      const response = await request(`${API_BASE}/companies`, "GET", {});
-      setCompanies(response);
+      const response = await request(
+        `${API_BASE}/companies?limit=${limit || 4}&page=${page || 1}`,
+        "GET",
+        {}
+      );
+      setCompanies(response.companies);
+      return response;
     } catch (err) {
       setError("Error fetching companies");
       console.error(err);
