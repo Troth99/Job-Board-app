@@ -10,46 +10,26 @@ const ITEMS_PER_PAGE = 4;
 
 export default function ViewAllCompanies() {
   const { loading, companies, getCompanies } = useCompany();
-  const [searchTerm, setSearchTerm] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchInput, setSearchInput] = useState(searchTerm);
+
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
 
   const [pagination, setPagination] = useState({
-  totalPages: 1,
-  totalCompanies: 0,
-});
-
-
-  const sortedCompanies = [...companies].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  );
-
-  const filteredCompanies = useMemo(() => {
-    const normalizedSearch = searchTerm.trim().toLowerCase();
-
-    if (!normalizedSearch) {
-      return sortedCompanies;
-    }
-
-    return sortedCompanies.filter((company) => {
-      const searchableFields = [
-        company.name,
-        company.industry,
-        company.location,
-        company.size,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-      return searchableFields.includes(normalizedSearch);
-    });
-  }, [searchTerm, sortedCompanies]);
+    totalPages: 1,
+    totalCompanies: 0,
+  });
 
   useEffect(() => {
     const fetchAllCompanies = async () => {
       try {
-        const data = await getCompanies(ITEMS_PER_PAGE, pageFromUrl);
+        const data = await getCompanies(
+          ITEMS_PER_PAGE,
+          pageFromUrl,
+          searchTerm,
+        );
         if (!data) {
           return;
         }
@@ -63,14 +43,14 @@ export default function ViewAllCompanies() {
       }
     };
     fetchAllCompanies();
-  }, [pageFromUrl]);
+  }, [pageFromUrl, searchTerm]);
 
   if (loading) {
     return <Spinner overlay={true} />;
   }
 
   const companyCount = companies.length;
-  const visibleCount = filteredCompanies.length;
+  const visibleCount = companies.length;
 
   return (
     <section className="companies-directory">
@@ -96,16 +76,38 @@ export default function ViewAllCompanies() {
           <span>Search</span>
           <input
             type="search"
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
+            value={searchInput}
+            onChange={(event) => setSearchInput(event.target.value)}
             placeholder="Name, industry, location, size"
           />
         </label>
+        <button
+          type="button"
+          className="companies-search-button"
+          onClick={() => {
+            setSearchTerm(searchInput);
+
+            setSearchParams((currentParams) => {
+              const nextParams = new URLSearchParams(currentParams);
+              nextParams.set("page", "1");
+              return nextParams;
+            });
+          }}
+        >
+          Search
+        </button>
 
         <button
           type="button"
           className="companies-clear-button"
-          onClick={() => setSearchTerm("")}
+          onClick={() => {
+            setSearchTerm("");
+            setSearchParams((currentParams) => {
+              const nextParams = new URLSearchParams(currentParams);
+              nextParams.set("page", "1");
+              return nextParams;
+            });
+          }}
           disabled={!searchTerm}
         >
           Clear filter
@@ -120,14 +122,14 @@ export default function ViewAllCompanies() {
             directory layout.
           </p>
         </div>
-      ) : filteredCompanies.length === 0 ? (
+      ) : companies.length === 0 ? (
         <div className="companies-empty-state">
           <h2>No matches for this filter.</h2>
           <p>Try a different company name, city, industry, or team size.</p>
         </div>
       ) : (
         <div className="companies-grid">
-          {filteredCompanies.map((company) => {
+          {companies.map((company) => {
             const logoSrc =
               company?.logo && company.logo.trim().startsWith("http")
                 ? company.logo

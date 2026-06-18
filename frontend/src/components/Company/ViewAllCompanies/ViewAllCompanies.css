@@ -20,6 +20,20 @@
   box-shadow: 0 18px 45px rgba(13, 17, 23, 0.08);
 }
 
+.companies-search-button {
+  border: 1px solid var(--accent-color);
+  background: var(--accent-color);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.9rem 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.companies-search-button:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
 .companies-hero-copy h1 {
   margin: 0.25rem 0 0.75rem;
   font-size: clamp(2rem, 4vw, 3.1rem);

@@ -304,14 +304,24 @@ export const getCompaniesByLimitController = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const skip = (page - 1) * limit;
 
+    const searchTerm = req.query.search?.trim();
 
-
-    if (req.query.search) {
-      filter.name = { $regex: req.query.search, $options: "i" };
+    if(searchTerm) {
+      filter.$or = [
+        { name: { $regex: searchTerm, $options: "i" } },
+        { industry: { $regex: searchTerm, $options: "i" } },
+        { location: { $regex: searchTerm, $options: "i" } },
+        { size: { $regex: searchTerm, $options: "i" } },
+        { description: { $regex: searchTerm, $options: "i" } }
+      ];
     }
 
     const totalCompanies = await Company.countDocuments(filter);
-    const companies = await Company.find(filter).skip(skip).limit(limit);
+
+    const companies = await Company
+    .find(filter)
+    .skip(skip)
+    .limit(limit);
 
     res.status(200).json({
       companies,

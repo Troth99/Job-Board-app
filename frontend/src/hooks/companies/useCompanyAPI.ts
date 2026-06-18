@@ -59,13 +59,21 @@ export default function useCompanies() {
 
   const getCompanies = async (
     limit?: number,
-    page?: number
+    page?: number,
+    searchTerm?: string
   ): Promise<CompaniesResponse | undefined> => {
     setLoading(true);
     setError(null);
     try {
+      const params = new URLSearchParams({
+        limit: String(limit || 10),
+        page: String(page || 1),
+      });
+      if(searchTerm?.trim()) {
+        params.append("search", searchTerm);
+      }
       const response = await request(
-        `${API_BASE}/companies?limit=${limit || 4}&page=${page || 1}`,
+        `${API_BASE}/companies?${params.toString()}`,
         "GET",
         {}
       );
