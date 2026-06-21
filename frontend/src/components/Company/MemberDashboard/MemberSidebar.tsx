@@ -36,6 +36,10 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
           <li>
             <a href="#overview-section">Overview</a>
           </li>
+          
+          <li>
+            <Link to={`/company/${props.companyId}/update`}>Update Company</Link>
+          </li>
           <li>
             <a href="#team-section">Team tools</a>
           </li>
