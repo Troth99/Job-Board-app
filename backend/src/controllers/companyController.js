@@ -306,7 +306,7 @@ export const getCompaniesByLimitController = async (req, res) => {
 
     const searchTerm = req.query.search?.trim();
 
-    if(searchTerm) {
+    if (searchTerm) {
       filter.$or = [
         { name: { $regex: searchTerm, $options: "i" } },
         { industry: { $regex: searchTerm, $options: "i" } },
@@ -319,9 +319,9 @@ export const getCompaniesByLimitController = async (req, res) => {
     const totalCompanies = await Company.countDocuments(filter);
 
     const companies = await Company
-    .find(filter)
-    .skip(skip)
-    .limit(limit);
+      .find(filter)
+      .skip(skip)
+      .limit(limit);
 
     res.status(200).json({
       companies,
@@ -338,6 +338,31 @@ export const getCompaniesByLimitController = async (req, res) => {
 
 }
 
-export const updateCompanyControllr = async (req, res) => {
-  //edit company details like name, description, location, website, etc. but not members or createdBy
+export const updateCompanyController = async (req, res) => {
+
+
+
+  try {
+    const copanyId = req.params.companyId;;
+
+    const copanyData = { ...req.body }
+
+    if (!Types.ObjectId.isValid(copanyId)) {
+      return res.status(400).json({ message: "Invalid company ID format" });
+    }
+
+    const updatedCompany = await Company.findByIdAndUpdate(copanyId, copanyData, { new: true, runValidators: true });
+
+    if (!updatedCompany) {
+      return res.status(404).json({ message: "Company not found" });
+    }
+
+    res.status(200).json(updatedCompany);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+
+
+
 }
