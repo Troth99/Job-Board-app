@@ -13,9 +13,6 @@ const requiredFields = [
   "foundedYear",
 ];
 
-const formatFieldName = (field: string) => {
-  return field.charAt(0).toUpperCase() + field.slice(1);
-};
 
 
 export function validateCompany(form: Record<string, string>) {

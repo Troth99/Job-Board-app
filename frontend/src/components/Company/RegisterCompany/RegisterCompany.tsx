@@ -3,7 +3,7 @@ import "./RegisterCompany.css";
 import "./Responsive.css";
 import { showSuccess } from "../../../utils/toast";
 import { Link, useNavigate } from "react-router";
-import { validateCompany } from "../../validators/registerCompanyValidation";
+import { validateCompany } from "../../validators/useCompanyValidation";
 import useForm from "../../../hooks/shared/useForm";
 import useCompany from "../../../hooks/utils/useCompanyMethods";
 

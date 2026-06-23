@@ -35,14 +35,7 @@ export default function useForm<T extends FormValues>(
     }));
   };
 
-  const blurHandler = (
-    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name } = e.target;
-    const formErrors = validateForm(values);
-    // Only update the specific field's error on blur
-  
-  };
+
 
   const formHandler = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,7 +52,6 @@ export default function useForm<T extends FormValues>(
     return {
       name: fieldName,
       onChange: changeHandler,
-      onBlur: blurHandler,
       // Keep inputs controlled for their entire lifetime.
       value: fieldValue ?? "",
     };
