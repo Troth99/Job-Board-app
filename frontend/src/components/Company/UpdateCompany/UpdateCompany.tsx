@@ -54,6 +54,8 @@ const mapCompanyToFormValues = (
   foundedYear: companyData.foundedYear || "",
 });
 
+//to add permission in route guard only admin or owner can update company details
+
 function UpdateCompany() {
   const [loading, setLoading] = useState<boolean>(false);
   const [initialValues, setInitialValues] =
