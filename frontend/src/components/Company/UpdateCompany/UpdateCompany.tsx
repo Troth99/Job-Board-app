@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useForm from "../../../hooks/shared/useForm";
 import { RegisterCompanyInterface } from "../RegisterCompany/RegisterCompany";
 import { validateCompany } from "../../validators/useCompanyValidation";
+import useCompanyAPI from "../../../hooks/companies/useCompanyAPI";
 
-const initialValues: RegisterCompanyInterface = {
+const emptyInitialValues: RegisterCompanyInterface = {
   name: "",
   industry: "",
   location: "",
@@ -19,8 +20,63 @@ const initialValues: RegisterCompanyInterface = {
   foundedYear: "",
 };
 
+type CompanyFormSource = Partial<{
+  name: string;
+  industry: string;
+  location: string;
+  email: string;
+  phone: string;
+  officeLocation: string;
+  sector: string;
+  whyWorkHere: string;
+  description: string;
+  website: string;
+  logo: string;
+  size: string;
+  foundedYear: string;
+}>;
+
+const mapCompanyToFormValues = (
+  companyData: CompanyFormSource,
+): RegisterCompanyInterface => ({
+  name: companyData.name || "",
+  industry: companyData.industry || "",
+  location: companyData.location || "",
+  email: companyData.email || "",
+  phone: companyData.phone || "",
+  officeLocation: companyData.officeLocation || "",
+  sector: companyData.sector || "",
+  whyWorkHere: companyData.whyWorkHere || "",
+  description: companyData.description || "",
+  website: companyData.website || "",
+  logo: companyData.logo || "",
+  size: companyData.size || "",
+  foundedYear: companyData.foundedYear || "",
+});
+
 function UpdateCompany() {
   const [loading, setLoading] = useState<boolean>(false);
+  const [initialValues, setInitialValues] =
+    useState<RegisterCompanyInterface>(emptyInitialValues);
+  const { getLoggedInUserCompany } = useCompanyAPI();
+
+  useEffect(() => {
+    const fetchCompanyData = async () => {
+      setLoading(true);
+      try {
+        const companyData = await getLoggedInUserCompany();
+        if (companyData) {
+          setInitialValues(mapCompanyToFormValues(companyData));
+        }
+      } catch (error) {
+        console.error("Error fetching company data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCompanyData();
+  }, []);
 
   const formAction = async (values: RegisterCompanyInterface) => {};
 
@@ -191,7 +247,4 @@ function UpdateCompany() {
 }
 
 export default UpdateCompany;
-function useCompanyValidation(): { validateForm: any; } {
-    throw new Error("Function not implemented.");
-}
 

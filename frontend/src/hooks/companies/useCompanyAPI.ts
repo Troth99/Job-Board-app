@@ -101,7 +101,7 @@ export default function useCompanies() {
     }
   };
 
-  const getMyCompany = async (): Promise<Company | null> => {
+  const getLoggedInUserCompany = async (): Promise<Company | null> => {
     setLoading(true);
     setError(null);
     try {
@@ -184,7 +184,7 @@ export default function useCompanies() {
     getCompanies,
     getCompanyById,
     getCompanyFromLocalStorage,
-    getMyCompany,
+     getLoggedInUserCompany,
     checkUser,
     transferOwnership,
     abandonCompany,
