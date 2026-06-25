@@ -3,6 +3,7 @@ import useForm from "../../../hooks/shared/useForm";
 import { RegisterCompanyInterface } from "../RegisterCompany/RegisterCompany";
 import { validateCompany } from "../../validators/useCompanyValidation";
 import useCompanyAPI from "../../../hooks/companies/useCompanyAPI";
+import "./UpdateCompany.css";
 
 const emptyInitialValues: RegisterCompanyInterface = {
   name: "",
@@ -33,7 +34,7 @@ type CompanyFormSource = Partial<{
   website: string;
   logo: string;
   size: string;
-  foundedYear: string;
+  foundedYear: string | number;
 }>;
 
 const mapCompanyToFormValues = (
@@ -51,7 +52,7 @@ const mapCompanyToFormValues = (
   website: companyData.website || "",
   logo: companyData.logo || "",
   size: companyData.size || "",
-  foundedYear: companyData.foundedYear || "",
+  foundedYear: companyData.foundedYear ? String(companyData.foundedYear) : "",
 });
 
 //to add permission in route guard only admin or owner can update company details
@@ -80,7 +81,10 @@ function UpdateCompany() {
     fetchCompanyData();
   }, []);
 
-  const formAction = async (values: RegisterCompanyInterface) => {};
+  const formAction = async (values: RegisterCompanyInterface) => {
+    console.log("Form submitted with values:", values);
+    // Here you can call your API to update the company details
+  };
 
   const validateForm = (values: RegisterCompanyInterface) =>
     validateCompany(values);
@@ -105,7 +109,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.name}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="industry">Industry</label>
           <input
             type="text"
@@ -116,7 +120,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.industry}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="location">Location</label>
           <input
             type="text"
@@ -127,7 +131,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.location}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="officeLocation">Office Location</label>
           <input
             type="text"
@@ -138,7 +142,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.officeLocation}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
@@ -148,7 +152,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.description}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="whyWorkHere">
             Why Work Here <span className="optional-badge">Optional</span>
           </label>
@@ -159,7 +163,7 @@ function UpdateCompany() {
           ></textarea>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="sector">Sector</label>
           <input
             type="text"
@@ -170,7 +174,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.sector}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="website">Website</label>
           <input
             type="text"
@@ -181,7 +185,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.website}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="logo">Logo URL</label>
           <input
             type="text"
@@ -192,7 +196,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.logo}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -203,7 +207,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.email}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="phone">Phone</label>
           <input
             type="text"
@@ -214,7 +218,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.phone}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="size">Company Size</label>
           <input
             type="text"
@@ -225,7 +229,7 @@ function UpdateCompany() {
           <div className="error-message">{errors.size}</div>
         </div>
 
-        <div className="form-group">
+        <div className="update-company-form-group">
           <label htmlFor="foundedYear">Founded Year</label>
           <input
             type="number"
@@ -235,14 +239,15 @@ function UpdateCompany() {
           />
           <div className="error-message">{errors.foundedYear}</div>
         </div>
-
-        <button
-          type="submit"
-          className="create-company-button"
-          disabled={loading}
-        >
-          {loading ? "Updating..." : "Update Company"}
-        </button>
+        <div className="update-company-form-group">
+          <button
+            type="submit"
+            className="update-company-button"
+            disabled={loading}
+          >
+            {loading ? "Updating..." : "Update Company"}
+          </button>
+        </div>
       </form>
     </div>
   );
