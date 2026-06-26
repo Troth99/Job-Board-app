@@ -60,7 +60,7 @@ export default function useCompanies() {
   const getCompanies = async (
     limit?: number,
     page?: number,
-    searchTerm?: string
+    searchTerm?: string,
   ): Promise<CompaniesResponse | undefined> => {
     setLoading(true);
     setError(null);
@@ -69,13 +69,13 @@ export default function useCompanies() {
         limit: String(limit || 10),
         page: String(page || 1),
       });
-      if(searchTerm?.trim()) {
+      if (searchTerm?.trim()) {
         params.append("search", searchTerm);
       }
       const response = await request(
         `${API_BASE}/companies?${params.toString()}`,
         "GET",
-        {}
+        {},
       );
       setCompanies(response.companies);
       return response;
@@ -108,7 +108,7 @@ export default function useCompanies() {
       const response = await request(
         `${API_BASE}/companies/my-company`,
         "GET",
-        {}
+        {},
       );
       setCompany(response);
       return response;
@@ -139,7 +139,7 @@ export default function useCompanies() {
       const response = await request(
         `${API_BASE}/users/check-user-exists`,
         "POST",
-        { email }
+        { email },
       );
       return response;
     } catch (error) {
@@ -152,7 +152,7 @@ export default function useCompanies() {
       const response = await request(
         `${API_BASE}/companies/${companyId}/transfer-ownership`,
         "POST",
-        { newOwnerMemberId: newOwnerId }
+        { newOwnerMemberId: newOwnerId },
       );
       return response;
     } catch (error) {
@@ -166,7 +166,7 @@ export default function useCompanies() {
       const response = await request(
         `${API_BASE}/companies/${companyId}/abandon`,
         "DELETE",
-        {}
+        {},
       );
       return response;
     } catch (error) {
@@ -174,6 +174,25 @@ export default function useCompanies() {
       console.error(error);
     }
   };
+
+  const updateCompany = async (companyId: string, data: Partial<Company>) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await request(
+        `${API_BASE}/companies/${companyId}`,
+        "PATCH",
+        data,
+      );
+      setCompany(response);
+      return response;
+    }catch (err) {
+      setError("Error updating company");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return {
     loading,
@@ -184,9 +203,10 @@ export default function useCompanies() {
     getCompanies,
     getCompanyById,
     getCompanyFromLocalStorage,
-     getLoggedInUserCompany,
+    getLoggedInUserCompany,
     checkUser,
     transferOwnership,
     abandonCompany,
+    updateCompany,
   };
 }

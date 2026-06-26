@@ -4,6 +4,8 @@ import { RegisterCompanyInterface } from "../RegisterCompany/RegisterCompany";
 import { validateCompany } from "../../validators/useCompanyValidation";
 import useCompanyAPI from "../../../hooks/companies/useCompanyAPI";
 import "./UpdateCompany.css";
+import useApiRequester from "../../../hooks/shared/useApiRequester";
+import { useNavigate, useParams } from "react-router";
 
 const emptyInitialValues: RegisterCompanyInterface = {
   name: "",
@@ -56,12 +58,17 @@ const mapCompanyToFormValues = (
 });
 
 //to add permission in route guard only admin or owner can update company details
+//to show toast
+//to add metadata for the pages in the application
+//to add spinner
 
 function UpdateCompany() {
   const [loading, setLoading] = useState<boolean>(false);
   const [initialValues, setInitialValues] =
     useState<RegisterCompanyInterface>(emptyInitialValues);
-  const { getLoggedInUserCompany } = useCompanyAPI();
+  const { getLoggedInUserCompany, updateCompany } = useCompanyAPI();
+  const companyId = useParams<{ companyId?: string }>().companyId;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCompanyData = async () => {
@@ -82,8 +89,22 @@ function UpdateCompany() {
   }, []);
 
   const formAction = async (values: RegisterCompanyInterface) => {
-    console.log("Form submitted with values:", values);
-    // Here you can call your API to update the company details
+    setLoading(true);
+    try {
+      if (!companyId) {
+        throw new Error("Company ID is missing");
+      }
+
+      const response = await updateCompany(companyId, values);
+      if (response) {
+        setInitialValues(mapCompanyToFormValues(response));
+      }
+    } catch (error) {
+      console.error("Error updating company:", error);
+    } finally {
+      setLoading(false);
+      navigate(`/company/${companyId}/dashboard`);
+    }
   };
 
   const validateForm = (values: RegisterCompanyInterface) =>
@@ -95,6 +116,8 @@ function UpdateCompany() {
     validateForm,
   );
   return (
+
+
     <div className="update-company-container">
       <h2>Update Company</h2>
       <form className="update-company-form" onSubmit={formHandler}>
@@ -254,4 +277,3 @@ function UpdateCompany() {
 }
 
 export default UpdateCompany;
-
