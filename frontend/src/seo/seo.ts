@@ -9,6 +9,9 @@ export type SeoConfig = {
   noindex?: boolean;
 };
 
+//noindex is used to prevent search engines from indexing certain pages, 
+//such as user profiles or admin pages, which are not meant to be publicly discoverable.
+
 const siteBaseUrl = "https://job-board-three-omega.vercel.app";
 
 const defaultSeoConfig: SeoConfig = {
@@ -115,6 +118,11 @@ export const seoConfig: Record<string, SeoConfig> = {
       companyMembers: {
         title: "Company Members | Job Board",
         description: "Manage your company's team members, assign roles, and collaborate effectively with the Company Members page on Job Board.",
+        noindex: true
+    },
+    updateCompany: {
+        title: "Update Company Details | Job Board",
+        description: "Update your company's profile information, including industry, location, and contact details on Job Board.",
         noindex: true
     },
 

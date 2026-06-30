@@ -7,6 +7,8 @@ import "./UpdateCompany.css";
 import useApiRequester from "../../../hooks/shared/useApiRequester";
 import { useNavigate, useParams } from "react-router";
 import Spinner from "../../Spinner/Spinner";
+import MetaData from "../../../seo/MetaDataTags";
+import { generateSeoConfig } from "../../../seo/seo";
 
 const emptyInitialValues: RegisterCompanyInterface = {
   name: "",
@@ -60,8 +62,6 @@ const mapCompanyToFormValues = (
 
 //to add permission in route guard only admin or owner can update company details
 //to show toast
-//to add metadata for the pages in the application
-//to add spinner
 
 function UpdateCompany() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -70,6 +70,8 @@ function UpdateCompany() {
   const { getLoggedInUserCompany, updateCompany } = useCompanyAPI();
   const companyId = useParams<{ companyId?: string }>().companyId;
   const navigate = useNavigate();
+
+  const seo  = generateSeoConfig("updateCompany");
 
   useEffect(() => {
     const fetchCompanyData = async () => {
@@ -118,6 +120,7 @@ function UpdateCompany() {
   );
   return (
     <>
+    <MetaData seo={seo} />
       {loading ? (
         <Spinner overlay={true} />
       ) : (
