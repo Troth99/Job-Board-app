@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
   z-index: 2000;
 }
 
@@ -12,8 +13,9 @@
   background: #fff;
   padding: 2rem 2.5rem 1.5rem 2.5rem;
   border-radius: 12px;
-  min-width: 320px;
+  min-width: min(320px, 100%);
   max-width: 90vw;
+  width: min(100%, 420px);
   box-shadow: 0 8px 32px rgba(0,0,0,0.18);
   position: relative;
   text-align: center;
@@ -134,4 +136,21 @@
   justify-content: center;
   gap: 0.5rem;
   margin-top: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .abandon-modal {
+    min-width: 0;
+    padding: 1.5rem 1rem 1.25rem;
+  }
+
+  .abandon-modal-btn-danger,
+  .abandon-modal-btn-secondary {
+    width: 100%;
+    margin: 0;
+  }
+
+  .abandon-modal-btns-row {
+    flex-direction: column;
+  }
 }

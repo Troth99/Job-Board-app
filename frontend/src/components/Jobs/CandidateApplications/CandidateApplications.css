@@ -58,6 +58,10 @@
 }
 
 @media (max-width: 700px) {
+  .candidates-list {
+    min-width: 0;
+  }
+
   .candidates-list, .candidates-list thead, .candidates-list tbody, .candidates-list th, .candidates-list td, .candidates-list tr {
     display: block;
   }
@@ -74,21 +78,29 @@
     border: none;
     border-bottom: 1px solid #e0e0e0;
     position: relative;
-    padding-left: 50%;
-    min-height: 40px;
+    padding: 0.85rem 0.85rem 0.85rem 44%;
+    min-height: 54px;
     font-size: 0.98rem;
     background: #fafafa;
+    word-break: break-word;
   }
   .candidates-list td:before {
     position: absolute;
-    top: 0;
+    top: 0.85rem;
     left: 0;
-    width: 48%;
+    width: 40%;
     padding-left: 1rem;
-    white-space: nowrap;
+    white-space: normal;
     font-weight: 600;
     color: #888;
     content: attr(data-label);
+  }
+
+  .approve-button,
+  .reject-button {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
   }
 }
 

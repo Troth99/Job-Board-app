@@ -107,7 +107,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   margin: 0;
-  padding-top: 4vh;
+  padding: 4vh 1rem 1.5rem;
   box-sizing: border-box;
 }
 .company-invitation-header {
@@ -130,7 +130,7 @@
   border-radius: 32px;
   box-shadow: 0 12px 48px 0 rgba(60,72,88,0.18), 0 2px 8px 0 rgba(60,72,88,0.10);
   padding: 36px 36px 12px 36px;
-  min-width: 380px;
+  width: min(100%, 540px);
   max-width: 540px;
   min-height: 0;
   display: flex;
@@ -237,7 +237,7 @@
   margin-bottom: 0.2rem;
   font-weight: 400;
   text-align: left;
-  max-width: 320px;
+  max-width: 100%;
   font-size: 16px;
 }
 .company-invitation-accept {
@@ -276,6 +276,64 @@
   background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
   box-shadow: 0 6px 24px 0 rgba(255,88,88,0.18);
   transform: translateY(-2px) scale(1.04);
+}
+
+@media (max-width: 600px) {
+  .company-invitation-notification {
+    padding: 10px 0.75rem 1rem;
+    min-height: 100vh;
+  }
+
+  .company-invitation-card {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    padding: 18px 12px;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px 0 rgba(30,34,54,0.18);
+  }
+
+  .company-invitation-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .company-invitation-message,
+  .company-invitation-meta,
+  .company-invitation-question {
+    font-size: 1rem;
+    padding-inline: 0.75rem;
+    word-break: break-word;
+  }
+
+  .company-invitation-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .company-invitation-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
+
+  .company-invitation-accept,
+  .company-invitation-decline {
+    width: 100%;
+    margin-right: 0;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+
+  .invited-by-details,
+  .invited-by-email {
+    font-size: 0.95rem;
+    text-align: center;
+  }
 }
 
 [data-theme="dark"] .company-invitation-notification {

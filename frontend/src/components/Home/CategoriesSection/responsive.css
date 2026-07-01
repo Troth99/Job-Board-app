@@ -1,13 +1,36 @@
 @media (max-width: 600px) {
   .custom-categories-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
-    max-width: 220px;
+    max-width: 100%;
   }
   .custom-category-card {
     padding: 12px 0;
     font-size: 0.98rem;
     border-radius: 12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .custom-categories-section {
+    margin-top: 34px;
+  }
+
+  .custom-categories-title {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+
+  .custom-categories-grid {
+    gap: 12px;
+  }
+
+  .custom-card-body {
+    min-height: 42px;
+  }
+
+  .custom-one-line span {
+    font-size: 0.98rem;
   }
 }
 

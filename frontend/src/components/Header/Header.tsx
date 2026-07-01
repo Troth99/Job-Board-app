@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useThemeContext } from "../../context/ThemeContext";
 import "./Header.css";
 import "./Responsive.css";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { getRefreshToken } from "../../hooks/shared/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated } from "../../redux/authSlice";
@@ -11,14 +11,13 @@ import { NotificationMailIcon } from "./NotificationMailIcon";
 
 export function Header() {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const { theme, toggleTheme } = useThemeContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated,
   );
-
-//To Refractor css styles of header and footer
 
   useEffect(() => {
     const token = getRefreshToken();
@@ -30,16 +29,21 @@ export function Header() {
     }
   }, [dispatch]);
 
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
   const hamburgerMenuHandler = () => {
     setIsMenuOpen((isMenuOpen) => !isMenuOpen);
   };
+
   return (
     <header className={`header ${theme}`}>
       <Link className="logo" to="/">
         JB
       </Link>
 
-      <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
+      <nav id="main-navigation" className={`nav ${isMenuOpen ? "active" : ""}`}>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -73,6 +77,8 @@ export function Header() {
         </div>
       </nav>
 
+      {isMenuOpen && <div className="mobile-nav-backdrop" onClick={() => setIsMenuOpen(false)} />}
+
       <div className="auth-buttons desktop-auth">
         {isAuthenticated ? (
           <>
@@ -94,14 +100,22 @@ export function Header() {
         )}
       </div>
 
-      <button onClick={toggleTheme} className="theme-toggle-btn">
+      <button
+        type="button"
+        onClick={toggleTheme}
+        className="theme-toggle-btn"
+        aria-label="Toggle theme"
+      >
         {theme === "light" ? "🌙" : "☀️"}
       </button>
 
       <button
+        type="button"
         className={`hamburger ${isMenuOpen ? "active" : ""}`}
         onClick={hamburgerMenuHandler}
         aria-label="Toggle Menu"
+        aria-expanded={isMenuOpen}
+        aria-controls="main-navigation"
       >
         <span></span>
         <span></span>
