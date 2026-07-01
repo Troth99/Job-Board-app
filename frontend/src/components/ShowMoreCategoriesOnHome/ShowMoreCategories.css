@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
   animation: fadeInModal 0.25s ease;
 }
 
@@ -16,9 +17,11 @@
   border-radius: 22px;
   box-shadow: 0 12px 48px rgba(49,130,206,0.22);
   padding: 2.5rem 2.2rem 2rem 2.2rem;
-  min-width: 340px;
+  min-width: min(340px, 100%);
   max-width: 1440px;
   width: 100%;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -97,8 +100,8 @@
 
 @media (max-width: 700px) {
   .section-categories-shown-for-home {
-    min-width: 90vw;
-    max-width: 98vw;
+    min-width: 0;
+    max-width: 100%;
     padding: 1.2rem 0.5rem 1rem 0.5rem;
   }
   .categories-list-flex {
@@ -106,8 +109,8 @@
     padding: 1rem 0.2rem;
   }
   .category-card-flex {
-    min-width: 80px;
-    max-width: 140px;
+    min-width: min(120px, calc(50% - 0.7rem));
+    max-width: calc(50% - 0.35rem);
     font-size: 0.98rem;
     height: 50px;
     padding: 0.5rem 0.2rem;

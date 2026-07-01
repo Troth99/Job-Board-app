@@ -13,8 +13,6 @@ type MemberDashboardSideBarProps = {
 };
 
 export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
-
-
   return (
     <div className="sidebar">
       <div className="sidebar-header">
@@ -26,16 +24,25 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
       </div>
       <div className="sidebar-nav">
         <div className="job-card-dashboard-image">
-          <img 
-          src={props.company?.logo}
-          alt={props.company?.name || "./default-logo.png"}
-          className="company-logo"
+          <img
+            src={props.company?.logo}
+            alt={props.company?.name || "./default-logo.png"}
+            className="company-logo"
           />
         </div>
         <ul className="sidebar-nav-list">
           <li>
             <a href="#overview-section">Overview</a>
           </li>
+
+          {props.localRole === "admin" || props.localRole === "owner" ? (
+            <li>
+              <Link to={`/company/${props.companyId}/update`}>
+                Update Company
+              </Link>
+            </li>
+          ) : null}
+
           <li>
             <a href="#team-section">Team tools</a>
           </li>
@@ -60,7 +67,10 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
         </ul>
 
         <div className="sidebar-divider" />
-        <section className="sidebar-mini-calendar" aria-label="Company calendar">
+        <section
+          className="sidebar-mini-calendar"
+          aria-label="Company calendar"
+        >
           <div className="sidebar-mini-calendar-header">
             <h3>Calendar</h3>
             <button

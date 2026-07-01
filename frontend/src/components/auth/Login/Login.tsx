@@ -21,8 +21,6 @@ const initialFormValue = {
   password: "",
 };
 
-//And to refractor styling
-//To make login with google and apple, we need to implement the backend first. So I will implement it later.
 
 export default function LoginComponent({
   setUserId,
@@ -70,10 +68,8 @@ export default function LoginComponent({
     }
   };
 
-    //To attach the button login with google and page with auth callback 
-
     
-  const { values, register, formHandler, errors, setErrors } =
+  const {  register, formHandler, errors, setErrors } =
     useForm<LoginFormType>(loginSubmitHandler, initialFormValue, validateForm);
 
   return (

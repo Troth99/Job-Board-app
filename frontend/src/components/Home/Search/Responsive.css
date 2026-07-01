@@ -1,7 +1,7 @@
 
 @media (max-width: 1024px) {
   .search-box {
-    width: 420px;
+    width: min(100%, 420px);
     padding: 0.4rem;
   }
 
@@ -63,7 +63,7 @@
 
 @media (max-width: 768px) {
   .search-box {
-    width: 90%;
+    width: 100%;
     padding: 0.4rem;
   }
 
@@ -115,7 +115,7 @@
 
 @media (max-width: 1024px) {
   body[data-theme="dark"] .search-box {
-    width: 420px;
+    width: min(100%, 420px);
     padding: 0.4rem;
   }
   body[data-theme="dark"] .search-box input {
@@ -134,7 +134,7 @@
 
 @media (max-width: 768px) {
   body[data-theme="dark"] .search-box {
-    width: 90%;
+    width: 100%;
     padding: 0.4rem;
   }
   body[data-theme="dark"] .search-box input {

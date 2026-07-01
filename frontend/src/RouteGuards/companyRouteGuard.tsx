@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../hooks/shared/useAuth";
 import { Navigate, Outlet } from "react-router";
 import { showCompanyWarning } from "../utils/toast";
+import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
 
 import useCompany from "../hooks/utils/useCompanyMethods";
 
@@ -80,7 +81,11 @@ export default function CompanyRouteGuard() {
     }
   }, [company, user, toastShown, navigate]);
 
-  if (!hasAccess && !loading) {
+  if (loading) {
+    return <FullPageSpinner />;
+  }
+
+  if (!hasAccess) {
     return <Navigate to="/" replace />;
   }
 

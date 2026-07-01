@@ -18,7 +18,7 @@ export default function useCompanyMethods() {
     getCompanies: companiesMethods.getCompanies,
     getCompanyById: companiesMethods.getCompanyById,
     getCompanyFromLocalStorage: companiesMethods.getCompanyFromLocalStorage,
-    getMyCompany: companiesMethods.getMyCompany,
+    getMyCompany: companiesMethods.getLoggedInUserCompany,
     checkUser: companiesMethods.checkUser,
     transferOwnership: companiesMethods.transferOwnership,
     abandonCompany: companiesMethods.abandonCompany,

@@ -11,6 +11,23 @@
   .hero p {
     font-size: 1.1rem;
   }
+
+  .custom-hero {
+    padding: 52px 18px 34px;
+  }
+
+  .custom-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 2.6rem);
+  }
+
+  .custom-hero h2 {
+    font-size: 1.6rem;
+  }
+
+  .custom-hero-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -28,6 +45,42 @@
     max-width: 90%;
     margin: 0 auto 1.5rem;
   }
+
+  .custom-hero {
+    padding: 46px 16px 30px;
+    border-radius: 0 0 26px 26px;
+  }
+
+  .custom-hero h1 {
+    margin-bottom: 12px;
+    font-size: clamp(2rem, 7vw, 2.35rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .custom-hero h2 {
+    margin-bottom: 12px;
+    font-size: 1.28rem;
+    line-height: 1.2;
+  }
+
+  .custom-hero-subtitle {
+    font-size: 0.98rem;
+    margin-bottom: 22px;
+    line-height: 1.55;
+  }
+
+  .custom-hero-search {
+    max-width: 100%;
+  }
+
+  .custom-hero-bg {
+    height: 150px;
+  }
+
+  .custom-hero-scroll-indicator {
+    bottom: 12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -41,5 +94,52 @@
 
   .hero p {
     font-size: 0.95rem;
+  }
+
+  .custom-hero {
+    padding: 38px 14px 26px;
+  }
+
+  .custom-hero h1 {
+    font-size: clamp(1.85rem, 8vw, 2.15rem);
+    margin-bottom: 10px;
+  }
+
+  .custom-hero h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .custom-hero-subtitle {
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+  }
+
+  .custom-hero-bg {
+    height: 120px;
+  }
+
+  .custom-hero-bg2 {
+    height: 60px;
+  }
+
+  .custom-hero-scroll-indicator {
+    transform: translateX(-50%) scale(0.9);
+  }
+}
+
+@media (max-width: 430px) {
+  .custom-hero {
+    padding-top: 34px;
+  }
+
+  .custom-hero h1 {
+    max-width: 10ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .custom-hero h2 {
+    font-size: 1rem;
   }
 }

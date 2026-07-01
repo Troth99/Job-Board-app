@@ -40,32 +40,54 @@ body[data-theme="dark"] .hamburger span {
 
 /* === MOBILE STYLES === */
 @media (max-width: 768px) {
-  header {
+  .mobile-nav-backdrop {
+    position: fixed;
+    inset: 72px 0 0 0;
+    background: rgba(244, 247, 251, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 305;
+  }
+
+  .nav {
+    flex: none;
+    justify-content: flex-start;
+  }
+
+  .header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.2rem;
+    gap: 0.75rem;
   }
 
   /* NAV BASE (HIDDEN BY DEFAULT) */
-  nav {
+  .nav {
     display: none !important;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 1px);
     left: 0;
+    right: 0;
     width: 100%;
-    background: #ffffffcc;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: rgba(245, 246, 250, 0.98);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.14);
     flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
     text-align: center;
-    padding: 2rem 0;
-    z-index: 15;
+    padding: 1rem 1rem 1.25rem;
+    min-height: 0;
+    max-height: min(70vh, calc(100vh - 76px));
+    overflow-y: auto;
+    z-index: 310;
     transition: all 0.3s ease;
+    border-top: 1px solid rgba(176, 176, 176, 0.35);
   }
 
   /* NAV WHEN ACTIVE */
-  nav.active {
+  .nav.active {
     display: flex !important;
     animation: fadeIn 0.3s ease-in-out;
   }
@@ -81,9 +103,25 @@ body[data-theme="dark"] .hamburger span {
     }
   }
 
-  nav ul {
-    flex-direction: column;
+  .nav ul {
+    display: flex;
+    flex-direction: column !important;
     gap: 1rem;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .nav ul li {
+    width: 100%;
+    list-style: none;
+  }
+
+  .nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
   }
 
   /* MOBILE AUTH BUTTONS */
@@ -93,12 +131,13 @@ body[data-theme="dark"] .hamburger span {
     align-items: center;
     gap: 1rem;
     margin-top: 1.5rem;
+    width: 100%;
   }
 
   .mobile-auth .btn-login,
   .mobile-auth .btn-register,
   .mobile-auth .btn-profile {
-    width: 80%;
+    width: min(100%, 280px);
     text-align: center;
     padding: 0.8rem;
     border-radius: 50px;
@@ -119,7 +158,8 @@ body[data-theme="dark"] .hamburger span {
   }
 
   .mobile-auth .notification-link {
-    width: auto;
+    width: 42px;
+    height: 42px;
     margin-bottom: 0.25rem;
   }
 
@@ -134,8 +174,16 @@ body[data-theme="dark"] .hamburger span {
   }
 
   /* Dark mode menu background */
-  body[data-theme="dark"] nav {
-    background: rgba(13, 17, 23, 0.95);
+  body[data-theme="dark"] .nav {
+    background: rgba(13, 17, 23, 0.98);
+  }
+
+  body[data-theme="dark"] .mobile-nav-backdrop {
+    background: rgba(2, 6, 23, 0.6);
+  }
+
+  body[data-theme="dark"] .nav ul li a {
+    background: rgba(31, 41, 55, 0.96);
   }
 
   /* Theme button stays visible */

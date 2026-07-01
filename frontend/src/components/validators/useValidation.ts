@@ -6,8 +6,6 @@ import { ProfileData } from "../EditProfile/EditProfile";
 type FormDataUnion = Partial<registerFormType> & Partial<ProfileData>;
 
 export function useValidation() {
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
   const validateEmail = (email: string): string | undefined => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!email) return "Email is required.";
@@ -92,8 +90,6 @@ export function useValidation() {
   };
 
   return {
-    errors,
-    setErrors,
     validateEmail,
     validatePassword,
     validateConfirmPassword,
