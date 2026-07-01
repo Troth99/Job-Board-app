@@ -4,11 +4,12 @@ import { RegisterCompanyInterface } from "../RegisterCompany/RegisterCompany";
 import { validateCompany } from "../../validators/useCompanyValidation";
 import useCompanyAPI from "../../../hooks/companies/useCompanyAPI";
 import "./UpdateCompany.css";
-import useApiRequester from "../../../hooks/shared/useApiRequester";
 import { useNavigate, useParams } from "react-router";
 import Spinner from "../../Spinner/Spinner";
 import MetaData from "../../../seo/MetaDataTags";
 import { generateSeoConfig } from "../../../seo/seo";
+import { toast } from "react-toastify";
+
 
 const emptyInitialValues: RegisterCompanyInterface = {
   name: "",
@@ -61,7 +62,7 @@ const mapCompanyToFormValues = (
 });
 
 //to add permission in route guard only admin or owner can update company details
-//to show toast
+
 
 function UpdateCompany() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -101,6 +102,7 @@ function UpdateCompany() {
       const response = await updateCompany(companyId, values);
       if (response) {
         setInitialValues(mapCompanyToFormValues(response));
+        toast.success('You have updated the company information successfully!')
       }
     } catch (error) {
       console.error("Error updating company:", error);

@@ -6,6 +6,7 @@ import CompanyRegisterGuard from "../RouteGuards/companyRegisterGuard";
 import ProtectedRoutes from "../RouteGuards/authRouteGuard";
 import CompanyRouteGuard from "../RouteGuards/companyRouteGuard";
 import UpdateCompany from "../components/Company/UpdateCompany/UpdateCompany";
+import { UpdateCompanyRouteGuard } from "../RouteGuards/updateCompanyGuard";
 
 const ViewAllCOmpaniesPage = lazy(
   () => import("../components/Company/ViewAllCompanies/ViewAllCompanies"),
@@ -72,7 +73,7 @@ export const CompanyRoutes = [
   </Route>,
 
   <Route element={<MainLayout />}>
-    <Route element={<CompanyRouteGuard />}>
+    <Route element={<UpdateCompanyRouteGuard />}>
       <Route
         path="/company/:companyId/update"
         element={
