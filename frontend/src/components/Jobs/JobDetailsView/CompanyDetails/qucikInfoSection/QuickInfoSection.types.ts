@@ -1,12 +1,15 @@
+import { Job } from "../../../../../interfaces/Job.model";
+
 export interface QuickInfoSectionProps {
-  jobData?: {
-    isActive?: boolean;
-    createdAt?: string;
-    category?: { name: string } | string;
-    employmentType?: string;
-    location?: string;
-    salary?: string;
-  };
+  jobData?: Pick<
+    Job,
+    | "isActive"
+    | "createdAt"
+    | "category"
+    | "employmentType"
+    | "location"
+    | "salary"
+  >;
   isLoggedIn: boolean;
   isCompanyMember?: boolean;
   setShowApplyModal: (show: boolean) => void;

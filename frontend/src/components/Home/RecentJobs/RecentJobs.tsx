@@ -6,10 +6,6 @@ import { Job } from "../../../interfaces/Job.model";
 interface RecentJobsProps {
   recentJobs: Job[];
 }
-
-
-//to fix a bug with company logo not showing in recent jobs section, added a check to see if the logo is a valid url, if not show default logo and alt text accordingly. Also added a view all jobs link at the bottom of the recent jobs section.
-
 export default function RecentJobs({ recentJobs }: RecentJobsProps) {
   return (
     <div className="recentjobs-container">
