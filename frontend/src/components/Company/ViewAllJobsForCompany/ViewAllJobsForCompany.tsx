@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import useJobs from "../../../hooks/utils/useJobBoard";
+import useJobs from "../../../features/jobs/hooks/useJobBoard";
 import { useParams, useSearchParams } from "react-router";
 import { ShowJobs } from "../showJobs/showCompanyJobs";
 import "./viewAllJobsForComapny.css";
-import { Job } from "../../../interfaces/Job.model";
+import { Job } from "../../../features/jobs/types/Job.model";
 import Spinner from "../../Spinner/Spinner";
 import { usePagination } from "../../../hooks/shared/usePagination";
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import useJobs from "../../../hooks/utils/useJobBoard";
+import useJobs from "../../../features/jobs/hooks/useJobBoard";
 import { ShowJobs } from "../../../showJobs/showJobs";
 import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
-import { Job } from "../../../interfaces/Job.model";
+import { Job } from "../../../features/jobs/types/Job.model";
 import { useNavigate } from "react-router";
 
 interface CompanyJobsListProps {

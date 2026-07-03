@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Job } from "../../../../interfaces/Job.model";
+import { Job } from "../../../../features/jobs/types/Job.model";
 import { useNavigate, useSearchParams } from "react-router";
-import useJobs from "../../../../hooks/utils/useJobBoard";
+import useJobs from "../../../../features/jobs/hooks/useJobBoard";
 import { ShowJobs } from "../../../../showJobs/showJobs";
 import Spinner from "../../../Spinner/Spinner";
 

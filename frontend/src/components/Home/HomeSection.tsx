@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Hero from "./HeroSection/Hero";
-import useJobs from "../../hooks/utils/useJobBoard";
+import useJobs from "../../features/jobs/hooks/useJobBoard";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import RecentJobs from "./RecentJobs/RecentJobs";
 import FullPageSpinner from "../FullPageSpinner/FullPageSpinner";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { Job } from "../../interfaces/Job.model";
+import { Job } from "../../features/jobs/types/Job.model";
 import { Container } from "../Container/Container";
 import { HomeStats } from "./HomeStats/HomeStats";
 import useStatistics from "../../hooks/useStatistics";

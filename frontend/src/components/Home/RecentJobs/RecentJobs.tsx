@@ -1,7 +1,7 @@
 import "./RecentJobs.css";
 import { formatDate } from "../../../utils/formData";
 import { Link } from "react-router";
-import { Job } from "../../../interfaces/Job.model";
+import { Job } from "../../../features/jobs/types/Job.model";
 
 interface RecentJobsProps {
   recentJobs: Job[];

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { formatDate } from "../utils/formData";
-import { Job } from "../interfaces/Job.model";
+import { Job } from "../features/jobs/types/Job.model";
 import "./showJobs.css";
 
 interface ShowCompanyJobsProps {

@@ -10,7 +10,7 @@ import { setCategories } from "./components/Home/CategoriesSection/categoriesSli
 import { lazy, Suspense } from "react";
 import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
 import { footerRoutes } from "./Routes/FooterRoutes";
-import { jobsRoutes } from "./Routes/JobsRoutes";
+import { jobsRoutes } from "./features/jobs/routes/JobsRoutes";
 import { authRoutes } from "./Routes/AuthRoutes";
 import { notificationsRoutes } from "./Routes/NotificationRoutes";
 import { ProfileRoutes } from "./Routes/ProfileRoutes";

@@ -5,7 +5,7 @@ import { EventInput, DatesSetArg } from "@fullcalendar/core";
 import "./CompanyCalendar.css";
 import { useState } from "react";
 import { useParams } from "react-router";
-import useJobs from "../../../../hooks/jobs/useJobsAPI";
+import useJobs from "../../../../features/jobs/hooks/useJobsAPI";
 
 type CompanyCalendarProps = {
   compact?: boolean;

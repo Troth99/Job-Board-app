@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../hooks/shared/useAuth";
-import useJobs from "../hooks/utils/useJobBoard";
+import useJobs from "../features/jobs/hooks/useJobBoard";
 import useCompany from "../hooks/utils/useCompanyMethods";
-import { Job } from "../interfaces/Job.model";
+import { Job } from "../features/jobs/types/Job.model";
 import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
 
 export function JobDetailsRouteGuard({ children }: { children: React.ReactNode }) {
