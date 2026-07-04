@@ -6,8 +6,8 @@ import ProtectedRoutes from "../../../RouteGuards/authRouteGuard";
 import { LogOut } from "../../../components/auth/Logout/Logout";
 
 const MyProfile = lazy(() => import("../views/MainProfilePage/Profile"));
-const EditProfile = lazy(() => import("../../../components/EditProfile/EditProfile"));
-const ChangePassword = lazy(() => import("../../../components/EditProfile/ChangePassword/ChangePassword"));
+const EditProfile = lazy(() => import("../views/EditProfile/EditProfile"));
+const ChangePassword = lazy(() => import("../views/ChangePassword/ChangePassword"));
 
 export const ProfileRoutes = [
      <Route element={<ProtectedRoutes />}>

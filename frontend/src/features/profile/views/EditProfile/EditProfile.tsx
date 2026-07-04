@@ -1,25 +1,17 @@
 import "./EditProfile.css";
 import "./Responsive.css";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../../../components/Spinner/Spinner";
 import { useNavigate } from "react-router";
-import { showSuccess } from "../../utils/toast";
-import { useValidation } from "../validators/useValidation";
-import useProfile from "../../features/profile/hooks/useProfile";
-import useForm from "../../hooks/shared/useForm";
+import { showSuccess } from "../../../../utils/toast";
+import { useValidation } from "../../../../components/validators/useValidation";
+import useProfile from "../../hooks/useProfile";
+import useForm from "../../../../hooks/shared/useForm";
 import { useState, useEffect } from "react";
-import { generateSeoConfig } from "../../seo/seo";
-import MetaData from "../../seo/MetaDataTags";
-import useAvatar from "../../features/profile/hooks/useAvatar";
+import { generateSeoConfig } from "../../../../seo/seo";
+import MetaData from "../../../../seo/MetaDataTags";
+import useAvatar from "../../hooks/useAvatar";
+import { ProfileData } from "../../types/profileSectionTypes";
 
-export interface ProfileData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber?: string;
-  location?: string;
-  avatar?: string;
-  [key: string]: string | undefined;
-}
 const initialProfileData: ProfileData = {
   firstName: "",
   lastName: "",

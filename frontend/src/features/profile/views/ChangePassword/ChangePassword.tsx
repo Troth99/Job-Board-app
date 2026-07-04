@@ -1,16 +1,13 @@
 import { useState } from "react";
 import "./ChangePassword.css";
-import { useChangePasswordValidation } from "../../validators/useChangePasswordValidation";
+import { useChangePasswordValidation } from "../../../../components/validators/useChangePasswordValidation";
 import { useNavigate } from "react-router";
-import { showSuccess } from "../../../utils/toast";
-import useProfile from "../../../features/profile/hooks/useProfile";
-import useForm from "../../../hooks/shared/useForm";
+import { showSuccess } from "../../../../utils/toast";
+import useProfile from "../../hooks/useProfile";
+import useForm from "../../../../hooks/shared/useForm";
+import { changePasswordForm } from "../../types/profileSectionTypes";
 
-export interface changePasswordForm extends Record<string, string> {
-  currentPassword: string;
-  newPassword: string;
-  confirmPassword: string;
-}
+
 const initialForm: changePasswordForm = {
   currentPassword: "",
   newPassword: "",

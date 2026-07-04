@@ -17,3 +17,28 @@ export interface ChangePasswordForm {
 export interface ProfileProps {
   LogOutComponnent: React.ComponentType;
 }
+
+export interface ProfileContainerProps {
+  userData: any;
+  avatar: string | null;
+  handleFileChange: (file: File) => void;
+  completionPercentage: number;
+  completedFields: number;
+  totalCompletionFields: number;
+}
+
+export interface ProfileData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber?: string;
+  location?: string;
+  avatar?: string;
+  [key: string]: string | undefined;
+}
+
+export interface changePasswordForm extends Record<string, string> {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}

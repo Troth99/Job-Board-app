@@ -1,16 +1,9 @@
-import { formatDate } from "../../../utils/formData";
-import defaultAvatar from "../../../assets/personAvatar.jpg";
-import ImageUpload from "../../../uploadImage/UploadProfileImage/UploadProfileImage";
+import { formatDate } from "../../../../utils/formData";
+import defaultAvatar from "../../../../assets/personAvatar.jpg";
+import ImageUpload from "../../../../uploadImage/UploadProfileImage/UploadProfileImage";
 import { Link } from "react-router";
+import { ProfileContainerProps } from "../../types/profileSectionTypes";
 
-interface ProfileContainerProps {
-  userData: any;
-  avatar: string | null;
-  handleFileChange: (file: File) => void;
-  completionPercentage: number;
-  completedFields: number;
-  totalCompletionFields: number;
-}
 
 export default function ProfileContainer({
   userData,
