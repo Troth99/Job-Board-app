@@ -10,7 +10,7 @@ import {
 } from "../../form/formSelectedInputs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../redux/store";
-import Spinner from "../../../../components/Spinner/Spinner";
+import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { valuesInterface } from "../../types/Job.model";
 import useForm from "../../../../hooks/shared/useForm";
 import { jobPostValidations } from "../../../../components/validators/createJobValidation";

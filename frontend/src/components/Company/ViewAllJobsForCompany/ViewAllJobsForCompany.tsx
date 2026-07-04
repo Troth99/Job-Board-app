@@ -4,7 +4,7 @@ import { useParams, useSearchParams } from "react-router";
 import { ShowJobs } from "../showJobs/showCompanyJobs";
 import "./viewAllJobsForComapny.css";
 import { Job } from "../../../features/jobs/types/Job.model";
-import Spinner from "../../Spinner/Spinner";
+import Spinner from "../../../shared/components/Spinner/Spinner";
 import { usePagination } from "../../../hooks/shared/usePagination";
 
 

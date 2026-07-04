@@ -3,7 +3,7 @@ import { Job } from "../../../../features/jobs/types/Job.model";
 import { useNavigate, useSearchParams } from "react-router";
 import useJobs from "../../../../features/jobs/hooks/useJobBoard";
 import { ShowJobs } from "../../../../showJobs/showJobs";
-import Spinner from "../../../Spinner/Spinner";
+import Spinner from "../../../../shared/components/Spinner/Spinner";
 
 export default function SearchResults() {
   const [searchParams] = useSearchParams();

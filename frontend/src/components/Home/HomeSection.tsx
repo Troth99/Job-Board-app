@@ -7,7 +7,7 @@ import FullPageSpinner from "../FullPageSpinner/FullPageSpinner";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Job } from "../../features/jobs/types/Job.model";
-import { Container } from "../Container/Container";
+import { Container } from "../../shared/components/Container/Container";
 import { HomeStats } from "./HomeStats/HomeStats";
 import useStatistics from "../../hooks/useStatistics";
 import { StatsResponse } from "../../interfaces/ApplicationStatistic.model";

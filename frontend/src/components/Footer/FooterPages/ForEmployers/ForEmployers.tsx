@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 import "./forEmployers.css"
-import { Container } from "../../../Container/Container"
+import { Container } from "../../../../shared/components/Container/Container"
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 

@@ -1,9 +1,9 @@
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
 import ProtectedRoutes from "../RouteGuards/authRouteGuard";
-import MainLayout from "../components/Layouts/MainLayout";
 import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
 import { NotificationOwnerGuard } from "../RouteGuards/notificationGuard";
+import MainLayout from "../shared/components/Layouts/MainLayout";
 
 const NotificationsPage = lazy(
   () => import("../components/Notifications/Notifications"),

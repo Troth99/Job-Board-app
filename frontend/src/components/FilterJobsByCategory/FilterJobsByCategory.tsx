@@ -8,7 +8,7 @@ import { FilterGroup } from "./FilterGroup/FilterGroup";
 import { employmentOptions } from "../../features/jobs/form/formSelectedInputs";
   
 import { Job } from "../../features/jobs/types/Job.model";
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../../shared/components/Pagination/Pagination";
 import { Helmet } from "react-helmet-async";
 import { generateSeoConfig } from "../../seo/seo";
 import { useJobFilters } from "../../features/jobs/hooks/useJobFilters";

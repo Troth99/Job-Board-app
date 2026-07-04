@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./ViewMembers.css";
 import { useParams } from "react-router";
 import useCompany from "../../../hooks/utils/useCompanyMethods";
-import Spinner from "../../Spinner/Spinner";
+import Spinner from "../../../shared/components/Spinner/Spinner";
 import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import { useRole } from "../../../context/RoleContext";
 import { BsChatDots } from "react-icons/bs";

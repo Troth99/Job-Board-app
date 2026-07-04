@@ -6,7 +6,7 @@ import useAuth from "../../../hooks/shared/useAuth";
 import { useValidation } from "../../validators/useValidation";
 import { useLocalStorage } from "../../../hooks/shared/useLocalStorage";
 import useForm from "../../../hooks/shared/useForm";
-import { Container } from "../../Container/Container";
+import { Container } from "../../../shared/components/Container/Container";
 import LoginSocialIcons from "./LoginElements/LoginSocialIcons";
 import LeftSideLogin from "./LoginElements/LeftSideLogin";
 

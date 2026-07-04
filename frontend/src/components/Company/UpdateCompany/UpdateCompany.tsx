@@ -5,7 +5,7 @@ import { validateCompany } from "../../validators/useCompanyValidation";
 import useCompanyAPI from "../../../hooks/companies/useCompanyAPI";
 import "./UpdateCompany.css";
 import { useNavigate, useParams } from "react-router";
-import Spinner from "../../Spinner/Spinner";
+import Spinner from "../../../shared/components/Spinner/Spinner";
 import MetaData from "../../../seo/MetaDataTags";
 import { generateSeoConfig } from "../../../seo/seo";
 import { toast } from "react-toastify";

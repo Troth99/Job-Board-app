@@ -1,13 +1,13 @@
 import "./Profile.css";
 import "./Responsive.css";
 import { useEffect, useState } from "react";
-import Spinner from "../../../../components/Spinner/Spinner";
+import Spinner from "../../../../shared/components/Spinner/Spinner";
 import useProfile from "../../hooks/useProfile";
 import { useNavigate } from "react-router";
 import useCompany from "../../../../hooks/utils/useCompanyMethods";
 import { useRole } from "../../../../context/RoleContext";
 import { useUserData } from "../../../../context/UseDataContext";
-import { Container } from "../../../../components/Container/Container";
+import { Container } from "../../../../shared/components/Container/Container";
 import { ProfileRightPanel } from "../../components/RoleAndCompanySection/ProfileRightPanel";
 import JobPosting from "../../components/JobPosting/JobPosting";
 import ProfileContainer from "../../components/ProfileDataContainer/ProfileContainer";

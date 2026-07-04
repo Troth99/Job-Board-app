@@ -1,6 +1,6 @@
 import "./EditProfile.css";
 import "./Responsive.css";
-import Spinner from "../../../../components/Spinner/Spinner";
+import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../../../utils/toast";
 import { useValidation } from "../../../../components/validators/useValidation";

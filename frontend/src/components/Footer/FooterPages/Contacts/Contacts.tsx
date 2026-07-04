@@ -1,5 +1,5 @@
 import { generateSeoConfig } from "../../../../seo/seo";
-import { Container } from "../../../Container/Container"
+import { Container } from "../../../../shared/components/Container/Container"
 import "./contacts.css"
 import MetaData from "../../../../seo/MetaDataTags";
 

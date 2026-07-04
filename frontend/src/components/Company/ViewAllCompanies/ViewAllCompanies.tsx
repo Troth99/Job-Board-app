@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import useCompany from "../../../hooks/utils/useCompanyMethods";
 import "./ViewAllCompanies.css";
 import { formatDate } from "../../../utils/formData";
-import Spinner from "../../Spinner/Spinner";
-import Pagination from "../../Pagination/Pagination";
+import Spinner from "../../../shared/components/Spinner/Spinner";
+import Pagination from "../../../shared/components/Pagination/Pagination";
 import { Meta, useSearchParams } from "react-router";
 import MetaData from "../../../seo/MetaDataTags";
-import { Container } from "../../Container/Container";
+import { Container } from "../../../shared/components/Container/Container";
 import { generateCompaniesSeo } from "../../../seo/seo";
 
 const ITEMS_PER_PAGE = 8;

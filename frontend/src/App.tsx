@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./styles/global.css";
 import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import { Route, Routes } from "react-router";
-import MainLayout from "./components/Layouts/MainLayout";
 import { PageNotFound } from "./components/404/404";
 import { useDispatch } from "react-redux";
 import useCategories from "./hooks/utils/useCategoriesIndex";
@@ -15,6 +14,7 @@ import { authRoutes } from "./Routes/AuthRoutes";
 import { notificationsRoutes } from "./Routes/NotificationRoutes";
 import { ProfileRoutes } from "./features/profile/routes/ProfileRoutes";
 import { CompanyRoutes } from "./Routes/CompanyRoutes";
+import MainLayout from "./shared/components/Layouts/MainLayout";
 
 interface AppProps {
   setUserId: (id: string) => void;

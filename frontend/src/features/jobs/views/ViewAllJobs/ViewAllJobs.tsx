@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import useJobs from "../../hooks/useJobBoard";
-import Spinner from "../../../../components/Spinner/Spinner";
+import Spinner from "../../../../shared/components/Spinner/Spinner";
 import "./ViewAllJobs.css";
 import { useNavigate, useSearchParams } from "react-router";
 import { Job } from "../../types/Job.model";
-import { Container } from "../../../../components/Container/Container";
-import Pagination from "../../../../components/Pagination/Pagination";
+import { Container } from "../../../../shared/components/Container/Container";
+import Pagination from "../../../../shared/components/Pagination/Pagination";
 import { generateSeoConfig, seoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 

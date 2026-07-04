@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import Spinner from "../../../../components/Spinner/Spinner";
-import { Container } from "../../../../components/Container/Container";
+import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { Container } from "../../../../shared/components/Container/Container";
 import "./SavedJobView.css";
 import type { SavedJob } from "../../types/SavedJob.model";
 import { useNavigate, useSearchParams } from "react-router";
-import Pagination from "../../../../components/Pagination/Pagination";
+import Pagination from "../../../../shared/components/Pagination/Pagination";
 import { useSelector } from "react-redux";
 import { CategoryInterface } from "../../../../interfaces/CategoryModel";
 import { generateSeoConfig } from "../../../../seo/seo";

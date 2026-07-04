@@ -6,7 +6,7 @@ import useAuth, { registerFormType } from "../../../hooks/shared/useAuth";
 import { useValidation } from "../../validators/useValidation";
 import useForm from "../../../hooks/shared/useForm";
 import { useLocalStorage } from "../../../hooks/shared/useLocalStorage";
-import { Container } from "../../Container/Container";
+import { Container } from "../../../shared/components/Container/Container";
 import { LeftSideOfRegister } from "./RegisterElements/LeftSideOfRegister";
 
 const intialValueRegister: registerFormType = {

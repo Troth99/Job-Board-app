@@ -3,11 +3,11 @@ import useJobs from "../../hooks/useJobBoard";
 import "./JobDetailsView.css";
 import { useEffect, useState } from "react";
 import { Job } from "../../types/Job.model";
-import Spinner from "../../../../components/Spinner/Spinner";
+import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { useLocalStorage } from "../../../../hooks/shared/useLocalStorage";
 import { ApplyForJobModal } from "../../components/ApplyForJobModal/ApplyForJobModal";
 import { getUserFromLocalStorage } from "../../../../hooks/shared/useAuth";
-import { Container } from "../../../../components/Container/Container";
+import { Container } from "../../../../shared/components/Container/Container";
 import { CompanyDetails } from "./CompanyDetailsForJobSection/CompanyDetailsViewforJobs";
 import { QucikInfoSection } from "./CompanyDetailsForJobSection/QuicnInfoSection";
 

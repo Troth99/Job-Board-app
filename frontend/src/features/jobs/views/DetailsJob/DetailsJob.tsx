@@ -2,12 +2,12 @@ import { useNavigate, useParams } from "react-router";
 import "./Details.css";
 import { useEffect, useState } from "react";
 import useJobs from "../../hooks/useJobBoard";
-import Spinner from "../../../../components/Spinner/Spinner";
+import Spinner from "../../../../shared/components/Spinner/Spinner";
 import useCompany from "../../../../hooks/utils/useCompanyMethods";
 import { Job } from "../../types/Job.model";
 import { CandidateApplications } from "./DetailsJobElements/CandidateApplications/CandidateApplications";
 import { Candidate } from "../../types/Apllication.model";
-import { Container } from "../../../../components/Container/Container";
+import { Container } from "../../../../shared/components/Container/Container";
 import DetailsJobMainSection from "./DetailsJobElements/DetailsJobMainSection";
 
 

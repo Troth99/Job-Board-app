@@ -1,6 +1,6 @@
 import CompanyCalendar from "./CompanyCalendar";
 import "./CalendarModal.css";
-import { Container } from "../../../Container/Container";
+import { Container } from "../../../../shared/components/Container/Container";
 
 
 

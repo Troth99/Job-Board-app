@@ -3,7 +3,7 @@ import { getUserFromLocalStorage } from "../hooks/shared/useAuth";
 import { useNotificationContext } from "../context/NotificationContext";
 import { Navigate, Outlet, useParams } from "react-router";
 import { toast } from "react-toastify";
-import Spinner from "../components/Spinner/Spinner";
+import Spinner from "../shared/components/Spinner/Spinner";
 
 export function NotificationOwnerGuard() {
   const { notificationId } = useParams();
