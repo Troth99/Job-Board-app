@@ -13,7 +13,7 @@ import { footerRoutes } from "./Routes/FooterRoutes";
 import { jobsRoutes } from "./features/jobs/routes/JobsRoutes";
 import { authRoutes } from "./Routes/AuthRoutes";
 import { notificationsRoutes } from "./Routes/NotificationRoutes";
-import { ProfileRoutes } from "./Routes/ProfileRoutes";
+import { ProfileRoutes } from "./features/profile/routes/ProfileRoutes";
 import { CompanyRoutes } from "./Routes/CompanyRoutes";
 
 interface AppProps {

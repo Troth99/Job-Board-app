@@ -1,13 +1,8 @@
-import { Link, useNavigate } from "react-router";
-import { useFavoritesContext } from "../../../context/FavouritesJobsContext";
+import {  useNavigate } from "react-router";
+import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
 import "./ProfileRightPanel.css";
+import { ProfileRightPanelProps } from "../../types/profileRightPanelProps";
 
-interface ProfileRightPanelProps {
-  userRole: string | null | undefined;
-  company: any;
-  companyLoading: boolean;
-  hasCompanyId: boolean;
-}
 
 export function ProfileRightPanel({
   userRole,

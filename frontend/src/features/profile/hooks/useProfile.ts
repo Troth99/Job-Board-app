@@ -1,22 +1,8 @@
 import { useEffect, useState } from "react";
-import { API_BASE } from "../../services/api";
-import useApiRequester from "../shared/useApiRequester";
+import { API_BASE } from "../../../services/api";
+import useApiRequester from "../../../hooks/shared/useApiRequester";
+import { ChangePasswordForm, User } from "../types/profileSectionTypes";
 
-interface User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber?: string;
-  location?: string;
-  avatar?: string;
-  createdAt?: string;
-  company?: string;
-}
-
-interface ChangePasswordForm {
-  currentPassword: string;
-  newPassword: string;
-}
 
 export default function useProfile() {
   const { loading, error, request } = useApiRequester();

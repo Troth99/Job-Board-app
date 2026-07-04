@@ -1,6 +1,6 @@
 import { useState } from "react";
-import useApiRequester from "../shared/useApiRequester";
-import { API_BASE } from "../../services/api";
+import useApiRequester from "../../../hooks/shared/useApiRequester";
+import { API_BASE } from "../../../services/api";
 
 export default function useAvatar() {
   const { request } = useApiRequester();

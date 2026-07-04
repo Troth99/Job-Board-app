@@ -1,7 +1,7 @@
 
 import useCompany from "../../../hooks/utils/useCompanyMethods";
 import { useNotification } from "../../../hooks/utils/useNotification";
-import useUserProfile from "../../../hooks/utils/useProfileUtils";
+import useProfile from "../../../features/profile/hooks/useProfile";
 import { useValidation } from "../../validators/useValidation";
 import "./SendMessage.css";
 
@@ -18,7 +18,7 @@ export function SendMessage({ recipient: initialRecipient, onClose, autoOpen, on
   const [errors, setErrors] = useState<{ email?: string }>({});
   const { checkUser } = useCompany();
   const [isSending, setIsSending] = useState(false);
-  const {userData} = useUserProfile();
+  const { userData } = useProfile();
 
   const currentUserId = getUserFromLocalStorage()._id
 

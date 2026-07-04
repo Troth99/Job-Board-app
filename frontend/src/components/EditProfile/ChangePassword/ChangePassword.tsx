@@ -3,7 +3,7 @@ import "./ChangePassword.css";
 import { useChangePasswordValidation } from "../../validators/useChangePasswordValidation";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../../utils/toast";
-import useUserProfile from "../../../hooks/utils/useProfileUtils";
+import useProfile from "../../../features/profile/hooks/useProfile";
 import useForm from "../../../hooks/shared/useForm";
 
 export interface changePasswordForm extends Record<string, string> {
@@ -22,7 +22,7 @@ export default function ChangePassword() {
   const [loading, setLoading] = useState<boolean>(false);
   const { validate } = useChangePasswordValidation();
   const navigate = useNavigate();
-  const { changePassword } = useUserProfile();
+  const { changePassword } = useProfile();
 
   const validateForm = (values: changePasswordForm) => validate(values);
 

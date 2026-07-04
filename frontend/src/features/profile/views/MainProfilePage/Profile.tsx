@@ -1,23 +1,21 @@
 import "./Profile.css";
 import "./Responsive.css";
 import { useEffect, useState } from "react";
-import Spinner from "../Spinner/Spinner";
-import useProfile from "../../features/profile/hooks/useProfile";
+import Spinner from "../../../../components/Spinner/Spinner";
+import useProfile from "../../hooks/useProfile";
 import { useNavigate } from "react-router";
-import useCompany from "../../hooks/utils/useCompanyMethods";
-import { useRole } from "../../context/RoleContext";
-import { useUserData } from "../../context/UseDataContext";
-import { Container } from "../Container/Container";
-import { ProfileRightPanel } from "../../features/profile/components/RoleAndCompanySection/ProfileRightPanel";
-import JobPosting from "./JobPosting/JobPosting";
-import ProfileContainer from "./ProfileContainer/ProfileContainer";
-import { generateSeoConfig } from "../../seo/seo";
-import MetaData from "../../seo/MetaDataTags";
-import useAvatar from "../../features/profile/hooks/useAvatar";
+import useCompany from "../../../../hooks/utils/useCompanyMethods";
+import { useRole } from "../../../../context/RoleContext";
+import { useUserData } from "../../../../context/UseDataContext";
+import { Container } from "../../../../components/Container/Container";
+import { ProfileRightPanel } from "../../components/RoleAndCompanySection/ProfileRightPanel";
+import JobPosting from "../../../../components/Profile/JobPosting/JobPosting";
+import ProfileContainer from "../../../../components/Profile/ProfileContainer/ProfileContainer";
+import { generateSeoConfig } from "../../../../seo/seo";
+import MetaData from "../../../../seo/MetaDataTags";
+import useAvatar from "../../hooks/useAvatar";
+import { ProfileProps } from "../../types/profileSectionTypes";
 
-interface ProfileProps {
-  LogOutComponnent: React.ComponentType;
-}
 export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const { loading: userLoading, isInitialized, userData } = useProfile();
   const { avatar, handleFileChange } = useAvatar();
@@ -26,12 +24,11 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const navigate = useNavigate();
   const { setUserData } = useUserData();
   const [isCompanyReady, setIsCompanyReady] = useState(false);
-  const companyValue = userData?.company as
-    | string
-    | { _id?: string }
-    | undefined;
-  const companyId =
-    typeof companyValue === "string" ? companyValue : companyValue?._id;
+
+  // Determine the company ID based on the userData if its not populated yet, 
+  // it will be undefined and the company section will not be displayed
+const companyId = userData?.company;
+
 
   useEffect(() => {
     if (userData) {
@@ -39,6 +36,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     }
   }, [userData]);
 
+  //orchestrates the company data fetching and sets the isCompanyReady state accordingly
   useEffect(() => {
     if (!userData) {
       setIsCompanyReady(false);
@@ -85,7 +83,7 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   if (!userData) {
     return (
       <>
-      <MetaData seo={seo} />
+        <MetaData seo={seo} />
 
         <Container maxwith="820px" padding="0 12px">
           <div className="profile-container">
@@ -116,7 +114,9 @@ export default function MyProfile({ LogOutComponnent }: ProfileProps) {
     <>
       <MetaData seo={seo} />
 
-      {userLoading || (!isInitialized && !userData) || (!!userData && !isCompanyReady) ? (
+      {userLoading ||
+      (!isInitialized && !userData) ||
+      (!!userData && !isCompanyReady) ? (
         <Spinner overlay={true} />
       ) : (
         <Container maxwith="1520px" padding="0 12px">

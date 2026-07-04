@@ -4,11 +4,12 @@ import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../utils/toast";
 import { useValidation } from "../validators/useValidation";
-import useUserProfile from "../../hooks/utils/useProfileUtils";
+import useProfile from "../../features/profile/hooks/useProfile";
 import useForm from "../../hooks/shared/useForm";
 import { useState, useEffect } from "react";
 import { generateSeoConfig } from "../../seo/seo";
 import MetaData from "../../seo/MetaDataTags";
+import useAvatar from "../../features/profile/hooks/useAvatar";
 
 export interface ProfileData {
   firstName: string;
@@ -29,13 +30,8 @@ const initialProfileData: ProfileData = {
 };
 
 export default function EditProfile() {
-  const {
-    userData,
-    updateUserProfile,
-    handleDeleteProfileImage,
-    handleDeleteProfile,
-  } = useUserProfile();
-
+  const { userData, updateUserProfile, handleDeleteProfile } = useProfile();
+  const { handleDeleteProfileImage } = useAvatar();
   const [profileData, setProfileData] = useState<ProfileData>(initialProfileData);
   const seo = generateSeoConfig("editProfile");
 
