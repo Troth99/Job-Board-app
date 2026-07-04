@@ -6,6 +6,7 @@ import { showSuccess } from "../../../../utils/toast";
 import useProfile from "../../hooks/useProfile";
 import useForm from "../../../../hooks/shared/useForm";
 import { changePasswordForm } from "../../types/profileSectionTypes";
+import { Container } from "../../../../shared/components/Container/Container";
 
 
 const initialForm: changePasswordForm = {
@@ -17,6 +18,7 @@ const initialForm: changePasswordForm = {
 //Change password functionallity
 export default function ChangePassword() {
   const [loading, setLoading] = useState<boolean>(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const { validate } = useChangePasswordValidation();
   const navigate = useNavigate();
   const { changePassword } = useProfile();
@@ -25,52 +27,86 @@ export default function ChangePassword() {
 
   const onSubmit = async (values: changePasswordForm) => {
     setLoading(true);
+    setSubmitError(null);
     try {
       await changePassword({ currentPassword: values.currentPassword, newPassword: values.newPassword });
       showSuccess("Password changed succsessfully!");
       navigate("/profile");
     } catch (error: any) {
-      throw new Error(error.message || "Failed to change password");
+
+      //backend error for incorrect current password is handled here and displayed to the user
+      const message = error.message || "Failed to change password";
+      setSubmitError(message);
+      setErrors((prev) => ({
+        ...prev,
+        currentPassword:
+          message === "Incorrect current password."
+            ? message
+            : prev.currentPassword,
+      }));
+      return;
     } finally {
       setLoading(false);
     }
   };
 
-  const { register, formHandler, errors } = useForm<changePasswordForm>(onSubmit, initialForm, validateForm);
+  const { register, formHandler, errors, setErrors } = useForm<changePasswordForm>(onSubmit, initialForm, validateForm);
 
   return (
-    <div className="profile-container">
-      <div className="profile-header">
-        <h1>Change Password</h1>
+    <Container maxwith="980px" padding="0 12px">
+      <div className="cp-page">
+        <section className="cp-shell">
+          <div className="cp-header">
+            <span className="cp-eyebrow">Security</span>
+            <h1>Change Password</h1>
+            <p>
+              Update your account password to keep your profile secure.
+            </p>
+          </div>
+
+          <form className="cp-form" onSubmit={formHandler}>
+            {submitError && !errors.currentPassword ? (
+              <div className="cp-form-error" role="alert">{submitError}</div>
+            ) : null}
+
+            <label className="cp-field">
+              <span>Current password</span>
+              <input type="password" {...register("currentPassword")} />
+              <div className="cp-error">{errors.currentPassword}</div>
+            </label>
+
+            <label className="cp-field">
+              <span>New password</span>
+              <input type="password" {...register("newPassword")} />
+              <div className="cp-error">{errors.newPassword}</div>
+            </label>
+
+            <label className="cp-field">
+              <span>Confirm password</span>
+              <input type="password" {...register("confirmPassword")} />
+              <div className="cp-error">{errors.confirmPassword}</div>
+            </label>
+
+            <div className="cp-actions">
+              <button
+                type="button"
+                className="cp-secondary-button"
+                onClick={() => navigate("/profile/setthings")}
+                disabled={loading}
+              >
+                Back to settings
+              </button>
+              <button
+                type="submit"
+                className="cp-primary-button"
+                disabled={loading}
+              >
+                {loading ? "Saving..." : "Change password"}
+              </button>
+            </div>
+          </form>
+        </section>
       </div>
-
-      <form className="profile-details" onSubmit={formHandler}>
-        <div>
-          <strong>Current Password:</strong>
-          <input type="password" {...register("currentPassword")} />
-          <div className="error-message">{errors.currentPassword}</div>
-        </div>
-        <div>
-          <strong>New Password:</strong>
-          <input type="password" {...register("newPassword")} />
-          <div className="error-message">{errors.newPassword}</div>
-        </div>
-        <div>
-          <strong>Confirm Password:</strong>
-          <input type="password" {...register("confirmPassword")} />
-          <div className="error-message">{errors.confirmPassword}</div>
-        </div>
-
-        <div className="edit-profile-button-container">
-          <button
-            type="submit"
-            className="edit-profile-button"
-            disabled={loading}
-          >
-            {loading ? "Saving..." : "Change password"}
-          </button>
-        </div>
-      </form>
-    </div>
+    </Container>
   );
 }

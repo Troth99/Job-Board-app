@@ -7,6 +7,10 @@
   width: 100%;
   padding: 0 1rem;
 }
+
+.search-container form {
+  width: min(100%, 620px);
+}
 .search-results-container {
   margin: 32px auto;
   max-width: 900px;
@@ -24,7 +28,7 @@
   background: rgba(255, 255, 255, 0.9);
   border-radius: 50px;
   padding: 0.5rem;
-  width: min(100%, 520px);
+  width: 100%;
   box-shadow: 0 6px 20px rgba(0, 123, 255, 0.15);
   transition: all 0.3s ease;
   backdrop-filter: blur(4px);
@@ -100,7 +104,7 @@ body[data-theme="dark"] .search-box {
   background: rgba(30, 32, 40, 0.9);
   border-radius: 50px;
   padding: 0.5rem;
-  width: min(100%, 520px);
+  width: 100%;
   box-shadow: 0 6px 20px rgba(30, 144, 255, 0.15);
   transition: all 0.3s ease;
   backdrop-filter: blur(6px);
