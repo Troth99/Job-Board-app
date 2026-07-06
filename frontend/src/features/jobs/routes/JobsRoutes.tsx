@@ -5,7 +5,7 @@ import { RoleGuard } from "../../../RouteGuards/RoleGuard";
 import ProtectedRoutes from "../../../RouteGuards/authRouteGuard";
 import { JobEditRouteGuard } from "../../../RouteGuards/jobEditRouteGuard";
 import { JobDetailsRouteGuard } from "../../../RouteGuards/jobDetailsRouteGuard";
-import MainLayout from "../../../shared/components/Layouts/MainLayout";
+import MainLayout from "../../../shared/Layouts/MainLayout";
 
 const ViewAllJobs = lazy(() => {
   return import("../views/ViewAllJobs/ViewAllJobs");

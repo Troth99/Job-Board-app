@@ -1,12 +1,12 @@
 import { ReactNode, useEffect } from "react";
 
 import { Outlet } from "react-router";
-import useApiRequester from "../../../hooks/shared/useApiRequester";
-import { CompanyProvider, useCompanyContext } from "../../../context/CompanyContext";
-import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
-import { API_BASE } from "../../../services/api";
-import { Header } from "../../../components/Header/Header";
-import { Footer } from "../../../components/Footer/Footer";
+import useApiRequester from "../../hooks/shared/useApiRequester";
+import { CompanyProvider, useCompanyContext } from "../../context/CompanyContext";
+import { getUserFromLocalStorage } from "../../hooks/shared/useAuth";
+import { API_BASE } from "../../services/api";
+import { Header } from "../../components/Header/Header";
+import { Footer } from "../../components/Footer/Footer";
 
 interface Props {
   children?: ReactNode;

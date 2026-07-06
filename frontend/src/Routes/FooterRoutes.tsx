@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
 import Spinner from "../shared/components/Spinner/Spinner";
-import MainLayout from "../shared/components/Layouts/MainLayout";
+import MainLayout from "../shared/Layouts/MainLayout";
 
 const ForUsPage = lazy(
   () => import("../components/Footer/FooterPages/ForUs/ForUs"),

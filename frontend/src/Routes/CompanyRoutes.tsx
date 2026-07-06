@@ -7,7 +7,8 @@ import ProtectedRoutes from "../RouteGuards/authRouteGuard";
 import CompanyRouteGuard from "../RouteGuards/companyRouteGuard";
 import UpdateCompany from "../components/Company/UpdateCompany/UpdateCompany";
 import { UpdateCompanyRouteGuard } from "../RouteGuards/updateCompanyGuard";
-import MainLayout from "../shared/components/Layouts/MainLayout";
+import MainLayout from "../shared/Layouts/MainLayout";
+
 
 const ViewAllCOmpaniesPage = lazy(
   () => import("../components/Company/ViewAllCompanies/ViewAllCompanies"),

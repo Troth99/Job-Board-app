@@ -3,7 +3,7 @@ import { Route } from "react-router";
 import ProtectedRoutes from "../RouteGuards/authRouteGuard";
 import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
 import { NotificationOwnerGuard } from "../RouteGuards/notificationGuard";
-import MainLayout from "../shared/components/Layouts/MainLayout";
+import MainLayout from "../shared/Layouts/MainLayout";
 
 const NotificationsPage = lazy(
   () => import("../components/Notifications/Notifications"),
