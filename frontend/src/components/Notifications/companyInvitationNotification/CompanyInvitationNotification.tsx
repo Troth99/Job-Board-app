@@ -5,7 +5,7 @@ import { useNotificationContext } from "../../../context/NotificationContext";
 import { Notification } from "../../../interfaces/Notification.model";
 import { useNotification } from "../../../hooks/utils/useNotification";
 import { useNavigate } from "react-router";
-import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
+import { getUserFromLocalStorage } from "../../../features/auth/hooks/useAuth";
 import useCompany from "../../../hooks/utils/useCompanyMethods";
 import { useUserData } from "../../../context/UseDataContext";
 

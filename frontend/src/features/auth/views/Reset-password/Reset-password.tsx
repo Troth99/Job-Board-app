@@ -1,9 +1,10 @@
 import { useNavigate, useParams } from "react-router";
-import useAuth from "../../../hooks/shared/useAuth";
-import useForm from "../../../hooks/shared/useForm";
-import { useValidation } from "../../validators/useValidation";
+
 import "./resetPassword.css";
 import { useState } from "react";
+import { useValidation } from "../../../../components/validators/useValidation";
+import useAuth from "../../hooks/useAuth";
+import useForm from "../../../../hooks/shared/useForm";
 
 const initialValues = {
   password: "",

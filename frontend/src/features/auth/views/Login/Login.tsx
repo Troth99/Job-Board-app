@@ -2,19 +2,15 @@ import { Link, useLocation, useNavigate } from "react-router";
 import "./Login.css";
 import "./Responsive.css";
 import { useRef, useState } from "react";
-import useAuth from "../../../hooks/shared/useAuth";
-import { useValidation } from "../../validators/useValidation";
-import { useLocalStorage } from "../../../hooks/shared/useLocalStorage";
-import useForm from "../../../hooks/shared/useForm";
-import { Container } from "../../../shared/components/Container/Container";
-import LoginSocialIcons from "./LoginElements/LoginSocialIcons";
-import LeftSideLogin from "./LoginElements/LeftSideLogin";
+import useAuth from "../../hooks/useAuth";
 
-export interface LoginFormType {
-  email: string;
-  password: string;
-  [key: string]: string | undefined;
-}
+import { useLocalStorage } from "../../../../hooks/shared/useLocalStorage";
+import useForm from "../../../../hooks/shared/useForm";
+import { Container } from "../../../../shared/components/Container/Container";
+import { useValidation } from "../../../../components/validators/useValidation";
+import LoginAside from "../../components/login-UI/LoginAside";
+import LoginSocialIcons from "../../components/login-UI/LoginSocialIcons";
+import { LoginFormType } from "../../types/loginFormType";
 
 const initialFormValue = {
   email: "",
@@ -77,7 +73,7 @@ export default function LoginComponent({
       <Container>
         <div className="login-page">
           <aside className="login-brand-panel">
-          <LeftSideLogin/>
+          <LoginAside/>
           </aside>
 
           <div className="login-card">

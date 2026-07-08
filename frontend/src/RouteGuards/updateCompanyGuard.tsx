@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useNavigate, useParams } from "react-router";
 import { useRole } from "../context/RoleContext";
-import { getAuthToken } from "../hooks/shared/useAuth";
+import { getAuthToken } from "../features/auth/hooks/useAuth";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 

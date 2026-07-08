@@ -2,14 +2,16 @@ import { Link, useNavigate } from "react-router";
 import "./Register.css";
 import "./Responsive.css";
 import { useState } from "react";
-import useAuth, { registerFormType } from "../../../hooks/shared/useAuth";
-import { useValidation } from "../../validators/useValidation";
-import useForm from "../../../hooks/shared/useForm";
-import { useLocalStorage } from "../../../hooks/shared/useLocalStorage";
-import { Container } from "../../../shared/components/Container/Container";
-import { LeftSideOfRegister } from "./RegisterElements/LeftSideOfRegister";
+import { registerUserType } from "../../types/registerUserType";
+import { useLocalStorage } from "../../../../hooks/shared/useLocalStorage";
+import { useValidation } from "../../../../components/validators/useValidation";
+import useAuth from "../../hooks/useAuth";
+import useForm from "../../../../hooks/shared/useForm";
+import { Container } from "../../../../shared/components/Container/Container";
+import { RegisterAside } from "../../components/register-UI/RegisterAside";
 
-const intialValueRegister: registerFormType = {
+
+const intialValueRegister: registerUserType = {
   firstName: "",
   lastName: "",
   email: "",
@@ -32,7 +34,7 @@ export default function RegisterComponent() {
   const { validateConfirmPassword, validateForm } = useValidation();
   const { registerUser } = useAuth();
 
-  const registerHandler = async (formValues: registerFormType) => {
+  const registerHandler = async (formValues: registerUserType) => {
     setLoading(true);
 
     const confirmPasswordError = validateConfirmPassword(
@@ -70,7 +72,7 @@ export default function RegisterComponent() {
   };
 
   const { values, register, formHandler, errors, setErrors, reset } =
-    useForm<registerFormType>(
+    useForm<registerUserType>(
       registerHandler,
       intialValueRegister,
       validateForm,
@@ -81,7 +83,7 @@ export default function RegisterComponent() {
       <Container>
         <div className="register-page">
           <aside className="register-brand-panel">
-            <LeftSideOfRegister />
+            <RegisterAside />
           </aside>
 
           <div className="register-card">

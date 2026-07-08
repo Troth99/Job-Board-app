@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { setAuthenticated } from "../../redux/authSlice";
 import { store } from "../../redux/store";
-import { getAuthToken, getRefreshToken, refreshAccessToken, updateTokensInStorage } from "./useAuth";
+import { getAuthToken, getRefreshToken, refreshAccessToken, updateTokensInStorage } from "../../features/auth/hooks/useAuth";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
 

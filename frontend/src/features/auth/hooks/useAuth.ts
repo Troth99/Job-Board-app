@@ -1,19 +1,9 @@
 import { useState } from "react";
-import useApiRequester from "./useApiRequester";
-import { API_BASE } from "../../services/api";
-import { LoginFormType } from "../../components/auth/Login/Login";
+import useApiRequester from "../../../hooks/shared/useApiRequester";
+import { API_BASE } from "../../../services/api";
+import { registerUserType } from "../types/registerUserType";
+import { LoginFormType } from "../types/loginFormType";
 
-
-export interface registerFormType {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  phoneNumber: string;
-  location: string;
-  [key: string]: string;
-}
 
 export default function useAuth() {
   const { request } = useApiRequester();
@@ -38,7 +28,7 @@ export default function useAuth() {
     }
   };
 
-  const registerUser = async (data: registerFormType) => {
+  const registerUser = async (data: registerUserType) => {
     setLoading(true);
     try {
       const { confirmPassword, ...registrationData } = data;

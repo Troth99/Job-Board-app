@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export default function LeftSideLogin() {
+export default function LoginAside() {
   return (
     <>
       <Link to="/" className="login-back-btn">

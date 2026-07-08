@@ -10,7 +10,7 @@ import { lazy, Suspense } from "react";
 import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
 import { footerRoutes } from "./Routes/FooterRoutes";
 import { jobsRoutes } from "./features/jobs/routes/JobsRoutes";
-import { authRoutes } from "./Routes/AuthRoutes";
+import { authRoutes } from "./features/auth/routes/AuthRoutes";
 import { notificationsRoutes } from "./Routes/NotificationRoutes";
 import { ProfileRoutes } from "./features/profile/routes/ProfileRoutes";
 import { CompanyRoutes } from "./Routes/CompanyRoutes";

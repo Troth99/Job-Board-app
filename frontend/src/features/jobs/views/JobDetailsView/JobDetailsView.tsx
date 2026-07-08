@@ -6,7 +6,7 @@ import { Job } from "../../types/Job.model";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { useLocalStorage } from "../../../../hooks/shared/useLocalStorage";
 import { ApplyForJobModal } from "../../components/ApplyForJobModal/ApplyForJobModal";
-import { getUserFromLocalStorage } from "../../../../hooks/shared/useAuth";
+import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import { Container } from "../../../../shared/components/Container/Container";
 import { CompanyDetails } from "./CompanyDetailsForJobSection/CompanyDetailsViewforJobs";
 import { QucikInfoSection } from "./CompanyDetailsForJobSection/QuicnInfoSection";

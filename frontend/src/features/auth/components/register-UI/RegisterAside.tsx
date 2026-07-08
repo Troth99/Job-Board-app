@@ -1,7 +1,7 @@
 import { Link } from "react-router";
-import "./LeftSideOfRegister.css";
+import "./RegisterAside.css";
 
-export function LeftSideOfRegister() {
+export function RegisterAside() {
   return (
     <>
       <Link to="/" className="login-back-btn">

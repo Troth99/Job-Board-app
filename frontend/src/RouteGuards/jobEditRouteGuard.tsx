@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
-import { getAuthToken, getUserFromLocalStorage } from "../hooks/shared/useAuth";
+import { getAuthToken, getUserFromLocalStorage } from "../features/auth/hooks/useAuth";
 import useJobs from "../features/jobs/hooks/useJobBoard";
 import useCompany from "../hooks/utils/useCompanyMethods";
 import { Job } from "../features/jobs/types/Job.model";

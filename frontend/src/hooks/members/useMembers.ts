@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { API_BASE } from "../../services/api";
 import useApiRequester from "../shared/useApiRequester";
-import { getUserFromLocalStorage } from "../shared/useAuth";
+import { getUserFromLocalStorage } from "../../features/auth/hooks/useAuth";
 
 export default function useMembers() {
   const [loading, setLoading] = useState<boolean>(false);

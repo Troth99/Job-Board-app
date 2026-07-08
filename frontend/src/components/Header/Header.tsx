@@ -3,7 +3,7 @@ import { useThemeContext } from "../../context/ThemeContext";
 import "./Header.css";
 import "./Responsive.css";
 import { Link, useLocation } from "react-router";
-import { getRefreshToken } from "../../hooks/shared/useAuth";
+import { getRefreshToken } from "../../features/auth/hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated } from "../../redux/authSlice";
 import { RootState } from "../../redux/store";

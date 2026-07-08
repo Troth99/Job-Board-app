@@ -1,7 +1,7 @@
 import "./ApplyForJob.css";
 import useForm from "../../../../hooks/shared/useForm";
 import useJobs from "../../hooks/useJobBoard";
-import { getUserFromLocalStorage } from "../../../../hooks/shared/useAuth";
+import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import { useState } from "react";
 
 type FormValues = {

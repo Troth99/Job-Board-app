@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { API_BASE } from "../../../services/api";
-import FullPageSpinner from "../../FullPageSpinner/FullPageSpinner";
+import { API_BASE } from "../../../../services/api";
+import FullPageSpinner from "../../../../components/FullPageSpinner/FullPageSpinner";
 
 interface OAuthCallbackProps {
   setUserId: (id: string) => void;
 }
-
+//Function to handle OAuth callback and finish the login process from google or github. 
+// It will extract the accessToken and refreshToken from the URL, fetch the user's profile, 
+// and store the user information in localStorage. If any step fails, 
+// it will redirect to the login page.
 export default function OAuthCallback({ setUserId }: OAuthCallbackProps) {
   const navigate = useNavigate();
 

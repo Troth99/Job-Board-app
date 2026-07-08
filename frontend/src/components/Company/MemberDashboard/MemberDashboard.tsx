@@ -7,7 +7,7 @@ import { CompanyJobsList } from "../CompanyJobList/CompanyJobList";
 import Spinner from "../../../shared/components/Spinner/Spinner";
 import { CompanyMembers } from "../InviteMemberToCompany/InviteMemberToCompany";
 import { SendMessage } from "../SendMessage/SendMessage";
-import { getUserFromLocalStorage } from "../../../hooks/shared/useAuth";
+import { getUserFromLocalStorage } from "../../../features/auth/hooks/useAuth";
 import { useUserData } from "../../../context/UseDataContext";
 import { useRole } from "../../../context/RoleContext";
 import { MemberDashboardModals } from "./Modals";

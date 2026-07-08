@@ -1,25 +1,25 @@
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
-import GuestGuardRoute from "../RouteGuards/guestRouteGuard";
-import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
-import MainLayout from "../shared/Layouts/MainLayout";
+import GuestGuardRoute from "../../../RouteGuards/guestRouteGuard";
+import FullPageSpinner from "../../../components/FullPageSpinner/FullPageSpinner";
+import MainLayout from "../../../shared/Layouts/MainLayout";
 
-const LoginComponent = lazy(() => import("../components/auth/Login/Login"));
+const LoginComponent = lazy(() => import("../views/Login/Login"));
 
 const RegisterComponent = lazy(
-  () => import("../components/auth/Register/Register"),
+  () => import("../views/Register/Register"),
 );
 
 const ResetPassowrd = lazy(
-  () => import("../components/auth/Reset-password/Reset-password"),
+  () => import("../views/Reset-password/Reset-password"),
 );
 
-const ForgotPassowrd = lazy(    
-    () => import("../components/auth/forgot-password/Forgot-Password"),
+const ForgotPassowrd = lazy(
+  () => import("../views/forgot-password/Forgot-Password"),
 );
 
 const OAuthCallback = lazy(
-  () => import("../components/auth/OAuthCallback/OAuthCallback"),
+  () => import("../views/OAuthCallback/OAuthCallback"),
 );
 
 export const authRoutes = (setUserId: (id: string) => void) => [
@@ -54,14 +54,14 @@ export const authRoutes = (setUserId: (id: string) => void) => [
         </MainLayout>
       }
     />
-              <Route
-                path="/auth/forgot-password"
-                element={
-                  <MainLayout>
-                    <ForgotPassowrd></ForgotPassowrd>
-                  </MainLayout>
-                }
-              />
+    <Route
+      path="/auth/forgot-password"
+      element={
+        <MainLayout>
+          <ForgotPassowrd></ForgotPassowrd>
+        </MainLayout>
+      }
+    />
     <Route
       path="/oauth-callback"
       element={
@@ -72,7 +72,5 @@ export const authRoutes = (setUserId: (id: string) => void) => [
         </MainLayout>
       }
     />
-    
-
   </Route>,
 ];

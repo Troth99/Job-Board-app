@@ -2,8 +2,9 @@ import { Route } from "react-router";
 import { lazy, Suspense } from "react";
 import FullPageSpinner from "../../../components/FullPageSpinner/FullPageSpinner";
 import ProtectedRoutes from "../../../RouteGuards/authRouteGuard";
-import { LogOut } from "../../../components/auth/Logout/Logout";
+
 import MainLayout from "../../../shared/Layouts/MainLayout";
+import { LogOut } from "../../auth/views/Logout/Logout";
 
 const MyProfile = lazy(() => import("../views/MainProfilePage/Profile"));
 const EditProfile = lazy(() => import("../views/EditProfile/EditProfile"));

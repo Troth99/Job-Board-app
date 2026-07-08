@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { registerFormType } from "../../hooks/shared/useAuth";
+import { registerFormType } from "../../features/auth/hooks/useAuth";
 import { ProfileData } from "../../features/profile/views/EditProfile/EditProfile";
 
 
