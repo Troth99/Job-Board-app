@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { API_BASE } from "../../../../services/api";
-import FullPageSpinner from "../../../../components/FullPageSpinner/FullPageSpinner";
+import FullPageSpinner from "../../../../shared/components/FullPageSpinner/FullPageSpinner";
 
 interface OAuthCallbackProps {
   setUserId: (id: string) => void;

@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../features/auth/hooks/useAuth";
 import { Navigate, Outlet } from "react-router";
 import { showCompanyWarning } from "../utils/toast";
-import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
 
 import useCompany from "../hooks/utils/useCompanyMethods";
+import FullPageSpinner from "../shared/components/FullPageSpinner/FullPageSpinner";
 
 export default function CompanyRouteGuard() {
   let { companyId } = useParams<{ companyId: string }>();

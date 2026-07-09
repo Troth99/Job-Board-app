@@ -1,13 +1,14 @@
 import { Route } from "react-router";
 
 import { lazy, Suspense } from "react";
-import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
+
 import CompanyRegisterGuard from "../RouteGuards/companyRegisterGuard";
 import ProtectedRoutes from "../RouteGuards/authRouteGuard";
 import CompanyRouteGuard from "../RouteGuards/companyRouteGuard";
 import UpdateCompany from "../components/Company/UpdateCompany/UpdateCompany";
 import { UpdateCompanyRouteGuard } from "../RouteGuards/updateCompanyGuard";
 import MainLayout from "../shared/Layouts/MainLayout";
+import FullPageSpinner from "../shared/components/FullPageSpinner/FullPageSpinner";
 
 
 const ViewAllCOmpaniesPage = lazy(

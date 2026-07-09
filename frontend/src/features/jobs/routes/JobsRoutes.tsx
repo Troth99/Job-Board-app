@@ -1,11 +1,11 @@
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
-import FullPageSpinner from "../../../components/FullPageSpinner/FullPageSpinner";
 import { RoleGuard } from "../../../RouteGuards/RoleGuard";
 import ProtectedRoutes from "../../../RouteGuards/authRouteGuard";
 import { JobEditRouteGuard } from "../../../RouteGuards/jobEditRouteGuard";
 import { JobDetailsRouteGuard } from "../../../RouteGuards/jobDetailsRouteGuard";
 import MainLayout from "../../../shared/Layouts/MainLayout";
+import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 
 const ViewAllJobs = lazy(() => {
   return import("../views/ViewAllJobs/ViewAllJobs");

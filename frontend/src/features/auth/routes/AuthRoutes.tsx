@@ -1,8 +1,8 @@
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
 import GuestGuardRoute from "../../../RouteGuards/guestRouteGuard";
-import FullPageSpinner from "../../../components/FullPageSpinner/FullPageSpinner";
 import MainLayout from "../../../shared/Layouts/MainLayout";
+import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 
 const LoginComponent = lazy(() => import("../views/Login/Login"));
 

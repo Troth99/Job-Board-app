@@ -3,7 +3,7 @@ import "./FilterJobsByCategory.css";
 import useJobs from "../../features/jobs/hooks/useJobBoard";
 import { useEffect, useState } from "react";
 import { ShowJobs } from "../../showJobs/showJobs";
-import { LoadingIndicator } from "../../LoadingIndicator/LoadingIndicator";
+import { LoadingIndicator } from "../../shared/components/LoadingIndicator/LoadingIndicator";
 import { FilterGroup } from "./FilterGroup/FilterGroup";
 import { employmentOptions } from "../../features/jobs/form/formSelectedInputs";
   

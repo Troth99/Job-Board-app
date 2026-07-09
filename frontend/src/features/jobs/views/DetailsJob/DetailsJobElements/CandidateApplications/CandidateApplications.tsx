@@ -1,7 +1,7 @@
 import "./CandidateApplications.css";
 import useJobs from "../../../../hooks/useJobBoard";
 import { Candidate } from "../../../../types/Apllication.model";
-import { LoadingIndicator } from "../../../../../../LoadingIndicator/LoadingIndicator";
+import { LoadingIndicator } from "../../../../../../shared/components/LoadingIndicator/LoadingIndicator";
 import { formatDate } from "../../../../../../utils/formData";
 import { useParams } from "react-router";
 

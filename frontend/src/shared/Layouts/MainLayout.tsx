@@ -5,9 +5,9 @@ import useApiRequester from "../../hooks/shared/useApiRequester";
 import { CompanyProvider, useCompanyContext } from "../../context/CompanyContext";
 import { getUserFromLocalStorage } from "../../features/auth/hooks/useAuth";
 import { API_BASE } from "../../services/api";
-import { Header } from "../../components/Header/Header";
-import { Footer } from "../../components/Footer/Footer";
-
+import { Header } from "../components/Header/Header";
+import { Footer } from "../components/Footer/Footer";
+  
 interface Props {
   children?: ReactNode;
   hideHeaderFooter?: boolean;

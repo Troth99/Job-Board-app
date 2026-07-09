@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
 import "./styles/global.css";
-import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import { Route, Routes } from "react-router";
 import { PageNotFound } from "./shared/pages/404/404";
 import { useDispatch } from "react-redux";
-import useCategories from "./hooks/utils/useCategoriesIndex";
-import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
+import useCategories from "./features/categories/hook/useCategories";
 import { lazy, Suspense } from "react";
-import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
-import { footerRoutes } from "./Routes/FooterRoutes";
+import { footerRoutes } from "./shared/routes/FooterRoutes";
 import { jobsRoutes } from "./features/jobs/routes/JobsRoutes";
 import { authRoutes } from "./features/auth/routes/AuthRoutes";
 import { notificationsRoutes } from "./Routes/NotificationRoutes";
 import { ProfileRoutes } from "./features/profile/routes/ProfileRoutes";
 import { CompanyRoutes } from "./Routes/CompanyRoutes";
 import MainLayout from "./shared/Layouts/MainLayout";
+import FullPageSpinner from "./shared/components/FullPageSpinner/FullPageSpinner";
+import { setCategories } from "./features/categories/components/CategoriesSection/categoriesSlice";
+import SearchResults from "./features/homeview/components/Search/SearchResults/SearchResults";
 
 
 interface AppProps {
   setUserId: (id: string) => void;
 }
 //lazy loaded components
-const HomeSection = lazy(() => import("./components/Home/HomeSection"));
+const HomeSection = lazy(() => import("./features/homeview/view/HomeSection"));
 
 function App({ setUserId }: AppProps) {
   const [loading, setLoading] = useState(true);

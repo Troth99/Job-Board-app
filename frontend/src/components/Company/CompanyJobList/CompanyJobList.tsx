@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useJobs from "../../../features/jobs/hooks/useJobBoard";
 import { ShowJobs } from "../../../showJobs/showJobs";
-import { LoadingIndicator } from "../../../LoadingIndicator/LoadingIndicator";
+import { LoadingIndicator } from "../../../shared/components/LoadingIndicator/LoadingIndicator";
 import { Job } from "../../../features/jobs/types/Job.model";
 import { useNavigate } from "react-router";
 

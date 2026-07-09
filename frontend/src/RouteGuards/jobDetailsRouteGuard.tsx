@@ -5,7 +5,7 @@ import { getAuthToken, getUserFromLocalStorage } from "../features/auth/hooks/us
 import useJobs from "../features/jobs/hooks/useJobBoard";
 import useCompany from "../hooks/utils/useCompanyMethods";
 import { Job } from "../features/jobs/types/Job.model";
-import FullPageSpinner from "../components/FullPageSpinner/FullPageSpinner";
+import FullPageSpinner from "../shared/components/FullPageSpinner/FullPageSpinner";
 
 export function JobDetailsRouteGuard({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
