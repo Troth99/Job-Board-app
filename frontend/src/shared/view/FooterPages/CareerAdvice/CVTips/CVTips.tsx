@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import "./CVTips.css";
+import "./CVTIps.css";
 import { generateSeoConfig } from "../../../../../seo/seo";
 import MetaData from "../../../../../seo/MetaDataTags";
 import { Container } from "../../../../components/Container/Container";
