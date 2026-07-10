@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { API_BASE } from "../../services/api";
+import { API_BASE } from "../../config/api";
 import useApiRequester from "../shared/useApiRequester";
 import { getUserFromLocalStorage } from "../../features/auth/hooks/useAuth";
 

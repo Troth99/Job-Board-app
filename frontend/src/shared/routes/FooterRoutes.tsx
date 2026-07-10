@@ -4,31 +4,31 @@ import Spinner from "../components/Spinner/Spinner";
 import MainLayout from "../Layouts/MainLayout";
 
 const ForUsPage = lazy(
-  () => import("../components/Footer/FooterPages/ForUs/ForUs"),
+  () => import("../view/FooterPages/ForUs/ForUs"),
 );
 const ContactsPage = lazy(
-  () => import("../components/Footer/FooterPages/Contacts/Contacts"),
+  () => import("../view/FooterPages/Contacts/Contacts"),
 );
 const ForEmployersPage = lazy(
-  () => import("../components/Footer/FooterPages/ForEmployers/ForEmployers"),
+  () => import("../view/FooterPages/ForEmployers/ForEmployers"),
 );
 const TermsAndConditionsPage = lazy(
-  () => import("../components/Footer/FooterPages/TOS/terms-and-conditions"),
+  () => import("../view/FooterPages/TOS/terms-and-conditions"),
 );
 const PrivacyPage = lazy(
-  () => import("../components/Footer/FooterPages/Privacy/Privacy"),
+  () => import("../view/FooterPages/Privacy/Privacy"),
 );
 const CookiesPage = lazy(
-  () => import("../components/Footer/FooterPages/Cookies/Cookies"),
+  () => import("../view/FooterPages/Cookies/Cookies"),
 );
 const CVTipsPage = lazy(
-  () => import("../components/Footer/FooterPages/CareerAdvice/CVTips/CVTips"),
+  () => import("../view/FooterPages/CareerAdvice/CVTips/CVTips"),
 );
 const InterviewPreparationPage = lazy(
-  () => import("../components/Footer/FooterPages/CareerAdvice/interviewPreparation/InterviewPreparation"),
+  () => import("../view/FooterPages/CareerAdvice/interviewPreparation/InterviewPreparation"),
 );
 const SalaryNegotiationPage = lazy(
-  () => import("../components/Footer/FooterPages/CareerAdvice/SalaryNegotiation/SalaryNegotiation"),
+  () => import("../view/FooterPages/CareerAdvice/SalaryNegotiation/SalaryNegotiation"),
 );
 
 export const footerRoutes = [

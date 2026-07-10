@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import { Container } from "../../../../Container/Container";
-import "./CVTIps.css";
-import { generateSeoConfig } from "../../../../../../seo/seo";
-import MetaData from "../../../../../../seo/MetaDataTags";
+import "./CVTips.css";
+import { generateSeoConfig } from "../../../../../seo/seo";
+import MetaData from "../../../../../seo/MetaDataTags";
+import { Container } from "../../../../components/Container/Container";
 
 export default function CVTips() {
     const seo = generateSeoConfig("cvTips");

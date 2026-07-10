@@ -1,6 +1,6 @@
 import { useState } from "react";
-import useApiRequester from "./shared/useApiRequester";
-import { API_BASE } from "../services/api";
+import useApiRequester from "../../../hooks/shared/useApiRequester";
+import { API_BASE } from "../../../config/api";
 
 export default function useStatistics() {
   const [loading, setLoading] = useState<boolean>(false);

@@ -4,8 +4,9 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { RootState } from "../../../../redux/store";
-import { Category } from "../../hook/useCategories";
-import { ShowMoreCategories } from "../../../../components/ShowMoreCategoriesOnHome/ShowMoreCategoriesOnhome";
+import { Category } from "../../types/category";
+import { ShowMoreCategoriesOnhomeModal } from "../ShowMoreCategoriesOnHomeModal/ShowMoreCategoriesOnhomeModal";
+
 
 export default function CategoriesSection() {
   const { categories: reduxCategories, showAll } = useSelector(
@@ -50,7 +51,7 @@ const handleCategoryClick = (cat: Category) => {
       {openModal && (
         <div  onClick={() => setOpenModal(false)}>
           <div onClick={(e) => e.stopPropagation()}>
-            <ShowMoreCategories
+            <ShowMoreCategoriesOnhomeModal
               categories={reduxCategories}
               onClose={() => setOpenModal(false)}
               categoryHandler={handleCategoryClick}

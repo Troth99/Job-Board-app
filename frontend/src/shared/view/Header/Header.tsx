@@ -7,7 +7,8 @@ import { getRefreshToken } from "../../../features/auth/hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated } from "../../../redux/authSlice";
 import { RootState } from "../../../redux/store";
-import { NotificationMailIcon } from "./NotificationMailIcon";
+import { NotificationMailIcon } from "../../components/NotificationBadge/NotificationMailIcon";
+
 
 export function Header() {
   const dispatch = useDispatch();

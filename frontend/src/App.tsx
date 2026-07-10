@@ -3,7 +3,7 @@ import "./styles/global.css";
 import { Route, Routes } from "react-router";
 import { PageNotFound } from "./shared/pages/404/404";
 import { useDispatch } from "react-redux";
-import useCategories from "./features/categories/hook/useCategories";
+import useCategories from "./features/categories/hooks/useCategories";
 import { lazy, Suspense } from "react";
 import { footerRoutes } from "./shared/routes/FooterRoutes";
 import { jobsRoutes } from "./features/jobs/routes/JobsRoutes";

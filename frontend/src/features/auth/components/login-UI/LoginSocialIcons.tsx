@@ -1,5 +1,5 @@
 import './LoginSocialIcons.css'
-import { API_BASE } from '../../../../services/api';
+import { API_BASE } from '../../../../config/api';
 
 
 

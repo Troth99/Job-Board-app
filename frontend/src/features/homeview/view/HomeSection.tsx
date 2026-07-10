@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Job } from "../../jobs/types/Job.model";
 import { useEffect, useState } from "react";
 import { StatsResponse } from "../../../interfaces/ApplicationStatistic.model";
-import useStatistics from "../../../hooks/useStatistics";
+import useStatistics from "../hooks/useStatistics";
 import useJobs from "../../jobs/hooks/useJobsAPI";
 import { generateSeoConfig } from "../../../seo/seo";
 import MetaData from "../../../seo/MetaDataTags";

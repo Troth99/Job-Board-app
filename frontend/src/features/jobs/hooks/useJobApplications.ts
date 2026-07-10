@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useApiRequester from "../../../hooks/shared/useApiRequester";
-import { API_BASE } from "../../../services/api";
+import { API_BASE } from "../../../config/api";
 import { ApplicationFormData } from "../types/Apllication.model";
 
 export default function useApplications() {

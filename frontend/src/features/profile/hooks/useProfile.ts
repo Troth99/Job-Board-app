@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { API_BASE } from "../../../services/api";
+import { API_BASE } from "../../../config/api";
 import useApiRequester from "../../../hooks/shared/useApiRequester";
 import { ChangePasswordForm, User } from "../types/profileSectionTypes";
 

@@ -1,13 +1,14 @@
 
+
+import { Category } from "../../types/category";
 import "./ShowMoreCategories.css"
-import { Category } from "../../features/categories/hook/useCategories";
 
 type Props = {
-  categories: any[];
+  categories: Category[];
   onClose: () => void;
   categoryHandler?: (cat: Category) => void;
 };
-export function ShowMoreCategories({categories, categoryHandler ,onClose }:  Props){
+export function ShowMoreCategoriesOnhomeModal({categories, categoryHandler ,onClose }:  Props){
     
     return (
       <div className="overlay-categories-shown-home" onClick={onClose}>

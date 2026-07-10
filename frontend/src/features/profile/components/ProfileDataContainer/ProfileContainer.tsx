@@ -1,6 +1,6 @@
 import { formatDate } from "../../../../utils/formData";
 import defaultAvatar from "../../../../assets/personAvatar.jpg";
-import ImageUpload from "../../../../uploadImage/UploadProfileImage/UploadProfileImage";
+import ImageUpload from "../UploadProfileImage/UploadProfileImage";
 import { Link } from "react-router";
 import { ProfileContainerProps } from "../../types/profileSectionTypes";
 

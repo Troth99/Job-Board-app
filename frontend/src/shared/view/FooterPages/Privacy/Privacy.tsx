@@ -1,7 +1,8 @@
-import { generateSeoConfig } from "../../../../../seo/seo";
-import { Container } from "../../../Container/Container";
+import MetaData from "../../../../seo/MetaDataTags";
+import { generateSeoConfig } from "../../../../seo/seo";
+import { Container } from "../../../components/Container/Container";
 import "./privacy.css";
-import MetaData from "../../../../../seo/MetaDataTags";
+
 
 export default function Privacy() {
     const seo = generateSeoConfig("privacy");

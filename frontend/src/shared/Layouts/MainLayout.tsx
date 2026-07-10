@@ -4,9 +4,9 @@ import { Outlet } from "react-router";
 import useApiRequester from "../../hooks/shared/useApiRequester";
 import { CompanyProvider, useCompanyContext } from "../../context/CompanyContext";
 import { getUserFromLocalStorage } from "../../features/auth/hooks/useAuth";
-import { API_BASE } from "../../services/api";
-import { Header } from "../components/Header/Header";
-import { Footer } from "../components/Footer/Footer";
+import { API_BASE } from "../../config/api";
+import { Footer } from "../view/Footer/Footer";
+import { Header } from "../view/Header/Header";
   
 interface Props {
   children?: ReactNode;

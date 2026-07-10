@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import useApiRequester from "../shared/useApiRequester";
-import { API_BASE } from "../../services/api";
+import { API_BASE } from "../../config/api";
 import { Notification } from "../../interfaces/Notification.model";
 
 export function useSortedNotifications(notifications: Notification[]) {

@@ -1,8 +1,8 @@
 import { Link } from "react-router"
 import "./forEmployers.css"
-import { Container } from "../../../Container/Container"
-import { generateSeoConfig } from "../../../../../seo/seo";
-import MetaData from "../../../../../seo/MetaDataTags";
+import { generateSeoConfig } from "../../../../seo/seo";
+import MetaData from "../../../../seo/MetaDataTags";
+import { Container } from "../../../components/Container/Container";
 
 export default function ForEmployers() {
 

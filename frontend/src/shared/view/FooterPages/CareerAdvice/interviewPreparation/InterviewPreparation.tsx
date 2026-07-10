@@ -1,7 +1,7 @@
-import { Container } from "../../../../Container/Container";
+import MetaData from "../../../../../seo/MetaDataTags";
+import { generateSeoConfig } from "../../../../../seo/seo";
+import { Container } from "../../../../components/Container/Container";
 import "./interviewPeparation.css";
-import { generateSeoConfig } from "../../../../../../seo/seo";
-import MetaData from "../../../../../../seo/MetaDataTags";
 
 export default function InterviewPreparation() {
     const seo = generateSeoConfig("interviewPreparation");
