@@ -5,8 +5,8 @@ import "./Responsive.css";
 import { Link, useLocation } from "react-router";
 import { getRefreshToken } from "../../../features/auth/hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
-import { setAuthenticated } from "../../../redux/authSlice";
-import { RootState } from "../../../redux/store";
+import { setAuthenticated } from "../../../features/auth/authSlice/authSlice";
+import { RootState } from "../../../store/store";
 import { NotificationMailIcon } from "../../components/NotificationBadge/NotificationMailIcon";
 
 

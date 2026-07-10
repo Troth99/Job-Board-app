@@ -6,7 +6,7 @@ import type { SavedJob } from "../../types/SavedJob.model";
 import { useNavigate, useSearchParams } from "react-router";
 import Pagination from "../../../../shared/components/Pagination/Pagination";
 import { useSelector } from "react-redux";
-import { CategoryInterface } from "../../../../interfaces/CategoryModel";
+import { CategoryInterface } from "../../../categories/types/CategoryModel";
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import useFavorites from "../../hooks/useSavedJobs";

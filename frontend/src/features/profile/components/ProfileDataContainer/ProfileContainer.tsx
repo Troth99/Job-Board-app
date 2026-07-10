@@ -1,4 +1,4 @@
-import { formatDate } from "../../../../utils/formData";
+import { formatDate } from "../../../../shared/utils/formData";
 import defaultAvatar from "../../../../assets/personAvatar.jpg";
 import ImageUpload from "../UploadProfileImage/UploadProfileImage";
 import { Link } from "react-router";

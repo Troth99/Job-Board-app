@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router";
-import useForm from "../../../../hooks/shared/useForm";
-import { useValidation } from "../../../../components/validators/useValidation";
+import useForm from "../../../../shared/hooks/useForm";
+import { useValidation } from "../../../auth/validators/useValidation";
 import "./InviteMemberToCompany.css";
 import useNotifications from "../../../notifications/hooks/useNotifications";
 import useCompanies from "../../hooks/useCompanyAPI";

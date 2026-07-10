@@ -3,10 +3,10 @@ import "./Register.css";
 import "./Responsive.css";
 import { useState } from "react";
 import { registerUserType } from "../../types/registerUserType";
-import { useLocalStorage } from "../../../../hooks/shared/useLocalStorage";
-import { useValidation } from "../../../../components/validators/useValidation";
+import { useLocalStorage } from "../../../../shared/hooks/useLocalStorage";
+import { useValidation } from "../../validators/useValidation";
 import useAuth from "../../hooks/useAuth";
-import useForm from "../../../../hooks/shared/useForm";
+import useForm from "../../../../shared/hooks/useForm";
 import { Container } from "../../../../shared/components/Container/Container";
 import { RegisterAside } from "../../components/register-UI/RegisterAside";
 

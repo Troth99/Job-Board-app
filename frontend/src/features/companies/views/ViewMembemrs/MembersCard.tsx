@@ -1,6 +1,6 @@
 import { BsChatDots } from "react-icons/bs";
-import { CompanyMember } from "../../../../interfaces/CompanyMember.model";
-import { formatDate } from "../../../../utils/formData";
+import { CompanyMember } from "../../types/CompanyMember.model";
+import { formatDate } from "../../../../shared/utils/formData";
 
 
 export default function MembersCard({ member }: { member: CompanyMember }) {

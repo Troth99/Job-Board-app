@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
-import { getAuthToken, getUserFromLocalStorage } from "../features/auth/hooks/useAuth";
-import useJobs from "../features/jobs/hooks/useJobBoard";
-import { Job } from "../features/jobs/types/Job.model";
-import FullPageSpinner from "../shared/components/FullPageSpinner/FullPageSpinner";
-import useCompanies from "../features/companies/hooks/useCompanyAPI";
-import useMembers from "../features/companies/hooks/useMembers";
+import { getAuthToken, getUserFromLocalStorage } from "../../auth/hooks/useAuth";
+import useJobs from "../hooks/useJobBoard";
+import { Job } from "../types/Job.model";
+import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
+import useCompanies from "../../companies/hooks/useCompanyAPI";
+import useMembers from "../../companies/hooks/useMembers";
 
 
 export  function JobEditRouteGuard({ children }: {children: React.ReactNode}) {

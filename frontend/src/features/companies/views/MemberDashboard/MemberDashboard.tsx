@@ -13,7 +13,7 @@ import { useRole } from "../../../../context/RoleContext";
 import { MemberDashboardModals } from "../../components/DashboardSidebarUI/modals/Modals";
 import { CalendarModal } from "../../components/DashboardComponents/CompanyCalendar/CalendarModal";
 import { useCompanyMember } from "../../hooks/useCompanyMember";
-import { CompanyMember } from "../../../../interfaces/CompanyMember.model";
+import { CompanyMember } from "../../types/CompanyMember.model";
 import { toast } from "react-toastify";
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";

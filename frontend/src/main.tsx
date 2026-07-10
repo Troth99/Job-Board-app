@@ -3,7 +3,7 @@ import App from "./App";
 import { ThemeProvider } from "./context/ThemeContext";
 import { BrowserRouter } from "react-router";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import { store } from "./store/store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserDataProvider } from "./context/UseDataContext";

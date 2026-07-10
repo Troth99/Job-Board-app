@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { registerFormType } from "../../features/auth/hooks/useAuth";
-import { ProfileData } from "../../features/profile/views/EditProfile/EditProfile";
+
+import { registerUserType } from "../types/registerUserType";
+import { ProfileData } from "../../profile/types/profileSectionTypes";
 
 
-type FormDataUnion = Partial<registerFormType> & Partial<ProfileData>;
+type FormDataUnion = Partial<registerUserType> & Partial<ProfileData>;
 
 export function useValidation() {
   const validateEmail = (email: string): string | undefined => {

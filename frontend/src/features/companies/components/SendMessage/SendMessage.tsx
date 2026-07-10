@@ -2,7 +2,7 @@
 import useCompanies from "../../hooks/useCompanyAPI";
 import useProfile from "../../../profile/hooks/useProfile";
 import useNotifications from "../../../notifications/hooks/useNotifications";
-import { useValidation } from "../../../../components/validators/useValidation";
+import { useValidation } from "../../../auth/validators/useValidation";
 import "./SendMessage.css";
 
 import { useState } from "react";

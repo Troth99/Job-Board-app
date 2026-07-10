@@ -1,8 +1,8 @@
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
-import ProtectedRoutes from "../../../RouteGuards/authRouteGuard";
+import ProtectedRoutes from "../../auth/guards/authRouteGuard";
 
-import { NotificationOwnerGuard } from "../../../RouteGuards/notificationGuard";
+import { NotificationOwnerGuard } from "../guards/notificationGuard";
 import MainLayout from "../../../shared/Layouts/MainLayout";
 import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 

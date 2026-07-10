@@ -4,7 +4,7 @@ import useNotifications from "../../hooks/useNotifications";
 import "./newMessages.css";
 import { Notification } from "../../types/Notification.model";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
-import { formatDate } from "../../../../utils/formData";
+import { formatDate } from "../../../../shared/utils/formData";
 import { ModalReply } from "./ModalReply";
 
 export default function NewmessageNotification() {

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { formatDate } from "../../../../../utils/formData";
+import { formatDate } from "../../../../../shared/utils/formData";
 
 import { QuickInfoSectionProps } from "../../../types/QuickInfoSection.types";
 import AddToFavourites from "../../../components/SaveJobButton/SaveJobButton";

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Job } from "../../jobs/types/Job.model";
 import { useEffect, useState } from "react";
-import { StatsResponse } from "../../../interfaces/ApplicationStatistic.model";
+import { StatsResponse } from "../types/ApplicationStatistic.model";
 import useStatistics from "../hooks/useStatistics";
 import useJobs from "../../jobs/hooks/useJobsAPI";
 import { generateSeoConfig } from "../../../seo/seo";
@@ -9,7 +9,7 @@ import MetaData from "../../../seo/MetaDataTags";
 import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 import { Container } from "../../../shared/components/Container/Container";
 
-import { RootState } from "../../../redux/store";
+import { RootState } from "../../../store/store";
 import Hero from "../components/HeroSection/Hero";
 import CategoriesSection from "../../categories/components/CategoriesSection/CategoriesSection";
 import RecentJobs from "../components/RecentJobs/RecentJobs";

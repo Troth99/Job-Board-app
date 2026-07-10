@@ -1,4 +1,4 @@
-import { CompanyMember } from "../../../../interfaces/CompanyMember.model";
+import { CompanyMember } from "../../types/CompanyMember.model";
 
 export default function KickMemberFromCompany({
   userRole,

@@ -2,10 +2,10 @@ import { Route } from "react-router";
 
 import { lazy, Suspense } from "react";
 
-import CompanyRegisterGuard from "../../../RouteGuards/companyRegisterGuard";
-import ProtectedRoutes from "../../../RouteGuards/authRouteGuard";
-import CompanyRouteGuard from "../../../RouteGuards/companyRouteGuard";
-import { UpdateCompanyRouteGuard } from "../../../RouteGuards/updateCompanyGuard";
+import CompanyRegisterGuard from "../guards/companyRegisterGuard";
+import ProtectedRoutes from "../../auth/guards/authRouteGuard";
+import CompanyRouteGuard from "../guards/companyRouteGuard";
+import { UpdateCompanyRouteGuard } from "../guards/updateCompanyGuard";
 import MainLayout from "../../../shared/Layouts/MainLayout";
 import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 

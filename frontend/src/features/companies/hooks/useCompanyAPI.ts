@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { API_BASE } from "../../../config/api";
-import useApiRequester from "../../../hooks/shared/useApiRequester";
+import useApiRequester from "../../../shared/hooks/useApiRequester";
 import { CompaniesResponse, Company } from "../types/companyTypes";
 import { RegisterCompanyInterface } from "../views/RegisterCompany/RegisterCompany";
 

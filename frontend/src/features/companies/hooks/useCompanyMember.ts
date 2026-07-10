@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useCompanies from "./useCompanyAPI";
 import useMembers from "../../../features/companies/hooks/useMembers";
-import { CompanyMember } from "../../../interfaces/CompanyMember.model";
+import { CompanyMember } from "../types/CompanyMember.model";
 import { Company } from "../types/companyTypes";
 
 

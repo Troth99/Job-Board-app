@@ -4,11 +4,11 @@ import { useState } from "react";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import useNotifications, { useSortedNotifications } from "../../hooks/useNotifications";
 import { getName } from "../../helpers/nameHelper";
-import { formatDate } from "../../../../utils/formData";
+import { formatDate } from "../../../../shared/utils/formData";
 import { useNavigate, useSearchParams } from "react-router";
 import { useNotificationContext } from "../../../../context/NotificationContext";
 import { Notification } from "../../types/Notification.model";
-import { usePagination } from "../../../../hooks/shared/usePagination";
+import { usePagination } from "../../../../shared/hooks/usePagination";
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 

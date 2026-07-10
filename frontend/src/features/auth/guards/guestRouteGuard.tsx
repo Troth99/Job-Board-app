@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router";
-import { getAuthToken } from "../features/auth/hooks/useAuth";
+import { getAuthToken } from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { API_BASE } from "../../../config/api";
-import useApiRequester from "../../../hooks/shared/useApiRequester";
+import useApiRequester from "../../../shared/hooks/useApiRequester";
 import { getUserFromLocalStorage } from "../../auth/hooks/useAuth";
 
 export default function useMembers() {

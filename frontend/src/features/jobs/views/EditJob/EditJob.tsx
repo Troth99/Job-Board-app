@@ -9,11 +9,11 @@ import {
   WorkModeSelect,
 } from "../../form/formSelectedInputs";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../../redux/store";
+import { RootState } from "../../../../store/store";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { valuesInterface } from "../../types/Job.model";
-import useForm from "../../../../hooks/shared/useForm";
-import { jobPostValidations } from "../../../../components/validators/createJobValidation";
+import useForm from "../../../../shared/hooks/useForm";
+import { jobPostValidations } from "../../validators/createJobValidation";
 
 const initialValues = {
   title: "",

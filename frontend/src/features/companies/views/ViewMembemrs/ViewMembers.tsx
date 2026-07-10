@@ -3,7 +3,7 @@ import "./ViewMembers.css";
 import { useParams } from "react-router";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import useMembers from "../../hooks/useMembers";
-import { CompanyMember } from "../../../../interfaces/CompanyMember.model";
+import { CompanyMember } from "../../types/CompanyMember.model";
 import { useRole } from "../../../../context/RoleContext";
 import { BsChatDots } from "react-icons/bs";
 import { SendMessage } from "../../components/SendMessage/SendMessage";

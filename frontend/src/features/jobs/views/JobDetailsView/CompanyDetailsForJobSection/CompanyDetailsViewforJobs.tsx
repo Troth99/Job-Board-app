@@ -1,5 +1,5 @@
 import { Company } from "../../../../companies/types/companyTypes";
-import { formatDate } from "../../../../../utils/formData";
+import { formatDate } from "../../../../../shared/utils/formData";
 import "./CompanyDetailsViewForJobs.css";
 
 export function CompanyDetails({ company }: { company: Company }) {

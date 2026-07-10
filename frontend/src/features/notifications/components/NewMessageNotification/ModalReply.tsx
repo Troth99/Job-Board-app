@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMessageValidation } from "../../../../components/validators/useMessageValidation";
+import { useMessageValidation } from "../../../../shared/validators/useMessageValidation";
 import useNotifications from "../../hooks/useNotifications";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 

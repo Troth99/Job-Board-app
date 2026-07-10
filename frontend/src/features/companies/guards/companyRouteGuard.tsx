@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
-import { getAuthToken, getUserFromLocalStorage } from "../features/auth/hooks/useAuth";
+import { getAuthToken, getUserFromLocalStorage } from "../../auth/hooks/useAuth";
 import { Navigate, Outlet } from "react-router";
-import { showCompanyWarning } from "../utils/toast";
+import { showCompanyWarning } from "../../../shared/utils/toast";
 
-import FullPageSpinner from "../shared/components/FullPageSpinner/FullPageSpinner";
-import useCompanies from "../features/companies/hooks/useCompanyAPI";
+import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
+import useCompanies from "../hooks/useCompanyAPI";
 
 export default function CompanyRouteGuard() {
   let { companyId } = useParams<{ companyId: string }>();

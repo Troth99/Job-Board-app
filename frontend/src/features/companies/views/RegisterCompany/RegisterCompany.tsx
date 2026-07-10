@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./RegisterCompany.css";
 import "./Responsive.css";
-import { showSuccess } from "../../../../utils/toast";
+import { showSuccess } from "../../../../shared/utils/toast";
 import {  useNavigate } from "react-router";
-import { validateCompany } from "../../../../components/validators/useCompanyValidation";
-import useForm from "../../../../hooks/shared/useForm";
+import { validateCompany } from "../../validators/useCompanyValidation";
+import useForm from "../../../../shared/hooks/useForm";
 import useCompanies from "../../hooks/useCompanyAPI";
 import { RegisterCompanyInterface } from "../../types/companyTypes";
 

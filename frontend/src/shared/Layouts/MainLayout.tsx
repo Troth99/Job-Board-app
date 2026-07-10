@@ -1,8 +1,8 @@
 import { ReactNode, useEffect } from "react";
 
 import { Outlet } from "react-router";
-import useApiRequester from "../../hooks/shared/useApiRequester";
-import { CompanyProvider, useCompanyContext } from "../../context/CompanyContext";
+import useApiRequester from "../hooks/useApiRequester";
+import { CompanyProvider, useCompanyContext } from "../../features/companies/context/CompanyContext";
 import { getUserFromLocalStorage } from "../../features/auth/hooks/useAuth";
 import { API_BASE } from "../../config/api";
 import { Footer } from "../view/Footer/Footer";

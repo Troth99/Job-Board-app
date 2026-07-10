@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useForm from "../../../../hooks/shared/useForm";
-import { validateCompany } from "../../../../components/validators/useCompanyValidation";
+import useForm from "../../../../shared/hooks/useForm";
+import { validateCompany } from "../../validators/useCompanyValidation";
 import useCompanyAPI from "../../hooks/useCompanyAPI";
 import "./UpdateCompany.css";
 import { useNavigate, useParams } from "react-router";

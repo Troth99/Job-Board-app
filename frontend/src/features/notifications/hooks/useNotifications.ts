@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import useApiRequester from "../../../hooks/shared/useApiRequester";
+import useApiRequester from "../../../shared/hooks/useApiRequester";
 import { API_BASE } from "../../../config/api";
 import { Notification } from "../types/Notification.model";
 

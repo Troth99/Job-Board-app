@@ -1,4 +1,4 @@
-import { valuesInterface } from "../../features/jobs/types/Job.model";
+import { valuesInterface } from "../types/Job.model";
 
 const normalize = (arr: any) =>
   Array.isArray(arr)

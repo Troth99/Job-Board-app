@@ -1,6 +1,6 @@
 import { Route } from "react-router";
 import { lazy, Suspense } from "react";
-import ProtectedRoutes from "../../../RouteGuards/authRouteGuard";
+import ProtectedRoutes from "../../auth/guards/authRouteGuard";
 
 import MainLayout from "../../../shared/Layouts/MainLayout";
 import { LogOut } from "../../auth/views/Logout/Logout";

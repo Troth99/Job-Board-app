@@ -1,17 +1,17 @@
 import { useNavigate, useParams, useSearchParams } from "react-router";
 import "./FilterJobsByCategory.css";
-import useJobs from "../../features/jobs/hooks/useJobBoard";
+import useJobs from "../../hooks/useJobBoard";
 import { useEffect, useState } from "react";
-import { ShowJobs } from "../../showJobs/showJobs";
-import { LoadingIndicator } from "../../shared/components/LoadingIndicator/LoadingIndicator";
-import { FilterGroup } from "./FilterGroup/FilterGroup";
-import { employmentOptions } from "../../features/jobs/form/formSelectedInputs";
+import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";
+import { FilterGroup } from "../../components/FilterJobsByCategory/FilterGroup";
+import { employmentOptions } from "../../form/formSelectedInputs";
   
-import { Job } from "../../features/jobs/types/Job.model";
-import Pagination from "../../shared/components/Pagination/Pagination";
+import { Job } from "../../types/Job.model";
+import Pagination from "../../../../shared/components/Pagination/Pagination";
 import { Helmet } from "react-helmet-async";
-import { generateSeoConfig } from "../../seo/seo";
-import { useJobFilters } from "../../features/jobs/hooks/useJobFilters";
+import { generateSeoConfig } from "../../../../seo/seo";
+import { useJobFilters } from "../../hooks/useJobFilters";
+import { ShowJobs } from "../../../companies/components/showJobs/showCompanyJobs";
 
 const ITEMS_PER_PAGE = 3;
 

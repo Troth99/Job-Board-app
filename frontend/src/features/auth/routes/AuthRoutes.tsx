@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
-import GuestGuardRoute from "../../../RouteGuards/guestRouteGuard";
+import GuestGuardRoute from "../guards/guestRouteGuard";
 import MainLayout from "../../../shared/Layouts/MainLayout";
 import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 

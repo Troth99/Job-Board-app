@@ -7,7 +7,7 @@ import { generateCompaniesSeo } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { Container } from "../../../../shared/components/Container/Container";
-import { formatDate } from "../../../../utils/formData";
+import { formatDate } from "../../../../shared/utils/formData";
 import Pagination from "../../../../shared/components/Pagination/Pagination";
 
 const ITEMS_PER_PAGE = 8;

@@ -5,7 +5,7 @@ import { ShowJobs } from "../../components/showJobs/showCompanyJobs";
 import "./viewAllJobsForComapny.css";
 import { Job } from "../../../jobs/types/Job.model";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
-import { usePagination } from "../../../../hooks/shared/usePagination";
+import { usePagination } from "../../../../shared/hooks/usePagination";
 
 
 //make pagination for this component and also add total count of jobs in the company.

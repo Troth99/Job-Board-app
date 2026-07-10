@@ -1,9 +1,9 @@
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
-import { RoleGuard } from "../../../RouteGuards/RoleGuard";
-import ProtectedRoutes from "../../../RouteGuards/authRouteGuard";
-import { JobEditRouteGuard } from "../../../RouteGuards/jobEditRouteGuard";
-import { JobDetailsRouteGuard } from "../../../RouteGuards/jobDetailsRouteGuard";
+import { RoleGuard } from "../../companies/guards/RoleGuard";
+import ProtectedRoutes from "../../auth/guards/authRouteGuard";
+import { JobEditRouteGuard } from "../guards/jobEditRouteGuard";
+import { JobDetailsRouteGuard } from "../guards/jobDetailsRouteGuard";
 import MainLayout from "../../../shared/Layouts/MainLayout";
 import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 
@@ -23,7 +23,7 @@ const CandidateJobView = lazy(
   () => import("../views/JobDetailsView/JobDetailsView"),
 );
 const FilterJobByCategory = lazy(
-  () => import("../../../components/FilterJobsByCategory/FilterJobsByCategory"),
+  () => import("../views/FilterJobsByCategory/FilterJobsByCategory"),
 );
 
 const HowToPostJobInfo = lazy(

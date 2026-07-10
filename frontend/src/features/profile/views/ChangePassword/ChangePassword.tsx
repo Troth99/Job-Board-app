@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./ChangePassword.css";
-import { useChangePasswordValidation } from "../../../../components/validators/useChangePasswordValidation";
+import { useChangePasswordValidation } from "../../../auth/validators/useChangePasswordValidation";
 import { useNavigate } from "react-router";
-import { showSuccess } from "../../../../utils/toast";
+import { showSuccess } from "../../../../shared/utils/toast";
 import useProfile from "../../hooks/useProfile";
-import useForm from "../../../../hooks/shared/useForm";
+import useForm from "../../../../shared/hooks/useForm";
 import { changePasswordForm } from "../../types/profileSectionTypes";
 import { Container } from "../../../../shared/components/Container/Container";
 

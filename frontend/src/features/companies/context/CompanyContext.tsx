@@ -1,5 +1,5 @@
 import { createContext, ReactNode, use, useState } from "react";
-import { Company } from "../features/companies/types/companyTypes";
+import { Company } from "../types/companyTypes";
 
 interface CompanyContextType {
   company: Company | null;

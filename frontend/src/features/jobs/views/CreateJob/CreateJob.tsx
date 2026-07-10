@@ -7,11 +7,11 @@ import {
   WorkModeSelect,
 } from "../../form/formSelectedInputs";
 import useJobs from "../../hooks/useJobBoard";
-import { showSuccess } from "../../../../utils/toast";
+import { showSuccess } from "../../../../shared/utils/toast";
 import { Link, useNavigate, useParams } from "react-router";
 
-import { jobPostValidations } from "../../../../components/validators/createJobValidation";
-import useForm from "../../../../hooks/shared/useForm";
+import { jobPostValidations } from "../../validators/createJobValidation";
+import useForm from "../../../../shared/hooks/useForm";
 import { valuesInterface } from "../../types/Job.model";
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";

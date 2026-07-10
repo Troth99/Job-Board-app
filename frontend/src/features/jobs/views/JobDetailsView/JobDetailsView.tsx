@@ -4,7 +4,7 @@ import "./JobDetailsView.css";
 import { useEffect, useState } from "react";
 import { Job } from "../../types/Job.model";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
-import { useLocalStorage } from "../../../../hooks/shared/useLocalStorage";
+import { useLocalStorage } from "../../../../shared/hooks/useLocalStorage";
 import { ApplyForJobModal } from "../../components/ApplyForJobModal/ApplyForJobModal";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import { Container } from "../../../../shared/components/Container/Container";

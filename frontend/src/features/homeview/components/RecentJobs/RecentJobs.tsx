@@ -1,4 +1,4 @@
-import { formatDate } from "../../../../utils/formData";
+import { formatDate } from "../../../../shared/utils/formData";
 import { Job } from "../../../jobs/types/Job.model";
 import "./RecentJobs.css";
 import { Link } from "react-router";

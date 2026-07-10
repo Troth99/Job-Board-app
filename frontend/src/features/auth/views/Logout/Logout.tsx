@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { setAuthenticated } from "../../../../redux/authSlice";
+import { setAuthenticated } from "../../authSlice/authSlice";
 
 export function LogOut() {
   const dispatch = useDispatch();

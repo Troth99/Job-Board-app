@@ -4,10 +4,10 @@ import "./Responsive.css";
 import { useRef, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
-import { useLocalStorage } from "../../../../hooks/shared/useLocalStorage";
-import useForm from "../../../../hooks/shared/useForm";
+import { useLocalStorage } from "../../../../shared/hooks/useLocalStorage";
+import useForm from "../../../../shared/hooks/useForm";
 import { Container } from "../../../../shared/components/Container/Container";
-import { useValidation } from "../../../../components/validators/useValidation";
+import { useValidation } from "../../validators/useValidation";
 import LoginAside from "../../components/login-UI/LoginAside";
 import LoginSocialIcons from "../../components/login-UI/LoginSocialIcons";
 import { LoginFormType } from "../../types/loginFormType";

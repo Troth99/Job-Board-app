@@ -1,5 +1,5 @@
 import { Job } from "../../../types/Job.model";
-import { formatDate } from "../../../../../utils/formData";
+import { formatDate } from "../../../../../shared/utils/formData";
 
 function DetailsJobMainSection({
   jobDetails,
