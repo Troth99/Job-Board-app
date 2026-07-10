@@ -8,7 +8,7 @@ import { lazy, Suspense } from "react";
 import { footerRoutes } from "./shared/routes/FooterRoutes";
 import { jobsRoutes } from "./features/jobs/routes/JobsRoutes";
 import { authRoutes } from "./features/auth/routes/AuthRoutes";
-import { notificationsRoutes } from "./Routes/NotificationRoutes";
+import { notificationsRoutes } from "./features/notifications/routes/NotificationRoutes";
 import { ProfileRoutes } from "./features/profile/routes/ProfileRoutes";
 import { CompanyRoutes } from "./Routes/CompanyRoutes";
 import MainLayout from "./shared/Layouts/MainLayout";

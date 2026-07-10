@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { useNotification } from "../../../hooks/utils/useNotification";
 import { useParams } from "react-router";
+import useNotifications from "../../hooks/useNotifications";
 import "./newMessages.css";
-import { Notification } from "../../../interfaces/Notification.model";
-import Spinner from "../../../shared/components/Spinner/Spinner";
-import { formatDate } from "../../../utils/formData";
+import { Notification } from "../../types/Notification.model";
+import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { formatDate } from "../../../../utils/formData";
 import { ModalReply } from "./ModalReply";
 
 export default function NewmessageNotification() {
   const [notification, setNotification] = useState<Notification | null>(null);
-  const { getNotificationById } = useNotification();
+  const { getNotificationById } = useNotifications();
   const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);

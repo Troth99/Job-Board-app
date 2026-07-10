@@ -1,25 +1,25 @@
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
-import ProtectedRoutes from "../RouteGuards/authRouteGuard";
+import ProtectedRoutes from "../../../RouteGuards/authRouteGuard";
 
-import { NotificationOwnerGuard } from "../RouteGuards/notificationGuard";
-import MainLayout from "../shared/Layouts/MainLayout";
-import FullPageSpinner from "../shared/components/FullPageSpinner/FullPageSpinner";
+import { NotificationOwnerGuard } from "../../../RouteGuards/notificationGuard";
+import MainLayout from "../../../shared/Layouts/MainLayout";
+import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 
 const NotificationsPage = lazy(
-  () => import("../components/Notifications/Notifications"),
+  () => import("../views/NotificationView/Notifications"),
 );
 const CompanyInvitationNotification = lazy(
   () =>
-    import("../components/Notifications/companyInvitationNotification/CompanyInvitationNotification"),
+    import("../components/companyInvitationNotification/CompanyInvitationNotification"),
 );
 const NewmessageNotification = lazy(
   () =>
-    import("../components/Notifications/NewMessageNotification/NewMessageNotification"),
+    import("../components/NewMessageNotification/NewMessageNotification"),
 );
 const ApplicationUpdateNotification = lazy(
   () =>
-    import("../components/Notifications/ApplicaitonUpdateNotification/ApplicationUpdateNotification"),
+    import("../components/ApplicaitonUpdateNotification/ApplicationUpdateNotification"),
 );
 
 export const notificationsRoutes = [

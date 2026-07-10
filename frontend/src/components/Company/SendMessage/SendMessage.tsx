@@ -1,7 +1,7 @@
 
 import useCompany from "../../../hooks/utils/useCompanyMethods";
-import { useNotification } from "../../../hooks/utils/useNotification";
 import useProfile from "../../../features/profile/hooks/useProfile";
+import useNotifications from "../../../features/notifications/hooks/useNotifications";
 import { useValidation } from "../../validators/useValidation";
 import "./SendMessage.css";
 
@@ -13,7 +13,7 @@ export function SendMessage({ recipient: initialRecipient, onClose, autoOpen, on
   const [recipient, setRecipient] = useState(initialRecipient || "");
 
   const [message, setMessage] = useState("");
-  const { createNotification } = useNotification();
+  const { createNotification } = useNotifications();
   const { validateEmail } = useValidation();
   const [errors, setErrors] = useState<{ email?: string }>({});
   const { checkUser } = useCompany();

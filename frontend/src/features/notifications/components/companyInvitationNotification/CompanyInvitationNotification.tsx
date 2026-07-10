@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import "./companyInvitationNotification.css";
 import { useParams } from "react-router";
-import { useNotificationContext } from "../../../context/NotificationContext";
-import { Notification } from "../../../interfaces/Notification.model";
-import { useNotification } from "../../../hooks/utils/useNotification";
+import useCompany from "../../../../hooks/utils/useCompanyMethods";
 import { useNavigate } from "react-router";
-import { getUserFromLocalStorage } from "../../../features/auth/hooks/useAuth";
-import useCompany from "../../../hooks/utils/useCompanyMethods";
-import { useUserData } from "../../../context/UseDataContext";
+import { useNotificationContext } from "../../../../context/NotificationContext";
+import { useUserData } from "../../../../context/UseDataContext";
+import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
+import useNotifications from "../../hooks/useNotifications";
+import { Notification } from "../../types/Notification.model";
+
 
 export default function CompanyInvitationNotification() {
   const { notificationId } = useParams();
@@ -25,7 +26,7 @@ export default function CompanyInvitationNotification() {
   );
   const navigate = useNavigate();
 
-  const { deleteNotification } = useNotification();
+  const { deleteNotification } = useNotifications();
 
   const companyId = notification?.company?._id;
 

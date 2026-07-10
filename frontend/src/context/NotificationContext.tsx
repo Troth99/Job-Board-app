@@ -5,21 +5,19 @@ import {
   useEffect,
   useState,
 } from "react";
+import useNotifications from "../features/notifications/hooks/useNotifications";
+import { API_BASE } from "../config/api";
 import {
   Notification,
   NotificationContextType,
-} from "../interfaces/Notification.model";
-import { useNotification } from "../hooks/utils/useNotification";
+} from "../features/notifications/types/Notification.model";
+
 
 type NotificationProviderProps = {
   userId: string;
   children: ReactNode;
 };
 
-const API_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:5000"
-    : "https://job-board-backend-7gfd.onrender.com";
 
 export const NotificationContext = createContext<
   NotificationContextType | undefined
@@ -38,7 +36,7 @@ export function NotificationProvider({
     setUnreadCount(count);
   }, [notifications]);
 
-  const { getAllNotificationsForUser } = useNotification();
+  const { getAllNotificationsForUser } = useNotifications();
 
   // Fetch notifications every time userId changes (e.g. after login)
   useEffect(() => {
@@ -60,7 +58,7 @@ export function NotificationProvider({
   useEffect(() => {
     if (!userId) return;
     const evtSource = new EventSource(
-      `${API_URL}/api/notifications/stream/${userId}`,
+      `${API_BASE}/api/notifications/stream/${userId}`,
     );
     evtSource.onmessage = (event) => {
       const notification = JSON.parse(event.data);

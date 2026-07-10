@@ -4,7 +4,7 @@ import useCompany from "../../../hooks/utils/useCompanyMethods";
 import useForm from "../../../hooks/shared/useForm";
 import { useValidation } from "../../validators/useValidation";
 import "./InviteMemberToCompany.css";
-import { useNotification } from "../../../hooks/utils/useNotification";
+import useNotifications from "../../../features/notifications/hooks/useNotifications";
 
 const initialValue = {
   email: "",
@@ -16,7 +16,7 @@ export function CompanyMembers() {
   const [userEmailExistError, setuserEmailExistError] = useState<string>("");
   const { validateEmail } = useValidation();
   const { checkUser } = useCompany();
-  const { createNotificationByEmail } = useNotification();
+  const { createNotificationByEmail } = useNotifications();
 
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);

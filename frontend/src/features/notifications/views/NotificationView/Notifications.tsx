@@ -1,21 +1,20 @@
 import "./Notifications.css";
 import "./NotificationResponsive.css";
 import { useState } from "react";
-import { useNotification, useSortedNotifications } from "../../hooks/utils/useNotification";
-import { getUserFromLocalStorage } from "../../features/auth/hooks/useAuth";
-import { getName } from "./nameHelper";
-import { formatDate } from "../../utils/formData";
+import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
+import useNotifications, { useSortedNotifications } from "../../hooks/useNotifications";
+import { getName } from "../../helpers/nameHelper";
+import { formatDate } from "../../../../utils/formData";
 import { useNavigate, useSearchParams } from "react-router";
-import { useNotificationContext } from "../../context/NotificationContext";
-import { Notification } from "../../interfaces/Notification.model";
-import { usePagination } from "../../hooks/shared/usePagination";
-
-import { generateSeoConfig } from "../../seo/seo";
-import MetaData from "../../seo/MetaDataTags";
+import { useNotificationContext } from "../../../../context/NotificationContext";
+import { Notification } from "../../types/Notification.model";
+import { usePagination } from "../../../../hooks/shared/usePagination";
+import { generateSeoConfig } from "../../../../seo/seo";
+import MetaData from "../../../../seo/MetaDataTags";
 
 
 function Notifications() {
-  const { deleteNotification, markAsRead } = useNotification();
+  const { deleteNotification, markAsRead } = useNotifications();
   const { notifications, setNotifications, unreadCount, setUnreadCount } =
     useNotificationContext();
   const [loading, setLoading] = useState<boolean>(false);

@@ -1,8 +1,10 @@
 import { useMemo, useState } from "react";
-import useApiRequester from "../shared/useApiRequester";
-import { API_BASE } from "../../config/api";
-import { Notification } from "../../interfaces/Notification.model";
+import useApiRequester from "../../../hooks/shared/useApiRequester";
+import { API_BASE } from "../../../config/api";
+import { Notification } from "../types/Notification.model";
 
+
+//helper function sortNotificationsByDate(notifications: Notification[]): Notification[] {
 export function useSortedNotifications(notifications: Notification[]) {
   return useMemo(
     () =>

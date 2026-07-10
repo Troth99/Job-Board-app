@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useMessageValidation } from "../../validators/useMessageValidation";
-import { useNotification } from "../../../hooks/utils/useNotification";
-import { getUserFromLocalStorage } from "../../../features/auth/hooks/useAuth";
+import { useMessageValidation } from "../../../../components/validators/useMessageValidation";
+import useNotifications from "../../hooks/useNotifications";
+import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 
 interface ModalReplyProps {
   isOpen: boolean;
@@ -20,7 +20,7 @@ export function ModalReply({
 
   const [message, setMessage] = useState<string>("");
   const [isSending, setIsSending] = useState(false);
-  const {createNotification} = useNotification();
+  const {createNotification} = useNotifications();
   const {error, validateMessage, setError} =useMessageValidation();
 
   const currentUserId = getUserFromLocalStorage()._id
