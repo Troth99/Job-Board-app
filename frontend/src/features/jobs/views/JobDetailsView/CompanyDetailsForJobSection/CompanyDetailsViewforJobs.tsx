@@ -1,4 +1,4 @@
-import { Company } from "../../../../../hooks/utils/useCompanyMethods";
+import { Company } from "../../../../companies/types/companyTypes";
 import { formatDate } from "../../../../../utils/formData";
 import "./CompanyDetailsViewForJobs.css";
 

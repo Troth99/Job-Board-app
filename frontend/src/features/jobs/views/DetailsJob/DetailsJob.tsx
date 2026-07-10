@@ -3,12 +3,12 @@ import "./Details.css";
 import { useEffect, useState } from "react";
 import useJobs from "../../hooks/useJobBoard";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
-import useCompany from "../../../../hooks/utils/useCompanyMethods";
 import { Job } from "../../types/Job.model";
 import { CandidateApplications } from "./DetailsJobElements/CandidateApplications/CandidateApplications";
 import { Candidate } from "../../types/Apllication.model";
 import { Container } from "../../../../shared/components/Container/Container";
 import DetailsJobMainSection from "./DetailsJobElements/DetailsJobMainSection";
+import useMembers from "../../../companies/hooks/useMembers";
 
 
 //toReractor
@@ -29,7 +29,7 @@ function DetailsJob() {
   const [statusLoading, setStatusLoading] = useState(false);
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [localRole, setLocalRole] = useState<string | null>(null);
-  const { getUserRole } = useCompany();
+  const { getUserRole } = useMembers();
   const { getJobById, updateJob, deleteJob, getApplicationsByJobId } =
     useJobs();
   const [loadingApplications, setLoadingApplications] =

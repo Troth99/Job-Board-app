@@ -1,5 +1,5 @@
 import { Category } from "../../categories/hooks/useCategories";
-import { Company } from "../../../hooks/utils/useCompanyMethods";
+import { Company } from "../../companies/types/companyTypes";
 
 export interface Job {
   _id?: string;

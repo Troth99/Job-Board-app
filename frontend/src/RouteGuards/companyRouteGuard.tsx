@@ -5,8 +5,8 @@ import { getAuthToken, getUserFromLocalStorage } from "../features/auth/hooks/us
 import { Navigate, Outlet } from "react-router";
 import { showCompanyWarning } from "../utils/toast";
 
-import useCompany from "../hooks/utils/useCompanyMethods";
 import FullPageSpinner from "../shared/components/FullPageSpinner/FullPageSpinner";
+import useCompanies from "../features/companies/hooks/useCompanyAPI";
 
 export default function CompanyRouteGuard() {
   let { companyId } = useParams<{ companyId: string }>();
@@ -14,7 +14,7 @@ export default function CompanyRouteGuard() {
   const [loading, setLoading] = useState<boolean>(true);
   const [hasAccess, setHasAccess] = useState<boolean>(false);
   const [toastShown, setToastShown] = useState<boolean>(false);
-  const { getCompanyById, company } = useCompany();
+  const { getCompanyById, company } = useCompanies();
 
   const token = getAuthToken();
   const user = getUserFromLocalStorage();

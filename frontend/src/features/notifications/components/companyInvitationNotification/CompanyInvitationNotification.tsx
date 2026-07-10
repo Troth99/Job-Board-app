@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import "./companyInvitationNotification.css";
 import { useParams } from "react-router";
-import useCompany from "../../../../hooks/utils/useCompanyMethods";
 import { useNavigate } from "react-router";
 import { useNotificationContext } from "../../../../context/NotificationContext";
 import { useUserData } from "../../../../context/UseDataContext";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import useNotifications from "../../hooks/useNotifications";
 import { Notification } from "../../types/Notification.model";
+import useMembers from "../../../companies/hooks/useMembers";
 
 
 export default function CompanyInvitationNotification() {
@@ -15,7 +15,7 @@ export default function CompanyInvitationNotification() {
   const { notifications, setNotifications, setUnreadCount } =
     useNotificationContext();
 
-  const { addMemberToCompany } = useCompany();
+  const { addMemberToCompany } = useMembers();
   const {userData, setUserData} = useUserData();
 
   const user = getUserFromLocalStorage();

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useUserData } from "./UseDataContext";
-import useCompany from "../hooks/utils/useCompanyMethods";
+import useMembers from "../features/companies/hooks/useMembers";
+
 
 interface RoleContextType {
   userRole: string | null | undefined;
@@ -11,7 +12,7 @@ const RoleContext = createContext<RoleContextType | undefined>(undefined);
 
 export const RoleProvider = ({ children }: { children: ReactNode }) => {
   const [userRole, setUserRole] = useState<string | null | undefined>(undefined);
-  const { getUserRole } = useCompany();
+  const { getUserRole } = useMembers();
   const { userData } = useUserData();
 
   useEffect(() => {

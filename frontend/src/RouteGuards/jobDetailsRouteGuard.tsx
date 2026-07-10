@@ -3,9 +3,10 @@ import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../features/auth/hooks/useAuth";
 import useJobs from "../features/jobs/hooks/useJobBoard";
-import useCompany from "../hooks/utils/useCompanyMethods";
 import { Job } from "../features/jobs/types/Job.model";
 import FullPageSpinner from "../shared/components/FullPageSpinner/FullPageSpinner";
+import useCompanies from "../features/companies/hooks/useCompanyAPI";
+import useMembers from "../features/companies/hooks/useMembers";
 
 export function JobDetailsRouteGuard({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
@@ -16,7 +17,8 @@ export function JobDetailsRouteGuard({ children }: { children: React.ReactNode }
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [currentJob, setCurrentJob] = useState<Job>();
   const [resolvedUserRole, setResolvedUserRole] = useState<string | null>(null);
-  const { getCompanyById, getUserRole, company } = useCompany();
+  const { getCompanyById, company } = useCompanies();
+  const { getUserRole } = useMembers();
   const { getJobById } = useJobs();
 
   const hasValidRole = (role: string) => ["admin", "owner", "recruiter"].includes(role);

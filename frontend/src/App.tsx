@@ -10,7 +10,7 @@ import { jobsRoutes } from "./features/jobs/routes/JobsRoutes";
 import { authRoutes } from "./features/auth/routes/AuthRoutes";
 import { notificationsRoutes } from "./features/notifications/routes/NotificationRoutes";
 import { ProfileRoutes } from "./features/profile/routes/ProfileRoutes";
-import { CompanyRoutes } from "./Routes/CompanyRoutes";
+import { CompanyRoutes } from "./features/companies/routes/CompanyRoutes";
 import MainLayout from "./shared/Layouts/MainLayout";
 import FullPageSpinner from "./shared/components/FullPageSpinner/FullPageSpinner";
 import { setCategories } from "./features/categories/components/CategoriesSection/categoriesSlice";
