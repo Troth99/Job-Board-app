@@ -1,13 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
-import type { Job } from "../interfaces/Job.model";
-import useJobs from "../hooks/utils/useJobBoard";
-
-export interface SavedJob {
-  _id?: string;
-  job: Job;
-  addedAt: string;
-}
+import type { SavedJob } from "../features/jobs/types/SavedJob.model";
+import useJobs from "../features/jobs/hooks/useJobBoard";
 
   interface FavoritesContextType {
     savedJobs: SavedJob[];

@@ -5,6 +5,8 @@
 ## 📝 Overview
 A modern full-stack job board for posting, searching, and managing job listings, companies, and users. The project is split into **frontend** (React + Vite) and **backend** (Node.js + Express + MongoDB).
 
+The frontend is currently being refactored toward a **feature-based architecture**. The `jobs` feature is the main migrated slice and serves as the reference structure for future frontend modules.
+
 ---
 
 ## 🚀 Features
@@ -25,7 +27,7 @@ A modern full-stack job board for posting, searching, and managing job listings,
 ## 🛠️ Technologies
 
 **Frontend:**  
-- React 19, Vite, TypeScript, Redux Toolkit, React Router, ESLint, CSS Modules, React Toastify
+- React 19, Vite, TypeScript, Redux Toolkit, React Router, React Helmet Async, ESLint, React Toastify, plain CSS
 
 **Backend:**  
 - Node.js, Express, MongoDB (Mongoose), JWT, bcrypt, dotenv, multer, express-validator
@@ -49,12 +51,17 @@ Job-Board-app/
 │   └── .env
 ├── frontend/
 │   ├── src/
-│   │   ├── components/
-│   │   ├── hooks/
-│   │   ├── services/
+│   │   ├── features/
+│   │   │   ├── jobs/
+│   │   │   ├── companies/
+│   │   │   └── profile/
+│   │   ├── components/      # shared / legacy UI
+│   │   ├── hooks/           # shared / legacy hooks
 │   │   ├── context/
 │   │   ├── redux/
 │   │   ├── interfaces/
+│   │   ├── services/
+│   │   ├── seo/
 │   │   ├── utils/
 │   │   └── App.tsx
 │   ├── public/
@@ -64,6 +71,66 @@ Job-Board-app/
 ├── README.md
 └── LICENSE
 ```
+
+---
+
+## 🧭 Frontend Architecture
+
+The frontend is being migrated from a flat `components/hooks/services` layout to a **feature-first structure**.
+
+### Current Direction
+
+- `features/jobs` is the primary reference feature.
+- `features/companies` and `features/profile` exist as placeholders for future migration.
+- top-level folders like `components`, `hooks`, `context`, `redux`, `services`, and `utils` still hold shared or not-yet-migrated code.
+
+### Jobs Feature Layout
+
+```txt
+frontend/src/features/jobs/
+├── components/   # reusable parts used by job views
+├── form/         # form-specific UI/select inputs
+├── hooks/        # jobs API and orchestration hooks
+├── routes/       # jobs route definitions
+├── types/        # jobs-related models and view types
+└── views/        # route-level screens/pages
+```
+
+### Jobs Feature Breakdown
+
+`views/`
+- route-level pages such as `ViewAllJobs`, `CreateJob`, `EditJob`, `DetailsJob`, `JobDetailsView`, `SavedJobView`, and `HowToPostJobInfo`
+
+`components/`
+- reusable feature-local UI such as `ApplyForJobModal` and `SaveJobButton`
+
+`hooks/`
+- `useJobsAPI.ts` for jobs API requests
+- `useJobApplications.ts` for application actions
+- `useSavedJobs.ts` for saved jobs/favorites logic
+- `useJobBoard.ts` as a composition hook over jobs-related actions
+- `useJobFilters.ts` for jobs filtering state/helpers
+
+`types/`
+- `Job.model.ts`
+- `Apllication.model.ts`
+- `SavedJob.model.ts`
+- `QuickInfoSection.types.ts`
+
+`form/`
+- jobs form selects and related form-specific inputs
+
+### Practical Rule
+
+- put **route-level screens** in `views`
+- put **feature-local reusable pieces** in `components`
+- put **API/state logic** in `hooks`
+- put **models and view contracts** in `types`
+- keep **shared cross-feature logic** in existing shared top-level folders until those are explicitly refactored
+
+### Migration Note
+
+The frontend is in a transitional state. Some older folders still exist alongside the new feature-based structure. This is intentional during migration; new frontend work should prefer the `features/*` layout, starting with the `jobs` pattern.
 
 ---
 
@@ -100,6 +167,15 @@ npm run dev
 cd ../frontend
 npm install
 npm run dev
+```
+
+Frontend scripts:
+
+```sh
+npm run dev
+npm run build
+npm run preview
+npm run lint
 ```
 
 ---

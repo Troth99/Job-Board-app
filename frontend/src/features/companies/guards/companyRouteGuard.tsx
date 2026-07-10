@@ -1,0 +1,93 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import { toast } from "react-toastify";
+import { getAuthToken, getUserFromLocalStorage } from "../../auth/hooks/useAuth";
+import { Navigate, Outlet } from "react-router";
+import { showCompanyWarning } from "../../../shared/utils/toast";
+
+import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
+import useCompanies from "../hooks/useCompanyAPI";
+
+export default function CompanyRouteGuard() {
+  let { companyId } = useParams<{ companyId: string }>();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [hasAccess, setHasAccess] = useState<boolean>(false);
+  const [toastShown, setToastShown] = useState<boolean>(false);
+  const { getCompanyById, company } = useCompanies();
+
+  const token = getAuthToken();
+  const user = getUserFromLocalStorage();
+
+  //CompanyId has 24 characters from mongoose db, this one checks if its the correct characters in case someone type incorrect Id.
+  const isValidCompanyId = (id: string) => /^[0-9a-fA-F]{24}$/.test(id);
+  companyId = companyId?.trim();
+
+  useEffect(() => {
+    if (!companyId || !isValidCompanyId(companyId)) {
+      toast.error("Invalid company ID format.");
+      navigate("/");
+      return;
+    }
+
+    let isMounted = true;
+
+    const fetchUserCompany = async () => {
+      if (!token || !user) {
+        toast.error("You do not have access to this page.");
+        navigate("/login");
+        setLoading(false);
+        return;
+      }
+
+      try {
+        if (isMounted) {
+          await getCompanyById(companyId);
+        }
+      } catch (error) {
+        console.error(error);
+        if (isMounted) {
+          showCompanyWarning("Error fetching company data.");
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchUserCompany();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [companyId]);
+
+  const allowToVisit = company?.members?.some((m) =>
+    typeof m === "string"
+      ? m === user._id
+      : (m as { _id?: string })?._id === user._id
+  );
+  // Check access when company data is loaded
+  useEffect(() => {
+    if (company && user) {
+      if (allowToVisit) {
+        setHasAccess(true);
+      } else {
+        if (!toastShown) {
+          showCompanyWarning("You do not have access to this company.");
+          setToastShown(true);
+          navigate("/");
+        }
+      }
+      setLoading(false);
+    }
+  }, [company, user, toastShown, navigate]);
+
+  if (loading) {
+    return <FullPageSpinner />;
+  }
+
+  if (!hasAccess) {
+    return <Navigate to="/" replace />;
+  }
+
+  return <Outlet />;
+}

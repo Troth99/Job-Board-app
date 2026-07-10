@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react";
 import "./styles/global.css";
-import FullPageSpinner from "./components/FullPageSpinner/FullPageSpinner";
 import { Route, Routes } from "react-router";
-import MainLayout from "./components/Layouts/MainLayout";
-import { PageNotFound } from "./components/404/404";
+import { PageNotFound } from "./shared/pages/404/404";
 import { useDispatch } from "react-redux";
-import useCategories from "./hooks/utils/useCategoriesIndex";
-import { setCategories } from "./components/Home/CategoriesSection/categoriesSlice";
+import useCategories from "./features/categories/hooks/useCategories";
 import { lazy, Suspense } from "react";
-import SearchResults from "./components/Home/Search/SearchResults/SearchResults";
-import { footerRoutes } from "./Routes/FooterRoutes";
-import { jobsRoutes } from "./Routes/JobsRoutes";
-import { authRoutes } from "./Routes/AuthRoutes";
-import { notificationsRoutes } from "./Routes/NotificationRoutes";
-import { ProfileRoutes } from "./Routes/ProfileRoutes";
-import { CompanyRoutes } from "./Routes/CompanyRoutes";
+import { footerRoutes } from "./shared/routes/FooterRoutes";
+import { jobsRoutes } from "./features/jobs/routes/JobsRoutes";
+import { authRoutes } from "./features/auth/routes/AuthRoutes";
+import { notificationsRoutes } from "./features/notifications/routes/NotificationRoutes";
+import { ProfileRoutes } from "./features/profile/routes/ProfileRoutes";
+import { CompanyRoutes } from "./features/companies/routes/CompanyRoutes";
+import MainLayout from "./shared/Layouts/MainLayout";
+import FullPageSpinner from "./shared/components/FullPageSpinner/FullPageSpinner";
+import { setCategories } from "./features/categories/components/CategoriesSection/categoriesSlice";
+import SearchResults from "./features/homeview/components/Search/SearchResults/SearchResults";
+
 
 interface AppProps {
   setUserId: (id: string) => void;
 }
 //lazy loaded components
-const HomeSection = lazy(() => import("./components/Home/HomeSection"));
+const HomeSection = lazy(() => import("./features/homeview/view/HomeSection"));
 
 function App({ setUserId }: AppProps) {
   const [loading, setLoading] = useState(true);

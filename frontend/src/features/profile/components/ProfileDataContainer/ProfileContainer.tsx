@@ -1,0 +1,80 @@
+import { formatDate } from "../../../../shared/utils/formData";
+import defaultAvatar from "../../../../assets/personAvatar.jpg";
+import ImageUpload from "../UploadProfileImage/UploadProfileImage";
+import { Link } from "react-router";
+import { ProfileContainerProps } from "../../types/profileSectionTypes";
+
+
+export default function ProfileContainer({
+  userData,
+  avatar,
+  handleFileChange,
+  completionPercentage,
+  completedFields,
+  totalCompletionFields,
+}: ProfileContainerProps) {
+  return (
+    <div className="profile-main-card">
+      <div className="profile-identity-block">
+        <div className="profile-image">
+          <img src={avatar || defaultAvatar} alt="Profile" />
+          <ImageUpload onFileChange={handleFileChange} />
+        </div>
+
+        <div className="profile-headline">
+          <h1>
+            {userData?.firstName} {userData?.lastName}
+          </h1>
+          <p>{userData?.email}</p>
+
+          <div className="profile-tags">
+            <span className="profile-tag">
+              Joined: {userData?.createdAt ? formatDate(userData.createdAt) : "-"}
+            </span>
+          </div>
+
+          <div className="completion-mini-row">
+            <span>{completedFields} of {totalCompletionFields} sections complete</span>
+            <strong>{completionPercentage}%</strong>
+          </div>
+          <div className="completion-track">
+            <div className="completion-fill" style={{ width: `${completionPercentage}%` }} />
+          </div>
+        </div>
+      </div>
+
+      <div className="profile-info-grid">
+        <div>
+          <span>First name</span>
+          <strong>{userData?.firstName || "-"}</strong>
+        </div>
+        <div>
+          <span>Last name</span>
+          <strong>{userData?.lastName || "-"}</strong>
+        </div>
+        <div>
+          <span>Email</span>
+          <strong>{userData?.email || "-"}</strong>
+        </div>
+        <div>
+          <span>Phone</span>
+          <strong>{userData?.phoneNumber || "-"}</strong>
+        </div>
+        <div>
+          <span>Location</span>
+          <strong>{userData?.location || "-"}</strong>
+        </div>
+        <div>
+          <span>Created at</span>
+          <strong>{userData?.createdAt ? formatDate(userData.createdAt) : "-"}</strong>
+        </div>
+      </div>
+
+      <div className="edit-profile-button-container">
+        <Link to="/profile/setthings" className="edit-profile-button">
+          User settings
+        </Link>
+      </div>
+    </div>
+  );
+}
