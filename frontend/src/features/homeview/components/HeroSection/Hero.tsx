@@ -59,7 +59,7 @@ export default function Hero() {
         {t("hero.titleSuffix")}
       </h1>
       <h2 style={{ position: "relative", zIndex: 1 }}>
-        <span>Your Next Opportunity</span> Starts Here.
+        <span>{t("hero.subtitle")}</span> {t("hero.subtitleSuffix")}
       </h2>
 
       <p
