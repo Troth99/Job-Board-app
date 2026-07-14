@@ -13,6 +13,7 @@ import { getUserFromLocalStorage } from "./features/auth/hooks/useAuth";
 import { useState } from "react";
 import { FavoritesProvider } from "./context/FavouritesJobsContext";
 import { HelmetProvider } from "react-helmet-async";
+import "./i18n";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Root element not found");
