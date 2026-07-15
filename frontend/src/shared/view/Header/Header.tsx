@@ -9,12 +9,14 @@ import { setAuthenticated } from "../../../features/auth/authSlice/authSlice";
 import { RootState } from "../../../store/store";
 import { NotificationMailIcon } from "../../components/NotificationBadge/NotificationMailIcon";
 import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 
 
 export function Header() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const { t } = useLingui();
 
   const { theme, toggleTheme } = useThemeContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,13 +54,19 @@ export function Header() {
       <nav id="main-navigation" className={`nav ${isMenuOpen ? "active" : ""}`}>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">
+            <Trans>Home</Trans>
+            </Link>
           </li>
           <li>
-            <Link to="/jobs">Jobs </Link>
+            <Link to="/jobs">
+            <Trans>Jobs</Trans>
+            </Link>
           </li>
           <li>
-            <Link to="/companies">Companies</Link>
+            <Link to="/companies"
+            ><Trans>Companies</Trans>
+            </Link>
           </li>
         </ul>
 
@@ -67,16 +75,16 @@ export function Header() {
             <>
            <NotificationMailIcon />
               <Link to="/profile" className="btn-profile">
-                Profile
+                <Trans>Profile</Trans>
               </Link>
             </>
           ) : (
             <>
               <Link to="/login" className="btn-login">
-                Login
+                <Trans>Login</Trans>
               </Link>
               <Link to="/register" className="btn-register">
-                Register
+                <Trans>Register</Trans>
               </Link>
             </>
           )}
@@ -91,16 +99,16 @@ export function Header() {
      <NotificationMailIcon />
 
             <Link to="/profile" className="btn-profile">
-              Profile
+              <Trans>Profile</Trans>
             </Link>
           </>
         ) : (
           <>
             <Link to="/login" className="btn-login">
-              Login
+              <Trans>Login</Trans>
             </Link>
             <Link to="/register" className="btn-register">
-              Register
+              <Trans>Register</Trans>
             </Link>
           </>
         )}
@@ -112,7 +120,7 @@ export function Header() {
           type="button"
           onClick={toggleTheme}
           className="theme-toggle-btn"
-          aria-label="Toggle theme"
+          aria-label={t`Toggle theme`}
         >
           <span className="theme-toggle-icon" aria-hidden="true">
             {theme === "light" ? "🌙" : "☀️"}
@@ -124,7 +132,7 @@ export function Header() {
         type="button"
         className={`hamburger ${isMenuOpen ? "active" : ""}`}
         onClick={hamburgerMenuHandler}
-        aria-label="Toggle Menu"
+        aria-label={t`Toggle Menu`}
         aria-expanded={isMenuOpen}
         aria-controls="main-navigation"
       >

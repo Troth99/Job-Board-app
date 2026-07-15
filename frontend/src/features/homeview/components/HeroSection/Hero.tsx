@@ -1,12 +1,11 @@
 import { useState } from "react";
+import { Trans } from "@lingui/react/macro";
 import "./Hero.css";
 import "./Responsive.css";
 import Search from "../Search/Search";
-import { useTranslation } from "react-i18next";
 
 export default function Hero() {
   const [search, setSearch] = useState("");
-  const { t } = useTranslation();
 
   const handleSearch = (query: string) => {
     setSearch(query);
@@ -55,18 +54,21 @@ export default function Hero() {
         <circle cx="900" cy="200" r="5" fill="#2563eb" opacity="0.18" />
       </svg>
       <h1 style={{ position: "relative", zIndex: 1 }}>
-        <span className="accent">{t("hero.brand")}</span>{" "}
-        {t("hero.titleSuffix")}
+        <Trans>
+		  <span className="accent">Job Board</span> for your next career move.
+        </Trans>
       </h1>
       <h2 style={{ position: "relative", zIndex: 1 }}>
-        <span>{t("hero.subtitle")}</span> {t("hero.subtitleSuffix")}
+        <Trans>
+		  <span>Your next opportunity</span> starts here.
+        </Trans>
       </h2>
 
       <p
         className="custom-hero-subtitle"
         style={{ position: "relative", zIndex: 1 }}
       >
-        {t("hero.searchPlaceholder")}
+        <Trans>Search by keyword in all job postings</Trans>
       </p>
       <div
         className="custom-hero-search"

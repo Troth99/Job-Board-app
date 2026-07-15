@@ -1,5 +1,5 @@
+import { StatsResponse } from "../../types/ApplicationStatistic.model";
 import "./HomeStats.css";
-import { StatsResponse } from "../../../interfaces/ApplicationStatistic.model";
 
 export function HomeStats({
   statistics,
