@@ -66,7 +66,7 @@ export default function Hero() {
         className="custom-hero-subtitle"
         style={{ position: "relative", zIndex: 1 }}
       >
-        Search by keyword in all job postings
+        {t("hero.searchPlaceholder")}
       </p>
       <div
         className="custom-hero-search"

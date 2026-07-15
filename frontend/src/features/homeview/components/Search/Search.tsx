@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./Search.css";
 import "./Responsive.css";
 import { useNavigate } from "react-router";
@@ -10,6 +11,7 @@ interface SearchProps {
 }
 
 export default function Search({ onSearch }: SearchProps) {
+  const { t } = useTranslation();
   const [search, setSearch] = useState<string>("");
   const navigate = useNavigate();
 
@@ -32,7 +34,7 @@ export default function Search({ onSearch }: SearchProps) {
         <div className="search-box">
           <input
             type="text"
-            placeholder="Search jobs..."
+            placeholder={t('search.placeholder')}
             value={search}
             onChange={searchHandler}
           />

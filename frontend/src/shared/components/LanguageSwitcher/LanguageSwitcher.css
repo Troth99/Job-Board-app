@@ -1,0 +1,204 @@
+.language-switcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.language-toggle-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(25, 118, 210, 0.28);
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(236, 244, 255, 0.98), rgba(222, 236, 255, 0.98));
+  color: #1557b0;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(25, 118, 210, 0.16);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.language-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(25, 118, 210, 0.22);
+  border-color: rgba(25, 118, 210, 0.4);
+}
+
+.language-toggle-btn:focus-visible {
+  outline: 2px solid #0f5fb5;
+  outline-offset: 3px;
+}
+
+.current-flag {
+  font-size: 1.35rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.language-flag-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  overflow: hidden;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  right: 0;
+  min-width: 180px;
+  padding: 0.45rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(25, 118, 210, 0.12);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: grid;
+  gap: 0.35rem;
+  z-index: 500;
+  animation: languageDropdownIn 0.18s ease;
+  transform-origin: top right;
+}
+
+@keyframes languageDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.language-option {
+  width: 100%;
+  border: none;
+  background: transparent;
+  border-radius: 14px;
+  padding: 0.7rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  color: #232425;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease;
+}
+
+.language-option:hover {
+  background: #eaf3ff;
+  color: #1976d2;
+  transform: translateX(2px);
+}
+
+.language-option.active {
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.14), rgba(25, 118, 210, 0.06));
+  color: #1256a3;
+}
+
+.language-option:focus-visible {
+  outline: 2px solid #0f5fb5;
+  outline-offset: 2px;
+}
+
+.language-option-flag {
+  flex-shrink: 0;
+}
+
+.language-option-label {
+  white-space: nowrap;
+}
+
+/* Dark theme */
+body[data-theme="dark"] .language-toggle-btn {
+  background: linear-gradient(180deg, rgba(35, 39, 47, 0.96), rgba(26, 30, 36, 0.98));
+  color: #00bfae;
+  box-shadow: 0 10px 24px rgba(0, 191, 174, 0.14);
+  border-color: rgba(0, 191, 174, 0.22);
+}
+
+body[data-theme="dark"] .language-toggle-btn:hover {
+  box-shadow: 0 14px 28px rgba(0, 191, 174, 0.18);
+  border-color: rgba(0, 191, 174, 0.34);
+}
+
+body[data-theme="dark"] .language-toggle-btn:focus-visible {
+  outline-color: #00bfae;
+}
+
+body[data-theme="dark"] .language-dropdown {
+  background: rgba(24, 26, 27, 0.98);
+  border-color: rgba(0, 191, 174, 0.18);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34);
+}
+
+body[data-theme="dark"] .language-option {
+  color: #e6edf3;
+}
+
+body[data-theme="dark"] .language-option:hover {
+  background: #23272f;
+  color: #00bfae;
+}
+
+body[data-theme="dark"] .language-option.active {
+  background: linear-gradient(135deg, rgba(0, 191, 174, 0.18), rgba(0, 191, 174, 0.08));
+  color: #00bfae;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .language-toggle-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .language-dropdown {
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 160px;
+  }
+
+  .language-option {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .language-toggle-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .current-flag {
+    font-size: 1.15rem;
+  }
+
+  .language-flag-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .language-dropdown {
+    right: auto;
+    left: 0;
+    min-width: 148px;
+    border-radius: 14px;
+  }
+
+  .language-option-label {
+    font-size: 0.88rem;
+  }
+}

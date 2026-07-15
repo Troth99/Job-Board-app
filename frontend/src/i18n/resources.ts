@@ -1,5 +1,5 @@
-import bgCommon from './locales/bg/common.json'
-import enCommon from './locales/en/common.json'
+import bgCommon from './locales/bg/home.json'
+import enCommon from './locales/en/home.json'
 
 export const resources = {
     bg: {

@@ -4,6 +4,7 @@ import useJobs from "../../../../jobs/hooks/useJobsAPI";
 import { Job } from "../../../../jobs/types/Job.model";
 import Spinner from "../../../../../shared/components/Spinner/Spinner";
 import { ShowJobs } from "../../../../companies/components/showJobs/showCompanyJobs";
+import { useTranslation } from "react-i18next";
 
 export default function SearchResults() {
   const [searchParams] = useSearchParams();
@@ -12,6 +13,7 @@ export default function SearchResults() {
   const [results, setResults] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchAndFilter = async () => {
@@ -45,7 +47,7 @@ export default function SearchResults() {
           >
             🔍
           </span>
-          No jobs found.
+          {t('search.noJobsFound', 'No jobs found.')}
         </div>
       ) : (
         <ShowJobs

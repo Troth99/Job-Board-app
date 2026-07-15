@@ -106,15 +106,19 @@ export function Header() {
         )}
       </div>
 
-     <LanguageSwitcher />
-      <button
-        type="button"
-        onClick={toggleTheme}
-        className="theme-toggle-btn"
-        aria-label="Toggle theme"
-      >
-        {theme === "light" ? "🌙" : "☀️"}
-      </button>
+      <div className="header-utility-controls">
+        <LanguageSwitcher />
+        <button
+          type="button"
+          onClick={toggleTheme}
+          className="theme-toggle-btn"
+          aria-label="Toggle theme"
+        >
+          <span className="theme-toggle-icon" aria-hidden="true">
+            {theme === "light" ? "🌙" : "☀️"}
+          </span>
+        </button>
+      </div>
 
       <button
         type="button"
