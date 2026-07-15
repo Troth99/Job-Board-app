@@ -9,9 +9,15 @@ i18n
   .init({
     resources,
     fallbackLng: "en",
-    lng: "bg",
+    supportedLngs: ["bg", "en"],
+    nonExplicitSupportedLngs: true,
+    load: "languageOnly",
     defaultNS: "common",
     ns: ["common"],
+    detection: {
+      order: ["localStorage", "navigator", "htmlTag"],
+      caches: ["localStorage"],
+    },
     interpolation: {
       escapeValue: false,
     },

@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated } from "../../../features/auth/authSlice/authSlice";
 import { RootState } from "../../../store/store";
 import { NotificationMailIcon } from "../../components/NotificationBadge/NotificationMailIcon";
+import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher";
+
 
 
 export function Header() {
@@ -19,6 +21,7 @@ export function Header() {
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated,
   );
+
 
   useEffect(() => {
     const token = getRefreshToken();
@@ -37,6 +40,8 @@ export function Header() {
   const hamburgerMenuHandler = () => {
     setIsMenuOpen((isMenuOpen) => !isMenuOpen);
   };
+
+
 
   return (
     <header className={`header ${theme}`}>
@@ -101,6 +106,7 @@ export function Header() {
         )}
       </div>
 
+     <LanguageSwitcher />
       <button
         type="button"
         onClick={toggleTheme}
