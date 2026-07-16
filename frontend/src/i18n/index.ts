@@ -1,6 +1,20 @@
 import { i18n } from "@lingui/core";
-import { messages as bgMessages } from "./locales/bg/messages.po";
-import { messages as enMessages } from "./locales/en/messages.po";
+import { messages as bgShared } from "./locales/bg/shared.po";
+import { messages as bgAuth } from "./locales/bg/auth.po";
+import { messages as bgHomeview } from "./locales/bg/homeview.po";
+import { messages as bgJobs } from "./locales/bg/jobs.po";
+import { messages as bgCompanies } from "./locales/bg/companies.po";
+import { messages as bgCategories } from "./locales/bg/categories.po";
+import { messages as bgNotifications } from "./locales/bg/notifications.po";
+import { messages as bgProfile } from "./locales/bg/profile.po";
+import { messages as enShared } from "./locales/en/shared.po";
+import { messages as enAuth } from "./locales/en/auth.po";
+import { messages as enHomeview } from "./locales/en/homeview.po";
+import { messages as enJobs } from "./locales/en/jobs.po";
+import { messages as enCompanies } from "./locales/en/companies.po";
+import { messages as enCategories } from "./locales/en/categories.po";
+import { messages as enNotifications } from "./locales/en/notifications.po";
+import { messages as enProfile } from "./locales/en/profile.po";
 
 
 export const locales = ["bg", "en"] as const;
@@ -38,8 +52,26 @@ export function getInitialLocale(): AppLocale {
 }
 
 i18n.load({
-  bg: bgMessages,
-  en: enMessages,
+  bg: {
+    ...bgShared,
+    ...bgAuth,
+    ...bgHomeview,
+    ...bgJobs,
+    ...bgCompanies,
+    ...bgCategories,
+    ...bgNotifications,
+    ...bgProfile,
+  },
+  en: {
+    ...enShared,
+    ...enAuth,
+    ...enHomeview,
+    ...enJobs,
+    ...enCompanies,
+    ...enCategories,
+    ...enNotifications,
+    ...enProfile,
+  },
 });
 
 export function activateLocale(locale: string) {

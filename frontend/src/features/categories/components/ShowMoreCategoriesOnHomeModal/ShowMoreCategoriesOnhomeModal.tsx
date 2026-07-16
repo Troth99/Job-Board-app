@@ -2,6 +2,7 @@
 
 import { Category } from "../../types/category";
 import "./ShowMoreCategories.css"
+import { useLingui } from "@lingui/react/macro";
 
 type Props = {
   categories: Category[];
@@ -9,6 +10,7 @@ type Props = {
   categoryHandler?: (cat: Category) => void;
 };
 export function ShowMoreCategoriesOnhomeModal({categories, categoryHandler ,onClose }:  Props){
+  const { i18n } = useLingui();
     
     return (
       <div className="overlay-categories-shown-home" onClick={onClose}>
@@ -24,7 +26,7 @@ export function ShowMoreCategoriesOnhomeModal({categories, categoryHandler ,onCl
                   onClose();
                 }}
               >
-                {cat.name}
+                {i18n.locale.startsWith("bg") ? cat.bgName || cat.name : cat.name}
               </div>
             ))}
           </div>

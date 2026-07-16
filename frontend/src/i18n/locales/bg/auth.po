@@ -1,0 +1,131 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-16 14:19+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "Already have an account?"
+msgstr "Вече имаш акаунт?"
+
+msgid "Back to home"
+msgstr "Обратно към началото"
+
+msgid "Better job matches"
+msgstr "По-добри съвпадения на работата"
+
+msgid "Browse jobs from companies actively hiring."
+msgstr "Прегледай обяви от компании, които активно наемат."
+
+msgid "Build your profile and get hired faster."
+msgstr "Изгради своя профил и бъди нает по-бързо."
+
+msgid "City / Location"
+msgstr "Град / Местоположение"
+
+msgid "Complete profile details help recruiters trust your application."
+msgstr "Попълването на детайлите в профила помага на работодателите да се доверят на вашата кандидатура."
+
+msgid "Confirm Password"
+msgstr "Потвърди паролата"
+
+msgid "Continue to your dashboard, saved jobs, and application activity."
+msgstr "Продължи към таблото си, запазените обяви и активността по кандидатстване."
+
+msgid "Create Account"
+msgstr "Създай акаунт"
+
+msgid "Create your account to discover curated jobs and apply in a few clicks."
+msgstr "Създай своя акаунт, за да откриваш подбрани обяви и да кандидатстваш с няколко клика."
+
+msgid "Creating account..."
+msgstr "Създаване на акаунт..."
+
+msgid "Curated opportunities"
+msgstr "Подбрани възможности"
+
+msgid "Don't have an account? <0>Create one</0>"
+msgstr "Нямаш акаунт? <0>Създай такъв</0>"
+
+msgid "Email address"
+msgstr "Имейл адрес"
+
+msgid "Enter your email address"
+msgstr "Въведи своя имейл адрес"
+
+msgid "Enter your password"
+msgstr "Въведи своята парола"
+
+msgid "Faster applications"
+msgstr "По-бързи кандидатури"
+
+msgid "Faster workflow"
+msgstr "По-бърз работен процес"
+
+msgid "Find your next role faster."
+msgstr "Намери следващата си роля по-бързо."
+
+msgid "First name"
+msgstr "Име"
+
+msgid "Forgot password?"
+msgstr "Забравена парола?"
+
+msgid "Job Board Platform"
+msgstr "Платформа за обяви за работа"
+
+msgid "Keep your saved jobs, notifications, and profile in one place."
+msgstr "Дръж запазените си обяви, известията и профила на едно място."
+
+msgid "Last name"
+msgstr "Фамилия"
+
+msgid "Location and contact info improve recommendations for your role."
+msgstr "Информацията за местоположението и контактите подобрява препоръките за вашата роля."
+
+msgid "Password"
+msgstr "Парола"
+
+msgid "Phone Number"
+msgstr "Телефонен номер"
+
+msgid "Reach the right positions faster with clear search tools."
+msgstr "Достигни до правилните позиции по-бързо с ясни инструменти за търсене."
+
+msgid "Save your details once and apply to multiple jobs in minutes."
+msgstr "Запази детайлите си веднъж и кандидатствай за множество обяви за минути."
+
+msgid "Sign in"
+msgstr "Вход"
+
+msgid "Sign In"
+msgstr "Вход"
+
+msgid "Sign in to manage your profile, track applications, and explore opportunities from trusted companies."
+msgstr "Влез, за да управляваш профила си, да следиш кандидатурите и да разглеждаш възможности от доверени компании."
+
+msgid "Sign in to your account"
+msgstr "Влез в своя акаунт"
+
+msgid "Sign in with Google"
+msgstr "Вход с Google"
+
+msgid "Signing in..."
+msgstr "Влизане..."
+
+msgid "Smart filtering"
+msgstr "Умно филтриране"
+
+msgid "Stronger first impression"
+msgstr "По-силно първо впечатление"
+
+msgid "Welcome back"
+msgstr "Добре дошъл отново"

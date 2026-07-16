@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:JSON.parse("{\"M0siDK\":[\"<0>Job Board</0> for your next career move.\"],\"Xu0bxk\":[\"Search by keyword...\"],\"bviqxp\":[\"No jobs found.\"],\"cQhvZe\":[\"Search by keyword in all job postings\"],\"cpGuou\":[\"<0>Your next opportunity</0> starts here.\"]}")};

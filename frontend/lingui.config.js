@@ -12,8 +12,36 @@ export default defineConfig({
 	}),
 	catalogs: [
 		{
-			path: "<rootDir>/src/i18n/locales/{locale}/messages",
-			include: ["src"],
+			path: "<rootDir>/src/i18n/locales/{locale}/shared",
+			include: ["src/shared", "src/i18n", "src/App.tsx", "src/main.tsx"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/auth",
+			include: ["src/features/auth"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/homeview",
+			include: ["src/features/homeview"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/jobs",
+			include: ["src/features/jobs"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/companies",
+			include: ["src/features/companies"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/categories",
+			include: ["src/features/categories"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/notifications",
+			include: ["src/features/notifications"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/profile",
+			include: ["src/features/profile"],
 		},
 	],
 });

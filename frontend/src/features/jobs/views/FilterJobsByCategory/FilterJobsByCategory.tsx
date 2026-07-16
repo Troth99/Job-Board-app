@@ -2,6 +2,7 @@ import { useNavigate, useParams, useSearchParams } from "react-router";
 import "./FilterJobsByCategory.css";
 import useJobs from "../../hooks/useJobBoard";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";
 import { FilterGroup } from "../../components/FilterJobsByCategory/FilterGroup";
 import { employmentOptions } from "../../form/formSelectedInputs";
@@ -12,16 +13,25 @@ import { Helmet } from "react-helmet-async";
 import { generateSeoConfig } from "../../../../seo/seo";
 import { useJobFilters } from "../../hooks/useJobFilters";
 import { ShowJobs } from "../../../companies/components/showJobs/showCompanyJobs";
+import { useLingui } from "@lingui/react/macro";
+import { RootState } from "../../../../store/store";
 
 const ITEMS_PER_PAGE = 3;
 
 //responsive css doesnt work on mobile
 
 export default function FilterJobByCategory() {
+  const { i18n } = useLingui();
+  const categories = useSelector((state: RootState) => state.categories.categories);
   const [searchParams, setSearchParams] = useSearchParams();
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 3);
 
   const { categoryName } = useParams<{ categoryName: string }>();
+  const decodedCategoryName = categoryName ? decodeURIComponent(categoryName) : "";
+  const matchedCategory = categories.find((cat) => cat.name === decodedCategoryName);
+  const localizedCategoryName = i18n.locale.startsWith("bg")
+    ? matchedCategory?.bgName || decodedCategoryName
+    : decodedCategoryName;
   const [jobsData, setJobsData] = useState<Job[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { getJobsByCategoryName } = useJobs();
@@ -91,9 +101,9 @@ export default function FilterJobByCategory() {
       <div className="filter-header">
         <div className="filter-title">
           <h1>
-            Jobs from <span className="category-highlight">{categoryName}</span>
+            Jobs from <span className="category-highlight">{localizedCategoryName}</span>
           </h1>
-          <p className="subtitle">Explore opportunities from {categoryName}</p>
+          <p className="subtitle">Explore opportunities from {localizedCategoryName}</p>
         </div>
         <div className="filter-stats">
           <span className="job-count">{totalCount} Total Jobs found</span>

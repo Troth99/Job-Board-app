@@ -1,12 +1,12 @@
 import './LoginSocialIcons.css'
 import { API_BASE } from '../../../../config/api';
-
+import { Trans } from '@lingui/react/macro';
 
 
 
 export default function LoginSocialIcons() {
 
-  const hnadleGoogleLogin = () => {
+  const handleGoogleLogin = () => {
     window.location.href = `${API_BASE}/auth/google`;
     }
 
@@ -22,10 +22,10 @@ export default function LoginSocialIcons() {
         className="social-btn social-btn-google"
         aria-label="Continue with Google"
         title="Continue with Google"
-        onClick={hnadleGoogleLogin}
+        onClick={handleGoogleLogin}
       >
         <i className="fa-brands fa-google" aria-hidden="true"></i>
-        <span className="social-btn-label">Sign in with Google</span>
+        <span className="social-btn-label"><Trans>Sign in with Google</Trans></span>
       </button>
 
     </div>
