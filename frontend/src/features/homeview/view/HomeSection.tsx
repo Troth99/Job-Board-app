@@ -14,6 +14,7 @@ import Hero from "../components/HeroSection/Hero";
 import CategoriesSection from "../../categories/components/CategoriesSection/CategoriesSection";
 import RecentJobs from "../components/RecentJobs/RecentJobs";
 import { HomeStats } from "../components/HomeStats/HomeStats";
+import { Trans } from "@lingui/react/macro";
 
 export default function HomeSection() {
   const categories = useSelector(
@@ -65,7 +66,7 @@ export default function HomeSection() {
           <Container>
             <CategoriesSection />
             <h1 className="recent-posted-jobs-text">
-              Discover the Latest Opportunities
+              <Trans>Discover the Latest Opportunities</Trans>
             </h1>
             {/* Alternative ideas for section title:
           <h1 className="recent-posted-jobs-text">Hot Jobs Right Now</h1>

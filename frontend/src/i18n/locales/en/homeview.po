@@ -19,11 +19,53 @@ msgstr "<0>Job Board</0> for your next career move."
 msgid "<0>Your next opportunity</0> starts here."
 msgstr "<0>Your next opportunity</0> starts here."
 
+msgid "Active companies posting jobs"
+msgstr "Active companies posting jobs"
+
+msgid "Companies"
+msgstr "Companies"
+
+msgid "Discover the Latest Opportunities"
+msgstr "Discover the Latest Opportunities"
+
+msgid "Here you can see an overview of the activity on our platform."
+msgstr "Here you can see an overview of the activity on our platform."
+
+msgid "Jobs"
+msgstr "Jobs"
+
+msgid "No jobs available."
+msgstr "No jobs available."
+
 msgid "No jobs found."
 msgstr "No jobs found."
+
+msgid "Platform Statistics"
+msgstr "Platform Statistics"
+
+#. placeholder {0}: job.createdBy?.firstName
+#. placeholder {1}: job.createdBy?.lastName
+msgid "Posted by: {0} {1}"
+msgstr "Posted by: {0} {1}"
+
+#. placeholder {0}: job.createdAt && formatDate(job.createdAt)
+msgid "Posted: {0}"
+msgstr "Posted: {0}"
+
+msgid "Registered users on the platform"
+msgstr "Registered users on the platform"
 
 msgid "Search by keyword in all job postings"
 msgstr "Search by keyword in all job postings"
 
 msgid "Search by keyword..."
 msgstr "Search by keyword..."
+
+msgid "Total job postings"
+msgstr "Total job postings"
+
+msgid "Users"
+msgstr "Users"
+
+msgid "View All Jobs"
+msgstr "View All Jobs"

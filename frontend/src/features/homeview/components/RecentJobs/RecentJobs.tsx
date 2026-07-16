@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/react/macro";
 import { formatDate } from "../../../../shared/utils/formData";
 import { Job } from "../../../jobs/types/Job.model";
 import "./RecentJobs.css";
@@ -38,9 +39,9 @@ export default function RecentJobs({ recentJobs }: RecentJobsProps) {
                     </div>
                   </div>
                   <div className="recentjobs-card-side">
-                    <div className="recentjobs-date">Posted: {job.createdAt && formatDate(job.createdAt)}</div>
+                    <div className="recentjobs-date"><Trans>Posted: {job.createdAt && formatDate(job.createdAt)}</Trans></div>
                     <div className="recentjobs-posted-by">
-                      Posted by: {job.createdBy?.firstName} {job.createdBy?.lastName}
+                        <Trans>Posted by: {job.createdBy?.firstName} {job.createdBy?.lastName}</Trans>
                     </div>
                   </div>
                 </div>
@@ -49,13 +50,13 @@ export default function RecentJobs({ recentJobs }: RecentJobsProps) {
           ))}
         </ul>
       ) : (
-        <p className="recentjobs-no-jobs">No jobs available.</p>
+        <p className="recentjobs-no-jobs"><Trans>No jobs available.</Trans></p>
       )}  
 
           <div className="recentjobs-view-all-wrapper">
               
             <Link to="/jobs" className="recentjobs-view-all-link">
-              View All Jobs
+                <Trans>View All Jobs</Trans>
             </Link>
           </div>
     
