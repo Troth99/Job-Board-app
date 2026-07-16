@@ -1,0 +1,122 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-16 14:54+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "<0>Dual role support</0> — Be a candidate and a company team member at the same time."
+msgstr "<0>Двойна роля</0> — Бъди едновременно кандидат и член на екип в компания."
+
+msgid "<0>Free to use</0> — Creating an account and applying to jobs costs nothing."
+msgstr "<0>Безплатно за използване</0> — Създаването на акаунт и кандидатстването за работа не струват нищо."
+
+msgid "<0>Real-time everything</0> — Notifications, application updates, and company invites arrive instantly."
+msgstr "<0>Всичко в реално време</0> — Известията, обновяването на кандидатурите и поканите от компании пристигат веднага."
+
+msgid "<0>Secure & private</0> — Your data is protected with industry-standard encryption and token-based authentication."
+msgstr "<0>Сигурно и поверително</0> — Данните ти са защитени със стандартно за индустрията криптиране и токен-базирана автентикация."
+
+msgid "<0>Transparent process</0> — A clear application status pipeline so you always know what's happening."
+msgstr "<0>Прозрачен процес</0> — Ясна верига за статусите на кандидатурите, за да знаеш винаги какво се случва."
+
+msgid "<0>Verified companies</0> — Every company on the platform has an owner account and a registered profile."
+msgstr "<0>Проверени компании</0> — Всяка компания в платформата има собственикски акаунт и регистриран профил."
+
+msgid "Already working somewhere or want to manage hiring yourself? Accept company invitations and collaborate inside company dashboards. Roles range from Member to Owner, each with clear responsibilities."
+msgstr "Вече работиш някъде или искаш сам да управляваш наемането? Приемай покани от компании и работи в техните табла. Ролите варират от Member до Owner, всяка с ясни отговорности."
+
+msgid "Apply to any job in seconds. Attach your CV link and a cover letter tailored to the role. All your applications are stored in your profile so you never lose track of where you've applied."
+msgstr "Кандидатствай за всяка позиция за секунди. Прикачи линк към CV-то си и мотивационно писмо, съобразено с ролята. Всички кандидатури се пазят в профила ти, за да не губиш следа къде си кандидатствал."
+
+msgid "Apply with Confidence"
+msgstr "Кандидатствай уверено"
+
+msgid "Browse hundreds of listings and narrow them down instantly. Filter by job category, employment type (full-time, part-time, freelance, internship), company, or use the keyword search to find exactly what you're looking for."
+msgstr "Разглеждай стотици обяви и ги стеснявай веднага. Филтрирай по категория, тип заетост (пълно работно време, непълно, freelance, стаж), компания или използвай търсене по ключова дума, за да намериш точно това, което търсиш."
+
+msgid "Build a professional profile with your name, location, phone number, and a custom avatar. Your profile is your identity on the platform — keep it up to date and let recruiters know who they're dealing with."
+msgstr "Изгради професионален профил с име, локация, телефонен номер и персонален аватар. Профилът ти е твоят образ в платформата — поддържай го актуален и покажи на рекрутърите с кого работят."
+
+msgid "Create Your Account"
+msgstr "Създай своя акаунт"
+
+msgid "Explore & Filter Jobs"
+msgstr "Разглеждай и филтрирай обяви"
+
+msgid "For Job Seekers"
+msgstr "За търсещите работа"
+
+msgid "Four simple steps to land your next role."
+msgstr "Четири прости стъпки до следващата ти позиция."
+
+msgid "From discovery to your first day on the job — we've got you covered."
+msgstr "От откриването до първия ти работен ден — ние сме с теб."
+
+msgid "Get Notified & Respond"
+msgstr "Получавай известия и реагирай"
+
+msgid "How It Works"
+msgstr "Как работи"
+
+msgid "Instant Notifications"
+msgstr "Мигновени известия"
+
+msgid "JobBoard is a modern job marketplace built to connect talented professionals with companies that are actively hiring. Whether you're exploring new opportunities or ready to make a change, we've built every feature with you in mind."
+msgstr "JobBoard е модерна платформа за работа, създадена да свързва талантливи професионалисти с компании, които активно наемат. Независимо дали проучваш нови възможности или си готов за промяна, създадохме всяка функция с мисъл за теб."
+
+msgid "Join Company Teams"
+msgstr "Присъедини се към екипи на компании"
+
+msgid "Join thousands of professionals already using JobBoard to advance their careers."
+msgstr "Присъедини се към хиляди професионалисти, които вече използват JobBoard, за да развиват кариерата си."
+
+msgid "Know exactly where you stand. Applications move through a clear pipeline — <0>New → Under Review → Approved / Rejected</0> — and you're notified the moment a recruiter takes action on your application."
+msgstr "Знай точно на какъв етап си. Кандидатурите преминават през ясен процес — <0>New → Under Review → Approved / Rejected</0> — и получаваш известие в момента, в който рекрутър предприеме действие по твоята кандидатура."
+
+msgid "No more refreshing pages. Our real-time notification system (powered by Server-Sent Events) pushes updates to you the instant something happens — application status changes, company invites, and new messages."
+msgstr "Без повече презареждане на страниците. Нашата система за известия в реално време (задвижвана от Server-Sent Events) ти изпраща обновления веднага щом се случи нещо — промяна на статус, покани от компании и нови съобщения."
+
+msgid "One-Click Applications"
+msgstr "Кандидатстване с едно кликване"
+
+msgid "Open a job listing, read the full description — including required skills, benefits, salary, and deadline — then submit your application with your CV and a personalized cover letter."
+msgstr "Отвори обявата, прочети пълното описание — включително нужните умения, предимства, заплата и краен срок — и подай кандидатурата си с CV и персонализирано мотивационно писмо."
+
+msgid "Ready to Find Your Next Job?"
+msgstr "Готов ли си да намериш следващата си работа?"
+
+msgid "Real-Time Status Tracking"
+msgstr "Проследяване на статуса в реално време"
+
+msgid "Sign up for free in under a minute. Fill in your basic details and you're ready to explore the platform."
+msgstr "Регистрирай се безплатно за по-малко от минута. Попълни основните си данни и си готов да разгледаш платформата."
+
+msgid "Sit back and let the notifications come to you. You'll be alerted in real time when recruiters review, approve, or reach out about your application."
+msgstr "Отпусни се и остави известията да идват при теб. Ще бъдеш известен в реално време, когато рекрутърите преглеждат, одобряват или се свържат с теб относно кандидатурата ти."
+
+msgid "Smart Job Search"
+msgstr "Умно търсене на работа"
+
+msgid "Use the homepage to browse featured listings, explore jobs by category, or use advanced filters to zero in on the roles that match your skills and preferences."
+msgstr "Използвай началната страница, за да разглеждаш избрани обяви, да търсиш по категории или да използваш разширени филтри, за да се съсредоточиш върху ролите, които съответстват на твоите умения и предпочитания."
+
+msgid "What JobBoard Offers You"
+msgstr "Какво ти предлага JobBoard"
+
+msgid "Why JobBoard?"
+msgstr "Защо JobBoard?"
+
+msgid "Your Next Career Move Starts Here"
+msgstr "Следващата ти кариера започва тук"
+
+msgid "Your Profile, Your Brand"
+msgstr "Твоят профил, твоята марка"

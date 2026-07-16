@@ -7,6 +7,11 @@ import { messages as bgCompanies } from "./locales/bg/companies.po";
 import { messages as bgCategories } from "./locales/bg/categories.po";
 import { messages as bgNotifications } from "./locales/bg/notifications.po";
 import { messages as bgProfile } from "./locales/bg/profile.po";
+import {messages as bgFooter} from "./locales/bg/footer.po";
+import { messages as bgFooterForUs } from "./locales/bg/for-us.po";
+
+
+
 import { messages as enShared } from "./locales/en/shared.po";
 import { messages as enAuth } from "./locales/en/auth.po";
 import { messages as enHomeview } from "./locales/en/homeview.po";
@@ -15,6 +20,8 @@ import { messages as enCompanies } from "./locales/en/companies.po";
 import { messages as enCategories } from "./locales/en/categories.po";
 import { messages as enNotifications } from "./locales/en/notifications.po";
 import { messages as enProfile } from "./locales/en/profile.po";
+import {messages as enFooter} from "./locales/en/footer.po";
+import { messages as enFooterForUs } from "./locales/en/for-us.po";
 
 
 export const locales = ["bg", "en"] as const;
@@ -61,6 +68,8 @@ i18n.load({
     ...bgCategories,
     ...bgNotifications,
     ...bgProfile,
+    ...bgFooter,
+    ...bgFooterForUs,
   },
   en: {
     ...enShared,
@@ -70,7 +79,9 @@ i18n.load({
     ...enCompanies,
     ...enCategories,
     ...enNotifications,
-    ...enProfile,
+    ...enProfile, 
+    ...enFooter,
+    ...enFooterForUs,
   },
 });
 

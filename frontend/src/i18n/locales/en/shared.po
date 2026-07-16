@@ -16,29 +16,71 @@ msgstr ""
 msgid "Bulgarian"
 msgstr "Bulgarian"
 
+#~ msgid "Career Advice"
+#~ msgstr "Career Advice"
+
 msgid "Change language"
 msgstr "Change language"
 
 msgid "Companies"
 msgstr "Companies"
 
+#~ msgid "Contacts"
+#~ msgstr "Contacts"
+
+#~ msgid "Cookies"
+#~ msgstr "Cookies"
+
+#~ msgid "CV Tips"
+#~ msgstr "CV Tips"
+
 msgid "English"
 msgstr "English"
+
+#~ msgid "Follow Us"
+#~ msgstr "Follow Us"
+
+#~ msgid "For Employers"
+#~ msgstr "For Employers"
+
+#~ msgid "For the Users"
+#~ msgstr "For the Users"
+
+#~ msgid "For Us"
+#~ msgstr "For Us"
 
 msgid "Home"
 msgstr "Home"
 
+#~ msgid "Interview Preparation"
+#~ msgstr "Interview Preparation"
+
+#~ msgid "JobBoard. All rights reserved."
+#~ msgstr "JobBoard. All rights reserved."
+
 msgid "Jobs"
 msgstr "Jobs"
 
+#~ msgid "Legal Information"
+#~ msgstr "Legal Information"
+
 msgid "Login"
 msgstr "Login"
+
+#~ msgid "Privacy"
+#~ msgstr "Privacy"
 
 msgid "Profile"
 msgstr "Profile"
 
 msgid "Register"
 msgstr "Register"
+
+#~ msgid "Salary Negotiation"
+#~ msgstr "Salary Negotiation"
+
+#~ msgid "Terms and Conditions"
+#~ msgstr "Terms and Conditions"
 
 msgid "Toggle Menu"
 msgstr "Toggle Menu"
