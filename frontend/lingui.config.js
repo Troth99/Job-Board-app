@@ -64,6 +64,14 @@ export default defineConfig({
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/for-us",
 			include: ["src/shared/view/FooterPages/ForUs"],
-		}
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/contact",
+			include: ["src/shared/view/FooterPages/Contacts"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/for-employers",
+			include: ["src/shared/view/FooterPages/ForEmployers"],
+		},
 	],
 });

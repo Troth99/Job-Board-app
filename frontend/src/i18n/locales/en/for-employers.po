@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-17 00:55+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+
+msgid "Add job descriptions, requirements, benefits, and work schedule."
+msgstr "Add job descriptions, requirements, benefits, and work schedule."
+
+msgid "Any verified company from any industry can publish job listings."
+msgstr "Any verified company from any industry can publish job listings."
+
+msgid "Application Tracking"
+msgstr "Application Tracking"
+
+msgid "Can multiple team members manage hiring?"
+msgstr "Can multiple team members manage hiring?"
+
+msgid "Can we edit or close a job post?"
+msgstr "Can we edit or close a job post?"
+
+msgid "Contact candidates and complete your selection process faster."
+msgstr "Contact candidates and complete your selection process faster."
+
+msgid "Contact Sales"
+msgstr "Contact Sales"
+
+msgid "Create Company Account"
+msgstr "Create Company Account"
+
+msgid "Create listings with role details, salary range, location, and application deadline in minutes."
+msgstr "Create listings with role details, salary range, location, and application deadline in minutes."
+
+msgid "Create your company account and publish your first job today."
+msgstr "Create your company account and publish your first job today."
+
+msgid "Employer FAQ"
+msgstr "Employer FAQ"
+
+msgid "For Employers"
+msgstr "For Employers"
+
+msgid "Hire Faster Across All Industries"
+msgstr "Hire Faster Across All Industries"
+
+msgid "Hire with Confidence"
+msgstr "Hire with Confidence"
+
+msgid "How It Works"
+msgstr "How It Works"
+
+msgid "Invite recruiters and managers to review applications together and keep hiring decisions organized."
+msgstr "Invite recruiters and managers to review applications together and keep hiring decisions organized."
+
+msgid "Move candidates through clear stages and keep your hiring process transparent and efficient."
+msgstr "Move candidates through clear stages and keep your hiring process transparent and efficient."
+
+msgid "Post Open Positions"
+msgstr "Post Open Positions"
+
+msgid "Publish jobs, manage applications, and collaborate with your hiring team in one place. JobBoard supports employers in retail, healthcare, logistics, finance, education, hospitality, and more."
+msgstr "Publish jobs, manage applications, and collaborate with your hiring team in one place. JobBoard supports employers in retail, healthcare, logistics, finance, education, hospitality, and more."
+
+msgid "Reach candidates from different regions and professional backgrounds with one job post."
+msgstr "Reach candidates from different regions and professional backgrounds with one job post."
+
+msgid "Ready to Start Hiring?"
+msgstr "Ready to Start Hiring?"
+
+msgid "Register Company"
+msgstr "Register Company"
+
+msgid "Register your company profile and complete basic business details."
+msgstr "Register your company profile and complete basic business details."
+
+msgid "Review Applications"
+msgstr "Review Applications"
+
+msgid "Screen candidates, compare profiles, and shortlist top matches."
+msgstr "Screen candidates, compare profiles, and shortlist top matches."
+
+msgid "Simple Job Publishing"
+msgstr "Simple Job Publishing"
+
+msgid "Team Collaboration"
+msgstr "Team Collaboration"
+
+msgid "Who can post jobs?"
+msgstr "Who can post jobs?"
+
+msgid "Why Employers Choose JobBoard"
+msgstr "Why Employers Choose JobBoard"
+
+msgid "Wide Talent Reach"
+msgstr "Wide Talent Reach"
+
+msgid "Yes. You can invite teammates and assign responsibilities."
+msgstr "Yes. You can invite teammates and assign responsibilities."
+
+msgid "Yes. You can update, pause, or close listings anytime."
+msgstr "Yes. You can update, pause, or close listings anytime."

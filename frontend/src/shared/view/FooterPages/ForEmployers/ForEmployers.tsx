@@ -3,6 +3,7 @@ import "./forEmployers.css"
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import { Container } from "../../../components/Container/Container";
+import { Trans } from "@lingui/react/macro";
 
 export default function ForEmployers() {
 
@@ -15,118 +16,118 @@ export default function ForEmployers() {
      <div className="for-employers-page">
       <Container>
         <section className="for-employers-hero">
-          <span className="for-employers-badge">For Employers</span>
-          <h1>Hire Faster Across All Industries</h1>
+          <span className="for-employers-badge"><Trans>For Employers</Trans></span>
+          <h1><Trans>Hire Faster Across All Industries</Trans></h1>
           <p>
-            Publish jobs, manage applications, and collaborate with your hiring team
+            <Trans>Publish jobs, manage applications, and collaborate with your hiring team
             in one place. JobBoard supports employers in retail, healthcare,
-            logistics, finance, education, hospitality, and more.
+            logistics, finance, education, hospitality, and more.</Trans>
           </p>
         </section>
 
         <section className="for-employers-section">
-          <h2>Why Employers Choose JobBoard</h2>
+          <h2><Trans>Why Employers Choose JobBoard</Trans></h2>
           <div className="for-employers-cards">
             <article className="for-employers-card">
-              <h3>Wide Talent Reach</h3>
+              <h3><Trans>Wide Talent Reach</Trans></h3>
               <p>
-                Reach candidates from different regions and professional backgrounds
-                with one job post.
+                <Trans>Reach candidates from different regions and professional backgrounds
+                with one job post.</Trans>
               </p>
             </article>
 
             <article className="for-employers-card">
-              <h3>Simple Job Publishing</h3>
+              <h3><Trans>Simple Job Publishing</Trans></h3>
               <p>
-                Create listings with role details, salary range, location, and
-                application deadline in minutes.
+                <Trans>Create listings with role details, salary range, location, and
+                application deadline in minutes.</Trans>
               </p>
             </article>
 
             <article className="for-employers-card">
-              <h3>Team Collaboration</h3>
+              <h3><Trans>Team Collaboration</Trans></h3>
               <p>
-                Invite recruiters and managers to review applications together and
-                keep hiring decisions organized.
+                <Trans>Invite recruiters and managers to review applications together and
+                keep hiring decisions organized.</Trans>
               </p>
             </article>
 
             <article className="for-employers-card">
-              <h3>Application Tracking</h3>
+              <h3><Trans>Application Tracking</Trans></h3>
               <p>
-                Move candidates through clear stages and keep your hiring process
-                transparent and efficient.
+                <Trans>Move candidates through clear stages and keep your hiring process
+                transparent and efficient.</Trans>
               </p>
             </article>
           </div>
         </section>
 
         <section className="for-employers-how">
-          <h2>How It Works</h2>
+          <h2><Trans>How It Works</Trans></h2>
           <div className="for-employers-steps">
             <div className="for-employers-step">
               <span>1</span>
               <div>
-                <h3>Create Company Account</h3>
-                <p>Register your company profile and complete basic business details.</p>
+                <h3><Trans>Create Company Account</Trans></h3>
+                <p><Trans>Register your company profile and complete basic business details.</Trans></p>
               </div>
             </div>
 
             <div className="for-employers-step">
               <span>2</span>
               <div>
-                <h3>Post Open Positions</h3>
-                <p>Add job descriptions, requirements, benefits, and work schedule.</p>
+                <h3><Trans>Post Open Positions</Trans></h3>
+                <p><Trans>Add job descriptions, requirements, benefits, and work schedule.</Trans></p>
               </div>
             </div>
 
             <div className="for-employers-step">
               <span>3</span>
               <div>
-                <h3>Review Applications</h3>
-                <p>Screen candidates, compare profiles, and shortlist top matches.</p>
+                <h3><Trans>Review Applications</Trans></h3>
+                <p><Trans>Screen candidates, compare profiles, and shortlist top matches.</Trans></p>
               </div>
             </div>
 
             <div className="for-employers-step">
               <span>4</span>
               <div>
-                <h3>Hire with Confidence</h3>
-                <p>Contact candidates and complete your selection process faster.</p>
+                <h3><Trans>Hire with Confidence</Trans></h3>
+                <p><Trans>Contact candidates and complete your selection process faster.</Trans></p>
               </div>
             </div>
           </div>
         </section>
 
         <section className="for-employers-faq">
-          <h2>Employer FAQ</h2>
+          <h2><Trans>Employer FAQ</Trans></h2>
           <div className="for-employers-faq-list">
             <article>
-              <h3>Who can post jobs?</h3>
-              <p>Any verified company from any industry can publish job listings.</p>
+              <h3><Trans>Who can post jobs?</Trans></h3>
+              <p><Trans>Any verified company from any industry can publish job listings.</Trans></p>
             </article>
 
             <article>
-              <h3>Can multiple team members manage hiring?</h3>
-              <p>Yes. You can invite teammates and assign responsibilities.</p>
+              <h3><Trans>Can multiple team members manage hiring?</Trans></h3>
+              <p><Trans>Yes. You can invite teammates and assign responsibilities.</Trans></p>
             </article>
 
             <article>
-              <h3>Can we edit or close a job post?</h3>
-              <p>Yes. You can update, pause, or close listings anytime.</p>
+              <h3><Trans>Can we edit or close a job post?</Trans></h3>
+              <p><Trans>Yes. You can update, pause, or close listings anytime.</Trans></p>
             </article>
           </div>
         </section>
 
         <section className="for-employers-cta">
-          <h2>Ready to Start Hiring?</h2>
-          <p>Create your company account and publish your first job today.</p>
+          <h2><Trans>Ready to Start Hiring?</Trans></h2>
+          <p><Trans>Create your company account and publish your first job today.</Trans></p>
           <div className="for-employers-cta-actions">
             <Link to="/register/company" className="for-employers-btn-primary">
-              Register Company
+              <Trans>Register Company</Trans>
             </Link>
             <Link to="/contacts" className="for-employers-btn-secondary">
-              Contact Sales
+              <Trans>Contact Sales</Trans>
             </Link>
           </div>
         </section>
