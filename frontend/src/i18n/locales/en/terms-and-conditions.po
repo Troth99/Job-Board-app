@@ -1,0 +1,164 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-20 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "1. Acceptance of Terms"
+msgstr "1. Acceptance of Terms"
+
+msgid "10. Disclaimers and Liability"
+msgstr "10. Disclaimers and Liability"
+
+msgid "11. Suspension and Termination"
+msgstr "11. Suspension and Termination"
+
+msgid "12. Changes to the Terms"
+msgstr "12. Changes to the Terms"
+
+msgid "13. Contact Information"
+msgstr "13. Contact Information"
+
+msgid "2. Platform Services"
+msgstr "2. Platform Services"
+
+msgid "3. Accounts and Eligibility"
+msgstr "3. Accounts and Eligibility"
+
+msgid "4. Rules for Job Seekers"
+msgstr "4. Rules for Job Seekers"
+
+msgid "5. Rules for Employers"
+msgstr "5. Rules for Employers"
+
+msgid "6. Applications and Hiring Decisions"
+msgstr "6. Applications and Hiring Decisions"
+
+msgid "7. Notifications and Communications"
+msgstr "7. Notifications and Communications"
+
+msgid "8. User Content and Conduct"
+msgstr "8. User Content and Conduct"
+
+msgid "9. Privacy and Security"
+msgstr "9. Privacy and Security"
+
+msgid "Applying to job postings through candidate profiles."
+msgstr "Applying to job postings through candidate profiles."
+
+msgid "Browsing and filtering jobs by category and keywords."
+msgstr "Browsing and filtering jobs by category and keywords."
+
+msgid "By accessing or using JobBoard, you confirm that you have read, understood, and accepted these Terms and Conditions. If you do not agree, you must stop using the platform."
+msgstr "By accessing or using JobBoard, you confirm that you have read, understood, and accepted these Terms and Conditions. If you do not agree, you must stop using the platform."
+
+msgid "Content that is unlawful, abusive, fraudulent, or infringing is not allowed."
+msgstr "Content that is unlawful, abusive, fraudulent, or infringing is not allowed."
+
+msgid "Contents"
+msgstr "Contents"
+
+msgid "Creating and managing company profiles and job listings."
+msgstr "Creating and managing company profiles and job listings."
+
+msgid "Do not impersonate another person or submit misleading documents."
+msgstr "Do not impersonate another person or submit misleading documents."
+
+msgid "Do not use automated tools to spam job applications."
+msgstr "Do not use automated tools to spam job applications."
+
+msgid "Employers are responsible for actions performed by their invited company members (owner, admin, recruiter, member roles)."
+msgstr "Employers are responsible for actions performed by their invited company members (owner, admin, recruiter, member roles)."
+
+msgid "Employers must process candidate data in compliance with applicable privacy laws."
+msgstr "Employers must process candidate data in compliance with applicable privacy laws."
+
+msgid "Employers must represent legitimate organizations and use truthful company information."
+msgstr "Employers must represent legitimate organizations and use truthful company information."
+
+msgid "For legal or terms-related questions, contact us at<0> legal@jobboard.com</0>."
+msgstr "For legal or terms-related questions, contact us at<0> legal@jobboard.com</0>."
+
+msgid "Job posts must be genuine, lawful, and clearly describe role, location, and responsibilities."
+msgstr "Job posts must be genuine, lawful, and clearly describe role, location, and responsibilities."
+
+msgid "JobBoard acts as a marketplace platform and is not a party to any employment contract between candidates and employers."
+msgstr "JobBoard acts as a marketplace platform and is not a party to any employment contract between candidates and employers."
+
+msgid "JobBoard is not responsible for the accuracy of third-party job posts or candidate-submitted information."
+msgstr "JobBoard is not responsible for the accuracy of third-party job posts or candidate-submitted information."
+
+msgid "JobBoard may remove content or restrict accounts that violate these terms."
+msgstr "JobBoard may remove content or restrict accounts that violate these terms."
+
+msgid "JobBoard may suspend or terminate accounts that violate these Terms, threaten platform security, or engage in fraudulent activity. Users may request account closure via the contact channels provided."
+msgstr "JobBoard may suspend or terminate accounts that violate these Terms, threaten platform security, or engage in fraudulent activity. Users may request account closure via the contact channels provided."
+
+msgid "JobBoard provides application workflow tools (for example statuses such as New, Under Review, Approved, Rejected). Final decisions are made solely by employers. JobBoard does not guarantee interviews, offers, or employment outcomes."
+msgstr "JobBoard provides application workflow tools (for example statuses such as New, Under Review, Approved, Rejected). Final decisions are made solely by employers. JobBoard does not guarantee interviews, offers, or employment outcomes."
+
+msgid "JobBoard provides tools that include, but are not limited to:"
+msgstr "JobBoard provides tools that include, but are not limited to:"
+
+msgid "JobBoard uses authentication and access controls to protect accounts. Users must keep credentials confidential and report suspected unauthorized activity. Personal data handling is further described in the Privacy and Cookies pages."
+msgstr "JobBoard uses authentication and access controls to protect accounts. Users must keep credentials confidential and report suspected unauthorized activity. Personal data handling is further described in the Privacy and Cookies pages."
+
+msgid "Last updated: April 19, 2026"
+msgstr "Last updated: April 19, 2026"
+
+msgid "Legal"
+msgstr "Legal"
+
+msgid "Managing candidate applications through status updates."
+msgstr "Managing candidate applications through status updates."
+
+msgid "Misleading, discriminatory, or deceptive job ads are prohibited."
+msgstr "Misleading, discriminatory, or deceptive job ads are prohibited."
+
+msgid "Provide truthful information in your profile, CV links, and application materials."
+msgstr "Provide truthful information in your profile, CV links, and application materials."
+
+msgid "Receiving platform notifications for account activity."
+msgstr "Receiving platform notifications for account activity."
+
+msgid "Sharing or transferring accounts to third parties is not permitted."
+msgstr "Sharing or transferring accounts to third parties is not permitted."
+
+msgid "Terms and Conditions"
+msgstr "Terms and Conditions"
+
+msgid "The platform is provided on an \"as is\" and \"as available\" basis."
+msgstr "The platform is provided on an \"as is\" and \"as available\" basis."
+
+msgid "The platform may send in-app and real-time updates related to account activity, application status changes, invitations, and system events. You are responsible for reviewing these notifications."
+msgstr "The platform may send in-app and real-time updates related to account activity, application status changes, invitations, and system events. You are responsible for reviewing these notifications."
+
+msgid "These Terms and Conditions govern the use of JobBoard for job seekers, employers, and company team members. By creating an account or using the platform, you agree to these terms."
+msgstr "These Terms and Conditions govern the use of JobBoard for job seekers, employers, and company team members. By creating an account or using the platform, you agree to these terms."
+
+msgid "To the extent permitted by law, JobBoard is not liable for indirect or consequential damages arising from use of the platform."
+msgstr "To the extent permitted by law, JobBoard is not liable for indirect or consequential damages arising from use of the platform."
+
+msgid "Use respectful communication with recruiters and company members."
+msgstr "Use respectful communication with recruiters and company members."
+
+msgid "We may update these Terms and Conditions from time to time. Updated versions become effective once published on this page."
+msgstr "We may update these Terms and Conditions from time to time. Updated versions become effective once published on this page."
+
+msgid "You are responsible for account security, including your password and all activity under your account."
+msgstr "You are responsible for account security, including your password and all activity under your account."
+
+msgid "You must provide accurate information when registering and keep your profile details up to date."
+msgstr "You must provide accurate information when registering and keep your profile details up to date."
+
+msgid "You retain ownership of content you submit, but grant JobBoard a limited license to display and process it for platform operation."
+msgstr "You retain ownership of content you submit, but grant JobBoard a limited license to display and process it for platform operation."

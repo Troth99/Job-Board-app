@@ -1,0 +1,164 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-20 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "1. Acceptance of Terms"
+msgstr "Акцептиране на условията"
+
+msgid "10. Disclaimers and Liability"
+msgstr "Отказ от отговорност и задължения"
+
+msgid "11. Suspension and Termination"
+msgstr "Прекъсване и прекратяване"
+
+msgid "12. Changes to the Terms"
+msgstr "Промени в условията"
+
+msgid "13. Contact Information"
+msgstr "Контактна информация"
+
+msgid "2. Platform Services"
+msgstr "Услуги на платформата"
+
+msgid "3. Accounts and Eligibility"
+msgstr "Акаунти и допустимост"
+
+msgid "4. Rules for Job Seekers"
+msgstr "Правила за търсещите работа"
+
+msgid "5. Rules for Employers"
+msgstr "Правила за работодателите"
+
+msgid "6. Applications and Hiring Decisions"
+msgstr "Кандидатури и решения за наемане"
+
+msgid "7. Notifications and Communications"
+msgstr "Известия и комуникации"
+
+msgid "8. User Content and Conduct"
+msgstr "Съдържание и поведение на потребителите"
+
+msgid "9. Privacy and Security"
+msgstr "Поверителност и сигурност"
+
+msgid "Applying to job postings through candidate profiles."
+msgstr "Кандидатстване за обяви за работа чрез профили на кандидати."
+
+msgid "Browsing and filtering jobs by category and keywords."
+msgstr "Преглеждане и филтриране на работни места по категория и ключови думи."
+
+msgid "By accessing or using JobBoard, you confirm that you have read, understood, and accepted these Terms and Conditions. If you do not agree, you must stop using the platform."
+msgstr "Като получавате достъп до или използвате JobBoard, потвърждавате, че сте прочели, разбрали и приели тези Общи условия. Ако не сте съгласни, трябва да прекратите използването на платформата."
+
+msgid "Content that is unlawful, abusive, fraudulent, or infringing is not allowed."
+msgstr "Съдържание, което е незаконно, обидно, измамно или нарушаващо правата, не е разрешено."
+
+msgid "Contents"
+msgstr "Съдържание"
+
+msgid "Creating and managing company profiles and job listings."
+msgstr "Създаване и управление на фирмени профили и обяви за работа."
+
+msgid "Do not impersonate another person or submit misleading documents."
+msgstr "Не се представяйте за друго лице и не подавайте подвеждащи документи."
+
+msgid "Do not use automated tools to spam job applications."
+msgstr "Не използвайте автоматизирани инструменти за спам кандидатури за работа."
+
+msgid "Employers are responsible for actions performed by their invited company members (owner, admin, recruiter, member roles)."
+msgstr "Работодателите са отговорни за действията, извършени от поканените членове на фирмата (собственик, администратор, наемател, членове)."
+
+msgid "Employers must process candidate data in compliance with applicable privacy laws."
+msgstr "Работодателите трябва да обработват данните на кандидатите в съответствие с приложимите закони за поверителност."
+
+msgid "Employers must represent legitimate organizations and use truthful company information."
+msgstr "Работодателите трябва да представляват легитимни организации и да използват истинска фирмена информация."
+
+msgid "For legal or terms-related questions, contact us at<0> legal@jobboard.com</0>."
+msgstr "За правни или свързани с условията въпроси, свържете се с нас на<0> legal@jobboard.com</0>."
+
+msgid "Job posts must be genuine, lawful, and clearly describe role, location, and responsibilities."
+msgstr "Обявите за работа трябва да са истински, законни и ясно да описват ролята, местоположението и отговорностите."
+
+msgid "JobBoard acts as a marketplace platform and is not a party to any employment contract between candidates and employers."
+msgstr "JobBoard действа като платформа за пазар и не е страна по никакъв трудов договор между кандидатите и работодателите."
+
+msgid "JobBoard is not responsible for the accuracy of third-party job posts or candidate-submitted information."
+msgstr "JobBoard не носи отговорност за точността на обявите за работа на трети страни или информацията, предоставена от кандидатите."
+
+msgid "JobBoard may remove content or restrict accounts that violate these terms."
+msgstr "JobBoard може да премахва съдържание или да ограничава акаунти, които нарушават тези условия."
+
+msgid "JobBoard may suspend or terminate accounts that violate these Terms, threaten platform security, or engage in fraudulent activity. Users may request account closure via the contact channels provided."
+msgstr "JobBoard може да спира или прекратява акаунти, които нарушават тези Общи условия, застрашават сигурността на платформата или участват в измамна дейност. Потребителите могат да поискат затваряне на акаунта чрез предоставените канали за контакт."
+
+msgid "JobBoard provides application workflow tools (for example statuses such as New, Under Review, Approved, Rejected). Final decisions are made solely by employers. JobBoard does not guarantee interviews, offers, or employment outcomes."
+msgstr "JobBoard предоставя инструменти за работния процес на кандидатурите (например статуси като Нов, В процес на преглед, Одобрен, Отхвърлен). Крайното решение се взема единствено от работодателите. JobBoard не гарантира интервюта, оферти или резултати от заетостта."
+
+msgid "JobBoard provides tools that include, but are not limited to:"
+msgstr "JobBoard предоставя инструменти, които включват, но не се ограничават до:"
+
+msgid "JobBoard uses authentication and access controls to protect accounts. Users must keep credentials confidential and report suspected unauthorized activity. Personal data handling is further described in the Privacy and Cookies pages."
+msgstr "JobBoard използва автентикация и контрол на достъпа за защита на акаунтите. Потребителите трябва да пазят поверителността на идентификационните данни и да съобщават за подозрителна неоторизирана дейност. Обработката на лични данни е описана по-подробно в страниците за Поверителност и Бисквитки."
+
+msgid "Last updated: April 19, 2026"
+msgstr "Последна актуализация: 19 април 2026 г."
+
+msgid "Legal"
+msgstr "Правна информация"
+
+msgid "Managing candidate applications through status updates."
+msgstr "Управление на кандидатурите чрез актуализации на статуса."
+
+msgid "Misleading, discriminatory, or deceptive job ads are prohibited."
+msgstr "Забранени са подвеждащи, дискриминационни или измамни обяви за работа."
+
+msgid "Provide truthful information in your profile, CV links, and application materials."
+msgstr "Предоставяйте вярна информация във вашия профил, връзки към CV и материали за кандидатстване."
+
+msgid "Receiving platform notifications for account activity."
+msgstr "Получаване на известия от платформата за активността на акаунта."
+
+msgid "Sharing or transferring accounts to third parties is not permitted."
+msgstr "Споделянето или прехвърлянето на акаунти на трети страни не е разрешено."
+
+msgid "Terms and Conditions"
+msgstr "Общи условия"
+
+msgid "The platform is provided on an \"as is\" and \"as available\" basis."
+msgstr "Платформата се предоставя на принципа \"както е\" и \"както е налична\"."
+
+msgid "The platform may send in-app and real-time updates related to account activity, application status changes, invitations, and system events. You are responsible for reviewing these notifications."
+msgstr "Платформата може да изпраща известия в приложението и в реално време, свързани с активността на акаунта, промени в статуса на кандидатурите, покани и системни събития. Вие сте отговорни за преглеждането на тези известия."
+
+msgid "These Terms and Conditions govern the use of JobBoard for job seekers, employers, and company team members. By creating an account or using the platform, you agree to these terms."
+msgstr "Тези Общи условия уреждат използването на JobBoard от търсещи работа, работодатели и членове на екипа на компанията. Създавайки акаунт или използвайки платформата, вие се съгласявате с тези условия."
+
+msgid "To the extent permitted by law, JobBoard is not liable for indirect or consequential damages arising from use of the platform."
+msgstr "До степента, разрешена от закона, JobBoard не носи отговорност за косвени или последващи щети, произтичащи от използването на платформата."
+
+msgid "Use respectful communication with recruiters and company members."
+msgstr "Използвайте уважителна комуникация с рекрутъри и членове на компанията."
+
+msgid "We may update these Terms and Conditions from time to time. Updated versions become effective once published on this page."
+msgstr "Можем да актуализираме тези Общи условия от време на време. Актуализираните версии влизат в сила веднага след публикуването им на тази страница."
+
+msgid "You are responsible for account security, including your password and all activity under your account."
+msgstr "Вие сте отговорни за сигурността на акаунта, включително за паролата и цялата активност под вашия акаунт."
+
+msgid "You must provide accurate information when registering and keep your profile details up to date."
+msgstr "Трябва да предоставяте точна информация при регистрация и да поддържате профилните си данни актуални."
+
+msgid "You retain ownership of content you submit, but grant JobBoard a limited license to display and process it for platform operation."
+msgstr "Запазвате собствеността върху съдържанието, което предоставяте, но предоставяте на JobBoard ограничен лиценз за показване и обработка за функционирането на платформата."

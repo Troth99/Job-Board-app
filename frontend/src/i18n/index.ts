@@ -13,6 +13,7 @@ import {messages as bgFooter} from "./locales/bg/footer.po";
 import { messages as bgFooterForUs } from "./locales/bg/for-us.po";
 import { messages as bgFooterContact } from "./locales/bg/contact.po";
 import { messages as bgForEmployers } from "./locales/bg/for-employers.po";
+import { messages as bgTermsAndConditions } from "./locales/bg/terms-and-conditions.po";
 
 
 //imports for English translations
@@ -28,6 +29,7 @@ import {messages as enFooter} from "./locales/en/footer.po";
 import { messages as enFooterForUs } from "./locales/en/for-us.po";
 import { messages as enFooterContact } from "./locales/en/contact.po";
 import { messages as enForEmployers } from "./locales/en/for-employers.po";
+import { messages as enTermsAndConditions } from "./locales/en/terms-and-conditions.po";
 
 
 
@@ -79,7 +81,8 @@ i18n.load({
     ...bgFooter,
     ...bgFooterForUs,
     ...bgFooterContact,
-    ...bgForEmployers
+    ...bgForEmployers,
+    ...bgTermsAndConditions
   },
   en: {
     ...enShared,
@@ -93,7 +96,8 @@ i18n.load({
     ...enFooter,
     ...enFooterForUs,
     ...enFooterContact,
-    ...enForEmployers
+    ...enForEmployers,
+    ...enTermsAndConditions
   },
 });
 

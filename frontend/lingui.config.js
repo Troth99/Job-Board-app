@@ -73,5 +73,9 @@ export default defineConfig({
 			path: "<rootDir>/src/i18n/locales/{locale}/for-employers",
 			include: ["src/shared/view/FooterPages/ForEmployers"],
 		},
+			{
+			path: "<rootDir>/src/i18n/locales/{locale}/terms-and-conditions",
+			include: ["src/shared/view/FooterPages/TOS"],
+		},
 	],
 });
