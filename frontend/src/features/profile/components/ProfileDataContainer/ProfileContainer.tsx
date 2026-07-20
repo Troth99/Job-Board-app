@@ -3,6 +3,7 @@ import defaultAvatar from "../../../../assets/personAvatar.jpg";
 import ImageUpload from "../UploadProfileImage/UploadProfileImage";
 import { Link } from "react-router";
 import { ProfileContainerProps } from "../../types/profileSectionTypes";
+import { profilePaths } from "../../routes/profilePaths";
 
 
 export default function ProfileContainer({
@@ -71,7 +72,7 @@ export default function ProfileContainer({
       </div>
 
       <div className="edit-profile-button-container">
-        <Link to="/profile/setthings" className="edit-profile-button">
+        <Link to={profilePaths.settings} className="edit-profile-button">
           User settings
         </Link>
       </div>

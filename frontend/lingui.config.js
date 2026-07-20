@@ -73,9 +73,33 @@ export default defineConfig({
 			path: "<rootDir>/src/i18n/locales/{locale}/for-employers",
 			include: ["src/shared/view/FooterPages/ForEmployers"],
 		},
-			{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/terms-and-conditions",
 			include: ["src/shared/view/FooterPages/TOS"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/privacy",
+			include: ["src/shared/view/FooterPages/Privacy"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/cookies",
+			include: ["src/shared/view/FooterPages/Cookies"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/cv-tips",
+			include: ["src/shared/view/FooterPages/CareerAdvice/CVTips"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/interview-preparation",
+			include: ["src/shared/view/FooterPages/CareerAdvice/interviewPreparation"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/salary-negotiation",
+			include: ["src/shared/view/FooterPages/CareerAdvice/SalaryNegotiation"],
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/profile",
+			include: ["src/features/profile/mainProfilePage/profile"],
 		},
 	],
 });

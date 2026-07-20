@@ -12,3 +12,36 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Plural-Forms: \n"
+
+msgid "Company access"
+msgstr "Достъп до компанията"
+
+msgid "complete"
+msgstr "завършен"
+
+msgid "Enabled"
+msgstr "Активиран"
+
+msgid "Loading..."
+msgstr "Зареждане..."
+
+msgid "No company role"
+msgstr "Няма роля в компанията"
+
+msgid "Not enabled"
+msgstr "Не е активиран"
+
+msgid "Profile completion"
+msgstr "Попълване на профила"
+
+msgid "Recent account activity"
+msgstr "Последна активност в акаунта"
+
+msgid "Role summary"
+msgstr "Обобщение на ролята"
+
+msgid "This account data could not be loaded right now."
+msgstr "Данните за този акаунт не могат да бъдат заредени в момента."
+
+msgid "Unable to load profile"
+msgstr "Неуспешно зареждане на профила"

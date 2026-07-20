@@ -1,0 +1,248 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-20 15:59+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "\"Based on my experience, I was hoping for something closer to [X].\""
+msgstr "\"Based on my experience, I was hoping for something closer to [X].\""
+
+msgid "\"Based on my research and experience, I'm looking for something in the range of [X] to [Y]. I'm open to discussing how the full package fits together.\""
+msgstr "\"Based on my research and experience, I'm looking for something in the range of [X] to [Y]. I'm open to discussing how the full package fits together.\""
+
+msgid "\"I'm very excited about this role. Can we discuss the compensation?\""
+msgstr "\"I'm very excited about this role. Can we discuss the compensation?\""
+
+msgid "\"Is there any flexibility in the package?\""
+msgstr "\"Is there any flexibility in the package?\""
+
+msgid "\"What does the typical career path look like here?\""
+msgstr "\"What does the typical career path look like here?\""
+
+msgid "1. Research Your Market Value"
+msgstr "1. Research Your Market Value"
+
+msgid "2. Give a Range, Not a Fixed Number"
+msgstr "2. Give a Range, Not a Fixed Number"
+
+msgid "3. Think Beyond the Base Salary"
+msgstr "3. Think Beyond the Base Salary"
+
+msgid "4. How to Handle the Conversation"
+msgstr "4. How to Handle the Conversation"
+
+msgid "5. Knowing When to Accept"
+msgstr "5. Knowing When to Accept"
+
+msgid "6. Negotiation Checklist"
+msgstr "6. Negotiation Checklist"
+
+msgid "Accepting on the spot under pressure — ask for time."
+msgstr "Accepting on the spot under pressure — ask for time."
+
+msgid "Annual bonus or performance incentive."
+msgstr "Annual bonus or performance incentive."
+
+msgid "Ask if the role has a formal review after 3–6 months."
+msgstr "Ask if the role has a formal review after 3–6 months."
+
+msgid "Be ready to justify why you sit at the higher end."
+msgstr "Be ready to justify why you sit at the higher end."
+
+msgid "Before any negotiation, know what people in similar roles earn in your region. Walking in with data gives you credibility."
+msgstr "Before any negotiation, know what people in similar roles earn in your region. Walking in with data gives you credibility."
+
+msgid "Benefits are unclear or non-existent."
+msgstr "Benefits are unclear or non-existent."
+
+msgid "Benefits meaningfully compensate for any salary gap."
+msgstr "Benefits meaningfully compensate for any salary gap."
+
+msgid "Career Advice"
+msgstr "Career Advice"
+
+msgid "Clear on what would make you decline the offer."
+msgstr "Clear on what would make you decline the offer."
+
+msgid "Clear path for growth and pay increases."
+msgstr "Clear path for growth and pay increases."
+
+msgid "Colleagues or contacts in similar roles."
+msgstr "Colleagues or contacts in similar roles."
+
+msgid "Common Extras to Consider"
+msgstr "Common Extras to Consider"
+
+msgid "Company size — larger companies often pay more."
+msgstr "Company size — larger companies often pay more."
+
+msgid "Confirm what triggers a pay increase in the future."
+msgstr "Confirm what triggers a pay increase in the future."
+
+msgid "Defined your target salary and absolute minimum."
+msgstr "Defined your target salary and absolute minimum."
+
+msgid "Employer is dismissive of any negotiation attempt."
+msgstr "Employer is dismissive of any negotiation attempt."
+
+msgid "Example phrase:"
+msgstr "Example phrase:"
+
+msgid "Extra vacation days beyond the legal minimum."
+msgstr "Extra vacation days beyond the legal minimum."
+
+msgid "Flexible working hours or hybrid/remote options."
+msgstr "Flexible working hours or hybrid/remote options."
+
+msgid "Giving an ultimatum unless you mean it."
+msgstr "Giving an ultimatum unless you mean it."
+
+msgid "Health or dental coverage."
+msgstr "Health or dental coverage."
+
+msgid "How to Negotiate Your Salary with Confidence"
+msgstr "How to Negotiate Your Salary with Confidence"
+
+msgid "How to Set Your Range"
+msgstr "How to Set Your Range"
+
+msgid "If asked about your current salary, redirect: \"I'd prefer to focus on what this role offers and what's fair for the responsibilities involved.\""
+msgstr "If asked about your current salary, redirect: \"I'd prefer to focus on what this role offers and what's fair for the responsibilities involved.\""
+
+msgid "Industry associations and professional networks."
+msgstr "Industry associations and professional networks."
+
+msgid "Job listings that show salary ranges."
+msgstr "Job listings that show salary ranges."
+
+msgid "Keep the top end realistic — 10–15% above the bottom."
+msgstr "Keep the top end realistic — 10–15% above the bottom."
+
+msgid "Leaves flexibility without appearing inflexible."
+msgstr "Leaves flexibility without appearing inflexible."
+
+msgid "Listed the benefits and perks that matter most to you."
+msgstr "Listed the benefits and perks that matter most to you."
+
+msgid "Making it personal or emotional."
+msgstr "Making it personal or emotional."
+
+msgid "Naming a single number puts you at a disadvantage. A well-anchored range gives you room to negotiate while signalling your expectations."
+msgstr "Naming a single number puts you at a disadvantage. A well-anchored range gives you room to negotiate while signalling your expectations."
+
+msgid "Negotiate a sign-on bonus instead."
+msgstr "Negotiate a sign-on bonus instead."
+
+msgid "Never start below what you'd actually accept."
+msgstr "Never start below what you'd actually accept."
+
+msgid "Not every negotiation ends at your target. Know your boundaries and how to make a decision you're comfortable with."
+msgstr "Not every negotiation ends at your target. Know your boundaries and how to make a decision you're comfortable with."
+
+msgid "Offer is significantly below market rate with no room to move."
+msgstr "Offer is significantly below market rate with no room to move."
+
+msgid "Phrases That Work"
+msgstr "Phrases That Work"
+
+msgid "Practised how to respond to common counter-questions."
+msgstr "Practised how to respond to common counter-questions."
+
+msgid "Prepared a realistic range with your target at the low end."
+msgstr "Prepared a realistic range with your target at the low end."
+
+msgid "Prepared to redirect questions about current salary."
+msgstr "Prepared to redirect questions about current salary."
+
+msgid "Pressure to decide immediately without time to think."
+msgstr "Pressure to decide immediately without time to think."
+
+msgid "Put your target salary at the lower end of the range."
+msgstr "Put your target salary at the lower end of the range."
+
+msgid "Ready to ask for time before accepting a final offer."
+msgstr "Ready to ask for time before accepting a final offer."
+
+msgid "Reduces the risk of pricing yourself out early."
+msgstr "Reduces the risk of pricing yourself out early."
+
+msgid "Regional cost of living and local demand."
+msgstr "Regional cost of living and local demand."
+
+msgid "Request additional leave or a flexible schedule."
+msgstr "Request additional leave or a flexible schedule."
+
+msgid "Researched salary benchmarks for your role and location."
+msgstr "Researched salary benchmarks for your role and location."
+
+msgid "Revealing your current or previous salary first."
+msgstr "Revealing your current or previous salary first."
+
+msgid "Role aligns with your long-term career goals."
+msgstr "Role aligns with your long-term career goals."
+
+msgid "Salary comparison websites (Glassdoor, Payscale, LinkedIn)."
+msgstr "Salary comparison websites (Glassdoor, Payscale, LinkedIn)."
+
+msgid "Salary is at or close to your target range."
+msgstr "Salary is at or close to your target range."
+
+msgid "Salary negotiation is a normal part of the hiring process. Learn how to research your worth, frame your ask, and reach an agreement that works for both you and your employer — across any industry."
+msgstr "Salary negotiation is a normal part of the hiring process. Learn how to research your worth, frame your ask, and reach an agreement that works for both you and your employer — across any industry."
+
+msgid "Salary ranges for your job title and industry."
+msgstr "Salary ranges for your job title and industry."
+
+msgid "Shows you've done your homework."
+msgstr "Shows you've done your homework."
+
+msgid "Signs It's a Good Deal"
+msgstr "Signs It's a Good Deal"
+
+msgid "Signs to Reconsider"
+msgstr "Signs to Reconsider"
+
+msgid "The way you negotiate matters as much as the number you propose. Stay professional, positive, and collaborative."
+msgstr "The way you negotiate matters as much as the number you propose. Stay professional, positive, and collaborative."
+
+msgid "Tip:"
+msgstr "Tip:"
+
+msgid "Total compensation includes more than monthly pay. Understanding the full package lets you negotiate more effectively."
+msgstr "Total compensation includes more than monthly pay. Understanding the full package lets you negotiate more effectively."
+
+msgid "Training budget or professional development."
+msgstr "Training budget or professional development."
+
+msgid "Transport allowance or parking."
+msgstr "Transport allowance or parking."
+
+msgid "What to Avoid"
+msgstr "What to Avoid"
+
+msgid "What to Research"
+msgstr "What to Research"
+
+msgid "When the Salary Is Fixed"
+msgstr "When the Salary Is Fixed"
+
+msgid "Where to Look"
+msgstr "Where to Look"
+
+msgid "Why a Range Works"
+msgstr "Why a Range Works"
+
+msgid "Your floor becomes the employer's ceiling — set it right."
+msgstr "Your floor becomes the employer's ceiling — set it right."
+
+msgid "Your years of experience vs. the role's requirements."
+msgstr "Your years of experience vs. the role's requirements."

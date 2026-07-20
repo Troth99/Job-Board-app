@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./companyInvitationNotification.css";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
+import { profilePaths } from "../../../profile/routes/profilePaths";
 import { useNotificationContext } from "../../../../context/NotificationContext";
 import { useUserData } from "../../../../context/UseDataContext";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
@@ -68,7 +69,7 @@ export default function CompanyInvitationNotification() {
         prev.filter((n) => n._id !== notification._id),
       );
       if (!notification.isRead) setUnreadCount((prev) => Math.max(prev - 1, 0));
-      navigate("/profile");
+      navigate(profilePaths.root);
     } catch (error) {
       console.error("Failed to accept notification invitation", error);
     }

@@ -14,6 +14,12 @@ import { messages as bgFooterForUs } from "./locales/bg/for-us.po";
 import { messages as bgFooterContact } from "./locales/bg/contact.po";
 import { messages as bgForEmployers } from "./locales/bg/for-employers.po";
 import { messages as bgTermsAndConditions } from "./locales/bg/terms-and-conditions.po";
+import { messages as bgPrivacy } from "./locales/bg/privacy.po";
+import { messages as bgCookies } from "./locales/bg/cookies.po";
+import { messages as bgCvTips } from "./locales/bg/cv-tips.po";
+import { messages as bgInterviewPreparation } from "./locales/bg/interview-preparation.po";
+import { messages as bgSalaryNegotiation } from "./locales/bg/salary-negotiation.po";
+import { messages as bgProfileMainProfilePageProfile } from "./locales/bg/profile.po";
 
 
 //imports for English translations
@@ -30,6 +36,11 @@ import { messages as enFooterForUs } from "./locales/en/for-us.po";
 import { messages as enFooterContact } from "./locales/en/contact.po";
 import { messages as enForEmployers } from "./locales/en/for-employers.po";
 import { messages as enTermsAndConditions } from "./locales/en/terms-and-conditions.po";
+import { messages as enPrivacy } from "./locales/en/privacy.po";
+import { messages as enCookies } from "./locales/en/cookies.po";
+import { messages as enCvTips } from "./locales/en/cv-tips.po";
+import { messages as enInterviewPreparation } from "./locales/en/interview-preparation.po";
+import { messages as enProfileMainProfilePageProfile } from "./locales/en/profile.po";
 
 
 
@@ -82,7 +93,13 @@ i18n.load({
     ...bgFooterForUs,
     ...bgFooterContact,
     ...bgForEmployers,
-    ...bgTermsAndConditions
+    ...bgTermsAndConditions,
+    ...bgPrivacy,
+    ...bgCookies,
+    ...bgCvTips,
+    ...bgInterviewPreparation,
+    ...bgSalaryNegotiation,
+    ...bgProfileMainProfilePageProfile  
   },
   en: {
     ...enShared,
@@ -97,7 +114,12 @@ i18n.load({
     ...enFooterForUs,
     ...enFooterContact,
     ...enForEmployers,
-    ...enTermsAndConditions
+    ...enTermsAndConditions,
+    ...enPrivacy,
+    ...enCookies,
+    ...enCvTips,
+    ...enInterviewPreparation,
+    ...enProfileMainProfilePageProfile 
   },
 });
 

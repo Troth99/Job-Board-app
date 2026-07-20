@@ -1,0 +1,152 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-20 15:59+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "1. Before the Interview"
+msgstr "1. Before the Interview"
+
+msgid "2-3 short stories about your achievements."
+msgstr "2-3 short stories about your achievements."
+
+msgid "2. Common Questions and Better Answers"
+msgstr "2. Common Questions and Better Answers"
+
+msgid "3. During the Interview"
+msgstr "3. During the Interview"
+
+msgid "4. Questions You Should Ask"
+msgstr "4. Questions You Should Ask"
+
+msgid "5. After the Interview"
+msgstr "5. After the Interview"
+
+msgid "6. Final Interview Day Checklist"
+msgstr "6. Final Interview Day Checklist"
+
+msgid "Arrive 10-15 minutes early for in-person interviews."
+msgstr "Arrive 10-15 minutes early for in-person interviews."
+
+msgid "Career Advice"
+msgstr "Career Advice"
+
+msgid "Connect your strengths to the role requirements and explain why this company fits your goals."
+msgstr "Connect your strengths to the role requirements and explain why this company fits your goals."
+
+msgid "Describe a challenge you faced"
+msgstr "Describe a challenge you faced"
+
+msgid "Examples of teamwork and problem-solving."
+msgstr "Examples of teamwork and problem-solving."
+
+msgid "Follow-up Message"
+msgstr "Follow-up Message"
+
+msgid "For online calls, test camera, sound, and internet in advance."
+msgstr "For online calls, test camera, sound, and internet in advance."
+
+msgid "How is performance measured for this role?"
+msgstr "How is performance measured for this role?"
+
+msgid "I checked logistics or technical setup."
+msgstr "I checked logistics or technical setup."
+
+msgid "I practiced short and clear introductions."
+msgstr "I practiced short and clear introductions."
+
+msgid "I prepared 3 achievement examples."
+msgstr "I prepared 3 achievement examples."
+
+msgid "I prepared at least 2 questions for the interviewer."
+msgstr "I prepared at least 2 questions for the interviewer."
+
+msgid "I reviewed the company and role details."
+msgstr "I reviewed the company and role details."
+
+msgid "Interview Preparation for Real-World Jobs"
+msgstr "Interview Preparation for Real-World Jobs"
+
+msgid "Keep it structured: who you are, what you have done, and what you are looking for next."
+msgstr "Keep it structured: who you are, what you have done, and what you are looking for next."
+
+msgid "Keep your tone respectful, calm, and confident."
+msgstr "Keep your tone respectful, calm, and confident."
+
+msgid "Listen carefully and answer directly."
+msgstr "Listen carefully and answer directly."
+
+msgid "Main responsibilities in the job description."
+msgstr "Main responsibilities in the job description."
+
+msgid "Note what went well and what to improve for your next interview. This helps you get stronger with each attempt."
+msgstr "Note what went well and what to improve for your next interview. This helps you get stronger with each attempt."
+
+msgid "Prepare for interviews across all industries with clear steps you can apply to office, field, customer-facing, and operational roles."
+msgstr "Prepare for interviews across all industries with clear steps you can apply to office, field, customer-facing, and operational roles."
+
+msgid "Questions to ask the interviewer."
+msgstr "Questions to ask the interviewer."
+
+msgid "Research Checklist"
+msgstr "Research Checklist"
+
+msgid "Self-Review"
+msgstr "Self-Review"
+
+msgid "Send a short thank-you note within 24 hours to confirm your interest and professionalism."
+msgstr "Send a short thank-you note within 24 hours to confirm your interest and professionalism."
+
+msgid "Shift/work schedule expectations."
+msgstr "Shift/work schedule expectations."
+
+msgid "Strong preparation helps you answer confidently and show genuine interest in the position."
+msgstr "Strong preparation helps you answer confidently and show genuine interest in the position."
+
+msgid "Tell me about yourself"
+msgstr "Tell me about yourself"
+
+msgid "Tip:"
+msgstr "Tip:"
+
+msgid "Use a practical example with your actions and final outcome, preferably with a measurable result."
+msgstr "Use a practical example with your actions and final outcome, preferably with a measurable result."
+
+msgid "Use specific examples, not only general statements."
+msgstr "Use specific examples, not only general statements."
+
+msgid "Use STAR format: Situation, Task, Action, Result. It keeps answers clear and professional."
+msgstr "Use STAR format: Situation, Task, Action, Result. It keeps answers clear and professional."
+
+msgid "What are the main day-to-day responsibilities?"
+msgstr "What are the main day-to-day responsibilities?"
+
+msgid "What are the next steps in the hiring process?"
+msgstr "What are the next steps in the hiring process?"
+
+msgid "What does success look like in the first 3 months?"
+msgstr "What does success look like in the first 3 months?"
+
+msgid "What the company does and who its customers are."
+msgstr "What the company does and who its customers are."
+
+msgid "What to Prepare"
+msgstr "What to Prepare"
+
+msgid "Why do you want this role?"
+msgstr "Why do you want this role?"
+
+msgid "Work model: on-site, hybrid, or remote."
+msgstr "Work model: on-site, hybrid, or remote."
+
+msgid "Your reasons for applying to this role."
+msgstr "Your reasons for applying to this role."

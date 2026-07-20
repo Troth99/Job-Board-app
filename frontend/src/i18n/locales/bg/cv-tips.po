@@ -1,0 +1,185 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-20 15:59+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "\"Detail-oriented customer service specialist with 4+ years of experience in retail and call center environments. Skilled in communication, issue resolution, and handling high-volume customer requests. Seeking a full-time support role in a growth-focused company.\""
+msgstr "\"Ориентиран към детайла специалист по обслужване на клиенти с над 4 години опит в търговията на дребно и кол център среда. Умее да комуникира ефективно, да разрешава проблеми и да обработва голям обем клиентски запитвания. Търси постоянна роля в поддръжката в компания с фокус върху растежа.\""
+
+msgid "\"Handled 60+ customer requests per day and improved first-contact resolution rate by 18% over 6 months.\""
+msgstr "\"Обработвах над 60 клиентски запитвания на ден и подобрих процента на решаване при първи контакт с 18% за 6 месеца.\""
+
+msgid "\"Responsible for customer support and daily operations.\""
+msgstr "\"Отговарях за обслужването на клиенти и ежедневните операции.\""
+
+msgid "1. Structure Your CV for Fast Reading"
+msgstr "1. Подредете CV-то си за бързо преглеждане"
+
+msgid "2. Write a Strong Professional Summary"
+msgstr "2. Напишете силно професионално резюме"
+
+msgid "3. Describe Experience with Results, Not Tasks"
+msgstr "3. Описвайте опита си с резултати, а не само със задачи"
+
+msgid "4. Tailor the CV to Each Job Post"
+msgstr "4. Адаптирайте CV-то към всяка обява за работа"
+
+msgid "5. Common Mistakes to Avoid"
+msgstr "5. Чести грешки, които да избягвате"
+
+msgid "6. Before You Apply"
+msgstr "6. Преди да кандидатствате"
+
+msgid "Adjust your summary for each specific position."
+msgstr "Коригирайте резюмето си за всяка конкретна позиция."
+
+msgid "Avoid"
+msgstr "Избягвайте"
+
+msgid "Better"
+msgstr "По-добре"
+
+msgid "Browse Jobs"
+msgstr "Разгледай обяви"
+
+msgid "Build a clear and professional CV for any field, from retail and logistics to healthcare, education, administration, and sales. These guidelines help recruiters quickly understand your value."
+msgstr "Създайте ясно и професионално CV за всяка сфера, от търговия и логистика до здравеопазване, образование, администрация и продажби. Тези насоки помагат на рекрутърите бързо да разберат стойността ви."
+
+msgid "Career Advice"
+msgstr "Кариерни съвети"
+
+msgid "Contact Details"
+msgstr "Данни за контакт"
+
+msgid "CV Tips That Work Across All Industries"
+msgstr "Съвети за CV, които работят във всички индустрии"
+
+msgid "Do Instead"
+msgstr "Направете това вместо това"
+
+msgid "Education / Certifications"
+msgstr "Образование / Сертификати"
+
+msgid "Entry level: 1 page"
+msgstr "Начално ниво: 1 страница"
+
+msgid "Example:"
+msgstr "Пример:"
+
+msgid "Explore open roles and apply with confidence on JobBoard."
+msgstr "Разгледайте отворени позиции и кандидатствайте уверено в JobBoard."
+
+msgid "Generic phrases without proof."
+msgstr "Общи фрази без доказателства."
+
+msgid "Highlight achievements relevant to the role you apply for."
+msgstr "Подчертайте постиженията, свързани с ролята, за която кандидатствате."
+
+msgid "I checked formatting and spelling."
+msgstr "Проверих форматирането и правописа."
+
+msgid "I included recent achievements with results."
+msgstr "Включих скорошни постижения с резултати."
+
+msgid "I removed outdated or irrelevant details."
+msgstr "Премахнах остарели или нерелевантни детайли."
+
+msgid "In 2-4 lines, explain who you are, your key strengths, and what type of role you are looking for."
+msgstr "В 2-4 реда обяснете кой сте, кои са основните ви силни страни и какъв тип роля търсите."
+
+msgid "Include numbers, timeframes, or outcomes when available."
+msgstr "Включвайте числа, периоди или резултати, когато са налични."
+
+msgid "Instead of listing only duties, show measurable impact where possible."
+msgstr "Вместо да изброявате само задължения, показвайте измерим ефект, когато е възможно."
+
+msgid "Length"
+msgstr "Дължина"
+
+msgid "Match your job title to the role where appropriate."
+msgstr "Съобразете длъжността си с ролята, когато е уместно."
+
+msgid "Mid level: 1 page"
+msgstr "Средно ниво: 1 страница"
+
+msgid "Most recruiters scan CVs quickly. Keep your format clean and easy to navigate."
+msgstr "Повечето рекрутъри преглеждат CV-та бързо. Поддържайте формата чист и лесен за ориентиране."
+
+msgid "Move the most relevant experience higher on the page."
+msgstr "Преместете най-релевантния опит по-нагоре на страницата."
+
+msgid "My CV matches the role requirements."
+msgstr "CV-то ми съответства на изискванията на ролята."
+
+msgid "My phone number and email are correct."
+msgstr "Телефонният ми номер и имейлът ми са правилни."
+
+msgid "Outdated or irrelevant work history first."
+msgstr "Остарял или нерелевантен трудов опит на първо място."
+
+msgid "Prioritize recent and relevant experience."
+msgstr "Приоритизирайте скорошния и релевантен опит."
+
+msgid "Professional Summary"
+msgstr "Професионално резюме"
+
+msgid "Proofread before each application."
+msgstr "Преглеждайте внимателно преди всяко кандидатстване."
+
+msgid "Quick Tailoring Checklist"
+msgstr "Бърз списък за адаптиране"
+
+msgid "Ready to Use Your CV?"
+msgstr "Готови ли сте да използвате CV-то си?"
+
+msgid "Recommended Order"
+msgstr "Препоръчителен ред"
+
+msgid "Reorder skills so the most relevant are first."
+msgstr "Пренаредете уменията така, че най-релевантните да са първи."
+
+msgid "Senior level: 1 to 2 pages"
+msgstr "Старши ниво: 1 до 2 страници"
+
+msgid "Show evidence with numbers and outcomes."
+msgstr "Показвайте доказателства с числа и резултати."
+
+msgid "Skills"
+msgstr "Умения"
+
+msgid "Spelling and grammar mistakes."
+msgstr "Правописни и граматически грешки."
+
+msgid "Start with action verbs: Coordinated, Improved, Managed, Delivered."
+msgstr "Започвайте с глаголи за действие: Координирах, Подобрих, Управлявах, Осигурих."
+
+msgid "Unprofessional email addresses."
+msgstr "Непрофесионални имейл адреси."
+
+msgid "Use a professional contact profile."
+msgstr "Използвайте професионален профил за контакт."
+
+msgid "Use keywords from the job ad in your summary, skills, and experience. This improves relevance for both recruiters and screening systems."
+msgstr "Използвайте ключови думи от обявата в резюмето, уменията и опита си. Това подобрява релевантността както за рекрутърите, така и за системите за предварителен подбор."
+
+msgid "Use short bullets and clear headings."
+msgstr "Използвайте кратки булети и ясни заглавия."
+
+msgid "Very long paragraphs and dense text blocks."
+msgstr "Много дълги абзаци и плътни текстови блокове."
+
+msgid "Weak"
+msgstr "Слабо"
+
+msgid "Work Experience"
+msgstr "Трудов опит"

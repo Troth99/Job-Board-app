@@ -12,3 +12,36 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Plural-Forms: \n"
+
+msgid "Company access"
+msgstr "Company access"
+
+msgid "complete"
+msgstr "complete"
+
+msgid "Enabled"
+msgstr "Enabled"
+
+msgid "Loading..."
+msgstr "Loading..."
+
+msgid "No company role"
+msgstr "No company role"
+
+msgid "Not enabled"
+msgstr "Not enabled"
+
+msgid "Profile completion"
+msgstr "Profile completion"
+
+msgid "Recent account activity"
+msgstr "Recent account activity"
+
+msgid "Role summary"
+msgstr "Role summary"
+
+msgid "This account data could not be loaded right now."
+msgstr "This account data could not be loaded right now."
+
+msgid "Unable to load profile"
+msgstr "Unable to load profile"

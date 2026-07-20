@@ -11,6 +11,7 @@ import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import useAvatar from "../../hooks/useAvatar";
 import { ProfileData } from "../../types/profileSectionTypes";
+import { profilePaths } from "../../routes/profilePaths";
 
 const initialProfileData: ProfileData = {
   firstName: "",
@@ -49,7 +50,7 @@ export default function EditProfile() {
     try {
       await updateUserProfile(values);
       showSuccess("Profile was updated successfully!");
-      navigate("/profile");
+      navigate(profilePaths.root);
     } catch (error: any) {
       if (error.message === "Email already exists.") {
         setErrors((prev: Partial<ProfileData>) => ({ ...prev, email: "Email already exists" }));
@@ -70,7 +71,7 @@ export default function EditProfile() {
   const [buttonLoading, setButtonLoading] = useState(false);
 
   const changePasswordHandler = () => {
-    navigate("/profile/change-password");
+    navigate(profilePaths.changePassword);
   };
 
   const imageDeleteHandler = async () => {

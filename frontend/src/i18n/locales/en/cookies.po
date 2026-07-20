@@ -1,0 +1,143 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-20 15:59+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "1. What Are Cookies"
+msgstr "1. What Are Cookies"
+
+msgid "10. Changes to This Policy"
+msgstr "10. Changes to This Policy"
+
+msgid "11. Contact"
+msgstr "11. Contact"
+
+msgid "2. Why We Use Cookies"
+msgstr "2. Why We Use Cookies"
+
+msgid "3. Cookie Categories"
+msgstr "3. Cookie Categories"
+
+msgid "3.1 Strictly Necessary"
+msgstr "3.1 Strictly Necessary"
+
+msgid "3.2 Functional"
+msgstr "3.2 Functional"
+
+msgid "3.3 Performance"
+msgstr "3.3 Performance"
+
+msgid "3.4 Analytics (where enabled)"
+msgstr "3.4 Analytics (where enabled)"
+
+msgid "4. Session and Authentication"
+msgstr "4. Session and Authentication"
+
+msgid "5. Performance and Reliability"
+msgstr "5. Performance and Reliability"
+
+msgid "6. Preferences and Settings"
+msgstr "6. Preferences and Settings"
+
+msgid "7. Third-Party Services"
+msgstr "7. Third-Party Services"
+
+msgid "8. How to Manage Cookies"
+msgstr "8. How to Manage Cookies"
+
+msgid "9. Cookie Duration"
+msgstr "9. Cookie Duration"
+
+msgid "Certain storage technologies may help reduce repetitive requests, improve response behavior, and support stable notification/session handling for core platform actions."
+msgstr "Certain storage technologies may help reduce repetitive requests, improve response behavior, and support stable notification/session handling for core platform actions."
+
+msgid "Contents"
+msgstr "Contents"
+
+msgid "Cookies are small text files stored on your device by your browser. Similar technologies (such as local storage/session storage) can also be used to remember session state and improve the user experience."
+msgstr "Cookies are small text files stored on your device by your browser. Similar technologies (such as local storage/session storage) can also be used to remember session state and improve the user experience."
+
+msgid "Cookies can be session-based (deleted when you close your browser) or persistent (stored for a defined period). Retention depends on the purpose and legal requirements."
+msgstr "Cookies can be session-based (deleted when you close your browser) or persistent (stored for a defined period). Retention depends on the purpose and legal requirements."
+
+msgid "Cookies Policy"
+msgstr "Cookies Policy"
+
+msgid "Disabling strictly necessary cookies may break login and protected page functionality."
+msgstr "Disabling strictly necessary cookies may break login and protected page functionality."
+
+msgid "For cookie-related questions, contact<0> privacy@jobboard.com</0>."
+msgstr "For cookie-related questions, contact<0> privacy@jobboard.com</0>."
+
+msgid "Help monitor service quality and detect technical issues so we can improve speed and reliability."
+msgstr "Help monitor service quality and detect technical issues so we can improve speed and reliability."
+
+msgid "JobBoard uses secure session and token-related mechanisms to support login, account protection, and role-based access for candidates, employers, and company team members."
+msgstr "JobBoard uses secure session and token-related mechanisms to support login, account protection, and role-based access for candidates, employers, and company team members."
+
+msgid "Last updated: April 19, 2026"
+msgstr "Last updated: April 19, 2026"
+
+msgid "Legal"
+msgstr "Legal"
+
+msgid "Protection against unauthorized account use."
+msgstr "Protection against unauthorized account use."
+
+msgid "Required for core features such as login flows, secure navigation, and access to protected account areas."
+msgstr "Required for core features such as login flows, secure navigation, and access to protected account areas."
+
+msgid "Session continuity after authentication."
+msgstr "Session continuity after authentication."
+
+msgid "Some infrastructure and tooling providers may set or process technically necessary data for hosting, delivery, and security. We do not permit unrelated third-party advertising cookies through core platform pages."
+msgstr "Some infrastructure and tooling providers may set or process technically necessary data for hosting, delivery, and security. We do not permit unrelated third-party advertising cookies through core platform pages."
+
+msgid "Support for password reset and account security flows."
+msgstr "Support for password reset and account security flows."
+
+msgid "Support user convenience features, such as remembering certain interface preferences."
+msgstr "Support user convenience features, such as remembering certain interface preferences."
+
+msgid "This Cookies Policy explains how JobBoard uses cookies and similar technologies to keep your session secure, improve reliability, and optimize platform performance."
+msgstr "This Cookies Policy explains how JobBoard uses cookies and similar technologies to keep your session secure, improve reliability, and optimize platform performance."
+
+msgid "To improve loading performance and stability."
+msgstr "To improve loading performance and stability."
+
+msgid "To keep users signed in securely."
+msgstr "To keep users signed in securely."
+
+msgid "To protect account and session integrity."
+msgstr "To protect account and session integrity."
+
+msgid "To remember interface choices where applicable."
+msgstr "To remember interface choices where applicable."
+
+msgid "To understand platform usage at an aggregated level."
+msgstr "To understand platform usage at an aggregated level."
+
+msgid "Used in aggregated form to understand traffic and feature usage. These do not intentionally identify users personally."
+msgstr "Used in aggregated form to understand traffic and feature usage. These do not intentionally identify users personally."
+
+msgid "We may update this Cookies Policy due to technical, operational, or legal changes. The most recent version is always published on this page."
+msgstr "We may update this Cookies Policy due to technical, operational, or legal changes. The most recent version is always published on this page."
+
+msgid "Where available, preference cookies/storage can remember selected UI behavior (for example display preferences) to provide a smoother experience between visits."
+msgstr "Where available, preference cookies/storage can remember selected UI behavior (for example display preferences) to provide a smoother experience between visits."
+
+msgid "You can control cookies from your browser settings."
+msgstr "You can control cookies from your browser settings."
+
+msgid "You may block or delete stored cookies at any time."
+msgstr "You may block or delete stored cookies at any time."

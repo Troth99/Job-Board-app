@@ -1,0 +1,209 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-20 15:57+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "1. Scope"
+msgstr "1. Обхват"
+
+msgid "10. International Transfers"
+msgstr "10. Международни трансфери"
+
+msgid "11. Children Privacy"
+msgstr "11. Поверителност на децата"
+
+msgid "12. Policy Updates"
+msgstr "12. Актуализации на политиката"
+
+msgid "13. Contact"
+msgstr "13. Контакт"
+
+msgid "2. Data We Collect"
+msgstr "2. Данни, които събираме"
+
+msgid "2.1 Account and profile data"
+msgstr "2.1 Данни за акаунта и профила"
+
+msgid "2.2 Application and job data"
+msgstr "2.2 Данни за кандидатури и обяви"
+
+msgid "2.3 Technical and usage data"
+msgstr "2.3 Технически данни и данни за използване"
+
+msgid "3. How We Use Data"
+msgstr "3. Как използваме данните"
+
+msgid "4. Legal Basis"
+msgstr "4. Правно основание"
+
+msgid "5. Data Sharing"
+msgstr "5. Споделяне на данни"
+
+msgid "6. Data Retention"
+msgstr "6. Съхранение на данни"
+
+msgid "7. Security Measures"
+msgstr "7. Мерки за сигурност"
+
+msgid "8. Your Rights"
+msgstr "8. Вашите права"
+
+msgid "9. Cookies and Similar Tech"
+msgstr "9. Бисквитки и сходни технологии"
+
+msgid "Access your personal data."
+msgstr "Достъп до личните ви данни."
+
+msgid "Application statuses and related timestamps."
+msgstr "Статуси на кандидатурите и свързаните времеви отметки."
+
+msgid "Authentication controls and protected account access flows."
+msgstr "Контроли за удостоверяване и защитени процеси за достъп до акаунта."
+
+msgid "Between candidates and employers for hiring workflows (for example profile/application visibility to authorized company users)."
+msgstr "Между кандидати и работодатели за процесите по наемане (например видимост на профили и кандидатури за упълномощени потребители от компанията)."
+
+msgid "Consent (where required, such as optional cookies/tools)."
+msgstr "Съгласие (когато се изисква, например за незадължителни бисквитки или инструменти)."
+
+msgid "Contents"
+msgstr "Съдържание"
+
+msgid "Contract performance (providing requested platform services)."
+msgstr "Изпълнение на договор (предоставяне на заявените услуги на платформата)."
+
+msgid "Correct inaccurate data."
+msgstr "Коригиране на неточни данни."
+
+msgid "Data is retained for as long as needed to provide services, protect platform security, resolve disputes, and meet legal requirements. Retention periods vary by data type (for example account, application, and security records)."
+msgstr "Данните се съхраняват толкова дълго, колкото е необходимо за предоставяне на услугите, защита на сигурността на платформата, разрешаване на спорове и изпълнение на законови изисквания. Сроковете за съхранение варират според типа данни (например записи за акаунт, кандидатури и сигурност)."
+
+msgid "Depending on applicable law, you may have rights to:"
+msgstr "В зависимост от приложимото право може да имате право на:"
+
+msgid "Depending on your location, processing may rely on:"
+msgstr "В зависимост от местоположението ви обработването може да се основава на:"
+
+msgid "Employer job listing details and company profile data."
+msgstr "Детайли за работодателски обяви и данни за фирмения профил."
+
+msgid "For privacy requests or questions, contact<0> privacy@jobboard.com</0>."
+msgstr "За искания или въпроси, свързани с поверителността, свържете се с нас на<0> privacy@jobboard.com</0>."
+
+msgid "If data is processed in different jurisdictions, appropriate contractual and organizational safeguards are applied where required."
+msgstr "Ако данните се обработват в различни юрисдикции, при необходимост се прилагат подходящи договорни и организационни мерки за защита."
+
+msgid "Job applications, CV links, and cover letter content."
+msgstr "Кандидатури за работа, връзки към CV и съдържание на мотивационни писма."
+
+msgid "JobBoard is not intended for children under the minimum legal age for employment-related services in the relevant jurisdiction."
+msgstr "JobBoard не е предназначен за деца под минималната законова възраст за услуги, свързани със заетост, в съответната юрисдикция."
+
+msgid "JobBoard may share data only when necessary:"
+msgstr "JobBoard може да споделя данни само когато е необходимо:"
+
+msgid "JobBoard may use cookies or similar technologies for authentication, session continuity, and basic analytics. See the Cookies page for additional details."
+msgstr "JobBoard може да използва бисквитки или сходни технологии за удостоверяване, непрекъснатост на сесията и базови анализи. Вижте страницата за Бисквитки за допълнителни подробности."
+
+msgid "Last updated: April 19, 2026"
+msgstr "Последна актуализация: 19 април 2026 г."
+
+msgid "Legal"
+msgstr "Правна информация"
+
+msgid "Legal obligations (compliance and lawful requests)."
+msgstr "Правни задължения (съответствие и законосъобразни искания)."
+
+msgid "Legitimate interests (security, reliability, analytics)."
+msgstr "Легитимни интереси (сигурност, надеждност, анализи)."
+
+msgid "Log events, browser metadata, and request diagnostics."
+msgstr "Събития в логовете, метаданни на браузъра и диагностика на заявките."
+
+msgid "Monitoring for suspicious behavior and abuse patterns."
+msgstr "Наблюдение за подозрително поведение и модели на злоупотреба."
+
+msgid "Name, email address, and encrypted credentials."
+msgstr "Име, имейл адрес и криптирани идентификационни данни."
+
+msgid "No online service can be guaranteed 100% secure, but we continuously improve safeguards to reduce risk."
+msgstr "Никоя онлайн услуга не може да бъде гарантирано 100% сигурна, но ние непрекъснато подобряваме защитните мерки, за да намалим риска."
+
+msgid "Notification and session activity."
+msgstr "Активност по известията и сесиите."
+
+msgid "Object to certain processing activities."
+msgstr "Възражение срещу определени дейности по обработване."
+
+msgid "Password reset/change flows and token lifecycle management."
+msgstr "Потоци за смяна или нулиране на парола и управление на жизнения цикъл на токените."
+
+msgid "Privacy Policy"
+msgstr "Политика за поверителност"
+
+msgid "Profile fields such as phone, location, and avatar."
+msgstr "Полета в профила като телефон, местоположение и аватар."
+
+msgid "Request data portability where applicable."
+msgstr "Искане за преносимост на данните, когато е приложимо."
+
+msgid "Request deletion or restriction of processing."
+msgstr "Искане за изтриване или ограничаване на обработването."
+
+msgid "Role context (candidate or company-related permissions)."
+msgstr "Контекст на ролята (кандидат или права, свързани с компанията)."
+
+msgid "Role-based permissions for company member actions."
+msgstr "Разрешения, базирани на роли, за действията на фирмените членове."
+
+msgid "Security-related token/session records for authentication."
+msgstr "Записи за токени и сесии, свързани със сигурността и удостоверяването."
+
+msgid "This policy covers data processed through JobBoard website features, including account registration, job applications, company management, notification delivery, and profile management."
+msgstr "Тази политика обхваща данните, обработвани чрез функциите на сайта JobBoard, включително регистрация на акаунт, кандидатстване за работа, управление на компании, изпращане на известия и управление на профила."
+
+msgid "This Privacy Policy explains what data JobBoard collects, how it is used, and what rights users have. It applies to job seekers, employers, and invited company team members."
+msgstr "Тази Политика за поверителност обяснява какви данни събира JobBoard, как се използват и какви права имат потребителите. Тя се прилага за търсещи работа, работодатели и поканени членове на фирмен екип."
+
+msgid "This Privacy Policy may be updated to reflect legal, technical, or operational changes. The latest version is always published here."
+msgstr "Тази Политика за поверителност може да бъде актуализирана, за да отразява правни, технически или оперативни промени. Най-новата версия винаги се публикува тук."
+
+msgid "To create and maintain user accounts."
+msgstr "За създаване и поддържане на потребителски акаунти."
+
+msgid "To deliver notifications and status updates in near real time."
+msgstr "За изпращане на известия и актуализации на статуса почти в реално време."
+
+msgid "To enable company team collaboration and role-based access."
+msgstr "За осигуряване на сътрудничество във фирмения екип и достъп според ролята."
+
+msgid "To power job discovery and application workflows."
+msgstr "За поддържане на откриването на работа и процесите по кандидатстване."
+
+msgid "To prevent abuse, fraud, and unauthorized access."
+msgstr "За предотвратяване на злоупотреби, измами и неоторизиран достъп."
+
+msgid "To troubleshoot, improve usability, and maintain stability."
+msgstr "За отстраняване на проблеми, подобряване на използваемостта и поддържане на стабилност."
+
+msgid "We do not sell personal data to third parties for unrelated marketing."
+msgstr "Не продаваме лични данни на трети страни за несвързан маркетинг."
+
+msgid "When required by law, regulation, or valid legal process."
+msgstr "Когато това се изисква по закон, регулация или валидна правна процедура."
+
+msgid "With infrastructure providers that support hosting and delivery."
+msgstr "С доставчици на инфраструктура, които подпомагат хостинга и предоставянето на услугата."
+
+msgid "You can also manage parts of your data through your profile and account settings."
+msgstr "Можете също да управлявате част от данните си чрез настройките на профила и акаунта си."

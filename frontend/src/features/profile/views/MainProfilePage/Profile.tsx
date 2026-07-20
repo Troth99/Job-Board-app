@@ -15,6 +15,7 @@ import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import useAvatar from "../../hooks/useAvatar";
 import { ProfileProps } from "../../types/profileSectionTypes";
+import { Trans } from "@lingui/react/macro";
 
 export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const { loading: userLoading, isInitialized, userData } = useProfile();
@@ -88,8 +89,8 @@ const companyId = userData?.company;
         <Container maxwith="820px" padding="0 12px">
           <div className="profile-container">
             <div className="profile-activity-card">
-              <h3>Unable to load profile</h3>
-              <p>This account data could not be loaded right now.</p>
+              <h3><Trans>Unable to load profile</Trans></h3>
+              <p><Trans>This account data could not be loaded right now.</Trans></p>
             </div>
           </div>
         </Container>
@@ -147,25 +148,25 @@ const companyId = userData?.company;
               />
 
               <div className="profile-activity-card">
-                <h3>Recent account activity</h3>
+                <h3><Trans>Recent account activity</Trans></h3>
                 <ul>
                   <li>
-                    <span>Profile completion</span>
-                    <strong>{completionPercentage}% complete</strong>
+                    <span><Trans>Profile completion</Trans></span>
+                    <strong>{completionPercentage}% <Trans>complete</Trans></strong>
                   </li>
                   <li>
-                    <span>Company access</span>
+                    <span><Trans>Company access</Trans></span>
                     <strong>
                       {!hasCompanyId
-                        ? "Not enabled"
+                        ? <Trans>Not enabled</Trans>
                         : company
-                          ? "Enabled"
-                          : "Loading..."}
+                          ? <Trans>Enabled</Trans>
+                          : <Trans>Loading...</Trans>}
                     </strong>
                   </li>
                   <li>
-                    <span>Role summary</span>
-                    <strong>{userRole || "No company role"}</strong>
+                    <span><Trans>Role summary</Trans></span>
+                    <strong>{userRole || <Trans>No company role</Trans>}</strong>
                   </li>
                 </ul>
               </div>

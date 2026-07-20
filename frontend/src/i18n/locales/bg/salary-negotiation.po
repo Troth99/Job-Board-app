@@ -1,0 +1,248 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-20 15:59+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "\"Based on my experience, I was hoping for something closer to [X].\""
+msgstr "\"На база на опита ми се надявах на нещо по-близко до [X].\""
+
+msgid "\"Based on my research and experience, I'm looking for something in the range of [X] to [Y]. I'm open to discussing how the full package fits together.\""
+msgstr "\"На база на проучването и опита ми търся нещо в диапазона от [X] до [Y]. Отворен съм да обсъдим как се оформя целият пакет.\""
+
+msgid "\"I'm very excited about this role. Can we discuss the compensation?\""
+msgstr "\"Много съм ентусиазиран за тази роля. Може ли да обсъдим възнаграждението?\""
+
+msgid "\"Is there any flexibility in the package?\""
+msgstr "\"Има ли гъвкавост в пакета?\""
+
+msgid "\"What does the typical career path look like here?\""
+msgstr "\"Как изглежда типичният кариерен път тук?\""
+
+msgid "1. Research Your Market Value"
+msgstr "1. Проучете пазарната си стойност"
+
+msgid "2. Give a Range, Not a Fixed Number"
+msgstr "2. Дайте диапазон, а не фиксирано число"
+
+msgid "3. Think Beyond the Base Salary"
+msgstr "3. Мислете отвъд основната заплата"
+
+msgid "4. How to Handle the Conversation"
+msgstr "4. Как да водите разговора"
+
+msgid "5. Knowing When to Accept"
+msgstr "5. Кога да приемете"
+
+msgid "6. Negotiation Checklist"
+msgstr "6. Контролен списък за преговори"
+
+msgid "Accepting on the spot under pressure — ask for time."
+msgstr "Приемане на място под натиск — поискайте време."
+
+msgid "Annual bonus or performance incentive."
+msgstr "Годишен бонус или стимул според представянето."
+
+msgid "Ask if the role has a formal review after 3–6 months."
+msgstr "Попитайте дали ролята има формален преглед след 3-6 месеца."
+
+msgid "Be ready to justify why you sit at the higher end."
+msgstr "Бъдете готови да обосновете защо сте в горната част на диапазона."
+
+msgid "Before any negotiation, know what people in similar roles earn in your region. Walking in with data gives you credibility."
+msgstr "Преди каквито и да е преговори знайте какво печелят хората на сходни позиции във вашия регион. Ако влезете с данни, това ви дава достоверност."
+
+msgid "Benefits are unclear or non-existent."
+msgstr "Придобивките са неясни или липсват."
+
+msgid "Benefits meaningfully compensate for any salary gap."
+msgstr "Придобивките реално компенсират всяка разлика в заплатата."
+
+msgid "Career Advice"
+msgstr "Кариерни съвети"
+
+msgid "Clear on what would make you decline the offer."
+msgstr "Имате ясна представа какво би ви накарало да откажете офертата."
+
+msgid "Clear path for growth and pay increases."
+msgstr "Ясен път за развитие и увеличение на заплатата."
+
+msgid "Colleagues or contacts in similar roles."
+msgstr "Колеги или контакти на сходни позиции."
+
+msgid "Common Extras to Consider"
+msgstr "Чести допълнителни придобивки, които да обмислите"
+
+msgid "Company size — larger companies often pay more."
+msgstr "Размер на компанията — по-големите компании често плащат повече."
+
+msgid "Confirm what triggers a pay increase in the future."
+msgstr "Уточнете какво води до увеличение на заплатата в бъдеще."
+
+msgid "Defined your target salary and absolute minimum."
+msgstr "Определили сте целевата си заплата и абсолютния минимум."
+
+msgid "Employer is dismissive of any negotiation attempt."
+msgstr "Работодателят пренебрегва всеки опит за преговори."
+
+msgid "Example phrase:"
+msgstr "Примерна фраза:"
+
+msgid "Extra vacation days beyond the legal minimum."
+msgstr "Допълнителни дни отпуск над законовия минимум."
+
+msgid "Flexible working hours or hybrid/remote options."
+msgstr "Гъвкаво работно време или хибридни/дистанционни опции."
+
+msgid "Giving an ultimatum unless you mean it."
+msgstr "Поставяне на ултиматум, освен ако наистина не го мислите."
+
+msgid "Health or dental coverage."
+msgstr "Здравно или стоматологично покритие."
+
+msgid "How to Negotiate Your Salary with Confidence"
+msgstr "Как да преговаряте за заплатата си уверено"
+
+msgid "How to Set Your Range"
+msgstr "Как да определите диапазона си"
+
+msgid "If asked about your current salary, redirect: \"I'd prefer to focus on what this role offers and what's fair for the responsibilities involved.\""
+msgstr "Ако ви попитат за текущата ви заплата, отклонете разговора така: \"Предпочитам да се фокусирам върху това какво предлага тази роля и какво е справедливо спрямо включените отговорности.\""
+
+msgid "Industry associations and professional networks."
+msgstr "Браншови асоциации и професионални мрежи."
+
+msgid "Job listings that show salary ranges."
+msgstr "Обяви за работа, които показват диапазони на заплатите."
+
+msgid "Keep the top end realistic — 10–15% above the bottom."
+msgstr "Поддържайте горната граница реалистична — 10-15% над долната."
+
+msgid "Leaves flexibility without appearing inflexible."
+msgstr "Оставя гъвкавост, без да изглеждате негъвкави."
+
+msgid "Listed the benefits and perks that matter most to you."
+msgstr "Изброили сте придобивките и бонусите, които са най-важни за вас."
+
+msgid "Making it personal or emotional."
+msgstr "Превръщане на разговора в личен или емоционален."
+
+msgid "Naming a single number puts you at a disadvantage. A well-anchored range gives you room to negotiate while signalling your expectations."
+msgstr "Назоваването на едно единствено число ви поставя в неизгодна позиция. Добре обоснованият диапазон ви дава пространство за преговори, като същевременно показва очакванията ви."
+
+msgid "Negotiate a sign-on bonus instead."
+msgstr "Вместо това преговаряйте за бонус при започване."
+
+msgid "Never start below what you'd actually accept."
+msgstr "Никога не започвайте под това, което реално бихте приели."
+
+msgid "Not every negotiation ends at your target. Know your boundaries and how to make a decision you're comfortable with."
+msgstr "Не всеки преговор завършва на целевото ви ниво. Познавайте границите си и как да вземете решение, с което се чувствате комфортно."
+
+msgid "Offer is significantly below market rate with no room to move."
+msgstr "Офертата е значително под пазарното ниво без възможност за промяна."
+
+msgid "Phrases That Work"
+msgstr "Фрази, които работят"
+
+msgid "Practised how to respond to common counter-questions."
+msgstr "Упражнили сте как да отговаряте на често срещани насрещни въпроси."
+
+msgid "Prepared a realistic range with your target at the low end."
+msgstr "Подготвили сте реалистичен диапазон, като целевата ви сума е в долния му край."
+
+msgid "Prepared to redirect questions about current salary."
+msgstr "Подготвени сте да отклонявате въпроси за текущата си заплата."
+
+msgid "Pressure to decide immediately without time to think."
+msgstr "Натиск да решите веднага, без време за размисъл."
+
+msgid "Put your target salary at the lower end of the range."
+msgstr "Поставете целевата си заплата в долния край на диапазона."
+
+msgid "Ready to ask for time before accepting a final offer."
+msgstr "Готови сте да поискате време, преди да приемете окончателна оферта."
+
+msgid "Reduces the risk of pricing yourself out early."
+msgstr "Намалява риска да се изключите сами от преговорите твърде рано."
+
+msgid "Regional cost of living and local demand."
+msgstr "Регионална цена на живот и местно търсене."
+
+msgid "Request additional leave or a flexible schedule."
+msgstr "Поискайте допълнителен отпуск или гъвкав график."
+
+msgid "Researched salary benchmarks for your role and location."
+msgstr "Проучили сте ориентирите за заплащане за вашата роля и местоположение."
+
+msgid "Revealing your current or previous salary first."
+msgstr "Разкриване на текущата или предишната ви заплата още в началото."
+
+msgid "Role aligns with your long-term career goals."
+msgstr "Ролята съответства на дългосрочните ви кариерни цели."
+
+msgid "Salary comparison websites (Glassdoor, Payscale, LinkedIn)."
+msgstr "Сайтове за сравнение на заплати (Glassdoor, Payscale, LinkedIn)."
+
+msgid "Salary is at or close to your target range."
+msgstr "Заплатата е в рамките на или близо до целевия ви диапазон."
+
+msgid "Salary negotiation is a normal part of the hiring process. Learn how to research your worth, frame your ask, and reach an agreement that works for both you and your employer — across any industry."
+msgstr "Преговорите за заплата са нормална част от процеса по наемане. Научете как да проучите стойността си, да формулирате искането си и да стигнете до споразумение, което работи и за вас, и за работодателя ви, независимо от индустрията."
+
+msgid "Salary ranges for your job title and industry."
+msgstr "Диапазони на заплатите за вашата длъжност и индустрия."
+
+msgid "Shows you've done your homework."
+msgstr "Показва, че сте си направили проучването."
+
+msgid "Signs It's a Good Deal"
+msgstr "Признаци, че офертата е добра"
+
+msgid "Signs to Reconsider"
+msgstr "Признаци, че трябва да преосмислите"
+
+msgid "The way you negotiate matters as much as the number you propose. Stay professional, positive, and collaborative."
+msgstr "Начинът, по който преговаряте, е толкова важен, колкото и числото, което предлагате. Останете професионални, позитивни и настроени за сътрудничество."
+
+msgid "Tip:"
+msgstr "Съвет:"
+
+msgid "Total compensation includes more than monthly pay. Understanding the full package lets you negotiate more effectively."
+msgstr "Общото възнаграждение включва повече от месечната заплата. Разбирането на целия пакет ви позволява да преговаряте по-ефективно."
+
+msgid "Training budget or professional development."
+msgstr "Бюджет за обучение или професионално развитие."
+
+msgid "Transport allowance or parking."
+msgstr "Транспортна добавка или паркинг."
+
+msgid "What to Avoid"
+msgstr "Какво да избягвате"
+
+msgid "What to Research"
+msgstr "Какво да проучите"
+
+msgid "When the Salary Is Fixed"
+msgstr "Когато заплатата е фиксирана"
+
+msgid "Where to Look"
+msgstr "Къде да търсите"
+
+msgid "Why a Range Works"
+msgstr "Защо диапазонът работи"
+
+msgid "Your floor becomes the employer's ceiling — set it right."
+msgstr "Вашият минимум става таванът на работодателя — задайте го правилно."
+
+msgid "Your years of experience vs. the role's requirements."
+msgstr "Годините ви опит спрямо изискванията на ролята."

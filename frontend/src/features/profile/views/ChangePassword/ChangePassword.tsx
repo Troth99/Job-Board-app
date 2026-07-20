@@ -7,6 +7,7 @@ import useProfile from "../../hooks/useProfile";
 import useForm from "../../../../shared/hooks/useForm";
 import { changePasswordForm } from "../../types/profileSectionTypes";
 import { Container } from "../../../../shared/components/Container/Container";
+import { profilePaths } from "../../routes/profilePaths";
 
 
 const initialForm: changePasswordForm = {
@@ -31,7 +32,7 @@ export default function ChangePassword() {
     try {
       await changePassword({ currentPassword: values.currentPassword, newPassword: values.newPassword });
       showSuccess("Password changed succsessfully!");
-      navigate("/profile");
+      navigate(profilePaths.root);
     } catch (error: any) {
 
       //backend error for incorrect current password is handled here and displayed to the user
@@ -91,7 +92,7 @@ export default function ChangePassword() {
               <button
                 type="button"
                 className="cp-secondary-button"
-                onClick={() => navigate("/profile/setthings")}
+                onClick={() => navigate(profilePaths.settings)}
                 disabled={loading}
               >
                 Back to settings
