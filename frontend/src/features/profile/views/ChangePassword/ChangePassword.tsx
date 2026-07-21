@@ -8,6 +8,7 @@ import useForm from "../../../../shared/hooks/useForm";
 import { changePasswordForm } from "../../types/profileSectionTypes";
 import { Container } from "../../../../shared/components/Container/Container";
 import { profilePaths } from "../../routes/profilePaths";
+import { Trans } from "@lingui/react/macro";
 
 
 const initialForm: changePasswordForm = {
@@ -58,10 +59,10 @@ export default function ChangePassword() {
       <div className="cp-page">
         <section className="cp-shell">
           <div className="cp-header">
-            <span className="cp-eyebrow">Security</span>
-            <h1>Change Password</h1>
+            <span className="cp-eyebrow"><Trans>Security</Trans></span>
+            <h1><Trans>Change Password</Trans></h1>
             <p>
-              Update your account password to keep your profile secure.
+              <Trans>Update your account password to keep your profile secure.</Trans>
             </p>
           </div>
 
@@ -71,19 +72,19 @@ export default function ChangePassword() {
             ) : null}
 
             <label className="cp-field">
-              <span>Current password</span>
+              <span><Trans>Current password</Trans></span>
               <input type="password" {...register("currentPassword")} />
               <div className="cp-error">{errors.currentPassword}</div>
             </label>
 
             <label className="cp-field">
-              <span>New password</span>
+              <span><Trans>New password</Trans></span>
               <input type="password" {...register("newPassword")} />
               <div className="cp-error">{errors.newPassword}</div>
             </label>
 
             <label className="cp-field">
-              <span>Confirm password</span>
+              <span><Trans>Confirm password</Trans></span>
               <input type="password" {...register("confirmPassword")} />
               <div className="cp-error">{errors.confirmPassword}</div>
             </label>
@@ -95,14 +96,14 @@ export default function ChangePassword() {
                 onClick={() => navigate(profilePaths.settings)}
                 disabled={loading}
               >
-                Back to settings
+                <Trans>Back to settings</Trans>
               </button>
               <button
                 type="submit"
                 className="cp-primary-button"
                 disabled={loading}
               >
-                {loading ? "Saving..." : "Change password"}
+                {loading ? <Trans>Saving...</Trans> : <Trans>Change password</Trans>}
               </button>
             </div>
           </form>

@@ -20,6 +20,15 @@ msgstr "{0}"
 msgid "After registration, you can open your dashboard and start hiring."
 msgstr "After registration, you can open your dashboard and start hiring."
 
+msgid "Back to settings"
+msgstr "Back to settings"
+
+msgid "Change password"
+msgstr "Change password"
+
+msgid "Change Password"
+msgstr "Change Password"
+
 msgid "Choose image"
 msgstr "Choose image"
 
@@ -32,17 +41,38 @@ msgstr "Company Registration"
 msgid "complete"
 msgstr "complete"
 
+msgid "Confirm password"
+msgstr "Confirm password"
+
 msgid "Created at"
 msgstr "Created at"
 
+msgid "Current password"
+msgstr "Current password"
+
+msgid "Delete Profile"
+msgstr "Delete Profile"
+
+msgid "Delete Profile Image"
+msgstr "Delete Profile Image"
+
+msgid "Edit Profile"
+msgstr "Edit Profile"
+
 msgid "Email"
 msgstr "Email"
+
+msgid "Email:"
+msgstr "Email:"
 
 msgid "Enabled"
 msgstr "Enabled"
 
 msgid "First name"
 msgstr "First name"
+
+msgid "First name:"
+msgstr "First name:"
 
 msgid "Go to Dashboard"
 msgstr "Go to Dashboard"
@@ -59,6 +89,9 @@ msgstr "Joined:"
 msgid "Last name"
 msgstr "Last name"
 
+msgid "Last name:"
+msgstr "Last name:"
+
 msgid "Loading..."
 msgstr "Loading..."
 
@@ -73,6 +106,9 @@ msgstr "Location:"
 
 #~ msgid "Logging out"
 #~ msgstr "Logging out"
+
+msgid "New password"
+msgstr "New password"
 
 msgid "No company role"
 msgstr "No company role"
@@ -91,6 +127,9 @@ msgstr "of"
 
 msgid "Phone"
 msgstr "Phone"
+
+msgid "Phone:"
+msgstr "Phone:"
 
 msgid "Post a Job"
 msgstr "Post a Job"
@@ -116,8 +155,17 @@ msgstr "Role summary"
 msgid "Role:"
 msgstr "Role:"
 
+msgid "Save Changes"
+msgstr "Save Changes"
+
+msgid "Saving..."
+msgstr "Saving..."
+
 msgid "sections complete"
 msgstr "sections complete"
+
+msgid "Security"
+msgstr "Security"
 
 msgid "Start hiring by creating a detailed job post for your team."
 msgstr "Start hiring by creating a detailed job post for your team."
@@ -130,6 +178,9 @@ msgstr "This account data could not be loaded right now."
 
 msgid "Unable to load profile"
 msgstr "Unable to load profile"
+
+msgid "Update your account password to keep your profile secure."
+msgstr "Update your account password to keep your profile secure."
 
 msgid "User settings"
 msgstr "User settings"

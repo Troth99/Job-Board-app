@@ -20,6 +20,15 @@ msgstr ""
 msgid "After registration, you can open your dashboard and start hiring."
 msgstr "След регистрацията можете да отворите таблото си и да започнете наемането."
 
+msgid "Back to settings"
+msgstr ""
+
+msgid "Change password"
+msgstr ""
+
+msgid "Change Password"
+msgstr ""
+
 msgid "Choose image"
 msgstr "Изберете изображение"
 
@@ -32,17 +41,38 @@ msgstr "Регистрация на компания"
 msgid "complete"
 msgstr "завършен"
 
+msgid "Confirm password"
+msgstr ""
+
 msgid "Created at"
 msgstr "Създаден на"
 
+msgid "Current password"
+msgstr ""
+
+msgid "Delete Profile"
+msgstr ""
+
+msgid "Delete Profile Image"
+msgstr ""
+
+msgid "Edit Profile"
+msgstr ""
+
 msgid "Email"
 msgstr "Електронна поща"
+
+msgid "Email:"
+msgstr ""
 
 msgid "Enabled"
 msgstr "Активиран"
 
 msgid "First name"
 msgstr "Име"
+
+msgid "First name:"
+msgstr ""
 
 msgid "Go to Dashboard"
 msgstr "Отидете в таблото за управление"
@@ -59,6 +89,9 @@ msgstr "Присъединил се:"
 msgid "Last name"
 msgstr "Фамилия"
 
+msgid "Last name:"
+msgstr ""
+
 msgid "Loading..."
 msgstr "Зареждане..."
 
@@ -68,11 +101,14 @@ msgstr "Местоположение"
 msgid "Location:"
 msgstr "Местоположение:"
 
-msgid "Log out"
-msgstr "Изход"
+#~ msgid "Log out"
+#~ msgstr "Изход"
 
-msgid "Logging out"
-msgstr "Излизане"
+#~ msgid "Logging out"
+#~ msgstr "Излизане"
+
+msgid "New password"
+msgstr ""
 
 msgid "No company role"
 msgstr "Няма роля в компанията"
@@ -91,6 +127,9 @@ msgstr "на"
 
 msgid "Phone"
 msgstr "Телефон"
+
+msgid "Phone:"
+msgstr ""
 
 msgid "Post a Job"
 msgstr "Публикувай обява за работа"
@@ -116,8 +155,17 @@ msgstr "Обобщение на ролята"
 msgid "Role:"
 msgstr "Роля:"
 
+msgid "Save Changes"
+msgstr ""
+
+msgid "Saving..."
+msgstr ""
+
 msgid "sections complete"
 msgstr "секции завършени"
+
+msgid "Security"
+msgstr ""
 
 msgid "Start hiring by creating a detailed job post for your team."
 msgstr "Започнете наемането, като създадете подробна обява за работа за вашия екип."
@@ -130,6 +178,9 @@ msgstr "Данните за този акаунт не могат да бъда�
 
 msgid "Unable to load profile"
 msgstr "Неуспешно зареждане на профила"
+
+msgid "Update your account password to keep your profile secure."
+msgstr ""
 
 msgid "User settings"
 msgstr "Настройки на потребителя"

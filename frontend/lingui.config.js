@@ -107,6 +107,15 @@ export default defineConfig({
 				"src/features/profile/components/RoleAndCompanySection/ProfileRightPanel",
 				"src/features/auth/views/Logout/Logout",
 			],
+
 		},
+			{
+			path: "<rootDir>/src/i18n/locales/{locale}/edit-profile",
+			include: ["src/features/profile/views/EditProfile",
+				"src/features/profile/views/ChangePassword",
+			],
+
+		},
+	
 	],
 });

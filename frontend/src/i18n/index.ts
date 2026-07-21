@@ -20,7 +20,7 @@ import { messages as bgCvTips } from "./locales/bg/cv-tips.po";
 import { messages as bgInterviewPreparation } from "./locales/bg/interview-preparation.po";
 import { messages as bgSalaryNegotiation } from "./locales/bg/salary-negotiation.po";
 import { messages as bgProfileMainProfilePageProfile } from "./locales/bg/profile.po";
-import {messages as bgMainProfileContainer} from "./locales/bg/profile-main-container.po";
+import { messages as bgEditProfileContainer } from "./locales/bg/edit-profile.po";
 
 
 //imports for English translations
@@ -42,7 +42,7 @@ import { messages as enCookies } from "./locales/en/cookies.po";
 import { messages as enCvTips } from "./locales/en/cv-tips.po";
 import { messages as enInterviewPreparation } from "./locales/en/interview-preparation.po";
 import { messages as enProfileMainProfilePageProfile } from "./locales/en/profile.po";
-import {messages as enMainProfileContainer} from "./locales/en/profile-main-container.po";
+import { messages as enEditProfileContainer } from "./locales/en/edit-profile.po";
 
 
 
@@ -102,6 +102,7 @@ i18n.load({
     ...bgInterviewPreparation,
     ...bgSalaryNegotiation,
     ...bgProfileMainProfilePageProfile,
+    ...bgEditProfileContainer,
   
   },
   en: {
@@ -123,6 +124,7 @@ i18n.load({
     ...enCvTips,
     ...enInterviewPreparation,
     ...enProfileMainProfilePageProfile,
+    ...enEditProfileContainer,
   },
 });
 

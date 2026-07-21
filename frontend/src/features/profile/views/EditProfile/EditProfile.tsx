@@ -12,6 +12,7 @@ import MetaData from "../../../../seo/MetaDataTags";
 import useAvatar from "../../hooks/useAvatar";
 import { ProfileData } from "../../types/profileSectionTypes";
 import { profilePaths } from "../../routes/profilePaths";
+import { Trans } from "@lingui/react/macro";
 
 const initialProfileData: ProfileData = {
   firstName: "",
@@ -110,33 +111,33 @@ export default function EditProfile() {
       ) : (
         <div className="profile-container">
           <div className="profile-header">
-            <h1>Edit Profile</h1>
+            <h1><Trans>Edit Profile</Trans></h1>
           </div>
 
           <form onSubmit={formHandler}>
             <div className="profile-details">
               <div>
-                <strong>First name:</strong>
+                <strong><Trans>First name:</Trans></strong>
                 <input type="text" {...register("firstName")} />
                 <div className="error-message">{errors.firstName}</div>
               </div>
               <div>
-                <strong>Last name:</strong>
+                <strong><Trans>Last name:</Trans></strong>
                 <input type="text" {...register("lastName")} />
                 <div className="error-message">{errors.lastName}</div>
               </div>
               <div>
-                <strong>Phone:</strong>
+                <strong><Trans>Phone:</Trans></strong>
                 <input type="text" {...register("phoneNumber")} />
                 <div className="error-message">{errors.phoneNumber}</div>
               </div>
               <div>
-                <strong>Email:</strong>
+                <strong><Trans>Email:</Trans></strong>
                 <input type="email" {...register("email")} />
                 <div className="error-message">{errors.email}</div>
               </div>
               <div>
-                <strong>Location:</strong>
+                <strong><Trans>Location:</Trans></strong>
                 <input type="text" {...register("location")} />
                 <div className="error-message">{errors.location}</div>
               </div>
@@ -147,7 +148,7 @@ export default function EditProfile() {
                   type="submit"
                   disabled={buttonLoading}
                 >
-                  {buttonLoading ? "Saving..." : "Save Changes"}
+                  {buttonLoading ? <Trans>Saving...</Trans> : <Trans>Save Changes</Trans>}
                 </button>
               </div>
             </div>
@@ -160,7 +161,7 @@ export default function EditProfile() {
                 onClick={imageDeleteHandler}
                 disabled={buttonLoading}
               >
-                Delete Profile Image
+                <Trans>Delete Profile Image</Trans>
               </button>
             </div>
             <div className="change-password-container">
@@ -169,7 +170,7 @@ export default function EditProfile() {
                 onClick={changePasswordHandler}
                 disabled={buttonLoading}
               >
-                Change Password
+                <Trans>Change Password</Trans>
               </button>
             </div>
 
@@ -179,7 +180,7 @@ export default function EditProfile() {
                 onClick={deleteProfileHandler}
                 disabled={buttonLoading}
               >
-                Delete Profile
+                <Trans>Delete Profile</Trans>
               </button>
             </div>
           </div>
