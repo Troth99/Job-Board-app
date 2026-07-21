@@ -13,17 +13,44 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+msgid "After registration, you can open your dashboard and start hiring."
+msgstr "After registration, you can open your dashboard and start hiring."
+
+msgid "Choose image"
+msgstr "Choose image"
+
 msgid "Company access"
 msgstr "Company access"
 
 msgid "complete"
 msgstr "complete"
 
+msgid "Created at"
+msgstr "Created at"
+
+msgid "Email"
+msgstr "Email"
+
 msgid "Enabled"
 msgstr "Enabled"
 
+msgid "First name"
+msgstr "First name"
+
+msgid "Hiring tools"
+msgstr "Hiring tools"
+
+msgid "Joined:"
+msgstr "Joined:"
+
+msgid "Last name"
+msgstr "Last name"
+
 msgid "Loading..."
 msgstr "Loading..."
+
+msgid "Location"
+msgstr "Location"
 
 msgid "No company role"
 msgstr "No company role"
@@ -31,17 +58,44 @@ msgstr "No company role"
 msgid "Not enabled"
 msgstr "Not enabled"
 
+msgid "of"
+msgstr "of"
+
+msgid "Phone"
+msgstr "Phone"
+
+msgid "Post a Job"
+msgstr "Post a Job"
+
 msgid "Profile completion"
 msgstr "Profile completion"
 
 msgid "Recent account activity"
 msgstr "Recent account activity"
 
+msgid "Register a company first to publish job offers."
+msgstr "Register a company first to publish job offers."
+
+msgid "Register Company"
+msgstr "Register Company"
+
 msgid "Role summary"
 msgstr "Role summary"
+
+msgid "sections complete"
+msgstr "sections complete"
+
+msgid "Start hiring by creating a detailed job post for your team."
+msgstr "Start hiring by creating a detailed job post for your team."
 
 msgid "This account data could not be loaded right now."
 msgstr "This account data could not be loaded right now."
 
 msgid "Unable to load profile"
 msgstr "Unable to load profile"
+
+msgid "User settings"
+msgstr "User settings"
+
+msgid "You are connected to a company and can publish new job posts."
+msgstr "You are connected to a company and can publish new job posts."

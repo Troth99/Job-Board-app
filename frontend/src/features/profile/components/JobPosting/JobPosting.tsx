@@ -1,3 +1,5 @@
+import { Trans } from "@lingui/react/macro";
+
 interface JobPostingProps {
   company: any;
   postJobNavigation: () => void;
@@ -11,11 +13,11 @@ export default function JobPosting({
 }: JobPostingProps) {
   return (
     <section className="job-posting">
-      <h3>Hiring tools</h3>
+      <h3><Trans>Hiring tools</Trans></h3>
       <p className="job-posting-status">
         {company
-          ? "You are connected to a company and can publish new job posts."
-          : "Register a company first to publish job offers."}
+          ? <Trans>You are connected to a company and can publish new job posts.</Trans>
+          : <Trans>Register a company first to publish job offers.</Trans>}
       </p>
 
       <div className="job-title-options">
@@ -29,15 +31,15 @@ export default function JobPosting({
             }
           }}
         >
-          {company ? "Post a Job" : "Register Company"}
+          {company ? <Trans>Post a Job</Trans> : <Trans>Register Company</Trans>}
         </button>
       </div>
 
       <div className="job-description-info">
         <p>
           {company
-            ? "Start hiring by creating a detailed job post for your team."
-            : "After registration, you can open your dashboard and start hiring."}
+            ? <Trans>Start hiring by creating a detailed job post for your team.</Trans>
+            : <Trans>After registration, you can open your dashboard and start hiring.</Trans>}
         </p>
       </div>
     </section>

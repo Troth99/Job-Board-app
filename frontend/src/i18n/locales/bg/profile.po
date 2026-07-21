@@ -13,17 +13,44 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+msgid "After registration, you can open your dashboard and start hiring."
+msgstr "След регистрацията можете да отворите таблото си и да започнете наемането."
+
+msgid "Choose image"
+msgstr "Изберете изображение"
+
 msgid "Company access"
 msgstr "Достъп до компанията"
 
 msgid "complete"
 msgstr "завършен"
 
+msgid "Created at"
+msgstr "Създаден на"
+
+msgid "Email"
+msgstr "Електронна поща"
+
 msgid "Enabled"
 msgstr "Активиран"
 
+msgid "First name"
+msgstr "Име"
+
+msgid "Hiring tools"
+msgstr "Инструменти за наемане"
+
+msgid "Joined:"
+msgstr "Присъединил се:"
+
+msgid "Last name"
+msgstr "Фамилия"
+
 msgid "Loading..."
 msgstr "Зареждане..."
+
+msgid "Location"
+msgstr "Местоположение"
 
 msgid "No company role"
 msgstr "Няма роля в компанията"
@@ -31,17 +58,44 @@ msgstr "Няма роля в компанията"
 msgid "Not enabled"
 msgstr "Не е активиран"
 
+msgid "of"
+msgstr "от"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "Post a Job"
+msgstr "Публикувай обява за работа"
+
 msgid "Profile completion"
 msgstr "Попълване на профила"
 
 msgid "Recent account activity"
 msgstr "Последна активност в акаунта"
 
+msgid "Register a company first to publish job offers."
+msgstr "Регистрирайте компания първо, за да публикувате обяви за работа."
+
+msgid "Register Company"
+msgstr "Регистрирайте компания"
+
 msgid "Role summary"
 msgstr "Обобщение на ролята"
+
+msgid "sections complete"
+msgstr "секции завършени"
+
+msgid "Start hiring by creating a detailed job post for your team."
+msgstr "Започнете наемането, като създадете подробна обява за работа за вашия екип."
 
 msgid "This account data could not be loaded right now."
 msgstr "Данните за този акаунт не могат да бъдат заредени в момента."
 
 msgid "Unable to load profile"
 msgstr "Неуспешно зареждане на профила"
+
+msgid "User settings"
+msgstr "Настройки на потребителя"
+
+msgid "You are connected to a company and can publish new job posts."
+msgstr "Вие сте свързани с компания и можете да публикувате нови обяви за работа."

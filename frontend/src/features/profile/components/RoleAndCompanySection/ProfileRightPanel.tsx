@@ -2,6 +2,7 @@ import {  useNavigate } from "react-router";
 import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
 import "./ProfileRightPanel.css";
 import { ProfileRightPanelProps } from "../../types/profileRightPanelProps";
+import { Trans } from "@lingui/react/macro";
 
 
 export function ProfileRightPanel({
@@ -23,30 +24,30 @@ export function ProfileRightPanel({
     <div className="Profile-Data-info">
       <>
         <div className="role-change">
-          <h3>Role:</h3>
+          <h3><Trans>Role:</Trans></h3>
           <p>
             {hasCompanyId && userRole
               ? `${userRole.toUpperCase()} of ${company?.name}`
-              : "Not part of a company yet."}
+              : <Trans>Not part of a company yet.</Trans>}
           </p>
         </div>
         <div className="company-registration">
           {hasCompanyId && company ? (
             <>
               <h3>{company.name}</h3>
-              <p>Industry: {company.industry}</p>
-              <p>Location: {company.location}</p>
+              <p><Trans>Industry:</Trans> {company.industry}</p>
+              <p><Trans>Location:</Trans> {company.location}</p>
               <button
                 className="create-company-button-f1"
                 onClick={() => navigate(`/company/${company._id}/dashboard`)}
               >
-                Go to Dashboard
+                <Trans>Go to Dashboard</Trans>
               </button>
             </>
           ) : (
             <>
-              <h3>Company Registration</h3>
-              <p>Status: Not Registered</p>
+              <h3><Trans>Company Registration</Trans></h3>
+              <p><Trans>Status: Not Registered</Trans></p>
             </>
           )}
         </div>
@@ -56,10 +57,10 @@ export function ProfileRightPanel({
         <div className="recent-saved-jobs">
           <h3>
             <i className="fa-solid fa-briefcase recent-jobs-icon" style={{ marginRight: '0.5rem', color: 'var(--pf-primary)' }}></i>
-            Recent Saved Jobs
+            <Trans>Recent Saved Jobs</Trans>
           </h3>
           {recentSavedJobs.length === 0 ? (
-            <p className="no-saved-jobs">No saved jobs yet.</p>
+            <p className="no-saved-jobs"><Trans>No saved jobs yet.</Trans></p>
           ) : (
             <ul className="recent-jobs-list">
               {recentSavedJobs.map((fav) => (
@@ -71,12 +72,7 @@ export function ProfileRightPanel({
                       navigate(`/job/${fav.job._id}`);
                     }
                   }}
-                  tabIndex={0}
-                  onKeyDown={e => {
-                    if (e.key === 'Enter' && fav.job?._id) {
-                      navigate(`/job/${fav.job._id}`);
-                    }
-                  }}
+                
                   aria-label={`View job ${fav.job?.title || ''}`}
                   role="button"
                 >
@@ -103,7 +99,8 @@ export function ProfileRightPanel({
             onClick={() => navigate("/favourite-jobs")}
           >
             <i className="fa-solid fa-briefcase recent-jobs-icon" style={{ marginRight: '0.4rem', color: '#fff' }}></i>
-            View All Saved Jobs
+            <Trans>View All Saved Jobs</Trans>
+
           </button>
         </div>
         <div className="recent-saved-jobs-btn"></div>

@@ -99,7 +99,12 @@ export default defineConfig({
 		},
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/profile",
-			include: ["src/features/profile/mainProfilePage/profile"],
+			include: [
+				"src/features/profile/mainProfilePage/profile", 
+				"src/features/profile/components/ProfileDataContainer/ProfileMainContainer",
+				"src/features/profile/components/UploadProfileImage/UploadProfileImage",
+				"src/features/profile/components/JobPosting/JobPosting",
+			],
 		},
 	],
 });
