@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: userRole.toUpperCase()
+msgid "{0}"
+msgstr "{0}"
+
 msgid "After registration, you can open your dashboard and start hiring."
 msgstr "After registration, you can open your dashboard and start hiring."
 
@@ -21,6 +25,9 @@ msgstr "Choose image"
 
 msgid "Company access"
 msgstr "Company access"
+
+msgid "Company Registration"
+msgstr "Company Registration"
 
 msgid "complete"
 msgstr "complete"
@@ -37,8 +44,14 @@ msgstr "Enabled"
 msgid "First name"
 msgstr "First name"
 
+msgid "Go to Dashboard"
+msgstr "Go to Dashboard"
+
 msgid "Hiring tools"
 msgstr "Hiring tools"
+
+msgid "Industry:"
+msgstr "Industry:"
 
 msgid "Joined:"
 msgstr "Joined:"
@@ -52,11 +65,26 @@ msgstr "Loading..."
 msgid "Location"
 msgstr "Location"
 
+msgid "Location:"
+msgstr "Location:"
+
+#~ msgid "Log out"
+#~ msgstr "Log out"
+
+#~ msgid "Logging out"
+#~ msgstr "Logging out"
+
 msgid "No company role"
 msgstr "No company role"
 
+msgid "No saved jobs yet."
+msgstr "No saved jobs yet."
+
 msgid "Not enabled"
 msgstr "Not enabled"
+
+msgid "Not part of a company yet."
+msgstr "Not part of a company yet."
 
 msgid "of"
 msgstr "of"
@@ -73,6 +101,9 @@ msgstr "Profile completion"
 msgid "Recent account activity"
 msgstr "Recent account activity"
 
+msgid "Recent Saved Jobs"
+msgstr "Recent Saved Jobs"
+
 msgid "Register a company first to publish job offers."
 msgstr "Register a company first to publish job offers."
 
@@ -82,11 +113,17 @@ msgstr "Register Company"
 msgid "Role summary"
 msgstr "Role summary"
 
+msgid "Role:"
+msgstr "Role:"
+
 msgid "sections complete"
 msgstr "sections complete"
 
 msgid "Start hiring by creating a detailed job post for your team."
 msgstr "Start hiring by creating a detailed job post for your team."
+
+msgid "Status: Not Registered"
+msgstr "Status: Not Registered"
 
 msgid "This account data could not be loaded right now."
 msgstr "This account data could not be loaded right now."
@@ -96,6 +133,9 @@ msgstr "Unable to load profile"
 
 msgid "User settings"
 msgstr "User settings"
+
+msgid "View All Saved Jobs"
+msgstr "View All Saved Jobs"
 
 msgid "You are connected to a company and can publish new job posts."
 msgstr "You are connected to a company and can publish new job posts."

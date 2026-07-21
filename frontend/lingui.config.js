@@ -104,6 +104,8 @@ export default defineConfig({
 				"src/features/profile/components/ProfileDataContainer/ProfileMainContainer",
 				"src/features/profile/components/UploadProfileImage/UploadProfileImage",
 				"src/features/profile/components/JobPosting/JobPosting",
+				"src/features/profile/components/RoleAndCompanySection/ProfileRightPanel",
+				"src/features/auth/views/Logout/Logout",
 			],
 		},
 	],

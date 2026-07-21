@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: userRole.toUpperCase()
+msgid "{0}"
+msgstr ""
+
 msgid "After registration, you can open your dashboard and start hiring."
 msgstr "След регистрацията можете да отворите таблото си и да започнете наемането."
 
@@ -21,6 +25,9 @@ msgstr "Изберете изображение"
 
 msgid "Company access"
 msgstr "Достъп до компанията"
+
+msgid "Company Registration"
+msgstr "Регистрация на компания"
 
 msgid "complete"
 msgstr "завършен"
@@ -37,8 +44,14 @@ msgstr "Активиран"
 msgid "First name"
 msgstr "Име"
 
+msgid "Go to Dashboard"
+msgstr "Отидете в таблото за управление"
+
 msgid "Hiring tools"
 msgstr "Инструменти за наемане"
+
+msgid "Industry:"
+msgstr "Индустрия:"
 
 msgid "Joined:"
 msgstr "Присъединил се:"
@@ -52,14 +65,29 @@ msgstr "Зареждане..."
 msgid "Location"
 msgstr "Местоположение"
 
+msgid "Location:"
+msgstr "Местоположение:"
+
+msgid "Log out"
+msgstr "Изход"
+
+msgid "Logging out"
+msgstr "Излизане"
+
 msgid "No company role"
 msgstr "Няма роля в компанията"
+
+msgid "No saved jobs yet."
+msgstr "Все още няма запазени работни места."
 
 msgid "Not enabled"
 msgstr "Не е активиран"
 
+msgid "Not part of a company yet."
+msgstr "Все още не сте част от компания."
+
 msgid "of"
-msgstr "от"
+msgstr "на"
 
 msgid "Phone"
 msgstr "Телефон"
@@ -73,6 +101,9 @@ msgstr "Попълване на профила"
 msgid "Recent account activity"
 msgstr "Последна активност в акаунта"
 
+msgid "Recent Saved Jobs"
+msgstr "Последни запазени работни места "
+
 msgid "Register a company first to publish job offers."
 msgstr "Регистрирайте компания първо, за да публикувате обяви за работа."
 
@@ -82,11 +113,17 @@ msgstr "Регистрирайте компания"
 msgid "Role summary"
 msgstr "Обобщение на ролята"
 
+msgid "Role:"
+msgstr "Роля:"
+
 msgid "sections complete"
 msgstr "секции завършени"
 
 msgid "Start hiring by creating a detailed job post for your team."
 msgstr "Започнете наемането, като създадете подробна обява за работа за вашия екип."
+
+msgid "Status: Not Registered"
+msgstr "Статус: Не е регистриран"
 
 msgid "This account data could not be loaded right now."
 msgstr "Данните за този акаунт не могат да бъдат заредени в момента."
@@ -96,6 +133,9 @@ msgstr "Неуспешно зареждане на профила"
 
 msgid "User settings"
 msgstr "Настройки на потребителя"
+
+msgid "View All Saved Jobs"
+msgstr "Виж всички запазени работни места"
 
 msgid "You are connected to a company and can publish new job posts."
 msgstr "Вие сте свързани с компания и можете да публикувате нови обяви за работа."

@@ -91,6 +91,12 @@ msgstr "Last name"
 msgid "Location and contact info improve recommendations for your role."
 msgstr "Location and contact info improve recommendations for your role."
 
+msgid "Log out"
+msgstr "Log out"
+
+msgid "Logging out"
+msgstr "Logging out"
+
 msgid "Password"
 msgstr "Password"
 
