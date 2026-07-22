@@ -1,1 +1,1 @@
-/*eslint-disable*/module.exports={messages:JSON.parse("{}")};
+/*eslint-disable*/module.exports={messages:JSON.parse("{\"4MyDFl\":[\"Opportunities\"],\"9L1ngr\":[\"Total jobs\"],\"FJVs08\":[\"Browse all open roles\"],\"Ki4nnt\":[\"Try again later or adjust the filters from the previous page.\"],\"VJUm9p\":[\"Current page\"],\"bviqxp\":[\"No jobs found.\"],\"px9uIA\":[\"Fresh listings in one place, sorted by newest first so the latest opportunities stay visible.\"]}")};

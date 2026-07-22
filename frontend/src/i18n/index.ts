@@ -21,6 +21,7 @@ import { messages as bgInterviewPreparation } from "./locales/bg/interview-prepa
 import { messages as bgSalaryNegotiation } from "./locales/bg/salary-negotiation.po";
 import { messages as bgProfileMainProfilePageProfile } from "./locales/bg/profile.po";
 import { messages as bgEditProfileContainer } from "./locales/bg/edit-profile.po";
+import {messages as bgViewAllJobs} from "./locales/bg/jobs.po";
 
 
 //imports for English translations
@@ -43,6 +44,7 @@ import { messages as enCvTips } from "./locales/en/cv-tips.po";
 import { messages as enInterviewPreparation } from "./locales/en/interview-preparation.po";
 import { messages as enProfileMainProfilePageProfile } from "./locales/en/profile.po";
 import { messages as enEditProfileContainer } from "./locales/en/edit-profile.po";
+import {messages as enViewAllJobs} from "./locales/en/jobs.po";
 
 
 
@@ -103,6 +105,7 @@ i18n.load({
     ...bgSalaryNegotiation,
     ...bgProfileMainProfilePageProfile,
     ...bgEditProfileContainer,
+    ...bgViewAllJobs
   
   },
   en: {
@@ -125,6 +128,7 @@ i18n.load({
     ...enInterviewPreparation,
     ...enProfileMainProfilePageProfile,
     ...enEditProfileContainer,
+    ...enViewAllJobs
   },
 });
 

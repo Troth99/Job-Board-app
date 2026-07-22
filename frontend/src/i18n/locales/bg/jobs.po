@@ -12,3 +12,24 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Plural-Forms: \n"
+
+msgid "Browse all open roles"
+msgstr "Преглед на всички отворени позиции"
+
+msgid "Current page"
+msgstr "Текуща страница"
+
+msgid "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
+msgstr "Пресни обяви на едно място, сортирани по най-новите първо, за да останат видими най-новите възможности."
+
+msgid "No jobs found."
+msgstr "Няма намерени работни места."
+
+msgid "Opportunities"
+msgstr "Възможности"
+
+msgid "Total jobs"
+msgstr "Общо работни места"
+
+msgid "Try again later or adjust the filters from the previous page."
+msgstr "Опитайте отново по-късно или коригирайте филтрите от предишната страница."

@@ -116,6 +116,12 @@ export default defineConfig({
 			],
 
 		},
+			{
+			path: "<rootDir>/src/i18n/locales/{locale}/jobs",
+			include: ["src/features/jobs/views/ViewAllJobs/ViewAllJobs",
+			],
+
+		},
 	
 	],
 });

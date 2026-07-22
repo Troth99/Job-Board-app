@@ -12,3 +12,24 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Plural-Forms: \n"
+
+msgid "Browse all open roles"
+msgstr "Browse all open roles"
+
+msgid "Current page"
+msgstr "Current page"
+
+msgid "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
+msgstr "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
+
+msgid "No jobs found."
+msgstr "No jobs found."
+
+msgid "Opportunities"
+msgstr "Opportunities"
+
+msgid "Total jobs"
+msgstr "Total jobs"
+
+msgid "Try again later or adjust the filters from the previous page."
+msgstr "Try again later or adjust the filters from the previous page."
