@@ -25,8 +25,35 @@ msgstr "Предимства (разделени със запетаи)"
 msgid "Category"
 msgstr "Категория"
 
+#~ msgid "Category is required."
+#~ msgstr "Категорията е задължителна."
+
 msgid "Contact Email"
 msgstr "Имейл за контакт"
+
+#~ msgid "Description is required."
+#~ msgstr "Описанието е задължително."
+
+msgid "e.g., 3"
+msgstr "напр., 3"
+
+msgid "e.g., Customer service, Driving license B, Excel"
+msgstr "напр., Обслужване на клиенти, Шофьорска книжка B, Excel"
+
+msgid "e.g., English B2, German A2"
+msgstr "напр., Английски B2, Немски A2"
+
+msgid "e.g., example@example.com"
+msgstr "напр., example@example.com"
+
+msgid "e.g., Health Insurance, Remote Work"
+msgstr "напр., Здравна застраховка, Дистанционна работа"
+
+msgid "e.g., High School, Bachelor, Not required"
+msgstr "напр., Средно образование, Бакалавър, Не е задължително"
+
+msgid "e.g., Morning shift, 09:00-18:00"
+msgstr "напр., Сутрешна смяна, 09:00-18:00 "
 
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr "напр., Ще се радваме да прегледаме вашата кандидатура и да се свържем с одобрените кандидати."
@@ -34,17 +61,38 @@ msgstr "напр., Ще се радваме да прегледаме вашат
 msgid "Education Level"
 msgstr "Образователно ниво"
 
+#~ msgid "Education level is required."
+#~ msgstr "Образователното ниво е задължително."
+
+#~ msgid "Email is required."
+#~ msgstr "Имейлът е задължителен."
+
 msgid "Employment Type"
 msgstr "Тип заетост"
+
+#~ msgid "Employment type is required."
+#~ msgstr "Типът заетост е задължителен."
+
+#~ msgid "Experience level is required."
+#~ msgstr "Изисква се ниво на опит."
 
 msgid "Experience Requirement"
 msgstr "Изисквания за опит"
 
+#~ msgid "Experience years cannot be negative."
+#~ msgstr "Годините опит не могат да бъдат отрицателни."
+
 msgid "Guide"
 msgstr "Ръководство"
 
+#~ msgid "Invalid application deadline date."
+#~ msgstr "Невалидна дата за краен срок на кандидатстване."
+
 msgid "Job Description"
 msgstr "Описание на работата"
+
+msgid "Job posted successfully!"
+msgstr "Работата е публикувана успешно!"
 
 msgid "Job Title"
 msgstr "Заглавие на работата"
@@ -55,11 +103,23 @@ msgstr "Езикови изисквания"
 msgid "Location"
 msgstr "Местоположение"
 
+#~ msgid "Location is required."
+#~ msgstr "Местоположението е задължително."
+
 msgid "Need help filling the form?"
 msgstr "Нуждаете ли се от помощ при попълването на формуляра?"
 
 msgid "Open Positions"
 msgstr "Свободни позиции"
+
+#~ msgid "Open positions is required."
+#~ msgstr "Свободните позиции са задължителни."
+
+#~ msgid "Open positions must be a valid number."
+#~ msgstr "Свободните позиции трябва да са валиден номер."
+
+#~ msgid "Open positions must be at least 1."
+#~ msgstr "Свободните позиции трябва да са поне 1."
 
 msgid "Open the job posting guide with examples for every field."
 msgstr "Отворете ръководството за публикуване на работни места с примери за всяко поле."
@@ -79,11 +139,29 @@ msgstr "Публикуване на работа..."
 msgid "Requirements (comma separated)"
 msgstr "Изисквания (разделени със запетаи)"
 
+#~ msgid "Requirements are required."
+#~ msgstr "Изискванията са задължителни."
+
 msgid "Salary"
 msgstr "Заплата"
 
+#~ msgid "Salary is required."
+#~ msgstr "Заплатата е задължителна."
+
+msgid "Something went wrong while posting job."
+msgstr "Възникна грешка при публикуването на работата."
+
+#~ msgid "Title is required."
+#~ msgstr "Заглавието е задължително."
+
 msgid "Work Mode"
 msgstr "Режим на работа"
+
+#~ msgid "Work mode cannot be empty."
+#~ msgstr "Режимът на работа не може да бъде празен."
+
+#~ msgid "Work mode is required."
+#~ msgstr "Режимът на работа е задължителен."
 
 msgid "Work Schedule"
 msgstr "Работно време"

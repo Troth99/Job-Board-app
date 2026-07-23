@@ -1,5 +1,9 @@
 import { valuesInterface } from "../types/Job.model";
+import type { useLingui } from "@lingui/react";
 
+
+
+//function to normalize the array of strings, removing empty strings and trimming whitespace
 const normalize = (arr: any) =>
   Array.isArray(arr)
     ? arr.flatMap((s) =>
@@ -9,7 +13,7 @@ const normalize = (arr: any) =>
       ? arr.split(",").map((x) => x.trim())
       : [];
 
-export function jobPostValidations(form: valuesInterface) {
+export function jobPostValidations(form: valuesInterface,): Record<string, string> {
   let errors: Record<string, string> = {};
   const openingsValue =
     form.openings === undefined || form.openings === null
@@ -22,82 +26,82 @@ export function jobPostValidations(form: valuesInterface) {
       : Boolean(form.category?._id || form.category?.name);
 
   if (!form.title || form.title.trim().length === 0) {
-    errors.title = "Title is required.";
+    errors.title = `Title is required.`;
   }
 
   if (!form.description || form.description.trim().length === 0) {
-    errors.description = "Description is required.";
+    errors.description = `Description is required.`;
   }
   if (!form.location || form.location.trim().length === 0) {
-    errors.location = "Location is required.";
+    errors.location = `Location is required.`;
   }
   if (!form.salary || form.salary.trim().length === 0) {
-    errors.salary = "Salary is required.";
+    errors.salary = `Salary is required.`;
   }
 
   if (form.workMode && form.workMode.trim().length === 0) {
-    errors.workMode = "Work mode cannot be empty.";
+    errors.workMode = `Work mode cannot be empty.`;
   }
 
   if (!hasCategory) {
-    errors.category = "Category is required.";
+    errors.category = `Category is required.`;
   }
 
   if (typeof form.workMode === "string" && form.workMode.trim().length === 0) {
-    errors.workMode = "Work mode is required.";
+    errors.workMode = `Work mode is required.`;
   }
 
   if (
     typeof form.employmentType === "string" &&
     form.employmentType.trim().length === 0
   ) {
-    errors.employmentType = "Employment type is required.";
+    errors.employmentType = `Employment type is required.`;
   }
 
   if (
     typeof form.experienceLevel === "string" &&
     form.experienceLevel.trim().length === 0
   ) {
-    errors.experienceLevel = "Experience level is required.";
+    errors.experienceLevel = `Experience level is required.`;
   }
 
   if (!form.employmentType || form.employmentType.trim().length === 0) {
-    errors.employmentType = "Employment type is required.";
+    errors.employmentType = `Employment type is required.`;
   }
 
   if (openingsValue.length === 0) {
-    errors.openings = "Open positions is required.";
+    errors.openings = `Open positions is required.`;
   } else if (Number.isNaN(Number(openingsValue))) {
-    errors.openings = "Open positions must be a valid number.";
+    errors.openings = `Open positions must be a valid number.`;
   } else if (Number(openingsValue) <= 0) {
-    errors.openings = "Open positions must be at least 1.";
+    errors.openings = `Open positions must be at least 1.`;
   }
 
     if(normalize(form.educationLevel).filter(Boolean).length === 0) {
-      errors.educationLevel = "Education level is required.";
+      errors.educationLevel = `Education level is required.`;
     }
 
 
 
   if (normalize(form.requirements).filter(Boolean).length === 0) {
-    errors.requirements = "Requirements are required.";
+    errors.requirements = `Requirements are required.`;
   }
 
   if (!form.email || form.email.trim().length === 0) {
-    errors.email = "Email is required.";
+    errors.email = `Email is required.`;
   }
 
   if (
     form.requiredExperienceYears &&
     Number(form.requiredExperienceYears) < 0
   ) {
-    errors.requiredExperienceYears = "Experience years cannot be negative.";
+    errors.requiredExperienceYears = `Experience years cannot be negative.`;
   }
 
   if (form.applicationDeadline) {
     const selectedDate = new Date(form.applicationDeadline);
     if (Number.isNaN(selectedDate.getTime())) {
-      errors.applicationDeadline = "Invalid application deadline date.";
+      errors.applicationDeadline = `Invalid application deadline date.`;
     }
   }
 

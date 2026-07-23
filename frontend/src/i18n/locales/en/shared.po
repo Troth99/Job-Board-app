@@ -67,6 +67,15 @@ msgstr "Jobs"
 msgid "Login"
 msgstr "Login"
 
+msgid "Next"
+msgstr "Next"
+
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Page {currentPage} of {totalPages}"
+
+msgid "Previous"
+msgstr "Previous"
+
 #~ msgid "Privacy"
 #~ msgstr "Privacy"
 

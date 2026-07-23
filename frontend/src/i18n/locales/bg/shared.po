@@ -37,6 +37,15 @@ msgstr "Обяви"
 msgid "Login"
 msgstr "Вход"
 
+msgid "Next"
+msgstr ""
+
+msgid "Page {currentPage} of {totalPages}"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
 msgid "Profile"
 msgstr "Профил"
 

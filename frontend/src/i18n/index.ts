@@ -23,6 +23,7 @@ import { messages as bgEditProfileContainer } from "./locales/bg/edit-profile.po
 import {messages as bgViewAllJobs} from "./locales/bg/jobs.po";
 import { messages as bgNotifications } from "./locales/bg/notifications.po";
 import {messages as bgPostJob} from "./locales/bg/post-job.po";
+import {messages as bgPagination} from "./locales/bg/pagination.po";
 
 
 //imports for English translations
@@ -47,6 +48,7 @@ import { messages as enEditProfileContainer } from "./locales/en/edit-profile.po
 import {messages as enViewAllJobs} from "./locales/en/jobs.po";
 import { messages as enNotifications } from "./locales/en/notifications.po";
 import {messages as enPostJob} from "./locales/en/post-job.po";
+import {messages as enPagination} from "./locales/en/pagination.po";
 
 
 
@@ -109,7 +111,8 @@ i18n.load({
     ...bgEditProfileContainer,
     ...bgViewAllJobs,
     ...bgNotifications,
-    ...bgPostJob
+    ...bgPostJob,
+    ...bgPagination
   
   },
   en: {
@@ -126,6 +129,7 @@ i18n.load({
     ...enFooterContact,
     ...enForEmployers,
     ...enTermsAndConditions,
+    ...enPagination,
     ...enPrivacy,
     ...enCookies,
     ...enCvTips,

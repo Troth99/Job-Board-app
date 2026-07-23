@@ -13,18 +13,116 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+msgid "Additional Information"
+msgstr ""
 
+msgid "Application Deadline"
+msgstr ""
+
+msgid "Benefits (comma separated)"
+msgstr ""
+
+msgid "Browse all open roles"
+msgstr "Разгледайте всички отворени позиции"
+
+msgid "Category"
+msgstr ""
+
+msgid "Contact Email"
+msgstr ""
+
+msgid "Current page"
+msgstr ""
+
+msgid "e.g., 3"
+msgstr ""
+
+msgid "e.g., Customer service, Driving license B, Excel"
+msgstr ""
+
+msgid "e.g., English B2, German A2"
+msgstr ""
+
+msgid "e.g., example@example.com"
+msgstr ""
+
+msgid "e.g., Health Insurance, Remote Work"
+msgstr ""
+
+msgid "e.g., High School, Bachelor, Not required"
+msgstr ""
+
+msgid "e.g., Morning shift, 09:00-18:00"
+msgstr ""
+
+msgid "e.g., We are happy to review your application and contact shortlisted candidates."
+msgstr ""
+
+msgid "Education Level"
+msgstr ""
+
+msgid "Employment Type"
+msgstr ""
+
+msgid "Experience Requirement"
+msgstr ""
 
 msgid "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
 msgstr "Пресни обяви на едно място, сортирани по най-новите първо, за да останат видими най-новите възможности."
 
+msgid "Guide"
+msgstr ""
+
+msgid "Job Description"
+msgstr ""
+
+msgid "Job posted successfully!"
+msgstr ""
+
+msgid "Job Title"
+msgstr ""
+
+msgid "Language Requirements"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Need help filling the form?"
+msgstr ""
+
 msgid "No jobs found."
 msgstr "Няма намерени работни места."
 
+msgid "Open Positions"
+msgstr ""
+
+msgid "Open the job posting guide with examples for every field."
+msgstr ""
 
 msgid "Opportunities"
 msgstr "Възможности"
 
+msgid "Optional"
+msgstr ""
+
+msgid "Post a New Job"
+msgstr ""
+
+msgid "Post job"
+msgstr ""
+
+msgid "Posting job..."
+msgstr ""
+
+msgid "Requirements (comma separated)"
+msgstr ""
+
+msgid "Salary"
+msgstr ""
+
+msgid "Something went wrong while posting job."
+msgstr ""
 
 msgid "Total jobs"
 msgstr "Общо работни места"
@@ -32,4 +130,8 @@ msgstr "Общо работни места"
 msgid "Try again later or adjust the filters from the previous page."
 msgstr "Опитайте отново по-късно или коригирайте филтрите от предишната страница."
 
+msgid "Work Mode"
+msgstr ""
 
+msgid "Work Schedule"
+msgstr ""

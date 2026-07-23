@@ -134,7 +134,13 @@ export default defineConfig({
 			{
 			path: "<rootDir>/src/i18n/locales/{locale}/post-job",
 			include: ["src/features/jobs/views/CreateJob",
+						"src/features/jobs/validators",
 			],
+
+		},
+				{
+			path: "<rootDir>/src/i18n/locales/{locale}/pagination",
+			include: ["src/shared/components/Pagination"],
 
 		},
 	

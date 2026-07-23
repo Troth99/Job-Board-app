@@ -48,17 +48,18 @@ function PostJob() {
   const { createJob } = useJobs();
   const {t} = useLingui();
 
-  const validateForm = (values: valuesInterface) => jobPostValidations(values);
+
+  const validateForm = (values: valuesInterface) => jobPostValidations(values,);
 
   const onSubmitHandler = async (values: valuesInterface) => {
     setLoading(true);
     try {
       await createJob(values);
-      showSuccess("Job posted successfully!");
+      showSuccess(t`Job posted successfully!`);
       navigate(`/company/${companyId}/dashboard`);
     } catch (error: unknown) {
       if (error instanceof Error) {
-        console.error("Somethign went wrong while posting job.");
+        console.error(t`Something went wrong while posting job.`);
       } else {
         console.error("Unknown error", error);
       }
@@ -131,7 +132,6 @@ function PostJob() {
           <input
             type="text"
             id="location"
-            placeholder={t`Location`}
             {...register("location")}
           />
           <div className="error-message">{errors.location}</div>
@@ -142,7 +142,6 @@ function PostJob() {
           <input
             type="text"
             id="salary"
-            placeholder={t`Salary`}   
             {...register("salary")}
           />
           <div className="error-message">{errors.salary}</div>
@@ -205,7 +204,7 @@ function PostJob() {
             type="number"
             id="openings"
             min="1"
-            placeholder="e.g., 3"
+            placeholder={t`e.g., 3`}
             {...register("openings")}
           />
           <div className="error-message">{errors.openings}</div>
@@ -219,7 +218,7 @@ function PostJob() {
           <input
             type="text"
             id="workSchedule"
-            placeholder="e.g., Morning shift, 09:00-18:00"
+            placeholder={t`e.g., Morning shift, 09:00-18:00`}
             {...register("workSchedule")}
           />
         </div>
@@ -232,7 +231,7 @@ function PostJob() {
           <input
             type="text"
             id="languageRequirements"
-            placeholder="e.g., English B2, German A2"
+            placeholder={t`e.g., English B2, German A2`}
             {...register("languageRequirements")}
           />
         </div>
@@ -242,7 +241,7 @@ function PostJob() {
           <input
             type="text"
             id="educationLevel"
-            placeholder="e.g., High School, Bachelor, Not required"
+            placeholder={t`e.g., High School, Bachelor, Not required`}
             {...register("educationLevel")}
           />
           <div className="error-message">{errors.educationLevel}</div>
@@ -253,7 +252,7 @@ function PostJob() {
           <input
             type="text"
             id="requirements"
-            placeholder="e.g., Customer service, Driving license B, Excel"
+            placeholder={t`e.g., Customer service, Driving license B, Excel`}
             {...register("requirements")}
           />
           <div className="error-message">{errors.requirements}</div>
@@ -267,7 +266,7 @@ function PostJob() {
           <input
             type="text"
             id="benefits"
-            placeholder="e.g., Health Insurance, Remote Work"
+            placeholder={t`e.g., Health Insurance, Remote Work`}
             {...register("benefits")}
           />
         </div>
@@ -277,10 +276,10 @@ function PostJob() {
           <input
             type="email"
             id="contactEmail"
-            placeholder="e.g., example@example.com"
+            placeholder={t`e.g., example@example.com`}
             {...register("contactEmail")}
           />
-          <div className="error-message">{errors.contactEmail}</div>
+          <div className="error-message">{errors.email}</div>
         </div>
 
         <button type="submit" className="post-job-button" disabled={loading}>
