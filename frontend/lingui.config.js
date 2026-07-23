@@ -122,6 +122,15 @@ export default defineConfig({
 			],
 
 		},
+			{
+			path: "<rootDir>/src/i18n/locales/{locale}/notifications",
+			include: ["src/features/notifications/views/Notifications",
+						"src/features/notifications/components/NewMessageNotification/ModalReply",
+						"src/features/notifications/components/NewMessageNotification/CompanyInvitationNotification",
+						"src/features/notifications/components/NewMessageNotification/NewMessageNotification",
+			],
+
+		},
 	
 	],
 });

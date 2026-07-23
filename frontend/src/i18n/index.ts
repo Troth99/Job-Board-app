@@ -7,7 +7,6 @@ import { messages as bgHomeview } from "./locales/bg/homeview.po";
 import { messages as bgJobs } from "./locales/bg/jobs.po";
 import { messages as bgCompanies } from "./locales/bg/companies.po";
 import { messages as bgCategories } from "./locales/bg/categories.po";
-import { messages as bgNotifications } from "./locales/bg/notifications.po";
 import { messages as bgProfile } from "./locales/bg/profile.po";
 import {messages as bgFooter} from "./locales/bg/footer.po";
 import { messages as bgFooterForUs } from "./locales/bg/for-us.po";
@@ -22,6 +21,7 @@ import { messages as bgSalaryNegotiation } from "./locales/bg/salary-negotiation
 import { messages as bgProfileMainProfilePageProfile } from "./locales/bg/profile.po";
 import { messages as bgEditProfileContainer } from "./locales/bg/edit-profile.po";
 import {messages as bgViewAllJobs} from "./locales/bg/jobs.po";
+import { messages as bgNotifications } from "./locales/bg/notifications.po";
 
 
 //imports for English translations
@@ -31,7 +31,6 @@ import { messages as enHomeview } from "./locales/en/homeview.po";
 import { messages as enJobs } from "./locales/en/jobs.po";
 import { messages as enCompanies } from "./locales/en/companies.po";
 import { messages as enCategories } from "./locales/en/categories.po";
-import { messages as enNotifications } from "./locales/en/notifications.po";
 import { messages as enProfile } from "./locales/en/profile.po";
 import {messages as enFooter} from "./locales/en/footer.po";
 import { messages as enFooterForUs } from "./locales/en/for-us.po";
@@ -45,6 +44,7 @@ import { messages as enInterviewPreparation } from "./locales/en/interview-prepa
 import { messages as enProfileMainProfilePageProfile } from "./locales/en/profile.po";
 import { messages as enEditProfileContainer } from "./locales/en/edit-profile.po";
 import {messages as enViewAllJobs} from "./locales/en/jobs.po";
+import { messages as enNotifications } from "./locales/en/notifications.po";
 
 
 
@@ -105,7 +105,8 @@ i18n.load({
     ...bgSalaryNegotiation,
     ...bgProfileMainProfilePageProfile,
     ...bgEditProfileContainer,
-    ...bgViewAllJobs
+    ...bgViewAllJobs,
+    ...bgNotifications
   
   },
   en: {
@@ -128,7 +129,8 @@ i18n.load({
     ...enInterviewPreparation,
     ...enProfileMainProfilePageProfile,
     ...enEditProfileContainer,
-    ...enViewAllJobs
+    ...enViewAllJobs,
+    ...enNotifications
   },
 });
 

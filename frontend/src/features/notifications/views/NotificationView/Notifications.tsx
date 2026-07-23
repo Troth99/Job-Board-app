@@ -11,13 +11,16 @@ import { Notification } from "../../types/Notification.model";
 import { usePagination } from "../../../../shared/hooks/usePagination";
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 
-function Notifications() {
+export default function Notifications() {
   const { deleteNotification, markAsRead } = useNotifications();
   const { notifications, setNotifications, unreadCount, setUnreadCount } =
     useNotificationContext();
   const [loading, setLoading] = useState<boolean>(false);
+
+  const { t } = useLingui();
   
   //pagination
   const sortNotifications = useSortedNotifications(notifications)
@@ -90,36 +93,36 @@ function Notifications() {
    <MetaData seo={seo} />
    
     <div className="notification-list">
-      <h2 className="notification-list__title">Notifications</h2>
+      <h2 className="notification-list__title"><Trans>Notifications</Trans></h2>
       <ul className="notification-list__items">
         {notifications.length === 0 && (
           <li className="notification-item notification-item--empty">
             <div className="notification-item__content">
-              <div className="notification-item__heading">No notifications</div>
+              <div className="notification-item__heading"><Trans>No notifications</Trans></div>
               <div className="notification-item__text">
-                You have no notifications at the moment.
+                <Trans>You have no notifications at the moment.</Trans>
               </div>
             </div>
           </li>
         )}
         {currentItems.map((n) => {
           let icon = "fa fa-bell";
-          let heading = "Notification";
+          let heading = <Trans>Notification</Trans>;
           let text = n.message;
 
 // We can customize the icon, heading, and text based on the notification type
           if (n.type === "message") {
             icon = "fa fa-envelope";
-            heading = "New Message";
-            text = `You have a new message from <b>${getName(n.sender)}</b>.`;
+            heading = <Trans>New Message</Trans>;
+            text = t`You have a new message from <b>${getName(n.sender)}</b>.`;
           } else if (n.type === "application") {
             icon = "fa fa-briefcase";
-            heading = "Application Update";
+            heading = <Trans>Application Update</Trans>;
             text = n.message;
           } else if (n.type === "company_invite") {
             icon = "fa fa-building";
-            heading = "Company Invitation";
-            text = `You have a new invitation from <b>${getName(n.company)}</b>.`;
+            heading = <Trans>Company Invitation</Trans>;
+            text = t`You have a new invitation from <b>${getName(n.company)}</b>.`;
     
           }
 // Each notification item is rendered with appropriate styling and click handlers for marking as read and deletion
@@ -165,10 +168,10 @@ function Notifications() {
                     }
                     disabled={pageFromUrl === 1}
                   >
-                    Previous
+                    <Trans>Previous</Trans>
                   </button>
                   <span>
-                    Page {pageFromUrl} of {totalPages}
+                    <Trans>Page</Trans> {pageFromUrl} <Trans>of</Trans> {totalPages}
                   </span>
                   <button
                     onClick={() =>
@@ -176,7 +179,7 @@ function Notifications() {
                     }
                     disabled={pageFromUrl === totalPages}
                   >
-                    Next
+                    <Trans>Next</Trans>
                   </button>
                 </div>
               )}
@@ -186,8 +189,4 @@ function Notifications() {
   );
 }
 
-export default Notifications;
-function getSeoConfig(arg0: string) {
-  throw new Error("Function not implemented.");
-}
 

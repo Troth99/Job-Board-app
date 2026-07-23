@@ -12,3 +12,87 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Plural-Forms: \n"
+
+msgid "Accept"
+msgstr "Приемам"
+
+msgid "Application Update"
+msgstr "Актуализация на заявката"
+
+msgid "Company Invitation"
+msgstr "Покана от компания"
+
+msgid "Decline"
+msgstr "Отказвам"
+
+msgid "Invited by"
+msgstr "Поканен от"
+
+msgid "Message from:"
+msgstr "Съобщение от:"
+
+msgid "New Message"
+msgstr "Ново съобщение"
+
+msgid "Next"
+msgstr "Следваща"
+
+msgid "No notifications"
+msgstr "Няма известия"
+
+msgid "Notification"
+msgstr "Известие"
+
+msgid "Notifications"
+msgstr "Известия"
+
+msgid "of"
+msgstr "от"
+
+msgid "Page"
+msgstr "Страница"
+
+msgid "Previous"
+msgstr "Предишна"
+
+msgid "Reply"
+msgstr "Отговор"
+
+msgid "Reply to message"
+msgstr "Отговор на съобщение"
+
+msgid "Replying to:"
+msgstr "Отговарям на:"
+
+msgid "Send"
+msgstr "Изпрати"
+
+msgid "Sending..."
+msgstr "Изпращане..."
+
+msgid "Type your reply here..."
+msgstr "Напишете отговора си тук..."
+
+msgid "Would you like to accept this invitation?"
+msgstr "Бихте ли искали да приемете тази покана?"
+
+#. placeholder {0}: getName(n.company)
+msgid "You have a new invitation from <b>{0}</b>."
+msgstr "Имате нова покана от <b>{0}</b>."
+
+#. placeholder {0}: getName(n.sender)
+msgid "You have a new message from <b>{0}</b>."
+msgstr "Имате ново съобщение от <b>{0}</b>."
+
+#. placeholder {0}: notification?.company?.name
+msgid "You have been invited to join <0>{0}</0> as a member."
+msgstr "Били сте поканени да се присъедините към <0>{0}</0> като член."
+
+msgid "You have no notifications at the moment."
+msgstr "В момента нямате известия."
+
+msgid "You must leave your company before joining."
+msgstr "Трябва да напуснете вашата компания, преди да се присъедините."
+
+msgid "Your message has been sent successfully!"
+msgstr "Вашето съобщение беше изпратено успешно!"
