@@ -13,11 +13,26 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+msgid "1+ year relevant experience"
+msgstr "1+ година релевантен опит"
+
+msgid "2+ years relevant experience"
+msgstr "2+ години релевантен опит"
+
+msgid "3+ years relevant experience"
+msgstr "3+ години релевантен опит"
+
+msgid "5+ years relevant experience"
+msgstr "5+ години релевантен опит"
+
 msgid "Additional Information"
 msgstr "Допълнителна информация"
 
 msgid "Application Deadline"
 msgstr "Краен срок за кандидатстване"
+
+msgid "Apprenticeship"
+msgstr "Обучение"
 
 msgid "Benefits (comma separated)"
 msgstr "Предимства (разделени със запетаи)"
@@ -28,11 +43,26 @@ msgstr "Категория"
 #~ msgid "Category is required."
 #~ msgstr "Категорията е задължителна."
 
+msgid "Consulting & Strategy"
+msgstr "Консултиране и стратегия"
+
 msgid "Contact Email"
 msgstr "Имейл за контакт"
 
+msgid "Contract"
+msgstr "Договор"
+
+msgid "Customer Support"
+msgstr "Обслужване на клиенти"
+
+msgid "Data Science & Analytics"
+msgstr "Наука за данни и анализи"
+
 #~ msgid "Description is required."
 #~ msgstr "Описанието е задължително."
+
+msgid "Design & Creative"
+msgstr "Дизайн и креативност"
 
 msgid "e.g., 3"
 msgstr "напр., 3"
@@ -58,6 +88,9 @@ msgstr "напр., Сутрешна смяна, 09:00-18:00 "
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr "напр., Ще се радваме да прегледаме вашата кандидатура и да се свържем с одобрените кандидати."
 
+msgid "Education & Training"
+msgstr "Образование и обучение"
+
 msgid "Education Level"
 msgstr "Образователно ниво"
 
@@ -73,6 +106,9 @@ msgstr "Тип заетост"
 #~ msgid "Employment type is required."
 #~ msgstr "Типът заетост е задължителен."
 
+msgid "Engineering & Manufacturing"
+msgstr "Инженерство и производство"
+
 #~ msgid "Experience level is required."
 #~ msgstr "Изисква се ниво на опит."
 
@@ -82,8 +118,38 @@ msgstr "Изисквания за опит"
 #~ msgid "Experience years cannot be negative."
 #~ msgstr "Годините опит не могат да бъдат отрицателни."
 
+msgid "Finance & Accounting"
+msgstr "Финанси и Счетоводство"
+
+msgid "Food & Beverage"
+msgstr "Хранителни продукти и напитки"
+
+msgid "Freelance"
+msgstr "Свободна практика"
+
+msgid "Full-time"
+msgstr "Пълно работно време"
+
 msgid "Guide"
 msgstr "Ръководство"
+
+msgid "Healthcare & Medical"
+msgstr "Здравеопазване и медицина"
+
+msgid "Hospitality & Tourism"
+msgstr "Хотелиерство и туризъм"
+
+msgid "Human Resources"
+msgstr "Човешки ресурси"
+
+msgid "Hybrid"
+msgstr "Хибриден"
+
+msgid "Information Technology"
+msgstr "Информационни технологии"
+
+msgid "Internship"
+msgstr "Стаж"
 
 #~ msgid "Invalid application deadline date."
 #~ msgstr "Невалидна дата за краен срок на кандидатстване."
@@ -100,14 +166,35 @@ msgstr "Заглавие на работата"
 msgid "Language Requirements"
 msgstr "Езикови изисквания"
 
+msgid "Legal & Compliance"
+msgstr "Правни и съответствие (Compliance) "
+
 msgid "Location"
 msgstr "Местоположение"
 
 #~ msgid "Location is required."
 #~ msgstr "Местоположението е задължително."
 
+msgid "Management experience required"
+msgstr "Изисква се управленски опит"
+
+msgid "Marketing & Advertising"
+msgstr "Маркетинг и реклама"
+
+msgid "Media & Communication"
+msgstr "Медия и комуникации"
+
 msgid "Need help filling the form?"
 msgstr "Нуждаете ли се от помощ при попълването на формуляра?"
+
+msgid "No prior experience required"
+msgstr "Не се изисква предишен опит"
+
+msgid "Non-Profit & NGO"
+msgstr "Неправителствени организации и НПО"
+
+msgid "On-site"
+msgstr "На място"
 
 msgid "Open Positions"
 msgstr "Свободни позиции"
@@ -124,8 +211,14 @@ msgstr "Свободни позиции"
 msgid "Open the job posting guide with examples for every field."
 msgstr "Отворете ръководството за публикуване на работни места с примери за всяко поле."
 
+msgid "Operations & Logistics"
+msgstr "Операции и логистика"
+
 msgid "Optional"
 msgstr "По избор"
+
+msgid "Part-time"
+msgstr "Частично работно време"
 
 msgid "Post a New Job"
 msgstr "Публикувайте нова работа"
@@ -136,11 +229,20 @@ msgstr "Публикувай работа"
 msgid "Posting job..."
 msgstr "Публикуване на работа..."
 
+msgid "Real Estate & Property"
+msgstr "Недвижими имоти и собственост"
+
+msgid "Remote"
+msgstr "Отдалечена работа"
+
 msgid "Requirements (comma separated)"
 msgstr "Изисквания (разделени със запетаи)"
 
 #~ msgid "Requirements are required."
 #~ msgstr "Изискванията са задължителни."
+
+msgid "Retail & E-commerce"
+msgstr "Търговия на дребно и електронна търговия"
 
 msgid "Salary"
 msgstr "Заплата"
@@ -148,11 +250,50 @@ msgstr "Заплата"
 #~ msgid "Salary is required."
 #~ msgstr "Заплатата е задължителна."
 
+msgid "Sales & Business Development"
+msgstr "Продажби и бизнес развитие"
+
+msgid "Science & Research"
+msgstr "Наука и изследвания"
+
+msgid "Seasonal"
+msgstr "Сезонна"
+
+msgid "Select a category"
+msgstr "Изберете категория"
+
+msgid "Select category"
+msgstr "Изберете категория"
+
+msgid "Select employment type"
+msgstr "Изберете тип заетост"
+
+msgid "Select experience level"
+msgstr "Изберете ниво на опит"
+
+msgid "Select work mode"
+msgstr "Изберете режим на работа"
+
+msgid "Some experience preferred (6+ months)"
+msgstr "Предпочита се някакъв опит (6+ месеца)"
+
 msgid "Something went wrong while posting job."
 msgstr "Възникна грешка при публикуването на работата."
 
+msgid "Supervisory experience required"
+msgstr "Изисква се надзорен опит"
+
+msgid "Temporary"
+msgstr "Временна"
+
 #~ msgid "Title is required."
 #~ msgstr "Заглавието е задължително."
+
+msgid "Transportation & Delivery"
+msgstr "Транспорт и доставка"
+
+msgid "Volunteer"
+msgstr "Доброволец"
 
 msgid "Work Mode"
 msgstr "Режим на работа"

@@ -13,10 +13,25 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+msgid "1+ year relevant experience"
+msgstr ""
+
+msgid "2+ years relevant experience"
+msgstr ""
+
+msgid "3+ years relevant experience"
+msgstr ""
+
+msgid "5+ years relevant experience"
+msgstr ""
+
 msgid "Additional Information"
 msgstr ""
 
 msgid "Application Deadline"
+msgstr ""
+
+msgid "Apprenticeship"
 msgstr ""
 
 msgid "Benefits (comma separated)"
@@ -28,10 +43,25 @@ msgstr "Разгледайте всички отворени позиции"
 msgid "Category"
 msgstr ""
 
+msgid "Consulting & Strategy"
+msgstr ""
+
 msgid "Contact Email"
 msgstr ""
 
+msgid "Contract"
+msgstr ""
+
 msgid "Current page"
+msgstr ""
+
+msgid "Customer Support"
+msgstr ""
+
+msgid "Data Science & Analytics"
+msgstr ""
+
+msgid "Design & Creative"
 msgstr ""
 
 msgid "e.g., 3"
@@ -58,19 +88,55 @@ msgstr ""
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr ""
 
+msgid "Education & Training"
+msgstr ""
+
 msgid "Education Level"
 msgstr ""
 
 msgid "Employment Type"
 msgstr ""
 
+msgid "Engineering & Manufacturing"
+msgstr ""
+
 msgid "Experience Requirement"
+msgstr ""
+
+msgid "Finance & Accounting"
+msgstr ""
+
+msgid "Food & Beverage"
+msgstr ""
+
+msgid "Freelance"
 msgstr ""
 
 msgid "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
 msgstr "Пресни обяви на едно място, сортирани по най-новите първо, за да останат видими най-новите възможности."
 
+msgid "Full-time"
+msgstr ""
+
 msgid "Guide"
+msgstr ""
+
+msgid "Healthcare & Medical"
+msgstr ""
+
+msgid "Hospitality & Tourism"
+msgstr ""
+
+msgid "Human Resources"
+msgstr ""
+
+msgid "Hybrid"
+msgstr ""
+
+msgid "Information Technology"
+msgstr ""
+
+msgid "Internship"
 msgstr ""
 
 msgid "Job Description"
@@ -85,7 +151,19 @@ msgstr ""
 msgid "Language Requirements"
 msgstr ""
 
+msgid "Legal & Compliance"
+msgstr ""
+
 msgid "Location"
+msgstr ""
+
+msgid "Management experience required"
+msgstr ""
+
+msgid "Marketing & Advertising"
+msgstr ""
+
+msgid "Media & Communication"
 msgstr ""
 
 msgid "Need help filling the form?"
@@ -94,16 +172,31 @@ msgstr ""
 msgid "No jobs found."
 msgstr "Няма намерени работни места."
 
+msgid "No prior experience required"
+msgstr ""
+
+msgid "Non-Profit & NGO"
+msgstr ""
+
+msgid "On-site"
+msgstr ""
+
 msgid "Open Positions"
 msgstr ""
 
 msgid "Open the job posting guide with examples for every field."
 msgstr ""
 
+msgid "Operations & Logistics"
+msgstr ""
+
 msgid "Opportunities"
 msgstr "Възможности"
 
 msgid "Optional"
+msgstr ""
+
+msgid "Part-time"
 msgstr ""
 
 msgid "Post a New Job"
@@ -115,20 +208,68 @@ msgstr ""
 msgid "Posting job..."
 msgstr ""
 
+msgid "Real Estate & Property"
+msgstr ""
+
+msgid "Remote"
+msgstr ""
+
 msgid "Requirements (comma separated)"
+msgstr ""
+
+msgid "Retail & E-commerce"
 msgstr ""
 
 msgid "Salary"
 msgstr ""
 
+msgid "Sales & Business Development"
+msgstr ""
+
+msgid "Science & Research"
+msgstr ""
+
+msgid "Seasonal"
+msgstr ""
+
+msgid "Select a category"
+msgstr ""
+
+msgid "Select category"
+msgstr ""
+
+msgid "Select employment type"
+msgstr ""
+
+msgid "Select experience level"
+msgstr ""
+
+msgid "Select work mode"
+msgstr ""
+
+msgid "Some experience preferred (6+ months)"
+msgstr ""
+
 msgid "Something went wrong while posting job."
+msgstr ""
+
+msgid "Supervisory experience required"
+msgstr ""
+
+msgid "Temporary"
 msgstr ""
 
 msgid "Total jobs"
 msgstr "Общо работни места"
 
+msgid "Transportation & Delivery"
+msgstr ""
+
 msgid "Try again later or adjust the filters from the previous page."
 msgstr "Опитайте отново по-късно или коригирайте филтрите от предишната страница."
+
+msgid "Volunteer"
+msgstr ""
 
 msgid "Work Mode"
 msgstr ""

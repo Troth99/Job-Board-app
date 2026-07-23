@@ -13,11 +13,26 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+msgid "1+ year relevant experience"
+msgstr "1+ year relevant experience"
+
+msgid "2+ years relevant experience"
+msgstr "2+ years relevant experience"
+
+msgid "3+ years relevant experience"
+msgstr "3+ years relevant experience"
+
+msgid "5+ years relevant experience"
+msgstr "5+ years relevant experience"
+
 msgid "Additional Information"
 msgstr "Additional Information"
 
 msgid "Application Deadline"
 msgstr "Application Deadline"
+
+msgid "Apprenticeship"
+msgstr "Apprenticeship"
 
 msgid "Benefits (comma separated)"
 msgstr "Benefits (comma separated)"
@@ -31,14 +46,29 @@ msgstr "Category"
 #~ msgid "Category is required."
 #~ msgstr "Category is required."
 
+msgid "Consulting & Strategy"
+msgstr "Consulting & Strategy"
+
 msgid "Contact Email"
 msgstr "Contact Email"
+
+msgid "Contract"
+msgstr "Contract"
 
 msgid "Current page"
 msgstr "Current page"
 
+msgid "Customer Support"
+msgstr "Customer Support"
+
+msgid "Data Science & Analytics"
+msgstr "Data Science & Analytics"
+
 #~ msgid "Description is required."
 #~ msgstr "Description is required."
+
+msgid "Design & Creative"
+msgstr "Design & Creative"
 
 msgid "e.g., 3"
 msgstr "e.g., 3"
@@ -64,6 +94,9 @@ msgstr "e.g., Morning shift, 09:00-18:00"
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr "e.g., We are happy to review your application and contact shortlisted candidates."
 
+msgid "Education & Training"
+msgstr "Education & Training"
+
 msgid "Education Level"
 msgstr "Education Level"
 
@@ -79,6 +112,9 @@ msgstr "Employment Type"
 #~ msgid "Employment type is required."
 #~ msgstr "Employment type is required."
 
+msgid "Engineering & Manufacturing"
+msgstr "Engineering & Manufacturing"
+
 #~ msgid "Experience level is required."
 #~ msgstr "Experience level is required."
 
@@ -88,11 +124,41 @@ msgstr "Experience Requirement"
 #~ msgid "Experience years cannot be negative."
 #~ msgstr "Experience years cannot be negative."
 
+msgid "Finance & Accounting"
+msgstr "Finance & Accounting"
+
+msgid "Food & Beverage"
+msgstr "Food & Beverage"
+
+msgid "Freelance"
+msgstr "Freelance"
+
 msgid "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
 msgstr "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
 
+msgid "Full-time"
+msgstr "Full-time"
+
 msgid "Guide"
 msgstr "Guide"
+
+msgid "Healthcare & Medical"
+msgstr "Healthcare & Medical"
+
+msgid "Hospitality & Tourism"
+msgstr "Hospitality & Tourism"
+
+msgid "Human Resources"
+msgstr "Human Resources"
+
+msgid "Hybrid"
+msgstr "Hybrid"
+
+msgid "Information Technology"
+msgstr "Information Technology"
+
+msgid "Internship"
+msgstr "Internship"
 
 #~ msgid "Invalid application deadline date."
 #~ msgstr "Invalid application deadline date."
@@ -109,17 +175,38 @@ msgstr "Job Title"
 msgid "Language Requirements"
 msgstr "Language Requirements"
 
+msgid "Legal & Compliance"
+msgstr "Legal & Compliance"
+
 msgid "Location"
 msgstr "Location"
 
 #~ msgid "Location is required."
 #~ msgstr "Location is required."
 
+msgid "Management experience required"
+msgstr "Management experience required"
+
+msgid "Marketing & Advertising"
+msgstr "Marketing & Advertising"
+
+msgid "Media & Communication"
+msgstr "Media & Communication"
+
 msgid "Need help filling the form?"
 msgstr "Need help filling the form?"
 
 msgid "No jobs found."
 msgstr "No jobs found."
+
+msgid "No prior experience required"
+msgstr "No prior experience required"
+
+msgid "Non-Profit & NGO"
+msgstr "Non-Profit & NGO"
+
+msgid "On-site"
+msgstr "On-site"
 
 msgid "Open Positions"
 msgstr "Open Positions"
@@ -136,11 +223,17 @@ msgstr "Open Positions"
 msgid "Open the job posting guide with examples for every field."
 msgstr "Open the job posting guide with examples for every field."
 
+msgid "Operations & Logistics"
+msgstr "Operations & Logistics"
+
 msgid "Opportunities"
 msgstr "Opportunities"
 
 msgid "Optional"
 msgstr "Optional"
+
+msgid "Part-time"
+msgstr "Part-time"
 
 msgid "Post a New Job"
 msgstr "Post a New Job"
@@ -151,11 +244,20 @@ msgstr "Post job"
 msgid "Posting job..."
 msgstr "Posting job..."
 
+msgid "Real Estate & Property"
+msgstr "Real Estate & Property"
+
+msgid "Remote"
+msgstr "Remote"
+
 msgid "Requirements (comma separated)"
 msgstr "Requirements (comma separated)"
 
 #~ msgid "Requirements are required."
 #~ msgstr "Requirements are required."
+
+msgid "Retail & E-commerce"
+msgstr "Retail & E-commerce"
 
 msgid "Salary"
 msgstr "Salary"
@@ -163,8 +265,41 @@ msgstr "Salary"
 #~ msgid "Salary is required."
 #~ msgstr "Salary is required."
 
+msgid "Sales & Business Development"
+msgstr "Sales & Business Development"
+
+msgid "Science & Research"
+msgstr "Science & Research"
+
+msgid "Seasonal"
+msgstr "Seasonal"
+
+msgid "Select a category"
+msgstr "Select a category"
+
+msgid "Select category"
+msgstr "Select category"
+
+msgid "Select employment type"
+msgstr "Select employment type"
+
+msgid "Select experience level"
+msgstr "Select experience level"
+
+msgid "Select work mode"
+msgstr "Select work mode"
+
+msgid "Some experience preferred (6+ months)"
+msgstr "Some experience preferred (6+ months)"
+
 msgid "Something went wrong while posting job."
 msgstr "Something went wrong while posting job."
+
+msgid "Supervisory experience required"
+msgstr "Supervisory experience required"
+
+msgid "Temporary"
+msgstr "Temporary"
 
 #~ msgid "Title is required."
 #~ msgstr "Title is required."
@@ -172,8 +307,14 @@ msgstr "Something went wrong while posting job."
 msgid "Total jobs"
 msgstr "Total jobs"
 
+msgid "Transportation & Delivery"
+msgstr "Transportation & Delivery"
+
 msgid "Try again later or adjust the filters from the previous page."
 msgstr "Try again later or adjust the filters from the previous page."
+
+msgid "Volunteer"
+msgstr "Volunteer"
 
 msgid "Work Mode"
 msgstr "Work Mode"
