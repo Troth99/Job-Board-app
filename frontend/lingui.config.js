@@ -131,6 +131,12 @@ export default defineConfig({
 			],
 
 		},
+			{
+			path: "<rootDir>/src/i18n/locales/{locale}/post-job",
+			include: ["src/features/jobs/views/CreateJob",
+			],
+
+		},
 	
 	],
 });

@@ -15,6 +15,7 @@ import useForm from "../../../../shared/hooks/useForm";
 import { valuesInterface } from "../../types/Job.model";
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 const initialValues = {
   title: "",
@@ -45,6 +46,7 @@ function PostJob() {
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const { createJob } = useJobs();
+  const {t} = useLingui();
 
   const validateForm = (values: valuesInterface) => jobPostValidations(values);
 
@@ -75,15 +77,15 @@ function PostJob() {
      <MetaData seo={seo} />
 
     <div className="post-job-container">
-      <h2>Post a New Job</h2>
+      <h2><Trans>Post a New Job</Trans></h2>
       <Link to={`/how-to-post-job`} className="back-link">
         <span className="back-link__spark" aria-hidden="true">
-          Guide
+          <Trans>Guide</Trans>
         </span>
         <span className="back-link__content">
-          <span className="back-link__title">Need help filling the form?</span>
+          <span className="back-link__title"><Trans>Need help filling the form?</Trans></span>
           <span className="back-link__text">
-            Open the job posting guide with examples for every field.
+            <Trans>Open the job posting guide with examples for every field.</Trans>
           </span>
         </span>
         <span className="back-link__arrow" aria-hidden="true">
@@ -92,21 +94,21 @@ function PostJob() {
       </Link>
       <form className="post-job-form" onSubmit={formHandler}>
         <div className="form-group">
-          <label htmlFor="title">Job Title</label>
+          <label htmlFor="title"><Trans>Job Title</Trans></label>
           <input
             type="text"
             id="title"
             {...register("title")}
-            placeholder="Job Title"
+            placeholder={t`Job Title`}
           />
           <div className="error-message">{errors.title}</div>
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">Job Description</label>
+          <label htmlFor="description"><Trans>Job Description</Trans></label>
           <textarea
             id="description"
-            placeholder="Job Description"
+            placeholder={t`Job Description`}
             {...register("description")}
           ></textarea>
           <div className="error-message">{errors.description}</div>
@@ -114,40 +116,40 @@ function PostJob() {
 
         <div className="form-group">
           <label htmlFor="additionalInfo">
-            Additional Information{" "}
-            <span className="optional-badge">Optional</span>
+            <Trans>Additional Information</Trans>{" "}
+            <span className="optional-badge"><Trans>Optional</Trans></span>
           </label>
           <textarea
             id="additionalInfo"
-            placeholder="e.g., We are happy to review your application and contact shortlisted candidates."
+            placeholder={t`e.g., We are happy to review your application and contact shortlisted candidates.`}
             {...register("additionalInfo")}
           ></textarea>
         </div>
 
         <div className="form-group">
-          <label htmlFor="location">Location</label>
+          <label htmlFor="location"><Trans>Location</Trans></label>
           <input
             type="text"
             id="location"
-            placeholder="Location"
+            placeholder={t`Location`}
             {...register("location")}
           />
           <div className="error-message">{errors.location}</div>
         </div>
 
         <div className="form-group">
-          <label htmlFor="salary">Salary</label>
+          <label htmlFor="salary"><Trans>Salary</Trans></label>
           <input
             type="text"
             id="salary"
-            placeholder="Salary"
+            placeholder={t`Salary`}   
             {...register("salary")}
           />
           <div className="error-message">{errors.salary}</div>
         </div>
 
         <div className="form-group">
-          <label htmlFor="workMode">Work Mode</label>
+          <label htmlFor="workMode"><Trans>Work Mode</Trans></label>
           <WorkModeSelect
             value={register("workMode").value}
             onChange={(e) => setFieldValue("workMode", e.target.value)}
@@ -156,7 +158,7 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="salary">Category</label>
+          <label htmlFor="salary"><Trans>Category</Trans></label>
           <JobCategorySelect
             value={register("category").value || ""}
             onChange={(e) => setFieldValue("category", e.target.value)}
@@ -167,7 +169,7 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="salary">Employment Type</label>
+          <label htmlFor="salary"><Trans>Employment Type</Trans></label>
           <EmploymentTypeSelect
             value={register("employmentType").value}
             onChange={(e) => setFieldValue("employmentType", e.target.value)}
@@ -176,7 +178,7 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="experienceLevel">Experience Requirement</label>
+          <label htmlFor="experienceLevel"><Trans>Experience Requirement</Trans></label>
           <ExperienceLevelSelect
             value={register("experienceLevel").value}
             onChange={(e) => setFieldValue("experienceLevel", e.target.value)}
@@ -186,8 +188,8 @@ function PostJob() {
 
         <div className="form-group">
           <label htmlFor="applicationDeadline">
-            Application Deadline{" "}
-            <span className="optional-badge">Optional</span>
+            <Trans>Application Deadline</Trans>{" "}
+            <span className="optional-badge"><Trans>Optional</Trans></span>
           </label>
           <input
             type="date"
@@ -198,7 +200,7 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="openings">Open Positions</label>
+          <label htmlFor="openings"><Trans>Open Positions</Trans></label>
           <input
             type="number"
             id="openings"
@@ -212,7 +214,7 @@ function PostJob() {
 
         <div className="form-group">
           <label htmlFor="workSchedule">
-            Work Schedule <span className="optional-badge">Optional</span>
+            <Trans>Work Schedule</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
           </label>
           <input
             type="text"
@@ -224,8 +226,8 @@ function PostJob() {
 
         <div className="form-group">
           <label htmlFor="languageRequirements">
-            Language Requirements{" "}
-            <span className="optional-badge">Optional</span>
+            <Trans>Language Requirements</Trans>{" "}
+            <span className="optional-badge"><Trans>Optional</Trans></span>
           </label>
           <input
             type="text"
@@ -236,7 +238,7 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="educationLevel">Education Level</label>
+          <label htmlFor="educationLevel"><Trans>Education Level</Trans></label>
           <input
             type="text"
             id="educationLevel"
@@ -247,7 +249,7 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="requirements">Requirements (comma separated)</label>
+          <label htmlFor="requirements"><Trans>Requirements (comma separated)</Trans></label>
           <input
             type="text"
             id="requirements"
@@ -259,8 +261,8 @@ function PostJob() {
 
         <div className="form-group">
           <label htmlFor="benefits">
-            Benefits (comma separated){" "}
-            <span className="optional-badge">Optional</span>
+            <Trans>Benefits (comma separated)</Trans>{" "}
+            <span className="optional-badge"><Trans>Optional</Trans></span>
           </label>
           <input
             type="text"
@@ -271,18 +273,18 @@ function PostJob() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="contactEmail">Contact Email</label>
+          <label htmlFor="contactEmail"><Trans>Contact Email</Trans></label>
           <input
             type="email"
             id="contactEmail"
-            placeholder="Contact Email"
-            {...register("email")}
+            placeholder="e.g., example@example.com"
+            {...register("contactEmail")}
           />
-          <div className="error-message">{errors.email}</div>
+          <div className="error-message">{errors.contactEmail}</div>
         </div>
 
         <button type="submit" className="post-job-button" disabled={loading}>
-          {loading ? "Posting job..." : "Post job"}
+          {loading ? t`Posting job...` : t`Post job`}
         </button>
       </form>
     </div>

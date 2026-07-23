@@ -41,7 +41,7 @@ const initialValues = {
 };
 
 
-function PostJob() {
+function CreateJob() {
   const { companyId } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ function PostJob() {
       navigate(`/company/${companyId}/dashboard`);
     } catch (error: unknown) {
       if (error instanceof Error) {
-        console.error("Somethign went wrong while posting job.");
+        console.error("Something went wrong while posting job.");
       } else {
         console.error("Unknown error", error);
       }
@@ -291,4 +291,4 @@ function PostJob() {
   );
 }
 
-export default PostJob;
+export default CreateJob;

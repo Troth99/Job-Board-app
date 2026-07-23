@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2026-07-16 14:19+0300\n"
+"POT-Creation-Date: 2026-07-23 16:04+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,17 +22,11 @@ msgstr "Application Deadline"
 msgid "Benefits (comma separated)"
 msgstr "Benefits (comma separated)"
 
-msgid "Browse all open roles"
-msgstr "Browse all open roles"
-
 msgid "Category"
 msgstr "Category"
 
 msgid "Contact Email"
 msgstr "Contact Email"
-
-msgid "Current page"
-msgstr "Current page"
 
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr "e.g., We are happy to review your application and contact shortlisted candidates."
@@ -45,9 +39,6 @@ msgstr "Employment Type"
 
 msgid "Experience Requirement"
 msgstr "Experience Requirement"
-
-msgid "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
-msgstr "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
 
 msgid "Guide"
 msgstr "Guide"
@@ -67,17 +58,11 @@ msgstr "Location"
 msgid "Need help filling the form?"
 msgstr "Need help filling the form?"
 
-msgid "No jobs found."
-msgstr "No jobs found."
-
 msgid "Open Positions"
 msgstr "Open Positions"
 
 msgid "Open the job posting guide with examples for every field."
 msgstr "Open the job posting guide with examples for every field."
-
-msgid "Opportunities"
-msgstr "Opportunities"
 
 msgid "Optional"
 msgstr "Optional"
@@ -96,12 +81,6 @@ msgstr "Requirements (comma separated)"
 
 msgid "Salary"
 msgstr "Salary"
-
-msgid "Total jobs"
-msgstr "Total jobs"
-
-msgid "Try again later or adjust the filters from the previous page."
-msgstr "Try again later or adjust the filters from the previous page."
 
 msgid "Work Mode"
 msgstr "Work Mode"
