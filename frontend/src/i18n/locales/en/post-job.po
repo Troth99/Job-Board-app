@@ -145,8 +145,8 @@ msgstr "Human Resources"
 msgid "Hybrid"
 msgstr "Hybrid"
 
-msgid "Information Technology"
-msgstr "Information Technology"
+#~ msgid "Information Technology"
+#~ msgstr "Information Technology"
 
 msgid "Internship"
 msgstr "Internship"

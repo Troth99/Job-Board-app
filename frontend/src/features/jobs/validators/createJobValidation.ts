@@ -1,5 +1,4 @@
 import { valuesInterface } from "../types/Job.model";
-import type { useLingui } from "@lingui/react";
 
 
 

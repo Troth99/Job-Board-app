@@ -133,8 +133,8 @@ msgstr ""
 msgid "Hybrid"
 msgstr ""
 
-msgid "Information Technology"
-msgstr ""
+#~ msgid "Information Technology"
+#~ msgstr ""
 
 msgid "Internship"
 msgstr ""

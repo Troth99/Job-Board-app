@@ -145,8 +145,8 @@ msgstr "Човешки ресурси"
 msgid "Hybrid"
 msgstr "Хибриден"
 
-msgid "Information Technology"
-msgstr "Информационни технологии"
+#~ msgid "Information Technology"
+#~ msgstr "Информационни технологии"
 
 msgid "Internship"
 msgstr "Стаж"

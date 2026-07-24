@@ -144,6 +144,11 @@ export default defineConfig({
 			include: ["src/shared/components/Pagination"],
 
 		},
+				{
+			path: "<rootDir>/src/i18n/locales/{locale}/company-view",
+			include: ["src/features/companies/views/ViewAllCompanies",],
+
+		},
 	
 	],
 });

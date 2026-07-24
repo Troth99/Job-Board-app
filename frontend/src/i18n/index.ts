@@ -24,6 +24,7 @@ import {messages as bgViewAllJobs} from "./locales/bg/jobs.po";
 import { messages as bgNotifications } from "./locales/bg/notifications.po";
 import {messages as bgPostJob} from "./locales/bg/post-job.po";
 import {messages as bgPagination} from "./locales/bg/pagination.po";
+import { messages as bgCompanyView } from "./locales/bg/company-view.po";
 
 
 //imports for English translations
@@ -49,6 +50,7 @@ import {messages as enViewAllJobs} from "./locales/en/jobs.po";
 import { messages as enNotifications } from "./locales/en/notifications.po";
 import {messages as enPostJob} from "./locales/en/post-job.po";
 import {messages as enPagination} from "./locales/en/pagination.po";
+import { messages as enCompanyView } from "./locales/en/company-view.po";
 
 
 
@@ -112,7 +114,8 @@ i18n.load({
     ...bgViewAllJobs,
     ...bgNotifications,
     ...bgPostJob,
-    ...bgPagination
+    ...bgPagination,
+    ...bgCompanyView
   
   },
   en: {
@@ -138,7 +141,8 @@ i18n.load({
     ...enEditProfileContainer,
     ...enViewAllJobs,
     ...enNotifications,
-    ...enPostJob
+    ...enPostJob,
+    ...enCompanyView
   },
 });
 

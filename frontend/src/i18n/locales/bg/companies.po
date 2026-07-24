@@ -12,3 +12,51 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "Plural-Forms: \n"
+
+msgid "Added"
+msgstr ""
+
+msgid "Available companies"
+msgstr ""
+
+msgid "Browse companies in one clean view."
+msgstr ""
+
+msgid "Clear filter"
+msgstr ""
+
+msgid "Compare teams by industry, location, size, and website without losing the visual language of the rest of the app."
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Name, industry, location, size"
+msgstr ""
+
+msgid "No companies found."
+msgstr ""
+
+msgid "No matches for this filter."
+msgstr ""
+
+msgid "Not provided"
+msgstr ""
+
+msgid "Once companies are created, they will appear here in a structured directory layout."
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "shown with the current filter"
+msgstr ""
+
+msgid "Try a different company name, city, industry, or team size."
+msgstr ""
+
+msgid "Visit site"
+msgstr ""
+
+msgid "Website"
+msgstr ""
