@@ -108,7 +108,7 @@ msgstr "Местоположение:"
 #~ msgstr "Излизане"
 
 msgid "New password"
-msgstr ""
+msgstr "Нова парола"
 
 msgid "No company role"
 msgstr "Няма роля в компанията"
@@ -156,16 +156,16 @@ msgid "Role:"
 msgstr "Роля:"
 
 msgid "Save Changes"
-msgstr ""
+msgstr "Запази промените"
 
 msgid "Saving..."
-msgstr ""
+msgstr "Запазване..."
 
 msgid "sections complete"
 msgstr "секции завършени"
 
 msgid "Security"
-msgstr ""
+msgstr " Сигурност"
 
 msgid "Start hiring by creating a detailed job post for your team."
 msgstr "Започнете наемането, като създадете подробна обява за работа за вашия екип."

@@ -39,8 +39,8 @@ export default defineConfig({
 			include: ["src/features/jobs"],
 		},
 		{
-			path: "<rootDir>/src/i18n/locales/{locale}/companies",
-			include: ["src/features/companies"],
+			path: "<rootDir>/src/i18n/locales/{locale}/view-all-companies",
+			include: ["src/features/companies/views/ViewAllCompanies"],
 		},
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/categories",
@@ -147,6 +147,11 @@ export default defineConfig({
 				{
 			path: "<rootDir>/src/i18n/locales/{locale}/company-view",
 			include: ["src/features/companies/views/ViewAllCompanies",],
+
+		},
+				{
+			path: "<rootDir>/src/i18n/locales/{locale}/register-company",
+			include: ["src/features/companies/views/RegisterCompany",],
 
 		},
 	

@@ -5,52 +5,52 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
-"Language: bg\n"
+"Language: en\n"
 
 msgid "Added"
-msgstr ""
+msgstr "Added"
 
 msgid "Available companies"
-msgstr ""
+msgstr "Available companies"
 
 msgid "Browse companies in one clean view."
-msgstr ""
+msgstr "Browse companies in one clean view."
 
 msgid "Clear filter"
-msgstr ""
+msgstr "Clear filter"
 
 msgid "Compare teams by industry, location, size, and website without losing the visual language of the rest of the app."
-msgstr ""
+msgstr "Compare teams by industry, location, size, and website without losing the visual language of the rest of the app."
 
 msgid "Location"
-msgstr "Локация"
+msgstr "Location"
 
 msgid "Name, industry, location, size"
-msgstr ""
+msgstr "Name, industry, location, size"
 
 msgid "No companies found."
-msgstr ""
+msgstr "No companies found."
 
 msgid "No matches for this filter."
-msgstr ""
+msgstr "No matches for this filter."
 
 msgid "Not provided"
-msgstr ""
+msgstr "Not provided"
 
 msgid "Once companies are created, they will appear here in a structured directory layout."
-msgstr ""
+msgstr "Once companies are created, they will appear here in a structured directory layout."
 
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
 msgid "shown with the current filter"
-msgstr ""
+msgstr "shown with the current filter"
 
 msgid "Try a different company name, city, industry, or team size."
-msgstr ""
+msgstr "Try a different company name, city, industry, or team size."
 
 msgid "Visit site"
-msgstr ""
+msgstr "Visit site"
 
 msgid "Website"
-msgstr ""
+msgstr "Website"
