@@ -4,6 +4,7 @@ import { Job } from "../../../jobs/types/Job.model";
 
 interface ShowCompanyJobsProps {
   jobs: Job[];
+  isReadOnly?: boolean | undefined;
   onJobClick?: (jobId: string) => void;
 }
 

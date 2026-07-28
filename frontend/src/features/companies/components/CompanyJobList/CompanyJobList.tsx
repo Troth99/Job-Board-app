@@ -4,12 +4,13 @@ import { ShowJobs } from "../showJobs/showCompanyJobs";
 import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";
 import { Job } from "../../../jobs/types/Job.model";
 import { useNavigate } from "react-router";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 interface CompanyJobsListProps {
   companyId: string;
   canPostJob: boolean;
   onPostJob: () => void;
-  isReadOnly?: boolean;
+  isReadOnly?: boolean | undefined;
 }
 
 
@@ -23,6 +24,7 @@ export function CompanyJobsList({
   const [loading, setLoading] = useState<boolean>(true);
   const { getRecentJobsByCompany } = useJobs();
   const navigate = useNavigate();
+  const {t} = useLingui();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,16 +50,16 @@ const viewAllJobsHandler = () =>{
   return (
     <>
       <div className="content-header-jobs">
-        <h3>Most 5 recent Posted jobs</h3>
+        <h3><Trans>Most 5 recent Posted jobs</Trans></h3>
         <div className="buttons-for-jobs">
           {canPostJob && (
             <button className="add-button" onClick={onPostJob}>
-              + Post Job
+            <Trans>+ Post Job</Trans>
             </button>
           )}
           {canPostJob && (
             <button className="add-button" onClick={viewAllJobsHandler} >
-              + View all jobs for the company
+              <Trans>+ View all jobs for the company</Trans>
             </button>
           )}
         </div>
@@ -65,7 +67,7 @@ const viewAllJobsHandler = () =>{
 
       <div className="job-list">
         {loading ? (
-          <LoadingIndicator size="small" message="Loading jobs..." />
+          <LoadingIndicator size="small" message={t`Loading jobs...`} />
         ) : (
           <ShowJobs jobs={jobs} isReadOnly={isReadOnly} />
         )}

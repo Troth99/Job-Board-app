@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-28 02:52+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "+ Post Job"
+msgstr "+ Публикуване на работа"
+
+msgid "+ View all jobs for the company"
+msgstr "+ Преглед на всички работни места за компанията"
+
+msgid "Abandon company"
+msgstr "Прекратяване на компанията"
+
+msgid "Add more options"
+msgstr "Добавете още опции"
+
+msgid "Add more options here as your company workflow grows."
+msgstr "Добавете още опции тук, тъй като работният процес на вашата компания се разраства."
+
+msgid "Analytics"
+msgstr "Анализи"
+
+msgid "Announcements"
+msgstr "Съобщения"
+
+msgid "Calendar"
+msgstr "Календар"
+
+msgid "Company dashboard"
+msgstr "Табло на компанията"
+
+msgid "Future modules"
+msgstr "Бъдещи модули"
+
+msgid "Insights"
+msgstr "Анализи"
+
+msgid "Invite members and send internal messages."
+msgstr "Поканете членове и изпращайте вътрешни съобщения."
+
+msgid "Jobs board"
+msgstr "Борд за работни места"
+
+msgid "Jobs board control"
+msgstr "Контрол на борда за работни места"
+
+msgid "Leave company"
+msgstr "Напуснете компанията"
+
+msgid "Loading jobs..."
+msgstr "Зареждане на работни места..."
+
+msgid "Monitor hiring activity and member engagement trends."
+msgstr "Следете активността по наемане и тенденциите в ангажираността на членовете."
+
+msgid "Most 5 recent Posted jobs"
+msgstr "Последните 5 публикувани работни места"
+
+msgid "Operational overview"
+msgstr "Оперативен преглед"
+
+msgid "Post new jobs and monitor recent openings for your company."
+msgstr "Публикувайте нови работни места и следете последните обяви за вашата компания."
+
+msgid "Reports"
+msgstr "Доклади"
+
+msgid "Share updates with all company members in one feed."
+msgstr "Споделяйте актуализации с всички членове на компанията в един поток."
+
+msgid "Streamline team coordination, internal communication, and hiring execution from a single control panel."
+msgstr "Оптимизирайте координацията на екипа, вътрешната комуникация и изпълнението на наемането от един контролен панел."
+
+msgid "Team tools"
+msgstr "Инструменти за екипа"
+
+#~ msgid "Track interviews, deadlines, and team milestones."
+#~ msgstr "Следете интервюта, крайни срокове и екипни етапи."
+
+msgid "Update Company"
+msgstr "Актуализиране на компанията"
+
+msgid "Use this block for quick links and new tools in the future."
+msgstr "Използвайте този блок за бързи връзки и нови инструменти в бъдеще."
+
+msgid "View full calendar"
+msgstr "Преглед на пълния календар"
+
+#. placeholder {0}: props.company?.name
+msgid "Welcome to <0>{0}</0>"
+msgstr "Добре дошли в <0>{0}</0>"
+
+msgid "Your message has been sent successfully!"
+msgstr "Вашето съобщение беше изпратено успешно!"

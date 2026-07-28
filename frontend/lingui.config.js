@@ -154,6 +154,15 @@ export default defineConfig({
 			include: ["src/features/companies/views/RegisterCompany",],
 
 		},
+		
+				{
+			path: "<rootDir>/src/i18n/locales/{locale}/dashboard",
+			include: ["src/features/companies/views/Dashboard",
+					"src/features/companies/components/DashboardSidebarUI",
+					"src/features/companies/components/CompanyJobList",
+			] ,
+
+		},
 	
 	],
 });

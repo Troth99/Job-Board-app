@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import CompanyCalendar from "../DashboardComponents/CompanyCalendar/CompanyCalendar";
+import { Trans } from "@lingui/react/macro";
 
 type MemberDashboardSideBarProps = {
   company: any;
@@ -18,7 +19,7 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
       <div className="sidebar-header">
         <p className="sidebar-kicker">Company panel</p>
         <h2>
-          Welcome to <span className="company-name">{props.company?.name}</span>
+          <Trans>Welcome to <span className="company-name">{props.company?.name}</span></Trans>
         </h2>
         <p className="user-role">Role: {props.localRole}</p>
       </div>
@@ -38,16 +39,16 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
           {props.localRole === "admin" || props.localRole === "owner" ? (
             <li>
               <Link to={`/company/${props.companyId}/update`}>
-                Update Company
+                <Trans>Update Company</Trans>
               </Link>
             </li>
           ) : null}
 
           <li>
-            <a href="#team-section">Team tools</a>
+            <a href="#team-section"><Trans>Team tools</Trans></a>
           </li>
           <li>
-            <a href="#jobs-section">Jobs board</a>
+            <a href="#jobs-section"><Trans>Jobs board</Trans></a>
           </li>
           <li>
             <Link to={`/company/${props.companyId}/members`}>Members</Link>
@@ -72,24 +73,24 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
           aria-label="Company calendar"
         >
           <div className="sidebar-mini-calendar-header">
-            <h3>Calendar</h3>
+            <h3><Trans>Calendar</Trans></h3>
             <button
               type="button"
               className="sidebar-mini-calendar-toggle"
               onClick={() => props.setIsCalendarOpen(true)}
             >
-              View full calendar
+              <Trans>View full calendar</Trans>
             </button>
           </div>
           <CompanyCalendar compact />
         </section>
 
         <div className="sidebar-extension">
-          <h3>Add more options</h3>
-          <p>Use this block for quick links and new tools in the future.</p>
+          <h3><Trans>Add more options</Trans></h3>
+          <p><Trans>Use this block for quick links and new tools in the future.</Trans></p>
           <div className="sidebar-extension-chips">
-            <span>Analytics</span>
-            <span>Reports</span>
+            <span><Trans>Analytics</Trans></span>
+            <span><Trans>Reports</Trans></span>
           </div>
         </div>
 
@@ -98,14 +99,14 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
             className="sidebar-btn-danger"
             onClick={() => props.setAbandonModalOpen(true)}
           >
-            Abandon company
+            <Trans>Abandon company</Trans>
           </button>
 
           <button
             className="sidebar-btn-danger"
             onClick={() => props.setLeaveModalOpen(true)}
           >
-            Leave company
+            <Trans>Leave company</Trans>
           </button>
         </div>
       </div>
