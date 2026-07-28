@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import "./AbandonCompany.css";
+import { Trans } from "@lingui/react/macro";
 
 interface AbandonCompanyModalProps {
   isOpen: boolean;
@@ -27,19 +28,19 @@ export function AbandonCompanyModal({
         <button className="abandon-modal-close-btn" onClick={onClose}>
           ×
         </button>
-        <h3>Abandon company</h3>
+        <h3><Trans>Abandon company</Trans></h3>
         {isOwner ? (
           <>
             <p>
-              Are you sure you want to abandon the company? This action cannot
-              be undone.
+              <Trans>Are you sure you want to abandon the company? This action cannot
+              be undone.</Trans>
             </p>
             <p>
-             <span className="abandon-modal-warning">WARNING:</span> This action is irreversible and will result in the loss
+             <Trans><span className="abandon-modal-warning">WARNING:</span> This action is irreversible and will result in the loss
               of all company data. Members and jobs associated with the company
-              will be deleted.
+              will be deleted.</Trans>
             </p>
-            <p>Type <span className="abandon-modal-warning">ABANDON</span> in order to proceed:</p>
+            <p><Trans>Type <span className="abandon-modal-warning">ABANDON</span> in order to proceed:</Trans></p>
             <div className="input-abandon">
               <input
                 type="text"
@@ -53,17 +54,17 @@ export function AbandonCompanyModal({
               onClick={onConfirm}
               disabled={!isAbandonEnabled}
             >
-              Yes, abandon
+              <Trans>Yes, abandon</Trans>
             </button>
           </>
         ) : (
           <>
             <p>
-              Only the owner can abandon the company. You do not have permission
-              to perform this action.
+              <Trans>Only the owner can abandon the company. You do not have permission
+              to perform this action.</Trans>
             </p>
             <button className="abandon-modal-btn-secondary" onClick={onClose}>
-              OK
+              <Trans>OK</Trans>
             </button>
           </>
         )}

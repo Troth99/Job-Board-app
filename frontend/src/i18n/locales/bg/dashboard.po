@@ -19,6 +19,9 @@ msgstr "+ Публикуване на работа"
 msgid "+ View all jobs for the company"
 msgstr "+ Преглед на всички работни места за компанията"
 
+msgid "<0>WARNING:</0> This action is irreversible and will result in the loss of all company data. Members and jobs associated with the company will be deleted."
+msgstr "<0>ВНИМАНИЕ:</0> Това действие е необратимо и ще доведе до загуба на всички данни на компанията. Членовете и работните места, свързани с компанията, ще бъдат изтрити."
+
 msgid "Abandon company"
 msgstr "Прекратяване на компанията"
 
@@ -34,11 +37,23 @@ msgstr "Анализи"
 msgid "Announcements"
 msgstr "Съобщения"
 
+msgid "Are you sure you want to abandon the company? This action cannot be undone."
+msgstr "Сигурни ли сте, че искате да прекратите компанията? Това действие не може да бъде отменено."
+
+msgid "Are you sure you want to leave the company?"
+msgstr "Сигурни ли сте, че искате да напуснете компанията?"
+
 msgid "Calendar"
 msgstr "Календар"
 
+msgid "Cancel"
+msgstr "Отказ"
+
 msgid "Company dashboard"
 msgstr "Табло на компанията"
+
+msgid "Company panel"
+msgstr "Панел на компанията"
 
 msgid "Future modules"
 msgstr "Бъдещи модули"
@@ -58,8 +73,17 @@ msgstr "Контрол на борда за работни места"
 msgid "Leave company"
 msgstr "Напуснете компанията"
 
+msgid "Leave Company"
+msgstr "Напуснете компанията"
+
+msgid "Leaving..."
+msgstr "Напускане..."
+
 msgid "Loading jobs..."
 msgstr "Зареждане на работни места..."
+
+msgid "Members"
+msgstr "Членове"
 
 msgid "Monitor hiring activity and member engagement trends."
 msgstr "Следете активността по наемане и тенденциите в ангажираността на членовете."
@@ -67,14 +91,45 @@ msgstr "Следете активността по наемане и тенде�
 msgid "Most 5 recent Posted jobs"
 msgstr "Последните 5 публикувани работни места"
 
+msgid "OK"
+msgstr "ОК"
+
+msgid "Only the owner can abandon the company. You do not have permission to perform this action."
+msgstr "Само собственикът може да прекрати компанията. Нямате разрешение да извършвате това действие."
+
 msgid "Operational overview"
 msgstr "Оперативен преглед"
+
+msgid "Overview"
+msgstr "Преглед"
 
 msgid "Post new jobs and monitor recent openings for your company."
 msgstr "Публикувайте нови работни места и следете последните обяви за вашата компания."
 
+msgid "Promote Member to Owner"
+msgstr "Повишаване на член до собственик"
+
+msgid "Promote ownership"
+msgstr "Повишаване на собствеността"
+
+msgid "Promote to Owner"
+msgstr "Повиши до собственик"
+
+msgid "Promoting..."
+msgstr "Повишаване..."
+
 msgid "Reports"
 msgstr "Доклади"
+
+#. placeholder {0}: props.localRole
+msgid "Role: {0}"
+msgstr "Роля: {0}"
+
+msgid "Select a member"
+msgstr "Изберете член"
+
+msgid "Select member:"
+msgstr "Изберете член:"
 
 msgid "Share updates with all company members in one feed."
 msgstr "Споделяйте актуализации с всички членове на компанията в един поток."
@@ -85,8 +140,14 @@ msgstr "Оптимизирайте координацията на екипа, �
 msgid "Team tools"
 msgstr "Инструменти за екипа"
 
+msgid "This action is irreversible and you will lose access to company resources."
+msgstr "Това действие е необратимо и ще загубите достъп до ресурсите на компанията."
+
 #~ msgid "Track interviews, deadlines, and team milestones."
 #~ msgstr "Следете интервюта, крайни срокове и екипни етапи."
+
+msgid "Type <0>ABANDON</0> in order to proceed:"
+msgstr "Въведете <0>ABANDON</0>, за да продължите:"
 
 msgid "Update Company"
 msgstr "Актуализиране на компанията"
@@ -100,6 +161,18 @@ msgstr "Преглед на пълния календар"
 #. placeholder {0}: props.company?.name
 msgid "Welcome to <0>{0}</0>"
 msgstr "Добре дошли в <0>{0}</0>"
+
+msgid "Yes, abandon"
+msgstr "Да, прекратяване"
+
+msgid "Yes, leave"
+msgstr "Да, напуснете"
+
+msgid "You are the owner of the company"
+msgstr "Вие сте собственик на компанията"
+
+msgid "You cannot leave the company until you transfer ownership to another member."
+msgstr "Не можете да напуснете компанията, докато не прехвърлите собствеността на друг член."
 
 msgid "Your message has been sent successfully!"
 msgstr "Вашето съобщение беше изпратено успешно!"

@@ -160,6 +160,9 @@ export default defineConfig({
 			include: ["src/features/companies/views/Dashboard",
 					"src/features/companies/components/DashboardSidebarUI",
 					"src/features/companies/components/CompanyJobList",
+					"src/features/companies/components/DangerButtons/LeaveCompany",
+					"src/features/companies/components/DangerButtons/AbandonCompany",
+					"src/features/companies/components/PromoteOwnershipModal",
 			] ,
 
 		},

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { CompanyMember } from "../../../interfaces/CompanyMember.model";
 import "./PromoteOwnerShipModal.css";
+import { CompanyMember } from "../../types/CompanyMember.model";
+import { Trans } from "@lingui/react/macro";
 
 interface PromoteOwnershipModalProps {
   isOpen: boolean;
@@ -48,13 +49,13 @@ export function PromoteOwnerShipModal({
         >
           ×
         </button>
-        <h2 className="promote-owner-modal__title">Promote Member to Owner</h2>
+        <h2 className="promote-owner-modal__title"><Trans>Promote Member to Owner</Trans></h2>
         <form className="promote-owner-modal__form" onSubmit={submitHandler}>
           <label
             htmlFor="promote-owner-select"
             className="promote-owner-modal__label"
           >
-            Select member:
+              <Trans>Select member:</Trans>
           </label>
           <select
             id="promote-owner-select"
@@ -63,7 +64,7 @@ export function PromoteOwnerShipModal({
             onChange={(e) => setSelectedMemberId(e.target.value)}
           >
             <option value="" disabled>
-              Select a member
+              <Trans>Select a member</Trans>
             </option>
             {companyMembers
               .filter((member) => member.role !== "owner")
@@ -78,7 +79,7 @@ export function PromoteOwnerShipModal({
             className="promote-owner-modal__submit"
             disabled={!selectedMemberId || loading}
           >
-            {loading ? "Promoting..." : "Promote to Owner"}
+            {loading ? <Trans>Promoting...</Trans> : <Trans>Promote to Owner</Trans>}
           </button>
         </form>
       </div>

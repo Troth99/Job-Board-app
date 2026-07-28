@@ -17,11 +17,11 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
   return (
     <div className="sidebar">
       <div className="sidebar-header">
-        <p className="sidebar-kicker">Company panel</p>
+        <p className="sidebar-kicker"><Trans>Company panel</Trans></p>
         <h2>
           <Trans>Welcome to <span className="company-name">{props.company?.name}</span></Trans>
         </h2>
-        <p className="user-role">Role: {props.localRole}</p>
+        <p className="user-role"><Trans>Role: {props.localRole}</Trans></p>
       </div>
       <div className="sidebar-nav">
         <div className="job-card-dashboard-image">
@@ -33,7 +33,7 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
         </div>
         <ul className="sidebar-nav-list">
           <li>
-            <a href="#overview-section">Overview</a>
+            <a href="#overview-section"><Trans>Overview</Trans></a>
           </li>
 
           {props.localRole === "admin" || props.localRole === "owner" ? (
@@ -51,7 +51,7 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
             <a href="#jobs-section"><Trans>Jobs board</Trans></a>
           </li>
           <li>
-            <Link to={`/company/${props.companyId}/members`}>Members</Link>
+            <Link to={`/company/${props.companyId}/members`}><Trans>Members</Trans></Link>
           </li>
 
           {props.localRole === "owner" && (
@@ -60,7 +60,7 @@ export function MemberDashboardSideBar(props: MemberDashboardSideBarProps) {
                 className="promote-ownership-btn"
                 onClick={() => props.setPromoteOwnershipModalOpen(true)}
               >
-                Promote ownership
+                <Trans>Promote ownership</Trans>
               </button>
             </li>
           )}
