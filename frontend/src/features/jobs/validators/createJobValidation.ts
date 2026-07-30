@@ -1,7 +1,5 @@
 import { valuesInterface } from "../types/Job.model";
 
-
-
 //function to normalize the array of strings, removing empty strings and trimming whitespace
 const normalize = (arr: any) =>
   Array.isArray(arr)
@@ -12,8 +10,13 @@ const normalize = (arr: any) =>
       ? arr.split(",").map((x) => x.trim())
       : [];
 
-export function jobPostValidations(form: valuesInterface,): Record<string, string> {
+export function jobPostValidations(
+  form: valuesInterface,
+  messages: Record<string, string>,
+): Record<string, string> {
+
   let errors: Record<string, string> = {};
+
   const openingsValue =
     form.openings === undefined || form.openings === null
       ? ""
@@ -25,82 +28,73 @@ export function jobPostValidations(form: valuesInterface,): Record<string, strin
       : Boolean(form.category?._id || form.category?.name);
 
   if (!form.title || form.title.trim().length === 0) {
-    errors.title = `Title is required.`;
+    errors.title = messages.titleRequired;
   }
 
   if (!form.description || form.description.trim().length === 0) {
-    errors.description = `Description is required.`;
+    errors.description = messages.descriptionRequired;
   }
   if (!form.location || form.location.trim().length === 0) {
-    errors.location = `Location is required.`;
+    errors.location = messages.locationRequired;
   }
   if (!form.salary || form.salary.trim().length === 0) {
-    errors.salary = `Salary is required.`;
+    errors.salary = messages.salaryRequired;
   }
 
   if (form.workMode && form.workMode.trim().length === 0) {
-    errors.workMode = `Work mode cannot be empty.`;
+    errors.workMode = messages.workModeCannotBeEmpty;
   }
 
   if (!hasCategory) {
-    errors.category = `Category is required.`;
+    errors.category = messages.categoryRequired;
   }
 
   if (typeof form.workMode === "string" && form.workMode.trim().length === 0) {
-    errors.workMode = `Work mode is required.`;
-  }
-
-  if (
-    typeof form.employmentType === "string" &&
-    form.employmentType.trim().length === 0
-  ) {
-    errors.employmentType = `Employment type is required.`;
+    errors.workMode = messages.workModeRequired;
   }
 
   if (
     typeof form.experienceLevel === "string" &&
     form.experienceLevel.trim().length === 0
   ) {
-    errors.experienceLevel = `Experience level is required.`;
+    errors.experienceLevel = messages.experienceLevelRequired;
   }
 
   if (!form.employmentType || form.employmentType.trim().length === 0) {
-    errors.employmentType = `Employment type is required.`;
+    errors.employmentType = messages.employmentTypeRequired;
   }
 
   if (openingsValue.length === 0) {
-    errors.openings = `Open positions is required.`;
+    errors.openings = messages.openingsRequired;
   } else if (Number.isNaN(Number(openingsValue))) {
-    errors.openings = `Open positions must be a valid number.`;
+    errors.openings = messages.openingsNumberInvalid;
   } else if (Number(openingsValue) <= 0) {
-    errors.openings = `Open positions must be at least 1.`;
+    errors.openings = messages.openingsAtLeastOne;
   }
 
-    if(normalize(form.educationLevel).filter(Boolean).length === 0) {
-      errors.educationLevel = `Education level is required.`;
-    }
-
-
+  if (normalize(form.educationLevel).filter(Boolean).length === 0) {
+    errors.educationLevel = messages.educationLevelRequired;
+  }
 
   if (normalize(form.requirements).filter(Boolean).length === 0) {
-    errors.requirements = `Requirements are required.`;
+    errors.requirements = messages.requirementsRequired;
   }
 
   if (!form.email || form.email.trim().length === 0) {
-    errors.email = `Email is required.`;
+    errors.email = messages.emailRequired;
   }
 
   if (
     form.requiredExperienceYears &&
     Number(form.requiredExperienceYears) < 0
   ) {
-    errors.requiredExperienceYears = `Experience years cannot be negative.`;
+    errors.requiredExperienceYears = messages.experienceYearsNegative;
   }
 
   if (form.applicationDeadline) {
     const selectedDate = new Date(form.applicationDeadline);
     if (Number.isNaN(selectedDate.getTime())) {
-      errors.applicationDeadline = `Invalid application deadline date.`;
+      errors.applicationDeadline = messages.invalidDeadlineDate;
     }
   }
 

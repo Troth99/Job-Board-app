@@ -11,6 +11,7 @@ import { showSuccess } from "../../../../shared/utils/toast";
 import { Link, useNavigate, useParams } from "react-router";
 
 import { jobPostValidations } from "../../validators/createJobValidation";
+import { jobValidationMessages } from "../../validators/jobValidationMessages";
 import useForm from "../../../../shared/hooks/useForm";
 import { valuesInterface } from "../../types/Job.model";
 import { generateSeoConfig } from "../../../../seo/seo";
@@ -46,10 +47,12 @@ function PostJob() {
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const { createJob } = useJobs();
-  const {t} = useLingui();
+  const { t } = useLingui();
 
 
-  const validateForm = (values: valuesInterface) => jobPostValidations(values,);
+
+  const validateForm = (values: valuesInterface) =>
+    jobPostValidations(values, jobValidationMessages);
 
   const onSubmitHandler = async (values: valuesInterface) => {
     setLoading(true);
