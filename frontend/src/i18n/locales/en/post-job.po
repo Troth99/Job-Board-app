@@ -40,8 +40,8 @@ msgstr "Benefits (comma separated)"
 msgid "Category"
 msgstr "Category"
 
-#~ msgid "Category is required."
-#~ msgstr "Category is required."
+msgid "Category is required."
+msgstr "Category is required."
 
 msgid "Consulting & Strategy"
 msgstr "Consulting & Strategy"
@@ -58,8 +58,8 @@ msgstr "Customer Support"
 msgid "Data Science & Analytics"
 msgstr "Data Science & Analytics"
 
-#~ msgid "Description is required."
-#~ msgstr "Description is required."
+msgid "Description is required."
+msgstr "Description is required."
 
 msgid "Design & Creative"
 msgstr "Design & Creative"
@@ -94,29 +94,29 @@ msgstr "Education & Training"
 msgid "Education Level"
 msgstr "Education Level"
 
-#~ msgid "Education level is required."
-#~ msgstr "Education level is required."
+msgid "Education level is required."
+msgstr "Education level is required."
 
-#~ msgid "Email is required."
-#~ msgstr "Email is required."
+msgid "Email is required."
+msgstr "Email is required."
 
 msgid "Employment Type"
 msgstr "Employment Type"
 
-#~ msgid "Employment type is required."
-#~ msgstr "Employment type is required."
+msgid "Employment type is required."
+msgstr "Employment type is required."
 
 msgid "Engineering & Manufacturing"
 msgstr "Engineering & Manufacturing"
 
-#~ msgid "Experience level is required."
-#~ msgstr "Experience level is required."
+msgid "Experience level is required."
+msgstr "Experience level is required."
 
 msgid "Experience Requirement"
 msgstr "Experience Requirement"
 
-#~ msgid "Experience years cannot be negative."
-#~ msgstr "Experience years cannot be negative."
+msgid "Experience years cannot be negative."
+msgstr "Experience years cannot be negative."
 
 msgid "Finance & Accounting"
 msgstr "Finance & Accounting"
@@ -151,8 +151,8 @@ msgstr "Hybrid"
 msgid "Internship"
 msgstr "Internship"
 
-#~ msgid "Invalid application deadline date."
-#~ msgstr "Invalid application deadline date."
+msgid "Invalid application deadline date."
+msgstr "Invalid application deadline date."
 
 msgid "Job Description"
 msgstr "Job Description"
@@ -172,8 +172,8 @@ msgstr "Legal & Compliance"
 msgid "Location"
 msgstr "Location"
 
-#~ msgid "Location is required."
-#~ msgstr "Location is required."
+msgid "Location is required."
+msgstr "Location is required."
 
 msgid "Management experience required"
 msgstr "Management experience required"
@@ -199,14 +199,14 @@ msgstr "On-site"
 msgid "Open Positions"
 msgstr "Open Positions"
 
-#~ msgid "Open positions is required."
-#~ msgstr "Open positions is required."
+msgid "Open positions is required."
+msgstr "Open positions is required."
 
-#~ msgid "Open positions must be a valid number."
-#~ msgstr "Open positions must be a valid number."
+msgid "Open positions must be a valid number."
+msgstr "Open positions must be a valid number."
 
-#~ msgid "Open positions must be at least 1."
-#~ msgstr "Open positions must be at least 1."
+msgid "Open positions must be at least 1."
+msgstr "Open positions must be at least 1."
 
 msgid "Open the job posting guide with examples for every field."
 msgstr "Open the job posting guide with examples for every field."
@@ -238,8 +238,8 @@ msgstr "Remote"
 msgid "Requirements (comma separated)"
 msgstr "Requirements (comma separated)"
 
-#~ msgid "Requirements are required."
-#~ msgstr "Requirements are required."
+msgid "Requirements are required."
+msgstr "Requirements are required."
 
 msgid "Retail & E-commerce"
 msgstr "Retail & E-commerce"
@@ -247,8 +247,8 @@ msgstr "Retail & E-commerce"
 msgid "Salary"
 msgstr "Salary"
 
-#~ msgid "Salary is required."
-#~ msgstr "Salary is required."
+msgid "Salary is required."
+msgstr "Salary is required."
 
 msgid "Sales & Business Development"
 msgstr "Sales & Business Development"
@@ -286,8 +286,8 @@ msgstr "Supervisory experience required"
 msgid "Temporary"
 msgstr "Temporary"
 
-#~ msgid "Title is required."
-#~ msgstr "Title is required."
+msgid "Title is required."
+msgstr "Title is required."
 
 msgid "Transportation & Delivery"
 msgstr "Transportation & Delivery"
@@ -298,11 +298,11 @@ msgstr "Volunteer"
 msgid "Work Mode"
 msgstr "Work Mode"
 
-#~ msgid "Work mode cannot be empty."
-#~ msgstr "Work mode cannot be empty."
+msgid "Work mode cannot be empty."
+msgstr "Work mode cannot be empty."
 
-#~ msgid "Work mode is required."
-#~ msgstr "Work mode is required."
+msgid "Work mode is required."
+msgstr "Work mode is required."
 
 msgid "Work Schedule"
 msgstr "Work Schedule"

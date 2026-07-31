@@ -25,6 +25,12 @@ msgstr "<0>WARNING:</0> This action is irreversible and will result in the loss 
 msgid "Abandon company"
 msgstr "Abandon company"
 
+msgid "Add"
+msgstr "Add"
+
+msgid "Add Member"
+msgstr "Add Member"
+
 msgid "Add more options"
 msgstr "Add more options"
 
@@ -54,6 +60,12 @@ msgstr "Company dashboard"
 
 msgid "Company panel"
 msgstr "Company panel"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Enter member email"
+msgstr "Enter member email"
 
 msgid "Future modules"
 msgstr "Future modules"
@@ -131,6 +143,18 @@ msgstr "Select a member"
 msgid "Select member:"
 msgstr "Select member:"
 
+msgid "Send"
+msgstr "Send"
+
+msgid "Send message"
+msgstr "Send message"
+
+msgid "Send Message"
+msgstr "Send Message"
+
+msgid "Sending..."
+msgstr "Sending..."
+
 msgid "Share updates with all company members in one feed."
 msgstr "Share updates with all company members in one feed."
 
@@ -176,3 +200,6 @@ msgstr "You cannot leave the company until you transfer ownership to another mem
 
 msgid "Your message has been sent successfully!"
 msgstr "Your message has been sent successfully!"
+
+msgid "Your message."
+msgstr "Your message."

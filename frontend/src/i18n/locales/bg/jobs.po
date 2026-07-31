@@ -43,6 +43,9 @@ msgstr "Разгледайте всички отворени позиции"
 msgid "Category"
 msgstr ""
 
+msgid "Category is required."
+msgstr ""
+
 msgid "Consulting & Strategy"
 msgstr ""
 
@@ -59,6 +62,9 @@ msgid "Customer Support"
 msgstr ""
 
 msgid "Data Science & Analytics"
+msgstr ""
+
+msgid "Description is required."
 msgstr ""
 
 msgid "Design & Creative"
@@ -94,13 +100,28 @@ msgstr ""
 msgid "Education Level"
 msgstr ""
 
+msgid "Education level is required."
+msgstr ""
+
+msgid "Email is required."
+msgstr ""
+
 msgid "Employment Type"
+msgstr ""
+
+msgid "Employment type is required."
 msgstr ""
 
 msgid "Engineering & Manufacturing"
 msgstr ""
 
+msgid "Experience level is required."
+msgstr ""
+
 msgid "Experience Requirement"
+msgstr ""
+
+msgid "Experience years cannot be negative."
 msgstr ""
 
 msgid "Finance & Accounting"
@@ -139,6 +160,9 @@ msgstr ""
 msgid "Internship"
 msgstr ""
 
+msgid "Invalid application deadline date."
+msgstr ""
+
 msgid "Job Description"
 msgstr ""
 
@@ -155,6 +179,9 @@ msgid "Legal & Compliance"
 msgstr ""
 
 msgid "Location"
+msgstr ""
+
+msgid "Location is required."
 msgstr ""
 
 msgid "Management experience required"
@@ -182,6 +209,15 @@ msgid "On-site"
 msgstr ""
 
 msgid "Open Positions"
+msgstr ""
+
+msgid "Open positions is required."
+msgstr ""
+
+msgid "Open positions must be a valid number."
+msgstr ""
+
+msgid "Open positions must be at least 1."
 msgstr ""
 
 msgid "Open the job posting guide with examples for every field."
@@ -217,10 +253,16 @@ msgstr ""
 msgid "Requirements (comma separated)"
 msgstr ""
 
+msgid "Requirements are required."
+msgstr ""
+
 msgid "Retail & E-commerce"
 msgstr ""
 
 msgid "Salary"
+msgstr ""
+
+msgid "Salary is required."
 msgstr ""
 
 msgid "Sales & Business Development"
@@ -259,6 +301,9 @@ msgstr ""
 msgid "Temporary"
 msgstr ""
 
+msgid "Title is required."
+msgstr ""
+
 msgid "Total jobs"
 msgstr "Общо работни места"
 
@@ -272,6 +317,12 @@ msgid "Volunteer"
 msgstr ""
 
 msgid "Work Mode"
+msgstr ""
+
+msgid "Work mode cannot be empty."
+msgstr ""
+
+msgid "Work mode is required."
 msgstr ""
 
 msgid "Work Schedule"

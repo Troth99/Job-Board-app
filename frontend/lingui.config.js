@@ -163,6 +163,8 @@ export default defineConfig({
 					"src/features/companies/components/DangerButtons/LeaveCompany",
 					"src/features/companies/components/DangerButtons/AbandonCompany",
 					"src/features/companies/components/PromoteOwnershipModal",
+					"src/features/companies/components/InviteMemberToCompany",
+					"src/features/companies/components/SendMessage",
 			] ,
 
 		},

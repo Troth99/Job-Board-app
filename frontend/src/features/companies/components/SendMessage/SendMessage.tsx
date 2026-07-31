@@ -7,6 +7,7 @@ import "./SendMessage.css";
 
 import { useState } from "react";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 export function SendMessage({ recipient: initialRecipient, onClose, autoOpen, onSuccess }: { recipient?: string, onClose?: () => void, autoOpen?: boolean, onSuccess?: () => void }) {
   const [open, setOpen] = useState<Boolean>(autoOpen || false);
@@ -19,6 +20,8 @@ export function SendMessage({ recipient: initialRecipient, onClose, autoOpen, on
   const { checkUser } = useCompanies();
   const [isSending, setIsSending] = useState(false);
   const { userData } = useProfile();
+
+  const {t} = useLingui();
 
   const currentUserId = getUserFromLocalStorage()._id
 
@@ -87,7 +90,7 @@ export function SendMessage({ recipient: initialRecipient, onClose, autoOpen, on
   return (
     <>
       <button className="add-button" onClick={() => setOpen(true)}>
-        Send message
+        <Trans>Send message</Trans>
       </button>
 
       {open && (
@@ -103,12 +106,12 @@ export function SendMessage({ recipient: initialRecipient, onClose, autoOpen, on
             >
               ×
             </button>
-            <h3 className="send-message-title-unique">Send Message</h3>
+            <h3 className="send-message-title-unique"><Trans>Send Message</Trans></h3>
             <form className="send-message-form-unique" onSubmit={handleSend}>
               <input
                 className="send-message-input-unique"
                 type="text"
-                placeholder="Email"
+                placeholder={t`Email`}
                 value={recipient}
                 onChange={(e) => {
                   setRecipient(e.target.value);
@@ -121,7 +124,7 @@ export function SendMessage({ recipient: initialRecipient, onClose, autoOpen, on
               )}
               <textarea
                 className="send-message-textarea-unique"
-                placeholder="Your message."
+                placeholder={t`Your message.`}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
@@ -131,7 +134,7 @@ export function SendMessage({ recipient: initialRecipient, onClose, autoOpen, on
                 className="modal-reply-send"
                 disabled={isSending}
               >
-                {isSending ? "Sending..." : "Send"}
+                {isSending ? t`Sending...` : t`Send`}
               </button>
             </form>
           </div>

@@ -40,8 +40,8 @@ msgstr "Предимства (разделени със запетаи)"
 msgid "Category"
 msgstr "Категория"
 
-#~ msgid "Category is required."
-#~ msgstr "Категорията е задължителна."
+msgid "Category is required."
+msgstr "Категорията е задължителна."
 
 msgid "Consulting & Strategy"
 msgstr "Консултиране и стратегия"
@@ -58,8 +58,8 @@ msgstr "Обслужване на клиенти"
 msgid "Data Science & Analytics"
 msgstr "Наука за данни и анализи"
 
-#~ msgid "Description is required."
-#~ msgstr "Описанието е задължително."
+msgid "Description is required."
+msgstr "Описанието е задължително."
 
 msgid "Design & Creative"
 msgstr "Дизайн и креативност"
@@ -94,29 +94,29 @@ msgstr "Образование и обучение"
 msgid "Education Level"
 msgstr "Образователно ниво"
 
-#~ msgid "Education level is required."
-#~ msgstr "Образователното ниво е задължително."
+msgid "Education level is required."
+msgstr "Образователното ниво е задължително."
 
-#~ msgid "Email is required."
-#~ msgstr "Имейлът е задължителен."
+msgid "Email is required."
+msgstr "Имейлът е задължителен."
 
 msgid "Employment Type"
 msgstr "Тип заетост"
 
-#~ msgid "Employment type is required."
-#~ msgstr "Типът заетост е задължителен."
+msgid "Employment type is required."
+msgstr "Типът заетост е задължителен."
 
 msgid "Engineering & Manufacturing"
 msgstr "Инженерство и производство"
 
-#~ msgid "Experience level is required."
-#~ msgstr "Изисква се ниво на опит."
+msgid "Experience level is required."
+msgstr "Изисква се ниво на опит."
 
 msgid "Experience Requirement"
 msgstr "Изисквания за опит"
 
-#~ msgid "Experience years cannot be negative."
-#~ msgstr "Годините опит не могат да бъдат отрицателни."
+msgid "Experience years cannot be negative."
+msgstr "Годините опит не могат да бъдат отрицателни."
 
 msgid "Finance & Accounting"
 msgstr "Финанси и Счетоводство"
@@ -151,8 +151,8 @@ msgstr "Хибриден"
 msgid "Internship"
 msgstr "Стаж"
 
-#~ msgid "Invalid application deadline date."
-#~ msgstr "Невалидна дата за краен срок на кандидатстване."
+msgid "Invalid application deadline date."
+msgstr "Невалидна дата за краен срок на кандидатстване."
 
 msgid "Job Description"
 msgstr "Описание на работата"
@@ -172,8 +172,8 @@ msgstr "Правни и съответствие (Compliance) "
 msgid "Location"
 msgstr "Местоположение"
 
-#~ msgid "Location is required."
-#~ msgstr "Местоположението е задължително."
+msgid "Location is required."
+msgstr "Местоположението е задължително."
 
 msgid "Management experience required"
 msgstr "Изисква се управленски опит"
@@ -199,14 +199,14 @@ msgstr "На място"
 msgid "Open Positions"
 msgstr "Свободни позиции"
 
-#~ msgid "Open positions is required."
-#~ msgstr "Свободните позиции са задължителни."
+msgid "Open positions is required."
+msgstr "Свободните позиции са задължителни."
 
-#~ msgid "Open positions must be a valid number."
-#~ msgstr "Свободните позиции трябва да са валиден номер."
+msgid "Open positions must be a valid number."
+msgstr "Свободните позиции трябва да са валиден номер."
 
-#~ msgid "Open positions must be at least 1."
-#~ msgstr "Свободните позиции трябва да са поне 1."
+msgid "Open positions must be at least 1."
+msgstr "Свободните позиции трябва да са поне 1."
 
 msgid "Open the job posting guide with examples for every field."
 msgstr "Отворете ръководството за публикуване на работни места с примери за всяко поле."
@@ -238,8 +238,8 @@ msgstr "Отдалечена работа"
 msgid "Requirements (comma separated)"
 msgstr "Изисквания (разделени със запетаи)"
 
-#~ msgid "Requirements are required."
-#~ msgstr "Изискванията са задължителни."
+msgid "Requirements are required."
+msgstr "Изискванията са задължителни."
 
 msgid "Retail & E-commerce"
 msgstr "Търговия на дребно и електронна търговия"
@@ -247,8 +247,8 @@ msgstr "Търговия на дребно и електронна търгов�
 msgid "Salary"
 msgstr "Заплата"
 
-#~ msgid "Salary is required."
-#~ msgstr "Заплатата е задължителна."
+msgid "Salary is required."
+msgstr "Заплатата е задължителна."
 
 msgid "Sales & Business Development"
 msgstr "Продажби и бизнес развитие"
@@ -286,8 +286,8 @@ msgstr "Изисква се надзорен опит"
 msgid "Temporary"
 msgstr "Временна"
 
-#~ msgid "Title is required."
-#~ msgstr "Заглавието е задължително."
+msgid "Title is required."
+msgstr "Заглавието е задължително."
 
 msgid "Transportation & Delivery"
 msgstr "Транспорт и доставка"
@@ -298,11 +298,11 @@ msgstr "Доброволец"
 msgid "Work Mode"
 msgstr "Режим на работа"
 
-#~ msgid "Work mode cannot be empty."
-#~ msgstr "Режимът на работа не може да бъде празен."
+msgid "Work mode cannot be empty."
+msgstr "Режимът на работа не може да бъде празен."
 
-#~ msgid "Work mode is required."
-#~ msgstr "Режимът на работа е задължителен."
+msgid "Work mode is required."
+msgstr "Режимът на работа е задължителен."
 
 msgid "Work Schedule"
 msgstr "Работно време"

@@ -25,6 +25,12 @@ msgstr "<0>ВНИМАНИЕ:</0> Това действие е необратим
 msgid "Abandon company"
 msgstr "Прекратяване на компанията"
 
+msgid "Add"
+msgstr "Добавяне"
+
+msgid "Add Member"
+msgstr "Добавяне на член"
+
 msgid "Add more options"
 msgstr "Добавете още опции"
 
@@ -54,6 +60,12 @@ msgstr "Табло на компанията"
 
 msgid "Company panel"
 msgstr "Панел на компанията"
+
+msgid "Email"
+msgstr "Имейл"
+
+msgid "Enter member email"
+msgstr "Въведете имейл на член"
 
 msgid "Future modules"
 msgstr "Бъдещи модули"
@@ -131,6 +143,18 @@ msgstr "Изберете член"
 msgid "Select member:"
 msgstr "Изберете член:"
 
+msgid "Send"
+msgstr "Изпрати"
+
+msgid "Send message"
+msgstr "Изпрати съобщение"
+
+msgid "Send Message"
+msgstr "Изпрати съобщение"
+
+msgid "Sending..."
+msgstr "Изпращане..."
+
 msgid "Share updates with all company members in one feed."
 msgstr "Споделяйте актуализации с всички членове на компанията в един поток."
 
@@ -176,3 +200,6 @@ msgstr "Не можете да напуснете компанията, дока
 
 msgid "Your message has been sent successfully!"
 msgstr "Вашето съобщение беше изпратено успешно!"
+
+msgid "Your message."
+msgstr "Вашето съобщение."

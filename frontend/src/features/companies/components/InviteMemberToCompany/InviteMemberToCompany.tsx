@@ -5,6 +5,7 @@ import { useValidation } from "../../../auth/validators/useValidation";
 import "./InviteMemberToCompany.css";
 import useNotifications from "../../../notifications/hooks/useNotifications";
 import useCompanies from "../../hooks/useCompanyAPI";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 const initialValue = {
   email: "",
@@ -30,6 +31,7 @@ export function CompanyMembers() {
     return errors;
   };
 
+  const {t} = useLingui();
   const addMemberHandler = async (values: { email: string }) => {
     setuserEmailExistError("");
     setSuccessMessage("");
@@ -89,7 +91,7 @@ export function CompanyMembers() {
   return (
     <>
       <button className="add-button" onClick={() => setShowModal(true)}>
-        + Add Member
+        <Trans>Add Member</Trans>
       </button>
 
       {showModal && (
@@ -98,11 +100,11 @@ export function CompanyMembers() {
             className="company-members-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3>Add Member</h3>
+            <h3><Trans>Add Member</Trans></h3>
             <form className="company-members-form" onSubmit={formHandler}>
               <input
                 type="email"
-                placeholder="Enter member email"
+                placeholder={t`Enter member email`}
                 {...register("email")}
               />
               {successMessage && (
@@ -119,7 +121,7 @@ export function CompanyMembers() {
                 type="submit"
                 disabled={isSubmitting}
               >
-                Add
+                <Trans>Add</Trans>
               </button>
             </form>
             <button
