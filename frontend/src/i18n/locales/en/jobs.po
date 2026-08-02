@@ -34,6 +34,9 @@ msgstr "Application Deadline"
 msgid "Apprenticeship"
 msgstr "Apprenticeship"
 
+msgid "Benefits"
+msgstr "Benefits"
+
 msgid "Benefits (comma separated)"
 msgstr "Benefits (comma separated)"
 
@@ -46,6 +49,12 @@ msgstr "Category"
 msgid "Category is required."
 msgstr "Category is required."
 
+msgid "Clear All Filters"
+msgstr "Clear All Filters"
+
+msgid "Company"
+msgstr "Company"
+
 msgid "Consulting & Strategy"
 msgstr "Consulting & Strategy"
 
@@ -54,6 +63,9 @@ msgstr "Contact Email"
 
 msgid "Contract"
 msgstr "Contract"
+
+msgid "Contract Type"
+msgstr "Contract Type"
 
 msgid "Current page"
 msgstr "Current page"
@@ -91,8 +103,14 @@ msgstr "e.g., High School, Bachelor, Not required"
 msgid "e.g., Morning shift, 09:00-18:00"
 msgstr "e.g., Morning shift, 09:00-18:00"
 
+msgid "e.g., Permanent, Temporary, Internship"
+msgstr "e.g., Permanent, Temporary, Internship"
+
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr "e.g., We are happy to review your application and contact shortlisted candidates."
+
+msgid "Edit Job"
+msgstr "Edit Job"
 
 msgid "Education & Training"
 msgstr "Education & Training"
@@ -123,6 +141,12 @@ msgstr "Experience Requirement"
 
 msgid "Experience years cannot be negative."
 msgstr "Experience years cannot be negative."
+
+msgid "Explore opportunities from"
+msgstr "Explore opportunities from"
+
+msgid "Filters"
+msgstr "Filters"
 
 msgid "Finance & Accounting"
 msgstr "Finance & Accounting"
@@ -163,6 +187,9 @@ msgstr "Internship"
 msgid "Invalid application deadline date."
 msgstr "Invalid application deadline date."
 
+msgid "Job Category"
+msgstr "Job Category"
+
 msgid "Job Description"
 msgstr "Job Description"
 
@@ -172,11 +199,20 @@ msgstr "Job posted successfully!"
 msgid "Job Title"
 msgstr "Job Title"
 
+msgid "Job Type"
+msgstr "Job Type"
+
+msgid "Jobs from"
+msgstr "Jobs from"
+
 msgid "Language Requirements"
 msgstr "Language Requirements"
 
 msgid "Legal & Compliance"
 msgstr "Legal & Compliance"
+
+msgid "Loading jobs..."
+msgstr "Loading jobs..."
 
 msgid "Location"
 msgstr "Location"
@@ -195,6 +231,9 @@ msgstr "Media & Communication"
 
 msgid "Need help filling the form?"
 msgstr "Need help filling the form?"
+
+msgid "No jobs found"
+msgstr "No jobs found"
 
 msgid "No jobs found."
 msgstr "No jobs found."
@@ -250,6 +289,9 @@ msgstr "Real Estate & Property"
 msgid "Remote"
 msgstr "Remote"
 
+msgid "Requirements"
+msgstr "Requirements"
+
 msgid "Requirements (comma separated)"
 msgstr "Requirements (comma separated)"
 
@@ -267,6 +309,12 @@ msgstr "Salary is required."
 
 msgid "Sales & Business Development"
 msgstr "Sales & Business Development"
+
+msgid "Save Changes"
+msgstr "Save Changes"
+
+msgid "Saving..."
+msgstr "Saving..."
 
 msgid "Science & Research"
 msgstr "Science & Research"
@@ -306,6 +354,9 @@ msgstr "Title is required."
 
 msgid "Total jobs"
 msgstr "Total jobs"
+
+msgid "Total Jobs found"
+msgstr "Total Jobs found"
 
 msgid "Transportation & Delivery"
 msgstr "Transportation & Delivery"

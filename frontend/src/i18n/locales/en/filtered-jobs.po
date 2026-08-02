@@ -1,0 +1,179 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-02 02:37+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "1+ year relevant experience"
+msgstr "1+ year relevant experience"
+
+msgid "2+ years relevant experience"
+msgstr "2+ years relevant experience"
+
+msgid "3+ years relevant experience"
+msgstr "3+ years relevant experience"
+
+msgid "5+ years relevant experience"
+msgstr "5+ years relevant experience"
+
+msgid "Apprenticeship"
+msgstr "Apprenticeship"
+
+msgid "Clear All Filters"
+msgstr "Clear All Filters"
+
+msgid "Company"
+msgstr "Company"
+
+msgid "Consulting & Strategy"
+msgstr "Consulting & Strategy"
+
+msgid "Contract"
+msgstr "Contract"
+
+msgid "Customer Support"
+msgstr "Customer Support"
+
+msgid "Data Science & Analytics"
+msgstr "Data Science & Analytics"
+
+msgid "Design & Creative"
+msgstr "Design & Creative"
+
+msgid "Education & Training"
+msgstr "Education & Training"
+
+msgid "Engineering & Manufacturing"
+msgstr "Engineering & Manufacturing"
+
+msgid "Explore opportunities from"
+msgstr "Explore opportunities from"
+
+msgid "Filters"
+msgstr "Filters"
+
+msgid "Finance & Accounting"
+msgstr "Finance & Accounting"
+
+msgid "Food & Beverage"
+msgstr "Food & Beverage"
+
+msgid "Freelance"
+msgstr "Freelance"
+
+msgid "Full-time"
+msgstr "Full-time"
+
+msgid "Healthcare & Medical"
+msgstr "Healthcare & Medical"
+
+msgid "Hospitality & Tourism"
+msgstr "Hospitality & Tourism"
+
+msgid "Human Resources"
+msgstr "Human Resources"
+
+msgid "Hybrid"
+msgstr "Hybrid"
+
+msgid "Internship"
+msgstr "Internship"
+
+msgid "Job Type"
+msgstr "Job Type"
+
+msgid "Jobs from"
+msgstr "Jobs from"
+
+msgid "Legal & Compliance"
+msgstr "Legal & Compliance"
+
+msgid "Loading jobs..."
+msgstr "Loading jobs..."
+
+msgid "Management experience required"
+msgstr "Management experience required"
+
+msgid "Marketing & Advertising"
+msgstr "Marketing & Advertising"
+
+msgid "Media & Communication"
+msgstr "Media & Communication"
+
+msgid "No jobs found"
+msgstr "No jobs found"
+
+msgid "No prior experience required"
+msgstr "No prior experience required"
+
+msgid "Non-Profit & NGO"
+msgstr "Non-Profit & NGO"
+
+msgid "On-site"
+msgstr "On-site"
+
+msgid "Operations & Logistics"
+msgstr "Operations & Logistics"
+
+msgid "Part-time"
+msgstr "Part-time"
+
+msgid "Real Estate & Property"
+msgstr "Real Estate & Property"
+
+msgid "Remote"
+msgstr "Remote"
+
+msgid "Retail & E-commerce"
+msgstr "Retail & E-commerce"
+
+msgid "Sales & Business Development"
+msgstr "Sales & Business Development"
+
+msgid "Science & Research"
+msgstr "Science & Research"
+
+msgid "Seasonal"
+msgstr "Seasonal"
+
+msgid "Select a category"
+msgstr "Select a category"
+
+msgid "Select category"
+msgstr "Select category"
+
+msgid "Select employment type"
+msgstr "Select employment type"
+
+msgid "Select experience level"
+msgstr "Select experience level"
+
+msgid "Select work mode"
+msgstr "Select work mode"
+
+msgid "Some experience preferred (6+ months)"
+msgstr "Some experience preferred (6+ months)"
+
+msgid "Supervisory experience required"
+msgstr "Supervisory experience required"
+
+msgid "Temporary"
+msgstr "Temporary"
+
+msgid "Total Jobs found"
+msgstr "Total Jobs found"
+
+msgid "Transportation & Delivery"
+msgstr "Transportation & Delivery"
+
+msgid "Volunteer"
+msgstr "Volunteer"

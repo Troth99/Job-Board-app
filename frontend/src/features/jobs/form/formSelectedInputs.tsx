@@ -1,7 +1,8 @@
 import React from "react";
-import { Trans,  } from "@lingui/react/macro";
+import { Trans } from "@lingui/react/macro";
 import { Category } from "../../categories/types/category";
-import { t } from "@lingui/macro";
+import { t } from "@lingui/core/macro";
+import { getTranslatedCategoryLabel, getTranslatedEmploymentLabel } from "../helpers/getTranslatedEmploymentLabel";
 interface Props {
   value: string | undefined;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -13,40 +14,40 @@ interface JobCategorySelectProps {
 }
 const categories = [
   { value: "Information Technology", label: `Information Technology` },
-  { value: "Finance & Accounting", label: t`Finance & Accounting` },
-  { value: "Marketing & Advertising", label: t`Marketing & Advertising` },
-  { value: "Human Resources", label: t`Human Resources` },
-  { value: "Design & Creative", label: t`Design & Creative` },
-  { value: "Sales & Business Development", label: t`Sales & Business Development` },
-  { value: "Customer Support", label: t`Customer Support` },
-  { value: "Operations & Logistics", label: t`Operations & Logistics` },
-  { value: "Education & Training", label: t`Education & Training` },
-  { value: "Legal & Compliance", label: t`Legal & Compliance` },
-  { value: "Healthcare & Medical", label: t`Healthcare & Medical` },
-  { value: "Engineering & Manufacturing", label: t`Engineering & Manufacturing` },
-  { value: "Science & Research", label: t`Science & Research` },
-  { value: "Consulting & Strategy", label: t`Consulting & Strategy` },
-  { value: "Media & Communication", label: t`Media & Communication` },
-  { value: "Data Science & Analytics", label: t`Data Science & Analytics` },
-  { value: "Retail & E-commerce", label: t`Retail & E-commerce` },
-  { value: "Hospitality & Tourism", label: t`Hospitality & Tourism` },
-  { value: "Real Estate & Property", label: t`Real Estate & Property` },
-  { value: "Food & Beverage", label: t`Food & Beverage` },
-  { value: "Transportation & Delivery", label: t`Transportation & Delivery` },
-  { value: "Non-Profit & NGO", label: t`Non-Profit & NGO` },
+  { value: "Finance & Accounting", label: `Finance & Accounting` },
+  { value: "Marketing & Advertising", label: `Marketing & Advertising` },
+  { value: "Human Resources", label: `Human Resources` },
+  { value: "Design & Creative", label: `Design & Creative` },
+  { value: "Sales & Business Development", label: `Sales & Business Development` },
+  { value: "Customer Support", label: `Customer Support` },
+  { value: "Operations & Logistics", label: `Operations & Logistics` },
+  { value: "Education & Training", label: `Education & Training` },
+  { value: "Legal & Compliance", label: `Legal & Compliance` },
+  { value: "Healthcare & Medical", label: `Healthcare & Medical` },
+  { value: "Engineering & Manufacturing", label: `Engineering & Manufacturing` },
+  { value: "Science & Research", label: `Science & Research` },
+  { value: "Consulting & Strategy", label: `Consulting & Strategy` },
+  { value: "Media & Communication", label: `Media & Communication` },
+  { value: "Data Science & Analytics", label: `Data Science & Analytics` },
+  { value: "Retail & E-commerce", label: `Retail & E-commerce` },
+  { value: "Hospitality & Tourism", label: `Hospitality & Tourism` },
+  { value: "Real Estate & Property", label: `Real Estate & Property` },
+  { value: "Food & Beverage", label: `Food & Beverage` },
+  { value: "Transportation & Delivery", label: `Transportation & Delivery` },
+  { value: "Non-Profit & NGO", label: `Non-Profit & NGO` },
 ];
 
 //for Employement options
 export const employmentOptions = [
-  { value: "Full-time", label: t`Full-time` },
-  { value: "Part-time", label: t`Part-time` },
-  { value: "Internship", label: t`Internship` },
-  { value: "Contract", label: t`Contract` },
-  { value: "Freelance", label: t`Freelance` },
-  { value: "Temporary", label: t`Temporary` },
-  { value: "Volunteer", label: t`Volunteer` },
-  { value: "Seasonal", label: t`Seasonal` },
-  { value: "Apprenticeship", label: t`Apprenticeship` },
+  { value: "Full-time", label: `Full-time` },
+  { value: "Part-time", label: `Part-time` },
+  { value: "Internship", label: `Internship` },
+  { value: "Contract", label: `Contract` },
+  { value: "Freelance", label: `Freelance` },
+  { value: "Temporary", label: `Temporary` },
+  { value: "Volunteer", label: `Volunteer` },
+  { value: "Seasonal", label: `Seasonal` },
+  { value: "Apprenticeship", label: `Apprenticeship` },
 ];
 
 //For Experience requirement options, we can use the same select component as employment type, just with different options. So I will implement it later when I implement the experience requirement field in the form.
@@ -77,7 +78,7 @@ export  function JobCategorySelect({ value, onChange }: Props) {
       </option>
       {categories.map((cat) => (
         <option key={cat.value} value={cat.value}>
-          {cat.label}
+          {getTranslatedCategoryLabel(cat.value)}
         </option>
       ))}
     </select>
@@ -104,8 +105,9 @@ export  function EmploymentTypeSelect({ value, onChange }: Props) {
         <Trans>Select employment type</Trans>
       </option>
       {employmentOptions.map((opt) => (
+        
         <option key={opt.value} value={opt.value}>
-          {opt.label}
+          {getTranslatedEmploymentLabel(opt.value)}
         </option>
       ))}
     </select>

@@ -27,7 +27,8 @@ import {messages as bgPagination} from "./locales/bg/pagination.po";
 import { messages as bgCompanyView } from "./locales/bg/company-view.po";
 import { messages as bgRegisterCompany } from "./locales/bg/register-company.po";
 import {messages as bgDashboard} from "./locales/bg/dashboard.po";
-
+import {messages as bgEditJob} from "./locales/bg/edit-job.po";
+import {messages as bgFilteredJobs} from "./locales/bg/filtered-jobs.po";
 
 //imports for English translations
 import { messages as enShared } from "./locales/en/shared.po";
@@ -55,6 +56,8 @@ import {messages as enPagination} from "./locales/en/pagination.po";
 import { messages as enCompanyView } from "./locales/en/company-view.po";
 import { messages as enRegisterCompany } from "./locales/en/register-company.po";
 import { messages as enDashboard } from "./locales/en/dashboard.po";
+import { messages as enEditJob } from "./locales/en/edit-job.po";
+import { messages as enFilteredJobs } from "./locales/en/filtered-jobs.po";
 
 
 
@@ -121,7 +124,9 @@ i18n.load({
     ...bgPagination,
     ...bgCompanyView,
     ...bgRegisterCompany,
-    ...bgDashboard
+    ...bgDashboard,
+    ...bgEditJob,
+    ...bgFilteredJobs
   
   },
   en: {
@@ -156,7 +161,9 @@ i18n.load({
     ...enPostJob,
     ...enCompanyView,
     ...enRegisterCompany,
-    ...enDashboard
+    ...enDashboard,
+    ...enEditJob,
+    ...enFilteredJobs
   },
 });
 

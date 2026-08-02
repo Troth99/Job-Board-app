@@ -13,7 +13,7 @@ export interface Job {
     lastName?: string;
   };
   company?: Company | null;
-  category?: Category
+  category?: Category | string;
   createdAt?: string;
   skills?: string;
   requirements?: string;

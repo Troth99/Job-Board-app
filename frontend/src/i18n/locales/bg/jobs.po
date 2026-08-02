@@ -34,6 +34,9 @@ msgstr ""
 msgid "Apprenticeship"
 msgstr ""
 
+msgid "Benefits"
+msgstr ""
+
 msgid "Benefits (comma separated)"
 msgstr ""
 
@@ -46,6 +49,12 @@ msgstr ""
 msgid "Category is required."
 msgstr ""
 
+msgid "Clear All Filters"
+msgstr ""
+
+msgid "Company"
+msgstr ""
+
 msgid "Consulting & Strategy"
 msgstr ""
 
@@ -53,6 +62,9 @@ msgid "Contact Email"
 msgstr ""
 
 msgid "Contract"
+msgstr ""
+
+msgid "Contract Type"
 msgstr ""
 
 msgid "Current page"
@@ -91,7 +103,13 @@ msgstr ""
 msgid "e.g., Morning shift, 09:00-18:00"
 msgstr ""
 
+msgid "e.g., Permanent, Temporary, Internship"
+msgstr ""
+
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
+msgstr ""
+
+msgid "Edit Job"
 msgstr ""
 
 msgid "Education & Training"
@@ -122,6 +140,12 @@ msgid "Experience Requirement"
 msgstr ""
 
 msgid "Experience years cannot be negative."
+msgstr ""
+
+msgid "Explore opportunities from"
+msgstr ""
+
+msgid "Filters"
 msgstr ""
 
 msgid "Finance & Accounting"
@@ -163,6 +187,9 @@ msgstr ""
 msgid "Invalid application deadline date."
 msgstr ""
 
+msgid "Job Category"
+msgstr ""
+
 msgid "Job Description"
 msgstr ""
 
@@ -172,10 +199,19 @@ msgstr ""
 msgid "Job Title"
 msgstr ""
 
+msgid "Job Type"
+msgstr ""
+
+msgid "Jobs from"
+msgstr ""
+
 msgid "Language Requirements"
 msgstr ""
 
 msgid "Legal & Compliance"
+msgstr ""
+
+msgid "Loading jobs..."
 msgstr ""
 
 msgid "Location"
@@ -194,6 +230,9 @@ msgid "Media & Communication"
 msgstr ""
 
 msgid "Need help filling the form?"
+msgstr ""
+
+msgid "No jobs found"
 msgstr ""
 
 msgid "No jobs found."
@@ -250,6 +289,9 @@ msgstr ""
 msgid "Remote"
 msgstr ""
 
+msgid "Requirements"
+msgstr ""
+
 msgid "Requirements (comma separated)"
 msgstr ""
 
@@ -266,6 +308,12 @@ msgid "Salary is required."
 msgstr ""
 
 msgid "Sales & Business Development"
+msgstr ""
+
+msgid "Save Changes"
+msgstr ""
+
+msgid "Saving..."
 msgstr ""
 
 msgid "Science & Research"
@@ -306,6 +354,9 @@ msgstr ""
 
 msgid "Total jobs"
 msgstr "Общо работни места"
+
+msgid "Total Jobs found"
+msgstr ""
 
 msgid "Transportation & Delivery"
 msgstr ""

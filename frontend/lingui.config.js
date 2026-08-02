@@ -168,6 +168,18 @@ export default defineConfig({
 			] ,
 
 		},
+				{
+			path: "<rootDir>/src/i18n/locales/{locale}/edit-job",
+			include: ["src/features/jobs/views/EditJob",],
+
+		},
+					{
+			path: "<rootDir>/src/i18n/locales/{locale}/filtered-jobs",
+			include: ["src/features/jobs/views/FilterJobsByCategory",
+				"src/features/jobs/form",
+			],
+
+		},
 	
 	],
 });
