@@ -1,0 +1,63 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-03 17:36+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. placeholder {0}: members.length
+msgid "{0} members"
+msgstr "{0} members"
+
+msgid "{memberName} has been removed from the company."
+msgstr "{memberName} has been removed from the company."
+
+msgid "{memberName}'s role updated to {newRole} successfully."
+msgstr "{memberName}'s role updated to {newRole} successfully."
+
+msgid "Change Role"
+msgstr "Change Role"
+
+msgid "Company Members"
+msgstr "Company Members"
+
+msgid "Failed to remove the member."
+msgstr "Failed to remove the member."
+
+msgid "Failed to update the role."
+msgstr "Failed to update the role."
+
+msgid "Invited At:"
+msgstr "Invited At:"
+
+msgid "Invited By:"
+msgstr "Invited By:"
+
+msgid "Manage team roles and access permissions."
+msgstr "Manage team roles and access permissions."
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Remove Member"
+msgstr "Remove Member"
+
+msgid "Removing..."
+msgstr "Removing..."
+
+msgid "Role:"
+msgstr "Role:"
+
+msgid "Team Management"
+msgstr "Team Management"
+
+msgid "Updated At:"
+msgstr "Updated At:"

@@ -14,6 +14,8 @@ import { toast } from "react-toastify";
 import ChangeRoleForMember from "../../components/MembersActions/ChangeRoleForMember";
 import KickMemberFromCompany from "../../components/MembersActions/KickMemberFromCompany";
 import MembersCard from "./MembersCard";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 
 const availableRoles = ["admin", "recruiter", "member"];
 
@@ -23,6 +25,10 @@ export default function ViewMembers() {
   const [showMessageModal, setShowMessageModal] = useState<string | null>(null);
 
   const seo = () => generateSeoConfig("companyMembers");
+
+  const {t} = useLingui();
+
+  const user = getUserFromLocalStorage();
 
   const { getCompanyMembers, changeMemberRole, kickMemberFromCompany } =
     useMembers();
@@ -43,6 +49,7 @@ export default function ViewMembers() {
   };
 
   useEffect(() => {
+   console.log(user._id)
     const fetchMembers = async () => {
       if (companyId) {
         const data = await getCompanyMembers(companyId);
@@ -66,10 +73,10 @@ export default function ViewMembers() {
 
       const data = await getCompanyMembers(companyId);
       setMembers(sorterMembersByRole(data));
-      toast.success(`${memberName}'s role updated to ${newRole} successfully.`);
+      toast.success(t`${memberName}'s role updated to ${newRole} successfully.`);
     } catch (error) {
       console.error("Failed to update the role.", error);
-      toast.error("Failed to update the role.");
+      toast.error(t`Failed to update the role.`);
     }
   };
 
@@ -82,10 +89,10 @@ export default function ViewMembers() {
       setMembers((prevMembers: CompanyMember[]) =>
         prevMembers.filter((m) => m._id !== memberId),
       );
-      toast.success(`${memberName} has been removed from the company.`);
+      toast.success(t`${memberName} has been removed from the company.`);
     } catch (error) {
       console.error("Failed to kick member from the company", error);
-      toast.error("Failed to remove the member.");
+      toast.error(t`Failed to remove the member.`);
     } finally {
       setLoading(false);
     }
@@ -107,15 +114,15 @@ export default function ViewMembers() {
             <div className="content-title-members-list">
               <div className="members-title-row">
                 <div className="members-heading-block">
-                  <span className="members-title-kicker">Team Management</span>
-                  <h2>Company Members</h2>
+                  <span className="members-title-kicker"><Trans>Team Management</Trans></span>
+                  <h2><Trans>Company Members</Trans></h2>
                   <p className="members-title-subtitle">
-                    Manage team roles and access permissions.
+                     <Trans>Manage team roles and access permissions.</Trans>
                   </p>
                 </div>
                 <div className="members-title-meta">
                   <span className="members-total-badge">
-                    {members.length} members
+                    <Trans>{members.length} members</Trans>
                   </span>
                 </div>
               </div>
@@ -132,15 +139,17 @@ export default function ViewMembers() {
                   <MembersCard member={member} />
 
                   <div className="member-actions-row">
-                    <div className="member-email">
-                      <BsChatDots
-                        className="message-icon"
-                        title="Message"
-                        onClick={() =>
-                          sendMessageHandler(member.userId?.email || "")
-                        }
-                      />
-                    </div>
+                    {user._id !== member.userId?._id && (
+                      <div className="member-email">
+                        <BsChatDots
+                          className="message-icon"
+                          title={t`Message`}
+                          onClick={() =>
+                            sendMessageHandler(member.userId?.email || "")
+                          }
+                        />
+                      </div>
+                    )}
                     <div className="member-actions role-actions">
                       <ChangeRoleForMember
                         userRole={userRole}

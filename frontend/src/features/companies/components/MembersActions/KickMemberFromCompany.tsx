@@ -1,4 +1,6 @@
+import {t} from "@lingui/core/macro"
 import { CompanyMember } from "../../types/CompanyMember.model";
+
 
 export default function KickMemberFromCompany({
   userRole,
@@ -18,7 +20,7 @@ export default function KickMemberFromCompany({
         member.role !== "admin" && (
           <button
             className="action-btn remove"
-            title="Remove Member"
+            title={t`Remove Member`}
             disabled={loading}
             onClick={() => {
               if (loading) {
@@ -28,7 +30,7 @@ export default function KickMemberFromCompany({
               kickMemberHandler(member._id);
             }}
           >
-            {loading ? "Removing..." : "Remove Member"}
+            {loading ? t`Removing...` : t`Remove Member`}
           </button>
         )}
     </>

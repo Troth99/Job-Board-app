@@ -75,9 +75,11 @@ function PostJob() {
     useForm<valuesInterface>(onSubmitHandler, initialValues, validateForm);
 
     const seo = () => generateSeoConfig("postJob");
-     <MetaData seo={seo} />
+    return (
+      <>
+        <MetaData seo={seo()} />
 
-    <div className="post-job-container">
+        <div className="post-job-container">
       <h2><Trans>Post a New Job</Trans></h2>
       <Link to={`/how-to-post-job`} className="back-link">
         <span className="back-link__spark" aria-hidden="true">
@@ -287,8 +289,8 @@ function PostJob() {
         </button>
       </form>
     </div>
-     </>
-  );
+      </>
+    );
 }
 
 export default PostJob;

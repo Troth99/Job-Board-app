@@ -6,6 +6,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 msgid "Browse all job listings and find your next opportunity. Fresh listings, sorted by newest first."
 msgstr "Прегледайте всички обяви за работа и намерете своята следваща възможност. Нови обяви, сортирани по новини първо."
@@ -105,6 +111,7 @@ msgstr "Публикуване на Обява за Работа | Job Board"
 
 msgid "Post your job openings and find the perfect candidates on Job Board. Reach a wide audience of job seekers and grow your team."
 msgstr "Публикувайте обяви за работа и намерете идеалните кандидати на Job Board. Достигнете до широка аудитория от търсачи на работа и развивайте своя екип."
+
 msgid "Prepare for your next job interview with confidence. Get tips on common questions, body language, and how to make a great impression."
 msgstr "Подготовете се за следващото си интервю с увереност. Получете съвети за често задавани въпроси, телесен език и как да направите отличен впечатление."
 

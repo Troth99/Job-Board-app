@@ -31,6 +31,7 @@ import {messages as bgEditJob} from "./locales/bg/edit-job.po";
 import {messages as bgFilteredJobs} from "./locales/bg/filtered-jobs.po";
 import {messages as bgHowToPostJob} from "./locales/bg/guide-post-job.po";
 import {messages as bgSeo} from "./locales/bg/seoTranslates.po";
+import {messages as bgMembersView} from "./locales/bg/members-view.po";
 
 //imports for English translations
 import { messages as enShared } from "./locales/en/shared.po";
@@ -62,6 +63,7 @@ import { messages as enEditJob } from "./locales/en/edit-job.po";
 import { messages as enFilteredJobs } from "./locales/en/filtered-jobs.po";
 import {messages as enHowToPostJob} from "./locales/en/guide-post-job.po";
 import {messages as enSeo} from "./locales/en/seoTranslates.po";
+import {messages as enMembersView} from "./locales/en/members-view.po";
 
 
 
@@ -132,7 +134,8 @@ i18n.load({
     ...bgEditJob,
     ...bgFilteredJobs,
     ...bgHowToPostJob,
-    ...bgSeo
+    ...bgSeo,
+    ...bgMembersView
   
   },
   en: {
@@ -171,7 +174,8 @@ i18n.load({
     ...enEditJob,
     ...enFilteredJobs,
     ...enHowToPostJob,
-    ...enSeo
+    ...enSeo,
+    ...enMembersView
   },
 });
 

@@ -100,7 +100,7 @@ export default defineConfig({
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/profile",
 			include: [
-				"src/features/profile/mainProfilePage/profile", 
+				"src/features/profile/mainProfilePage/profile",
 				"src/features/profile/components/ProfileDataContainer/ProfileMainContainer",
 				"src/features/profile/components/UploadProfileImage/UploadProfileImage",
 				"src/features/profile/components/JobPosting/JobPosting",
@@ -109,88 +109,97 @@ export default defineConfig({
 			],
 
 		},
-			{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/edit-profile",
 			include: ["src/features/profile/views/EditProfile",
 				"src/features/profile/views/ChangePassword",
 			],
 
 		},
-			{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/jobs",
 			include: ["src/features/jobs/views/ViewAllJobs/ViewAllJobs",
 			],
 
 		},
-			{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/notifications",
 			include: ["src/features/notifications/views/Notifications",
-						"src/features/notifications/components/NewMessageNotification/ModalReply",
-						"src/features/notifications/components/NewMessageNotification/CompanyInvitationNotification",
-						"src/features/notifications/components/NewMessageNotification/NewMessageNotification",
+				"src/features/notifications/components/NewMessageNotification/ModalReply",
+				"src/features/notifications/components/NewMessageNotification/CompanyInvitationNotification",
+				"src/features/notifications/components/NewMessageNotification/NewMessageNotification",
 			],
 
 		},
-			{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/post-job",
 			include: ["src/features/jobs/views/CreateJob",
-						"src/features/jobs/validators",
-						"src/features/jobs/form/",
+				"src/features/jobs/validators",
+				"src/features/jobs/form/",
 			],
 
 		},
-				{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/pagination",
 			include: ["src/shared/components/Pagination"],
 
 		},
-				{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/company-view",
 			include: ["src/features/companies/views/ViewAllCompanies",],
 
 		},
-				{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/register-company",
 			include: ["src/features/companies/views/RegisterCompany",],
 
 		},
-		
-				{
+
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/dashboard",
 			include: ["src/features/companies/views/Dashboard",
-					"src/features/companies/components/DashboardSidebarUI",
-					"src/features/companies/components/CompanyJobList",
-					"src/features/companies/components/DangerButtons/LeaveCompany",
-					"src/features/companies/components/DangerButtons/AbandonCompany",
-					"src/features/companies/components/PromoteOwnershipModal",
-					"src/features/companies/components/InviteMemberToCompany",
-					"src/features/companies/components/SendMessage",
-			] ,
+				"src/features/companies/components/DashboardSidebarUI",
+				"src/features/companies/components/CompanyJobList",
+				"src/features/companies/components/DangerButtons/LeaveCompany",
+				"src/features/companies/components/DangerButtons/AbandonCompany",
+				"src/features/companies/components/PromoteOwnershipModal",
+				"src/features/companies/components/InviteMemberToCompany",
+				"src/features/companies/components/SendMessage",
+			],
 
 		},
-				{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/edit-job",
 			include: ["src/features/jobs/views/EditJob",],
 
 		},
-					{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/filtered-jobs",
 			include: ["src/features/jobs/views/FilterJobsByCategory",
 				"src/features/jobs/form",
 			],
 
 		},
-				{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/guide-post-job",
 			include: ["src/features/jobs/views/HowToPostJobInfo",],
 
 		},
 
-				{
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/seoTranslates",
 			include: ["src/seo",],
 
 		},
-	
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/members-view",
+			include: ["src/features/companies/views/ViewMembers",
+				"src/features/companies/components/MembersActions",
+			],
+
+		}
+
+
 	],
+
 });

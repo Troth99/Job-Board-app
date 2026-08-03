@@ -1,6 +1,7 @@
 import { BsChatDots } from "react-icons/bs";
 import { CompanyMember } from "../../types/CompanyMember.model";
 import { formatDate } from "../../../../shared/utils/formData";
+import { Trans } from "@lingui/react/macro";
 
 
 export default function MembersCard({ member }: { member: CompanyMember }) {
@@ -12,21 +13,21 @@ export default function MembersCard({ member }: { member: CompanyMember }) {
                 <div className="member-name">
                   {member.userId?.name || member.userId?.email || member._id}
                 </div>
-                <div className="member-role">Role: {member.role}</div>
+                <div className="member-role"><Trans>Role:</Trans> {member.role}</div>
                 <div className="member-invited">
-                  Invited By:{" "}
+                  <Trans>Invited By:</Trans>{" "}
                   {member.invitedBy?.name ||
                     member.invitedBy?.email ||
                     member.invitedBy?._id}
                 </div>
                 <div className="member-invitedAt">
                   {member.invitedAt && (
-                    <span>Invited At: {formatDate(member.invitedAt)}</span>
+                    <span><Trans>Invited At:</Trans> {formatDate(member.invitedAt)}</span>
                   )}
                 </div>
                 <div className="member-updatedAt">
                   {member.updatedAt && (
-                    <span>Updated At: {formatDate(member.updatedAt)}</span>
+                    <span><Trans>Updated At:</Trans> {formatDate(member.updatedAt)}</span>
                   )}
                 </div>
               </div>
