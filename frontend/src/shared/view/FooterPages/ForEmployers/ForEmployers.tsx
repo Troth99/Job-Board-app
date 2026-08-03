@@ -7,7 +7,7 @@ import { Trans } from "@lingui/react/macro";
 
 export default function ForEmployers() {
 
-  const seo = generateSeoConfig("forEmployers");
+  const seo = () => generateSeoConfig("forEmployers");
     return (
 
       <>

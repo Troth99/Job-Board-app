@@ -35,7 +35,7 @@ function ViewAllJobs() {
   const { loading, getJobsPage } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 5);
-  const seo = generateSeoConfig("viewAllJobs");
+  const seo = () => generateSeoConfig("viewAllJobs");
 
   const navigate = useNavigate();
   useEffect(() => {

@@ -73,7 +73,7 @@ const companyId = userData?.company;
 
   const hasCompanyId = Boolean(companyId);
 
-  const seo = generateSeoConfig("profile");
+  const seo = () => generateSeoConfig("profile");
 
   const isProfilePending = userLoading || !isInitialized;
 

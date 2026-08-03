@@ -22,7 +22,7 @@ export default function ViewMembers() {
   const [showOptions, setShowOptions] = useState<string | null>(null);
   const [showMessageModal, setShowMessageModal] = useState<string | null>(null);
 
-  const seo = generateSeoConfig("companyMembers");
+  const seo = () => generateSeoConfig("companyMembers");
 
   const { getCompanyMembers, changeMemberRole, kickMemberFromCompany } =
     useMembers();

@@ -6,7 +6,7 @@ import "./privacy.css";
 
 
 export default function Privacy() {
-    const seo = generateSeoConfig("privacy");
+    const seo = () => generateSeoConfig("privacy");
     return (
         <>
      <MetaData seo={seo} />

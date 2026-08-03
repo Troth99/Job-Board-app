@@ -19,7 +19,7 @@ import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import useMembers from "../../hooks/useMembers";
 import { MemberDashboardSideBar } from "../../components/DashboardSidebarUI/DashboardSidebarUI";
-import { Trans } from "@lingui/react/macro";
+import { Trans, } from "@lingui/react/macro";
 
 
 export default function Dashboard() {
@@ -53,8 +53,8 @@ export default function Dashboard() {
   const [refreshingAfterTransfer, setRefreshingAfterTransfer] =
     useState<boolean>(false);
 
-    const seo = generateSeoConfig("companyDashboard");
-    
+  const seo = () => generateSeoConfig("companyDashboard");
+
   // Find the current user's membership in the company to determine their role and permissions
   const myMember = members.find((m: CompanyMember) => m.userId._id === user?._id);
   const myMemberId = myMember?._id;

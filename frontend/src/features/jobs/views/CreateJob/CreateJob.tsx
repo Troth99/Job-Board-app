@@ -74,10 +74,7 @@ function PostJob() {
   const { register, formHandler, errors, setFieldValue } =
     useForm<valuesInterface>(onSubmitHandler, initialValues, validateForm);
 
-    const seo = generateSeoConfig("postJob");
-
-  return (
-    <>
+    const seo = () => generateSeoConfig("postJob");
      <MetaData seo={seo} />
 
     <div className="post-job-container">

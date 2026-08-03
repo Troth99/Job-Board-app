@@ -45,7 +45,7 @@ export default function FilterJobByCategory() {
   const [totalCount, setTotalCount] = useState<number>(0);
 
 
-  const seo = generateSeoConfig("category", categoryName);
+  const seo = () => generateSeoConfig("category", categoryName);
 
   const navigate = useNavigate();
   const {

@@ -6,7 +6,7 @@ import MetaData from "../../../../../seo/MetaDataTags";
 import { Container } from "../../../../components/Container/Container";
 
 export default function CVTips() {
-    const seo = generateSeoConfig("cvTips");
+    const seo = () => generateSeoConfig("cvTips");
     return (
         <>
         <MetaData seo={seo} />

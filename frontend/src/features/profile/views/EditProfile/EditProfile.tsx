@@ -27,7 +27,7 @@ export default function EditProfile() {
   const { userData, updateUserProfile, handleDeleteProfile } = useProfile();
   const { handleDeleteProfileImage } = useAvatar();
   const [profileData, setProfileData] = useState<ProfileData>(initialProfileData);
-  const seo = generateSeoConfig("editProfile");
+  const seo = () => generateSeoConfig("editProfile");
 
   
   useEffect(() => {

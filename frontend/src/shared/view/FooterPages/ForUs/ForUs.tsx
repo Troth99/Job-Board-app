@@ -7,7 +7,7 @@ import { Trans } from "@lingui/react/macro";
 
 
 export default function ForUs() {
-  const seo = generateSeoConfig("forUs");
+  const seo = () => generateSeoConfig("forUs");
   return (
     <>
   <MetaData seo={seo} />

@@ -185,6 +185,12 @@ export default defineConfig({
 			include: ["src/features/jobs/views/HowToPostJobInfo",],
 
 		},
+
+				{
+			path: "<rootDir>/src/i18n/locales/{locale}/seoTranslates",
+			include: ["src/seo",],
+
+		},
 	
 	],
 });

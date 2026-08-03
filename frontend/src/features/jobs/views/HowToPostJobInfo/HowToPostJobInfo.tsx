@@ -1,5 +1,5 @@
 import "./HowToPostJobInfo.css";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {t} from "@lingui/core/macro";
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
@@ -179,12 +179,13 @@ const quickRules = [
 
 function HowToPostJobInfo() {
 
-    const seo = generateSeoConfig("jobGuide");
+    const seo = () => generateSeoConfig("jobGuide");
+const { i18n } = useLingui();
 
     return (
         <>
-        <MetaData seo={seo} />
-        <section className="post-job-guide">
+<MetaData key={i18n.locale} seo={seo} />       
+ <section className="post-job-guide">
             <div className="post-job-guide__hero">
                 <p className="post-job-guide__eyebrow"><Trans>Create Job Guide</Trans></p>
                 <h1><Trans>How to fill in each field when posting a job</Trans></h1>

@@ -30,7 +30,7 @@ export default function ViewAllCompanies() {
     totalCompanies: 0,
   });
 
-  const seo = generateCompaniesSeo(searchFromUrl, pageFromUrl);
+  const seo = () => generateCompaniesSeo(searchFromUrl, pageFromUrl);
 
   useEffect(() => {
     const fetchAllCompanies = async () => {

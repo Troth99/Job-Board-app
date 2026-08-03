@@ -5,9 +5,8 @@ import { Container } from "../../../../components/Container/Container";
 import "./interviewPeparation.css";
 
 export default function InterviewPreparation() {
-    const seo = generateSeoConfig("interviewPreparation");
+    const seo = () => generateSeoConfig("interviewPreparation");
     return (
-        <>
         <MetaData seo={seo} />
         <div className="interview-prep-page">
             <Container>

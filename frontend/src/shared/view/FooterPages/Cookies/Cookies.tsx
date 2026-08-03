@@ -7,7 +7,7 @@ import "./Cookies.css";
 
 
 export default function Cookies() {
-    const seo = generateSeoConfig("cookies");
+    const seo = () => generateSeoConfig("cookies");
     return (
         <>
       <MetaData seo={seo} />

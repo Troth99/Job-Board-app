@@ -14,7 +14,7 @@ import Hero from "../components/HeroSection/Hero";
 import CategoriesSection from "../../categories/components/CategoriesSection/CategoriesSection";
 import RecentJobs from "../components/RecentJobs/RecentJobs";
 import { HomeStats } from "../components/HomeStats/HomeStats";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 export default function HomeSection() {
   const categories = useSelector(
@@ -26,7 +26,8 @@ export default function HomeSection() {
   const [loading, setLoading] = useState<boolean>(true);
   const { getRecentJobs } = useJobs();
   const { getApllicationStatistics } = useStatistics();
-  const seo = generateSeoConfig("home");
+  const { i18n } = useLingui();
+  const seo = () => generateSeoConfig("home");
   const fetchRecentJobs = async () => {
     try {
       const data = await getRecentJobs();
@@ -56,7 +57,7 @@ export default function HomeSection() {
 
   return (
     <div>
-      <MetaData seo={seo} />
+      <MetaData key={i18n.locale} seo={seo} />
 
       {loading || categories.length <= 0 ? (
         <FullPageSpinner />

@@ -33,7 +33,7 @@ function SavedJobs() {
 
   const navigate = useNavigate();
 
-  const seo = generateSeoConfig("viewSavedJobs");
+  const seo = () => generateSeoConfig("viewSavedJobs");
 
   useEffect(() => {
     const fetchFavoriteJobs = async () => {

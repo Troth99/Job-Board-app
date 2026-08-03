@@ -6,7 +6,7 @@ import "./contacts.css"
 
 
 export default function Contacts() {
-    const seo = generateSeoConfig("contacts");
+    const seo = () => generateSeoConfig("contacts");
 
     const { t} = useLingui();
 

@@ -6,9 +6,8 @@ import { Container } from "../../../../components/Container/Container";
 import "./salaryNegotiation.css";
 
 export default function SalaryNegotiation() {
-    const seo = generateSeoConfig("salaryNegotiation");
+    const seo = () => generateSeoConfig("salaryNegotiation");
     return (
-        <>
         
         <MetaData seo={seo} />
         <div className="salary-neg-page">

@@ -7,9 +7,8 @@ import { Container } from "../../../components/Container/Container";
 import "./tos.css";
 
 export default function TermsAndConditions() {
-    const seo = generateSeoConfig("terms-and-conditions");
+    const seo = () => generateSeoConfig("terms-and-conditions");
     return (
-        <>
       <MetaData seo={seo} />
 
        
