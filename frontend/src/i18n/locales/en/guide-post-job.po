@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2026-07-16 14:19+0300\n"
+"POT-Creation-Date: 2026-08-03 16:16+0300\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,12 +21,6 @@ msgstr "{0}"
 msgid "{rule}"
 msgstr "{rule}"
 
-msgid "1+ year relevant experience"
-msgstr "1+ year relevant experience"
-
-msgid "2+ years relevant experience"
-msgstr "2+ years relevant experience"
-
 #~ msgid "2200-2800 BGN gross"
 #~ msgstr "2200-2800 BGN gross"
 
@@ -36,14 +30,8 @@ msgstr "2200-2800 EURO gross"
 msgid "3"
 msgstr "3"
 
-msgid "3+ years relevant experience"
-msgstr "3+ years relevant experience"
-
 msgid "31 May 2026"
 msgstr "31 May 2026"
-
-msgid "5+ years relevant experience"
-msgstr "5+ years relevant experience"
 
 msgid "Add the city or area where the employee will work. If hybrid, mention the office location clearly."
 msgstr "Add the city or area where the employee will work. If hybrid, mention the office location clearly."
@@ -57,9 +45,6 @@ msgstr "Additional Information"
 msgid "Application Deadline"
 msgstr "Application Deadline"
 
-msgid "Apprenticeship"
-msgstr "Apprenticeship"
-
 msgid "Bachelor degree or equivalent practical experience"
 msgstr "Bachelor degree or equivalent practical experience"
 
@@ -69,23 +54,14 @@ msgstr "Be specific. Generic phrases like 'good salary' or 'great environment' a
 msgid "Benefits"
 msgstr "Benefits"
 
-msgid "Benefits (comma separated)"
-msgstr "Benefits (comma separated)"
-
 msgid "Benefits:"
 msgstr "Benefits:"
-
-msgid "Browse all open roles"
-msgstr "Browse all open roles"
 
 msgid "careers@company.com"
 msgstr "careers@company.com"
 
 msgid "Category"
 msgstr "Category"
-
-msgid "Category is required."
-msgstr "Category is required."
 
 msgid "Choose the closest business category so the listing appears in the right job group."
 msgstr "Choose the closest business category so the listing appears in the right job group."
@@ -99,23 +75,11 @@ msgstr "City, district, office, or remote eligibility when relevant."
 msgid "Clarify the legal or commercial form of engagement if it matters for the role."
 msgstr "Clarify the legal or commercial form of engagement if it matters for the role."
 
-msgid "Clear All Filters"
-msgstr "Clear All Filters"
-
-msgid "Company"
-msgstr "Company"
-
-msgid "Consulting & Strategy"
-msgstr "Consulting & Strategy"
-
 msgid "Contact Email"
 msgstr "Contact Email"
 
 msgid "Contact Email:"
 msgstr "Contact Email:"
-
-msgid "Contract"
-msgstr "Contract"
 
 msgid "Contract Type"
 msgstr "Contract Type"
@@ -126,20 +90,11 @@ msgstr "Create Job Guide"
 msgid "Currency, gross or net if needed, and whether the figure is fixed or ranged."
 msgstr "Currency, gross or net if needed, and whether the figure is fixed or ranged."
 
-msgid "Current page"
-msgstr "Current page"
-
 msgid "Customer Service"
 msgstr "Customer Service"
 
-msgid "Customer Support"
-msgstr "Customer Support"
-
 msgid "Customer Support Specialist"
 msgstr "Customer Support Specialist"
-
-msgid "Data Science & Analytics"
-msgstr "Data Science & Analytics"
 
 msgid "Degree level, certification baseline, or 'Not required' when education is not a screening factor."
 msgstr "Degree level, certification baseline, or 'Not required' when education is not a screening factor."
@@ -147,68 +102,44 @@ msgstr "Degree level, certification baseline, or 'Not required' when education i
 msgid "Describe the day-to-day work, team context, responsibilities, and what success looks like in the role."
 msgstr "Describe the day-to-day work, team context, responsibilities, and what success looks like in the role."
 
-msgid "Description is required."
-msgstr "Description is required."
-
-msgid "Design & Creative"
-msgstr "Design & Creative"
-
 msgid "Do not overload the Requirements field with nice-to-have extras. Keep must-haves separate from benefits."
 msgstr "Do not overload the Requirements field with nice-to-have extras. Keep must-haves separate from benefits."
 
-msgid "e.g., 3"
-msgstr "e.g., 3"
+#~ msgid "e.g., 3"
+#~ msgstr "e.g., 3"
 
-msgid "e.g., Customer service, Driving license B, Excel"
-msgstr "e.g., Customer service, Driving license B, Excel"
+#~ msgid "e.g., Customer service, Driving license B, Excel"
+#~ msgstr "e.g., Customer service, Driving license B, Excel"
 
-msgid "e.g., English B2, German A2"
-msgstr "e.g., English B2, German A2"
+#~ msgid "e.g., English B2, German A2"
+#~ msgstr "e.g., English B2, German A2"
 
-msgid "e.g., example@example.com"
-msgstr "e.g., example@example.com"
+#~ msgid "e.g., Health Insurance, Remote Work"
+#~ msgstr "e.g., Health Insurance, Remote Work"
 
-msgid "e.g., Health Insurance, Remote Work"
-msgstr "e.g., Health Insurance, Remote Work"
+#~ msgid "e.g., High School, Bachelor, Not required"
+#~ msgstr "e.g., High School, Bachelor, Not required"
 
-msgid "e.g., High School, Bachelor, Not required"
-msgstr "e.g., High School, Bachelor, Not required"
+#~ msgid "e.g., Morning shift, 09:00-18:00"
+#~ msgstr "e.g., Morning shift, 09:00-18:00"
 
-msgid "e.g., Morning shift, 09:00-18:00"
-msgstr "e.g., Morning shift, 09:00-18:00"
+#~ msgid "e.g., Permanent, Temporary, Internship"
+#~ msgstr "e.g., Permanent, Temporary, Internship"
 
-msgid "e.g., Permanent, Temporary, Internship"
-msgstr "e.g., Permanent, Temporary, Internship"
+#~ msgid "e.g., We are happy to review your application and contact shortlisted candidates."
+#~ msgstr "e.g., We are happy to review your application and contact shortlisted candidates."
 
-msgid "e.g., We are happy to review your application and contact shortlisted candidates."
-msgstr "e.g., We are happy to review your application and contact shortlisted candidates."
-
-msgid "Edit Job"
-msgstr "Edit Job"
-
-msgid "Education & Training"
-msgstr "Education & Training"
+#~ msgid "Edit Job"
+#~ msgstr "Edit Job"
 
 msgid "Education Level"
 msgstr "Education Level"
 
-msgid "Education level is required."
-msgstr "Education level is required."
-
-msgid "Email is required."
-msgstr "Email is required."
-
-msgid "Employment Type"
-msgstr "Employment Type"
-
-msgid "Employment type is required."
-msgstr "Employment type is required."
+#~ msgid "Employment Type"
+#~ msgstr "Employment Type"
 
 msgid "Employment Type:"
 msgstr "Employment Type:"
-
-msgid "Engineering & Manufacturing"
-msgstr "Engineering & Manufacturing"
 
 msgid "English B2, German A2"
 msgstr "English B2, German A2"
@@ -228,38 +159,14 @@ msgstr "Excel, fluent English, customer communication, CRM experience"
 msgid "Excel, inventory handling, English B1, forklift certificate"
 msgstr "Excel, inventory handling, English B1, forklift certificate"
 
-msgid "Experience level is required."
-msgstr "Experience level is required."
-
 msgid "Experience Requirement"
 msgstr "Experience Requirement"
 
 msgid "Experience Requirement:"
 msgstr "Experience Requirement:"
 
-msgid "Experience years cannot be negative."
-msgstr "Experience years cannot be negative."
-
 msgid "Explain when the work happens, especially if the role is shift-based or outside standard office hours."
 msgstr "Explain when the work happens, especially if the role is shift-based or outside standard office hours."
-
-msgid "Explore opportunities from"
-msgstr "Explore opportunities from"
-
-msgid "Filters"
-msgstr "Filters"
-
-msgid "Finance & Accounting"
-msgstr "Finance & Accounting"
-
-msgid "Food & Beverage"
-msgstr "Food & Beverage"
-
-msgid "Freelance"
-msgstr "Freelance"
-
-msgid "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
-msgstr "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
 
 msgid "Full-time"
 msgstr "Full-time"
@@ -267,26 +174,14 @@ msgstr "Full-time"
 msgid "Full-time, Part-time, Contract, Internship, or similar."
 msgstr "Full-time, Part-time, Contract, Internship, or similar."
 
-msgid "Guide"
-msgstr "Guide"
-
 msgid "Health insurance, meal vouchers, annual bonus"
 msgstr "Health insurance, meal vouchers, annual bonus"
-
-msgid "Healthcare & Medical"
-msgstr "Healthcare & Medical"
 
 msgid "Hiring process notes, response expectations, onboarding details, or practical clarifications."
 msgstr "Hiring process notes, response expectations, onboarding details, or practical clarifications."
 
-msgid "Hospitality & Tourism"
-msgstr "Hospitality & Tourism"
-
 msgid "How to fill in each field when posting a job"
 msgstr "How to fill in each field when posting a job"
-
-msgid "Human Resources"
-msgstr "Human Resources"
 
 msgid "Hybrid"
 msgstr "Hybrid"
@@ -294,35 +189,17 @@ msgstr "Hybrid"
 msgid "If a field is optional but important for trust, fill it in anyway. More clarity usually improves application quality."
 msgstr "If a field is optional but important for trust, fill it in anyway. More clarity usually improves application quality."
 
-msgid "Information Technology"
-msgstr "Information Technology"
-
-msgid "Internship"
-msgstr "Internship"
-
-msgid "Invalid application deadline date."
-msgstr "Invalid application deadline date."
-
-msgid "Job Category"
-msgstr "Job Category"
+#~ msgid "Job Category"
+#~ msgstr "Job Category"
 
 msgid "Job Description"
 msgstr "Job Description"
-
-msgid "Job posted successfully!"
-msgstr "Job posted successfully!"
 
 msgid "Job Title"
 msgstr "Job Title"
 
 msgid "Job Title:"
 msgstr "Job Title:"
-
-msgid "Job Type"
-msgstr "Job Type"
-
-msgid "Jobs from"
-msgstr "Jobs from"
 
 msgid "jobs@company.com"
 msgstr "jobs@company.com"
@@ -333,23 +210,14 @@ msgstr "Language plus level or business usage context."
 msgid "Language Requirements"
 msgstr "Language Requirements"
 
-msgid "Legal & Compliance"
-msgstr "Legal & Compliance"
-
 msgid "List the must-have qualifications as comma-separated items. Focus on real hiring criteria."
 msgstr "List the must-have qualifications as comma-separated items. Focus on real hiring criteria."
 
 msgid "List the value-added perks as comma-separated items so the offer looks concrete and transparent."
 msgstr "List the value-added perks as comma-separated items so the offer looks concrete and transparent."
 
-msgid "Loading jobs..."
-msgstr "Loading jobs..."
-
 msgid "Location"
 msgstr "Location"
-
-msgid "Location is required."
-msgstr "Location is required."
 
 msgid "Location:"
 msgstr "Location:"
@@ -357,41 +225,14 @@ msgstr "Location:"
 msgid "Main tasks, tools used, reporting line, shift details, and any important operational expectations."
 msgstr "Main tasks, tools used, reporting line, shift details, and any important operational expectations."
 
-msgid "Management experience required"
-msgstr "Management experience required"
-
-msgid "Marketing & Advertising"
-msgstr "Marketing & Advertising"
-
 msgid "May 2026"
 msgstr "May 2026"
-
-msgid "Media & Communication"
-msgstr "Media & Communication"
 
 msgid "Mid-level"
 msgstr "Mid-level"
 
 msgid "Monday to Friday, 09:00-18:00"
 msgstr "Monday to Friday, 09:00-18:00"
-
-msgid "Need help filling the form?"
-msgstr "Need help filling the form?"
-
-msgid "No jobs found"
-msgstr "No jobs found"
-
-msgid "No jobs found."
-msgstr "No jobs found."
-
-msgid "No prior experience required"
-msgstr "No prior experience required"
-
-msgid "Non-Profit & NGO"
-msgstr "Non-Profit & NGO"
-
-msgid "On-site"
-msgstr "On-site"
 
 msgid "On-site, Hybrid, or Remote depending on the role."
 msgstr "On-site, Hybrid, or Remote depending on the role."
@@ -402,32 +243,11 @@ msgstr "Only shortlisted candidates will be contacted within 10 business days."
 msgid "Open Positions"
 msgstr "Open Positions"
 
-msgid "Open positions is required."
-msgstr "Open positions is required."
-
-msgid "Open positions must be a valid number."
-msgstr "Open positions must be a valid number."
-
-msgid "Open positions must be at least 1."
-msgstr "Open positions must be at least 1."
-
-msgid "Open the job posting guide with examples for every field."
-msgstr "Open the job posting guide with examples for every field."
-
-msgid "Operations & Logistics"
-msgstr "Operations & Logistics"
-
-msgid "Opportunities"
-msgstr "Opportunities"
-
 msgid "Optional"
 msgstr "Optional"
 
 msgid "Optional fields"
 msgstr "Optional fields"
-
-msgid "Part-time"
-msgstr "Part-time"
 
 msgid "Permanent contract"
 msgstr "Permanent contract"
@@ -437,15 +257,6 @@ msgstr "Permanent, Temporary, Civil contract, Internship agreement, Freelance co
 
 msgid "Plovdiv, Bulgaria"
 msgstr "Plovdiv, Bulgaria"
-
-msgid "Post a New Job"
-msgstr "Post a New Job"
-
-msgid "Post job"
-msgstr "Post job"
-
-msgid "Posting job..."
-msgstr "Posting job..."
 
 msgid "Private health care, bonus scheme, meal vouchers, remote days, training budget, transport card."
 msgstr "Private health care, bonus scheme, meal vouchers, remote days, training budget, transport card."
@@ -459,12 +270,6 @@ msgstr "Provide a real salary range or compensation note that helps candidates d
 msgid "Quick rules"
 msgstr "Quick rules"
 
-msgid "Real Estate & Property"
-msgstr "Real Estate & Property"
-
-msgid "Remote"
-msgstr "Remote"
-
 msgid "Required"
 msgstr "Required"
 
@@ -474,17 +279,8 @@ msgstr "Required fields"
 msgid "Requirements"
 msgstr "Requirements"
 
-msgid "Requirements (comma separated)"
-msgstr "Requirements (comma separated)"
-
-msgid "Requirements are required."
-msgstr "Requirements are required."
-
 msgid "Requirements:"
 msgstr "Requirements:"
-
-msgid "Retail & E-commerce"
-msgstr "Retail & E-commerce"
 
 msgid "Role, seniority if relevant, and the main specialization."
 msgstr "Role, seniority if relevant, and the main specialization."
@@ -492,44 +288,17 @@ msgstr "Role, seniority if relevant, and the main specialization."
 msgid "Salary"
 msgstr "Salary"
 
-msgid "Salary is required."
-msgstr "Salary is required."
-
-msgid "Sales & Business Development"
-msgstr "Sales & Business Development"
-
 msgid "Sample structure"
 msgstr "Sample structure"
 
-msgid "Save Changes"
-msgstr "Save Changes"
+#~ msgid "Save Changes"
+#~ msgstr "Save Changes"
 
-msgid "Saving..."
-msgstr "Saving..."
-
-msgid "Science & Research"
-msgstr "Science & Research"
-
-msgid "Seasonal"
-msgstr "Seasonal"
-
-msgid "Select a category"
-msgstr "Select a category"
-
-msgid "Select category"
-msgstr "Select category"
-
-msgid "Select employment type"
-msgstr "Select employment type"
-
-msgid "Select experience level"
-msgstr "Select experience level"
+#~ msgid "Saving..."
+#~ msgstr "Saving..."
 
 msgid "Select how the work is delivered so the candidate understands location expectations immediately."
 msgstr "Select how the work is delivered so the candidate understands location expectations immediately."
-
-msgid "Select work mode"
-msgstr "Select work mode"
 
 msgid "Set a closing date when the role has a fixed hiring window."
 msgstr "Set a closing date when the role has a fixed hiring window."
@@ -540,44 +309,17 @@ msgstr "Set the hiring format that defines the relationship between company and 
 msgid "Sofia, Bulgaria"
 msgstr "Sofia, Bulgaria"
 
-msgid "Some experience preferred (6+ months)"
-msgstr "Some experience preferred (6+ months)"
-
-msgid "Something went wrong while posting job."
-msgstr "Something went wrong while posting job."
-
 msgid "State only the languages and proficiency levels that are truly needed for the role."
 msgstr "State only the languages and proficiency levels that are truly needed for the role."
 
 msgid "State the minimum education expectation only if it is genuinely relevant for the role."
 msgstr "State the minimum education expectation only if it is genuinely relevant for the role."
 
-msgid "Supervisory experience required"
-msgstr "Supervisory experience required"
-
 msgid "Technical skills, licenses, language ability, legal eligibility, tool knowledge, or proven experience."
 msgstr "Technical skills, licenses, language ability, legal eligibility, tool knowledge, or proven experience."
 
-msgid "Temporary"
-msgstr "Temporary"
-
 msgid "These should be completed for every listing"
 msgstr "These should be completed for every listing"
-
-msgid "Title is required."
-msgstr "Title is required."
-
-msgid "Total jobs"
-msgstr "Total jobs"
-
-msgid "Total Jobs found"
-msgstr "Total Jobs found"
-
-msgid "Transportation & Delivery"
-msgstr "Transportation & Delivery"
-
-msgid "Try again later or adjust the filters from the previous page."
-msgstr "Try again later or adjust the filters from the previous page."
 
 msgid "Updated for the current Create Job form"
 msgstr "Updated for the current Create Job form"
@@ -606,9 +348,6 @@ msgstr "Use this page as a reference before publishing a vacancy. The guide foll
 msgid "Use this section for extra context that improves trust but does not belong in the main description."
 msgstr "Use this section for extra context that improves trust but does not belong in the main description."
 
-msgid "Volunteer"
-msgstr "Volunteer"
-
 msgid "Warehouse Operations Coordinator"
 msgstr "Warehouse Operations Coordinator"
 
@@ -626,12 +365,6 @@ msgstr "What to write:"
 
 msgid "Work Mode"
 msgstr "Work Mode"
-
-msgid "Work mode cannot be empty."
-msgstr "Work mode cannot be empty."
-
-msgid "Work mode is required."
-msgstr "Work mode is required."
 
 msgid "Work Schedule"
 msgstr "Work Schedule"

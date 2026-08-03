@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "build:snap": "vite build && react-snap",
     "extract": "lingui extract",
-    "compile:locale": "lingui compile"
+    "compile:locale": "lingui compile",
+    "check:translations": "node scripts/check-translations.mjs"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^7.1.0",

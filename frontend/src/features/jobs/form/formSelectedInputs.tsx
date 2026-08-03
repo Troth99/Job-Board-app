@@ -2,7 +2,7 @@ import React from "react";
 import { Trans } from "@lingui/react/macro";
 import { Category } from "../../categories/types/category";
 import { t } from "@lingui/core/macro";
-import { getTranslatedCategoryLabel, getTranslatedEmploymentLabel } from "../helpers/getTranslatedEmploymentLabel";
+import { getTranslatedCategoryLabel, getTranslatedEmploymentLabel, getTranslatedExperienceLabel, getTranslatedWorkModeLabel } from "../helpers/getTranslatedEmploymentLabel";
 interface Props {
   value: string | undefined;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -53,20 +53,20 @@ export const employmentOptions = [
 //For Experience requirement options, we can use the same select component as employment type, just with different options. So I will implement it later when I implement the experience requirement field in the form.
 
 export const experienceOptions = [
-  { value: "No prior experience required", label: t`No prior experience required` },
-  { value: "Some experience preferred (6+ months)", label: t`Some experience preferred (6+ months)` },
-  { value: "1+ year relevant experience", label: t`1+ year relevant experience` },
-  { value: "2+ years relevant experience", label: t`2+ years relevant experience` },
-  { value: "3+ years relevant experience", label: t`3+ years relevant experience` },
-  { value: "5+ years relevant experience", label: t`5+ years relevant experience` },
-  { value: "Supervisory experience required", label: t`Supervisory experience required` },
-  { value: "Management experience required", label: t`Management experience required` },
+  { value: "No prior experience required", label: `No prior experience required` },
+  { value: "Some experience preferred (6+ months)", label: `Some experience preferred (6+ months)` },
+  { value: "1+ year relevant experience", label: `1+ year relevant experience` },
+  { value: "2+ years relevant experience", label: `2+ years relevant experience` },
+  { value: "3+ years relevant experience", label: `3+ years relevant experience` },
+  { value: "5+ years relevant experience", label: `5+ years relevant experience` },
+  { value: "Supervisory experience required", label: `Supervisory experience required` },
+  { value: "Management experience required", label: `Management experience required` },
 ]
 
 export const workModeOptions = [
-  { value: "On-site", label: t`On-site` },
-  { value: "Hybrid", label: t`Hybrid` },
-  { value: "Remote", label: t`Remote` },
+  { value: "On-site", label: `On-site` },
+  { value: "Hybrid", label: `Hybrid` },
+  { value: "Remote", label: `Remote` },
 ];
 
 export  function JobCategorySelect({ value, onChange }: Props) {
@@ -122,7 +122,7 @@ export function ExperienceLevelSelect({ value, onChange }: Props) {
       </option>
       {experienceOptions.map((opt) => (
         <option key={opt.value} value={opt.value}>
-          {opt.label}
+          {getTranslatedExperienceLabel(opt.value)}
         </option>
       ))}
     </select>
@@ -137,7 +137,7 @@ export function WorkModeSelect({ value, onChange }: Props) {
       </option>
       {workModeOptions.map((opt) => (
         <option key={opt.value} value={opt.value}>
-          {opt.label}
+          {getTranslatedWorkModeLabel(opt.value)}
         </option>
       ))}
     </select>

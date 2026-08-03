@@ -180,6 +180,11 @@ export default defineConfig({
 			],
 
 		},
+				{
+			path: "<rootDir>/src/i18n/locales/{locale}/guide-post-job",
+			include: ["src/features/jobs/views/HowToPostJobInfo",],
+
+		},
 	
 	],
 });
