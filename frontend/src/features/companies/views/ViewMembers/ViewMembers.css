@@ -184,55 +184,70 @@
 .member-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 .role-actions {
   position: relative;
 }
 .action-btn {
-  border: 1px solid transparent;
   border-radius: 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 32px;
-  padding: 6px 10px;
-  width: 90px;
-  font-size: 0.85rem;
+  min-height: 28px;
+  padding: 6px 12px;
+  width: auto;
+  min-width: 120px;
+  font-size: 0.75rem;
   font-weight: 700;
   line-height: 1;
   box-sizing: border-box;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+  border: 1px solid rgba(2, 6, 23, 0.06);
   transition:
     background-color 0.16s ease,
     border-color 0.16s ease,
     color 0.16s ease,
-    transform 0.12s ease;
-  white-space: normal;
-  word-break: break-word;
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+  white-space: nowrap;
   text-align: center;
 }
-.member-actions .action-btn {
-  width: 90px;
-}
-.action-btn {
-  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
-  border: 1px solid rgba(2, 6, 23, 0.06);
-  transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease,
-    background-color 0.12s ease;
-}
+
 .action-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(2, 6, 23, 0.06);
 }
 .action-btn.edit {
-  padding: 7px 14px;
+  padding: 4px 8px;
 }
 .action-btn.remove {
-  padding: 6px 10px;
-  font-size: 0.85rem;
+  padding: 4px 7px;
+}
+
+/* icon + short label helpers */
+.action-btn .btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  font-size: 1rem;
+}
+.action-btn .btn-label {
+  display: inline-block;
+}
+
+@media (max-width: 420px) {
+  /* on very small screens show icon-only to save space */
+  .action-btn .btn-label {
+    display: none;
+  }
+  .action-btn {
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 40px;
+  }
 }
 .action-btn.edit {
   background: #16a085;

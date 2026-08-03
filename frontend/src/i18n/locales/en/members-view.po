@@ -23,8 +23,8 @@ msgstr "{memberName} has been removed from the company."
 msgid "{memberName}'s role updated to {newRole} successfully."
 msgstr "{memberName}'s role updated to {newRole} successfully."
 
-msgid "Change Role"
-msgstr "Change Role"
+#~ msgid "Change Role"
+#~ msgstr "Change Role"
 
 msgid "Company Members"
 msgstr "Company Members"
@@ -47,11 +47,17 @@ msgstr "Manage team roles and access permissions."
 msgid "Message"
 msgstr "Message"
 
+msgid "Remove"
+msgstr "Remove"
+
 msgid "Remove Member"
 msgstr "Remove Member"
 
 msgid "Removing..."
 msgstr "Removing..."
+
+msgid "Role"
+msgstr "Role"
 
 msgid "Role:"
 msgstr "Role:"
