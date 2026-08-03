@@ -77,6 +77,8 @@ export const seoConfig: Record<string, SeoConfig> = {
     description: "Discover your next career move with our job board. Browse thousands of job listings, find the perfect fit, and take the next step in your professional journey.",
     url: "https://job-board-three-omega.vercel.app/"
    },
+
+   //jobs pages
   viewAllJobs: {
     title: "Browse All Jobs | Find Your Next Opportunity!",
     description: "Browse all job listings and find your next opportunity. Fresh listings, sorted by newest first.",
@@ -100,6 +102,11 @@ export const seoConfig: Record<string, SeoConfig> = {
     viewSavedJobs: {
         title: "Your Saved Jobs | Job Board",
         description: "View and manage your saved job listings, keep track of your favorite opportunities, and stay organized on Job Board.",
+        noindex: true
+    },
+       jobGuide: {
+        title: "Job Posting Guide | Job Board",
+        description: "Learn how to post a job listing on Job Board and reach a wide audience of qualified candidates.",
         noindex: true
     },
 

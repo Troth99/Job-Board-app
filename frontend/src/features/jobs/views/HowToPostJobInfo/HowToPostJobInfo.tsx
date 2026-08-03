@@ -1,6 +1,10 @@
 import "./HowToPostJobInfo.css";
 import { Trans } from "@lingui/react/macro";
 import {t} from "@lingui/core/macro";
+import { generateSeoConfig } from "../../../../seo/seo";
+import MetaData from "../../../../seo/MetaDataTags";
+
+
 
 const requiredFields = [
     {
@@ -174,7 +178,12 @@ const quickRules = [
 ];
 
 function HowToPostJobInfo() {
+
+    const seo = generateSeoConfig("jobGuide");
+
     return (
+        <>
+        <MetaData seo={seo} />
         <section className="post-job-guide">
             <div className="post-job-guide__hero">
                 <p className="post-job-guide__eyebrow"><Trans>Create Job Guide</Trans></p>
@@ -277,8 +286,13 @@ function HowToPostJobInfo() {
                 </article>
             </div>
         </section>
+        </>
     );
 }
 
 
 export default HowToPostJobInfo;    
+
+function generateSeoMetaTags(arg0: string) {
+    throw new Error("Function not implemented.");
+}
