@@ -52,10 +52,26 @@
 }
 
 .profile-image {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: .6rem;
+}
+.avatar-spinner-overlay {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 132px; 
+    height: 132px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
 }
 
 .profile-image img {

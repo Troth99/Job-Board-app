@@ -25,6 +25,7 @@ export interface ProfileContainerProps {
   completionPercentage: number;
   completedFields: number;
   totalCompletionFields: number;
+  isUploading: boolean
 }
 
 export interface ProfileData {

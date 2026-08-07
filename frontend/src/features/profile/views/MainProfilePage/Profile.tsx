@@ -19,7 +19,7 @@ import { Trans } from "@lingui/react/macro";
 
 export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const { loading: userLoading, isInitialized, userData } = useProfile();
-  const { avatar, handleFileChange } = useAvatar();
+  const { avatar, handleFileChange, isUploading } = useAvatar();
  
   const { userRole } = useRole();
   const { loading: companyLoading, company, getCompanyById } = useCompany();
@@ -129,6 +129,7 @@ const companyId = userData?.company;
                 userData={userData}
                 avatar={avatar || userData.avatar || null}
                 handleFileChange={handleFileChange}
+                isUploading={isUploading}
                 completionPercentage={completionPercentage}
                 completedFields={completedFields}
                 totalCompletionFields={totalCompletionFields}
