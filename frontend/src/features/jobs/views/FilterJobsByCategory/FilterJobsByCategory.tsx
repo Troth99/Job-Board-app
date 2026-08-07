@@ -1,6 +1,6 @@
 import { useNavigate, useParams, useSearchParams } from "react-router";
 import "./FilterJobsByCategory.css";
-import useJobs from "../../hooks/useJobBoard";
+import useJobs from "../../hooks/useJobsAPI";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import useJobs from "../../../jobs/hooks/useJobBoard";
 import { useParams, useSearchParams } from "react-router";
 import { ShowJobs } from "../../components/showJobs/showCompanyJobs";
 import "./viewAllJobsForComapny.css";
 import { Job } from "../../../jobs/types/Job.model";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { usePagination } from "../../../../shared/hooks/usePagination";
+import useJobs from "../../../jobs/hooks/useJobsAPI";
 
 
 //make pagination for this component and also add total count of jobs in the company.

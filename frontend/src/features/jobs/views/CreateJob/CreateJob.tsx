@@ -6,7 +6,7 @@ import {
   JobCategorySelect,
   WorkModeSelect,
 } from "../../form/formSelectedInputs";
-import useJobs from "../../hooks/useJobBoard";
+import useJobs from "../../hooks/useJobsAPI";
 import { showSuccess } from "../../../../shared/utils/toast";
 import { Link, useNavigate, useParams } from "react-router";
 

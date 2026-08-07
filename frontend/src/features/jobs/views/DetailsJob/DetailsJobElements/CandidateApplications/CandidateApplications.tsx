@@ -1,5 +1,5 @@
 import "./CandidateApplications.css";
-import useJobs from "../../../../hooks/useJobBoard";
+import useApplications from "../../../../hooks/useJobApplications";
 import { Candidate } from "../../../../types/Apllication.model";
 import { LoadingIndicator } from "../../../../../../shared/components/LoadingIndicator/LoadingIndicator";
 import { formatDate } from "../../../../../../shared/utils/formData";
@@ -16,7 +16,7 @@ export function CandidateApplications({
   loading: boolean;
   setCandidates: React.Dispatch<React.SetStateAction<Candidate[]>>;
 }) {
-  const { updateApplicationStatus, deleteApplication } = useJobs();
+  const { updateApplicationStatus, deleteApplication } = useApplications();
 const {companyId} = useParams()
 
   const viewCvHandler = async (candidateId: string) => {

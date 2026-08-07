@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useJobs from "../../../jobs/hooks/useJobBoard";
+import useJobs from "../../../jobs/hooks/useJobsAPI";
 import { ShowJobs } from "../showJobs/showCompanyJobs";
 import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";
 import { Job } from "../../../jobs/types/Job.model";

@@ -1,6 +1,6 @@
 import "./ApplyForJob.css";
 import useForm from "../../../../shared/hooks/useForm";
-import useJobs from "../../hooks/useJobBoard";
+import useApplications from "../../hooks/useJobApplications";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import { useState } from "react";
 
@@ -34,7 +34,7 @@ export function ApplyForJobModal({
   jobTitle?: string;
   onClose: () => void;
 }) {
-  const { createApplication } = useJobs();
+  const { createApplication } = useApplications();
   const user = getUserFromLocalStorage();
   const userId = user._id;
   const [success, setSuccess] = useState(false);

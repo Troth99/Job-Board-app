@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../CreateJob/CreateJob.css";
 import { useNavigate, useParams } from "react-router";
-import useJobs from "../../hooks/useJobBoard";
+import useJobs from "../../hooks/useJobsAPI";
 import {
   EmploymentTypeSelect,
   ExperienceLevelSelect,

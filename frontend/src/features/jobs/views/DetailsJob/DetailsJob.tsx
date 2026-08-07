@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import "./Details.css";
 import { useEffect, useState } from "react";
-import useJobs from "../../hooks/useJobBoard";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { Job } from "../../types/Job.model";
 import { CandidateApplications } from "./DetailsJobElements/CandidateApplications/CandidateApplications";
@@ -11,6 +10,8 @@ import DetailsJobMainSection from "./DetailsJobElements/DetailsJobMainSection";
 import useMembers from "../../../companies/hooks/useMembers";
 import useFavorites from "../../hooks/useSavedJobs";
 import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
+import useJobs from "../../hooks/useJobsAPI";
+import useApplications from "../../hooks/useJobApplications";
 
 //toReractor
 
@@ -32,8 +33,8 @@ function DetailsJob() {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [localRole, setLocalRole] = useState<string | null>(null);
   const { getUserRole } = useMembers();
-  const { getJobById, updateJob, deleteJob, getApplicationsByJobId } =
-    useJobs();
+  const { getJobById, updateJob, deleteJob } = useJobs();
+  const { getApplicationsByJobId } = useApplications();
   const [loadingApplications, setLoadingApplications] =
     useState<boolean>(false);
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../../auth/hooks/useAuth";
-import useJobs from "../hooks/useJobBoard";
+import useJobs from "../hooks/useJobsAPI";
 import { Job } from "../types/Job.model";
 import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 import useCompanies from "../../companies/hooks/useCompanyAPI";
