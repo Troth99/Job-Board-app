@@ -1,0 +1,35 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-07 03:22+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+
+msgid "Added"
+msgstr "Добавено"
+
+msgid "All jobs you’ve saved in one place. Quick access to your top picks!"
+msgstr "Всички запазени работни места на едно място. Бърз достъп до вашите най-добри избори!"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Location"
+msgstr "Местоположение"
+
+msgid "Salary"
+msgstr "Заплата"
+
+msgid "Start saving jobs to easily find them later!"
+msgstr "Започнете да запазвате работни места, за да ги намирате лесно по-късно!"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "You have no saved jobs"
+msgstr "Нямате запазени работни места"
+
+msgid "Your Saved Jobs"
+msgstr "Вашите запазени работни места"

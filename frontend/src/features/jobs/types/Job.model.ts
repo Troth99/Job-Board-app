@@ -13,7 +13,7 @@ export interface Job {
     lastName?: string;
   };
   company?: Company | null;
-  category?: Category | string;
+  category?: Category;
   createdAt?: string;
   skills?: string;
   requirements?: string;
@@ -43,7 +43,7 @@ export interface valuesInterface {
   description: string;
   location: string;
   salary: string;
-  category: Category | string;
+  category: Category;
   employmentType: string;
   requirements: string;
   benefits: string;

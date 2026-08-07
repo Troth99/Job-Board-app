@@ -279,7 +279,7 @@ function PostJob() {
             type="email"
             id="contactEmail"
             placeholder={t`e.g., example@example.com`}
-            {...register("contactEmail")}
+            {...register("email")}
           />
           <div className="error-message">{errors.email}</div>
         </div>

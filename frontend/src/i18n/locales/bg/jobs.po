@@ -51,7 +51,13 @@ msgstr ""
 msgid "Add the email address that should receive candidate communication or application questions."
 msgstr ""
 
+msgid "Added"
+msgstr ""
+
 msgid "Additional Information"
+msgstr ""
+
+msgid "All jobs you’ve saved in one place. Quick access to your top picks!"
 msgstr ""
 
 msgid "Application Deadline"
@@ -546,6 +552,9 @@ msgstr ""
 msgid "Something went wrong while posting job."
 msgstr ""
 
+msgid "Start saving jobs to easily find them later!"
+msgstr ""
+
 msgid "State only the languages and proficiency levels that are truly needed for the role."
 msgstr ""
 
@@ -578,6 +587,9 @@ msgstr ""
 
 msgid "Try again later or adjust the filters from the previous page."
 msgstr "Опитайте отново по-късно или коригирайте филтрите от предишната страница."
+
+msgid "Type"
+msgstr ""
 
 msgid "Updated for the current Create Job form"
 msgstr ""
@@ -642,5 +654,11 @@ msgstr ""
 msgid "Write for candidates, not for internal teams. Every field should help someone decide whether to apply."
 msgstr ""
 
+msgid "You have no saved jobs"
+msgstr ""
+
 msgid "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."
+msgstr ""
+
+msgid "Your Saved Jobs"
 msgstr ""

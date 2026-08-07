@@ -197,7 +197,18 @@ export default defineConfig({
 				"src/features/companies/components/MembersActions",
 			],
 
-		}
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/saved-jobs",
+			include: ["src/features/jobs/views/SavedJobView",],
+
+		},
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/saved-jobs",
+			include: ["src/features/jobs/views/SavedJobView",],
+
+		},
+		
 
 
 	],

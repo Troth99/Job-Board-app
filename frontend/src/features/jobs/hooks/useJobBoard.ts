@@ -2,7 +2,7 @@ import useJobsHook from "./useJobsAPI";
 import useJobApplications from "./useJobApplications";
 import useJobFavorites from "./useSavedJobs";
 
-
+//to delete this file and move the code to useJobsAPI.ts file
 export default function useJobsMethods() {
   const jobsMethods = useJobsHook();
   const applicationsMethods = useJobApplications();

@@ -1,0 +1,35 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-07 03:22+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+
+msgid "Added"
+msgstr "Added"
+
+msgid "All jobs you’ve saved in one place. Quick access to your top picks!"
+msgstr "All jobs you’ve saved in one place. Quick access to your top picks!"
+
+msgid "Category"
+msgstr "Category"
+
+msgid "Location"
+msgstr "Location"
+
+msgid "Salary"
+msgstr "Salary"
+
+msgid "Start saving jobs to easily find them later!"
+msgstr "Start saving jobs to easily find them later!"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "You have no saved jobs"
+msgstr "You have no saved jobs"
+
+msgid "Your Saved Jobs"
+msgstr "Your Saved Jobs"

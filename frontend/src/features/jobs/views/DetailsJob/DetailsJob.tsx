@@ -9,16 +9,18 @@ import { Candidate } from "../../types/Apllication.model";
 import { Container } from "../../../../shared/components/Container/Container";
 import DetailsJobMainSection from "./DetailsJobElements/DetailsJobMainSection";
 import useMembers from "../../../companies/hooks/useMembers";
-
+import useFavorites from "../../hooks/useSavedJobs";
+import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
 
 //toReractor
-
 
 function DetailsJob() {
   const { companyId, jobId } = useParams<{
     companyId: string;
     jobId: string;
   }>();
+  const { removeFromFavorites } = useFavoritesContext();
+
   const navigate = useNavigate();
   const [jobDetails, setJobdetails] = useState<Job>();
   const [loading, setLoading] = useState(true);
@@ -133,6 +135,7 @@ function DetailsJob() {
           return;
         }
         await deleteJob(jobId);
+        await removeFromFavorites(jobId);
         navigate(`/company/${companyId}/dashboard`);
       } catch (error) {
         console.error("Failed to delete job:", error);
@@ -141,7 +144,6 @@ function DetailsJob() {
       }
     }
   };
-
 
   return (
     <>
@@ -153,7 +155,6 @@ function DetailsJob() {
         ) : (
           <div className="job-details-container">
             <DetailsJobMainSection jobDetails={jobDetails} />
-          
 
             <CandidateApplications
               jobId={jobId}
