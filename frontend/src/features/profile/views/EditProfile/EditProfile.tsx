@@ -103,90 +103,117 @@ export default function EditProfile() {
 
   return (
     <>
-     <MetaData seo={seo} />
-        
-    <div className="profile-body" style={{ position: "relative" }}>
-      {!userData ? (
-        <Spinner overlay={true} />
-      ) : (
-        <div className="profile-container">
-          <div className="profile-header">
-            <h1><Trans>Edit Profile</Trans></h1>
+      <MetaData seo={seo} />
+      <div className="profile-body">
+        {!userData ? (
+          <Spinner overlay={true} />
+        ) : (
+          <div className="profile-container">
+            <div className="profile-header">
+              <div>
+                <h1><Trans>Edit Profile</Trans></h1>
+                <p className="profile-subtitle">
+                  <Trans>Update your personal information and keep your account details current.</Trans>
+                </p>
+              </div>
+            </div>
+
+            <div className="profile-card">
+              <aside className="avatar-panel">
+                <div className="avatar-preview">
+                  {profileData.avatar ? (
+                    <img src={profileData.avatar} alt="Profile avatar" />
+                  ) : (
+                    <div className="avatar-placeholder">
+                      {profileData.firstName?.charAt(0).toUpperCase() || "U"}
+                    </div>
+                  )}
+                  <div className="avatar-meta">
+                    <h2>{`${profileData.firstName || ""} ${profileData.lastName || ""}`.trim() || "User"}</h2>
+                    <p>{profileData.email}</p>
+                  </div>
+                </div>
+
+                <div className="avatar-actions">
+                  <button
+                    type="button"
+                    className="delete-image-button secondary"
+                    onClick={imageDeleteHandler}
+                    disabled={buttonLoading}
+                  >
+                    <Trans>Delete Profile Image</Trans>
+                  </button>
+                </div>
+              </aside>
+
+              <section className="profile-form">
+                <form onSubmit={formHandler}>
+                  <div className="form-grid">
+                    <div className="form-group">
+                      <label htmlFor="firstName"><Trans>First name</Trans></label>
+                      <input id="firstName" type="text" {...register("firstName")} />
+                      <div className="error-message">{errors.firstName}</div>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="lastName"><Trans>Last name</Trans></label>
+                      <input id="lastName" type="text" {...register("lastName")} />
+                      <div className="error-message">{errors.lastName}</div>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="phoneNumber"><Trans>Phone</Trans></label>
+                      <input id="phoneNumber" type="text" {...register("phoneNumber")} />
+                      <div className="error-message">{errors.phoneNumber}</div>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="email"><Trans>Email</Trans></label>
+                      <input id="email" type="email" {...register("email")} />
+                      <div className="error-message">{errors.email}</div>
+                    </div>
+
+                    <div className="form-group full-width">
+                      <label htmlFor="location"><Trans>Location</Trans></label>
+                      <input id="location" type="text" {...register("location")} />
+                      <div className="error-message">{errors.location}</div>
+                    </div>
+                  </div>
+
+                  <div className="form-footer">
+                    <button
+                      type="submit"
+                      className="edit-profile-button primary"
+                      disabled={buttonLoading}
+                    >
+                      {buttonLoading ? <Trans>Saving...</Trans> : <Trans>Save Changes</Trans>}
+                    </button>
+                  </div>
+                </form>
+
+                <div className="profile-actions">
+                  <button
+                    type="button"
+                    className="profile-action-button secondary"
+                    onClick={changePasswordHandler}
+                    disabled={buttonLoading}
+                  >
+                    <Trans>Change Password</Trans>
+                  </button>
+                  <button
+                    type="button"
+                    className="profile-action-button danger"
+                    onClick={deleteProfileHandler}
+                    disabled={buttonLoading}
+                  >
+                    <Trans>Delete Profile</Trans>
+                  </button>
+                </div>
+              </section>
+            </div>
           </div>
-
-          <form onSubmit={formHandler}>
-            <div className="profile-details">
-              <div>
-                <strong><Trans>First name:</Trans></strong>
-                <input type="text" {...register("firstName")} />
-                <div className="error-message">{errors.firstName}</div>
-              </div>
-              <div>
-                <strong><Trans>Last name:</Trans></strong>
-                <input type="text" {...register("lastName")} />
-                <div className="error-message">{errors.lastName}</div>
-              </div>
-              <div>
-                <strong><Trans>Phone:</Trans></strong>
-                <input type="text" {...register("phoneNumber")} />
-                <div className="error-message">{errors.phoneNumber}</div>
-              </div>
-              <div>
-                <strong><Trans>Email:</Trans></strong>
-                <input type="email" {...register("email")} />
-                <div className="error-message">{errors.email}</div>
-              </div>
-              <div>
-                <strong><Trans>Location:</Trans></strong>
-                <input type="text" {...register("location")} />
-                <div className="error-message">{errors.location}</div>
-              </div>
-
-              <div className="edit-profile-button-container">
-                <button
-                  className="edit-profile-button"
-                  type="submit"
-                  disabled={buttonLoading}
-                >
-                  {buttonLoading ? <Trans>Saving...</Trans> : <Trans>Save Changes</Trans>}
-                </button>
-              </div>
-            </div>
-          </form>
-
-          <div className="button-container">
-            <div className="delete-image-container">
-              <button
-                className="delete-image-button"
-                onClick={imageDeleteHandler}
-                disabled={buttonLoading}
-              >
-                <Trans>Delete Profile Image</Trans>
-              </button>
-            </div>
-            <div className="change-password-container">
-              <button
-                className="change-password-button"
-                onClick={changePasswordHandler}
-                disabled={buttonLoading}
-              >
-                <Trans>Change Password</Trans>
-              </button>
-            </div>
-
-            <div className="delete-profile-container">
-              <button
-                className="delete-profile-button"
-                onClick={deleteProfileHandler}
-                disabled={buttonLoading}
-              >
-                <Trans>Delete Profile</Trans>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-       </>
+        )}
+      </div>
+    </>
   );
 }

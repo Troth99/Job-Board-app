@@ -37,23 +37,38 @@ msgstr "Delete Profile Image"
 msgid "Edit Profile"
 msgstr "Edit Profile"
 
-msgid "Email:"
-msgstr "Email:"
+msgid "Email"
+msgstr "Email"
 
-msgid "First name:"
-msgstr "First name:"
+#~ msgid "Email:"
+#~ msgstr "Email:"
 
-msgid "Last name:"
-msgstr "Last name:"
+msgid "First name"
+msgstr "First name"
 
-msgid "Location:"
-msgstr "Location:"
+#~ msgid "First name:"
+#~ msgstr "First name:"
+
+msgid "Last name"
+msgstr "Last name"
+
+#~ msgid "Last name:"
+#~ msgstr "Last name:"
+
+msgid "Location"
+msgstr "Location"
+
+#~ msgid "Location:"
+#~ msgstr "Location:"
 
 msgid "New password"
 msgstr "New password"
 
-msgid "Phone:"
-msgstr "Phone:"
+msgid "Phone"
+msgstr "Phone"
+
+#~ msgid "Phone:"
+#~ msgstr "Phone:"
 
 msgid "Save Changes"
 msgstr "Save Changes"
@@ -66,3 +81,6 @@ msgstr "Security"
 
 msgid "Update your account password to keep your profile secure."
 msgstr "Update your account password to keep your profile secure."
+
+msgid "Update your personal information and keep your account details current."
+msgstr "Update your personal information and keep your account details current."

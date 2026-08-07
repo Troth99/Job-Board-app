@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import  { SavedJob } from "../features/jobs/types/SavedJob.model";
-import useApplications from "../features/jobs/hooks/useJobApplications";
 import useFavorites from "../features/jobs/hooks/useSavedJobs";
 
   interface FavoritesContextType {

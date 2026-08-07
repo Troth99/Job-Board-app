@@ -62,8 +62,8 @@ msgstr ""
 msgid "Email"
 msgstr "Електронна поща"
 
-msgid "Email:"
-msgstr ""
+#~ msgid "Email:"
+#~ msgstr ""
 
 msgid "Enabled"
 msgstr "Активиран"
@@ -71,8 +71,8 @@ msgstr "Активиран"
 msgid "First name"
 msgstr "Име"
 
-msgid "First name:"
-msgstr ""
+#~ msgid "First name:"
+#~ msgstr ""
 
 msgid "Go to Dashboard"
 msgstr "Отидете в таблото за управление"
@@ -89,8 +89,8 @@ msgstr "Присъединил се:"
 msgid "Last name"
 msgstr "Фамилия"
 
-msgid "Last name:"
-msgstr ""
+#~ msgid "Last name:"
+#~ msgstr ""
 
 msgid "Loading..."
 msgstr "Зареждане..."
@@ -128,8 +128,8 @@ msgstr "на"
 msgid "Phone"
 msgstr "Телефон"
 
-msgid "Phone:"
-msgstr ""
+#~ msgid "Phone:"
+#~ msgstr ""
 
 msgid "Post a Job"
 msgstr "Публикувай обява за работа"
@@ -180,6 +180,9 @@ msgid "Unable to load profile"
 msgstr "Неуспешно зареждане на профила"
 
 msgid "Update your account password to keep your profile secure."
+msgstr ""
+
+msgid "Update your personal information and keep your account details current."
 msgstr ""
 
 msgid "User settings"

@@ -1,5 +1,5 @@
-import "./Profile.css";
-import "./Responsive.css";
+import "../../styles/profile.css"
+import "../../styles/buttons.css"
 import { useEffect, useState } from "react";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import useProfile from "../../hooks/useProfile";
@@ -20,6 +20,7 @@ import { Trans } from "@lingui/react/macro";
 export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const { loading: userLoading, isInitialized, userData } = useProfile();
   const { avatar, handleFileChange } = useAvatar();
+ 
   const { userRole } = useRole();
   const { loading: companyLoading, company, getCompanyById } = useCompany();
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const companyId = userData?.company;
 
 
   useEffect(() => {
+   
     if (userData) {
       setUserData(userData);
     }
@@ -125,7 +127,7 @@ const companyId = userData?.company;
             <section className="profile-top-grid">
               <ProfileContainer
                 userData={userData}
-                avatar={avatar}
+                avatar={avatar || userData.avatar || null}
                 handleFileChange={handleFileChange}
                 completionPercentage={completionPercentage}
                 completedFields={completedFields}

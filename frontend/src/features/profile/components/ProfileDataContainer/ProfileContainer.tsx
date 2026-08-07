@@ -19,7 +19,8 @@ export default function ProfileContainer({
     <div className="profile-main-card">
       <div className="profile-identity-block">
         <div className="profile-image">
-          <img src={avatar || defaultAvatar} alt="Profile" />
+          <img   src={avatar || userData?.avatar || defaultAvatar}
+          alt="Profile" />
           <ImageUpload onFileChange={handleFileChange} />
         </div>
 

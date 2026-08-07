@@ -37,23 +37,38 @@ msgstr "Изтриване на снимка на профила"
 msgid "Edit Profile"
 msgstr "Редактиране на профил"
 
-msgid "Email:"
-msgstr "Имейл:"
+msgid "Email"
+msgstr "Имейл"
 
-msgid "First name:"
-msgstr "Име:"
+#~ msgid "Email:"
+#~ msgstr "Имейл:"
 
-msgid "Last name:"
-msgstr "Фамилия:"
+msgid "First name"
+msgstr "Име"
 
-msgid "Location:"
-msgstr "Местоположение:"
+#~ msgid "First name:"
+#~ msgstr "Име:"
+
+msgid "Last name"
+msgstr "Фамилия"
+
+#~ msgid "Last name:"
+#~ msgstr "Фамилия:"
+
+msgid "Location"
+msgstr "Местоположение"
+
+#~ msgid "Location:"
+#~ msgstr "Местоположение:"
 
 msgid "New password"
 msgstr "Нова парола"
 
-msgid "Phone:"
-msgstr "Телефон:"
+msgid "Phone"
+msgstr "Телефон"
+
+#~ msgid "Phone:"
+#~ msgstr "Телефон:"
 
 msgid "Save Changes"
 msgstr "Запази промените"
@@ -66,3 +81,6 @@ msgstr "Сигурност"
 
 msgid "Update your account password to keep your profile secure."
 msgstr "Актуализирайте паролата на акаунта си, за да запазите профила си сигурен."
+
+msgid "Update your personal information and keep your account details current."
+msgstr "Актуализирайте личната си информация и поддържайте данните за акаунта си актуални."

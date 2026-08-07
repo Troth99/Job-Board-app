@@ -19,7 +19,7 @@ export interface ProfileProps {
 }
 
 export interface ProfileContainerProps {
-  userData: any;
+  userData: User;
   avatar: string | null;
   handleFileChange: (file: File) => void;
   completionPercentage: number;

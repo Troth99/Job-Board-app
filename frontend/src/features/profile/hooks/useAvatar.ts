@@ -1,9 +1,12 @@
 import { useState } from "react";
 import useApiRequester from "../../../shared/hooks/useApiRequester";
 import { API_BASE } from "../../../config/api";
+import { useUserData } from "../../../context/UseDataContext";
+import { User } from "../types/profileSectionTypes";
 
 export default function useAvatar() {
   const { request } = useApiRequester();
+  const {setUserData} = useUserData()
   const [avatar, setAvatar] = useState<string>("");
 
   const uploadUserProfileImage = async (file: File): Promise<string> => {
@@ -17,7 +20,7 @@ export default function useAvatar() {
       {
         method: "POST",
         body: formData,
-      }
+      },
     );
 
     const data = await response.json();
@@ -27,8 +30,11 @@ export default function useAvatar() {
   };
 
   const deleteUserProfileImage = async () => {
-    try {{API_BASE}
-      const response = await request(`/users/me/avatar`, "DELETE");
+    try {
+      {
+        API_BASE;
+      }
+      const response = await request(`${API_BASE}/users/me/avatar`, "DELETE");
       return response;
     } catch (error: any) {
       console.error("Error deleting user profile image:", error.message);
@@ -39,7 +45,13 @@ export default function useAvatar() {
   const handleFileChange = async (file: File) => {
     try {
       const imageUrl = await uploadUserProfileImage(file);
+
+      await request(`${API_BASE}/users/me`, "PUT", { avatar: imageUrl });
       setAvatar(imageUrl);
+      setUserData((prev: User) => {
+        return { ...prev, avatar: imageUrl };
+      });
+
       return imageUrl;
     } catch (error) {
       console.error("Image upload failed:", error);
@@ -49,7 +61,7 @@ export default function useAvatar() {
 
   const handleDeleteProfileImage = async () => {
     const isConfirmed = window.confirm(
-      "Are you sure you want to delete your profile image?"
+      "Are you sure you want to delete your profile image?",
     );
     if (!isConfirmed) return false;
 

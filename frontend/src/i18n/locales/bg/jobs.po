@@ -508,7 +508,7 @@ msgid "Sample structure"
 msgstr ""
 
 msgid "Save Changes"
-msgstr ""
+msgstr "Запази промените"
 
 msgid "Saving..."
 msgstr ""
