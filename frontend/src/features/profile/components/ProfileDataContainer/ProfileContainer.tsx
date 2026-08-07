@@ -19,19 +19,19 @@ export default function ProfileContainer({
   return (
     <div className="profile-main-card">
       <div className="profile-identity-block">
-      <div className="profile-image">
-  <img 
-    src={avatar || userData?.avatar || defaultAvatar} 
-    alt="Profile" 
-  />
-  {isUploading && (
-    <div className="avatar-spinner-overlay">
-      <LoadingIndicator size="small" message=""/>
-    </div>
-  )}
+        <div className="profile-image">
+          <img
+            src={avatar || userData?.avatar || defaultAvatar}
+            alt="Profile"
+          />
+          {isUploading && (
+            <div className="avatar-spinner-overlay">
+              <LoadingIndicator size="small" message="" />
+            </div>
+          )}
 
-  <ImageUpload onFileChange={handleFileChange} />
-</div>
+          <ImageUpload onFileChange={handleFileChange} />
+        </div>
 
         <div className="profile-headline">
           <h1>

@@ -66,6 +66,7 @@ export default function useAvatar() {
     }
   };
 
+
   const handleDeleteProfileImage = async () => {
     const isConfirmed = window.confirm(
       "Are you sure you want to delete your profile image?",

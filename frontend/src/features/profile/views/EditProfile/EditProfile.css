@@ -113,6 +113,24 @@
   font-weight: 600;
 }
 
+.profile-body .avatar-preview {
+  position: relative; 
+}
+
+.profile-body .avatar-spinner-overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.45); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
 .profile-body .form-group input {
   width: 100%;
   min-height: 52px;
