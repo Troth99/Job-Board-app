@@ -1,4 +1,4 @@
-import "./EditProfile.css";
+import "../../styles/edit-profile.css";
 import "./Responsive.css";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { useNavigate } from "react-router";
@@ -144,7 +144,7 @@ export default function EditProfile() {
                   {/* Спинърът се появява точно върху кръга при зареждане/изтриване */}
                   {buttonLoading && (
                     <div className="avatar-spinner-overlay">
-                      <LoadingIndicator size="small" message=""/>
+                      <LoadingIndicator size="small" message="" />
                     </div>
                   )}
 

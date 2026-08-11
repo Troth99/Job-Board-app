@@ -9,37 +9,33 @@
 .profile-action-button.primary,
 .edit-profile-button.primary,
 .primary-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 
-    width: auto;
-    min-height: 48px;
+  width: auto;
+  min-height: 48px;
 
-    padding: .75rem 1.2rem;
+  padding: 0.75rem 1.2rem;
 
-    border: none;
-    border-radius: .7rem;
+  border: none;
+  border-radius: 0.7rem;
 
-    background: linear-gradient(
-        135deg,
-        var(--pf-primary),
-        var(--pf-accent)
-    );
+  background: linear-gradient(135deg, var(--pf-primary), var(--pf-accent));
 
-    color: #fff;
-    font-size: .92rem;
-    font-family: inherit;
-    font-weight: 600;
-    text-decoration: none;
+  color: #fff;
+  font-size: 0.92rem;
+  font-family: inherit;
+  font-weight: 600;
+  text-decoration: none;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease,
-        opacity .2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .job-title-button:hover,
@@ -48,11 +44,10 @@
 .create-company-button-f1:hover,
 .profile-action-button.primary:hover,
 .edit-profile-button.primary:hover,
-.primary-btn:hover{
+.primary-btn:hover {
+  transform: translateY(-2px);
 
-    transform: translateY(-2px);
-
-    box-shadow: 0 10px 20px rgba(12,120,174,.25);
+  box-shadow: 0 10px 20px rgba(12, 120, 174, 0.25);
 }
 
 .job-title-button:disabled,
@@ -61,12 +56,11 @@
 .create-company-button-f1:disabled,
 .profile-action-button.primary:disabled,
 .edit-profile-button.primary:disabled,
-.primary-btn:disabled{
-
-    opacity:.6;
-    cursor:not-allowed;
-    transform:none;
-    box-shadow:none;
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 /* ==========================================
@@ -75,40 +69,38 @@
 
 .profile-action-button.secondary,
 .delete-image-button.secondary,
-.secondary-btn{
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+  min-height: 48px;
 
-    min-height:48px;
+  padding: 0.75rem 1.2rem;
 
-    padding:.75rem 1.2rem;
+  border-radius: 0.7rem;
 
-    border-radius:.7rem;
+  border: 1px solid var(--pf-border);
 
-    border:1px solid var(--pf-border);
+  background: var(--pf-surface);
 
-    background:var(--pf-surface);
+  color: var(--pf-title);
 
-    color:var(--pf-title);
+  font-weight: 600;
 
-    font-weight:600;
+  cursor: pointer;
 
-    cursor:pointer;
-
-    transition:.2s;
+  transition: 0.2s;
 }
 
 .profile-action-button.secondary:hover,
 .delete-image-button.secondary:hover,
-.secondary-btn:hover{
+.secondary-btn:hover {
+  transform: translateY(-2px);
 
-    transform:translateY(-2px);
+  border-color: var(--pf-primary);
 
-    border-color:var(--pf-primary);
-
-    box-shadow:0 8px 16px rgba(12,120,174,.12);
+  box-shadow: 0 8px 16px rgba(12, 120, 174, 0.12);
 }
 
 /* ==========================================
@@ -121,33 +113,28 @@
 .change-password-button,
 .check-profile-logs-button,
 .profile-action-button.danger,
-.danger-btn{
+.danger-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+  min-height: 48px;
 
-    min-height:48px;
+  padding: 0.75rem 1.2rem;
 
-    padding:.75rem 1.2rem;
+  border: none;
 
-    border:none;
+  border-radius: 0.7rem;
 
-    border-radius:.7rem;
+  background: linear-gradient(135deg, var(--pf-danger), var(--pf-danger-hover));
 
-    background:linear-gradient(
-        135deg,
-        var(--pf-danger),
-        var(--pf-danger-hover)
-    );
+  color: #fff;
 
-    color:#fff;
+  font-weight: 700;
 
-    font-weight:700;
+  cursor: pointer;
 
-    cursor:pointer;
-
-    transition:.2s;
+  transition: 0.2s;
 }
 
 .logout-button:hover,
@@ -156,11 +143,10 @@
 .change-password-button:hover,
 .check-profile-logs-button:hover,
 .profile-action-button.danger:hover,
-.danger-btn:hover{
+.danger-btn:hover {
+  transform: translateY(-2px);
 
-    transform:translateY(-2px);
-
-    box-shadow:0 10px 20px rgba(217,72,72,.30);
+  box-shadow: 0 10px 20px rgba(217, 72, 72, 0.3);
 }
 
 .logout-button:disabled,
@@ -168,75 +154,67 @@
 .delete-profile-button:disabled,
 .change-password-button:disabled,
 .check-profile-logs-button:disabled,
-.profile-action-button:disabled{
+.profile-action-button:disabled {
+  opacity: 0.6;
 
-    opacity:.6;
+  cursor: not-allowed;
 
-    cursor:not-allowed;
+  transform: none;
 
-    transform:none;
-
-    box-shadow:none;
+  box-shadow: none;
 }
 
 /* ==========================================
    CONTAINERS
 ========================================== */
 
-.logout-container{
+.logout-container {
+  margin-top: 1.1rem;
 
-    margin-top:1.1rem;
+  display: flex;
 
-    display:flex;
-
-    justify-content:center;
+  justify-content: center;
 }
 
-.button-container{
+.button-container {
+  margin-top: 1.5rem;
 
-    margin-top:1.5rem;
+  display: flex;
 
-    display:flex;
+  flex-wrap: wrap;
 
-    flex-wrap:wrap;
-
-    gap:1rem;
+  gap: 1rem;
 }
 
-.profile-actions{
+.profile-actions {
+  display: grid;
 
-    display:grid;
+  grid-template-columns: repeat(2, 1fr);
 
-    grid-template-columns:repeat(2,1fr);
+  gap: 1rem;
 
-    gap:1rem;
-
-    margin-top:1.2rem;
+  margin-top: 1.2rem;
 }
 
 /* ==========================================
    MOBILE
 ========================================== */
 
-@media (max-width:768px){
+@media (max-width: 768px) {
+  .profile-actions {
+    grid-template-columns: 1fr;
+  }
 
-    .profile-actions{
-
-        grid-template-columns:1fr;
-    }
-
-    .job-title-button,
-    .edit-image-button,
-    .edit-profile-button,
-    .create-company-button-f1,
-    .logout-button,
-    .profile-action-button,
-    .delete-image-button,
-    .delete-profile-button,
-    .change-password-button,
-    .check-profile-logs-button{
-
-        width:100%;
-    }
-
+  .job-title-button,
+  .edit-image-button,
+  .edit-profile-button,
+  .create-company-button-f1,
+  .logout-button,
+  .profile-action-button,
+  .delete-image-button,
+  .delete-profile-button,
+  .change-password-button,
+  .check-profile-logs-button {
+    width: 100%;
+  }
 }
