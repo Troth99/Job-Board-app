@@ -1,3 +1,5 @@
+import { Trans } from "@lingui/react/macro";
+import { FiUserCheck } from "react-icons/fi";
 import { CompanyMember } from "../../types/CompanyMember.model";
 
 export default function ChangeRoleForMember({
@@ -26,7 +28,8 @@ export default function ChangeRoleForMember({
               setShowOptions(showOptions === member._id ? null : member._id)
             }
           >
-            Change Role
+            <FiUserCheck aria-hidden="true" className="btn-icon" />
+            <span className="btn-label"><Trans>Role</Trans></span>
           </button>
           {showOptions === member._id && (
             <div className="custom-dropdown">
@@ -48,16 +51,7 @@ export default function ChangeRoleForMember({
           )}
         </>
       )}
-      {userRole === "owner" && member.role === "owner" && (
-        <button
-          className="action-btn edit"
-          title="Change Role"
-          disabled
-          style={{ opacity: 0.6, cursor: "not-allowed" }}
-        >
-          Change Role
-        </button>
-      )}
+  
 </>
   );
 }

@@ -8,7 +8,10 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build:snap": "vite build && react-snap"
+    "build:snap": "vite build && react-snap",
+    "extract": "lingui extract",
+    "compile:locale": "lingui compile",
+    "check:translations": "node scripts/check-translations.mjs"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
@@ -16,8 +19,12 @@
     "@fullcalendar/daygrid": "^6.1.20",
     "@fullcalendar/interaction": "^6.1.20",
     "@fullcalendar/react": "^6.1.20",
+    "@lingui/core": "^5.6.0",
+    "@lingui/macro": "^5.9.5",
+    "@lingui/react": "^5.6.0",
     "@reduxjs/toolkit": "^2.10.1",
     "react": "^19.1.1",
+    "react-country-flag": "^3.1.0",
     "react-dom": "^19.1.1",
     "react-helmet-async": "^3.0.0",
     "react-icons": "^5.6.0",
@@ -27,6 +34,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@lingui/babel-plugin-lingui-macro": "^5.6.0",
+    "@lingui/cli": "^5.6.0",
+    "@lingui/format-po": "^5.6.0",
+    "@lingui/vite-plugin": "^5.6.0",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",

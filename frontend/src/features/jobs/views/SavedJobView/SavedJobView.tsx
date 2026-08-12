@@ -10,9 +10,10 @@ import { CategoryInterface } from "../../../categories/types/CategoryModel";
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import useFavorites from "../../hooks/useSavedJobs";
+import { Trans } from "@lingui/react/macro";
 
 //If i delete a job to remove it from saved jobs also from the job details page,
-//  also to add - click on event to see details in a modal, also to add events from the 
+//  also to add - click on event to see details in a modal, also to add events from the
 // calendar view and not only from the job details page
 
 const ITEMS_PER_PAGE = 5;
@@ -33,7 +34,7 @@ function SavedJobs() {
 
   const navigate = useNavigate();
 
-  const seo = generateSeoConfig("viewSavedJobs");
+  const seo = () => generateSeoConfig("viewSavedJobs");
 
   useEffect(() => {
     const fetchFavoriteJobs = async () => {
@@ -55,7 +56,7 @@ function SavedJobs() {
 
   return (
     <>
-  <MetaData seo={seo} />
+      <MetaData seo={seo} />
 
       {loading ? (
         <Spinner overlay={true} />
@@ -71,12 +72,16 @@ function SavedJobs() {
                 >
                   🔖
                 </span>
-                <span>Your Saved Jobs</span>
+                <span>
+                  <Trans>Your Saved Jobs</Trans>
+                </span>
                 <span className="saved-jobs-count">{favoriteJobs.length}</span>
               </h2>
               <div className="saved-jobs-subtitle">
-                All jobs you’ve saved in one place. Quick access to your top
-                picks!
+                <Trans>
+                  All jobs you’ve saved in one place. Quick access to your top
+                  picks!
+                </Trans>
               </div>
             </div>
             {favoriteJobs.length === 0 ? (
@@ -89,10 +94,10 @@ function SavedJobs() {
                   🗂️
                 </span>
                 <div className="saved-jobs-empty-title">
-                  You have no saved jobs
+                  <Trans>You have no saved jobs</Trans>
                 </div>
                 <div className="saved-jobs-empty-desc">
-                  Start saving jobs to easily find them later!
+                  <Trans>Start saving jobs to easily find them later!</Trans>
                 </div>
               </div>
             ) : (
@@ -126,30 +131,40 @@ function SavedJobs() {
                           {job.title || "-"}
                         </div>
                         <div className="saved-job-category">
-                          <span className="category-label">Category:</span>{" "}
+                          <span className="category-label">
+                            <Trans>Category</Trans>:
+                          </span>{" "}
                           {categoryName}
                         </div>
                         {job.location && (
                           <div className="saved-job-location">
-                            <span className="location-label">Location:</span>{" "}
+                            <span className="location-label">
+                              <Trans>Location</Trans>:
+                            </span>{" "}
                             {job.location}
                           </div>
                         )}
                         {job.salary && (
                           <div className="saved-job-salary">
-                            <span className="salary-label">Salary:</span>{" "}
+                            <span className="salary-label">
+                              <Trans>Salary</Trans>:
+                            </span>{" "}
                             {job.salary}
                           </div>
                         )}
                         {job.employmentType && (
                           <div className="saved-job-type">
-                            <span className="type-label">Type:</span>{" "}
+                            <span className="type-label">
+                              <Trans>Type</Trans>:
+                            </span>{" "}
                             {job.employmentType}
                           </div>
                         )}
                         {fav.addedAt && (
                           <div className="saved-job-added">
-                            <span className="added-label">Added:</span>{" "}
+                            <span className="added-label">
+                              <Trans>Added</Trans>:
+                            </span>{" "}
                             {new Date(fav.addedAt).toLocaleString()}
                           </div>
                         )}

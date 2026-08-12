@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { setAuthenticated } from "../../authSlice/authSlice";
+import { Trans } from "@lingui/react/macro";
 
 export function LogOut() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export function LogOut() {
   };
   return (
     <button className="logout-button" onClick={logOutHandler} disabled={loadingButton}>
-     {loadingButton ? "Logging out" : 'Log out'}
+     {loadingButton ? <Trans>Logging out</Trans> : <Trans>Log out</Trans>}
     </button>
   );
 }

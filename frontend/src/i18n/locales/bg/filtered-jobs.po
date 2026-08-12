@@ -1,0 +1,179 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-02 02:37+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#~ msgid "1+ year relevant experience"
+#~ msgstr "1+ години подходящ опит"
+
+#~ msgid "2+ years relevant experience"
+#~ msgstr "2+ години подходящ опит"
+
+#~ msgid "3+ years relevant experience"
+#~ msgstr "3+ години подходящ опит"
+
+#~ msgid "5+ years relevant experience"
+#~ msgstr "5+ години подходящ опит"
+
+#~ msgid "Apprenticeship"
+#~ msgstr "Ученическо обучение"
+
+msgid "Clear All Filters"
+msgstr "Изчисти всички филтри"
+
+msgid "Company"
+msgstr "Компания"
+
+#~ msgid "Consulting & Strategy"
+#~ msgstr "Консултантство и стратегия"
+
+#~ msgid "Contract"
+#~ msgstr "Договор"
+
+#~ msgid "Customer Support"
+#~ msgstr "Поддръжка на клиенти"
+
+#~ msgid "Data Science & Analytics"
+#~ msgstr "Наука за данни и аналитика"
+
+#~ msgid "Design & Creative"
+#~ msgstr "Дизайн и творчество"
+
+#~ msgid "Education & Training"
+#~ msgstr "Образование и обучение"
+
+#~ msgid "Engineering & Manufacturing"
+#~ msgstr "Инженерия и производство"
+
+msgid "Explore opportunities from"
+msgstr "Изследвайте възможности от"
+
+msgid "Filters"
+msgstr "Филтри"
+
+#~ msgid "Finance & Accounting"
+#~ msgstr "Финанси и счетоводство"
+
+#~ msgid "Food & Beverage"
+#~ msgstr "Храна и напитки"
+
+#~ msgid "Freelance"
+#~ msgstr "Фриланс"
+
+#~ msgid "Full-time"
+#~ msgstr "Пълно работно време"
+
+#~ msgid "Healthcare & Medical"
+#~ msgstr "Здравеопазване и медицина"
+
+#~ msgid "Hospitality & Tourism"
+#~ msgstr "Хоспиталитет и туризъм"
+
+#~ msgid "Human Resources"
+#~ msgstr "Човешки ресурси"
+
+#~ msgid "Hybrid"
+#~ msgstr "Хибридна"
+
+#~ msgid "Internship"
+#~ msgstr "Стаж"
+
+msgid "Job Type"
+msgstr "Тип на работа"
+
+msgid "Jobs from"
+msgstr "Обяви от"
+
+#~ msgid "Legal & Compliance"
+#~ msgstr "Право и съответствие"
+
+msgid "Loading jobs..."
+msgstr "Зареждане на работи..."
+
+#~ msgid "Management experience required"
+#~ msgstr "Изисква се опит в управление"
+
+#~ msgid "Marketing & Advertising"
+#~ msgstr "Маркетинг и реклама"
+
+#~ msgid "Media & Communication"
+#~ msgstr "Медия и комуникация"
+
+msgid "No jobs found"
+msgstr "Не са намерени работи"
+
+#~ msgid "No prior experience required"
+#~ msgstr "Не се изисква предишен опит"
+
+#~ msgid "Non-Profit & NGO"
+#~ msgstr "Неправителствена организация и НПО"
+
+#~ msgid "On-site"
+#~ msgstr "На място"
+
+#~ msgid "Operations & Logistics"
+#~ msgstr "Операции и логистика"
+
+#~ msgid "Part-time"
+#~ msgstr "Частично работно време"
+
+#~ msgid "Real Estate & Property"
+#~ msgstr "Недвижим имот и недвижими активи"
+
+#~ msgid "Remote"
+#~ msgstr "Отдалечена работа"
+
+#~ msgid "Retail & E-commerce"
+#~ msgstr "Ритейл и електронна търговия    "
+
+#~ msgid "Sales & Business Development"
+#~ msgstr "Продажби и бизнес развитие"
+
+#~ msgid "Science & Research"
+#~ msgstr "Наука и изследвания"
+
+#~ msgid "Seasonal"
+#~ msgstr "Сезонен"
+
+msgid "Select a category"
+msgstr "Изберете категория"
+
+msgid "Select category"
+msgstr "Изберете категория"
+
+msgid "Select employment type"
+msgstr "Изберете тип заетост"
+
+msgid "Select experience level"
+msgstr "Изберете ниво на опит"
+
+msgid "Select work mode"
+msgstr "Изберете режим на работа"
+
+#~ msgid "Some experience preferred (6+ months)"
+#~ msgstr "Предпочита се опит (6+ месеца)"
+
+#~ msgid "Supervisory experience required"
+#~ msgstr "    Изисква се опит в надзор"
+
+#~ msgid "Temporary"
+#~ msgstr "Временна"
+
+msgid "Total Jobs found"
+msgstr "Общо намерени работи"
+
+#~ msgid "Transportation & Delivery"
+#~ msgstr "Транспорт и доставка"
+
+#~ msgid "Volunteer"
+#~ msgstr "Волонтер"

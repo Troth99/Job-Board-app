@@ -1,0 +1,143 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-20 15:59+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "1. What Are Cookies"
+msgstr "1. Какво представляват бисквитките"
+
+msgid "10. Changes to This Policy"
+msgstr "10. Промени в тази политика"
+
+msgid "11. Contact"
+msgstr "11. Контакт"
+
+msgid "2. Why We Use Cookies"
+msgstr "2. Защо използваме бисквитки"
+
+msgid "3. Cookie Categories"
+msgstr "3. Категории бисквитки"
+
+msgid "3.1 Strictly Necessary"
+msgstr "3.1 Строго необходими"
+
+msgid "3.2 Functional"
+msgstr "3.2 Функционални"
+
+msgid "3.3 Performance"
+msgstr "3.3 Производителност"
+
+msgid "3.4 Analytics (where enabled)"
+msgstr "3.4 Анализи (когато са активирани)"
+
+msgid "4. Session and Authentication"
+msgstr "4. Сесия и удостоверяване"
+
+msgid "5. Performance and Reliability"
+msgstr "5. Производителност и надеждност"
+
+msgid "6. Preferences and Settings"
+msgstr "6. Предпочитания и настройки"
+
+msgid "7. Third-Party Services"
+msgstr "7. Услуги на трети страни"
+
+msgid "8. How to Manage Cookies"
+msgstr "8. Как да управлявате бисквитките"
+
+msgid "9. Cookie Duration"
+msgstr "9. Продължителност на бисквитките"
+
+msgid "Certain storage technologies may help reduce repetitive requests, improve response behavior, and support stable notification/session handling for core platform actions."
+msgstr "Някои технологии за съхранение могат да помогнат за намаляване на повтарящите се заявки, подобряване на реакцията и поддържане на стабилна обработка на известията и сесиите за основните действия в платформата."
+
+msgid "Contents"
+msgstr "Съдържание"
+
+msgid "Cookies are small text files stored on your device by your browser. Similar technologies (such as local storage/session storage) can also be used to remember session state and improve the user experience."
+msgstr "Бисквитките са малки текстови файлове, съхранявани на устройството ви от браузъра. Подобни технологии (като local storage и session storage) също могат да се използват за запомняне на състоянието на сесията и подобряване на потребителското изживяване."
+
+msgid "Cookies can be session-based (deleted when you close your browser) or persistent (stored for a defined period). Retention depends on the purpose and legal requirements."
+msgstr "Бисквитките могат да бъдат сесийни (изтриват се, когато затворите браузъра) или постоянни (съхраняват се за определен период). Срокът на съхранение зависи от целта и законовите изисквания."
+
+msgid "Cookies Policy"
+msgstr "Политика за бисквитките"
+
+msgid "Disabling strictly necessary cookies may break login and protected page functionality."
+msgstr "Деактивирането на строго необходимите бисквитки може да наруши входа в системата и работата на защитените страници."
+
+msgid "For cookie-related questions, contact<0> privacy@jobboard.com</0>."
+msgstr "За въпроси, свързани с бисквитките, свържете се с нас на<0> privacy@jobboard.com</0>."
+
+msgid "Help monitor service quality and detect technical issues so we can improve speed and reliability."
+msgstr "Помагат за наблюдение на качеството на услугата и откриване на технически проблеми, за да можем да подобрим скоростта и надеждността."
+
+msgid "JobBoard uses secure session and token-related mechanisms to support login, account protection, and role-based access for candidates, employers, and company team members."
+msgstr "JobBoard използва защитени механизми, свързани със сесии и токени, за да поддържа входа, защитата на акаунта и достъпа според ролята за кандидати, работодатели и членове на фирмени екипи."
+
+msgid "Last updated: April 19, 2026"
+msgstr "Последна актуализация: 19 април 2026 г."
+
+msgid "Legal"
+msgstr "Правна информация"
+
+msgid "Protection against unauthorized account use."
+msgstr "Защита срещу неоторизирано използване на акаунта."
+
+msgid "Required for core features such as login flows, secure navigation, and access to protected account areas."
+msgstr "Необходими са за основни функции като процесите по вход, защитена навигация и достъп до защитени зони на акаунта."
+
+msgid "Session continuity after authentication."
+msgstr "Непрекъснатост на сесията след удостоверяване."
+
+msgid "Some infrastructure and tooling providers may set or process technically necessary data for hosting, delivery, and security. We do not permit unrelated third-party advertising cookies through core platform pages."
+msgstr "Някои доставчици на инфраструктура и инструменти могат да задават или обработват технически необходими данни за хостинг, доставка и сигурност. Не позволяваме несвързани рекламни бисквитки на трети страни в основните страници на платформата."
+
+msgid "Support for password reset and account security flows."
+msgstr "Поддръжка за процесите по нулиране на парола и сигурност на акаунта."
+
+msgid "Support user convenience features, such as remembering certain interface preferences."
+msgstr "Поддържат функции за удобство на потребителя, като запомняне на определени предпочитания в интерфейса."
+
+msgid "This Cookies Policy explains how JobBoard uses cookies and similar technologies to keep your session secure, improve reliability, and optimize platform performance."
+msgstr "Тази Политика за бисквитките обяснява как JobBoard използва бисквитки и сходни технологии, за да поддържа сесията ви защитена, да подобрява надеждността и да оптимизира производителността на платформата."
+
+msgid "To improve loading performance and stability."
+msgstr "За подобряване на производителността при зареждане и стабилността."
+
+msgid "To keep users signed in securely."
+msgstr "За да поддържат потребителите вписани по сигурен начин."
+
+msgid "To protect account and session integrity."
+msgstr "За защита на целостта на акаунта и сесията."
+
+msgid "To remember interface choices where applicable."
+msgstr "За запомняне на избори в интерфейса, когато е приложимо."
+
+msgid "To understand platform usage at an aggregated level."
+msgstr "За разбиране на използването на платформата на агрегирано ниво."
+
+msgid "Used in aggregated form to understand traffic and feature usage. These do not intentionally identify users personally."
+msgstr "Използват се в агрегирана форма, за да се разбира трафикът и използването на функциите. Те не са предназначени да идентифицират потребителите лично."
+
+msgid "We may update this Cookies Policy due to technical, operational, or legal changes. The most recent version is always published on this page."
+msgstr "Може да актуализираме тази Политика за бисквитките поради технически, оперативни или правни промени. Най-актуалната версия винаги се публикува на тази страница."
+
+msgid "Where available, preference cookies/storage can remember selected UI behavior (for example display preferences) to provide a smoother experience between visits."
+msgstr "Когато са налични, бисквитките или хранилищата за предпочитания могат да запомнят избрано поведение на интерфейса (например предпочитания за показване), за да осигурят по-плавно изживяване между посещенията."
+
+msgid "You can control cookies from your browser settings."
+msgstr "Можете да управлявате бисквитките от настройките на браузъра си."
+
+msgid "You may block or delete stored cookies at any time."
+msgstr "Можете да блокирате или изтривате съхранените бисквитки по всяко време."

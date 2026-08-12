@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-02 02:32+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "Additional Information"
+msgstr "Additional Information"
+
+msgid "Application Deadline"
+msgstr "Application Deadline"
+
+msgid "Benefits"
+msgstr "Benefits"
+
+msgid "Contact Email"
+msgstr "Contact Email"
+
+msgid "Contract Type"
+msgstr "Contract Type"
+
+msgid "e.g., 3"
+msgstr "e.g., 3"
+
+msgid "e.g., Customer service, Driving license B, Excel"
+msgstr "e.g., Customer service, Driving license B, Excel"
+
+msgid "e.g., English B2, German A2"
+msgstr "e.g., English B2, German A2"
+
+msgid "e.g., Health Insurance, Remote Work"
+msgstr "e.g., Health Insurance, Remote Work"
+
+msgid "e.g., High School, Bachelor, Not required"
+msgstr "e.g., High School, Bachelor, Not required"
+
+msgid "e.g., Morning shift, 09:00-18:00"
+msgstr "e.g., Morning shift, 09:00-18:00"
+
+msgid "e.g., Permanent, Temporary, Internship"
+msgstr "e.g., Permanent, Temporary, Internship"
+
+msgid "e.g., We are happy to review your application and contact shortlisted candidates."
+msgstr "e.g., We are happy to review your application and contact shortlisted candidates."
+
+msgid "Edit Job"
+msgstr "Edit Job"
+
+msgid "Education Level"
+msgstr "Education Level"
+
+msgid "Employment Type"
+msgstr "Employment Type"
+
+msgid "Experience Requirement"
+msgstr "Experience Requirement"
+
+msgid "Job Category"
+msgstr "Job Category"
+
+msgid "Job Description"
+msgstr "Job Description"
+
+msgid "Job Title"
+msgstr "Job Title"
+
+msgid "Language Requirements"
+msgstr "Language Requirements"
+
+msgid "Location"
+msgstr "Location"
+
+msgid "Open Positions"
+msgstr "Open Positions"
+
+msgid "Optional"
+msgstr "Optional"
+
+msgid "Requirements"
+msgstr "Requirements"
+
+msgid "Salary"
+msgstr "Salary"
+
+msgid "Save Changes"
+msgstr "Save Changes"
+
+msgid "Saving..."
+msgstr "Saving..."
+
+msgid "Work Mode"
+msgstr "Work Mode"
+
+msgid "Work Schedule"
+msgstr "Work Schedule"

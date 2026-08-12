@@ -1,0 +1,220 @@
+/* ==========================================
+   PRIMARY BUTTONS
+========================================== */
+
+.job-title-button,
+.edit-image-button,
+.edit-profile-button,
+.create-company-button-f1,
+.profile-action-button.primary,
+.edit-profile-button.primary,
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  width: auto;
+  min-height: 48px;
+
+  padding: 0.75rem 1.2rem;
+
+  border: none;
+  border-radius: 0.7rem;
+
+  background: linear-gradient(135deg, var(--pf-primary), var(--pf-accent));
+
+  color: #fff;
+  font-size: 0.92rem;
+  font-family: inherit;
+  font-weight: 600;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.job-title-button:hover,
+.edit-image-button:hover,
+.edit-profile-button:hover,
+.create-company-button-f1:hover,
+.profile-action-button.primary:hover,
+.edit-profile-button.primary:hover,
+.primary-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 20px rgba(12, 120, 174, 0.25);
+}
+
+.job-title-button:disabled,
+.edit-image-button:disabled,
+.edit-profile-button:disabled,
+.create-company-button-f1:disabled,
+.profile-action-button.primary:disabled,
+.edit-profile-button.primary:disabled,
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================================
+   SECONDARY
+========================================== */
+
+.profile-action-button.secondary,
+.delete-image-button.secondary,
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 0.75rem 1.2rem;
+
+  border-radius: 0.7rem;
+
+  border: 1px solid var(--pf-border);
+
+  background: var(--pf-surface);
+
+  color: var(--pf-title);
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.profile-action-button.secondary:hover,
+.delete-image-button.secondary:hover,
+.secondary-btn:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--pf-primary);
+
+  box-shadow: 0 8px 16px rgba(12, 120, 174, 0.12);
+}
+
+/* ==========================================
+   DANGER
+========================================== */
+
+.logout-button,
+.delete-image-button.danger,
+.delete-profile-button,
+.change-password-button,
+.check-profile-logs-button,
+.profile-action-button.danger,
+.danger-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 0.75rem 1.2rem;
+
+  border: none;
+
+  border-radius: 0.7rem;
+
+  background: linear-gradient(135deg, var(--pf-danger), var(--pf-danger-hover));
+
+  color: #fff;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.logout-button:hover,
+.delete-image-button.danger:hover,
+.delete-profile-button:hover,
+.change-password-button:hover,
+.check-profile-logs-button:hover,
+.profile-action-button.danger:hover,
+.danger-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 20px rgba(217, 72, 72, 0.3);
+}
+
+.logout-button:disabled,
+.delete-image-button:disabled,
+.delete-profile-button:disabled,
+.change-password-button:disabled,
+.check-profile-logs-button:disabled,
+.profile-action-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+/* ==========================================
+   CONTAINERS
+========================================== */
+
+.logout-container {
+  margin-top: 1.1rem;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.button-container {
+  margin-top: 1.5rem;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 1rem;
+}
+
+.profile-actions {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 1rem;
+
+  margin-top: 1.2rem;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+  .profile-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .job-title-button,
+  .edit-image-button,
+  .edit-profile-button,
+  .create-company-button-f1,
+  .logout-button,
+  .profile-action-button,
+  .delete-image-button,
+  .delete-profile-button,
+  .change-password-button,
+  .check-profile-logs-button {
+    width: 100%;
+  }
+}

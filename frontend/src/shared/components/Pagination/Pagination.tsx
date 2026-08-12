@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/react/macro";
 import "./Pagination.css";
 interface PagesProps {
     currentPage: number;
@@ -27,10 +28,10 @@ function Pages({ currentPage, totalPages, totalItems, itemsPerPage, currentItems
                 }
                 disabled={currentPage === 1}
               >
-                Previous
+                <Trans>Previous</Trans>
               </button>
               <span className="jobs-pagination-status">
-                Page {currentPage} of {totalPages}
+                <Trans>Page {currentPage} of {totalPages}</Trans>
               </span>
               <button
                 className="jobs-pagination-button"
@@ -39,7 +40,7 @@ function Pages({ currentPage, totalPages, totalItems, itemsPerPage, currentItems
                 }
                 disabled={currentPage === totalPages}
               >
-                Next
+                <Trans>Next</Trans>
               </button>
             </nav>
        </div>

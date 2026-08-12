@@ -24,7 +24,7 @@ const MemberDashboardPage = lazy(
 );
 
 const ViewMembersPage = lazy(
-  () => import("../views/ViewMembemrs/ViewMembers"),
+  () => import("../views/ViewMembers/ViewMembers"),
 );
 export const CompanyRoutes = [
   <Route element={<MainLayout />}>

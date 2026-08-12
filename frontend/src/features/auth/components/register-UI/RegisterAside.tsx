@@ -1,20 +1,25 @@
 import { Link } from "react-router";
 import "./RegisterAside.css";
+import { Trans } from "@lingui/react/macro";
 
 export function RegisterAside() {
   return (
     <>
       <Link to="/" className="login-back-btn">
         <i className="fa-solid fa-arrow-left"></i>
-        Back to home
+        <Trans>Back to home</Trans>
       </Link>
 
       <div className="register-brand-copy">
-        <span className="register-eyebrow">Job Board Platform</span>
-        <h1>Build your profile and get hired faster.</h1>
+        <span className="register-eyebrow"><Trans>Job Board Platform</Trans></span>
+        <h1>
+          <Trans>Build your profile and get hired faster.</Trans>
+        </h1>
         <p>
-          Create your account to discover curated jobs and apply in a few
-          clicks.
+          <Trans>
+            Create your account to discover curated jobs and apply in a few
+            clicks.
+          </Trans>
         </p>
       </div>
 
@@ -24,8 +29,12 @@ export function RegisterAside() {
             <i className="fa-solid fa-id-card"></i>
           </span>
           <div>
-            <h3>Stronger first impression</h3>
-            <p>Complete profile details help recruiters trust your application.</p>
+            <h3>
+              <Trans>Stronger first impression</Trans>
+            </h3>
+            <p>
+              <Trans>Complete profile details help recruiters trust your application.</Trans>
+            </p>
           </div>
         </div>
 
@@ -34,8 +43,12 @@ export function RegisterAside() {
             <i className="fa-solid fa-filter"></i>
           </span>
           <div>
-            <h3>Better job matches</h3>
-            <p>Location and contact info improve recommendations for your role.</p>
+            <h3>
+              <Trans>Better job matches</Trans>
+            </h3>
+            <p>
+              <Trans>Location and contact info improve recommendations for your role.</Trans>
+            </p>
           </div>
         </div>
 
@@ -44,8 +57,12 @@ export function RegisterAside() {
             <i className="fa-solid fa-paper-plane"></i>
           </span>
           <div>
-            <h3>Faster applications</h3>
-            <p>Save your details once and apply to multiple jobs in minutes.</p>
+            <h3>
+              <Trans>Faster applications</Trans>
+            </h3>
+            <p>
+              <Trans>Save your details once and apply to multiple jobs in minutes.</Trans>
+            </p>
           </div>
         </div>
       </div>

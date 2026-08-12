@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-25 01:57+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "Added"
+msgstr "Добавено"
+
+msgid "Available companies"
+msgstr "Налични компании"
+
+msgid "Browse companies in one clean view."
+msgstr "Преглед на компаниите в един чист изглед."
+
+msgid "Clear filter"
+msgstr "Изчисти филтъра"
+
+msgid "Compare teams by industry, location, size, and website without losing the visual language of the rest of the app."
+msgstr "Сравнете екипите по индустрия, местоположение, размер и уебсайт, без да губите визуалния език на останалата част от приложението."
+
+msgid "Location"
+msgstr "Местоположение"
+
+msgid "Name, industry, location, size"
+msgstr "Име, индустрия, местоположение, размер"
+
+msgid "No companies found."
+msgstr "Няма намерени компании."
+
+msgid "No matches for this filter."
+msgstr "Няма съвпадения за този филтър."
+
+msgid "Not provided"
+msgstr "Не е предоставено"
+
+msgid "Once companies are created, they will appear here in a structured directory layout."
+msgstr "След като компаниите бъдат създадени, те ще се появят тук в структурирано оформление на директорията."
+
+msgid "Search"
+msgstr "Търсене"
+
+msgid "shown with the current filter"
+msgstr "показани с текущия филтър"
+
+msgid "Try a different company name, city, industry, or team size."
+msgstr "Опитайте различно име на компания, град, индустрия или размер на екипа."
+
+msgid "Visit site"
+msgstr "Посетете сайта"
+
+msgid "Website"
+msgstr "Уебсайт"

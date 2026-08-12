@@ -1,0 +1,664 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-16 14:19+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. placeholder {0}: field.label
+#. placeholder {0}: field.type
+msgid "{0}"
+msgstr ""
+
+msgid "{rule}"
+msgstr ""
+
+msgid "1+ year relevant experience"
+msgstr ""
+
+msgid "2+ years relevant experience"
+msgstr ""
+
+#~ msgid "2200-2800 BGN gross"
+#~ msgstr ""
+
+msgid "2200-2800 EURO gross"
+msgstr ""
+
+msgid "3"
+msgstr ""
+
+msgid "3+ years relevant experience"
+msgstr ""
+
+msgid "31 May 2026"
+msgstr ""
+
+msgid "5+ years relevant experience"
+msgstr ""
+
+msgid "Add the city or area where the employee will work. If hybrid, mention the office location clearly."
+msgstr ""
+
+msgid "Add the email address that should receive candidate communication or application questions."
+msgstr ""
+
+msgid "Added"
+msgstr ""
+
+msgid "Additional Information"
+msgstr ""
+
+msgid "All jobs you’ve saved in one place. Quick access to your top picks!"
+msgstr ""
+
+msgid "Application Deadline"
+msgstr ""
+
+msgid "Apprenticeship"
+msgstr ""
+
+msgid "Bachelor degree or equivalent practical experience"
+msgstr ""
+
+msgid "Be specific. Generic phrases like 'good salary' or 'great environment' are weak unless you support them with details."
+msgstr ""
+
+msgid "Benefits"
+msgstr ""
+
+msgid "Benefits (comma separated)"
+msgstr ""
+
+msgid "Benefits:"
+msgstr ""
+
+msgid "Browse all open roles"
+msgstr "Разгледайте всички отворени позиции"
+
+msgid "careers@company.com"
+msgstr ""
+
+msgid "Category"
+msgstr ""
+
+msgid "Category is required."
+msgstr ""
+
+msgid "Choose the closest business category so the listing appears in the right job group."
+msgstr ""
+
+msgid "Choose the level that best matches the complexity and autonomy expected for the position."
+msgstr ""
+
+msgid "City, district, office, or remote eligibility when relevant."
+msgstr ""
+
+msgid "Clarify the legal or commercial form of engagement if it matters for the role."
+msgstr ""
+
+msgid "Clear All Filters"
+msgstr ""
+
+msgid "Company"
+msgstr ""
+
+msgid "Consulting & Strategy"
+msgstr ""
+
+msgid "Contact Email"
+msgstr ""
+
+msgid "Contact Email:"
+msgstr ""
+
+msgid "Contract"
+msgstr ""
+
+msgid "Contract Type"
+msgstr ""
+
+msgid "Create Job Guide"
+msgstr ""
+
+msgid "Currency, gross or net if needed, and whether the figure is fixed or ranged."
+msgstr ""
+
+msgid "Current page"
+msgstr ""
+
+msgid "Customer Service"
+msgstr ""
+
+msgid "Customer Support"
+msgstr ""
+
+msgid "Customer Support Specialist"
+msgstr ""
+
+msgid "Data Science & Analytics"
+msgstr ""
+
+msgid "Degree level, certification baseline, or 'Not required' when education is not a screening factor."
+msgstr ""
+
+msgid "Describe the day-to-day work, team context, responsibilities, and what success looks like in the role."
+msgstr ""
+
+msgid "Description is required."
+msgstr ""
+
+msgid "Design & Creative"
+msgstr ""
+
+msgid "Do not overload the Requirements field with nice-to-have extras. Keep must-haves separate from benefits."
+msgstr ""
+
+msgid "e.g., 3"
+msgstr ""
+
+msgid "e.g., Customer service, Driving license B, Excel"
+msgstr ""
+
+msgid "e.g., English B2, German A2"
+msgstr ""
+
+msgid "e.g., example@example.com"
+msgstr ""
+
+msgid "e.g., Health Insurance, Remote Work"
+msgstr ""
+
+msgid "e.g., High School, Bachelor, Not required"
+msgstr ""
+
+msgid "e.g., Morning shift, 09:00-18:00"
+msgstr ""
+
+msgid "e.g., Permanent, Temporary, Internship"
+msgstr ""
+
+msgid "e.g., We are happy to review your application and contact shortlisted candidates."
+msgstr ""
+
+msgid "Edit Job"
+msgstr ""
+
+msgid "Education & Training"
+msgstr ""
+
+msgid "Education Level"
+msgstr ""
+
+msgid "Education level is required."
+msgstr ""
+
+msgid "Email is required."
+msgstr ""
+
+msgid "Employment Type"
+msgstr ""
+
+msgid "Employment type is required."
+msgstr ""
+
+msgid "Employment Type:"
+msgstr ""
+
+msgid "Engineering & Manufacturing"
+msgstr ""
+
+msgid "English B2, German A2"
+msgstr ""
+
+msgid "Enter the number of hires planned for this posting."
+msgstr ""
+
+msgid "Entry-level, Mid-level, Senior, or another available experience band."
+msgstr ""
+
+msgid "Example:"
+msgstr ""
+
+msgid "Excel, fluent English, customer communication, CRM experience"
+msgstr ""
+
+msgid "Excel, inventory handling, English B1, forklift certificate"
+msgstr ""
+
+msgid "Experience level is required."
+msgstr ""
+
+msgid "Experience Requirement"
+msgstr ""
+
+msgid "Experience Requirement:"
+msgstr ""
+
+msgid "Experience years cannot be negative."
+msgstr ""
+
+msgid "Explain when the work happens, especially if the role is shift-based or outside standard office hours."
+msgstr ""
+
+msgid "Explore opportunities from"
+msgstr ""
+
+msgid "Filters"
+msgstr ""
+
+msgid "Finance & Accounting"
+msgstr ""
+
+msgid "Food & Beverage"
+msgstr ""
+
+msgid "Freelance"
+msgstr ""
+
+msgid "Fresh listings in one place, sorted by newest first so the latest opportunities stay visible."
+msgstr "Пресни обяви на едно място, сортирани по най-новите първо, за да останат видими най-новите възможности."
+
+msgid "Full-time"
+msgstr ""
+
+msgid "Full-time, Part-time, Contract, Internship, or similar."
+msgstr ""
+
+msgid "Guide"
+msgstr ""
+
+msgid "Health insurance, meal vouchers, annual bonus"
+msgstr ""
+
+msgid "Healthcare & Medical"
+msgstr ""
+
+msgid "Hiring process notes, response expectations, onboarding details, or practical clarifications."
+msgstr ""
+
+msgid "Hospitality & Tourism"
+msgstr ""
+
+msgid "How to fill in each field when posting a job"
+msgstr ""
+
+msgid "Human Resources"
+msgstr ""
+
+msgid "Hybrid"
+msgstr ""
+
+msgid "If a field is optional but important for trust, fill it in anyway. More clarity usually improves application quality."
+msgstr ""
+
+msgid "Information Technology"
+msgstr ""
+
+msgid "Internship"
+msgstr ""
+
+msgid "Invalid application deadline date."
+msgstr ""
+
+msgid "Job Category"
+msgstr ""
+
+msgid "Job Description"
+msgstr ""
+
+msgid "Job posted successfully!"
+msgstr ""
+
+msgid "Job Title"
+msgstr ""
+
+msgid "Job Title:"
+msgstr ""
+
+msgid "Job Type"
+msgstr ""
+
+msgid "Jobs from"
+msgstr ""
+
+msgid "jobs@company.com"
+msgstr ""
+
+msgid "Language plus level or business usage context."
+msgstr ""
+
+msgid "Language Requirements"
+msgstr ""
+
+msgid "Legal & Compliance"
+msgstr ""
+
+msgid "List the must-have qualifications as comma-separated items. Focus on real hiring criteria."
+msgstr ""
+
+msgid "List the value-added perks as comma-separated items so the offer looks concrete and transparent."
+msgstr ""
+
+msgid "Loading jobs..."
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Location is required."
+msgstr ""
+
+msgid "Location:"
+msgstr ""
+
+msgid "Main tasks, tools used, reporting line, shift details, and any important operational expectations."
+msgstr ""
+
+msgid "Management experience required"
+msgstr ""
+
+msgid "Marketing & Advertising"
+msgstr ""
+
+msgid "May 2026"
+msgstr ""
+
+msgid "Media & Communication"
+msgstr ""
+
+msgid "Mid-level"
+msgstr ""
+
+msgid "Monday to Friday, 09:00-18:00"
+msgstr ""
+
+msgid "Need help filling the form?"
+msgstr ""
+
+msgid "No jobs found"
+msgstr ""
+
+msgid "No jobs found."
+msgstr "Няма намерени работни места."
+
+msgid "No prior experience required"
+msgstr ""
+
+msgid "Non-Profit & NGO"
+msgstr ""
+
+msgid "On-site"
+msgstr ""
+
+msgid "On-site, Hybrid, or Remote depending on the role."
+msgstr ""
+
+msgid "Only shortlisted candidates will be contacted within 10 business days."
+msgstr ""
+
+msgid "Open Positions"
+msgstr ""
+
+msgid "Open positions is required."
+msgstr ""
+
+msgid "Open positions must be a valid number."
+msgstr ""
+
+msgid "Open positions must be at least 1."
+msgstr ""
+
+msgid "Open the job posting guide with examples for every field."
+msgstr ""
+
+msgid "Operations & Logistics"
+msgstr ""
+
+msgid "Opportunities"
+msgstr "Възможности"
+
+msgid "Optional"
+msgstr ""
+
+msgid "Optional fields"
+msgstr ""
+
+msgid "Part-time"
+msgstr ""
+
+msgid "Permanent contract"
+msgstr ""
+
+msgid "Permanent, Temporary, Civil contract, Internship agreement, Freelance contract."
+msgstr ""
+
+msgid "Plovdiv, Bulgaria"
+msgstr ""
+
+msgid "Post a New Job"
+msgstr ""
+
+msgid "Post job"
+msgstr ""
+
+msgid "Posting job..."
+msgstr ""
+
+msgid "Private health care, bonus scheme, meal vouchers, remote days, training budget, transport card."
+msgstr ""
+
+msgid "Private health insurance, monthly bonus, food vouchers"
+msgstr ""
+
+msgid "Provide a real salary range or compensation note that helps candidates decide whether to apply."
+msgstr ""
+
+msgid "Quick rules"
+msgstr ""
+
+msgid "Real Estate & Property"
+msgstr ""
+
+msgid "Remote"
+msgstr ""
+
+msgid "Required"
+msgstr ""
+
+msgid "Required fields"
+msgstr ""
+
+msgid "Requirements"
+msgstr ""
+
+msgid "Requirements (comma separated)"
+msgstr ""
+
+msgid "Requirements are required."
+msgstr ""
+
+msgid "Requirements:"
+msgstr ""
+
+msgid "Retail & E-commerce"
+msgstr ""
+
+msgid "Role, seniority if relevant, and the main specialization."
+msgstr ""
+
+msgid "Salary"
+msgstr ""
+
+msgid "Salary is required."
+msgstr ""
+
+msgid "Sales & Business Development"
+msgstr ""
+
+msgid "Sample structure"
+msgstr ""
+
+msgid "Save Changes"
+msgstr "Запази промените"
+
+msgid "Saving..."
+msgstr ""
+
+msgid "Science & Research"
+msgstr ""
+
+msgid "Seasonal"
+msgstr ""
+
+msgid "Select a category"
+msgstr ""
+
+msgid "Select category"
+msgstr ""
+
+msgid "Select employment type"
+msgstr ""
+
+msgid "Select experience level"
+msgstr ""
+
+msgid "Select how the work is delivered so the candidate understands location expectations immediately."
+msgstr ""
+
+msgid "Select work mode"
+msgstr ""
+
+msgid "Set a closing date when the role has a fixed hiring window."
+msgstr ""
+
+msgid "Set the hiring format that defines the relationship between company and candidate."
+msgstr ""
+
+msgid "Sofia, Bulgaria"
+msgstr ""
+
+msgid "Some experience preferred (6+ months)"
+msgstr ""
+
+msgid "Something went wrong while posting job."
+msgstr ""
+
+msgid "Start saving jobs to easily find them later!"
+msgstr ""
+
+msgid "State only the languages and proficiency levels that are truly needed for the role."
+msgstr ""
+
+msgid "State the minimum education expectation only if it is genuinely relevant for the role."
+msgstr ""
+
+msgid "Supervisory experience required"
+msgstr ""
+
+msgid "Technical skills, licenses, language ability, legal eligibility, tool knowledge, or proven experience."
+msgstr ""
+
+msgid "Temporary"
+msgstr ""
+
+msgid "These should be completed for every listing"
+msgstr ""
+
+msgid "Title is required."
+msgstr ""
+
+msgid "Total jobs"
+msgstr "Общо работни места"
+
+msgid "Total Jobs found"
+msgstr ""
+
+msgid "Transportation & Delivery"
+msgstr ""
+
+msgid "Try again later or adjust the filters from the previous page."
+msgstr "Опитайте отново по-късно или коригирайте филтрите от предишната страница."
+
+msgid "Type"
+msgstr ""
+
+msgid "Updated for the current Create Job form"
+msgstr ""
+
+msgid "Use a monitored company mailbox instead of a personal address when possible."
+msgstr ""
+
+msgid "Use a whole number greater than zero so applicants know whether this is a single or bulk hire."
+msgstr ""
+
+msgid "Use it for campaigns, urgent hires, or structured recruitment rounds."
+msgstr ""
+
+msgid "Use the category that best matches the role's core function, not a broad fallback."
+msgstr ""
+
+msgid "Use the exact role name candidates will search for. Keep it specific and avoid internal titles."
+msgstr ""
+
+msgid "Use these to make the post clearer and more complete"
+msgstr ""
+
+msgid "Use this page as a reference before publishing a vacancy. The guide follows your current Create Job form and explains what each field should contain, what details matter, and what a good example looks like."
+msgstr ""
+
+msgid "Use this section for extra context that improves trust but does not belong in the main description."
+msgstr ""
+
+msgid "Volunteer"
+msgstr ""
+
+msgid "Warehouse Operations Coordinator"
+msgstr ""
+
+msgid "What a complete entry set can look like"
+msgstr ""
+
+msgid "What it should include:"
+msgstr ""
+
+msgid "What makes a job post stronger"
+msgstr ""
+
+msgid "What to write:"
+msgstr ""
+
+msgid "Work Mode"
+msgstr ""
+
+msgid "Work mode cannot be empty."
+msgstr ""
+
+msgid "Work mode is required."
+msgstr ""
+
+msgid "Work Schedule"
+msgstr ""
+
+msgid "Working hours, shift model, weekend coverage, or rotational schedule."
+msgstr ""
+
+msgid "Write for candidates, not for internal teams. Every field should help someone decide whether to apply."
+msgstr ""
+
+msgid "You have no saved jobs"
+msgstr ""
+
+msgid "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."
+msgstr ""
+
+msgid "Your Saved Jobs"
+msgstr ""

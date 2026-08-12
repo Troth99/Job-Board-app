@@ -1,0 +1,407 @@
+@import "./variables.css";
+
+.profile-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 4.5rem auto 7rem;
+    padding: 0.95rem;
+    border-radius: 1.2rem;
+    background: var(--pf-bg);
+    box-shadow: var(--pf-shadow);
+    border: 1px solid var(--pf-border);
+    box-sizing: border-box;
+}
+
+.profile-top-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 1.2rem;
+}
+
+.profile-main-card,
+.profile-side-card,
+.job-posting,
+.profile-activity-card,
+.kpi-card {
+    background: var(--pf-surface);
+    border: 1px solid var(--pf-border);
+    border-radius: .95rem;
+    backdrop-filter: blur(8px);
+}
+
+.profile-main-card {
+    padding: 1.2rem;
+}
+
+.profile-side-card {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.Profile-Data-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.profile-identity-block {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.profile-image {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6rem;
+}
+.avatar-spinner-overlay {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 132px; 
+    height: 132px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.profile-image img {
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--pf-primary);
+    box-shadow: 0 12px 24px rgba(12,120,174,.26);
+}
+
+.profile-headline h1 {
+    margin: 0;
+    color: var(--pf-title);
+    font-size: clamp(1.7rem,2.2vw,2.25rem);
+    line-height: 1.2;
+}
+
+.profile-headline p {
+    margin: .25rem 0 .6rem;
+    color: var(--pf-muted);
+}
+
+.profile-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+    margin-bottom: .65rem;
+}
+
+.profile-tag {
+    padding: .36rem .7rem;
+    border-radius: 999px;
+    font-size: .82rem;
+    color: var(--pf-primary-hover);
+    background: rgba(12,120,174,.10);
+    border: 1px solid rgba(12,120,174,.24);
+}
+
+.completion-mini-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .8rem;
+    color: var(--pf-muted);
+    font-size: .84rem;
+}
+
+.completion-mini-row strong {
+    color: var(--pf-accent);
+    font-size: .95rem;
+}
+
+.completion-track {
+    width: 100%;
+    margin-top: .45rem;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(21,68,99,.12);
+    overflow: hidden;
+}
+
+.completion-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg,var(--pf-primary),var(--pf-accent));
+}
+
+.profile-info-grid {
+    margin-top: 1.15rem;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: .9rem;
+}
+
+.profile-info-grid div {
+    display: flex;
+    flex-direction: column;
+    gap: .24rem;
+    padding: .78rem;
+    border-radius: .72rem;
+    border: 1px solid rgba(26,63,92,.12);
+    background: rgba(255,255,255,.74);
+}
+
+.profile-info-grid span {
+    color: var(--pf-muted);
+    font-size: .8rem;
+}
+
+.profile-info-grid strong {
+    color: var(--pf-title);
+}
+
+.edit-profile-button-container {
+    margin-top: .9rem;
+}
+
+.profile-side-card h3,
+.job-posting h3,
+.profile-activity-card h3,
+.kpi-card h4 {
+    margin: 0;
+    color: var(--pf-title);
+}
+
+.role-change {
+    margin-top: .8rem;
+    padding: .75rem;
+    border-radius: .72rem;
+    border: 1px solid rgba(26,63,92,.14);
+    background: rgba(255,255,255,.68);
+}
+
+.role-change span {
+    color: var(--pf-muted);
+    font-size: .82rem;
+}
+
+.role-change p {
+    margin: .35rem 0 0;
+    color: var(--pf-title);
+    font-weight: 600;
+}
+
+.company-registration {
+    margin-top: .75rem;
+    padding: .85rem;
+    border-radius: .72rem;
+    border: 1px solid rgba(26,63,92,.14);
+    background: rgba(255,255,255,.72);
+}
+
+.company-registration h3,
+.company-registration h4 {
+    margin: 0 0 .4rem;
+    color: var(--pf-title);
+}
+
+.company-registration p {
+    margin: .28rem 0;
+    color: var(--pf-text);
+}
+
+.company-empty-state {
+    border-style: dashed;
+}
+
+.saved-jobs-placeholder {
+    margin-top: .75rem;
+    padding: 1.2rem .85rem;
+    border-radius: .72rem;
+    border: 2px dashed rgba(26,63,92,.25);
+    background: rgba(255,255,255,.45);
+    text-align: center;
+}
+
+.saved-jobs-placeholder__icon {
+    font-size: 1.8rem;
+    margin-bottom: .4rem;
+}
+
+.saved-jobs-placeholder h3 {
+    margin: 0 0 .3rem;
+    color: var(--pf-title);
+    font-size: 1rem;
+}
+
+.saved-jobs-placeholder p {
+    margin: 0;
+    font-size: .82rem;
+    color: var(--pf-muted);
+}
+
+.profile-kpi-row {
+    margin-top: 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 1rem;
+}
+
+.kpi-card {
+    padding: 1rem;
+}
+
+.kpi-card p {
+    margin: .35rem 0 0;
+    color: var(--pf-text);
+    font-weight: 600;
+}
+
+.profile-bottom-grid {
+    margin-top: 1.2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.job-posting,
+.profile-activity-card {
+    padding: 1.2rem;
+}
+
+.job-posting-status {
+    margin-top: .55rem;
+    color: var(--pf-text);
+}
+
+.job-title-options {
+    margin-top: .85rem;
+}
+
+.job-description-info {
+    margin-top: .65rem;
+    color: var(--pf-muted);
+}
+
+.profile-activity-card ul {
+    margin: .8rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: .58rem;
+}
+
+.profile-activity-card li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: .66rem .72rem;
+    border-radius: .62rem;
+    border: 1px solid rgba(26,63,92,.12);
+    background: rgba(255,255,255,.7);
+}
+
+.profile-activity-card li span {
+    color: var(--pf-muted);
+}
+
+.profile-activity-card li strong {
+    color: var(--pf-title);
+}
+
+[data-theme="dark"] .profile-info-grid div,
+[data-theme="dark"] .role-change,
+[data-theme="dark"] .company-registration,
+[data-theme="dark"] .saved-jobs-placeholder,
+[data-theme="dark"] .profile-activity-card li {
+    background: rgba(7,20,32,.62);
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width:1100px){
+
+    .profile-top-grid{
+        grid-template-columns:1fr;
+    }
+
+    .profile-kpi-row{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .profile-bottom-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .profile-container{
+        padding:.75rem;
+        margin:3rem auto 5rem;
+    }
+
+    .profile-identity-block{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .profile-info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .profile-kpi-row{
+        grid-template-columns:1fr;
+    }
+
+    .profile-image img{
+        width:110px;
+        height:110px;
+    }
+
+    .profile-headline h1{
+        font-size:1.6rem;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .profile-container{
+        padding:.6rem;
+    }
+
+    .profile-main-card,
+    .profile-side-card,
+    .job-posting,
+    .profile-activity-card,
+    .kpi-card{
+        padding:1rem;
+    }
+
+    .profile-tag{
+        font-size:.75rem;
+    }
+
+    .completion-mini-row{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .profile-activity-card li{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:.35rem;
+    }
+
+}

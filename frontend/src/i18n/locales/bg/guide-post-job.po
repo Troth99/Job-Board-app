@@ -1,0 +1,337 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-03 16:17+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. placeholder {0}: field.label
+#. placeholder {0}: field.type
+msgid "{0}"
+msgstr ""
+
+msgid "{rule}"
+msgstr "{rule}"
+
+msgid "2200-2800 EURO gross"
+msgstr "2200-2800 EURO брутно"
+
+msgid "3"
+msgstr "3"
+
+msgid "31 May 2026"
+msgstr "31 май 2026"
+
+msgid "Add the city or area where the employee will work. If hybrid, mention the office location clearly."
+msgstr "Добавете града или района, където ще работи служителят. Ако е хибриден, уточнете местоположението на офиса ясно."
+
+msgid "Add the email address that should receive candidate communication or application questions."
+msgstr "Добавете имейл адреса, който трябва да получава комуникация с кандидатите или въпроси за кандидатстване."
+
+msgid "Additional Information"
+msgstr "Допълнителна информация"
+
+msgid "Application Deadline"
+msgstr "Краен срок за кандидатстване"
+
+msgid "Bachelor degree or equivalent practical experience"
+msgstr "Бакалавърска степен или еквивалентен практически опит"
+
+msgid "Be specific. Generic phrases like 'good salary' or 'great environment' are weak unless you support them with details."
+msgstr "Бъдете конкретни. Общи фрази като 'добра заплата' или 'страхотна среда' са слаби, освен ако не ги подкрепите с подробности."
+
+msgid "Benefits"
+msgstr "Изгодности"
+
+msgid "Benefits:"
+msgstr "Изгодности:"
+
+msgid "careers@company.com"
+msgstr "careers@company.com"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Choose the closest business category so the listing appears in the right job group."
+msgstr "Изберете най-близката бизнес категория, за да се появи обявлението в правилната група работни места."
+
+msgid "Choose the level that best matches the complexity and autonomy expected for the position."
+msgstr "Изберете нивото, което най-добре отговаря на сложността и автономията, очаквани за позицията."
+
+msgid "City, district, office, or remote eligibility when relevant."
+msgstr "Град, район, офис или отдалечен достъп, когато е подходящо."
+
+msgid "Clarify the legal or commercial form of engagement if it matters for the role."
+msgstr "Уточнете правната или комерческата форма на ангажимента, ако това е важно за ролята."
+
+msgid "Contact Email"
+msgstr "Имейл за контакт"
+
+msgid "Contact Email:"
+msgstr "Имейл за контакт:"
+
+msgid "Contract Type"
+msgstr "Тип на договора"
+
+msgid "Create Job Guide"
+msgstr "Ръководство за публикуване на работа"
+
+msgid "Currency, gross or net if needed, and whether the figure is fixed or ranged."
+msgstr "Валута, брутно или нетно, ако е необходимо, и дали цифрата е фиксирана или в диапазон."
+
+msgid "Customer Service"
+msgstr "Клиентски сервиз"
+
+msgid "Customer Support Specialist"
+msgstr "Специалист по клиентска поддръжка"
+
+msgid "Degree level, certification baseline, or 'Not required' when education is not a screening factor."
+msgstr "Ниво на степен, базов сертификат или 'Не се изисква', когато образованието не е фактор за филтриране."
+
+msgid "Describe the day-to-day work, team context, responsibilities, and what success looks like in the role."
+msgstr "Опишете дневната работа, контекста на екипа, отговорностите и как изглежда успехът в ролята."
+
+msgid "Do not overload the Requirements field with nice-to-have extras. Keep must-haves separate from benefits."
+msgstr "Не презареждайте полето 'Изисквания' с допълнителни неща, които са добре да има. Държете задължителните неща отделно от изгодностите."
+
+msgid "Education Level"
+msgstr "Ниво на образование"
+
+msgid "Employment Type:"
+msgstr "Форма на заплащане:"
+
+msgid "English B2, German A2"
+msgstr "Английски B2, немски A2"
+
+msgid "Enter the number of hires planned for this posting."
+msgstr "Въведете броя на планираните ваканции за това обява."
+
+msgid "Entry-level, Mid-level, Senior, or another available experience band."
+msgstr "Ниво на опит: Входно ниво, Средно ниво, Стариер или друго налично ниво."
+
+msgid "Example:"
+msgstr "Пример:"
+
+msgid "Excel, fluent English, customer communication, CRM experience"
+msgstr "Excel, плавно английски, клиентска комуникация, CRM опит"
+
+msgid "Excel, inventory handling, English B1, forklift certificate"
+msgstr "Excel, обработка на инвентар, английски B1, сертификат за вилтфорт"
+
+msgid "Experience Requirement"
+msgstr "Изисквания за опит"
+
+msgid "Experience Requirement:"
+msgstr "Изисквания за опит:"
+
+msgid "Explain when the work happens, especially if the role is shift-based or outside standard office hours."
+msgstr "Обяснете кога се извършва работата, особено ако ролята е базирана на смените или извън стандартните работни часове."
+
+msgid "Full-time"
+msgstr "Пълно работно време"
+
+msgid "Full-time, Part-time, Contract, Internship, or similar."
+msgstr "Пълно работно време, частично работно време, договор, стаж или подобно."
+
+msgid "Health insurance, meal vouchers, annual bonus"
+msgstr "Здравна застраховка, ваучери за храна, годишен бонус"
+
+msgid "Hiring process notes, response expectations, onboarding details, or practical clarifications."
+msgstr "Бележки за процеса на наемане, очаквания за отговор, подробности за въвеждане в длъжност или практически уточнения."
+
+msgid "How to fill in each field when posting a job"
+msgstr "Как да попълните всяко поле при публикуване на работа"
+
+msgid "Hybrid"
+msgstr "Хибриден"
+
+msgid "If a field is optional but important for trust, fill it in anyway. More clarity usually improves application quality."
+msgstr "Ако едно поле е незадължително, но важно за доверието, попълнете го все пак. Повече яснота обикновено подобрява качеството на кандидатстването."
+
+msgid "Job Description"
+msgstr "Описание на длъжността"
+
+msgid "Job Title"
+msgstr "Заглавие на длъжността"
+
+msgid "Job Title:"
+msgstr "Заглавие на длъжността:"
+
+msgid "jobs@company.com"
+msgstr "jobs@company.com"
+
+msgid "Language plus level or business usage context."
+msgstr "Език плюс ниво или контекст на бизнес използване."
+
+msgid "Language Requirements"
+msgstr "Изисквания за език"
+
+msgid "List the must-have qualifications as comma-separated items. Focus on real hiring criteria."
+msgstr "Изброете задължителните квалификации като елементи, разделени със запетая. Фокусирайте се върху реални критерии за наемане."
+
+msgid "List the value-added perks as comma-separated items so the offer looks concrete and transparent."
+msgstr "Изброете додателните ползи като елементи, разделени със запетая, за да изглежда офертата конкретна и прозрачна."
+
+msgid "Location"
+msgstr "Местоположение"
+
+msgid "Location:"
+msgstr "Местоположение:"
+
+msgid "Main tasks, tools used, reporting line, shift details, and any important operational expectations."
+msgstr "Основни задачи, използвани инструменти, линия на докладване, детайли за смените и всякакви важни оперативни очаквания.  "
+
+msgid "May 2026"
+msgstr "май 2026"
+
+msgid "Mid-level"
+msgstr "Средно ниво"
+
+msgid "Monday to Friday, 09:00-18:00"
+msgstr "Понеделник до петък, 09:00-18:00"
+
+msgid "On-site, Hybrid, or Remote depending on the role."
+msgstr "На място, хибридно или отдалечено в зависимост от ролята."
+
+msgid "Only shortlisted candidates will be contacted within 10 business days."
+msgstr "Само предварително одобрените кандидати ще бъдат контактувани в рамките на 10 работни дни."
+
+msgid "Open Positions"
+msgstr "Отворени позиции"
+
+msgid "Optional"
+msgstr "Незадължително"
+
+msgid "Optional fields"
+msgstr "Незадължителни полета"
+
+msgid "Permanent contract"
+msgstr "Постоянен договор"
+
+msgid "Permanent, Temporary, Civil contract, Internship agreement, Freelance contract."
+msgstr "Постоянен, временен, граждански договор, споразумение за стаж, договор за свободна практика."
+
+msgid "Plovdiv, Bulgaria"
+msgstr "Пловдив, България"
+
+msgid "Private health care, bonus scheme, meal vouchers, remote days, training budget, transport card."
+msgstr "Частна здравна грижа, бонусна схема, ваучери за храна, отдалечени дни, бюджет за обучение, транспортна карта."
+
+msgid "Private health insurance, monthly bonus, food vouchers"
+msgstr "Частна здравна застраховка, месечен бонус, ваучери за храна"
+
+msgid "Provide a real salary range or compensation note that helps candidates decide whether to apply."
+msgstr "Предоставете реален диапазон на заплатата или бележка за компенсация, която помага на кандидатите да решат дали да кандидатстват."
+
+msgid "Quick rules"
+msgstr "Бързи правила"
+
+msgid "Required"
+msgstr "Задължително"
+
+msgid "Required fields"
+msgstr "Задължителни полета"
+
+msgid "Requirements"
+msgstr "Изисквания"
+
+msgid "Requirements:"
+msgstr "Изисквания:"
+
+msgid "Role, seniority if relevant, and the main specialization."
+msgstr "Роля, ниво на стаж, ако е важно, и основната специализация."
+
+msgid "Salary"
+msgstr "Заплата"
+
+msgid "Sample structure"
+msgstr "Примерна структура"
+
+msgid "Select how the work is delivered so the candidate understands location expectations immediately."
+msgstr "Изберете как се извършва работата, за да разбере кандидатът веднага очакванията за местоположението."
+
+msgid "Set a closing date when the role has a fixed hiring window."
+msgstr "Задайте крайна дата, когато ролята има фиксиран прозорец за наемане."
+
+msgid "Set the hiring format that defines the relationship between company and candidate."
+msgstr "Задайте формата за наемане, която определя връзката между компанията и кандидатa."
+
+msgid "Sofia, Bulgaria"
+msgstr "София, България"
+
+msgid "State only the languages and proficiency levels that are truly needed for the role."
+msgstr "Посочете само езиците и нивата на владеене, които са наистина необходими за ролята."
+
+msgid "State the minimum education expectation only if it is genuinely relevant for the role."
+msgstr "Посочете минималните изисквания за образование само ако те са наистина важни за ролята."
+
+msgid "Technical skills, licenses, language ability, legal eligibility, tool knowledge, or proven experience."
+msgstr "Технически умения, лицензи, езикови способности, правна допустимост, познания за инструменти или доказан опит."
+
+msgid "These should be completed for every listing"
+msgstr "Тези трябва да бъдат попълнени за всяко обявление"
+
+msgid "Updated for the current Create Job form"
+msgstr "Актуализирано за текущата форма за създаване на работа"
+
+msgid "Use a monitored company mailbox instead of a personal address when possible."
+msgstr "Използвайте наблюдавана фирмена пощенска кутия вместо личен адрес, когато е възможно."
+
+msgid "Use a whole number greater than zero so applicants know whether this is a single or bulk hire."
+msgstr "Използвайте цяло число по-голямо от нула, за да знаят кандидатите дали това е единична или масова наемане."
+
+msgid "Use it for campaigns, urgent hires, or structured recruitment rounds."
+msgstr "Използвайте го за кампании, спешни наемания или структурирани кръгове на набиране на персонал."
+
+msgid "Use the category that best matches the role's core function, not a broad fallback."
+msgstr "Използвайте категорията, която най-добре съответства на основната функция на ролята, а не на широката резервна."
+
+msgid "Use the exact role name candidates will search for. Keep it specific and avoid internal titles."
+msgstr "Използвайте точното име на ролята, за която кандидатите ще търсят. Дръжте го конкретно и избягвайте вътрешни заглавия."
+
+msgid "Use these to make the post clearer and more complete"
+msgstr "Използвайте тези, за да направите публикацията по-ясна и по-пълна"
+
+msgid "Use this page as a reference before publishing a vacancy. The guide follows your current Create Job form and explains what each field should contain, what details matter, and what a good example looks like."
+msgstr "Използвайте тази страница като справка преди публикуването на ваканция. Ръководството следва текущата ви форма за създаване на работа и обяснява какво трябва да съдържа всяко поле, кои подробности имат значение и как изглежда добър пример."
+
+msgid "Use this section for extra context that improves trust but does not belong in the main description."
+msgstr "Използвайте този раздел за допълнителен контекст, който подобрява доверието, но не принадлежи към основното описание."
+
+msgid "Warehouse Operations Coordinator"
+msgstr "Координатор на складови операции"
+
+msgid "What a complete entry set can look like"
+msgstr "Как може да изглежда пълният набор от записи"
+
+msgid "What it should include:"
+msgstr "Какво трябва да включва:"
+
+msgid "What makes a job post stronger"
+msgstr "Какво прави обявата за работа по-силна"
+
+msgid "What to write:"
+msgstr "Какво да пишете:"
+
+msgid "Work Mode"
+msgstr "Режим на работа"
+
+msgid "Work Schedule"
+msgstr "График на работа"
+
+msgid "Working hours, shift model, weekend coverage, or rotational schedule."
+msgstr "Работно време, модел на смяна, покритие през уикенда или ротационен график."
+
+msgid "Write for candidates, not for internal teams. Every field should help someone decide whether to apply."
+msgstr "Пишете за кандидатите, а не за вътрешните екипи. Всяко поле трябва да помогне на някого да реши дали да се кандидатства."
+
+msgid "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."
+msgstr "Ще се справяте с входящи клиентски заявления, ще документирате случаи в системата CRM и ще координирате с екипа по операции за бързо разрешаване на проблеми."

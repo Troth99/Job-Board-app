@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useMessageValidation } from "../../../../shared/validators/useMessageValidation";
 import useNotifications from "../../hooks/useNotifications";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 interface ModalReplyProps {
   isOpen: boolean;
   onClose: () => void;
-  onScuccess: () => void;
+  onSuccess: () => void;
   replyToUserEmail?: string;
 }
 
@@ -14,7 +15,7 @@ export function ModalReply({
   isOpen,
   onClose,
   replyToUserEmail,
-  onScuccess,
+  onSuccess,
 }: ModalReplyProps) {
   if (!isOpen) return null;
 
@@ -24,6 +25,8 @@ export function ModalReply({
   const {error, validateMessage, setError} =useMessageValidation();
 
   const currentUserId = getUserFromLocalStorage()._id
+
+  const {t} = useLingui();
 
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,8 +46,8 @@ export function ModalReply({
       });
     
       //onSucess callback to notify the component that the message was sent.
-      if(onScuccess) {
-        onScuccess();
+      if(onSuccess) {
+        onSuccess();
       }
 
       setMessage("");
@@ -67,23 +70,23 @@ export function ModalReply({
         <button className="reply-modal-close-btn" onClick={onClose}>
           ×
         </button>
-        <h2>Reply to message</h2>
+        <h2><Trans>Reply to message</Trans></h2>
         <form className="modal-reply-form" onSubmit={handleSubmit}>
           <label htmlFor="reply-message" className="reply-message-modal-label">
-            Replying to: <span>{replyToUserEmail}</span>
+            <Trans>Replying to:</Trans> <span>{replyToUserEmail}</span>
           </label>
           <textarea
             id="reply-message"
             name="reply-message"
             className="modal-reply-textarea"
             rows={15}
-            placeholder="Type your reply here..."
+            placeholder={t`Type your reply here...`}
             value={message}
             onChange={e => setMessage(e.target.value)}
           ></textarea>
            <div className="error-message">{error}</div>
           <button type="submit" className="modal-reply-send" disabled={isSending}>
-            {isSending ? "Sending..." : "Send"}
+            {isSending ? t`Sending...` : t`Send`}
           </button>
         </form>
       </div>

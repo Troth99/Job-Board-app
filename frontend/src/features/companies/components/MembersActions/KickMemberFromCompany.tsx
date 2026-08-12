@@ -1,4 +1,8 @@
+import {t} from "@lingui/core/macro"
+import { Trans } from "@lingui/react/macro";
+import { FiUserX } from "react-icons/fi";
 import { CompanyMember } from "../../types/CompanyMember.model";
+
 
 export default function KickMemberFromCompany({
   userRole,
@@ -18,7 +22,7 @@ export default function KickMemberFromCompany({
         member.role !== "admin" && (
           <button
             className="action-btn remove"
-            title="Remove Member"
+            title={t`Remove Member`}
             disabled={loading}
             onClick={() => {
               if (loading) {
@@ -28,7 +32,14 @@ export default function KickMemberFromCompany({
               kickMemberHandler(member._id);
             }}
           >
-            {loading ? "Removing..." : "Remove Member"}
+            {loading ? (
+              t`Removing...`
+            ) : (
+              <>
+                <FiUserX aria-hidden="true" className="btn-icon" />
+                <span className="btn-label"><Trans>Remove</Trans></span>
+              </>
+            )}
           </button>
         )}
     </>

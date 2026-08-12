@@ -1,5 +1,4 @@
-import "./EditProfile.css";
-import "./Responsive.css";
+import "../../styles/edit-profile.css";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../../../shared/utils/toast";
@@ -11,6 +10,10 @@ import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import useAvatar from "../../hooks/useAvatar";
 import { ProfileData } from "../../types/profileSectionTypes";
+import { profilePaths } from "../../routes/profilePaths";
+import { Trans } from "@lingui/react/macro";
+import defaultAvatar from "../../../../assets/personAvatar.jpg";
+import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";
 
 const initialProfileData: ProfileData = {
   firstName: "",
@@ -24,10 +27,12 @@ const initialProfileData: ProfileData = {
 export default function EditProfile() {
   const { userData, updateUserProfile, handleDeleteProfile } = useProfile();
   const { handleDeleteProfileImage } = useAvatar();
-  const [profileData, setProfileData] = useState<ProfileData>(initialProfileData);
-  const seo = generateSeoConfig("editProfile");
+  const [buttonLoading, setButtonLoading] = useState(false);
 
-  
+  const [profileData, setProfileData] =
+    useState<ProfileData>(initialProfileData);
+  const seo = () => generateSeoConfig("editProfile");
+
   useEffect(() => {
     if (userData) {
       setProfileData({
@@ -49,10 +54,13 @@ export default function EditProfile() {
     try {
       await updateUserProfile(values);
       showSuccess("Profile was updated successfully!");
-      navigate("/profile");
+      navigate(profilePaths.root);
     } catch (error: any) {
       if (error.message === "Email already exists.") {
-        setErrors((prev: Partial<ProfileData>) => ({ ...prev, email: "Email already exists" }));
+        setErrors((prev: Partial<ProfileData>) => ({
+          ...prev,
+          email: "Email already exists",
+        }));
         setButtonLoading(false);
         return;
       }
@@ -64,13 +72,11 @@ export default function EditProfile() {
   const { register, formHandler, values, errors, setErrors } = useForm(
     formAction,
     profileData,
-    validateForm
+    validateForm,
   );
 
-  const [buttonLoading, setButtonLoading] = useState(false);
-
   const changePasswordHandler = () => {
-    navigate("/profile/change-password");
+    navigate(profilePaths.changePassword);
   };
 
   const imageDeleteHandler = async () => {
@@ -78,6 +84,8 @@ export default function EditProfile() {
     try {
       await handleDeleteProfileImage();
       showSuccess("Profile image deleted successfully!");
+
+      setProfileData((prev: ProfileData) => ({ ...prev, avatar: "" }));
     } catch (error) {
       alert("Failed to delete profile image.");
     } finally {
@@ -101,90 +109,163 @@ export default function EditProfile() {
 
   return (
     <>
-     <MetaData seo={seo} />
-        
-    <div className="profile-body" style={{ position: "relative" }}>
-      {!userData ? (
-        <Spinner overlay={true} />
-      ) : (
-        <div className="profile-container">
-          <div className="profile-header">
-            <h1>Edit Profile</h1>
-          </div>
+      <MetaData seo={seo} />
+      <div className="profile-body">
+        {!userData ? (
+          <Spinner overlay={true} />
+        ) : (
+          <div className="profile-container">
+            <div className="profile-header">
+              <div>
+                <h1>
+                  <Trans>Edit Profile</Trans>
+                </h1>
+                <p className="profile-subtitle">
+                  <Trans>
+                    Update your personal information and keep your account
+                    details current.
+                  </Trans>
+                </p>
+              </div>
+            </div>
 
-          <form onSubmit={formHandler}>
-            <div className="profile-details">
-              <div>
-                <strong>First name:</strong>
-                <input type="text" {...register("firstName")} />
-                <div className="error-message">{errors.firstName}</div>
-              </div>
-              <div>
-                <strong>Last name:</strong>
-                <input type="text" {...register("lastName")} />
-                <div className="error-message">{errors.lastName}</div>
-              </div>
-              <div>
-                <strong>Phone:</strong>
-                <input type="text" {...register("phoneNumber")} />
-                <div className="error-message">{errors.phoneNumber}</div>
-              </div>
-              <div>
-                <strong>Email:</strong>
-                <input type="email" {...register("email")} />
-                <div className="error-message">{errors.email}</div>
-              </div>
-              <div>
-                <strong>Location:</strong>
-                <input type="text" {...register("location")} />
-                <div className="error-message">{errors.location}</div>
-              </div>
-
-              <div className="edit-profile-button-container">
-                <button
-                  className="edit-profile-button"
-                  type="submit"
-                  disabled={buttonLoading}
+            <div className="profile-card">
+              <aside className="avatar-panel">
+                <div
+                  className="avatar-preview"
+                  style={{ position: "relative", display: "inline-block" }}
                 >
-                  {buttonLoading ? "Saving..." : "Save Changes"}
-                </button>
-              </div>
-            </div>
-          </form>
+                  <img
+                    src={profileData.avatar || defaultAvatar}
+                    alt="Profile avatar"
+                  />
 
-          <div className="button-container">
-            <div className="delete-image-container">
-              <button
-                className="delete-image-button"
-                onClick={imageDeleteHandler}
-                disabled={buttonLoading}
-              >
-                Delete Profile Image
-              </button>
-            </div>
-            <div className="change-password-container">
-              <button
-                className="change-password-button"
-                onClick={changePasswordHandler}
-                disabled={buttonLoading}
-              >
-                Change Password
-              </button>
-            </div>
+                  {/* Спинърът се появява точно върху кръга при зареждане/изтриване */}
+                  {buttonLoading && (
+                    <div className="avatar-spinner-overlay">
+                      <LoadingIndicator size="small" message="" />
+                    </div>
+                  )}
 
-            <div className="delete-profile-container">
-              <button
-                className="delete-profile-button"
-                onClick={deleteProfileHandler}
-                disabled={buttonLoading}
-              >
-                Delete Profile
-              </button>
+                  <div className="avatar-meta">
+                    <h2>
+                      {`${profileData.firstName || ""} ${profileData.lastName || ""}`.trim() ||
+                        "User"}
+                    </h2>
+                    <p>{profileData.email}</p>
+                  </div>
+                </div>
+
+                <div className="avatar-actions">
+                  <button
+                    type="button"
+                    className="delete-image-button secondary"
+                    onClick={imageDeleteHandler}
+                    disabled={buttonLoading}
+                  >
+                    <Trans>Delete Profile Image</Trans>
+                  </button>
+                </div>
+              </aside>
+
+              <section className="profile-form">
+                <form onSubmit={formHandler}>
+                  <div className="form-grid">
+                    <div className="form-group">
+                      <label htmlFor="firstName">
+                        <Trans>First name</Trans>
+                      </label>
+                      <input
+                        id="firstName"
+                        type="text"
+                        {...register("firstName")}
+                      />
+                      <div className="error-message">{errors.firstName}</div>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="lastName">
+                        <Trans>Last name</Trans>
+                      </label>
+                      <input
+                        id="lastName"
+                        type="text"
+                        {...register("lastName")}
+                      />
+                      <div className="error-message">{errors.lastName}</div>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="phoneNumber">
+                        <Trans>Phone</Trans>
+                      </label>
+                      <input
+                        id="phoneNumber"
+                        type="text"
+                        {...register("phoneNumber")}
+                      />
+                      <div className="error-message">{errors.phoneNumber}</div>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="email">
+                        <Trans>Email</Trans>
+                      </label>
+                      <input id="email" type="email" {...register("email")} />
+                      <div className="error-message">{errors.email}</div>
+                    </div>
+
+                    <div className="form-group full-width">
+                      <label htmlFor="location">
+                        <Trans>Location</Trans>
+                      </label>
+                      <input
+                        id="location"
+                        type="text"
+                        {...register("location")}
+                      />
+                      <div className="error-message">{errors.location}</div>
+                    </div>
+                  </div>
+
+                  <div className="form-footer">
+                    <button
+                      type="submit"
+                      className="edit-profile-button primary"
+                      disabled={buttonLoading}
+                    >
+                      {buttonLoading ? (
+                        <Trans>Saving...</Trans>
+                      ) : (
+                        <Trans>Save Changes</Trans>
+                      )}
+                    </button>
+                  </div>
+                </form>
+
+                <div className="profile-actions">
+                  <button
+                    type="button"
+                    className="profile-action-button secondary"
+                    onClick={changePasswordHandler}
+                    disabled={buttonLoading}
+                  >
+                    <Trans>Change Password</Trans>
+                  </button>
+                  <button
+                    type="button"
+                    className="profile-action-button danger"
+                    onClick={deleteProfileHandler}
+                    disabled={buttonLoading}
+                  >
+                    <Trans>Delete Profile</Trans>
+                  </button>
+                </div>
+              </section>
             </div>
           </div>
-        </div>
-      )}
-    </div>
-       </>
+        )}
+      </div>
+    </>
   );
 }

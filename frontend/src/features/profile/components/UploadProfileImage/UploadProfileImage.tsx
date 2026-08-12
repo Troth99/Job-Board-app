@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/react/macro";
 import { useRef } from "react";
 
 interface ImageUploadProps {
@@ -18,7 +19,7 @@ function ImageUpload({ onFileChange }: ImageUploadProps) {
 
   return (
     <div>
-        <button className="edit-image-button" onClick={() => fileInputRef.current?.click()}>Choose image </button> 
+        <button className="edit-image-button" onClick={() => fileInputRef.current?.click()}><Trans>Choose image</Trans></button>
       <input
         type="file"
         accept="image/*"

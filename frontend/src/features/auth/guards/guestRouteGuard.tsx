@@ -2,6 +2,7 @@ import { Navigate, Outlet, useLocation } from "react-router";
 import { getAuthToken } from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import { profilePaths } from "../../profile/routes/profilePaths";
 
 export default function GuestGuardRoute() {
   const token = getAuthToken();
@@ -16,7 +17,7 @@ export default function GuestGuardRoute() {
   }, [token]);
 
   if (token && !fromLogin) {
-    return <Navigate to="/profile" replace />;
+    return <Navigate to={profilePaths.root} replace />;
   }
 
   return <Outlet />;

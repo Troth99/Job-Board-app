@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-28 02:37+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "Company Name"
+msgstr "Company Name"
+
+msgid "Company Size"
+msgstr "Company Size"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "e.g., Great company culture, Growth opportunities, Flexible schedule"
+msgstr "e.g., Great company culture, Growth opportunities, Flexible schedule"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Enter company description"
+msgstr "Enter company description"
+
+msgid "Enter company name"
+msgstr "Enter company name"
+
+msgid "Enter company size (e.g. 10-50)"
+msgstr "Enter company size (e.g. 10-50)"
+
+msgid "Enter contact email"
+msgstr "Enter contact email"
+
+msgid "Enter contact phone"
+msgstr "Enter contact phone"
+
+msgid "Enter founded year"
+msgstr "Enter founded year"
+
+msgid "Enter industry"
+msgstr "Enter industry"
+
+msgid "Enter location"
+msgstr "Enter location"
+
+msgid "Enter logo URL"
+msgstr "Enter logo URL"
+
+msgid "Enter office location"
+msgstr "Enter office location"
+
+msgid "Enter sector"
+msgstr "Enter sector"
+
+msgid "Enter website URL"
+msgstr "Enter website URL"
+
+msgid "Founded Year"
+msgstr "Founded Year"
+
+msgid "Industry"
+msgstr "Industry"
+
+msgid "Location"
+msgstr "Location"
+
+msgid "Logo URL"
+msgstr "Logo URL"
+
+msgid "Office Location"
+msgstr "Office Location"
+
+msgid "Optional"
+msgstr "Optional"
+
+msgid "Phone"
+msgstr "Phone"
+
+msgid "Register Company"
+msgstr "Register Company"
+
+msgid "Registering..."
+msgstr "Registering..."
+
+msgid "Sector"
+msgstr "Sector"
+
+msgid "Website"
+msgstr "Website"
+
+msgid "Why Work Here"
+msgstr "Why Work Here"

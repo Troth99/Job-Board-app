@@ -1,18 +1,24 @@
+import { Trans } from "@lingui/react/macro";
 import { Link } from "react-router";
+
 
 export default function LoginAside() {
   return (
     <>
       <Link to="/" className="login-back-btn">
         <i className="fa-solid fa-arrow-left"></i>
-        Back to home
+        <Trans>Back to home</Trans>
       </Link>
       <div className="login-brand-copy">
-        <span className="login-eyebrow">Job Board Platform</span>
-        <h1>Find your next role faster.</h1>
+        <span className="login-eyebrow"><Trans>Job Board Platform</Trans></span>
+        <h1>
+          <Trans>Find your next role faster.</Trans>
+        </h1>
         <p>
-          Sign in to manage your profile, track applications, and explore
-          opportunities from trusted companies.
+          <Trans>
+            Sign in to manage your profile, track applications, and explore
+            opportunities from trusted companies.
+          </Trans>
         </p>
       </div>
 
@@ -22,8 +28,12 @@ export default function LoginAside() {
             <i className="fa-solid fa-briefcase"></i>
           </span>
           <div>
-            <h3>Curated opportunities</h3>
-            <p>Browse jobs from companies actively hiring.</p>
+            <h3>
+              <Trans>Curated opportunities</Trans>
+            </h3>
+            <p>
+              <Trans>Browse jobs from companies actively hiring.</Trans>
+            </p>
           </div>
         </div>
 
@@ -32,8 +42,12 @@ export default function LoginAside() {
             <i className="fa-solid fa-filter"></i>
           </span>
           <div>
-            <h3>Smart filtering</h3>
-            <p>Reach the right positions faster with clear search tools.</p>
+            <h3>
+              <Trans>Smart filtering</Trans>
+            </h3>
+            <p>
+              <Trans>Reach the right positions faster with clear search tools.</Trans>
+            </p>
           </div>
         </div>
 
@@ -42,9 +56,13 @@ export default function LoginAside() {
             <i className="fa-solid fa-bolt"></i>
           </span>
           <div>
-            <h3>Faster workflow</h3>
+            <h3>
+              <Trans>Faster workflow</Trans>
+            </h3>
             <p>
-              Keep your saved jobs, notifications, and profile in one place.
+              <Trans>
+                Keep your saved jobs, notifications, and profile in one place.
+              </Trans>
             </p>
           </div>
         </div>

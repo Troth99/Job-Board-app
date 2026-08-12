@@ -1,7 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-
-import type { SavedJob } from "../features/jobs/types/SavedJob.model";
-import useJobs from "../features/jobs/hooks/useJobBoard";
+import  { SavedJob } from "../features/jobs/types/SavedJob.model";
+import useFavorites from "../features/jobs/hooks/useSavedJobs";
 
   interface FavoritesContextType {
     savedJobs: SavedJob[];
@@ -28,7 +27,7 @@ import useJobs from "../features/jobs/hooks/useJobBoard";
   }) {
     const [savedJobs, setSavedJobs] = useState<SavedJob[]>([]);
     const [loading, setLoading] = useState(false);
-    const { getAllFavoriteJobs, addJobToFavorites, deleteJobFromFavorites } = useJobs();
+    const { getAllFavoriteJobs, addJobToFavorites, deleteJobFromFavorites } = useFavorites();
     const isLoggedIn = Boolean(userId);
 
     useEffect(() => {

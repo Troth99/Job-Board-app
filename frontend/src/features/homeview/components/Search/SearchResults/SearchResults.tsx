@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Trans } from "@lingui/react/macro";
 import { useNavigate, useSearchParams } from "react-router";
 import useJobs from "../../../../jobs/hooks/useJobsAPI";
 import { Job } from "../../../../jobs/types/Job.model";
@@ -45,7 +46,7 @@ export default function SearchResults() {
           >
             🔍
           </span>
-          No jobs found.
+          <Trans>No jobs found.</Trans>
         </div>
       ) : (
         <ShowJobs

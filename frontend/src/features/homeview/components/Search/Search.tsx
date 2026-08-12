@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLingui } from "@lingui/react/macro";
 import "./Search.css";
 import "./Responsive.css";
 import { useNavigate } from "react-router";
@@ -10,6 +11,7 @@ interface SearchProps {
 }
 
 export default function Search({ onSearch }: SearchProps) {
+  const { t } = useLingui();
   const [search, setSearch] = useState<string>("");
   const navigate = useNavigate();
 
@@ -32,7 +34,7 @@ export default function Search({ onSearch }: SearchProps) {
         <div className="search-box">
           <input
             type="text"
-            placeholder="Search jobs..."
+            placeholder={t`Search by keyword...`}
             value={search}
             onChange={searchHandler}
           />

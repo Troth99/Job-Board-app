@@ -1,0 +1,113 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-17 00:44+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "— Select a topic —"
+msgstr "— Изберете тема —"
+
+msgid "Account / Profile Issue"
+msgstr "Проблем с акаунта / профила"
+
+msgid "Application Issue"
+msgstr "Проблем с кандидатурата"
+
+msgid "Bug Report"
+msgstr "Докладване на бъг"
+
+msgid "Business & Partnerships"
+msgstr "Бизнес и партньорства"
+
+msgid "Company Management"
+msgstr "Управление на компанията"
+
+msgid "Describe your question or issue in detail…"
+msgstr "Опишете въпроса или проблема си подробно…"
+
+msgid "Email Address"
+msgstr "Имейл адрес"
+
+msgid "Email Support"
+msgstr "Имейл поддръжка"
+
+msgid "Fill in the form and we'll get back to you as soon as possible."
+msgstr "Попълнете формуляра и ние ще се свържем с вас възможно най-скоро."
+
+msgid "For general enquiries and account-related questions."
+msgstr "За общи запитвания и въпроси, свързани с акаунта."
+
+msgid "Found a bug or a security concern? Let us know immediately."
+msgstr "Забелязахте проблем или имате притеснение относно сигурността? Уведомете ни незабавно."
+
+msgid "Full Name"
+msgstr "Пълно име"
+
+msgid "General Question"
+msgstr "Общ въпрос"
+
+msgid "Get in Touch"
+msgstr "Свържете се с нас"
+
+msgid "Have a question, spotted a bug, or want to give feedback?"
+msgstr "Имате въпрос, открихте бъг или искате да дадете обратна връзка?"
+
+msgid "Headquarters"
+msgstr "Главен офис"
+
+msgid "Interested in listing jobs or partnering with us?"
+msgstr "Интересувате се от публикуване на работни места или партньорство с нас?"
+
+msgid "Job Posting Problem"
+msgstr "Проблем с публикуването на работни места"
+
+msgid "Message"
+msgstr "Съобщение"
+
+msgid "or"
+msgstr "или"
+
+msgid "Other"
+msgstr "Други"
+
+msgid "Reach out through any of the channels below — our team typically responds within one business day."
+msgstr "Свържете се чрез някой от каналите по-долу — нашият екип обикновено отговаря в рамките на един работен ден."
+
+msgid "Reach us on"
+msgstr "Свържете се с нас в"
+
+msgid "Report an Issue"
+msgstr "Докладване на проблем"
+
+msgid "Response Time"
+msgstr "Време за отговор"
+
+msgid "Send Message"
+msgstr "Изпрати съобщение"
+
+msgid "Send Us a Message"
+msgstr "Изпратете ни съобщение"
+
+msgid "Social Media"
+msgstr "Социални медии"
+
+msgid "Sofia, Bulgaria — remote-first team serving candidates & employers worldwide."
+msgstr "София, България — екип, работещ от разстояние, обслужващ кандидати и работодатели по целия свят."
+
+msgid "Subject"
+msgstr "Тема"
+
+msgid "We aim to reply within 1 business day (Mon – Fri, 09:00 – 18:00 EET)."
+msgstr "Стремим се да отговаряме в рамките на 1 работен ден (пон – пет, 09:00 – 18:00 EET)."
+
+msgid "We're Here to Help"
+msgstr "Ние сме тук, за да помогнем"

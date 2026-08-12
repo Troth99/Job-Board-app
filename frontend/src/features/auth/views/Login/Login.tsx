@@ -11,6 +11,7 @@ import { useValidation } from "../../validators/useValidation";
 import LoginAside from "../../components/login-UI/LoginAside";
 import LoginSocialIcons from "../../components/login-UI/LoginSocialIcons";
 import { LoginFormType } from "../../types/loginFormType";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 const initialFormValue = {
   email: "",
@@ -28,6 +29,8 @@ export default function LoginComponent({
     accessToken: "",
     refreshToken: "",
   });
+
+  const {t} = useLingui();
   const focusRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const { validateForm } = useValidation();
@@ -79,16 +82,24 @@ export default function LoginComponent({
           <div className="login-card">
             <div className="login-card-inner">
               <div className="login-card-header">
-                <span className="login-card-badge">Welcome back</span>
-                <h2>Sign in to your account</h2>
+                <span className="login-card-badge">
+                  <Trans>Welcome back</Trans>
+                </span>
+                <h2>
+                  <Trans>Sign in to your account</Trans>
+                </h2>
                 <p>
-                  Continue to your dashboard, saved jobs, and application
-                  activity.
+                  <Trans>
+                    Continue to your dashboard, saved jobs, and application
+                    activity.
+                  </Trans>
                 </p>
               </div>
               <form className="login-form" onSubmit={formHandler}>
                 <div className="login-field">
-                  <label htmlFor="email">Email address</label>
+                  <label htmlFor="email">
+                    <Trans>Email address</Trans>
+                  </label>
                   <div
                     className={`login-input-wrap ${
                       errors.email ? "input-error" : ""
@@ -99,7 +110,7 @@ export default function LoginComponent({
                       id="email"
                       ref={focusRef}
                       type="email"
-                      placeholder="Enter your email"
+                      placeholder={t`Enter your email address`}
                       {...register("email")}
                     />
                   </div>
@@ -110,12 +121,14 @@ export default function LoginComponent({
 
                 <div className="login-field">
                   <div className="login-field-row">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">
+                      <Trans>Password</Trans>
+                    </label>
                     <Link
                       to="/auth/forgot-password"
                       className="login-inline-link"
                     >
-                      Forgot password?
+                      <Trans>Forgot password?</Trans>
                     </Link>
                   </div>
 
@@ -128,7 +141,7 @@ export default function LoginComponent({
                     <input
                       id="password"
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder={t`Enter your password`}
                       {...register("password")}
                     />
                   </div>
@@ -143,14 +156,16 @@ export default function LoginComponent({
                     className="btn-login-loginform"
                     disabled={loading || authLoading}
                   >
-                    {loading || authLoading ? "Signing in..." : "Sign In"}
+                    {loading || authLoading ? <Trans>Signing in...</Trans> : <Trans>Sign In</Trans>}
                   </button>
                   <LoginSocialIcons />
                 </div>
               </form>
               <div className="login-footer">
                 <p>
-                  Don't have an account? <Link to="/register">Create one</Link>
+                  <Trans>
+                    Don't have an account? <Link to="/register">Create one</Link>
+                  </Trans>
                 </p>
               </div>
             </div>

@@ -6,6 +6,7 @@ import { Notification } from "../../types/Notification.model";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { formatDate } from "../../../../shared/utils/formData";
 import { ModalReply } from "./ModalReply";
+import { Trans } from "@lingui/react/macro";
 
 export default function NewmessageNotification() {
   const [notification, setNotification] = useState<Notification | null>(null);
@@ -58,7 +59,7 @@ export default function NewmessageNotification() {
     <>
 {success && (
   <div className="success-message">
-    <span>Your message has been sent successfully!</span>
+    <span><Trans>Your message has been sent successfully!</Trans></span>
     <button className="success-close" onClick={() => setSuccess(false)}>×</button>
   </div>
 )}
@@ -68,7 +69,7 @@ export default function NewmessageNotification() {
       >
         <div className="notification__meta">
           <span className="notification__from">
-            <span className="notification__from-label">Message from:</span>
+            <span className="notification__from-label"><Trans>Message from:</Trans></span>
             <span className="notification__from-user">
               <span className="notification__from-first">
                 {notification?.sender?.firstName}
@@ -93,7 +94,7 @@ export default function NewmessageNotification() {
             className="notification__btn notification__btn--reply"
             onClick={modalReplyHandler}
           >
-            Reply
+            <Trans>Reply</Trans>
           </button>
         </div>
       </div>
@@ -101,7 +102,7 @@ export default function NewmessageNotification() {
         isOpen={open}
         replyToUserEmail={replyToUserEmail}
         onClose={() => setOpen(false)}
-        onScuccess={() => setSuccess(true)}
+        onSuccess={() => setSuccess(true)}
       />
     </>
   );

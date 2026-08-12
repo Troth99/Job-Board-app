@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:JSON.parse("{\"1EmUbn\":[\"Виж всички категории\"],\"QRPG/i\":[\"Преглед по категории\"]}")};

@@ -1,34 +1,48 @@
 import { Helmet } from "react-helmet-async";
+import { useLingui } from "@lingui/react/macro";
 import { SeoConfig } from "./seo";
 
 type MetaDataProps = {
-  seo: SeoConfig;
+  seo: SeoConfig | (() => SeoConfig);
 };
 
 export default function MetaData({ seo }: MetaDataProps) {
+  const { i18n } = useLingui();
+  const effectiveSeo = typeof seo === "function" ? seo() : seo;
+
   return (
-    <Helmet>
-      <title>{seo.title}</title>
-      <meta name="description" content={seo.description} />
+    <Helmet key={i18n.locale}>
+      <title>{effectiveSeo.title}</title>
+      <meta name="description" content={effectiveSeo.description} />
 
-      <meta property="og:title" content={seo.title} />
-      <meta property="og:description" content={seo.description} />
-      {seo.image && <meta property="og:image" content={seo.image} />}
-      {seo.image && <meta property="og:image:secure_url" content={seo.image} />}
-      {seo.image && <meta property="og:image:type" content="image/png" />}
-      {seo.image && <meta property="og:image:width" content="1200" />}
-      {seo.image && <meta property="og:image:height" content="630" />}
-      {seo.url && <meta property="og:url" content={seo.url} />}
-      {seo.siteName && <meta property="og:site_name" content={seo.siteName} />}
-      {seo.type && <meta property="og:type" content={seo.type} />}
+      <meta property="og:title" content={effectiveSeo.title} />
+      <meta property="og:description" content={effectiveSeo.description} />
+      {effectiveSeo.image && <meta property="og:image" content={effectiveSeo.image} />}
+      {effectiveSeo.image && (
+        <meta property="og:image:secure_url" content={effectiveSeo.image} />
+      )}
+      {effectiveSeo.image && <meta property="og:image:type" content="image/png" />}
+      {effectiveSeo.image && <meta property="og:image:width" content="1200" />}
+      {effectiveSeo.image && <meta property="og:image:height" content="630" />}
+      {effectiveSeo.url && <meta property="og:url" content={effectiveSeo.url} />}
+      {effectiveSeo.siteName && (
+        <meta property="og:site_name" content={effectiveSeo.siteName} />
+      )}
+      {effectiveSeo.type && <meta property="og:type" content={effectiveSeo.type} />}
 
-      {seo.twitterCard && <meta name="twitter:card" content={seo.twitterCard} />}
-      <meta name="twitter:title" content={seo.title} />
-      <meta name="twitter:description" content={seo.description} />
-      {seo.image && <meta name="twitter:image" content={seo.image} />}
+      {effectiveSeo.twitterCard && (
+        <meta name="twitter:card" content={effectiveSeo.twitterCard} />
+      )}
+      <meta name="twitter:title" content={effectiveSeo.title} />
+      <meta name="twitter:description" content={effectiveSeo.description} />
+      {effectiveSeo.image && (
+        <meta name="twitter:image" content={effectiveSeo.image} />
+      )}
 
-      {seo.url && <link rel="canonical" href={seo.url} />}
-{seo.noindex && <meta name="robots" content="noindex,nofollow" />}    
-</Helmet>
+      {effectiveSeo.url && <link rel="canonical" href={effectiveSeo.url} />}
+      {effectiveSeo.noindex && (
+        <meta name="robots" content="noindex,nofollow" />
+      )}
+    </Helmet>
   );
 }

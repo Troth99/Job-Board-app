@@ -19,6 +19,7 @@ import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import useMembers from "../../hooks/useMembers";
 import { MemberDashboardSideBar } from "../../components/DashboardSidebarUI/DashboardSidebarUI";
+import { Trans, } from "@lingui/react/macro";
 
 
 export default function Dashboard() {
@@ -52,8 +53,8 @@ export default function Dashboard() {
   const [refreshingAfterTransfer, setRefreshingAfterTransfer] =
     useState<boolean>(false);
 
-    const seo = generateSeoConfig("companyDashboard");
-    
+  const seo = () => generateSeoConfig("companyDashboard");
+
   // Find the current user's membership in the company to determine their role and permissions
   const myMember = members.find((m: CompanyMember) => m.userId._id === user?._id);
   const myMemberId = myMember?._id;
@@ -153,7 +154,7 @@ export default function Dashboard() {
 
       {success && (
         <div className="success-message">
-          <span>Your message has been sent successfully!</span>
+          <span><Trans>Your message has been sent successfully!</Trans></span>
           <button className="success-close" onClick={() => setSuccess(false)}>
             ×
           </button>
@@ -177,18 +178,18 @@ export default function Dashboard() {
         {/* Main Content Area */}
         <div className="main-content">
           <div id="overview-section" className="dashboard-panel dashboard-overview">
-            <p className="dashboard-kicker">Operational overview</p>
-            <h1 className="dashboard-title">Company dashboard</h1>
+            <p className="dashboard-kicker"><Trans>Operational overview</Trans></p>
+            <h1 className="dashboard-title"><Trans>Company dashboard</Trans></h1>
             <p className="dashboard-subtitle">
-              Streamline team coordination, internal communication, and hiring execution from a single control panel.
+              <Trans>Streamline team coordination, internal communication, and hiring execution from a single control panel.</Trans>
             </p>
           </div>
 
           {/* Members Section */}
           <section id="team-section" className="dashboard-panel dashboard-section">
             <div className="section-heading">
-              <h2>Team tools</h2>
-              <p>Invite members and send internal messages.</p>
+              <h2><Trans>Team tools</Trans></h2>
+              <p><Trans>Invite members and send internal messages.</Trans></p>
             </div>
             <div className="content-header section-body">
               <CompanyMembers />
@@ -198,8 +199,8 @@ export default function Dashboard() {
 
           <section id="jobs-section" className="dashboard-panel dashboard-section">
             <div className="section-heading">
-              <h2>Jobs board control</h2>
-              <p>Post new jobs and monitor recent openings for your company.</p>
+              <h2><Trans>Jobs board control</Trans></h2>
+              <p><Trans>Post new jobs and monitor recent openings for your company.</Trans></p>
             </div>
 
 
@@ -216,21 +217,17 @@ export default function Dashboard() {
 
           <section className="dashboard-panel dashboard-section dashboard-future-section">
             <div className="section-heading">
-              <h2>Future modules</h2>
-              <p>Add more options here as your company workflow grows.</p>
+              <h2><Trans>Future modules</Trans></h2>
+              <p><Trans>Add more options here as your company workflow grows.</Trans></p>
             </div>
             <div className="future-module-grid">
               <article className="future-module-card">
-                <h3>Announcements</h3>
-                <p>Share updates with all company members in one feed.</p>
+                <h3><Trans>Announcements</Trans></h3>
+                <p><Trans>Share updates with all company members in one feed.</Trans></p>
               </article>
               <article className="future-module-card">
-                <h3>Calendar</h3>
-                <p>Track interviews, deadlines, and team milestones.</p>
-              </article>
-              <article className="future-module-card">
-                <h3>Insights</h3>
-                <p>Monitor hiring activity and member engagement trends.</p>
+                <h3><Trans>Insights</Trans></h3>
+                <p><Trans>Monitor hiring activity and member engagement trends.</Trans></   p>
               </article>
             </div>
           </section>

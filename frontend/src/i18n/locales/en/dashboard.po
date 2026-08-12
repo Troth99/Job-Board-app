@@ -1,0 +1,205 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-28 02:52+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "+ Post Job"
+msgstr "+ Post Job"
+
+msgid "+ View all jobs for the company"
+msgstr "+ View all jobs for the company"
+
+msgid "<0>WARNING:</0> This action is irreversible and will result in the loss of all company data. Members and jobs associated with the company will be deleted."
+msgstr "<0>WARNING:</0> This action is irreversible and will result in the loss of all company data. Members and jobs associated with the company will be deleted."
+
+msgid "Abandon company"
+msgstr "Abandon company"
+
+msgid "Add"
+msgstr "Add"
+
+msgid "Add Member"
+msgstr "Add Member"
+
+msgid "Add more options"
+msgstr "Add more options"
+
+msgid "Add more options here as your company workflow grows."
+msgstr "Add more options here as your company workflow grows."
+
+msgid "Analytics"
+msgstr "Analytics"
+
+msgid "Announcements"
+msgstr "Announcements"
+
+msgid "Are you sure you want to abandon the company? This action cannot be undone."
+msgstr "Are you sure you want to abandon the company? This action cannot be undone."
+
+msgid "Are you sure you want to leave the company?"
+msgstr "Are you sure you want to leave the company?"
+
+msgid "Calendar"
+msgstr "Calendar"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Company dashboard"
+msgstr "Company dashboard"
+
+msgid "Company panel"
+msgstr "Company panel"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Enter member email"
+msgstr "Enter member email"
+
+msgid "Future modules"
+msgstr "Future modules"
+
+msgid "Insights"
+msgstr "Insights"
+
+msgid "Invite members and send internal messages."
+msgstr "Invite members and send internal messages."
+
+msgid "Jobs board"
+msgstr "Jobs board"
+
+msgid "Jobs board control"
+msgstr "Jobs board control"
+
+msgid "Leave company"
+msgstr "Leave company"
+
+msgid "Leave Company"
+msgstr "Leave Company"
+
+msgid "Leaving..."
+msgstr "Leaving..."
+
+msgid "Loading jobs..."
+msgstr "Loading jobs..."
+
+msgid "Members"
+msgstr "Members"
+
+msgid "Monitor hiring activity and member engagement trends."
+msgstr "Monitor hiring activity and member engagement trends."
+
+msgid "Most 5 recent Posted jobs"
+msgstr "Most 5 recent Posted jobs"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Only the owner can abandon the company. You do not have permission to perform this action."
+msgstr "Only the owner can abandon the company. You do not have permission to perform this action."
+
+msgid "Operational overview"
+msgstr "Operational overview"
+
+msgid "Overview"
+msgstr "Overview"
+
+msgid "Post new jobs and monitor recent openings for your company."
+msgstr "Post new jobs and monitor recent openings for your company."
+
+msgid "Promote Member to Owner"
+msgstr "Promote Member to Owner"
+
+msgid "Promote ownership"
+msgstr "Promote ownership"
+
+msgid "Promote to Owner"
+msgstr "Promote to Owner"
+
+msgid "Promoting..."
+msgstr "Promoting..."
+
+msgid "Reports"
+msgstr "Reports"
+
+#. placeholder {0}: props.localRole
+msgid "Role: {0}"
+msgstr "Role: {0}"
+
+msgid "Select a member"
+msgstr "Select a member"
+
+msgid "Select member:"
+msgstr "Select member:"
+
+msgid "Send"
+msgstr "Send"
+
+msgid "Send message"
+msgstr "Send message"
+
+msgid "Send Message"
+msgstr "Send Message"
+
+msgid "Sending..."
+msgstr "Sending..."
+
+msgid "Share updates with all company members in one feed."
+msgstr "Share updates with all company members in one feed."
+
+msgid "Streamline team coordination, internal communication, and hiring execution from a single control panel."
+msgstr "Streamline team coordination, internal communication, and hiring execution from a single control panel."
+
+msgid "Team tools"
+msgstr "Team tools"
+
+msgid "This action is irreversible and you will lose access to company resources."
+msgstr "This action is irreversible and you will lose access to company resources."
+
+#~ msgid "Track interviews, deadlines, and team milestones."
+#~ msgstr "Track interviews, deadlines, and team milestones."
+
+msgid "Type <0>ABANDON</0> in order to proceed:"
+msgstr "Type <0>ABANDON</0> in order to proceed:"
+
+msgid "Update Company"
+msgstr "Update Company"
+
+msgid "Use this block for quick links and new tools in the future."
+msgstr "Use this block for quick links and new tools in the future."
+
+msgid "View full calendar"
+msgstr "View full calendar"
+
+#. placeholder {0}: props.company?.name
+msgid "Welcome to <0>{0}</0>"
+msgstr "Welcome to <0>{0}</0>"
+
+msgid "Yes, abandon"
+msgstr "Yes, abandon"
+
+msgid "Yes, leave"
+msgstr "Yes, leave"
+
+msgid "You are the owner of the company"
+msgstr "You are the owner of the company"
+
+msgid "You cannot leave the company until you transfer ownership to another member."
+msgstr "You cannot leave the company until you transfer ownership to another member."
+
+msgid "Your message has been sent successfully!"
+msgstr "Your message has been sent successfully!"
+
+msgid "Your message."
+msgstr "Your message."

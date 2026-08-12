@@ -57,9 +57,14 @@ export function NotificationProvider({
   // Keep real-time updates via EventSource
   useEffect(() => {
     if (!userId) return;
+
+    // for real-time notifications, we use Server-Sent Events (SSE) to listen for 
+    // new notifications from the backend. The backend should have an endpoint that streams 
+    // notifications for the user.
     const evtSource = new EventSource(
-      `${API_BASE}/api/notifications/stream/${userId}`,
+      `${API_BASE}/notifications/stream/${userId}`,
     );
+
     evtSource.onmessage = (event) => {
       const notification = JSON.parse(event.data);
       setNotifications((prev) => [notification, ...prev]);

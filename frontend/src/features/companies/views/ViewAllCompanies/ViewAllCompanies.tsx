@@ -9,6 +9,8 @@ import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { Container } from "../../../../shared/components/Container/Container";
 import { formatDate } from "../../../../shared/utils/formData";
 import Pagination from "../../../../shared/components/Pagination/Pagination";
+import { Trans, useLingui } from "@lingui/react/macro";
+
 
 const ITEMS_PER_PAGE = 8;
 
@@ -21,12 +23,14 @@ export default function ViewAllCompanies() {
 
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
 
+  const {t} = useLingui()
+
   const [pagination, setPagination] = useState({
     totalPages: 1,
     totalCompanies: 0,
   });
 
-  const seo = generateCompaniesSeo(searchFromUrl, pageFromUrl);
+  const seo = () => generateCompaniesSeo(searchFromUrl, pageFromUrl);
 
   useEffect(() => {
     const fetchAllCompanies = async () => {
@@ -105,29 +109,29 @@ export default function ViewAllCompanies() {
       <header className="companies-hero">
         <div className="companies-hero-copy">
           <p className="companies-kicker">Company directory</p>
-          <h1>Browse companies in one clean view.</h1>
+          <h1><Trans>Browse companies in one clean view.</Trans></h1>
           <p className="companies-description">
-            Compare teams by industry, location, size, and website without
-            losing the visual language of the rest of the app.
+            <Trans>Compare teams by industry, location, size, and website without
+            losing the visual language of the rest of the app.</Trans>
           </p>
         </div>
 
         <div className="companies-summary">
-          <span>Available companies</span>
+          <span><Trans>Available companies</Trans></span>
           <strong>{companyCount}</strong>
-          <small>{visibleCount} shown with the current filter</small>
+          <small>{visibleCount} <Trans>shown with the current filter</Trans></small>
         </div>
       </header>
 
       <div className="companies-toolbar">
         <label className="companies-search">
-          <span>Search</span>
+          <span><Trans>Search</Trans></span>
           <input
             type="search"
             value={searchInput}
             onChange={handleSearchInputChange}
             onKeyDown={handleSearchKeyDown}
-            placeholder="Name, industry, location, size"
+            placeholder={t`Name, industry, location, size`}
           />
         </label>
         <button
@@ -135,7 +139,7 @@ export default function ViewAllCompanies() {
           className="companies-search-button"
           onClick={handleSearchSubmit}
         >
-          Search
+          <Trans>Search</Trans>
         </button>
 
         <button
@@ -144,22 +148,22 @@ export default function ViewAllCompanies() {
           onClick={handleClearSearch}
           disabled={!searchInput && !searchFromUrl}
         >
-          Clear filter
+          <Trans>Clear filter</Trans>
         </button>
       </div>
 
       {companyCount === 0 ? (
         <div className="companies-empty-state">
-          <h2>No companies found.</h2>
+          <h2><Trans>No companies found.</Trans></h2>
           <p>
-            Once companies are created, they will appear here in a structured
-            directory layout.
+            <Trans>Once companies are created, they will appear here in a structured
+            directory layout.</Trans>
           </p>
         </div>
       ) : companies.length === 0 ? (
         <div className="companies-empty-state">
-          <h2>No matches for this filter.</h2>
-          <p>Try a different company name, city, industry, or team size.</p>
+          <h2><Trans>No matches for this filter.</Trans></h2>
+          <p><Trans>Try a different company name, city, industry, or team size.</Trans></   p>
         </div>
       ) : (
         <div className="companies-grid">
@@ -209,18 +213,18 @@ export default function ViewAllCompanies() {
 
                 <div className="company-details-grid">
                   <p className="company-location-unique">
-                    <span className="company-label-unique">Location</span>
+                    <span className="company-label-unique"><Trans>Location</Trans></span>
                     {company.location}
                   </p>
                   <p className="company-founded-unique">
-                    <span className="company-label-unique">Added</span>
+                    <span className="company-label-unique"><Trans>Added</Trans></span>
                     {formatDate(company.createdAt)}
                   </p>
                 </div>
 
                 <div className="company-footer-row">
                   <p className="company-website-unique">
-                    <span className="company-label-unique">Website</span>
+                    <span className="company-label-unique"><Trans>Website</Trans></span>
                     {websiteHref ? (
                       <a
                         href={websiteHref}
@@ -228,10 +232,10 @@ export default function ViewAllCompanies() {
                         rel="noopener noreferrer"
                         className="company-link-unique"
                       >
-                        Visit site
+                        <Trans>Visit site</Trans>
                       </a>
                     ) : (
-                      <span className="company-muted-text">Not provided</span>
+                      <span className="company-muted-text"><Trans>Not provided</Trans></span>
                     )}
                   </p>
                 </div>

@@ -1,9 +1,14 @@
 import { useState } from "react";
 import useApiRequester from "../../../shared/hooks/useApiRequester";
 import { API_BASE } from "../../../config/api";
+import { useUserData } from "../../../context/UseDataContext";
+import { User } from "../types/profileSectionTypes";
 
 export default function useAvatar() {
   const { request } = useApiRequester();
+  const { setUserData } = useUserData();
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+
   const [avatar, setAvatar] = useState<string>("");
 
   const uploadUserProfileImage = async (file: File): Promise<string> => {
@@ -17,7 +22,7 @@ export default function useAvatar() {
       {
         method: "POST",
         body: formData,
-      }
+      },
     );
 
     const data = await response.json();
@@ -27,8 +32,11 @@ export default function useAvatar() {
   };
 
   const deleteUserProfileImage = async () => {
-    try {{API_BASE}
-      const response = await request(`/users/me/avatar`, "DELETE");
+    try {
+      {
+        API_BASE;
+      }
+      const response = await request(`${API_BASE}/users/me/avatar`, "DELETE");
       return response;
     } catch (error: any) {
       console.error("Error deleting user profile image:", error.message);
@@ -37,22 +45,35 @@ export default function useAvatar() {
   };
 
   const handleFileChange = async (file: File) => {
+    setIsUploading(true);
     try {
       const imageUrl = await uploadUserProfileImage(file);
+
       setAvatar(imageUrl);
+      setUserData((prev: User) => {
+        return { ...prev, avatar: imageUrl };
+      });
+
+      await request(`${API_BASE}/users/me`, "PUT", { avatar: imageUrl });
+
       return imageUrl;
     } catch (error) {
       console.error("Image upload failed:", error);
+      setIsUploading(false);
       throw error;
+    } finally {
+      setIsUploading(false);
     }
   };
 
+
   const handleDeleteProfileImage = async () => {
     const isConfirmed = window.confirm(
-      "Are you sure you want to delete your profile image?"
+      "Are you sure you want to delete your profile image?",
     );
     if (!isConfirmed) return false;
 
+    setIsUploading(true);
     try {
       await deleteUserProfileImage();
       setAvatar("");
@@ -60,6 +81,8 @@ export default function useAvatar() {
     } catch (error) {
       console.error("Failed to delete profile image:", error);
       throw error;
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -70,5 +93,6 @@ export default function useAvatar() {
     deleteUserProfileImage,
     handleFileChange,
     handleDeleteProfileImage,
+    isUploading,
   };
 }

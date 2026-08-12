@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../CreateJob/CreateJob.css";
 import { useNavigate, useParams } from "react-router";
-import useJobs from "../../hooks/useJobBoard";
+import useJobs from "../../hooks/useJobsAPI";
 import {
   EmploymentTypeSelect,
   ExperienceLevelSelect,
@@ -14,6 +14,9 @@ import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { valuesInterface } from "../../types/Job.model";
 import useForm from "../../../../shared/hooks/useForm";
 import { jobPostValidations } from "../../validators/createJobValidation";
+import { jobValidationMessages } from "../../validators/jobValidationMessages";
+import { Trans, useLingui } from "@lingui/react/macro";
+
 
 const initialValues = {
   title: "",
@@ -48,6 +51,8 @@ export default function EditJob() {
   const [pending, setPending] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
+
+  const { t } = useLingui();
 
   const categories = useSelector(
     (state: RootState) => state.categories.categories
@@ -114,10 +119,13 @@ export default function EditJob() {
     }
   };
 
+  const validateForm = (values: valuesInterface) =>
+    jobPostValidations(values, jobValidationMessages);
+
   const { register, errors, formHandler, setFieldValue } = useForm(
     editSubmitHandler,
     jobData,
-    jobPostValidations,
+    validateForm,
   );
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -137,24 +145,24 @@ export default function EditJob() {
         <Spinner overlay={true} />
       ) : (
         <div className="post-job-container">
-          <h2>Edit Job</h2>
+          <h2><Trans>Edit Job</Trans></h2>
           <form className="post-job-form" onSubmit={formHandler}>
             <div className="form-group">
-              <label htmlFor="title">Job Title</label>
+              <label htmlFor="title"><Trans>Job Title</Trans></label>
               <input
                 type="text"
                 id="title"
-                placeholder="Job Title"
+                placeholder={t`Job Title`}
                 {...register("title")}
               />
               <div className="error-message">{errors.title}</div>
             </div>
 
             <div className="form-group">
-              <label htmlFor="description">Job Description</label>
+              <label htmlFor="description"><Trans>Job Description</Trans></label>
               <textarea
                 id="description"
-                placeholder="Job Description"
+                placeholder={t`Job Description`}
                 {...register("description")}
               ></textarea>
               <div className="error-message">{errors.description}</div>
@@ -162,39 +170,39 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="additionalInfo">
-                Additional Information <span className="optional-badge">Optional</span>
+                <Trans>Additional Information</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
               </label>
               <textarea
                 id="additionalInfo"
-                placeholder="e.g., We are happy to review your application and contact shortlisted candidates."
+                placeholder={t`e.g., We are happy to review your application and contact shortlisted candidates.`}
                 {...register("additionalInfo")}
               ></textarea>
             </div>
 
             <div className="form-group">
-              <label htmlFor="location">Location</label>
+              <label htmlFor="location"><Trans>Location</Trans></label>
               <input
                 type="text"
                 id="location"
-                placeholder="Location"
+                placeholder={t`Location`}
                 {...register("location")}
               />
               <div className="error-message">{errors.location}</div>
             </div>
 
             <div className="form-group">
-              <label htmlFor="salary">Salary</label>
+              <label htmlFor="salary"><Trans>Salary</Trans></label>
               <input
                 type="text"
                 id="salary"
-                placeholder="Salary"
+                placeholder={t`Salary`}
                 {...register("salary")}
               />
               <div className="error-message">{errors.salary}</div>
             </div>
 
             <div className="form-group">
-              <label htmlFor="workMode">Work Mode</label>
+              <label htmlFor="workMode"><Trans>Work Mode</Trans></label>
               <WorkModeSelect
                 value={register("workMode").value}
                 onChange={(e) => setFieldValue("workMode", e.target.value)}
@@ -203,7 +211,7 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="category">Job Category</label>
+              <label htmlFor="category"><Trans>Job Category</Trans></label>
               <JobEditCategory
                 value={typeof register("category").value === "string" ? null : register("category").value}
                 categories={categories}
@@ -215,7 +223,7 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="employmentType">Employment Type</label>
+              <label htmlFor="employmentType"><Trans>Employment Type</Trans></label>
               <EmploymentTypeSelect
                 value={register("employmentType").value}
                 onChange={(e) => setFieldValue("employmentType", e.target.value)}
@@ -224,7 +232,7 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="experienceLevel">Experience Requirement</label>
+              <label htmlFor="experienceLevel"><Trans>Experience Requirement</Trans></label>
               <ExperienceLevelSelect
                 value={register("experienceLevel").value}
                 onChange={(e) => setFieldValue("experienceLevel", e.target.value)}
@@ -234,7 +242,7 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="applicationDeadline">
-                Application Deadline <span className="optional-badge">Optional</span>
+                <Trans>Application Deadline</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
               </label>
               <input
                 type="date"
@@ -245,12 +253,12 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="openings">Open Positions</label>
+              <label htmlFor="openings"><Trans>Open Positions</Trans></label>
               <input
                 type="number"
                 id="openings"
                 min="1"
-                placeholder="e.g., 3"
+                placeholder={t`e.g., 3`}
                 {...register("openings")}
               />
               <div className="error-message">{errors.openings}</div>
@@ -258,57 +266,61 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="contractType">
-                Contract Type <span className="optional-badge">Optional</span>
+                <Trans>Contract Type</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
               </label>
               <input
                 type="text"
                 id="contractType"
-                placeholder="e.g., Permanent, Temporary, Internship"
+                placeholder={t`e.g., Permanent, Temporary, Internship`}
                 {...register("contractType")}
               />
             </div>
 
             <div className="form-group">
               <label htmlFor="workSchedule">
-                Work Schedule <span className="optional-badge">Optional</span>
+                <Trans>Work Schedule</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
               </label>
               <input
                 type="text"
                 id="workSchedule"
-                placeholder="e.g., Morning shift, 09:00-18:00"
+                placeholder={t`e.g., Morning shift, 09:00-18:00`}
                 {...register("workSchedule")}
               />
             </div>
 
             <div className="form-group">
               <label htmlFor="languageRequirements">
-                Language Requirements <span className="optional-badge">Optional</span>
+                <Trans>Language Requirements</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
               </label>
               <input
                 type="text"
                 id="languageRequirements"
-                placeholder="e.g., English B2, German A2"
+                placeholder={t`e.g., English B2, German A2`}
                 {...register("languageRequirements")}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="educationLevel">Education Level</label>
+              <label htmlFor="educationLevel">
+                <Trans>Education Level</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+              </label>
               <input
                 type="text"
                 id="educationLevel"
-                placeholder="e.g., High School, Bachelor, Not required"
+                placeholder={t`e.g., High School, Bachelor, Not required`}
                 {...register("educationLevel")}
               />
               <div className="error-message">{errors.educationLevel}</div>
             </div>
 
             <div className="form-group">
-              <label htmlFor="requirements">Requirements (comma separated)</label>
+              <label htmlFor="requirements">
+                <Trans>Requirements</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+              </label>
               <input
                 type="text"
                 id="requirements"
-                placeholder="e.g., Customer service, Driving license B, Excel"
+                placeholder={t`e.g., Customer service, Driving license B, Excel`}
                 {...register("requirements")}
               />
               <div className="error-message">{errors.requirements}</div>
@@ -316,22 +328,24 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="benefits">
-                Benefits (comma separated) <span className="optional-badge">Optional</span>
+                <Trans>Benefits</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
               </label>
               <input
                 type="text"
                 id="benefits"
-                placeholder="e.g., Health Insurance, Remote Work"
+                placeholder={t`e.g., Health Insurance, Remote Work`}
                 {...register("benefits")}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="contactEmail">Contact Email</label>
+              <label htmlFor="contactEmail">
+                <Trans>Contact Email</Trans>
+              </label>
               <input
                 type="email"
                 id="contactEmail"
-                placeholder="Contact Email"
+                placeholder={t`Contact Email`}
                 {...register("email")}
               />
               <div className="error-message">{errors.email}</div>
@@ -339,7 +353,7 @@ export default function EditJob() {
 
             <div>
               <button type="submit" className="post-job-button" disabled={pending}>
-                {pending ? "Saving..." : "Save Changes"}
+                {pending ? t`Saving...` : t`Save Changes`}
               </button>
             </div>
           </form>

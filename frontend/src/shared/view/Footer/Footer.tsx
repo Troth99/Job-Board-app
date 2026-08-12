@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import "./Footer.css"
 import "./Responsive.css"
+import { Trans } from "@lingui/react/macro";
 
 export function Footer() {
   return (
@@ -14,26 +15,26 @@ export function Footer() {
 </div>
     <div className="footer-links">
       <div>
-        <h4>For the Users</h4>
-        <Link to="/for-us">For Us</Link>
-        <Link to="/contacts">Contacts</Link>
-        <Link to="/for-employers">For Employers</Link>
+        <h4><Trans>For the Users</Trans></h4>
+        <Link to="/for-us"><Trans>For Us</Trans></Link>
+        <Link to="/contacts"><Trans>Contacts</Trans></Link>
+        <Link to="/for-employers"><Trans>For Employers</Trans></Link>
       </div>
       <div>
-        <h4>Legal Information</h4>
-        <Link to="/terms-and-conditions">Terms and Conditions</Link>
-        <Link to="/privacy">Privacy</Link>
-        <Link to="/cookies">Cookies</Link>
+        <h4><Trans>Legal Information</Trans></h4>
+        <Link to="/terms-and-conditions"><Trans>Terms and Conditions</Trans></Link>
+        <Link to="/privacy"><Trans>Privacy</Trans></Link>
+        <Link to="/cookies"><Trans>Cookies</Trans></Link>
       </div>
       <div>
-        <h4>Career Advice</h4>
-        <Link to="/career-advice/cv-tips">CV Tips</Link>
-        <Link to="/career-advice/interview-preparation">Interview Preparation</Link>
-        <Link to="/career-advice/salary-negotiation">Salary Negotiation</Link>
+        <h4><Trans>Career Advice</Trans></h4>
+        <Link to="/career-advice/cv-tips"><Trans>CV Tips</Trans></Link>
+        <Link to="/career-advice/interview-preparation"><Trans>Interview Preparation</Trans></Link>
+        <Link to="/career-advice/salary-negotiation"><Trans>Salary Negotiation</Trans></Link>
       </div>
     </div>
     <div className="footer-socials">
-      <h4>Follow Us</h4>
+      <h4><Trans>Follow Us</Trans></h4>
       <div className="social-icons">
         {/* You can use Font Awesome or SVG icons */}
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -55,7 +56,7 @@ export function Footer() {
     </div>
   </div>
   <div className="footer-bottom">
-    <p>&copy; {new Date().getFullYear()} JobBoard. All rights reserved.</p>
+    <p>&copy; {new Date().getFullYear()} <Trans>JobBoard. All rights reserved.</Trans></p>
   </div>
 </footer>
   );

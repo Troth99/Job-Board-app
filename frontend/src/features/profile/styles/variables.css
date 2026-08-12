@@ -1,0 +1,48 @@
+:root{
+    --pf-bg:linear-gradient(135deg,#e8f4ff 0%,#f7fbff 55%,#eefcf6 100%);
+    --pf-surface:rgba(255,255,255,.86);
+
+    --pf-border:rgba(26,63,92,.14);
+
+    --pf-title:#13354a;
+    --pf-text:#2e5268;
+    --pf-muted:#5f7f93;
+
+    --pf-primary:#0c78ae;
+    --pf-primary-hover:#095f8a;
+    --pf-accent:#11a08e;
+
+    --pf-danger:#d94848;
+    --pf-danger-hover:#b81f1f;
+
+    --pf-radius:.95rem;
+    --pf-radius-lg:1.25rem;
+
+    --pf-shadow:0 18px 38px rgba(19,63,96,.14);
+
+    --pf-input-bg:#f7fbff;
+}
+
+/*
+  Dark theme variables
+*/
+[data-theme="dark"]{
+
+    --pf-bg:linear-gradient(145deg,#0d1c2a 0%,#10263a 55%,#133730 100%);
+
+    --pf-surface:rgba(13,31,46,.84);
+
+    --pf-border:rgba(155,196,225,.18);
+
+    --pf-title:#e4f3ff;
+    --pf-text:#c7dbea;
+    --pf-muted:#97b5ca;
+
+    --pf-primary:#4ebcf5;
+    --pf-primary-hover:#82d0ff;
+    --pf-accent:#42d9ae;
+
+    --pf-input-bg:#111827;
+
+    --pf-shadow:0 18px 38px rgba(0,0,0,.35);
+}

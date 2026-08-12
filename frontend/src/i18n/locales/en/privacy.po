@@ -1,0 +1,209 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-20 15:57+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "1. Scope"
+msgstr "1. Scope"
+
+msgid "10. International Transfers"
+msgstr "10. International Transfers"
+
+msgid "11. Children Privacy"
+msgstr "11. Children Privacy"
+
+msgid "12. Policy Updates"
+msgstr "12. Policy Updates"
+
+msgid "13. Contact"
+msgstr "13. Contact"
+
+msgid "2. Data We Collect"
+msgstr "2. Data We Collect"
+
+msgid "2.1 Account and profile data"
+msgstr "2.1 Account and profile data"
+
+msgid "2.2 Application and job data"
+msgstr "2.2 Application and job data"
+
+msgid "2.3 Technical and usage data"
+msgstr "2.3 Technical and usage data"
+
+msgid "3. How We Use Data"
+msgstr "3. How We Use Data"
+
+msgid "4. Legal Basis"
+msgstr "4. Legal Basis"
+
+msgid "5. Data Sharing"
+msgstr "5. Data Sharing"
+
+msgid "6. Data Retention"
+msgstr "6. Data Retention"
+
+msgid "7. Security Measures"
+msgstr "7. Security Measures"
+
+msgid "8. Your Rights"
+msgstr "8. Your Rights"
+
+msgid "9. Cookies and Similar Tech"
+msgstr "9. Cookies and Similar Tech"
+
+msgid "Access your personal data."
+msgstr "Access your personal data."
+
+msgid "Application statuses and related timestamps."
+msgstr "Application statuses and related timestamps."
+
+msgid "Authentication controls and protected account access flows."
+msgstr "Authentication controls and protected account access flows."
+
+msgid "Between candidates and employers for hiring workflows (for example profile/application visibility to authorized company users)."
+msgstr "Between candidates and employers for hiring workflows (for example profile/application visibility to authorized company users)."
+
+msgid "Consent (where required, such as optional cookies/tools)."
+msgstr "Consent (where required, such as optional cookies/tools)."
+
+msgid "Contents"
+msgstr "Contents"
+
+msgid "Contract performance (providing requested platform services)."
+msgstr "Contract performance (providing requested platform services)."
+
+msgid "Correct inaccurate data."
+msgstr "Correct inaccurate data."
+
+msgid "Data is retained for as long as needed to provide services, protect platform security, resolve disputes, and meet legal requirements. Retention periods vary by data type (for example account, application, and security records)."
+msgstr "Data is retained for as long as needed to provide services, protect platform security, resolve disputes, and meet legal requirements. Retention periods vary by data type (for example account, application, and security records)."
+
+msgid "Depending on applicable law, you may have rights to:"
+msgstr "Depending on applicable law, you may have rights to:"
+
+msgid "Depending on your location, processing may rely on:"
+msgstr "Depending on your location, processing may rely on:"
+
+msgid "Employer job listing details and company profile data."
+msgstr "Employer job listing details and company profile data."
+
+msgid "For privacy requests or questions, contact<0> privacy@jobboard.com</0>."
+msgstr "For privacy requests or questions, contact<0> privacy@jobboard.com</0>."
+
+msgid "If data is processed in different jurisdictions, appropriate contractual and organizational safeguards are applied where required."
+msgstr "If data is processed in different jurisdictions, appropriate contractual and organizational safeguards are applied where required."
+
+msgid "Job applications, CV links, and cover letter content."
+msgstr "Job applications, CV links, and cover letter content."
+
+msgid "JobBoard is not intended for children under the minimum legal age for employment-related services in the relevant jurisdiction."
+msgstr "JobBoard is not intended for children under the minimum legal age for employment-related services in the relevant jurisdiction."
+
+msgid "JobBoard may share data only when necessary:"
+msgstr "JobBoard may share data only when necessary:"
+
+msgid "JobBoard may use cookies or similar technologies for authentication, session continuity, and basic analytics. See the Cookies page for additional details."
+msgstr "JobBoard may use cookies or similar technologies for authentication, session continuity, and basic analytics. See the Cookies page for additional details."
+
+msgid "Last updated: April 19, 2026"
+msgstr "Last updated: April 19, 2026"
+
+msgid "Legal"
+msgstr "Legal"
+
+msgid "Legal obligations (compliance and lawful requests)."
+msgstr "Legal obligations (compliance and lawful requests)."
+
+msgid "Legitimate interests (security, reliability, analytics)."
+msgstr "Legitimate interests (security, reliability, analytics)."
+
+msgid "Log events, browser metadata, and request diagnostics."
+msgstr "Log events, browser metadata, and request diagnostics."
+
+msgid "Monitoring for suspicious behavior and abuse patterns."
+msgstr "Monitoring for suspicious behavior and abuse patterns."
+
+msgid "Name, email address, and encrypted credentials."
+msgstr "Name, email address, and encrypted credentials."
+
+msgid "No online service can be guaranteed 100% secure, but we continuously improve safeguards to reduce risk."
+msgstr "No online service can be guaranteed 100% secure, but we continuously improve safeguards to reduce risk."
+
+msgid "Notification and session activity."
+msgstr "Notification and session activity."
+
+msgid "Object to certain processing activities."
+msgstr "Object to certain processing activities."
+
+msgid "Password reset/change flows and token lifecycle management."
+msgstr "Password reset/change flows and token lifecycle management."
+
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+msgid "Profile fields such as phone, location, and avatar."
+msgstr "Profile fields such as phone, location, and avatar."
+
+msgid "Request data portability where applicable."
+msgstr "Request data portability where applicable."
+
+msgid "Request deletion or restriction of processing."
+msgstr "Request deletion or restriction of processing."
+
+msgid "Role context (candidate or company-related permissions)."
+msgstr "Role context (candidate or company-related permissions)."
+
+msgid "Role-based permissions for company member actions."
+msgstr "Role-based permissions for company member actions."
+
+msgid "Security-related token/session records for authentication."
+msgstr "Security-related token/session records for authentication."
+
+msgid "This policy covers data processed through JobBoard website features, including account registration, job applications, company management, notification delivery, and profile management."
+msgstr "This policy covers data processed through JobBoard website features, including account registration, job applications, company management, notification delivery, and profile management."
+
+msgid "This Privacy Policy explains what data JobBoard collects, how it is used, and what rights users have. It applies to job seekers, employers, and invited company team members."
+msgstr "This Privacy Policy explains what data JobBoard collects, how it is used, and what rights users have. It applies to job seekers, employers, and invited company team members."
+
+msgid "This Privacy Policy may be updated to reflect legal, technical, or operational changes. The latest version is always published here."
+msgstr "This Privacy Policy may be updated to reflect legal, technical, or operational changes. The latest version is always published here."
+
+msgid "To create and maintain user accounts."
+msgstr "To create and maintain user accounts."
+
+msgid "To deliver notifications and status updates in near real time."
+msgstr "To deliver notifications and status updates in near real time."
+
+msgid "To enable company team collaboration and role-based access."
+msgstr "To enable company team collaboration and role-based access."
+
+msgid "To power job discovery and application workflows."
+msgstr "To power job discovery and application workflows."
+
+msgid "To prevent abuse, fraud, and unauthorized access."
+msgstr "To prevent abuse, fraud, and unauthorized access."
+
+msgid "To troubleshoot, improve usability, and maintain stability."
+msgstr "To troubleshoot, improve usability, and maintain stability."
+
+msgid "We do not sell personal data to third parties for unrelated marketing."
+msgstr "We do not sell personal data to third parties for unrelated marketing."
+
+msgid "When required by law, regulation, or valid legal process."
+msgstr "When required by law, regulation, or valid legal process."
+
+msgid "With infrastructure providers that support hosting and delivery."
+msgstr "With infrastructure providers that support hosting and delivery."
+
+msgid "You can also manage parts of your data through your profile and account settings."
+msgstr "You can also manage parts of your data through your profile and account settings."

@@ -1,0 +1,137 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-16 14:19+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "Already have an account?"
+msgstr "Already have an account?"
+
+msgid "Back to home"
+msgstr "Back to home"
+
+msgid "Better job matches"
+msgstr "Better job matches"
+
+msgid "Browse jobs from companies actively hiring."
+msgstr "Browse jobs from companies actively hiring."
+
+msgid "Build your profile and get hired faster."
+msgstr "Build your profile and get hired faster."
+
+msgid "City / Location"
+msgstr "City / Location"
+
+msgid "Complete profile details help recruiters trust your application."
+msgstr "Complete profile details help recruiters trust your application."
+
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+msgid "Continue to your dashboard, saved jobs, and application activity."
+msgstr "Continue to your dashboard, saved jobs, and application activity."
+
+msgid "Create Account"
+msgstr "Create Account"
+
+msgid "Create your account to discover curated jobs and apply in a few clicks."
+msgstr "Create your account to discover curated jobs and apply in a few clicks."
+
+msgid "Creating account..."
+msgstr "Creating account..."
+
+msgid "Curated opportunities"
+msgstr "Curated opportunities"
+
+msgid "Don't have an account? <0>Create one</0>"
+msgstr "Don't have an account? <0>Create one</0>"
+
+msgid "Email address"
+msgstr "Email address"
+
+msgid "Enter your email address"
+msgstr "Enter your email address"
+
+msgid "Enter your password"
+msgstr "Enter your password"
+
+msgid "Faster applications"
+msgstr "Faster applications"
+
+msgid "Faster workflow"
+msgstr "Faster workflow"
+
+msgid "Find your next role faster."
+msgstr "Find your next role faster."
+
+msgid "First name"
+msgstr "First name"
+
+msgid "Forgot password?"
+msgstr "Forgot password?"
+
+msgid "Job Board Platform"
+msgstr "Job Board Platform"
+
+msgid "Keep your saved jobs, notifications, and profile in one place."
+msgstr "Keep your saved jobs, notifications, and profile in one place."
+
+msgid "Last name"
+msgstr "Last name"
+
+msgid "Location and contact info improve recommendations for your role."
+msgstr "Location and contact info improve recommendations for your role."
+
+msgid "Log out"
+msgstr "Log out"
+
+msgid "Logging out"
+msgstr "Logging out"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Phone Number"
+msgstr "Phone Number"
+
+msgid "Reach the right positions faster with clear search tools."
+msgstr "Reach the right positions faster with clear search tools."
+
+msgid "Save your details once and apply to multiple jobs in minutes."
+msgstr "Save your details once and apply to multiple jobs in minutes."
+
+msgid "Sign in"
+msgstr "Sign in"
+
+msgid "Sign In"
+msgstr "Sign In"
+
+msgid "Sign in to manage your profile, track applications, and explore opportunities from trusted companies."
+msgstr "Sign in to manage your profile, track applications, and explore opportunities from trusted companies."
+
+msgid "Sign in to your account"
+msgstr "Sign in to your account"
+
+msgid "Sign in with Google"
+msgstr "Sign in with Google"
+
+msgid "Signing in..."
+msgstr "Signing in..."
+
+msgid "Smart filtering"
+msgstr "Smart filtering"
+
+msgid "Stronger first impression"
+msgstr "Stronger first impression"
+
+msgid "Welcome back"
+msgstr "Welcome back"

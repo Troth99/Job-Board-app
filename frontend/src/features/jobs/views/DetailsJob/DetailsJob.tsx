@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import "./Details.css";
 import { useEffect, useState } from "react";
-import useJobs from "../../hooks/useJobBoard";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { Job } from "../../types/Job.model";
 import { CandidateApplications } from "./DetailsJobElements/CandidateApplications/CandidateApplications";
@@ -9,16 +8,20 @@ import { Candidate } from "../../types/Apllication.model";
 import { Container } from "../../../../shared/components/Container/Container";
 import DetailsJobMainSection from "./DetailsJobElements/DetailsJobMainSection";
 import useMembers from "../../../companies/hooks/useMembers";
-
+import useFavorites from "../../hooks/useSavedJobs";
+import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
+import useJobs from "../../hooks/useJobsAPI";
+import useApplications from "../../hooks/useJobApplications";
 
 //toReractor
-
 
 function DetailsJob() {
   const { companyId, jobId } = useParams<{
     companyId: string;
     jobId: string;
   }>();
+  const { removeFromFavorites } = useFavoritesContext();
+
   const navigate = useNavigate();
   const [jobDetails, setJobdetails] = useState<Job>();
   const [loading, setLoading] = useState(true);
@@ -30,8 +33,8 @@ function DetailsJob() {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [localRole, setLocalRole] = useState<string | null>(null);
   const { getUserRole } = useMembers();
-  const { getJobById, updateJob, deleteJob, getApplicationsByJobId } =
-    useJobs();
+  const { getJobById, updateJob, deleteJob } = useJobs();
+  const { getApplicationsByJobId } = useApplications();
   const [loadingApplications, setLoadingApplications] =
     useState<boolean>(false);
 
@@ -133,6 +136,7 @@ function DetailsJob() {
           return;
         }
         await deleteJob(jobId);
+        await removeFromFavorites(jobId);
         navigate(`/company/${companyId}/dashboard`);
       } catch (error) {
         console.error("Failed to delete job:", error);
@@ -141,7 +145,6 @@ function DetailsJob() {
       }
     }
   };
-
 
   return (
     <>
@@ -153,7 +156,6 @@ function DetailsJob() {
         ) : (
           <div className="job-details-container">
             <DetailsJobMainSection jobDetails={jobDetails} />
-          
 
             <CandidateApplications
               jobId={jobId}

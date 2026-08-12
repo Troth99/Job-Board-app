@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useJobs from "../../hooks/useJobBoard";
+import useJobs from "../../hooks/useJobsAPI";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import "./ViewAllJobs.css";
 import { useNavigate, useSearchParams } from "react-router";
@@ -8,6 +8,7 @@ import { Container } from "../../../../shared/components/Container/Container";
 import Pagination from "../../../../shared/components/Pagination/Pagination";
 import { generateSeoConfig, seoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
+import { Trans } from "@lingui/react/macro";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -34,7 +35,7 @@ function ViewAllJobs() {
   const { loading, getJobsPage } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
   const pageFromUrl = parseInt(searchParams.get("page") || "1", 5);
-  const seo = generateSeoConfig("viewAllJobs");
+  const seo = () => generateSeoConfig("viewAllJobs");
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -70,21 +71,23 @@ function ViewAllJobs() {
             <section className="jobs-board-page">
         <header className="jobs-board-hero">
           <div>
-            <p className="jobs-board-kicker">Opportunities</p>
-            <h1 className="jobs-board-title">Browse all open roles</h1>
+            <p className="jobs-board-kicker"><Trans>Opportunities</Trans></p>
+            <h1 className="jobs-board-title"><Trans>Browse all open roles</Trans></h1>
             <p className="jobs-board-subtitle">
-              Fresh listings in one place, sorted by newest first so the latest
-              opportunities stay visible.
+              <Trans>
+                Fresh listings in one place, sorted by newest first so the latest
+                opportunities stay visible.
+              </Trans>
             </p>
           </div>
           <div className="jobs-board-stats" aria-label="Job listing statistics">
             <div className="jobs-board-stat-card">
               <span className="jobs-board-stat-value">{totalJobs}</span>
-              <span className="jobs-board-stat-label">Total jobs</span>
+              <span className="jobs-board-stat-label"><Trans>Total jobs</Trans></span>
             </div>
             <div className="jobs-board-stat-card">
               <span className="jobs-board-stat-value">{pageFromUrl}</span>
-              <span className="jobs-board-stat-label">Current page</span>
+              <span className="jobs-board-stat-label"><Trans>Current page</Trans></span>
             </div>
           </div>
         </header>
@@ -148,9 +151,9 @@ function ViewAllJobs() {
             ))
           ) : (
             <div className="no-jobs-modern">
-              <p className="no-jobs-title">No jobs found.</p>
+              <p className="no-jobs-title"><Trans>No jobs found.</Trans></p>
               <p className="no-jobs-text">
-                Try again later or adjust the filters from the previous page.
+                <Trans>Try again later or adjust the filters from the previous page.</Trans>
               </p>
             </div>
           )}

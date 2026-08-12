@@ -9,6 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import useForm from "../../../../shared/hooks/useForm";
 import { Container } from "../../../../shared/components/Container/Container";
 import { RegisterAside } from "../../components/register-UI/RegisterAside";
+import {Trans, useLingui} from "@lingui/react/macro";
 
 
 const intialValueRegister: registerUserType = {
@@ -33,6 +34,7 @@ export default function RegisterComponent() {
   const navigate = useNavigate();
   const { validateConfirmPassword, validateForm } = useValidation();
   const { registerUser } = useAuth();
+  const {t} = useLingui()
 
   const registerHandler = async (formValues: registerUserType) => {
     setLoading(true);
@@ -90,12 +92,12 @@ export default function RegisterComponent() {
             <div className="register-card-inner">
               <div className="register-card-header">
                 <span className="register-card-badge">JB</span>
-                <h2>Create Account</h2>
+                <h2><Trans>Create Account</Trans></h2>
               </div>
 
               <form className="register-form" onSubmit={formHandler}>
                 <div className="register-field">
-                  <label htmlFor="firstName">First name <span className="required-field-add">*</span></label>
+                  <label htmlFor="firstName"><Trans>First name</Trans> <span className="required-field-add">*</span></label>
                  
                   <div
                     className={`register-input-wrap ${
@@ -106,7 +108,7 @@ export default function RegisterComponent() {
                     <input
                       id="firstName"
                       type="text"
-                      placeholder="First name"
+                      placeholder={t`First name`}
                     
                       {...register("firstName")}
                     />
@@ -117,7 +119,7 @@ export default function RegisterComponent() {
                 </div>
 
                 <div className="register-field">
-                  <label htmlFor="lastName">Last name <span className="required-field-add">*</span></label>
+                  <label htmlFor="lastName"><Trans>Last name</Trans> <span className="required-field-add">*</span></label>
                   <div
                     className={`register-input-wrap ${
                       errors.lastName ? "input-error" : ""
@@ -127,7 +129,7 @@ export default function RegisterComponent() {
                     <input
                       id="lastName"
                       type="text"
-                      placeholder="Last name"
+                      placeholder={t`Last name`}
                   
                       {...register("lastName")}
                     />
@@ -138,7 +140,7 @@ export default function RegisterComponent() {
                 </div>
 
                 <div className="register-field">
-                  <label htmlFor="email">Email address <span className="required-field-add">*</span></label>
+                  <label htmlFor="email"><Trans>Email address</Trans> <span className="required-field-add">*</span></label>
                   <div
                     className={`register-input-wrap ${
                       errors.email ? "input-error" : ""
@@ -148,7 +150,7 @@ export default function RegisterComponent() {
                     <input
                       id="email"
                       type="email"
-                      placeholder="Email address"
+                      placeholder={t`Email address`}
                     
                       {...register("email")}
                     />
@@ -159,33 +161,33 @@ export default function RegisterComponent() {
                 </div>
 
                 <div className="register-field">
-                  <label htmlFor="phoneNumber">Phone Number</label>
+                  <label htmlFor="phoneNumber"><Trans>Phone Number</Trans></label>
                   <div className="register-input-wrap">
                     <i className="fa-solid fa-phone"></i>
                     <input
                       id="phoneNumber"
                       type="tel"
-                      placeholder="Phone Number"
+                      placeholder={t`Phone Number`}
                       {...register("phoneNumber")}
                     />
                   </div>
                 </div>
 
                 <div className="register-field">
-                  <label htmlFor="location">City / Location</label>
+                  <label htmlFor="location"><Trans>City / Location</Trans></label>
                   <div className="register-input-wrap">
                     <i className="fa-solid fa-location-dot"></i>
                     <input
                       id="location"
                       type="text"
-                      placeholder="City / Location"
+                      placeholder={t`City / Location`}
                       {...register("location")}
                     />
                   </div>
                 </div>
 
                 <div className="register-field">
-                  <label htmlFor="password">Password <span className="required-field-add">*</span></label>
+                  <label htmlFor="password"><Trans>Password</Trans> <span className="required-field-add">*</span></label>
                   <div
                     className={`register-input-wrap ${
                       errors.password ? "input-error" : ""
@@ -195,7 +197,7 @@ export default function RegisterComponent() {
                     <input
                       id="password"
                       type="password"
-                      placeholder="Password"
+                      placeholder={t`Password`}
                 
                       {...register("password")}
                     />
@@ -206,7 +208,7 @@ export default function RegisterComponent() {
                 </div>
 
                 <div className="register-field">
-                  <label htmlFor="confirmPassword">Confirm Password <span className="required-field-add">*</span></label>
+                  <label htmlFor="confirmPassword"><Trans>Confirm Password</Trans> <span className="required-field-add">*</span></label>
              
                   <div
                     className={`register-input-wrap ${
@@ -217,7 +219,7 @@ export default function RegisterComponent() {
                     <input
                       id="confirmPassword"
                       type="password"
-                      placeholder="Confirm Password"
+                      placeholder={t`Confirm Password`}
                
                       {...register("confirmPassword")}
                     />
@@ -235,14 +237,14 @@ export default function RegisterComponent() {
                     className="btn-register-form"
                     disabled={loading}
                   >
-                    {loading ? "Creating account..." : "Create Account"}
+                    {loading ? t`Creating account...` : t`Create Account`}
                   </button>
                 </div>
               </form>
 
               <div className="register-footer">
                 <p>
-                  Already have an account? <Link to="/login">Sign in</Link>
+                  <Trans>Already have an account?</Trans> <Link to="/login"><Trans>Sign in</Trans></Link>
                 </p>
               </div>
             </div>

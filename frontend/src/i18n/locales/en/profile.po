@@ -1,0 +1,201 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-16 14:19+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. placeholder {0}: userRole.toUpperCase()
+msgid "{0}"
+msgstr "{0}"
+
+msgid "After registration, you can open your dashboard and start hiring."
+msgstr "After registration, you can open your dashboard and start hiring."
+
+msgid "Are you sure you want to delete your profile?"
+msgstr "Are you sure you want to delete your profile?"
+
+msgid "Back to settings"
+msgstr "Back to settings"
+
+msgid "Change password"
+msgstr "Change password"
+
+msgid "Change Password"
+msgstr "Change Password"
+
+msgid "Choose image"
+msgstr "Choose image"
+
+msgid "Company access"
+msgstr "Company access"
+
+msgid "Company Registration"
+msgstr "Company Registration"
+
+msgid "complete"
+msgstr "complete"
+
+msgid "Confirm password"
+msgstr "Confirm password"
+
+msgid "Created at"
+msgstr "Created at"
+
+msgid "Current password"
+msgstr "Current password"
+
+msgid "Delete Profile"
+msgstr "Delete Profile"
+
+msgid "Delete Profile Image"
+msgstr "Delete Profile Image"
+
+msgid "Edit Profile"
+msgstr "Edit Profile"
+
+msgid "Email"
+msgstr "Email"
+
+#~ msgid "Email:"
+#~ msgstr "Email:"
+
+msgid "Enabled"
+msgstr "Enabled"
+
+msgid "First name"
+msgstr "First name"
+
+#~ msgid "First name:"
+#~ msgstr "First name:"
+
+msgid "Go to Dashboard"
+msgstr "Go to Dashboard"
+
+msgid "Hiring tools"
+msgstr "Hiring tools"
+
+msgid "Industry:"
+msgstr "Industry:"
+
+msgid "Joined:"
+msgstr "Joined:"
+
+msgid "Last name"
+msgstr "Last name"
+
+#~ msgid "Last name:"
+#~ msgstr "Last name:"
+
+msgid "Loading..."
+msgstr "Loading..."
+
+msgid "Location"
+msgstr "Location"
+
+msgid "Location:"
+msgstr "Location:"
+
+#~ msgid "Log out"
+#~ msgstr "Log out"
+
+#~ msgid "Logging out"
+#~ msgstr "Logging out"
+
+msgid "New password"
+msgstr "New password"
+
+msgid "No company role"
+msgstr "No company role"
+
+msgid "No saved jobs yet."
+msgstr "No saved jobs yet."
+
+msgid "Not enabled"
+msgstr "Not enabled"
+
+msgid "Not part of a company yet."
+msgstr "Not part of a company yet."
+
+msgid "of"
+msgstr "of"
+
+msgid "Phone"
+msgstr "Phone"
+
+#~ msgid "Phone:"
+#~ msgstr "Phone:"
+
+msgid "Please enter your password to confirm the deletion:"
+msgstr "Please enter your password to confirm the deletion:"
+
+msgid "Post a Job"
+msgstr "Post a Job"
+
+msgid "Profile completion"
+msgstr "Profile completion"
+
+msgid "Recent account activity"
+msgstr "Recent account activity"
+
+msgid "Recent Saved Jobs"
+msgstr "Recent Saved Jobs"
+
+msgid "Register a company first to publish job offers."
+msgstr "Register a company first to publish job offers."
+
+msgid "Register Company"
+msgstr "Register Company"
+
+msgid "Role summary"
+msgstr "Role summary"
+
+msgid "Role:"
+msgstr "Role:"
+
+msgid "Save Changes"
+msgstr "Save Changes"
+
+msgid "Saving..."
+msgstr "Saving..."
+
+msgid "sections complete"
+msgstr "sections complete"
+
+msgid "Security"
+msgstr "Security"
+
+msgid "Start hiring by creating a detailed job post for your team."
+msgstr "Start hiring by creating a detailed job post for your team."
+
+msgid "Status: Not Registered"
+msgstr "Status: Not Registered"
+
+msgid "This account data could not be loaded right now."
+msgstr "This account data could not be loaded right now."
+
+msgid "Unable to load profile"
+msgstr "Unable to load profile"
+
+msgid "Update your account password to keep your profile secure."
+msgstr "Update your account password to keep your profile secure."
+
+msgid "Update your personal information and keep your account details current."
+msgstr "Update your personal information and keep your account details current."
+
+msgid "User settings"
+msgstr "User settings"
+
+msgid "View All Saved Jobs"
+msgstr "View All Saved Jobs"
+
+msgid "You are connected to a company and can publish new job posts."
+msgstr "You are connected to a company and can publish new job posts."

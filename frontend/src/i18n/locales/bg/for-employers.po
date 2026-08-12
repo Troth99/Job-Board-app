@@ -1,0 +1,110 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-07-17 00:55+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "Add job descriptions, requirements, benefits, and work schedule."
+msgstr "Добавете описание на позицията, изисквания, придобивки и работен график."
+
+msgid "Any verified company from any industry can publish job listings."
+msgstr "Всяка верифицирана компания от всеки сектор може да публикува обяви за работа."
+
+msgid "Application Tracking"
+msgstr "Проследяване на кандидатурите"
+
+msgid "Can multiple team members manage hiring?"
+msgstr "Могат ли няколко членове на екипа да управляват процеса по наемане?"
+
+msgid "Can we edit or close a job post?"
+msgstr "Можем ли да редактираме или затворим обява за работа?"
+
+msgid "Contact candidates and complete your selection process faster."
+msgstr "Свържете се с кандидатите и приключете подбора по-бързо."
+
+msgid "Contact Sales"
+msgstr "Свържете се с търговския екип"
+
+msgid "Create Company Account"
+msgstr "Създайте фирмен акаунт"
+
+msgid "Create listings with role details, salary range, location, and application deadline in minutes."
+msgstr "Създавайте обяви с детайли за позицията, диапазон на възнаграждението, местоположение и краен срок за кандидатстване само за минути."
+
+msgid "Create your company account and publish your first job today."
+msgstr "Създайте фирмения си акаунт и публикувайте първата си обява още днес."
+
+msgid "Employer FAQ"
+msgstr "Често задавани въпроси за работодатели"
+
+msgid "For Employers"
+msgstr "За работодатели"
+
+msgid "Hire Faster Across All Industries"
+msgstr "Наемайте по-бързо във всички сектори"
+
+msgid "Hire with Confidence"
+msgstr "Наемайте с увереност"
+
+msgid "How It Works"
+msgstr "Как работи"
+
+msgid "Invite recruiters and managers to review applications together and keep hiring decisions organized."
+msgstr "Поканете рекрутъри и мениджъри да преглеждат кандидатурите заедно и да поддържат решенията за наемане добре организирани."
+
+msgid "Move candidates through clear stages and keep your hiring process transparent and efficient."
+msgstr "Придвижвайте кандидатите през ясни етапи и поддържайте процеса на наемане прозрачен и ефективен."
+
+msgid "Post Open Positions"
+msgstr "Публикувайте свободни позиции"
+
+msgid "Publish jobs, manage applications, and collaborate with your hiring team in one place. JobBoard supports employers in retail, healthcare, logistics, finance, education, hospitality, and more."
+msgstr "Публикувайте обяви за работа, управлявайте кандидатурите и си сътрудничете с екипа си за наемане на едно място. JobBoard подкрепя работодателите в търговията на дребно, здравеопазването, логистиката, финансите, образованието, хотелиерството и други."
+
+msgid "Reach candidates from different regions and professional backgrounds with one job post."
+msgstr "Достигнете до кандидати от различни региони и професионални направления с една обява за работа."
+
+msgid "Ready to Start Hiring?"
+msgstr "Готови ли сте да започнете да наемате?"
+
+msgid "Register Company"
+msgstr "Регистрирайте компания"
+
+msgid "Register your company profile and complete basic business details."
+msgstr "Регистрирайте профила на вашата компания и попълнете основните бизнес данни."
+
+msgid "Review Applications"
+msgstr "Преглед на кандидатури"
+
+msgid "Screen candidates, compare profiles, and shortlist top matches."
+msgstr "Преглеждайте кандидатите, сравнявайте профилите и съставяйте списък с най-добрите съвпадения."
+
+msgid "Simple Job Publishing"
+msgstr "Лесно публикуване на обяви за работа"
+
+msgid "Team Collaboration"
+msgstr "Сътрудничество в екип"
+
+msgid "Who can post jobs?"
+msgstr "Кой може да публикува обяви за работа?"
+
+msgid "Why Employers Choose JobBoard"
+msgstr "Защо работодателите избират JobBoard"
+
+msgid "Wide Talent Reach"
+msgstr "Достъп до широк кръг таланти"
+
+msgid "Yes. You can invite teammates and assign responsibilities."
+msgstr "Да. Можете да поканите колеги и да разпределите отговорности."
+
+msgid "Yes. You can update, pause, or close listings anytime."
+msgstr "Да. Можете да актуализирате, паузирате или затваряте обявите по всяко време."

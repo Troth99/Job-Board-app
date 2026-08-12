@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import "./companyInvitationNotification.css";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
+import { profilePaths } from "../../../profile/routes/profilePaths";
 import { useNotificationContext } from "../../../../context/NotificationContext";
 import { useUserData } from "../../../../context/UseDataContext";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import useNotifications from "../../hooks/useNotifications";
 import { Notification } from "../../types/Notification.model";
 import useMembers from "../../../companies/hooks/useMembers";
+import { Trans } from "@lingui/react/macro";
 
 
 export default function CompanyInvitationNotification() {
@@ -68,7 +70,7 @@ export default function CompanyInvitationNotification() {
         prev.filter((n) => n._id !== notification._id),
       );
       if (!notification.isRead) setUnreadCount((prev) => Math.max(prev - 1, 0));
-      navigate("/profile");
+      navigate(profilePaths.root);
     } catch (error) {
       console.error("Failed to accept notification invitation", error);
     }
@@ -108,15 +110,15 @@ export default function CompanyInvitationNotification() {
               fill="#fff"
             />
           </svg>
-          <h3 className="company-invitation-title">Company Invitation</h3>
+          <h3 className="company-invitation-title"><Trans>Company Invitation</Trans></h3>
         </div>
         <p className="company-invitation-message">
-          You have been invited to join <b>{notification?.company?.name}</b> as
-          a member.
+          <Trans>You have been invited to join <b>{notification?.company?.name}</b> as
+          a member.</Trans>
         </p>
         <div className="company-invitation-meta">
           <span className="invited-by-details">
-            Invited by{" "}
+            <Trans>Invited by</Trans>{" "}
             <b>
               {notification?.user.firstName} {notification?.user.lastName}
             </b>
@@ -126,7 +128,7 @@ export default function CompanyInvitationNotification() {
           </span>
         </div>
         <div className="company-invitation-question">
-          Would you like to accept this invitation?
+          <Trans>Would you like to accept this invitation?</Trans>
         </div>
         <div className="company-invitation-actions">
           <button
@@ -137,18 +139,18 @@ export default function CompanyInvitationNotification() {
             }
             onClick={acceptCompanyInvitationHandler}
           >
-            Accept
+            <Trans>Accept</Trans>
           </button>
           <button
             className="company-invitation-decline"
             onClick={declineCompanyInvitationHandler}
           >
-            Decline
+            <Trans>Decline</Trans>
           </button>
         </div>
         {user.company && (
           <div className="company-invitation-warning">
-            You must leave your company before joining.
+            <Trans>You must leave your company before joining.</Trans>
           </div>
         )}
       </div>

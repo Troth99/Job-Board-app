@@ -1,0 +1,158 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-03 16:53+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "Browse all job listings and find your next opportunity. Fresh listings, sorted by newest first."
+msgstr "Прегледайте всички обяви за работа и намерете своята следваща възможност. Нови обяви, сортирани по новини първо."
+
+msgid "Browse All Jobs | Find Your Next Opportunity!"
+msgstr "Прегледайте Всички Работни Места | Намерете Своята Следваща Възможност!"
+
+msgid "Browse Companies | Job Board"
+msgstr "Прегледайте Компании | Job Board"
+
+msgid "Browse companies by industry, location, size, and latest activity on Job Board."
+msgstr "Прегледайте компании по индустрия, местоположение, размер и последна активност на Job Board."
+
+msgid "Company Dashboard | Job Board"
+msgstr "Табло на Компания | Job Board"
+
+msgid "Company Members | Job Board"
+msgstr "Членове на Компания | Job Board"
+
+msgid "Company results for \"{normalizedSearch}\" | Job Board"
+msgstr "Резултати за компанията \"{normalizedSearch}\" | Job Board"
+
+msgid "Contact Us | Job Board"
+msgstr "Свържете се с нас | Job Board"
+
+msgid "Cookie Policy | Job Board"
+msgstr "Политика за Бисквитки | Job Board"
+
+msgid "CV Tips | Job Board"
+msgstr "Съвети за CV | Job Board"
+
+msgid "Discover how Job Board can help you find the best candidates for your job openings. Post jobs, manage applications, and grow your team with ease."
+msgstr "Открийте как Job Board може да ви помогне да намерите най-добрите кандидати за вашите обяви за работа. Публикувайте работни места, управлявайте кандидатурите и развивайте екипа си с лекота."
+
+msgid "Discover how Job Board can help you find your next opportunity. Explore job listings, create a profile, and take control of your career journey."
+msgstr "Открийте как Job Board може да ви помогне да намерите следващата си възможност. Разгледайте обяви за работа, създайте профил и поемете контрола върху своята кариерна пътека."
+
+msgid "Discover your next career move with our job board. Browse thousands of job listings, find the perfect fit, and take the next step in your professional journey."
+msgstr "Открийте следващата си кариерна стъпка с нашата платформа за обяви за работа. Разгледайте хиляди обяви за работа, намерете перфектното съвпадение и направете следващата стъпка в професионалното си развитие."
+
+msgid "Edit Your Profile | Job Board"
+msgstr "Редактирайте Вашия Профил | Job Board"
+
+msgid "Explore companies related to {normalizedSearch} on Job Board."
+msgstr "Разгледайте компании, свързани с {normalizedSearch} на Job Board."
+
+msgid "Explore the latest job opportunities in {dynamicValue}. Find your next career move in {dynamicValue} today!"
+msgstr "Разгледайте най-новите възможности за работа в {dynamicValue}. Намерете следващата си кариерна стъпка в {dynamicValue} днес!"
+
+msgid "Find your next job opportunity."
+msgstr "Намерете следващата си възможност за работа."
+
+msgid "For Employers | Job Board"
+msgstr "За Работодатели | Job Board"
+
+msgid "For Job Seekers | Job Board"
+msgstr "За Търсачи на Работа | Job Board"
+
+msgid "Get expert advice on creating a standout CV. Learn how to highlight your skills, experience, and achievements to land your dream job."
+msgstr "Получете експертни съвети за създаване на впечатляващо CV. Научете как да подчертаете своите умения, опит и постижения, за да получите мечтаната работа."
+
+msgid "Have questions or need support? Contact the Job Board team for assistance with your job search, account, or any other inquiries."
+msgstr "Имате въпроси или се нуждаете от поддръжка? Свържете се с екипа на Job Board за помощ с търсенето си на работа, акаунт или други запитвания."
+
+msgid "Interview Preparation | Job Board"
+msgstr "Подготовка за Интервю | Job Board"
+
+msgid "Job Board"
+msgstr "Job Board"
+
+msgid "Job Board - Find Your Next Opportunity"
+msgstr "Job Board - Намерете Следващата Си Възможност"
+
+msgid "Job Posting Guide | Job Board"
+msgstr "Ръководство за Публикуване на Обяви за Работа | Job Board"
+
+msgid "Jobs from {dynamicValue} | Job Board"
+msgstr "Работни Места от {dynamicValue} | Job Board"
+
+msgid "Learn about our privacy practices and how we protect your personal information on Job Board. Your privacy is important to us."
+msgstr "Научете за нашите практики за поверителност и как защитаваме вашата лична информация на Job Board. Вашата поверителност е важна за нас."
+
+msgid "Learn how to negotiate your salary effectively. Get strategies for discussing compensation and ensuring you get the pay you deserve."
+msgstr "Научете как да переговаряте своята заплата ефективно. Получете стратегии за обсъждане на компенсацията и осигуряване на заплатата, която заслужавате."
+
+msgid "Learn how to post a job listing on Job Board and reach a wide audience of qualified candidates."
+msgstr "Научете как да публикувате обява за работа на Job Board и да достигнете до широка аудитория от квалифицирани кандидати."
+
+msgid "Manage your company profile, post job openings, and track applications with the Company Dashboard on Job Board."
+msgstr "Управлявайте профила на вашата компания, публикувайте обяви за работа и проследявайте кандидатствата с помощта на Компанията Dashboard на Job Board."
+
+msgid "Manage your company's team members, assign roles, and collaborate effectively with the Company Members page on Job Board."
+msgstr "Управлявайте членовете на екипа на вашата компания, присвоявайте роли и сътрудничайте ефективно с помощта на страницата за Членове на Компанията на Job Board."
+
+msgid "Post a Job | Job Board"
+msgstr "Публикуване на Обява за Работа | Job Board"
+
+msgid "Post your job openings and find the perfect candidates on Job Board. Reach a wide audience of job seekers and grow your team."
+msgstr "Публикувайте обяви за работа и намерете идеалните кандидати на Job Board. Достигнете до широка аудитория от търсачи на работа и развивайте своя екип."
+
+msgid "Prepare for your next job interview with confidence. Get tips on common questions, body language, and how to make a great impression."
+msgstr "Подготовете се за следващото си интервю с увереност. Получете съвети за често задавани въпроси, телесен език и как да направите отличен впечатление."
+
+msgid "Privacy Policy | Job Board"
+msgstr "Политика за Поверителност | Job Board"
+
+msgid "Read the terms and conditions for using Job Board. Understand your rights and responsibilities as a user of our job search platform."
+msgstr "Прочетете условията и правилата за използване на Job Board. Разберете вашите права и отговорности като потребител на нашата платформа за търсене на работа."
+
+msgid "Salary Negotiation | Job Board"
+msgstr "Переговаряне за Заплата | Job Board"
+
+msgid "Stay updated with the latest job alerts, application statuses, and important updates on Job Board."
+msgstr "Оставайте актуализирани с най-новите известия за работа, статуси на кандидатствата и важни актуализации на Job Board."
+
+msgid "Terms and Conditions | Job Board"
+msgstr "Условия и Правила | Job Board"
+
+msgid "Understand how Job Board uses cookies to enhance your experience. Learn about the types of cookies we use and how to manage them."
+msgstr "Разберете как Job Board използва бисквитки, за да подобри вашето изживяване. Научете за видовете бисквитки, които използваме, и как да ги управлявате."
+
+msgid "Update Company Details | Job Board"
+msgstr "Актуализиране на Детайлите на Компанията | Job Board"
+
+msgid "Update your company's profile information, including industry, location, and contact details on Job Board."
+msgstr "Актуализирайте информацията за профила на вашата компания, включително индустрия, местоположение и контактни данни на Job Board."
+
+msgid "Update your profile information, upload your resume, and manage your job preferences on Job Board."
+msgstr "Актуализирайте информацията за вашия профил, качете своя Curriculum Vitae и управлявайте предпочитанията си за работа на Job Board."
+
+msgid "View and edit your profile, manage your job applications, and track your career progress on Job Board."
+msgstr "Прегледайте и редактирайте вашия профил, управлявайте вашите кандидатства и проследявайте напредъка си в карьерата на Job Board."
+
+msgid "View and manage your saved job listings, keep track of your favorite opportunities, and stay organized on Job Board."
+msgstr "Прегледайте и управлявайте запазените ви обяви за работа, следете любимите ви възможности и останете организирани на Job Board."
+
+msgid "Your Notifications | Job Board"
+msgstr "Вашият Известия | Job Board"
+
+msgid "Your Profile | Job Board"
+msgstr "Вашият Профил | Job Board"
+
+msgid "Your Saved Jobs | Job Board"
+msgstr "Вашият Запазени Обяви | Job Board"
