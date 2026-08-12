@@ -52,7 +52,9 @@ export default defineConfig({
 		},
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/profile",
-			include: ["src/features/profile"],
+			include: ["src/features/profile",
+				"src/features/profile/hooks/useProfile",
+			],
 		},
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/footer",

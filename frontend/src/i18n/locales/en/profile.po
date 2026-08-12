@@ -20,6 +20,9 @@ msgstr "{0}"
 msgid "After registration, you can open your dashboard and start hiring."
 msgstr "After registration, you can open your dashboard and start hiring."
 
+msgid "Are you sure you want to delete your profile?"
+msgstr "Are you sure you want to delete your profile?"
+
 msgid "Back to settings"
 msgstr "Back to settings"
 
@@ -130,6 +133,9 @@ msgstr "Phone"
 
 #~ msgid "Phone:"
 #~ msgstr "Phone:"
+
+msgid "Please enter your password to confirm the deletion:"
+msgstr "Please enter your password to confirm the deletion:"
 
 msgid "Post a Job"
 msgstr "Post a Job"

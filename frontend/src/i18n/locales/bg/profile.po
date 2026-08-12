@@ -20,8 +20,11 @@ msgstr ""
 msgid "After registration, you can open your dashboard and start hiring."
 msgstr "След регистрацията можете да отворите таблото си и да започнете наемането."
 
+msgid "Are you sure you want to delete your profile?"
+msgstr "Сигурни ли сте, че искате да изтриете профила си?"
+
 msgid "Back to settings"
-msgstr ""
+msgstr "Обратно към настройките"
 
 msgid "Change password"
 msgstr ""
@@ -48,7 +51,7 @@ msgid "Created at"
 msgstr "Създаден на"
 
 msgid "Current password"
-msgstr ""
+msgstr "Текуща парола"
 
 msgid "Delete Profile"
 msgstr ""
@@ -131,6 +134,9 @@ msgstr "Телефон"
 #~ msgid "Phone:"
 #~ msgstr ""
 
+msgid "Please enter your password to confirm the deletion:"
+msgstr "Моля, въведете паролата си, за да потвърдите изтриването:"
+
 msgid "Post a Job"
 msgstr "Публикувай обява за работа"
 
@@ -180,10 +186,10 @@ msgid "Unable to load profile"
 msgstr "Неуспешно зареждане на профила"
 
 msgid "Update your account password to keep your profile secure."
-msgstr ""
+msgstr "Актуализирайте паролата си за да защитите профила си."
 
 msgid "Update your personal information and keep your account details current."
-msgstr ""
+msgstr "Актуализирайте личната си информация и поддържайте данните за вашия акаунт актуални."
 
 msgid "User settings"
 msgstr "Настройки на потребителя"

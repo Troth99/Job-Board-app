@@ -1,5 +1,4 @@
 import "../../styles/edit-profile.css";
-import "./Responsive.css";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../../../shared/utils/toast";

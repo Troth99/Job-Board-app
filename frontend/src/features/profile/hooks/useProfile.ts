@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { API_BASE } from "../../../config/api";
 import useApiRequester from "../../../shared/hooks/useApiRequester";
 import { ChangePasswordForm, User } from "../types/profileSectionTypes";
+import { useLingui } from "@lingui/react/macro";
 
 
 export default function useProfile() {
   const { loading, error, request } = useApiRequester();
   const [userData, setUserData] = useState<User | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
+
+  const {t} = useLingui();
 
   const getLoggedInUserData = async () => {
     try {
@@ -47,12 +50,12 @@ export default function useProfile() {
 
   const handleDeleteProfile = async (onSuccess?: () => void) => {
     const isConfirmed = window.confirm(
-      "Are you sure you want to delete your profile?"
+      t`Are you sure you want to delete your profile?`
     );
     if (!isConfirmed) return false;
 
     const password = window.prompt(
-      "Please enter your password to confirm the deletion:"
+      t`Please enter your password to confirm the deletion:`
     );
     if (!password) {
       alert("Password is required to delete the profile.");
