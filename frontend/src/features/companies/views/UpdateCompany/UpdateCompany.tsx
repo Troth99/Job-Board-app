@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useForm from "../../../../shared/hooks/useForm";
 import { validateCompany } from "../../validators/useCompanyValidation";
 import useCompanyAPI from "../../hooks/useCompanyAPI";
-import "./UpdateCompany.css";
+import "../../styles/updateCompany.css"
 import { useNavigate, useParams } from "react-router";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import MetaData from "../../../../seo/MetaDataTags";

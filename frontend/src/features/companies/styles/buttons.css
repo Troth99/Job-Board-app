@@ -1,0 +1,346 @@
+/* Main added button */
+.dashboard .add-button {
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--member-brand), var(--member-brand-alt));
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  min-height: 42px;
+  box-shadow: 0 8px 16px rgba(12, 120, 174, 0.24);
+  padding: 0.64rem 1.08rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.dashboard .add-button:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #0f89c5, #12b49f);
+  box-shadow: 0 10px 20px rgba(12, 120, 174, 0.25);
+  filter: saturate(1.04);
+}
+
+.dashboard .add-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(12, 120, 174, 0.22);
+}
+
+/* Promote button*/
+.dashboard .promote-ownership-btn {
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid rgba(12, 120, 174, 0.38);
+  background: linear-gradient(135deg, var(--member-brand), var(--member-brand-alt));
+  color: #f7fbff;
+  box-shadow: 0 8px 16px rgba(12, 120, 174, 0.24);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.dashboard .promote-ownership-btn::before {
+  display: none;
+}
+
+.dashboard .promote-ownership-btn:hover,
+.dashboard .promote-ownership-btn:focus-visible {
+  color: #ffffff !important;
+  border-color: rgba(12, 120, 174, 0.5);
+  background: linear-gradient(135deg, #0f89c5, #12b49f) !important;
+  box-shadow: 0 10px 20px rgba(12, 120, 174, 0.25);
+  transform: translateY(-1px);
+  filter: saturate(1.06);
+}
+
+/* update comapny button*/
+/* Общ клас за бутони в формите (бивш create / update company button) */
+.form-action-btn,
+.create-company-button,
+.update-company-button {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 0.6rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--member-brand, #0a84ff), var(--member-brand-alt, #00a6a6));
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(12, 120, 174, 0.24);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  box-sizing: border-box;
+  padding: 0.64rem 1.08rem;
+}
+
+.form-action-btn:hover:not(:disabled),
+.create-company-button:hover:not(:disabled),
+.update-company-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #0f89c5, #12b49f);
+  box-shadow: 0 10px 20px rgba(12, 120, 174, 0.25);
+  filter: saturate(1.04);
+  color: #ffffff;
+}
+
+.form-action-btn:active:not(:disabled),
+.create-company-button:active:not(:disabled),
+.update-company-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(12, 120, 174, 0.22);
+}
+
+.form-action-btn:disabled,
+.create-company-button:disabled,
+.update-company-button:disabled {
+  background: linear-gradient(120deg, #8a97a6, #75879d);
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.8;
+  filter: none;
+}
+
+/* Dark theme for buttons */
+[data-theme="dark"] .form-action-btn:hover:not(:disabled),
+[data-theme="dark"] .create-company-button:hover:not(:disabled),
+[data-theme="dark"] .update-company-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #63c9ff, #56e6bf);
+}
+
+[data-theme="dark"] .form-action-btn:disabled,
+[data-theme="dark"] .create-company-button:disabled,
+[data-theme="dark"] .update-company-button:disabled {
+  background: linear-gradient(120deg, #52657f, #42556c);
+}
+
+.dashboard .promote-ownership-btn:active {
+  transform: translateY(0);
+}
+
+body[data-theme="dark"] .dashboard .promote-ownership-btn:hover,
+body[data-theme="dark"] .dashboard .promote-ownership-btn:focus-visible {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #63c9ff, #56e6bf) !important;
+}
+
+/* Danger buttons (Danger) */
+.dashboard .sidebar-btn-danger {
+  border-radius: 10px;
+  border: 1px solid #f2c2cc;
+  background: #fff5f6;
+  color: #a11637;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 0.6rem;
+}
+
+.dashboard .sidebar-btn-danger:hover {
+  background: #ffecef;
+}
+
+body[data-theme="dark"] .dashboard .sidebar-btn-danger {
+  color: #ffc6cf;
+  background: rgba(151, 27, 60, 0.2);
+  border-color: rgba(255, 130, 155, 0.35);
+}
+
+/*  Buttons in profile sections and others */
+.dashboard .delete-image-button,
+.dashboard .change-password-button,
+.dashboard .delete-profile-button,
+.dashboard .check-profile-logs-button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 15px;
+  width: 40%;
+  border: 2px solid transparent;
+  outline: none;
+}
+
+.dashboard .delete-image-button:hover,
+.dashboard .change-password-button:hover,
+.dashboard .delete-profile-button:hover,
+.dashboard .check-profile-logs-button:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+  border: 2px solid #c0392b;
+}
+
+.dashboard .delete-image-button:active,
+.dashboard .change-password-button:active,
+.dashboard .delete-profile-button:active,
+.dashboard .check-profile-logs-button:active {
+  transform: translateY(1px);
+}
+
+.dashboard .delete-image-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Modal buttons for closing */
+.modal-close-f2 {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ff3b3b 60%, #ffb347 100%);
+  box-shadow: 0 2px 12px rgba(255, 59, 59, 0.18);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  z-index: 10;
+}
+
+.modal-close-f2:hover {
+  background: linear-gradient(135deg, #ffb347 60%, #ff3b3b 100%);
+  transform: scale(1.12) rotate(10deg);
+  box-shadow: 0 4px 18px rgba(255, 59, 59, 0.28);
+}
+
+/* Register update company */
+.back-link {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.15rem;
+  border-radius: 22px;
+  border: 1px solid rgba(10, 132, 255, 0.2);
+  background:
+    radial-gradient(circle at top right, rgba(10, 132, 255, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(10, 132, 255, 0.12), rgba(0, 166, 166, 0.08)),
+    rgba(255, 255, 255, 0.86);
+  color: #0d4b87;
+  text-decoration: none;
+  box-shadow: 0 16px 34px rgba(10, 132, 255, 0.14);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.back-link__spark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  min-height: 72px;
+  padding: 0.7rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0a84ff, #00a6a6);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.back-link__content {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.back-link__title {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #082d4e;
+}
+
+.back-link__text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #527193;
+}
+
+.back-link__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: #0a84ff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(10, 132, 255, 0.14);
+}
+
+.back-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(10, 132, 255, 0.38);
+  color: #073a69;
+  box-shadow: 0 22px 42px rgba(10, 132, 255, 0.22);
+}
+
+.back-link:hover .back-link__arrow {
+  transform: translateX(3px);
+}
+
+.back-link:focus-visible {
+  outline: none;
+  border-color: var(--register-focus);
+  box-shadow: 0 0 0 4px rgba(11, 127, 219, 0.18);
+}
+
+.back-link__arrow,
+.back-link__spark {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+
+
+/* Dark theme styles for buttons */
+[data-theme="dark"] .back-link {
+  border-color: rgba(78, 128, 190, 0.28);
+  color: #d5e8ff;
+  background:
+    radial-gradient(circle at top right, rgba(52, 143, 255, 0.22), transparent 34%),
+    linear-gradient(135deg, rgba(42, 69, 102, 0.92), rgba(19, 49, 68, 0.88)),
+    rgba(15, 24, 37, 0.92);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+[data-theme="dark"] .back-link__title {
+  color: #eef5ff;
+}
+
+[data-theme="dark"] .back-link__text {
+  color: #9eb4cf;
+}
+
+[data-theme="dark"] .back-link__arrow {
+  background: rgba(15, 24, 37, 0.88);
+  color: #77bbff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .back-link:hover {
+  color: #f3f8ff;
+}
+

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
+
+/* To refractor css */
 :root {
   --update-company-surface: rgba(255, 255, 255, 0.9);
   --update-company-surface-2: rgba(246, 249, 255, 0.92);

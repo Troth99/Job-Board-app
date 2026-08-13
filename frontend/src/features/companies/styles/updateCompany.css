@@ -1,17 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
-
-:root {
-  --register-surface: rgba(255, 255, 255, 0.9);
-  --register-surface-2: rgba(246, 249, 255, 0.92);
-  --register-text: #132238;
-  --register-muted: #5f6f85;
-  --register-border: #d7e3f6;
-  --register-focus: #0b7fdb;
-  --register-accent: #0a84ff;
-  --register-accent-2: #00a6a6;
-  --register-danger: #cf3351;
-  --register-shadow: 0 18px 45px rgba(7, 25, 54, 0.16);
-}
+@import "./variables.css";
+@import "./buttons.css";
 
 .update-company-container {
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
@@ -50,102 +39,6 @@
   letter-spacing: 0.02em;
   font-weight: 700;
   color: #0d2c4a;
-}
-
-.back-link {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 0.9rem;
-  width: 100%;
-  margin: 0 0 1.5rem;
-  padding: 1rem 1.15rem;
-  border-radius: 22px;
-  border: 1px solid rgba(10, 132, 255, 0.2);
-  background:
-    radial-gradient(circle at top right, rgba(10, 132, 255, 0.18), transparent 34%),
-    linear-gradient(135deg, rgba(10, 132, 255, 0.12), rgba(0, 166, 166, 0.08)),
-    rgba(255, 255, 255, 0.86);
-  color: #0d4b87;
-  text-decoration: none;
-  box-shadow: 0 16px 34px rgba(10, 132, 255, 0.14);
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    border-color 0.18s ease,
-    color 0.18s ease,
-    background 0.18s ease;
-}
-
-.back-link__spark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 72px;
-  min-height: 72px;
-  padding: 0.7rem;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #0a84ff, #00a6a6);
-  color: #ffffff;
-  font-size: 0.9rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-
-.back-link__content {
-  display: grid;
-  gap: 0.2rem;
-}
-
-.back-link__title {
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  color: #082d4e;
-}
-
-.back-link__text {
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: #527193;
-}
-
-.back-link__arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.86);
-  color: #0a84ff;
-  font-size: 1.2rem;
-  font-weight: 800;
-  box-shadow: 0 8px 18px rgba(10, 132, 255, 0.14);
-}
-
-.back-link:hover {
-  transform: translateY(-2px);
-  border-color: rgba(10, 132, 255, 0.38);
-  color: #073a69;
-  box-shadow: 0 22px 42px rgba(10, 132, 255, 0.22);
-}
-
-.back-link:hover .back-link__arrow {
-  transform: translateX(3px);
-}
-
-.back-link:focus-visible {
-  outline: none;
-  border-color: var(--register-focus);
-  box-shadow: 0 0 0 4px rgba(11, 127, 219, 0.18);
-}
-
-.back-link__arrow,
-.back-link__spark {
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .update-company-form {
@@ -236,45 +129,7 @@
   font-weight: 500;
 }
 
-.update-company-button {
-  grid-column: 1 / -1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 52px;
-  margin-top: 0.6rem;
-  border: none;
-  border-radius: 14px;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  background: linear-gradient(120deg, var(--register-accent), var(--register-accent-2));
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(10, 132, 255, 0.25);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
-}
-
-.update-company-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(10, 132, 255, 0.32);
-  filter: saturate(1.06);
-}
-
-.update-company-button:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.update-company-button:disabled {
-  background: linear-gradient(120deg, #8a97a6, #75879d);
-  box-shadow: none;
-  cursor: not-allowed;
-  opacity: 0.8;
-  filter: none;
-}
-
-/* Dark theme */
+/* Dark theme конйенер и форми */
 [data-theme="dark"] .update-company-container {
   --register-surface: rgba(16, 28, 44, 0.92);
   --register-surface-2: rgba(13, 22, 36, 0.95);
@@ -295,34 +150,6 @@
 [data-theme="dark"] .update-company-container h2,
 [data-theme="dark"] .update-company-form label {
   color: var(--register-text);
-}
-
-[data-theme="dark"] .back-link {
-  border-color: rgba(78, 128, 190, 0.28);
-  color: #d5e8ff;
-  background:
-    radial-gradient(circle at top right, rgba(52, 143, 255, 0.22), transparent 34%),
-    linear-gradient(135deg, rgba(42, 69, 102, 0.92), rgba(19, 49, 68, 0.88)),
-    rgba(15, 24, 37, 0.92);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
-}
-
-[data-theme="dark"] .back-link__title {
-  color: #eef5ff;
-}
-
-[data-theme="dark"] .back-link__text {
-  color: #9eb4cf;
-}
-
-[data-theme="dark"] .back-link__arrow {
-  background: rgba(15, 24, 37, 0.88);
-  color: #77bbff;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] .back-link:hover {
-  color: #f3f8ff;
 }
 
 [data-theme="dark"] .optional-badge {
@@ -350,8 +177,4 @@
 [data-theme="dark"] .update-company-form select:focus {
   background: rgba(22, 35, 53, 0.98);
   box-shadow: 0 0 0 3px rgba(76, 166, 255, 0.18);
-}
-
-[data-theme="dark"] .update-company-button:disabled {
-  background: linear-gradient(120deg, #52657f, #42556c);
 }
