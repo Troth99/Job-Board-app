@@ -125,6 +125,10 @@ export default defineConfig({
 
 		},
 		{
+			path:"<rootDir>/src/i18n/locales/{locale}/applyModalForJob",
+			include: ["src/features/jobs/components/ApplyForJobModal",]
+		},
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/notifications",
 			include: ["src/features/notifications/views/Notifications",
 				"src/features/notifications/components/NewMessageNotification/ModalReply",

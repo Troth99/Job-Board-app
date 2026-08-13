@@ -13,6 +13,9 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+msgid " Your CV has been sent."
+msgstr " Your CV has been sent."
+
 #. placeholder {0}: field.label
 #. placeholder {0}: field.type
 msgid "{0}"
@@ -62,6 +65,9 @@ msgstr "All jobs you’ve saved in one place. Quick access to your top picks!"
 
 msgid "Application Deadline"
 msgstr "Application Deadline"
+
+msgid "Apply for {jobTitle}"
+msgstr "Apply for {jobTitle}"
 
 msgid "Apprenticeship"
 msgstr "Apprenticeship"
@@ -126,6 +132,9 @@ msgstr "Contract"
 msgid "Contract Type"
 msgstr "Contract Type"
 
+msgid "Cover Letter"
+msgstr "Cover Letter"
+
 msgid "Create Job Guide"
 msgstr "Create Job Guide"
 
@@ -143,6 +152,9 @@ msgstr "Customer Support"
 
 msgid "Customer Support Specialist"
 msgstr "Customer Support Specialist"
+
+msgid "CV Link"
+msgstr "CV Link"
 
 msgid "Data Science & Analytics"
 msgstr "Data Science & Analytics"
@@ -200,6 +212,9 @@ msgstr "Education Level"
 
 msgid "Education level is required."
 msgstr "Education level is required."
+
+msgid "Email"
+msgstr "Email"
 
 msgid "Email is required."
 msgstr "Email is required."
@@ -435,11 +450,20 @@ msgstr "Optional fields"
 msgid "Part-time"
 msgstr "Part-time"
 
+msgid "Paste your CV link (Google Drive, Dropbox, etc.)"
+msgstr "Paste your CV link (Google Drive, Dropbox, etc.)"
+
 msgid "Permanent contract"
 msgstr "Permanent contract"
 
 msgid "Permanent, Temporary, Civil contract, Internship agreement, Freelance contract."
 msgstr "Permanent, Temporary, Civil contract, Internship agreement, Freelance contract."
+
+msgid "Phone"
+msgstr "Phone"
+
+msgid "Phone number"
+msgstr "Phone number"
 
 msgid "Plovdiv, Bulgaria"
 msgstr "Plovdiv, Bulgaria"
@@ -537,11 +561,17 @@ msgstr "Select how the work is delivered so the candidate understands location e
 msgid "Select work mode"
 msgstr "Select work mode"
 
+msgid "Send Application"
+msgstr "Send Application"
+
 msgid "Set a closing date when the role has a fixed hiring window."
 msgstr "Set a closing date when the role has a fixed hiring window."
 
 msgid "Set the hiring format that defines the relationship between company and candidate."
 msgstr "Set the hiring format that defines the relationship between company and candidate."
+
+msgid "Show your best! Paste a link to your CV and add a short cover letterM"
+msgstr "Show your best! Paste a link to your CV and add a short cover letterM"
 
 msgid "Sofia, Bulgaria"
 msgstr "Sofia, Bulgaria"
@@ -624,6 +654,9 @@ msgstr "Volunteer"
 msgid "Warehouse Operations Coordinator"
 msgstr "Warehouse Operations Coordinator"
 
+msgid "We will contact you!"
+msgstr "We will contact you!"
+
 msgid "What a complete entry set can look like"
 msgstr "What a complete entry set can look like"
 
@@ -651,6 +684,9 @@ msgstr "Work Schedule"
 msgid "Working hours, shift model, weekend coverage, or rotational schedule."
 msgstr "Working hours, shift model, weekend coverage, or rotational schedule."
 
+msgid "Write a short motivation..."
+msgstr "Write a short motivation..."
+
 msgid "Write for candidates, not for internal teams. Every field should help someone decide whether to apply."
 msgstr "Write for candidates, not for internal teams. Every field should help someone decide whether to apply."
 
@@ -659,6 +695,9 @@ msgstr "You have no saved jobs"
 
 msgid "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."
 msgstr "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."
+
+msgid "Your email address"
+msgstr "Your email address"
 
 msgid "Your Saved Jobs"
 msgstr "Your Saved Jobs"

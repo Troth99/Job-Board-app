@@ -3,6 +3,8 @@ import useForm from "../../../../shared/hooks/useForm";
 import useApplications from "../../hooks/useJobApplications";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import { useState } from "react";
+import { Trans,  } from "@lingui/react/macro";
+import {t} from "@lingui/core/macro"
 
 type FormValues = {
   email: string;
@@ -65,7 +67,7 @@ export function ApplyForJobModal({
   const { register, errors, formHandler } = useForm(
     submitHandler,
     initialValues,
-    validateForm
+    validateForm,
   );
 
   return (
@@ -75,10 +77,15 @@ export function ApplyForJobModal({
           ×
         </button>
         <div className="modal-header">
-          <h2>Apply for {jobTitle}</h2>
+          <h2>
+            <Trans>Apply for {jobTitle}</Trans>
+          </h2>
           <p className="modal-desc">
-            Show your best! Paste a link to your CV and add a short cover
-            letter.
+            <Trans>
+              Show your best! Paste a link to your CV and add a short cover
+              letterM
+            </Trans>
+            .
           </p>
         </div>
         {success ? (
@@ -91,54 +98,62 @@ export function ApplyForJobModal({
               margin: "32px 0",
             }}
           >
-            Your CV has been sent.
+            <Trans> Your CV has been sent.</Trans>
             <br />
-            We will contact you!
+            <Trans>We will contact you!</Trans>
           </div>
         ) : (
           <form onSubmit={formHandler} className="modal-form">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">
+              <Trans>Email</Trans>
+            </label>
             <input
               id="email"
               type="email"
-              placeholder="Your email address"
+              placeholder={t`Your email address`}
               {...register("email")}
             />
             {errors.email && (
               <div className="error-message">{errors.email}</div>
             )}
 
-            <label htmlFor="phone">Phone</label>
+            <label htmlFor="phone">
+              <Trans>Phone</Trans>
+            </label>
             <input
               id="phone"
               type="phone"
-              placeholder="Phone number"
+              placeholder={t`Phone number`}
               {...register("phone")}
             />
             {errors.phone && (
               <div className="error-message">{errors.phone}</div>
             )}
 
-            <label htmlFor="cv">CV Link</label>
+            <label htmlFor="cv">
+              <Trans>CV Link</Trans>
+            </label>
             <input
               id="cv"
               type="text"
-              placeholder="Paste your CV link (Google Drive, Dropbox, etc.)"
+              placeholder={t`Paste your CV link (Google Drive, Dropbox, etc.)`}
               {...register("cv")}
             />
             {errors.cv && <div className="error-message">{errors.cv}</div>}
 
-            <label htmlFor="coverLetter">Cover Letter</label>
+            <label htmlFor="coverLetter">
+              <Trans>Cover Letter</Trans>
+            </label>
             <textarea
               id="coverLetter"
-              placeholder="Write a short motivation..."
+              placeholder={t`Write a short motivation...`}
               {...register("coverLetter")}
               rows={4}
               style={{ resize: "vertical" }}
             />
 
             <button type="submit" className="send-btn">
-              Send Application
+              <Trans>Send Application</Trans>
             </button>
           </form>
         )}
