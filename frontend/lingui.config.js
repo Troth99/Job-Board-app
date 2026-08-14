@@ -125,6 +125,11 @@ export default defineConfig({
 
 		},
 		{
+		path:"<rootDir>/src/i18n/locales/{locale}/jobsDetails",
+		include: ["src/features/jobs/components/SaveJobButton"],
+
+		},
+		{
 			path:"<rootDir>/src/i18n/locales/{locale}/applyModalForJob",
 			include: ["src/features/jobs/components/ApplyForJobModal",]
 		},

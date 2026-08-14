@@ -1,5 +1,6 @@
 import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
 import "./SaveJobButton.css";
+import {t} from "@lingui/core/macro"
 
 
 export default function AddToFavourites({ jobId,  }: { jobId: string }) {
@@ -7,7 +8,7 @@ export default function AddToFavourites({ jobId,  }: { jobId: string }) {
     useFavoritesContext();
   const saved = isFavorite(jobId);
   const isDisabled = loading || !isLoggedIn;
-  const disabledTooltip = "You must log in to add this job in favourites";
+  const disabledTooltip = t`You must log in to add this job in favourites`;
 
   const handleClick = async () => {
     if (isDisabled) return;
@@ -20,7 +21,7 @@ export default function AddToFavourites({ jobId,  }: { jobId: string }) {
   };
   return (
       <span
-        style={{ cursor: isDisabled ? "not-allowed" : "default", display: "inline-block" }}
+        style={{ cursor: isDisabled ? t`not-allowed` : "default", display: "inline-block" }}
         title={!isLoggedIn ? disabledTooltip : undefined}
       >
 
@@ -30,12 +31,12 @@ export default function AddToFavourites({ jobId,  }: { jobId: string }) {
       className={`favorite-button ${saved ? "active" : ""} ${loading ? "loading" : ""}`}
       onClick={handleClick}
       disabled={isDisabled}
-      aria-label={saved ? "Remove from favorites" : "Add to favorites"}
-      title={isLoggedIn ? (saved ? "Remove from favorites" : "Add to favorites") : undefined}
+      aria-label={saved ? t`Remove from favorites` : t`Add to favorites`}
+      title={isLoggedIn ? (saved ? t`Remove from favorites` : t`Add to favorites`) : undefined}
     >
       <span className="favorite-button-icon">{saved ? "♥" : "♡"}</span>
       <span className="favorite-button-text">
-        {saved ? "In favorites" : "Add to favorites"}
+        {saved ? t`In favorites` : t`Add to favorites`}
       </span>
     </button>
       </span>

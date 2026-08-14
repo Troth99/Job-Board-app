@@ -34,7 +34,8 @@ msgstr "Поставете връзката към вашето CV (Google Drive
 msgid "Phone"
 msgstr "Телефон"
 
-
+msgid "Phone number"
+msgstr ""
 
 msgid "Send Application"
 msgstr "Изпрати кандидатура"

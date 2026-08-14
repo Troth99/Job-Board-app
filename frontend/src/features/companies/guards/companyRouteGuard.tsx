@@ -16,6 +16,7 @@ export default function CompanyRouteGuard() {
   const [toastShown, setToastShown] = useState<boolean>(false);
   const { getCompanyById, company } = useCompanies();
 
+  
   const token = getAuthToken();
   const user = getUserFromLocalStorage();
 

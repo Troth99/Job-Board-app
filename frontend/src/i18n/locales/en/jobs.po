@@ -54,6 +54,9 @@ msgstr "Add the city or area where the employee will work. If hybrid, mention th
 msgid "Add the email address that should receive candidate communication or application questions."
 msgstr "Add the email address that should receive candidate communication or application questions."
 
+msgid "Add to favorites"
+msgstr "Add to favorites"
+
 msgid "Added"
 msgstr "Added"
 
@@ -315,6 +318,9 @@ msgstr "Hybrid"
 msgid "If a field is optional but important for trust, fill it in anyway. More clarity usually improves application quality."
 msgstr "If a field is optional but important for trust, fill it in anyway. More clarity usually improves application quality."
 
+msgid "In favorites"
+msgstr "In favorites"
+
 msgid "Information Technology"
 msgstr "Information Technology"
 
@@ -411,6 +417,9 @@ msgstr "No prior experience required"
 msgid "Non-Profit & NGO"
 msgstr "Non-Profit & NGO"
 
+msgid "not-allowed"
+msgstr "not-allowed"
+
 msgid "On-site"
 msgstr "On-site"
 
@@ -494,6 +503,9 @@ msgstr "Real Estate & Property"
 
 msgid "Remote"
 msgstr "Remote"
+
+msgid "Remove from favorites"
+msgstr "Remove from favorites"
 
 msgid "Required"
 msgstr "Required"
@@ -692,6 +704,9 @@ msgstr "Write for candidates, not for internal teams. Every field should help so
 
 msgid "You have no saved jobs"
 msgstr "You have no saved jobs"
+
+msgid "You must log in to add this job in favourites"
+msgstr "You must log in to add this job in favourites"
 
 msgid "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."
 msgstr "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."

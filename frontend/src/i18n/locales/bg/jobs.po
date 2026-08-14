@@ -54,6 +54,9 @@ msgstr ""
 msgid "Add the email address that should receive candidate communication or application questions."
 msgstr ""
 
+msgid "Add to favorites"
+msgstr ""
+
 msgid "Added"
 msgstr ""
 
@@ -315,6 +318,9 @@ msgstr ""
 msgid "If a field is optional but important for trust, fill it in anyway. More clarity usually improves application quality."
 msgstr ""
 
+msgid "In favorites"
+msgstr ""
+
 msgid "Information Technology"
 msgstr ""
 
@@ -411,6 +417,9 @@ msgstr ""
 msgid "Non-Profit & NGO"
 msgstr ""
 
+msgid "not-allowed"
+msgstr ""
+
 msgid "On-site"
 msgstr ""
 
@@ -493,6 +502,9 @@ msgid "Real Estate & Property"
 msgstr ""
 
 msgid "Remote"
+msgstr ""
+
+msgid "Remove from favorites"
 msgstr ""
 
 msgid "Required"
@@ -691,6 +703,9 @@ msgid "Write for candidates, not for internal teams. Every field should help som
 msgstr ""
 
 msgid "You have no saved jobs"
+msgstr ""
+
+msgid "You must log in to add this job in favourites"
 msgstr ""
 
 msgid "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."
