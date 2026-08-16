@@ -4,6 +4,7 @@ import { Candidate } from "../../../../types/Apllication.model";
 import { LoadingIndicator } from "../../../../../../shared/components/LoadingIndicator/LoadingIndicator";
 import { formatDate } from "../../../../../../shared/utils/formData";
 import { useParams } from "react-router";
+import useNotifications from "../../../../../notifications/hooks/useNotifications";
 
 export function CandidateApplications({
   jobId,
@@ -18,6 +19,10 @@ export function CandidateApplications({
 }) {
   const { updateApplicationStatus, deleteApplication } = useApplications();
 const {companyId} = useParams()
+  const {createNotification} = useNotifications();
+
+
+
 
   const viewCvHandler = async (candidateId: string) => {
     try {
@@ -36,7 +41,16 @@ const {companyId} = useParams()
 
   const approveHandler = async (candidateId: string) => {
     try {
-      await updateApplicationStatus(candidateId, "approved");
+
+    
+      const currentCandidate = candidates.find(c => c._id === candidateId)
+
+      if(!currentCandidate) {
+        console.error("Candidate not found!")
+        return
+      };
+
+     await updateApplicationStatus(candidateId, "approved");
       setCandidates((prev) =>
         prev.map((candidate) =>
           candidate._id === candidateId
@@ -44,6 +58,11 @@ const {companyId} = useParams()
             : candidate
         )
       );
+      await createNotification({
+        user: currentCandidate.userId,
+        message: 'You have been accepted for the job.',
+        type: "job_accepted"
+      })
     } catch (error) {
       console.error("Faileld to set status or add member.", error);
     }

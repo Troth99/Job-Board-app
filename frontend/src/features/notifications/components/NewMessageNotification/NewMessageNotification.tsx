@@ -23,7 +23,7 @@ export default function NewmessageNotification() {
   // Fetch the notification details when the component mounts
   useEffect(() => {
     setLoading(true);
-    const getCUrrentMessage = async () => {
+    const getCurrentMessage = async () => {
       if (!notificationId) return;
       try {
         const result = await getNotificationById(notificationId);
@@ -36,7 +36,7 @@ export default function NewmessageNotification() {
       }
     };
 
-    getCUrrentMessage();
+    getCurrentMessage();
   }, [notificationId]);
 
   // Handler to open the reply modal
