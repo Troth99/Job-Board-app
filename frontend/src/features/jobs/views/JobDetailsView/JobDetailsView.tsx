@@ -10,6 +10,8 @@ import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import { Container } from "../../../../shared/components/Container/Container";
 import { CompanyDetails } from "./CompanyDetailsForJobSection/CompanyDetailsViewforJobs";
 import { QucikInfoSection } from "./CompanyDetailsForJobSection/QuicnInfoSection";
+import { useUserData } from "../../../../context/UseDataContext";
+import useProfile from "../../../profile/hooks/useProfile";
 
 function normalizeToArray(value: unknown): string[] {
   if (Array.isArray(value)) {
@@ -27,14 +29,18 @@ function normalizeToArray(value: unknown): string[] {
 }
 
 export default function CandidateJobView() {
+  const { userData} = useProfile()
   const { jobId } = useParams();
   const location = useLocation();
   const { loading, getJobById } = useJobs();
   const [jobData, setJobData] = useState<Job>();
+
   const [token] = useLocalStorage<string>("user", "");
   const isLoggedIn = !!token;
+  
   const [showApplyModal, setShowApplyModal] = useState(false);
   const user = getUserFromLocalStorage();
+ 
   if (!jobId) {
     return;
   }
@@ -48,13 +54,13 @@ export default function CandidateJobView() {
       ? jobData.category
       : jobData?.category?.name || "N/A";
 
-      
   const additionalInfoText =
     typeof jobData?.additionalInfo === "string" &&
     jobData.additionalInfo.trim().length > 0
       ? jobData.additionalInfo
       : "We would be happy to review your application. If your profile is a good fit, our team will contact you for the next steps.";
 
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -202,11 +208,12 @@ export default function CandidateJobView() {
           </main>
         </div>
 
-        {showApplyModal && (
+        {showApplyModal && userData && (
           <ApplyForJobModal
             jobId={jobId}
             jobTitle={jobData?.title}
             onClose={() => setShowApplyModal(false)}
+            userData = {userData}
           />
         )}
       </section>

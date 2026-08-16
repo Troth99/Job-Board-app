@@ -61,7 +61,7 @@ const {companyId} = useParams()
       await createNotification({
         user: currentCandidate.userId,
         message: 'You have been accepted for the job.',
-        type: "job_accepted"
+        type: "application"
       })
     } catch (error) {
       console.error("Faileld to set status or add member.", error);

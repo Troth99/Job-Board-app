@@ -5,6 +5,7 @@ import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import { useState } from "react";
 import { Trans,  } from "@lingui/react/macro";
 import {t} from "@lingui/core/macro"
+import { User } from "../../../profile/types/profileSectionTypes";
 
 type FormValues = {
   email: string;
@@ -31,10 +32,12 @@ export function ApplyForJobModal({
   jobId,
   jobTitle,
   onClose,
+  userData
 }: {
   jobId: string;
   jobTitle?: string;
   onClose: () => void;
+  userData: User
 }) {
   const { createApplication } = useApplications();
   const user = getUserFromLocalStorage();
@@ -110,8 +113,9 @@ export function ApplyForJobModal({
             <input
               id="email"
               type="email"
+            value={userData.email}
               placeholder={t`Your email address`}
-              {...register("email")}
+              disabled
             />
             {errors.email && (
               <div className="error-message">{errors.email}</div>
