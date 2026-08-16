@@ -29,7 +29,7 @@ function normalizeToArray(value: unknown): string[] {
 }
 
 export default function CandidateJobView() {
-  const { userData} = useProfile()
+  const { userData } = useProfile();
   const { jobId } = useParams();
   const location = useLocation();
   const { loading, getJobById } = useJobs();
@@ -37,15 +37,14 @@ export default function CandidateJobView() {
 
   const [token] = useLocalStorage<string>("user", "");
   const isLoggedIn = !!token;
-  
+
   const [showApplyModal, setShowApplyModal] = useState(false);
   const user = getUserFromLocalStorage();
- 
-  if (!jobId) {
-    return;
-  }
 
-  const isCompanyMember = jobData?.company?.members?.includes(user._id);
+  const isCompanyMember = user?._id
+    ? jobData?.company?.members?.includes(user._id)
+    : false;
+
   const skills = normalizeToArray(jobData?.skills || jobData?.requirements);
   const benefits = normalizeToArray(jobData?.benefits);
   const tags = normalizeToArray(jobData?.tags);
@@ -60,7 +59,11 @@ export default function CandidateJobView() {
       ? jobData.additionalInfo
       : "We would be happy to review your application. If your profile is a good fit, our team will contact you for the next steps.";
 
- 
+  if (!jobId) {
+    console.error("Job id is missing.");
+    return;
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -213,7 +216,7 @@ export default function CandidateJobView() {
             jobId={jobId}
             jobTitle={jobData?.title}
             onClose={() => setShowApplyModal(false)}
-            userData = {userData}
+            userData={userData}
           />
         )}
       </section>
