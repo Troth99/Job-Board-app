@@ -10,17 +10,17 @@ export default function useProfile() {
   const [userData, setUserData] = useState<User | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
   const user = getUserFromLocalStorage();
+  useEffect(() => {
+    if (user) {
+      getLoggedInUserData();
+    } else {
+      setIsInitialized(true);
+    }
+  }, []);
 
   const { t } = useLingui();
 
   const getLoggedInUserData = async () => {
-    useEffect(() => {
-      if (user) {
-        getLoggedInUserData();
-      } else {
-        setIsInitialized(true);
-      }
-    }, []);
     try {
       const result = await request(`${API_BASE}/users/me`, "GET");
       setUserData(result);
