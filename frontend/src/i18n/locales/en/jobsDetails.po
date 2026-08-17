@@ -1,0 +1,23 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-15 01:52+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+
+msgid "Add to favorites"
+msgstr "Add to favorites"
+
+msgid "In favorites"
+msgstr "In favorites"
+
+msgid "not-allowed"
+msgstr "not-allowed"
+
+msgid "Remove from favorites"
+msgstr "Remove from favorites"
+
+msgid "You must log in to add this job in favourites"
+msgstr "You must log in to add this job in favourites"

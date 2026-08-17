@@ -57,18 +57,18 @@ export const jobsRoutes = [
       path="category/:categoryName"
       element={
         <Suspense fallback={<FullPageSpinner />}>
-            <FilterJobByCategory />
+          <FilterJobByCategory />
         </Suspense>
-        }
-        />
-        <Route
-        path="how-to-post-job"
-        element={
-          <Suspense fallback={<FullPageSpinner />}>
-            <HowToPostJobInfo />
-          </Suspense>
-        }
-      />
+      }
+    />
+    <Route
+      path="how-to-post-job"
+      element={
+        <Suspense fallback={<FullPageSpinner />}>
+          <HowToPostJobInfo />
+        </Suspense>
+      }
+    />
   </Route>,
 
   <Route element={<ProtectedRoutes />}>
@@ -134,5 +134,4 @@ export const jobsRoutes = [
       />
     </Route>
   </Route>,
-
 ];

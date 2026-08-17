@@ -1,0 +1,53 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-14 01:45+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid " Your CV has been sent."
+msgstr " Your CV has been sent."
+
+msgid "Apply for {jobTitle}"
+msgstr "Apply for {jobTitle}"
+
+msgid "Cover Letter"
+msgstr "Cover Letter"
+
+msgid "CV Link"
+msgstr "CV Link"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Paste your CV link (Google Drive, Dropbox, etc.)"
+msgstr "Paste your CV link (Google Drive, Dropbox, etc.)"
+
+msgid "Phone"
+msgstr "Phone"
+
+msgid "Phone number"
+msgstr "Phone number"
+
+msgid "Send Application"
+msgstr "Send Application"
+
+msgid "Show your best! Paste a link to your CV and add a short cover letterM"
+msgstr "Show your best! Paste a link to your CV and add a short cover letterM"
+
+msgid "We will contact you!"
+msgstr "We will contact you!"
+
+msgid "Write a short motivation..."
+msgstr "Write a short motivation..."
+
+msgid "Your email address"
+msgstr "Your email address"

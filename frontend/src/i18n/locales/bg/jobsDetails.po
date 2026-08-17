@@ -1,0 +1,23 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-15 01:52+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+
+msgid "Add to favorites"
+msgstr "Добави в любими"
+
+msgid "In favorites"
+msgstr "В любими"
+
+msgid "not-allowed"
+msgstr "Забранено"
+
+msgid "Remove from favorites"
+msgstr "Премахване от любими"
+
+msgid "You must log in to add this job in favourites"
+msgstr "Първо е необходимо да влезнете в профила ви, преди да добавите поста в любими"

@@ -36,22 +36,18 @@ export default function useJobs() {
     }
   };
 
-  const getJobsByCompany = async (companyId: string) => {
+  const getJobsByCompany = async (companyId: string, limit: number, page: number) => {
     setLoading(true);
     try {
       if (!companyId) throw new Error("Not part of a company.");
 
       const response = await request(
-        `${API_BASE}/jobs?company=${companyId}`,
+        `${API_BASE}/jobs?company=${companyId}&page=${page}&limit=${limit}`,
         "GET",
       );
 
       //returning array of jobs so the components using array methods can work without issues. If response is not an array, it checks if response.jobs is an array and returns it. Otherwise, it returns an empty array.
-      return Array.isArray(response)
-        ? response
-        : Array.isArray(response?.jobs)
-          ? response.jobs
-          : [];
+     return response
     } catch (error) {
       console.error("Failed to fetch jobs.");
       throw error;

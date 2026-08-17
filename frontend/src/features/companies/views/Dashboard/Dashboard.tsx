@@ -1,7 +1,6 @@
 import { useState } from "react";
 import useCompanies from "../../hooks/useCompanyAPI";
-import "./Dashboard.css";
-import "./Responsive.css";
+import "../../styles/dashboard.css";
 import { useNavigate, useParams } from "react-router";
 import { CompanyJobsList } from "../../components/CompanyJobList/CompanyJobList";
 import Spinner from "../../../../shared/components/Spinner/Spinner";

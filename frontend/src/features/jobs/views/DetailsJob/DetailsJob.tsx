@@ -8,7 +8,6 @@ import { Candidate } from "../../types/Apllication.model";
 import { Container } from "../../../../shared/components/Container/Container";
 import DetailsJobMainSection from "./DetailsJobElements/DetailsJobMainSection";
 import useMembers from "../../../companies/hooks/useMembers";
-import useFavorites from "../../hooks/useSavedJobs";
 import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
 import useJobs from "../../hooks/useJobsAPI";
 import useApplications from "../../hooks/useJobApplications";

@@ -56,7 +56,7 @@ export default function useNotifications() {
   };
 
   const createNotification = async (notificationData: any) => {
-    console.log(notificationData);
+
     setLoading(true);
     try {
       const response = await request(

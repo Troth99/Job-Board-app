@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "./RegisterCompany.css";
-import "./Responsive.css";
+import "../../styles/registerCompany.css"
 import { showSuccess } from "../../../../shared/utils/toast";
 import { useNavigate } from "react-router";
 import { validateCompany } from "../../validators/useCompanyValidation";

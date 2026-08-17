@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router";
 import { ShowJobs } from "../../components/showJobs/showCompanyJobs";
-import "./viewAllJobsForComapny.css";
 import { Job } from "../../../jobs/types/Job.model";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
-import { usePagination } from "../../../../shared/hooks/usePagination";
 import useJobs from "../../../jobs/hooks/useJobsAPI";
+import "../../styles/viewAllJobsForCompany.css";
+import Pagination from "../../../../shared/components/Pagination/Pagination";
 
+// to refractor css
 
-//make pagination for this component and also add total count of jobs in the company.
-//Add metadata for the pages in the application
-
+const ITEMS_PER_PAGE = 5; // Number of jobs to display per page
 
 export function ViewAllJobsForCompany() {
   const { companyId } = useParams();
   const [companyJobs, setCompanyJobs] = useState<Job[]>([]);
   const { loading, getJobsByCompany } = useJobs();
   const [searchParams, setSearchParams] = useSearchParams();
- 
-  const pageFromUrl = parseInt(searchParams.get("page") || "1", 10);
-  const { currentItems, totalPages } = usePagination(companyJobs, 5, pageFromUrl);
+  const [totalJobsCount, setTotalJobsCount] = useState<number>(0); 
+
+  const pageFromUrl = parseInt(searchParams.get("page") || "1", 5);
 
   useEffect(() => {
     const fetchJobsByCompany = async () => {
@@ -27,46 +26,42 @@ export function ViewAllJobsForCompany() {
         if (!companyId) {
           throw new Error("Company id is missing.");
         }
-        const jobs = await getJobsByCompany(companyId);
-        setCompanyJobs(jobs);
+        const data = await getJobsByCompany(
+          companyId,
+          ITEMS_PER_PAGE,
+          pageFromUrl,
+        );
+        console.log(data)
+        setCompanyJobs(data.jobs);
+        setTotalJobsCount(data.totalJobs);
       } catch (error) {
         console.error("Failed to fetch jobs from current company.");
       }
     };
     fetchJobsByCompany();
-  }, [companyId]);
-
-  if (loading) {
-    return <Spinner overlay={true} />;
-  }
+  }, [companyId, pageFromUrl]);
   return (
-    <div className="view-all-jobs-container">
-      <ShowJobs jobs={currentItems} />
-            {companyJobs.length > 5 && (
-        <div className="pagination">
-          <button
-            onClick={() =>
-              setSearchParams({ page: (pageFromUrl - 1).toString() })
-            }
-            disabled={pageFromUrl === 1}
-          >
-            Previous
-          </button>
-          <span>
-            Page {pageFromUrl} of {totalPages}
-          </span>
-          <button
-            onClick={() =>
-              setSearchParams({ page: (pageFromUrl + 1).toString() })
-            }
-            disabled={pageFromUrl === totalPages}
-          >
-            Next
-          </button>
-        </div>
+<div className="view-all-jobs-container">
+      {loading ? (
+        <Spinner overlay={true} />
+      ) : (
+        <>
+          <ShowJobs jobs={companyJobs} />
+
+          {totalJobsCount > 0 && (
+            <Pagination
+              currentPage={pageFromUrl}
+              totalPages={Math.ceil(totalJobsCount / ITEMS_PER_PAGE)}
+              totalItems={totalJobsCount}
+              itemsPerPage={ITEMS_PER_PAGE}
+              currentItemsCount={companyJobs.length}
+              onPageChange={(page) => setSearchParams({ page: page.toString() })}
+            />
+          )}
+        </>
       )}
     </div>
   );
-  }
+}
 
-  export default ViewAllJobsForCompany;
+export default ViewAllJobsForCompany;
