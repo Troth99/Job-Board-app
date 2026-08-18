@@ -10,7 +10,6 @@ import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import { Container } from "../../../../shared/components/Container/Container";
 import { CompanyDetails } from "./CompanyDetailsForJobSection/CompanyDetailsViewforJobs";
 import { QucikInfoSection } from "./CompanyDetailsForJobSection/QuicnInfoSection";
-import { useUserData } from "../../../../context/UseDataContext";
 import useProfile from "../../../profile/hooks/useProfile";
 
 function normalizeToArray(value: unknown): string[] {

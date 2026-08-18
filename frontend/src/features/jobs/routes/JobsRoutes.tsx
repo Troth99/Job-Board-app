@@ -11,7 +11,7 @@ const ViewAllJobs = lazy(() => {
   return import("../views/ViewAllJobs/ViewAllJobs");
 });
 const DetailsJob = lazy(() => {
-  return import("../views/DetailsJob/DetailsJob");
+  return import("../views/DetailsJob/JobActions");
 });
 const PostJob = lazy(() => import("../views/CreateJob/CreateJob"));
 const EditJob = lazy(() => import("../views/EditJob/EditJob"));
