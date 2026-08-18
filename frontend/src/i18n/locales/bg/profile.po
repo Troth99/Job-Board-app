@@ -199,3 +199,6 @@ msgstr "Виж всички запазени работни места"
 
 msgid "You are connected to a company and can publish new job posts."
 msgstr "Вие сте свързани с компания и можете да публикувате нови обяви за работа."
+
+msgid "Your role is a member of the company. In order to post jobs, register and verify your own company or talk with the owner."
+msgstr "Вашата роля е член на компанията. За да публикувате обяви за работа, регистрирайте и потвърдете собствената си компания или се свържете със собственика."

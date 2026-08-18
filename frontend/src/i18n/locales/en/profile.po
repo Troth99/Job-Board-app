@@ -199,3 +199,6 @@ msgstr "View All Saved Jobs"
 
 msgid "You are connected to a company and can publish new job posts."
 msgstr "You are connected to a company and can publish new job posts."
+
+msgid "Your role is a member of the company. In order to post jobs, register and verify your own company or talk with the owner."
+msgstr "Your role is a member of the company. In order to post jobs, register and verify your own company or talk with the owner."

@@ -16,13 +16,21 @@ export default function ProfileContainer({
   totalCompletionFields,
   isUploading,
 }: ProfileContainerProps) {
+  const imageSrc = avatar || userData?.avatar || defaultAvatar;
+
   return (
     <div className="profile-main-card">
       <div className="profile-identity-block">
         <div className="profile-image">
           <img
-            src={avatar || userData?.avatar || defaultAvatar}
+            src={imageSrc || defaultAvatar}
             alt="Profile"
+            onError={(event) => {
+              const target = event.currentTarget;
+              if (target.src !== window.location.origin + "/" + defaultAvatar) {
+                target.src = defaultAvatar;
+              }
+            }}
           />
           {isUploading && (
             <div className="avatar-spinner-overlay">
