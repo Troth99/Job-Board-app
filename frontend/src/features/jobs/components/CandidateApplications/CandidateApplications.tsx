@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
-import "../../../../styles/candidateApllications.css";
-import useApplications from "../../../../hooks/useJobApplications";
-import { Candidate } from "../../../../types/Apllication.model";
-import { LoadingIndicator } from "../../../../../../shared/components/LoadingIndicator/LoadingIndicator";
-import { formatDate } from "../../../../../../shared/utils/formData";
+import "../../styles/candidateApllications.css";
+import useApplications from "../../hooks/useJobApplications";
+import { Candidate } from "../../types/Apllication.model";
+import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";
+import { formatDate } from "../../../../shared/utils/formData";
 import { useParams } from "react-router";
-import useNotifications from "../../../../../notifications/hooks/useNotifications";
+import useNotifications from "../../../notifications/hooks/useNotifications";
 
 const CANDIDATES_PER_PAGE = 10;
 const STATUS_FILTERS = ["all", "new", "pending", "approved"] as const;

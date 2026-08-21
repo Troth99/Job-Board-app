@@ -17,6 +17,7 @@ function normalizeToArray(value: unknown): string[] {
     return value.filter(Boolean).map(String);
   }
 
+  // If the value is a string, split it by commas and trim each item
   if (typeof value === "string") {
     return value
       .split(",")

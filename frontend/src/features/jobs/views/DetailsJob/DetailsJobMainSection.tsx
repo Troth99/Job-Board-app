@@ -1,6 +1,8 @@
-import "../../../styles/detailsJobMainSection.css";
-import { Job } from "../../../types/Job.model";
-import { formatDate } from "../../../../../shared/utils/formData";
+import "../../styles/detailsJobMainSection.css";
+import { Job } from "../../types/Job.model";
+import { formatDate } from "../../../../shared/utils/formData";
+import { generateSeoConfig } from "../../../../seo/seo";
+import MetaData from "../../../../seo/MetaDataTags";
 
 const splitToList = (value?: string | string[]) => {
   if (Array.isArray(value)) {
@@ -39,15 +41,20 @@ function DetailsJobMainSection({
 
   const statusLabel = jobDetails?.isActive ? "Active" : "Closed";
 
+  // Format the updatedAt date or provide a default message if not available
   const updatedAt = jobDetails?.updatedAt
     ? formatDate(jobDetails.updatedAt, "en-US")
     : "Not updated yet";
 
+    // Format the applicationDeadline date or provide a default message if not available
   const deadline = jobDetails?.applicationDeadline
     ? formatDate(jobDetails.applicationDeadline, "en-US")
     : "Open until filled";
 
+  const seo = () => generateSeoConfig("jobDetails", jobDetails?.title || "Job Details");
   return (
+    <>
+     <MetaData seo={seo()} />
     <section className="details-job-main">
       <article className="details-job-main__hero">
         <div className="details-job-main__eyebrow-row">
@@ -214,6 +221,7 @@ function DetailsJobMainSection({
         </article>
       </div>
     </section>
+    </>
   );
 }
 

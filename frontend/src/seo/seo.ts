@@ -134,7 +134,12 @@ const pageSeoConfig: Record<string, () => SeoConfig> = {
 
 //Dynamically generate SEO config for each page
 export const generateSeoConfig = (pageKey: string, dynamicValue?: string): SeoConfig => {
-  const normalizedPageKey = pageKey === "terms-and-conditions" ? "termsAndConditions" : pageKey;
+  const normalizedPageKey =
+    pageKey === "terms-and-conditions"
+      ? "termsAndConditions"
+      : pageKey === "jobDetails"
+        ? "DetailsJobForCandidates"
+        : pageKey;
 
   if (normalizedPageKey === "category" && dynamicValue) {
     return {
@@ -142,6 +147,18 @@ export const generateSeoConfig = (pageKey: string, dynamicValue?: string): SeoCo
       title: t`Jobs from ${dynamicValue} | Job Board`,
       description: t`Explore the latest job opportunities in ${dynamicValue}. Find your next career move in ${dynamicValue} today!`,
       url: `${siteBaseUrl}/category/${encodeURIComponent(dynamicValue)}`,
+    };
+  }
+
+  if (normalizedPageKey === "DetailsJobForCandidates") {
+    const jobTitle = dynamicValue?.trim() || "Job details";
+
+    return {
+      ...getDefaultSeoConfig(),
+      title: t`Position overview for
+ ${jobTitle} | Job Board`,
+      description: t`View detailed information about ${jobTitle}, including responsibilities, requirements, benefits, and how to apply.`,
+      noindex: true,
     };
   }
 
@@ -214,6 +231,11 @@ export const seoConfig: Record<string, SeoConfig> = {
        jobGuide: {
         title: t`Job Posting Guide | Job Board`,
         description: t`Learn how to post a job listing on Job Board and reach a wide audience of qualified candidates.`,
+        noindex: true
+    },
+    DetailsJobForCandidates: {
+      title: t`Job details | Job Board`,
+      description: t`View detailed information about this job opportunity, including responsibilities, requirements, benefits, and how to apply.`,
         noindex: true
     },
 

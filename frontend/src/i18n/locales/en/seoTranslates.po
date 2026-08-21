@@ -85,6 +85,9 @@ msgstr "Job Board"
 msgid "Job Board - Find Your Next Opportunity"
 msgstr "Job Board - Find Your Next Opportunity"
 
+msgid "Job details | Job Board"
+msgstr "Job details | Job Board"
+
 msgid "Job Posting Guide | Job Board"
 msgstr "Job Posting Guide | Job Board"
 
@@ -105,6 +108,13 @@ msgstr "Manage your company profile, post job openings, and track applications w
 
 msgid "Manage your company's team members, assign roles, and collaborate effectively with the Company Members page on Job Board."
 msgstr "Manage your company's team members, assign roles, and collaborate effectively with the Company Members page on Job Board."
+
+msgid ""
+"Position overview for\n"
+" {jobTitle} | Job Board"
+msgstr ""
+"Position overview for\n"
+" {jobTitle} | Job Board"
 
 msgid "Post a Job | Job Board"
 msgstr "Post a Job | Job Board"
@@ -147,6 +157,12 @@ msgstr "View and edit your profile, manage your job applications, and track your
 
 msgid "View and manage your saved job listings, keep track of your favorite opportunities, and stay organized on Job Board."
 msgstr "View and manage your saved job listings, keep track of your favorite opportunities, and stay organized on Job Board."
+
+msgid "View detailed information about {jobTitle}, including responsibilities, requirements, benefits, and how to apply."
+msgstr "View detailed information about {jobTitle}, including responsibilities, requirements, benefits, and how to apply."
+
+msgid "View detailed information about this job opportunity, including responsibilities, requirements, benefits, and how to apply."
+msgstr "View detailed information about this job opportunity, including responsibilities, requirements, benefits, and how to apply."
 
 msgid "Your Notifications | Job Board"
 msgstr "Your Notifications | Job Board"
