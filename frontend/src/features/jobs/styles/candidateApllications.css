@@ -51,6 +51,111 @@
 	font-weight: 800;
 }
 
+.candidate-applications__summary-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.candidate-applications__summary-card {
+	padding: 16px 18px;
+	border-radius: 18px;
+	border: 1px solid var(--job-border, #e6eaf2);
+	background: var(--job-surface, #ffffff);
+	box-shadow: var(--job-shadow, 0 12px 28px rgba(13, 23, 42, 0.08));
+}
+
+.candidate-applications__summary-card span {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--job-text-soft, #475569);
+}
+
+.candidate-applications__summary-card strong {
+	font-size: 1.8rem;
+	line-height: 1;
+	color: var(--job-text-strong, #0f172a);
+}
+
+.candidate-applications__summary-card.is-new {
+	background: color-mix(in srgb, var(--job-brand, #007bff) 8%, var(--job-surface, #ffffff));
+}
+
+.candidate-applications__summary-card.is-pending {
+	background: color-mix(in srgb, var(--job-warning-bg, #fff6db) 74%, var(--job-surface, #ffffff));
+}
+
+.candidate-applications__summary-card.is-approved {
+	background: color-mix(in srgb, var(--job-success-bg, #e8f8ef) 74%, var(--job-surface, #ffffff));
+}
+
+.candidate-applications__toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.candidate-applications__filters {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.candidate-applications__filter {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 42px;
+	padding: 9px 14px;
+	border-radius: 999px;
+	border: 1px solid var(--job-border, #e6eaf2);
+	background: var(--job-surface, #ffffff);
+	color: var(--job-text-strong, #0f172a);
+	font-size: 0.9rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.candidate-applications__filter:hover {
+	transform: translateY(-1px);
+	border-color: color-mix(in srgb, var(--job-brand, #007bff) 40%, var(--job-border, #e6eaf2));
+}
+
+.candidate-applications__filter.is-active {
+	border-color: color-mix(in srgb, var(--job-brand, #007bff) 46%, var(--job-border, #e6eaf2));
+	background: color-mix(in srgb, var(--job-brand, #007bff) 10%, var(--job-surface-2, #f5f7fb));
+	box-shadow: 0 10px 22px color-mix(in srgb, var(--job-brand, #007bff) 12%, transparent);
+	color: var(--job-brand, #007bff);
+}
+
+.candidate-applications__filter-count {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 24px;
+	min-height: 24px;
+	padding: 0 6px;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--job-text-strong, #0f172a) 8%, transparent);
+	font-size: 0.8rem;
+	font-weight: 800;
+	color: inherit;
+}
+
+.candidate-applications__results-meta {
+	color: var(--job-text-soft, #475569);
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+
 .candidate-applications__table-shell,
 .candidate-applications__empty,
 .candidate-applications__state {
@@ -187,7 +292,29 @@
 	opacity: 0.8;
 }
 
+.candidate-applications__pagination {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.candidate-applications__pagination-button {
+	min-width: 110px;
+}
+
+.candidate-applications__pagination-label {
+	color: var(--job-text-soft, #475569);
+	font-size: 0.92rem;
+	font-weight: 700;
+}
+
 @media (max-width: 840px) {
+	.candidate-applications__summary-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
 	.candidate-applications__table,
 	.candidate-applications__table thead,
 	.candidate-applications__table tbody,
@@ -255,6 +382,18 @@
 
 	.candidate-applications__actions,
 	.candidate-applications__button {
+		width: 100%;
+	}
+
+	.candidate-applications__summary-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.candidate-applications__pagination {
+		justify-content: stretch;
+	}
+
+	.candidate-applications__pagination-button {
 		width: 100%;
 	}
 }

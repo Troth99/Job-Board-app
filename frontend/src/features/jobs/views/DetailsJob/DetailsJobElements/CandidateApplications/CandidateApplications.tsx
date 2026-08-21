@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import "../../../../styles/candidateApllications.css";
 import useApplications from "../../../../hooks/useJobApplications";
 import { Candidate } from "../../../../types/Apllication.model";
@@ -5,6 +6,19 @@ import { LoadingIndicator } from "../../../../../../shared/components/LoadingInd
 import { formatDate } from "../../../../../../shared/utils/formData";
 import { useParams } from "react-router";
 import useNotifications from "../../../../../notifications/hooks/useNotifications";
+
+const CANDIDATES_PER_PAGE = 10;
+const STATUS_FILTERS = ["all", "new", "pending", "approved"] as const;
+
+type StatusFilter = (typeof STATUS_FILTERS)[number];
+
+const normalizeStatus = (status?: string) => {
+  if (!status || status.trim().length === 0) {
+    return "new";
+  }
+
+  return status.toLowerCase();
+};
 
 const getStatusClassName = (status?: string) => {
   switch (status) {
@@ -39,11 +53,54 @@ export function CandidateApplications({
   setCandidates: React.Dispatch<React.SetStateAction<Candidate[]>>;
 }) {
   const { updateApplicationStatus, deleteApplication } = useApplications();
-const {companyId} = useParams()
-  const {createNotification} = useNotifications();
+  const { companyId } = useParams();
+  const { createNotification } = useNotifications();
+  const [activeFilter, setActiveFilter] = useState<StatusFilter>("all");
+  const [currentPage, setCurrentPage] = useState(1);
 
+  const statusCounts = useMemo(() => {
+    return candidates.reduce(
+      (accumulator, candidate) => {
+        const normalizedStatus = normalizeStatus(candidate.status);
+        accumulator.all += 1;
 
+        if (normalizedStatus === "pending") {
+          accumulator.pending += 1;
+        } else if (normalizedStatus === "approved") {
+          accumulator.approved += 1;
+        } else {
+          accumulator.new += 1;
+        }
 
+        return accumulator;
+      },
+      { all: 0, new: 0, pending: 0, approved: 0 },
+    );
+  }, [candidates]);
+
+  const filteredCandidates = useMemo(() => {
+    if (activeFilter === "all") {
+      return candidates;
+    }
+
+    return candidates.filter(
+      (candidate) => normalizeStatus(candidate.status) === activeFilter,
+    );
+  }, [activeFilter, candidates]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredCandidates.length / CANDIDATES_PER_PAGE),
+  );
+  const paginatedCandidates = filteredCandidates.slice(
+    (currentPage - 1) * CANDIDATES_PER_PAGE,
+    currentPage * CANDIDATES_PER_PAGE,
+  );
+
+  const handleFilterChange = (filter: StatusFilter) => {
+    setActiveFilter(filter);
+    setCurrentPage(1);
+  };
 
   const viewCvHandler = async (candidateId: string) => {
     try {
@@ -62,16 +119,14 @@ const {companyId} = useParams()
 
   const approveHandler = async (candidateId: string) => {
     try {
+      const currentCandidate = candidates.find((candidate) => candidate._id === candidateId);
 
-    
-      const currentCandidate = candidates.find(c => c._id === candidateId)
+      if (!currentCandidate) {
+        console.error("Candidate not found!");
+        return;
+      }
 
-      if(!currentCandidate) {
-        console.error("Candidate not found!")
-        return
-      };
-
-     await updateApplicationStatus(candidateId, "approved");
+      await updateApplicationStatus(candidateId, "approved");
       setCandidates((prev) =>
         prev.map((candidate) =>
           candidate._id === candidateId
@@ -81,9 +136,9 @@ const {companyId} = useParams()
       );
       await createNotification({
         user: currentCandidate.userId,
-        message: 'You have been accepted for the job.',
-        type: "application"
-      })
+        message: "You have been accepted for the job.",
+        type: "application",
+      });
     } catch (error) {
       console.error("Faileld to set status or add member.", error);
     }
@@ -92,12 +147,12 @@ const {companyId} = useParams()
   const rejectHandler = async (candidateId: string) => {
     try {
       await deleteApplication(candidateId);
-     setCandidates(candidate => candidate.filter(app => app._id !== candidateId));
-
+      setCandidates((candidate) => candidate.filter((application) => application._id !== candidateId));
     } catch (error) {
       console.error("Faileld to set status.", error);
     }
-  }
+  };
+
   return (
     <section className="candidate-applications" data-job-id={jobId}>
       <div className="candidate-applications__header">
@@ -125,7 +180,59 @@ const {companyId} = useParams()
           No candidates applied for this job.
         </div>
       ) : (
-        <div className="candidate-applications__table-shell">
+        <>
+          <div className="candidate-applications__summary-grid">
+            <article className="candidate-applications__summary-card is-all">
+              <span>Total</span>
+              <strong>{statusCounts.all}</strong>
+            </article>
+            <article className="candidate-applications__summary-card is-new">
+              <span>New</span>
+              <strong>{statusCounts.new}</strong>
+            </article>
+            <article className="candidate-applications__summary-card is-pending">
+              <span>Pending</span>
+              <strong>{statusCounts.pending}</strong>
+            </article>
+            <article className="candidate-applications__summary-card is-approved">
+              <span>Approved</span>
+              <strong>{statusCounts.approved}</strong>
+            </article>
+          </div>
+
+          <div className="candidate-applications__toolbar">
+            <div className="candidate-applications__filters" role="tablist" aria-label="Candidate status filters">
+              {STATUS_FILTERS.map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  className={`candidate-applications__filter ${
+                    activeFilter === filter ? "is-active" : ""
+                  }`}
+                  onClick={() => handleFilterChange(filter)}
+                >
+                  {filter === "all" ? "All" : getStatusLabel(filter)}
+                  <span className="candidate-applications__filter-count">
+                    {statusCounts[filter]}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {filteredCandidates.length > CANDIDATES_PER_PAGE ? (
+              <div className="candidate-applications__results-meta">
+                Showing {(currentPage - 1) * CANDIDATES_PER_PAGE + 1}-
+                {Math.min(currentPage * CANDIDATES_PER_PAGE, filteredCandidates.length)} of {filteredCandidates.length}
+              </div>
+            ) : null}
+          </div>
+
+          {filteredCandidates.length === 0 ? (
+            <div className="candidate-applications__empty">
+              No candidates match the selected status.
+            </div>
+          ) : (
+            <div className="candidate-applications__table-shell">
           <table className="candidate-applications__table">
             <thead>
               <tr>
@@ -138,7 +245,7 @@ const {companyId} = useParams()
               </tr>
             </thead>
             <tbody>
-              {candidates.map((candidate) => (
+              {paginatedCandidates.map((candidate) => (
                 <tr key={candidate._id}>
                   <td data-label="Email">{candidate.email}</td>
                   <td data-label="CV">
@@ -186,7 +293,33 @@ const {companyId} = useParams()
               ))}
             </tbody>
           </table>
-        </div>
+            </div>
+          )}
+
+          {filteredCandidates.length > CANDIDATES_PER_PAGE ? (
+            <div className="candidate-applications__pagination">
+              <button
+                type="button"
+                className="app-button app-button--secondary candidate-applications__pagination-button"
+                onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+                disabled={currentPage === 1}
+              >
+                Previous
+              </button>
+              <span className="candidate-applications__pagination-label">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                type="button"
+                className="app-button app-button--secondary candidate-applications__pagination-button"
+                onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+                disabled={currentPage === totalPages}
+              >
+                Next
+              </button>
+            </div>
+          ) : null}
+        </>
       )}
     </section>
   );
