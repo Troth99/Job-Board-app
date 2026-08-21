@@ -59,22 +59,9 @@
 .create-company-button,
 .update-company-button {
   grid-column: 1 / -1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   min-height: 48px;
   margin-top: 0.6rem;
-  border: none;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--member-brand, #0a84ff), var(--member-brand-alt, #00a6a6));
-  cursor: pointer;
-  box-shadow: 0 8px 16px rgba(12, 120, 174, 0.24);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
   box-sizing: border-box;
   padding: 0.64rem 1.08rem;
 }
@@ -83,40 +70,29 @@
 .create-company-button:hover:not(:disabled),
 .update-company-button:hover:not(:disabled) {
   transform: translateY(-1px);
-  background: linear-gradient(135deg, #0f89c5, #12b49f);
-  box-shadow: 0 10px 20px rgba(12, 120, 174, 0.25);
-  filter: saturate(1.04);
-  color: #ffffff;
 }
 
 .form-action-btn:active:not(:disabled),
 .create-company-button:active:not(:disabled),
 .update-company-button:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: 0 6px 14px rgba(12, 120, 174, 0.22);
 }
 
 .form-action-btn:disabled,
 .create-company-button:disabled,
 .update-company-button:disabled {
-  background: linear-gradient(120deg, #8a97a6, #75879d);
-  box-shadow: none;
-  cursor: not-allowed;
   opacity: 0.8;
-  filter: none;
 }
 
 /* Dark theme for buttons */
 [data-theme="dark"] .form-action-btn:hover:not(:disabled),
 [data-theme="dark"] .create-company-button:hover:not(:disabled),
 [data-theme="dark"] .update-company-button:hover:not(:disabled) {
-  background: linear-gradient(135deg, #63c9ff, #56e6bf);
 }
 
 [data-theme="dark"] .form-action-btn:disabled,
 [data-theme="dark"] .create-company-button:disabled,
 [data-theme="dark"] .update-company-button:disabled {
-  background: linear-gradient(120deg, #52657f, #42556c);
 }
 
 .dashboard .promote-ownership-btn:active {

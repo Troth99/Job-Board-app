@@ -167,9 +167,6 @@ msgstr "Team tools"
 msgid "This action is irreversible and you will lose access to company resources."
 msgstr "This action is irreversible and you will lose access to company resources."
 
-#~ msgid "Track interviews, deadlines, and team milestones."
-#~ msgstr "Track interviews, deadlines, and team milestones."
-
 msgid "Type <0>ABANDON</0> in order to proceed:"
 msgstr "Type <0>ABANDON</0> in order to proceed:"
 

@@ -6,9 +6,9 @@
   --post-text: #132238;
   --post-muted: #5f6f85;
   --post-border: #d7e3f6;
-  --post-focus: #0b7fdb;
-  --post-accent: #0a84ff;
-  --post-accent-2: #00a6a6;
+  --post-focus: #169b84;
+  --post-accent: #16a085;
+  --post-accent-2: #0f766e;
   --post-danger: #cf3351;
   --post-shadow: 0 18px 45px rgba(7, 25, 54, 0.16);
 }
@@ -221,29 +221,17 @@
 .post-job-button,
 .post-job-form button {
   grid-column: 1 / -1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  min-height: 52px;
   margin-top: 0.6rem;
-  border: none;
+  min-height: 52px;
   border-radius: 14px;
-  color: #ffffff;
   font-size: 1rem;
-  font-weight: 700;
   letter-spacing: 0.02em;
-  cursor: pointer;
-  background: linear-gradient(120deg, var(--post-accent), var(--post-accent-2));
-  box-shadow: 0 10px 24px rgba(10, 132, 255, 0.25);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
 .post-job-button:hover,
 .post-job-form button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(10, 132, 255, 0.32);
-  filter: saturate(1.06);
 }
 
 .post-job-button:active,
@@ -253,11 +241,7 @@
 
 .post-job-button:disabled,
 .post-job-form button:disabled {
-  background: linear-gradient(120deg, #8a97a6, #75879d);
-  box-shadow: none;
-  cursor: not-allowed;
   transform: none;
-  filter: none;
 }
 
 /* Dark theme */
@@ -267,9 +251,9 @@
   --post-text: #e6eef8;
   --post-muted: #9cb0c9;
   --post-border: #2f4767;
-  --post-focus: #4ca6ff;
-  --post-accent: #2384ff;
-  --post-accent-2: #12b0a6;
+  --post-focus: #47c2a9;
+  --post-accent: #24b394;
+  --post-accent-2: #1a8f80;
   --post-shadow: 0 22px 48px rgba(0, 0, 0, 0.45);
   border-color: rgba(91, 129, 172, 0.35);
 }

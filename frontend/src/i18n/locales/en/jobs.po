@@ -30,9 +30,6 @@ msgstr "1+ year relevant experience"
 msgid "2+ years relevant experience"
 msgstr "2+ years relevant experience"
 
-#~ msgid "2200-2800 BGN gross"
-#~ msgstr "2200-2800 BGN gross"
-
 msgid "2200-2800 EURO gross"
 msgstr "2200-2800 EURO gross"
 

@@ -181,7 +181,7 @@ function DetailsJob() {
                     {loading ? "Deleting..." : "Delete Job"}
                   </button>
                   <button
-                    className="update-status-button"
+                    className="app-button app-button--secondary"
                     onClick={changeStatusHandler}
                   >
                     {jobDetails?.isActive ? "Deactivate Job" : "Activate Job"}

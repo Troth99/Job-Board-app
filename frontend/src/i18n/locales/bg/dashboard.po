@@ -167,9 +167,6 @@ msgstr "Инструменти за екипа"
 msgid "This action is irreversible and you will lose access to company resources."
 msgstr "Това действие е необратимо и ще загубите достъп до ресурсите на компанията."
 
-#~ msgid "Track interviews, deadlines, and team milestones."
-#~ msgstr "Следете интервюта, крайни срокове и екипни етапи."
-
 msgid "Type <0>ABANDON</0> in order to proceed:"
 msgstr "Въведете <0>ABANDON</0>, за да продължите:"
 

@@ -50,7 +50,7 @@ msgid "e.g., Permanent, Temporary, Internship"
 msgstr "напр. Постоянна, Временна, Стаж"
 
 msgid "e.g., React, Communication, Driving License B"
-msgstr ""
+msgstr "напр. React, Комуникация, Шофьорска книжка B"
 
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr "напр. С удоволствие ще прегледаме вашата кандидатура и ще се свържем с избрани кандидати."
@@ -101,7 +101,7 @@ msgid "Saving..."
 msgstr "Запазване..."
 
 msgid "Skills"
-msgstr ""
+msgstr "Умения"
 
 msgid "Work Mode"
 msgstr "Режим на работа"

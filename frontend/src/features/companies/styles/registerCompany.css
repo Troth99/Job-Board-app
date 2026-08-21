@@ -221,28 +221,16 @@
 
 .create-company-button {
   grid-column: 1 / -1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   min-height: 52px;
   margin-top: 0.6rem;
-  border: none;
   border-radius: 14px;
   font-size: 1rem;
-  font-weight: 700;
   letter-spacing: 0.02em;
-  color: #ffffff;
-  background: linear-gradient(120deg, var(--register-accent), var(--register-accent-2));
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(10, 132, 255, 0.25);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
 .create-company-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(10, 132, 255, 0.32);
-  filter: saturate(1.06);
 }
 
 .create-company-button:active:not(:disabled) {
@@ -250,11 +238,7 @@
 }
 
 .create-company-button:disabled {
-  background: linear-gradient(120deg, #8a97a6, #75879d);
-  box-shadow: none;
-  cursor: not-allowed;
   opacity: 0.8;
-  filter: none;
 }
 
 /* Dark theme */
@@ -327,5 +311,4 @@
 }
 
 [data-theme="dark"] .create-company-button:disabled {
-  background: linear-gradient(120deg, #52657f, #42556c);
 }

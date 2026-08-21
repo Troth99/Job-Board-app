@@ -13,39 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#~ msgid "<0>Dual role support</0> — Be a candidate and a company team member at the same time."
-#~ msgstr "<0>Dual role support</0> — Be a candidate and a company team member at the same time."
-
-#~ msgid "<0>Free to use</0> — Creating an account and applying to jobs costs nothing."
-#~ msgstr "<0>Free to use</0> — Creating an account and applying to jobs costs nothing."
-
-#~ msgid "<0>Real-time everything</0> — Notifications, application updates, and company invites arrive instantly."
-#~ msgstr "<0>Real-time everything</0> — Notifications, application updates, and company invites arrive instantly."
-
-#~ msgid "<0>Secure & private</0> — Your data is protected with industry-standard encryption and token-based authentication."
-#~ msgstr "<0>Secure & private</0> — Your data is protected with industry-standard encryption and token-based authentication."
-
-#~ msgid "<0>Transparent process</0> — A clear application status pipeline so you always know what's happening."
-#~ msgstr "<0>Transparent process</0> — A clear application status pipeline so you always know what's happening."
-
-#~ msgid "<0>Verified companies</0> — Every company on the platform has an owner account and a registered profile."
-#~ msgstr "<0>Verified companies</0> — Every company on the platform has an owner account and a registered profile."
-
-#~ msgid "Already working somewhere or want to manage hiring yourself? Accept company invitations and collaborate inside company dashboards. Roles range from Member to Owner, each with clear responsibilities."
-#~ msgstr "Already working somewhere or want to manage hiring yourself? Accept company invitations and collaborate inside company dashboards. Roles range from Member to Owner, each with clear responsibilities."
-
-#~ msgid "Apply to any job in seconds. Attach your CV link and a cover letter tailored to the role. All your applications are stored in your profile so you never lose track of where you've applied."
-#~ msgstr "Apply to any job in seconds. Attach your CV link and a cover letter tailored to the role. All your applications are stored in your profile so you never lose track of where you've applied."
-
-#~ msgid "Apply with Confidence"
-#~ msgstr "Apply with Confidence"
-
-#~ msgid "Browse hundreds of listings and narrow them down instantly. Filter by job category, employment type (full-time, part-time, freelance, internship), company, or use the keyword search to find exactly what you're looking for."
-#~ msgstr "Browse hundreds of listings and narrow them down instantly. Filter by job category, employment type (full-time, part-time, freelance, internship), company, or use the keyword search to find exactly what you're looking for."
-
-#~ msgid "Build a professional profile with your name, location, phone number, and a custom avatar. Your profile is your identity on the platform — keep it up to date and let recruiters know who they're dealing with."
-#~ msgstr "Build a professional profile with your name, location, phone number, and a custom avatar. Your profile is your identity on the platform — keep it up to date and let recruiters know who they're dealing with."
-
 msgid "Career Advice"
 msgstr "Career Advice"
 
@@ -55,14 +22,8 @@ msgstr "Contacts"
 msgid "Cookies"
 msgstr "Cookies"
 
-#~ msgid "Create Your Account"
-#~ msgstr "Create Your Account"
-
 msgid "CV Tips"
 msgstr "CV Tips"
-
-#~ msgid "Explore & Filter Jobs"
-#~ msgstr "Explore & Filter Jobs"
 
 msgid "Follow Us"
 msgstr "Follow Us"
@@ -70,95 +31,26 @@ msgstr "Follow Us"
 msgid "For Employers"
 msgstr "For Employers"
 
-#~ msgid "For Job Seekers"
-#~ msgstr "For Job Seekers"
-
 msgid "For the Users"
 msgstr "For the Users"
 
 msgid "For Us"
 msgstr "For Us"
 
-#~ msgid "Four simple steps to land your next role."
-#~ msgstr "Four simple steps to land your next role."
-
-#~ msgid "From discovery to your first day on the job — we've got you covered."
-#~ msgstr "From discovery to your first day on the job — we've got you covered."
-
-#~ msgid "Get Notified & Respond"
-#~ msgstr "Get Notified & Respond"
-
-#~ msgid "How It Works"
-#~ msgstr "How It Works"
-
-#~ msgid "Instant Notifications"
-#~ msgstr "Instant Notifications"
-
 msgid "Interview Preparation"
 msgstr "Interview Preparation"
-
-#~ msgid "JobBoard is a modern job marketplace built to connect talented professionals with companies that are actively hiring. Whether you're exploring new opportunities or ready to make a change, we've built every feature with you in mind."
-#~ msgstr "JobBoard is a modern job marketplace built to connect talented professionals with companies that are actively hiring. Whether you're exploring new opportunities or ready to make a change, we've built every feature with you in mind."
 
 msgid "JobBoard. All rights reserved."
 msgstr "JobBoard. All rights reserved."
 
-#~ msgid "Join Company Teams"
-#~ msgstr "Join Company Teams"
-
-#~ msgid "Join thousands of professionals already using JobBoard to advance their careers."
-#~ msgstr "Join thousands of professionals already using JobBoard to advance their careers."
-
-#~ msgid "Know exactly where you stand. Applications move through a clear pipeline — <0>New → Under Review → Approved / Rejected</0> — and you're notified the moment a recruiter takes action on your application."
-#~ msgstr "Know exactly where you stand. Applications move through a clear pipeline — <0>New → Under Review → Approved / Rejected</0> — and you're notified the moment a recruiter takes action on your application."
-
 msgid "Legal Information"
 msgstr "Legal Information"
-
-#~ msgid "No more refreshing pages. Our real-time notification system (powered by Server-Sent Events) pushes updates to you the instant something happens — application status changes, company invites, and new messages."
-#~ msgstr "No more refreshing pages. Our real-time notification system (powered by Server-Sent Events) pushes updates to you the instant something happens — application status changes, company invites, and new messages."
-
-#~ msgid "One-Click Applications"
-#~ msgstr "One-Click Applications"
-
-#~ msgid "Open a job listing, read the full description — including required skills, benefits, salary, and deadline — then submit your application with your CV and a personalized cover letter."
-#~ msgstr "Open a job listing, read the full description — including required skills, benefits, salary, and deadline — then submit your application with your CV and a personalized cover letter."
 
 msgid "Privacy"
 msgstr "Privacy"
 
-#~ msgid "Ready to Find Your Next Job?"
-#~ msgstr "Ready to Find Your Next Job?"
-
-#~ msgid "Real-Time Status Tracking"
-#~ msgstr "Real-Time Status Tracking"
-
 msgid "Salary Negotiation"
 msgstr "Salary Negotiation"
 
-#~ msgid "Sign up for free in under a minute. Fill in your basic details and you're ready to explore the platform."
-#~ msgstr "Sign up for free in under a minute. Fill in your basic details and you're ready to explore the platform."
-
-#~ msgid "Sit back and let the notifications come to you. You'll be alerted in real time when recruiters review, approve, or reach out about your application."
-#~ msgstr "Sit back and let the notifications come to you. You'll be alerted in real time when recruiters review, approve, or reach out about your application."
-
-#~ msgid "Smart Job Search"
-#~ msgstr "Smart Job Search"
-
 msgid "Terms and Conditions"
 msgstr "Terms and Conditions"
-
-#~ msgid "Use the homepage to browse featured listings, explore jobs by category, or use advanced filters to zero in on the roles that match your skills and preferences."
-#~ msgstr "Use the homepage to browse featured listings, explore jobs by category, or use advanced filters to zero in on the roles that match your skills and preferences."
-
-#~ msgid "What JobBoard Offers You"
-#~ msgstr "What JobBoard Offers You"
-
-#~ msgid "Why JobBoard?"
-#~ msgstr "Why JobBoard?"
-
-#~ msgid "Your Next Career Move Starts Here"
-#~ msgstr "Your Next Career Move Starts Here"
-
-#~ msgid "Your Profile, Your Brand"
-#~ msgstr "Your Profile, Your Brand"
