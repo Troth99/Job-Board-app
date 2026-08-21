@@ -284,12 +284,38 @@
 	font-size: 0.92rem;
 }
 
+.candidate-applications__button--remove {
+	min-width: 48px;
+	padding: 9px 12px;
+	font-weight: 800;
+	background: var(--app-btn-secondary-surface);
+	color: var(--app-btn-secondary-text);
+	border: 1px solid var(--app-btn-secondary-border);
+	box-shadow: none;
+}
+
+.candidate-applications__button--remove:hover:not(:disabled) {
+	background: linear-gradient(135deg, var(--app-btn-danger-start), var(--app-btn-danger-end));
+	color: #ffffff;
+	border-color: transparent;
+	box-shadow: 0 10px 22px var(--app-btn-danger-shadow);
+}
+
 .candidate-applications__button:hover:not(:disabled) {
 	transform: translateY(-1px);
 }
 
 .candidate-applications__button:disabled {
 	opacity: 0.8;
+}
+
+.candidate-applications__button--remove:disabled {
+	opacity: 0.55;
+	background: color-mix(in srgb, var(--job-surface-2, #f5f7fb) 90%, var(--job-surface, #ffffff));
+	color: var(--job-text-soft, #475569);
+	border-color: color-mix(in srgb, var(--job-border, #e6eaf2) 88%, transparent);
+	box-shadow: none;
+	cursor: not-allowed;
 }
 
 .candidate-applications__pagination {

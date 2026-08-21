@@ -153,6 +153,17 @@ export function CandidateApplications({
     }
   };
 
+  const removeApprovedHandler = async (candidateId: string) => {
+    try {
+      await deleteApplication(candidateId);
+      setCandidates((candidate) =>
+        candidate.filter((application) => application._id !== candidateId),
+      );
+    } catch (error) {
+      console.error("Failed to remove approved candidate.", error);
+    }
+  };
+
   return (
     <section className="candidate-applications" data-job-id={jobId}>
       <div className="candidate-applications__header">
@@ -284,8 +295,23 @@ export function CandidateApplications({
                       <button
                         className="candidate-applications__button candidate-applications__button--reject"
                         onClick={() => rejectHandler(candidate._id)}
+                        disabled={candidate.status === "approved"}
                       >
                         Reject
+                      </button>
+                      <button
+                        type="button"
+                        className="candidate-applications__button candidate-applications__button--remove"
+                        onClick={() => removeApprovedHandler(candidate._id)}
+                        disabled={candidate.status !== "approved"}
+                        aria-label={`Remove ${candidate.email}`}
+                        title={
+                          candidate.status === "approved"
+                            ? "Remove approved candidate"
+                            : "Approve candidate first to unlock removal"
+                        }
+                      >
+                        X
                       </button>
                     </div>
                   </td>
