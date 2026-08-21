@@ -49,6 +49,9 @@ msgstr "e.g., Morning shift, 09:00-18:00"
 msgid "e.g., Permanent, Temporary, Internship"
 msgstr "e.g., Permanent, Temporary, Internship"
 
+msgid "e.g., React, Communication, Driving License B"
+msgstr "e.g., React, Communication, Driving License B"
+
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr "e.g., We are happy to review your application and contact shortlisted candidates."
 
@@ -96,6 +99,9 @@ msgstr "Save Changes"
 
 msgid "Saving..."
 msgstr "Saving..."
+
+msgid "Skills"
+msgstr "Skills"
 
 msgid "Work Mode"
 msgstr "Work Mode"

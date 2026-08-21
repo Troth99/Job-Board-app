@@ -85,6 +85,9 @@ msgstr "напр., Средно образование, Бакалавър, Не
 msgid "e.g., Morning shift, 09:00-18:00"
 msgstr "напр., Сутрешна смяна, 09:00-18:00 "
 
+msgid "e.g., React, Communication, Driving License B"
+msgstr "напр., React, Комуникация, Шофьорска книжка B"
+
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr "напр., Ще се радваме да прегледаме вашата кандидатура и да се свържем с одобрените кандидати."
 
@@ -273,6 +276,9 @@ msgstr "Изберете ниво на опит"
 
 msgid "Select work mode"
 msgstr "Изберете режим на работа"
+
+msgid "Skills (comma separated)"
+msgstr ""
 
 #~ msgid "Some experience preferred (6+ months)"
 #~ msgstr "Предпочита се някакъв опит (6+ месеца)"

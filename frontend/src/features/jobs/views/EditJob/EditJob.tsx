@@ -29,6 +29,7 @@ const initialValues = {
   shortName: ""
 },
   employmentType: "",
+  skills: "",
   requirements: "",
   benefits: "",
   tags: "",
@@ -44,6 +45,12 @@ const initialValues = {
   educationLevel: "",
   additionalInfo: "",
 };
+
+const splitCommaSeparatedValues = (value?: string) =>
+  (value || "")
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
 
 export default function EditJob() {
   const { companyId, jobId } = useParams();
@@ -68,6 +75,10 @@ export default function EditJob() {
 
       if (Array.isArray(currentJob.benefits)) {
         currentJob.benefits = currentJob.benefits.join(", ");
+      }
+
+      if (Array.isArray(currentJob.skills)) {
+        currentJob.skills = currentJob.skills.join(", ");
       }
 
       if (!currentJob.requirements && currentJob.skills) {
@@ -109,6 +120,7 @@ export default function EditJob() {
       }
       await updateJob(jobId, {
         ...values,
+        skills: splitCommaSeparatedValues(values.skills),
         updatedAt: new Date().toISOString(),
       });
       navigate(`/company/${companyId}/job/${jobId}/details`);
@@ -324,6 +336,18 @@ export default function EditJob() {
                 {...register("requirements")}
               />
               <div className="error-message">{errors.requirements}</div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="skills">
+                <Trans>Skills</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+              </label>
+              <input
+                type="text"
+                id="skills"
+                placeholder={t`e.g., React, Communication, Driving License B`}
+                {...register("skills")}
+              />
             </div>
 
             <div className="form-group">

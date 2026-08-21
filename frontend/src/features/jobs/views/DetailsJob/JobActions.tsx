@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router";
-import "./Details.css";
+import "../../styles/variables.css";
+import "../../styles/jobActions.css";
 import { useEffect, useState } from "react";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { Job } from "../../types/Job.model";

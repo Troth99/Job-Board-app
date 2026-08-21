@@ -201,6 +201,9 @@ msgstr ""
 msgid "e.g., Permanent, Temporary, Internship"
 msgstr ""
 
+msgid "e.g., React, Communication, Driving License B"
+msgstr ""
+
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr ""
 
@@ -583,6 +586,12 @@ msgid "Set the hiring format that defines the relationship between company and c
 msgstr ""
 
 msgid "Show your best! Paste a link to your CV and add a short cover letterM"
+msgstr ""
+
+msgid "Skills"
+msgstr ""
+
+msgid "Skills (comma separated)"
 msgstr ""
 
 msgid "Sofia, Bulgaria"

@@ -1,0 +1,276 @@
+.candidate-applications {
+	display: grid;
+	gap: 18px;
+}
+
+.candidate-applications__header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 18px;
+	flex-wrap: wrap;
+}
+
+.candidate-applications__eyebrow {
+	display: inline-flex;
+	margin-bottom: 10px;
+	padding: 8px 14px;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--job-brand, #007bff) 10%, var(--job-surface-2, #f5f7fb));
+	color: var(--job-brand, #007bff);
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.candidate-applications__header h3 {
+	margin: 0;
+	color: var(--job-text-strong, #0f172a);
+	font-size: clamp(1.4rem, 2.6vw, 2rem);
+}
+
+.candidate-applications__header p {
+	margin: 10px 0 0;
+	max-width: 70ch;
+	color: var(--job-text-soft, #475569);
+	line-height: 1.65;
+}
+
+.candidate-applications__count {
+	display: inline-flex;
+	align-items: center;
+	min-height: 48px;
+	padding: 10px 16px;
+	border-radius: 14px;
+	border: 1px solid var(--job-border, #e6eaf2);
+	background: var(--job-surface, #ffffff);
+	box-shadow: var(--job-shadow, 0 12px 28px rgba(13, 23, 42, 0.08));
+	color: var(--job-text-strong, #0f172a);
+	font-size: 0.95rem;
+	font-weight: 800;
+}
+
+.candidate-applications__table-shell,
+.candidate-applications__empty,
+.candidate-applications__state {
+	border-radius: 22px;
+	border: 1px solid var(--job-border, #e6eaf2);
+	background: var(--job-surface, #ffffff);
+	box-shadow: var(--job-shadow, 0 12px 28px rgba(13, 23, 42, 0.08));
+}
+
+.candidate-applications__table-shell {
+	overflow: hidden;
+}
+
+.candidate-applications__state,
+.candidate-applications__empty {
+	padding: 28px;
+}
+
+.candidate-applications__empty {
+	text-align: center;
+	color: var(--job-text-soft, #475569);
+	font-size: 1rem;
+}
+
+.candidate-applications__table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.candidate-applications__table thead {
+	background:
+		linear-gradient(
+			180deg,
+			color-mix(in srgb, var(--job-surface-2, #f5f7fb) 88%, transparent),
+			color-mix(in srgb, var(--job-surface-2, #f5f7fb) 62%, var(--job-surface, #ffffff))
+		);
+}
+
+.candidate-applications__table th,
+.candidate-applications__table td {
+	padding: 18px 16px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.candidate-applications__table th {
+	color: var(--job-text-strong, #0f172a);
+	font-size: 0.84rem;
+	font-weight: 800;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.candidate-applications__table td {
+	color: var(--job-text-soft, #475569);
+	border-top: 1px solid color-mix(in srgb, var(--job-border, #e6eaf2) 86%, transparent);
+	font-size: 0.98rem;
+}
+
+.candidate-applications__table tbody tr {
+	transition: background-color 160ms ease;
+}
+
+.candidate-applications__table tbody tr:hover {
+	background: color-mix(in srgb, var(--job-brand, #007bff) 5%, var(--job-surface, #ffffff));
+}
+
+.candidate-applications__cv-link {
+	color: var(--job-brand, #007bff);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.candidate-applications__cv-link:hover {
+	color: var(--job-brand-hover, #005ec4);
+	text-decoration: underline;
+}
+
+.candidate-applications__status {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 92px;
+	padding: 8px 12px;
+	border-radius: 999px;
+	border: 1px solid transparent;
+	font-size: 0.88rem;
+	font-weight: 800;
+}
+
+.candidate-applications__status--new {
+	background: color-mix(in srgb, var(--job-brand, #007bff) 9%, var(--job-surface-2, #f5f7fb));
+	color: var(--job-brand, #007bff);
+	border-color: color-mix(in srgb, var(--job-brand, #007bff) 20%, transparent);
+}
+
+.candidate-applications__status--pending {
+	background: var(--job-warning-bg, #fff6db);
+	color: var(--job-warning-text, #9a6700);
+	border-color: color-mix(in srgb, var(--job-warning-text, #9a6700) 24%, transparent);
+}
+
+.candidate-applications__status--approved {
+	background: var(--job-success-bg, #e8f8ef);
+	color: var(--job-success-text, #127a41);
+	border-color: color-mix(in srgb, var(--job-success-text, #127a41) 24%, transparent);
+}
+
+.candidate-applications__status--rejected {
+	background: var(--job-danger-bg, #ffecec);
+	color: var(--job-danger-text, #a31919);
+	border-color: color-mix(in srgb, var(--job-danger-text, #a31919) 24%, transparent);
+}
+
+.candidate-applications__actions {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.candidate-applications__button {
+	min-width: 96px;
+	min-height: 40px;
+	padding: 9px 14px;
+	border: none;
+	border-radius: 12px;
+	color: #ffffff;
+	font-size: 0.92rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+
+.candidate-applications__button:hover:not(:disabled) {
+	transform: translateY(-1px);
+}
+
+.candidate-applications__button:disabled {
+	cursor: not-allowed;
+	opacity: 0.55;
+}
+
+.candidate-applications__button--approve {
+	background: linear-gradient(135deg, #16a34a, #15803d);
+	box-shadow: 0 10px 22px rgba(22, 163, 74, 0.2);
+}
+
+.candidate-applications__button--reject {
+	background: linear-gradient(135deg, #ef4444, #dc2626);
+	box-shadow: 0 10px 22px rgba(239, 68, 68, 0.2);
+}
+
+@media (max-width: 840px) {
+	.candidate-applications__table,
+	.candidate-applications__table thead,
+	.candidate-applications__table tbody,
+	.candidate-applications__table tr,
+	.candidate-applications__table th,
+	.candidate-applications__table td {
+		display: block;
+	}
+
+	.candidate-applications__table thead {
+		display: none;
+	}
+
+	.candidate-applications__table tbody {
+		display: grid;
+		gap: 14px;
+		padding: 14px;
+	}
+
+	.candidate-applications__table tbody tr {
+		overflow: hidden;
+		border: 1px solid color-mix(in srgb, var(--job-border, #e6eaf2) 90%, transparent);
+		border-radius: 18px;
+		background: color-mix(in srgb, var(--job-surface-2, #f5f7fb) 62%, var(--job-surface, #ffffff));
+	}
+
+	.candidate-applications__table tbody tr:hover {
+		background: color-mix(in srgb, var(--job-brand, #007bff) 7%, var(--job-surface, #ffffff));
+	}
+
+	.candidate-applications__table td {
+		position: relative;
+		padding: 14px 16px 14px 46%;
+		border-top: 1px solid color-mix(in srgb, var(--job-border, #e6eaf2) 86%, transparent);
+		min-height: 56px;
+	}
+
+	.candidate-applications__table td:first-child {
+		border-top: none;
+	}
+
+	.candidate-applications__table td::before {
+		content: attr(data-label);
+		position: absolute;
+		top: 14px;
+		left: 16px;
+		width: calc(46% - 20px);
+		color: var(--job-text-strong, #0f172a);
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+}
+
+@media (max-width: 560px) {
+	.candidate-applications__table td {
+		padding-left: 16px;
+		padding-top: 40px;
+	}
+
+	.candidate-applications__table td::before {
+		width: auto;
+	}
+
+	.candidate-applications__actions,
+	.candidate-applications__button {
+		width: 100%;
+	}
+}

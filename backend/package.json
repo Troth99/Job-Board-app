@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon --watch src src/index.js"
+    "dev": "nodemon --watch src src/index.js",
+    "migrate:add-job-skills": "node src/scripts/addJobSkillsField.js"
   },
   "keywords": [],
   "author": "",

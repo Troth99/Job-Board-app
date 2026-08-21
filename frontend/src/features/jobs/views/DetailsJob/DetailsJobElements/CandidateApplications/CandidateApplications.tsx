@@ -1,10 +1,31 @@
-import "./CandidateApplications.css";
+import "../../../../styles/candidateApllications.css";
 import useApplications from "../../../../hooks/useJobApplications";
 import { Candidate } from "../../../../types/Apllication.model";
 import { LoadingIndicator } from "../../../../../../shared/components/LoadingIndicator/LoadingIndicator";
 import { formatDate } from "../../../../../../shared/utils/formData";
 import { useParams } from "react-router";
 import useNotifications from "../../../../../notifications/hooks/useNotifications";
+
+const getStatusClassName = (status?: string) => {
+  switch (status) {
+    case "approved":
+      return "candidate-applications__status--approved";
+    case "pending":
+      return "candidate-applications__status--pending";
+    case "rejected":
+      return "candidate-applications__status--rejected";
+    default:
+      return "candidate-applications__status--new";
+  }
+};
+
+const getStatusLabel = (status?: string) => {
+  if (!status) {
+    return "New";
+  }
+
+  return status.charAt(0).toUpperCase() + status.slice(1);
+};
 
 export function CandidateApplications({
   jobId,
@@ -78,73 +99,95 @@ const {companyId} = useParams()
     }
   }
   return (
-    <div className="candidates-section">
-      <h3>Candidate Applications</h3>
+    <section className="candidate-applications" data-job-id={jobId}>
+      <div className="candidate-applications__header">
+        <div>
+          <span className="candidate-applications__eyebrow">
+            Candidate pipeline
+          </span>
+          <h3>Candidate Applications</h3>
+          <p>
+            Review every application, open resumes, and move strong candidates
+            through the process quickly.
+          </p>
+        </div>
+        <div className="candidate-applications__count">
+          {candidates.length} {candidates.length === 1 ? "candidate" : "candidates"}
+        </div>
+      </div>
+
       {loading ? (
-        <LoadingIndicator message="Loading applications..." size="small" />
+        <div className="candidate-applications__state">
+          <LoadingIndicator message="Loading applications..." size="small" />
+        </div>
       ) : candidates.length === 0 ? (
-        <div className="no-candidates-message">
+        <div className="candidate-applications__empty">
           No candidates applied for this job.
         </div>
       ) : (
-        <table className="candidates-list">
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th>CV</th>
-              <th>Phone</th>
-              <th>Applied On</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {candidates.map((candidate) => (
-              <tr key={candidate._id}>
-                <td data-label="Email">{candidate.email}</td>
-                <td data-label="CV">
-                  <a
-                    href={candidate.cv}
-                    target="_blank"
-                    className="cv-link"
-                    onClick={() => viewCvHandler(candidate._id)}
-                  >
-                    View CV
-                  </a>
-                </td>
-                <td data-label="Phone">{candidate?.phone}
-
-                </td>
-                <td data-label="Applied On">
-                  {candidate.appliedAt
-                    ? formatDate(candidate.appliedAt, "en-US")
-                    : ""}
-                </td>
-                <td data-label="Status">{candidate.status}</td>
-                <td data-label="Actions">
-                  <button
-                    className={`approve-button ${
-                      candidate.status === "approved" ? "disabled" : ""
-                    }`}
-                    onClick={() => approveHandler(candidate._id)}
-                    disabled={candidate.status === "approved"}
-                  >
-                    Approve
-                  </button>
-                  <button 
-                  className={`reject-button ${
-                    candidate.status ==='rejected' ? "disabled" : ''
-                  }`}
-                  onClick={() => rejectHandler(candidate._id)}
-                  >
-                    Reject
-                  </button>
-                </td>
+        <div className="candidate-applications__table-shell">
+          <table className="candidate-applications__table">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>CV</th>
+                <th>Phone</th>
+                <th>Applied On</th>
+                <th>Status</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {candidates.map((candidate) => (
+                <tr key={candidate._id}>
+                  <td data-label="Email">{candidate.email}</td>
+                  <td data-label="CV">
+                    <a
+                      href={candidate.cv}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="candidate-applications__cv-link"
+                      onClick={() => viewCvHandler(candidate._id)}
+                    >
+                      View CV
+                    </a>
+                  </td>
+                  <td data-label="Phone">{candidate.phone || "Not provided"}</td>
+                  <td data-label="Applied On">
+                    {candidate.appliedAt
+                      ? formatDate(candidate.appliedAt, "en-US")
+                      : "Not available"}
+                  </td>
+                  <td data-label="Status">
+                    <span
+                      className={`candidate-applications__status ${getStatusClassName(candidate.status)}`}
+                    >
+                      {getStatusLabel(candidate.status)}
+                    </span>
+                  </td>
+                  <td data-label="Actions">
+                    <div className="candidate-applications__actions">
+                      <button
+                        className="candidate-applications__button candidate-applications__button--approve"
+                        onClick={() => approveHandler(candidate._id)}
+                        disabled={candidate.status === "approved"}
+                      >
+                        Approve
+                      </button>
+                      <button
+                        className="candidate-applications__button candidate-applications__button--reject"
+                        onClick={() => rejectHandler(candidate._id)}
+                      >
+                        Reject
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
-    </div>
+    </section>
   );
 }

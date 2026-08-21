@@ -112,6 +112,13 @@ const jobSchema = new Schema({
     default: "",
     trim: true,
   },
+  skills: {
+    type: [{
+      type: String,
+      trim: true,
+    }],
+    default: [],
+  },
 
   views: { type: Number, default: 0 },
 

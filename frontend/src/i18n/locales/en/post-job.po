@@ -85,6 +85,9 @@ msgstr "e.g., High School, Bachelor, Not required"
 msgid "e.g., Morning shift, 09:00-18:00"
 msgstr "e.g., Morning shift, 09:00-18:00"
 
+msgid "e.g., React, Communication, Driving License B"
+msgstr "e.g., React, Communication, Driving License B"
+
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr "e.g., We are happy to review your application and contact shortlisted candidates."
 
@@ -273,6 +276,9 @@ msgstr "Select experience level"
 
 msgid "Select work mode"
 msgstr "Select work mode"
+
+msgid "Skills (comma separated)"
+msgstr "Skills (comma separated)"
 
 #~ msgid "Some experience preferred (6+ months)"
 #~ msgstr "Some experience preferred (6+ months)"

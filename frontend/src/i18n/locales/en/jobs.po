@@ -201,6 +201,9 @@ msgstr "e.g., Morning shift, 09:00-18:00"
 msgid "e.g., Permanent, Temporary, Internship"
 msgstr "e.g., Permanent, Temporary, Internship"
 
+msgid "e.g., React, Communication, Driving License B"
+msgstr "e.g., React, Communication, Driving License B"
+
 msgid "e.g., We are happy to review your application and contact shortlisted candidates."
 msgstr "e.g., We are happy to review your application and contact shortlisted candidates."
 
@@ -584,6 +587,12 @@ msgstr "Set the hiring format that defines the relationship between company and 
 
 msgid "Show your best! Paste a link to your CV and add a short cover letterM"
 msgstr "Show your best! Paste a link to your CV and add a short cover letterM"
+
+msgid "Skills"
+msgstr "Skills"
+
+msgid "Skills (comma separated)"
+msgstr "Skills (comma separated)"
 
 msgid "Sofia, Bulgaria"
 msgstr "Sofia, Bulgaria"
