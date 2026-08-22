@@ -112,7 +112,9 @@ msgstr "Управлявайте членовете на екипа на ваш�
 msgid ""
 "Position overview for\n"
 " {jobTitle} | Job Board"
-msgstr "Преглед на позицията за\n {jobTitle} | Job Board"
+msgstr ""
+"Преглед на позицията за\n"
+" {jobTitle} | Job Board"
 
 msgid "Post a Job | Job Board"
 msgstr "Публикуване на Обява за Работа | Job Board"

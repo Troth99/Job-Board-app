@@ -13,8 +13,8 @@ import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
 import useJobs from "../../hooks/useJobsAPI";
 import useApplications from "../../hooks/useJobApplications";
 
-//toReractor
 
+//Deactive job should make the job not visible for candidates and not allow them to apply. It should also remove the job from the favorites of candidates who have favorited it.
 function DetailsJob() {
   const { companyId, jobId } = useParams<{
     companyId: string;

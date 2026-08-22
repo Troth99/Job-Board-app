@@ -271,17 +271,19 @@
 }
 
 .candidate-applications__actions {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(3, max-content);
+	align-items: center;
 	gap: 10px;
-	flex-wrap: wrap;
 }
 
 .candidate-applications__button {
-	min-width: 96px;
+	min-width: 88px;
 	min-height: 40px;
-	padding: 9px 14px;
+	padding: 9px 12px;
 	border-radius: 12px;
-	font-size: 0.92rem;
+	font-size: 0.88rem;
+	white-space: nowrap;
 }
 
 .candidate-applications__button--remove {
@@ -409,6 +411,11 @@
 	.candidate-applications__actions,
 	.candidate-applications__button {
 		width: 100%;
+	}
+
+	.candidate-applications__actions {
+		display: flex;
+		flex-wrap: wrap;
 	}
 
 	.candidate-applications__summary-grid {

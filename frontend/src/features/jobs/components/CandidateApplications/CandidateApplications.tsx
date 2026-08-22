@@ -6,6 +6,8 @@ import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator
 import { formatDate } from "../../../../shared/utils/formData";
 import { useParams } from "react-router";
 import useNotifications from "../../../notifications/hooks/useNotifications";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 
 const CANDIDATES_PER_PAGE = 10;
 const STATUS_FILTERS = ["all", "new", "pending", "approved"] as const;
@@ -32,13 +34,18 @@ const getStatusClassName = (status?: string) => {
       return "candidate-applications__status--new";
   }
 };
-
+// Function to get a user-friendly label for the status
 const getStatusLabel = (status?: string) => {
-  if (!status) {
-    return "New";
+  switch (normalizeStatus(status)) {
+    case "approved":
+      return t`Approved`;
+    case "pending":
+      return t`Pending`;
+    case "rejected":
+      return t`Rejected`;
+    default:
+      return t`New`;
   }
-
-  return status.charAt(0).toUpperCase() + status.slice(1);
 };
 
 export function CandidateApplications({
@@ -58,6 +65,7 @@ export function CandidateApplications({
   const [activeFilter, setActiveFilter] = useState<StatusFilter>("all");
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Memoized computation of status counts for the candidates
   const statusCounts = useMemo(() => {
     return candidates.reduce(
       (accumulator, candidate) => {
@@ -78,6 +86,7 @@ export function CandidateApplications({
     );
   }, [candidates]);
 
+  // Memoized computation of filtered candidates based on the active filter
   const filteredCandidates = useMemo(() => {
     if (activeFilter === "all") {
       return candidates;
@@ -134,11 +143,16 @@ export function CandidateApplications({
             : candidate
         )
       );
-      await createNotification({
-        user: currentCandidate.userId,
-        message: "You have been accepted for the job.",
-        type: "application",
-      });
+      if(currentCandidate) {
+        await createNotification({
+          user: currentCandidate.userId,
+          message: "You have been accepted for the job.",
+          type: "application",
+          accepted: true,
+          rejected: false,
+        });
+      }
+
     } catch (error) {
       console.error("Faileld to set status or add member.", error);
     }
@@ -146,8 +160,30 @@ export function CandidateApplications({
 
   const rejectHandler = async (candidateId: string) => {
     try {
-      await deleteApplication(candidateId);
-      setCandidates((candidate) => candidate.filter((application) => application._id !== candidateId));
+      const currentCandidate = candidates.find((candidate) => candidate._id === candidateId);
+
+      if(!currentCandidate) {
+        console.error("Candidate not found!");
+        return;
+      }
+
+      await updateApplicationStatus(candidateId, "rejected");
+      setCandidates((prev) =>
+        prev.map((candidate) => 
+          candidate._id === candidateId
+            ? { ...candidate, status: "rejected" }
+            : candidate
+        )
+      );
+      if (currentCandidate) {
+        await createNotification({
+          user: currentCandidate.userId,
+          message: "You have been rejected for the job.",
+          type: "application",
+          accepted: false,
+          rejected: true,
+        });
+      }
     } catch (error) {
       console.error("Faileld to set status.", error);
     }
@@ -169,50 +205,53 @@ export function CandidateApplications({
       <div className="candidate-applications__header">
         <div>
           <span className="candidate-applications__eyebrow">
-            Candidate pipeline
+            <Trans>Candidate pipeline</Trans>
           </span>
-          <h3>Candidate Applications</h3>
+          <h3><Trans>Candidate Applications</Trans></h3>
           <p>
-            Review every application, open resumes, and move strong candidates
-            through the process quickly.
+            <Trans>
+              Review every application, open resumes, and move strong candidates
+              through the process quickly.
+            </Trans>
           </p>
         </div>
         <div className="candidate-applications__count">
-          {candidates.length} {candidates.length === 1 ? "candidate" : "candidates"}
+          {candidates.length}{" "}
+          {candidates.length === 1 ? <Trans>candidate</Trans> : <Trans>candidates</Trans>}
         </div>
       </div>
 
       {loading ? (
         <div className="candidate-applications__state">
-          <LoadingIndicator message="Loading applications..." size="small" />
+          <LoadingIndicator message={t`Loading applications...`} size="small" />
         </div>
       ) : candidates.length === 0 ? (
         <div className="candidate-applications__empty">
-          No candidates applied for this job.
+          <Trans>No candidates applied for this job.</Trans>
         </div>
       ) : (
         <>
           <div className="candidate-applications__summary-grid">
             <article className="candidate-applications__summary-card is-all">
-              <span>Total</span>
+              <span><Trans>Total</Trans></span>
               <strong>{statusCounts.all}</strong>
             </article>
             <article className="candidate-applications__summary-card is-new">
-              <span>New</span>
+              <span><Trans>New</Trans></span>
               <strong>{statusCounts.new}</strong>
             </article>
             <article className="candidate-applications__summary-card is-pending">
-              <span>Pending</span>
+              <span><Trans>Pending</Trans></span>
               <strong>{statusCounts.pending}</strong>
             </article>
             <article className="candidate-applications__summary-card is-approved">
-              <span>Approved</span>
+              <span><Trans>Approved</Trans></span>
               <strong>{statusCounts.approved}</strong>
             </article>
           </div>
 
           <div className="candidate-applications__toolbar">
-            <div className="candidate-applications__filters" role="tablist" aria-label="Candidate status filters">
+            <div className="candidate-applications__filters" role="tablist" aria-label={t`Candidate status filters`}>
               {STATUS_FILTERS.map((filter) => (
                 <button
                   key={filter}
@@ -222,7 +261,7 @@ export function CandidateApplications({
                   }`}
                   onClick={() => handleFilterChange(filter)}
                 >
-                  {filter === "all" ? "All" : getStatusLabel(filter)}
+                  {filter === "all" ? <Trans>All</Trans> : getStatusLabel(filter)}
                   <span className="candidate-applications__filter-count">
                     {statusCounts[filter]}
                   </span>
@@ -232,34 +271,36 @@ export function CandidateApplications({
 
             {filteredCandidates.length > CANDIDATES_PER_PAGE ? (
               <div className="candidate-applications__results-meta">
-                Showing {(currentPage - 1) * CANDIDATES_PER_PAGE + 1}-
-                {Math.min(currentPage * CANDIDATES_PER_PAGE, filteredCandidates.length)} of {filteredCandidates.length}
+                <Trans>
+                  Showing {(currentPage - 1) * CANDIDATES_PER_PAGE + 1}-
+                  {Math.min(currentPage * CANDIDATES_PER_PAGE, filteredCandidates.length)} of {filteredCandidates.length}
+                </Trans>
               </div>
             ) : null}
           </div>
 
           {filteredCandidates.length === 0 ? (
             <div className="candidate-applications__empty">
-              No candidates match the selected status.
+              <Trans>No candidates match the selected status.</Trans>
             </div>
           ) : (
             <div className="candidate-applications__table-shell">
           <table className="candidate-applications__table">
             <thead>
               <tr>
-                <th>Email</th>
-                <th>CV</th>
-                <th>Phone</th>
-                <th>Applied On</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th><Trans>Email</Trans></th>
+                <th><Trans>CV</Trans></th>
+                <th><Trans>Phone</Trans></th>
+                <th><Trans>Applied On</Trans></th>
+                <th><Trans>Status</Trans></th>
+                <th><Trans>Actions</Trans></th>
               </tr>
             </thead>
             <tbody>
               {paginatedCandidates.map((candidate) => (
                 <tr key={candidate._id}>
-                  <td data-label="Email">{candidate.email}</td>
-                  <td data-label="CV">
+                  <td data-label={t`Email`}>{candidate.email}</td>
+                  <td data-label={t`CV`}>
                     <a
                       href={candidate.cv}
                       target="_blank"
@@ -267,48 +308,48 @@ export function CandidateApplications({
                       className="candidate-applications__cv-link"
                       onClick={() => viewCvHandler(candidate._id)}
                     >
-                      View CV
+                      <Trans>View CV</Trans>
                     </a>
                   </td>
-                  <td data-label="Phone">{candidate.phone || "Not provided"}</td>
-                  <td data-label="Applied On">
+                  <td data-label={t`Phone`}>{candidate.phone || t`Not provided`}</td>
+                  <td data-label={t`Applied On`}>
                     {candidate.appliedAt
                       ? formatDate(candidate.appliedAt, "en-US")
-                      : "Not available"}
+                      : t`Not available`}
                   </td>
-                  <td data-label="Status">
+                  <td data-label={t`Status`}>
                     <span
                       className={`candidate-applications__status ${getStatusClassName(candidate.status)}`}
                     >
                       {getStatusLabel(candidate.status)}
                     </span>
                   </td>
-                  <td data-label="Actions">
+                  <td data-label={t`Actions`}>
                     <div className="candidate-applications__actions">
                       <button
                         className="candidate-applications__button candidate-applications__button--approve"
                         onClick={() => approveHandler(candidate._id)}
                         disabled={candidate.status === "approved"}
                       >
-                        Approve
+                        <Trans>Approve</Trans>
                       </button>
                       <button
                         className="candidate-applications__button candidate-applications__button--reject"
                         onClick={() => rejectHandler(candidate._id)}
                         disabled={candidate.status === "approved"}
                       >
-                        Reject
+                        <Trans>Reject</Trans>
                       </button>
                       <button
                         type="button"
                         className="candidate-applications__button candidate-applications__button--remove"
                         onClick={() => removeApprovedHandler(candidate._id)}
                         disabled={candidate.status !== "approved"}
-                        aria-label={`Remove ${candidate.email}`}
+                        aria-label={t`Remove ${candidate.email}`}
                         title={
                           candidate.status === "approved"
-                            ? "Remove approved candidate"
-                            : "Approve candidate first to unlock removal"
+                            ? t`Remove approved candidate`
+                            : t`Approve candidate first to unlock removal`
                         }
                       >
                         X
@@ -330,10 +371,12 @@ export function CandidateApplications({
                 onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
                 disabled={currentPage === 1}
               >
-                Previous
+                <Trans>Previous</Trans>
               </button>
               <span className="candidate-applications__pagination-label">
-                Page {currentPage} of {totalPages}
+                <Trans>
+                  Page {currentPage} of {totalPages}
+                </Trans>
               </span>
               <button
                 type="button"
@@ -341,7 +384,7 @@ export function CandidateApplications({
                 onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
                 disabled={currentPage === totalPages}
               >
-                Next
+                <Trans>Next</Trans>
               </button>
             </div>
           ) : null}

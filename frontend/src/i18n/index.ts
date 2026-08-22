@@ -1,5 +1,7 @@
 import { i18n } from "@lingui/core";
 
+//bulgarian imports
+
 import { messages as bgApplyModal } from "./locales/bg/applyModalForJob.po";
 import { messages as bgAuth } from "./locales/bg/auth.po";
 import { messages as bgCategories } from "./locales/bg/categories.po";
@@ -32,7 +34,9 @@ import { messages as bgSeo } from "./locales/bg/seoTranslates.po";
 import { messages as bgShared } from "./locales/bg/shared.po";
 import { messages as bgTermsAndConditions } from "./locales/bg/terms-and-conditions.po";
 import { messages as bgViewAllCompanies } from "./locales/bg/view-all-companies.po";
+import {messages as bgDetailsForJob} from "./locales/bg/detailsForJob.po";
 
+//english imports
 import { messages as enApplyModal } from "./locales/en/applyModalForJob.po";
 import { messages as enAuth } from "./locales/en/auth.po";
 import { messages as enCategories } from "./locales/en/categories.po";
@@ -65,6 +69,7 @@ import { messages as enSeo } from "./locales/en/seoTranslates.po";
 import { messages as enShared } from "./locales/en/shared.po";
 import { messages as enTermsAndConditions } from "./locales/en/terms-and-conditions.po";
 import { messages as enViewAllCompanies } from "./locales/en/view-all-companies.po";
+import {messages as enDetailsForJob} from "./locales/en/detailsForJob.po";
 
 export const locales = ["bg", "en"] as const;
 export type AppLocale = (typeof locales)[number];
@@ -105,6 +110,7 @@ const bgMessages = {
   ...bgSavedJobs,
   ...bgApplyModal,
   ...bgJobDetails,
+  ...bgDetailsForJob,
 };
 
 const enMessages = {
@@ -140,6 +146,7 @@ const enMessages = {
   ...enSavedJobs,
   ...enApplyModal,
   ...enJobDetails,
+  ...enDetailsForJob,
 };
 
 function normalizeLocale(locale?: string | null): AppLocale {

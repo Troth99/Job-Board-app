@@ -1,4 +1,6 @@
 import "../../styles/detailsJobMainSection.css";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 import { Job } from "../../types/Job.model";
 import { formatDate } from "../../../../shared/utils/formData";
 import { generateSeoConfig } from "../../../../seo/seo";
@@ -21,7 +23,7 @@ const splitToList = (value?: string | string[]) => {
 
 const getDisplayValue = (value?: string | number | null) => {
   if (value === undefined || value === null || value === "") {
-    return "Not specified";
+    return t`Not specified`;
   }
 
   return String(value);
@@ -37,19 +39,19 @@ function DetailsJobMainSection({
   const title = jobDetails?.title || "Untitled position";
   const description =
     jobDetails?.description?.trim() ||
-    "No public description has been added for this role yet.";
+    t`No public description has been added for this role yet.`;
 
-  const statusLabel = jobDetails?.isActive ? "Active" : "Closed";
+  const statusLabel = jobDetails?.isActive ? t`Active` : t`Closed`;
 
   // Format the updatedAt date or provide a default message if not available
   const updatedAt = jobDetails?.updatedAt
     ? formatDate(jobDetails.updatedAt, "en-US")
-    : "Not updated yet";
+    : t`Not updated yet`;
 
     // Format the applicationDeadline date or provide a default message if not available
   const deadline = jobDetails?.applicationDeadline
     ? formatDate(jobDetails.applicationDeadline, "en-US")
-    : "Open until filled";
+    : t`Open until filled`;
 
   const seo = () => generateSeoConfig("jobDetails", jobDetails?.title || "Job Details");
   return (
@@ -58,7 +60,7 @@ function DetailsJobMainSection({
     <section className="details-job-main">
       <article className="details-job-main__hero">
         <div className="details-job-main__eyebrow-row">
-          <span className="details-job-main__eyebrow">Position overview</span>
+          <span className="details-job-main__eyebrow"><Trans>Position overview</Trans></span>
           <span
             className={`details-job-main__status-pill ${
               jobDetails?.isActive ? "is-active" : "is-closed"
@@ -76,19 +78,19 @@ function DetailsJobMainSection({
 
           <ul className="details-job-main__summary-grid">
             <li>
-              <span>Location</span>
+              <span><Trans>Location</Trans></span>
               <strong>{getDisplayValue(jobDetails?.location)}</strong>
             </li>
             <li>
-              <span>Salary</span>
+              <span><Trans>Salary</Trans></span>
               <strong>{getDisplayValue(jobDetails?.salary)}</strong>
             </li>
             <li>
-              <span>Category</span>
+              <span><Trans>Category</Trans></span>
               <strong>{getDisplayValue(jobDetails?.category?.name)}</strong>
             </li>
             <li>
-              <span>Employment</span>
+              <span><Trans>Employment</Trans></span>
               <strong>{getDisplayValue(jobDetails?.employmentType)}</strong>
             </li>
           </ul>
@@ -97,50 +99,54 @@ function DetailsJobMainSection({
 
       <div className="details-job-main__grid">
         <article className="details-job-main__card">
-          <h2>Role details</h2>
+          <h2><Trans>Role details</Trans></h2>
           <p className="details-job-main__card-intro">
-            A compact snapshot of the core terms and expectations for the
-            position.
+            <Trans>
+              A compact snapshot of the core terms and expectations for the
+              position.
+            </Trans>
           </p>
           <ul className="details-job-main__details-list">
             <li>
-              <span>Work mode</span>
+              <span><Trans>Work mode</Trans></span>
               <strong>{getDisplayValue(jobDetails?.workMode)}</strong>
             </li>
             <li>
-              <span>Contract type</span>
+              <span><Trans>Contract type</Trans></span>
               <strong>{getDisplayValue(jobDetails?.contractType)}</strong>
             </li>
             <li>
-              <span>Schedule</span>
+              <span><Trans>Schedule</Trans></span>
               <strong>{getDisplayValue(jobDetails?.workSchedule)}</strong>
             </li>
             <li>
-              <span>Experience level</span>
+              <span><Trans>Experience level</Trans></span>
               <strong>{getDisplayValue(jobDetails?.experienceLevel)}</strong>
             </li>
             <li>
-              <span>Experience years</span>
+              <span><Trans>Experience years</Trans></span>
               <strong>
                 {getDisplayValue(jobDetails?.requiredExperienceYears)}
               </strong>
             </li>
             <li>
-              <span>Openings</span>
+              <span><Trans>Openings</Trans></span>
               <strong>{getDisplayValue(jobDetails?.openings)}</strong>
             </li>
           </ul>
         </article>
 
         <article className="details-job-main__card details-job-main__card--accent">
-          <h2>Skills and benefits</h2>
+          <h2><Trans>Skills and benefits</Trans></h2>
           <p className="details-job-main__card-intro">
-            Candidate-facing strengths, perks, and extra incentives for the role.
+            <Trans>
+              Candidate-facing strengths, perks, and extra incentives for the role.
+            </Trans>
           </p>
 
           <div className="details-job-main__chip-group">
             <div className="details-job-main__chip-section">
-              <h3>Skills</h3>
+              <h3><Trans>Skills</Trans></h3>
               {skills.length > 0 ? (
                 <div className="details-job-main__chips">
                   {skills.map((skill) => (
@@ -150,12 +156,12 @@ function DetailsJobMainSection({
                   ))}
                 </div>
               ) : (
-                <p className="details-job-main__empty">No skills listed yet.</p>
+                <p className="details-job-main__empty"><Trans>No skills listed yet.</Trans></p>
               )}
             </div>
 
             <div className="details-job-main__chip-section">
-              <h3>Benefits</h3>
+              <h3><Trans>Benefits</Trans></h3>
               {benefits.length > 0 ? (
                 <div className="details-job-main__chips">
                   {benefits.map((benefit) => (
@@ -166,7 +172,7 @@ function DetailsJobMainSection({
                 </div>
               ) : (
                 <p className="details-job-main__empty">
-                  No benefits listed yet.
+                  <Trans>No benefits listed yet.</Trans>
                 </p>
               )}
             </div>
@@ -174,49 +180,53 @@ function DetailsJobMainSection({
         </article>
 
         <article className="details-job-main__card">
-          <h2>Hiring information</h2>
+          <h2><Trans>Hiring information</Trans></h2>
           <p className="details-job-main__card-intro">
-            Owner-facing details for the posting lifecycle and candidate
-            communication.
+            <Trans>
+              Owner-facing details for the posting lifecycle and candidate
+              communication.
+            </Trans>
           </p>
           <ul className="details-job-main__meta-list">
             <li>
-              <span>Posted by</span>
-              <strong>{jobDetails?.createdBy?.email || "Deleted user"}</strong>
+              <span><Trans>Posted by</Trans></span>
+              <strong>{jobDetails?.createdBy?.email || t`Deleted user`}</strong>
             </li>
             <li>
-              <span>Application deadline</span>
+              <span><Trans>Application deadline</Trans></span>
               <strong>{deadline}</strong>
             </li>
             <li>
-              <span>Language requirements</span>
+              <span><Trans>Language requirements</Trans></span>
               <strong>{getDisplayValue(jobDetails?.languageRequirements)}</strong>
             </li>
             <li>
-              <span>Education level</span>
+              <span><Trans>Education level</Trans></span>
               <strong>{getDisplayValue(jobDetails?.educationLevel)}</strong>
             </li>
             <li>
-              <span>Updated at</span>
+              <span><Trans>Updated at</Trans></span>
               <strong>{updatedAt}</strong>
             </li>
             <li>
-              <span>Views</span>
+              <span><Trans>Views</Trans></span>
               <strong>{getDisplayValue(jobDetails?.views)}</strong>
             </li>
           </ul>
         </article>
 
         <article className="details-job-main__card">
-          <h2>Requirements and notes</h2>
+          <h2><Trans>Requirements and notes</Trans></h2>
           <p className="details-job-main__card-intro">
-            Keep the longer hiring context readable instead of burying it in a
-            single block.
+            <Trans>
+              Keep the longer hiring context readable instead of burying it in a
+              single block.
+            </Trans>
           </p>
           <p className="details-job-main__prose">
             {jobDetails?.requirements?.trim() ||
               jobDetails?.additionalInfo?.trim() ||
-              "No extra requirements or notes were added for this role yet."}
+                t`No extra requirements or notes were added for this role yet.`}
           </p>
         </article>
       </div>

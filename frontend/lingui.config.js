@@ -215,8 +215,10 @@ export default defineConfig({
 
 		},
 		{
-			path: "<rootDir>/src/i18n/locales/{locale}/saved-jobs",
-			include: ["src/features/jobs/views/SavedJobView",],
+			path: "<rootDir>/src/i18n/locales/{locale}/detailsForJob",
+			include: ["src/features/jobs/views/DetailsJob",
+				"src/features/jobs/components/CandidateApplications",
+			],
 
 		},
 		
