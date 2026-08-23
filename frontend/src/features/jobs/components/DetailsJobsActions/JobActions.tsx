@@ -31,12 +31,13 @@ function DetailsJob() {
   );
   //state to manage the loading state for status
   const [statusLoading, setStatusLoading] = useState(false);
-  
+
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [localRole, setLocalRole] = useState<string | null>(null);
   const { getUserRole } = useMembers();
   const { getJobById, updateJob, deleteJob } = useJobs();
   const { getApplicationsByJobId } = useApplications();
+
   const [loadingApplications, setLoadingApplications] =
     useState<boolean>(false);
 
@@ -109,7 +110,6 @@ function DetailsJob() {
       setJobStatus(newStatus);
 
       const response = await updateJob(jobId, { isActive: newStatus });
-
       if (response) {
         setJobdetails((prevJob) => ({
           ...prevJob,
