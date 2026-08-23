@@ -90,7 +90,7 @@ export default function CandidateJobView() {
   }
   return (
     <Container>
-      {!isJobActive === false ?
+      {isJobActive === false ?
       <DeactivatedJobView /> :
       
       <section className="job-details-page">

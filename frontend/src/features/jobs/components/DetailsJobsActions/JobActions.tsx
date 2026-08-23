@@ -29,7 +29,9 @@ function DetailsJob() {
   const [jobStatus, setJobStatus] = useState<boolean | undefined>(
     currentStatus,
   );
+  //state to manage the loading state for status
   const [statusLoading, setStatusLoading] = useState(false);
+  
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [localRole, setLocalRole] = useState<string | null>(null);
   const { getUserRole } = useMembers();
@@ -48,7 +50,6 @@ function DetailsJob() {
       if (jobId) {
         setLoading(true);
         const currentJob = await getJobById(jobId);
-        console.log(currentJob);
         setCurrentStatus(currentJob.isActive);
         setJobdetails(currentJob);
       }
@@ -105,15 +106,9 @@ function DetailsJob() {
         isActive: newStatus,
       }));
 
-      const updatedJob: Job = {
-        ...jobDetails,
-        isActive: newStatus,
-        updatedAt: new Date().toISOString(),
-      };
-
       setJobStatus(newStatus);
 
-      const response = await updateJob(jobId, updatedJob);
+      const response = await updateJob(jobId, { isActive: newStatus });
 
       if (response) {
         setJobdetails((prevJob) => ({

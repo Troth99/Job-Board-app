@@ -78,6 +78,8 @@ export const getAllJobsController = async (req, res) => {
       }
 
       filter.company = companyId;
+    } else {
+      filter.isActive = true;
     }
 
     const jobs = await Jobs.find(filter)
