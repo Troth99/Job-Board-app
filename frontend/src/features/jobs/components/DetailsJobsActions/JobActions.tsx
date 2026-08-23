@@ -1,19 +1,22 @@
 import { useNavigate, useParams } from "react-router";
-import "./Details.css";
+import "../../styles/variables.css";
+import "../../styles/jobActions.css";
 import { useEffect, useState } from "react";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { Job } from "../../types/Job.model";
-import { CandidateApplications } from "./DetailsJobElements/CandidateApplications/CandidateApplications";
+import { CandidateApplications } from "../CandidateApplications/CandidateApplications";
 import { Candidate } from "../../types/Apllication.model";
 import { Container } from "../../../../shared/components/Container/Container";
-import DetailsJobMainSection from "./DetailsJobElements/DetailsJobMainSection";
+import DetailsJobMainSection from "../../views/DetailsJob/DetailsJobMainSection";
 import useMembers from "../../../companies/hooks/useMembers";
 import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
 import useJobs from "../../hooks/useJobsAPI";
 import useApplications from "../../hooks/useJobApplications";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 
-//toReractor
 
+//Deactive job should make the job not visible for candidates and not allow them to apply. It should also remove the job from the favorites of candidates who have favorited it.
 function DetailsJob() {
   const { companyId, jobId } = useParams<{
     companyId: string;
@@ -28,12 +31,15 @@ function DetailsJob() {
   const [jobStatus, setJobStatus] = useState<boolean | undefined>(
     currentStatus,
   );
+  //state to manage the loading state for status
   const [statusLoading, setStatusLoading] = useState(false);
+
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [localRole, setLocalRole] = useState<string | null>(null);
   const { getUserRole } = useMembers();
   const { getJobById, updateJob, deleteJob } = useJobs();
   const { getApplicationsByJobId } = useApplications();
+
   const [loadingApplications, setLoadingApplications] =
     useState<boolean>(false);
 
@@ -103,16 +109,9 @@ function DetailsJob() {
         isActive: newStatus,
       }));
 
-      const updatedJob: Job = {
-        ...jobDetails,
-        isActive: newStatus,
-        updatedAt: new Date().toISOString(),
-      };
-
       setJobStatus(newStatus);
 
-      const response = await updateJob(jobId, updatedJob);
-
+      const response = await updateJob(jobId, { isActive: newStatus });
       if (response) {
         setJobdetails((prevJob) => ({
           ...prevJob,
@@ -164,26 +163,26 @@ function DetailsJob() {
             />
             {canEditOrDelete && (
               <div className="job-actions">
-                <h3>Job Actions</h3>
+                <h3><Trans>Job Actions</Trans></h3>
                 <div className="job-actions-buttons">
                   <button
                     className="edit-job-button"
                     onClick={editNavigateHandler}
                   >
-                    Edit Job
+                    <Trans>Edit Job</Trans>
                   </button>
                   <button
                     className="delete-job-button"
                     onClick={deleteJobHandler}
                     disabled={loading}
                   >
-                    {loading ? "Deleting..." : "Delete Job"}
+                    {loading ? t`Deleting...` : t`Delete Job`}
                   </button>
                   <button
-                    className="update-status-button"
+                    className="app-button app-button--secondary"
                     onClick={changeStatusHandler}
                   >
-                    {jobDetails?.isActive ? "Deactivate Job" : "Activate Job"}
+                    {jobDetails?.isActive ? t`Deactivate Job` : t`Activate Job`}
                   </button>
                 </div>
               </div>

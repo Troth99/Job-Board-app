@@ -21,9 +21,6 @@ msgstr "{0}"
 msgid "{rule}"
 msgstr "{rule}"
 
-#~ msgid "2200-2800 BGN gross"
-#~ msgstr "2200-2800 BGN gross"
-
 msgid "2200-2800 EURO gross"
 msgstr "2200-2800 EURO gross"
 
@@ -105,38 +102,8 @@ msgstr "Describe the day-to-day work, team context, responsibilities, and what s
 msgid "Do not overload the Requirements field with nice-to-have extras. Keep must-haves separate from benefits."
 msgstr "Do not overload the Requirements field with nice-to-have extras. Keep must-haves separate from benefits."
 
-#~ msgid "e.g., 3"
-#~ msgstr "e.g., 3"
-
-#~ msgid "e.g., Customer service, Driving license B, Excel"
-#~ msgstr "e.g., Customer service, Driving license B, Excel"
-
-#~ msgid "e.g., English B2, German A2"
-#~ msgstr "e.g., English B2, German A2"
-
-#~ msgid "e.g., Health Insurance, Remote Work"
-#~ msgstr "e.g., Health Insurance, Remote Work"
-
-#~ msgid "e.g., High School, Bachelor, Not required"
-#~ msgstr "e.g., High School, Bachelor, Not required"
-
-#~ msgid "e.g., Morning shift, 09:00-18:00"
-#~ msgstr "e.g., Morning shift, 09:00-18:00"
-
-#~ msgid "e.g., Permanent, Temporary, Internship"
-#~ msgstr "e.g., Permanent, Temporary, Internship"
-
-#~ msgid "e.g., We are happy to review your application and contact shortlisted candidates."
-#~ msgstr "e.g., We are happy to review your application and contact shortlisted candidates."
-
-#~ msgid "Edit Job"
-#~ msgstr "Edit Job"
-
 msgid "Education Level"
 msgstr "Education Level"
-
-#~ msgid "Employment Type"
-#~ msgstr "Employment Type"
 
 msgid "Employment Type:"
 msgstr "Employment Type:"
@@ -188,9 +155,6 @@ msgstr "Hybrid"
 
 msgid "If a field is optional but important for trust, fill it in anyway. More clarity usually improves application quality."
 msgstr "If a field is optional but important for trust, fill it in anyway. More clarity usually improves application quality."
-
-#~ msgid "Job Category"
-#~ msgstr "Job Category"
 
 msgid "Job Description"
 msgstr "Job Description"
@@ -290,12 +254,6 @@ msgstr "Salary"
 
 msgid "Sample structure"
 msgstr "Sample structure"
-
-#~ msgid "Save Changes"
-#~ msgstr "Save Changes"
-
-#~ msgid "Saving..."
-#~ msgstr "Saving..."
 
 msgid "Select how the work is delivered so the candidate understands location expectations immediately."
 msgstr "Select how the work is delivered so the candidate understands location expectations immediately."

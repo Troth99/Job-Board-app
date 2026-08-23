@@ -60,6 +60,169 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+:root {
+  --app-btn-primary-start: #16a085;
+  --app-btn-primary-end: #0f766e;
+  --app-btn-primary-hover-start: #179b84;
+  --app-btn-primary-hover-end: #14806f;
+  --app-btn-primary-shadow: rgba(22, 160, 133, 0.24);
+  --app-btn-primary-shadow-hover: rgba(22, 160, 133, 0.3);
+  --app-btn-success-start: #16a34a;
+  --app-btn-success-end: #15803d;
+  --app-btn-success-shadow: rgba(22, 163, 74, 0.2);
+  --app-btn-danger-start: #ef4444;
+  --app-btn-danger-end: #dc2626;
+  --app-btn-danger-hover-start: #e13a3a;
+  --app-btn-danger-hover-end: #c81e1e;
+  --app-btn-danger-shadow: rgba(239, 68, 68, 0.22);
+  --app-btn-secondary-surface: #eef5f6;
+  --app-btn-secondary-border: #c9dddd;
+  --app-btn-secondary-text: #0f4f4a;
+  --app-btn-disabled-start: #8a97a6;
+  --app-btn-disabled-end: #75879d;
+}
+
+[data-theme="dark"] {
+  --app-btn-primary-start: #24b394;
+  --app-btn-primary-end: #1a8f80;
+  --app-btn-primary-hover-start: #30c6a5;
+  --app-btn-primary-hover-end: #22a392;
+  --app-btn-primary-shadow: rgba(36, 179, 148, 0.24);
+  --app-btn-primary-shadow-hover: rgba(36, 179, 148, 0.32);
+  --app-btn-success-start: #22b35e;
+  --app-btn-success-end: #1a8a49;
+  --app-btn-success-shadow: rgba(34, 179, 94, 0.24);
+  --app-btn-danger-start: #f05d5d;
+  --app-btn-danger-end: #d93737;
+  --app-btn-danger-hover-start: #ff7575;
+  --app-btn-danger-hover-end: #e14747;
+  --app-btn-danger-shadow: rgba(240, 93, 93, 0.26);
+  --app-btn-secondary-surface: #1a2a2e;
+  --app-btn-secondary-border: #33545c;
+  --app-btn-secondary-text: #d5f2ee;
+  --app-btn-disabled-start: #52657f;
+  --app-btn-disabled-end: #42556c;
+}
+
+.app-button,
+.form-action-btn,
+.create-company-button,
+.update-company-button,
+.post-job-button,
+.edit-job-button,
+.update-status-button,
+.candidate-applications__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 46px;
+  padding: 0.72rem 1.1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease, opacity 0.18s ease, background 0.18s ease;
+}
+
+.app-button:hover:not(:disabled),
+.form-action-btn:hover:not(:disabled),
+.create-company-button:hover:not(:disabled),
+.update-company-button:hover:not(:disabled),
+.post-job-button:hover:not(:disabled),
+.edit-job-button:hover:not(:disabled),
+.update-status-button:hover:not(:disabled),
+.candidate-applications__button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: saturate(1.04);
+}
+
+.app-button:active:not(:disabled),
+.form-action-btn:active:not(:disabled),
+.create-company-button:active:not(:disabled),
+.update-company-button:active:not(:disabled),
+.post-job-button:active:not(:disabled),
+.edit-job-button:active:not(:disabled),
+.update-status-button:active:not(:disabled),
+.candidate-applications__button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.app-button:disabled,
+.form-action-btn:disabled,
+.create-company-button:disabled,
+.update-company-button:disabled,
+.post-job-button:disabled,
+.edit-job-button:disabled,
+.update-status-button:disabled,
+.delete-job-button:disabled,
+.candidate-applications__button:disabled {
+  background: linear-gradient(120deg, var(--app-btn-disabled-start), var(--app-btn-disabled-end));
+  box-shadow: none;
+  opacity: 0.8;
+  cursor: not-allowed;
+  filter: none;
+}
+
+.app-button--primary,
+.form-action-btn,
+.create-company-button,
+.update-company-button,
+.post-job-button,
+.edit-job-button,
+.update-status-button {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--app-btn-primary-start), var(--app-btn-primary-end));
+  box-shadow: 0 10px 22px var(--app-btn-primary-shadow);
+}
+
+.app-button--primary:hover:not(:disabled),
+.form-action-btn:hover:not(:disabled),
+.create-company-button:hover:not(:disabled),
+.update-company-button:hover:not(:disabled),
+.post-job-button:hover:not(:disabled),
+.edit-job-button:hover:not(:disabled),
+.update-status-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--app-btn-primary-hover-start), var(--app-btn-primary-hover-end));
+  box-shadow: 0 12px 24px var(--app-btn-primary-shadow-hover);
+}
+
+.app-button--success,
+.candidate-applications__button--approve {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--app-btn-success-start), var(--app-btn-success-end));
+  box-shadow: 0 10px 22px var(--app-btn-success-shadow);
+}
+
+.app-button--danger,
+.delete-job-button,
+.candidate-applications__button--reject {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--app-btn-danger-start), var(--app-btn-danger-end));
+  box-shadow: 0 10px 22px var(--app-btn-danger-shadow);
+}
+
+.app-button--danger:hover:not(:disabled),
+.delete-job-button:hover:not(:disabled),
+.candidate-applications__button--reject:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--app-btn-danger-hover-start), var(--app-btn-danger-hover-end));
+}
+
+.app-button--secondary {
+  color: var(--app-btn-secondary-text);
+  background: var(--app-btn-secondary-surface);
+  border: 1px solid var(--app-btn-secondary-border);
+  box-shadow: none;
+}
+
+.app-button--secondary:hover:not(:disabled) {
+  box-shadow: 0 10px 20px rgba(15, 118, 110, 0.14);
+}
+
 .error-message {
   color: #ff4d4f;
   margin-top: 0.3rem;

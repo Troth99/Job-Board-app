@@ -40,35 +40,20 @@ msgstr "Редактиране на профил"
 msgid "Email"
 msgstr "Имейл"
 
-#~ msgid "Email:"
-#~ msgstr "Имейл:"
-
 msgid "First name"
 msgstr "Име"
-
-#~ msgid "First name:"
-#~ msgstr "Име:"
 
 msgid "Last name"
 msgstr "Фамилия"
 
-#~ msgid "Last name:"
-#~ msgstr "Фамилия:"
-
 msgid "Location"
 msgstr "Местоположение"
-
-#~ msgid "Location:"
-#~ msgstr "Местоположение:"
 
 msgid "New password"
 msgstr "Нова парола"
 
 msgid "Phone"
 msgstr "Телефон"
-
-#~ msgid "Phone:"
-#~ msgstr "Телефон:"
 
 msgid "Save Changes"
 msgstr "Запази промените"

@@ -1,0 +1,252 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-22 02:39+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "A compact snapshot of the core terms and expectations for the position."
+msgstr "Компактен преглед на основните условия и очаквания за позицията."
+
+msgid "Actions"
+msgstr "Действия"
+
+msgid "Activate Job"
+msgstr "Активиране на работа"
+
+msgid "Active"
+msgstr "Активен"
+
+msgid "All"
+msgstr "Всички"
+
+msgid "Application deadline"
+msgstr "Краен срок за кандидатстване"
+
+msgid "Applied On"
+msgstr "Кандидатствано на"
+
+msgid "Approve"
+msgstr "Одобри"
+
+msgid "Approve candidate first to unlock removal"
+msgstr "Одобрете кандидата първо, за да отключите премахването"
+
+msgid "Approved"
+msgstr "Одобрен"
+
+msgid "Benefits"
+msgstr "Ползи"
+
+msgid "candidate"
+msgstr "кандидат"
+
+msgid "Candidate Applications"
+msgstr "Кандидатури"
+
+msgid "Candidate pipeline"
+msgstr "Кандидатски поток"
+
+msgid "Candidate status filters"
+msgstr "Филтри за статус на кандидатите"
+
+msgid "Candidate-facing strengths, perks, and extra incentives for the role."
+msgstr "Силни страни, придобивки и допълнителни стимули за ролята."
+
+msgid "candidates"
+msgstr "кандидати"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Closed"
+msgstr "Затворен"
+
+msgid "Contract type"
+msgstr "Вид на договора"
+
+msgid "CV"
+msgstr "CV"
+
+msgid "Deactivate Job"
+msgstr "Деактивиране на работа"
+
+msgid "Delete Job"
+msgstr " Изтриване на работа"
+
+msgid "Deleted user"
+msgstr "Изтрит потребител"
+
+msgid "Deleting..."
+msgstr " Изтриване..."
+
+msgid "Edit Job"
+msgstr " Редактиране на работа"
+
+msgid "Education level"
+msgstr "Образователно ниво"
+
+msgid "Email"
+msgstr "Имейл"
+
+msgid "Employment"
+msgstr "Заетост"
+
+msgid "Experience level"
+msgstr "Ниво на опит"
+
+msgid "Experience years"
+msgstr "Години опит"
+
+msgid "Hiring information"
+msgstr "Информация за наемане"
+
+#~ msgid "is-active"
+#~ msgstr "активен"
+
+#~ msgid "is-closed"
+#~ msgstr "затворен"
+
+msgid "Job Actions"
+msgstr "Действия за работа"
+
+msgid "Keep the longer hiring context readable instead of burying it in a single block."
+msgstr "Запазете по-дългия контекст на наемане четим, вместо да го заравяте в един блок."
+
+msgid "Language requirements"
+msgstr "Изисквания за езика"
+
+msgid "Loading applications..."
+msgstr "Зареждане на кандидатури..."
+
+msgid "Location"
+msgstr "Местоположение"
+
+msgid "New"
+msgstr "Нов"
+
+msgid "Next"
+msgstr "Следващ"
+
+msgid "No benefits listed yet."
+msgstr "Все още няма изброени ползи."
+
+msgid "No candidates applied for this job."
+msgstr "Няма кандидати, които да са кандидатствали за тази работа."
+
+msgid "No candidates match the selected status."
+msgstr "Няма кандидати, които да съответстват на избрания статус."
+
+msgid "No extra requirements or notes were added for this role yet."
+msgstr "Все още не са добавени допълнителни изисквания или бележки за тази роля."
+
+msgid "No public description has been added for this role yet."
+msgstr "Все още не е добавено публично описание за тази роля."
+
+msgid "No skills listed yet."
+msgstr "Все още няма изброени умения."
+
+msgid "Not available"
+msgstr "Не е налично"
+
+msgid "Not provided"
+msgstr "Не е предоставено"
+
+msgid "Not specified"
+msgstr "Не е посочено"
+
+msgid "Not updated yet"
+msgstr "Все още не е актуализирано"
+
+msgid "Open until filled"
+msgstr "Отворено, докато не се запълни"
+
+msgid "Openings"
+msgstr "Свободни позиции"
+
+msgid "Owner-facing details for the posting lifecycle and candidate communication."
+msgstr "Подробности за собственика за жизнения цикъл на обявата и комуникацията с кандидатите."
+
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Страница {currentPage} от {totalPages}"
+
+msgid "Pending"
+msgstr "Чака"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "Position overview"
+msgstr "Преглед на позицията"
+
+msgid "Posted by"
+msgstr "Публикувано от"
+
+msgid "Previous"
+msgstr "Предишна"
+
+msgid "Reject"
+msgstr "Откажи"
+
+msgid "Rejected"
+msgstr "Отхвърлен"
+
+#. placeholder {0}: candidate.email
+msgid "Remove {0}"
+msgstr "Премахване на {0}"
+
+msgid "Remove approved candidate"
+msgstr "Премахване на одобрения кандидат"
+
+msgid "Requirements and notes"
+msgstr "Изисквания и бележки"
+
+msgid "Review every application, open resumes, and move strong candidates through the process quickly."
+msgstr "Прегледайте всяка кандидатура, отворете автобиографии и бързо преместете силните кандидати през процеса."
+
+msgid "Role details"
+msgstr "Подробности за ролята"
+
+msgid "Salary"
+msgstr "Заплата"
+
+msgid "Schedule"
+msgstr "График"
+
+#. placeholder {0}: (currentPage - 1) * CANDIDATES_PER_PAGE + 1
+#. placeholder {1}: Math.min(currentPage * CANDIDATES_PER_PAGE, filteredCandidates.length)
+#. placeholder {2}: filteredCandidates.length
+msgid "Showing {0}-{1} of {2}"
+msgstr "Показване {0}-{1} от {2}"
+
+msgid "Skills"
+msgstr "Умения"
+
+msgid "Skills and benefits"
+msgstr "Умения и ползи"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Total"
+msgstr "Общо"
+
+msgid "Updated at"
+msgstr "Актуализирано на"
+
+msgid "View CV"
+msgstr "Виж CV"
+
+msgid "Views"
+msgstr "Прегледи"
+
+msgid "Work mode"
+msgstr "Режим на работа"

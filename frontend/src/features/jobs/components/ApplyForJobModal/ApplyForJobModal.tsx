@@ -2,7 +2,7 @@ import "./ApplyForJob.css";
 import useForm from "../../../../shared/hooks/useForm";
 import useApplications from "../../hooks/useJobApplications";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Trans,  } from "@lingui/react/macro";
 import {t} from "@lingui/core/macro"
 import { User } from "../../../profile/types/profileSectionTypes";
@@ -12,13 +12,6 @@ type FormValues = {
   phone: string;
   cv: string;
   coverLetter: string;
-};
-
-const initialValues = {
-  email: "",
-  phone: "",
-  cv: "",
-  coverLetter: "",
 };
 
 const validateForm = (values: typeof initialValues) => {
@@ -43,6 +36,17 @@ export function ApplyForJobModal({
   const user = getUserFromLocalStorage();
   const userId = user._id;
   const [success, setSuccess] = useState(false);
+  
+  // Initialize form values with user data
+  const initialValues = useMemo(
+    () => ({
+      email: userData.email || "",
+      phone: userData.phone || "",
+      cv: "",
+      coverLetter: "",
+    }),
+    [userData.email, userData.phone],
+  );
 
   const submitHandler = async (formValues: FormValues) => {
     if (!jobId) {
@@ -113,9 +117,9 @@ export function ApplyForJobModal({
             <input
               id="email"
               type="email"
-            value={userData.email}
+              {...register("email")}
               placeholder={t`Your email address`}
-              disabled
+              readOnly
             />
             {errors.email && (
               <div className="error-message">{errors.email}</div>

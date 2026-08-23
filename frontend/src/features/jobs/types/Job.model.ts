@@ -15,7 +15,7 @@ export interface Job {
   company?: Company | null;
   category?: Category;
   createdAt?: string;
-  skills?: string;
+  skills?: string[];
   requirements?: string;
   employmentType?: string;
   benefits?: string | string[];
@@ -45,6 +45,7 @@ export interface valuesInterface {
   salary: string;
   category: Category;
   employmentType: string;
+  skills?: string;
   requirements: string;
   benefits: string;
   tags: string;

@@ -40,6 +40,14 @@ const notificationSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  accepted: {
+    type: Boolean,
+    default: false,
+  },
+  rejected: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export default model("Notifications", notificationSchema);

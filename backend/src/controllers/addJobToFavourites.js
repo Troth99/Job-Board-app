@@ -104,24 +104,29 @@ export const getSavedJobs = async (req, res) => {
             return res.status(404).json({ message: "User not found" });
         }
 
+        const populatedSavedJobs = await User.populate(user.savedJobs, {
+            path: "job",
+        });
+
+        // Never return deactivated jobs, including stale favorite records.
+        const activeSavedJobs = populatedSavedJobs.filter(
+            (savedJob) => savedJob.job && savedJob.job.isActive !== false,
+        );
+
         //Sort the jobs by addedAt
-        const sortedSavedJobs = [...user.savedJobs].sort(
+        const sortedSavedJobs = [...activeSavedJobs].sort(
             (a, b) => new Date(b.addedAt) - new Date(a.addedAt)
         );
 
 
-        const totalSavedJobs = user.savedJobs.length;
+        const totalSavedJobs = activeSavedJobs.length;
         const totalPages = Math.ceil(totalSavedJobs / limit);
 
         //Get the paginated saved jobs for the user
         const paginatedSavedJobs = sortedSavedJobs.slice(skip, skip + limit);
 
-        //Fill the job details for each saved job
-        const populatedSavedJobs = await User.populate(paginatedSavedJobs, { path: "job" });
-
-
         res.json({
-            savedJobs: populatedSavedJobs,
+            savedJobs: paginatedSavedJobs,
             totalSavedJobs: totalSavedJobs,
             totalPages,
             currentPage: page,

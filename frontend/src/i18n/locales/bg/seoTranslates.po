@@ -85,6 +85,9 @@ msgstr "Job Board"
 msgid "Job Board - Find Your Next Opportunity"
 msgstr "Job Board - Намерете Следващата Си Възможност"
 
+msgid "Job details | Job Board"
+msgstr ""
+
 msgid "Job Posting Guide | Job Board"
 msgstr "Ръководство за Публикуване на Обяви за Работа | Job Board"
 
@@ -105,6 +108,13 @@ msgstr "Управлявайте профила на вашата компани
 
 msgid "Manage your company's team members, assign roles, and collaborate effectively with the Company Members page on Job Board."
 msgstr "Управлявайте членовете на екипа на вашата компания, присвоявайте роли и сътрудничайте ефективно с помощта на страницата за Членове на Компанията на Job Board."
+
+msgid ""
+"Position overview for\n"
+" {jobTitle} | Job Board"
+msgstr ""
+"Преглед на позицията за\n"
+" {jobTitle} | Job Board"
 
 msgid "Post a Job | Job Board"
 msgstr "Публикуване на Обява за Работа | Job Board"
@@ -147,6 +157,12 @@ msgstr "Прегледайте и редактирайте вашия профи
 
 msgid "View and manage your saved job listings, keep track of your favorite opportunities, and stay organized on Job Board."
 msgstr "Прегледайте и управлявайте запазените ви обяви за работа, следете любимите ви възможности и останете организирани на Job Board."
+
+msgid "View detailed information about {jobTitle}, including responsibilities, requirements, benefits, and how to apply."
+msgstr ""
+
+msgid "View detailed information about this job opportunity, including responsibilities, requirements, benefits, and how to apply."
+msgstr ""
 
 msgid "Your Notifications | Job Board"
 msgstr "Вашият Известия | Job Board"

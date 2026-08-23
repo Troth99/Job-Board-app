@@ -65,17 +65,11 @@ msgstr "Edit Profile"
 msgid "Email"
 msgstr "Email"
 
-#~ msgid "Email:"
-#~ msgstr "Email:"
-
 msgid "Enabled"
 msgstr "Enabled"
 
 msgid "First name"
 msgstr "First name"
-
-#~ msgid "First name:"
-#~ msgstr "First name:"
 
 msgid "Go to Dashboard"
 msgstr "Go to Dashboard"
@@ -92,9 +86,6 @@ msgstr "Joined:"
 msgid "Last name"
 msgstr "Last name"
 
-#~ msgid "Last name:"
-#~ msgstr "Last name:"
-
 msgid "Loading..."
 msgstr "Loading..."
 
@@ -103,12 +94,6 @@ msgstr "Location"
 
 msgid "Location:"
 msgstr "Location:"
-
-#~ msgid "Log out"
-#~ msgstr "Log out"
-
-#~ msgid "Logging out"
-#~ msgstr "Logging out"
 
 msgid "New password"
 msgstr "New password"
@@ -130,9 +115,6 @@ msgstr "of"
 
 msgid "Phone"
 msgstr "Phone"
-
-#~ msgid "Phone:"
-#~ msgstr "Phone:"
 
 msgid "Please enter your password to confirm the deletion:"
 msgstr "Please enter your password to confirm the deletion:"
@@ -199,3 +181,6 @@ msgstr "View All Saved Jobs"
 
 msgid "You are connected to a company and can publish new job posts."
 msgstr "You are connected to a company and can publish new job posts."
+
+msgid "Your role is a member of the company. In order to post jobs, register and verify your own company or talk with the owner."
+msgstr "Your role is a member of the company. In order to post jobs, register and verify your own company or talk with the owner."

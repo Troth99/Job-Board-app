@@ -23,9 +23,6 @@ msgstr "{memberName} has been removed from the company."
 msgid "{memberName}'s role updated to {newRole} successfully."
 msgstr "{memberName}'s role updated to {newRole} successfully."
 
-#~ msgid "Change Role"
-#~ msgstr "Change Role"
-
 msgid "Company Members"
 msgstr "Company Members"
 

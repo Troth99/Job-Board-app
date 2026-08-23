@@ -65,17 +65,11 @@ msgstr ""
 msgid "Email"
 msgstr "Електронна поща"
 
-#~ msgid "Email:"
-#~ msgstr ""
-
 msgid "Enabled"
 msgstr "Активиран"
 
 msgid "First name"
 msgstr "Име"
-
-#~ msgid "First name:"
-#~ msgstr ""
 
 msgid "Go to Dashboard"
 msgstr "Отидете в таблото за управление"
@@ -92,9 +86,6 @@ msgstr "Присъединил се:"
 msgid "Last name"
 msgstr "Фамилия"
 
-#~ msgid "Last name:"
-#~ msgstr ""
-
 msgid "Loading..."
 msgstr "Зареждане..."
 
@@ -103,12 +94,6 @@ msgstr "Местоположение"
 
 msgid "Location:"
 msgstr "Местоположение:"
-
-#~ msgid "Log out"
-#~ msgstr "Изход"
-
-#~ msgid "Logging out"
-#~ msgstr "Излизане"
 
 msgid "New password"
 msgstr "Нова парола"
@@ -130,9 +115,6 @@ msgstr "на"
 
 msgid "Phone"
 msgstr "Телефон"
-
-#~ msgid "Phone:"
-#~ msgstr ""
 
 msgid "Please enter your password to confirm the deletion:"
 msgstr "Моля, въведете паролата си, за да потвърдите изтриването:"
@@ -199,3 +181,6 @@ msgstr "Виж всички запазени работни места"
 
 msgid "You are connected to a company and can publish new job posts."
 msgstr "Вие сте свързани с компания и можете да публикувате нови обяви за работа."
+
+msgid "Your role is a member of the company. In order to post jobs, register and verify your own company or talk with the owner."
+msgstr "Вашата роля е член на компанията. За да публикувате обяви за работа, регистрирайте и потвърдете собствената си компания или се свържете със собственика."

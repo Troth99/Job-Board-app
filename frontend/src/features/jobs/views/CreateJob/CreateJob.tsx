@@ -25,6 +25,7 @@ const initialValues = {
   salary: "",
   category: "",
   employmentType: "",
+  skills: "",
   requirements: "",
   benefits: "",
   tags: "",
@@ -40,6 +41,12 @@ const initialValues = {
   educationLevel: "",
   additionalInfo: "",
 };
+
+const splitCommaSeparatedValues = (value?: string) =>
+  (value || "")
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
 
 
 function PostJob() {
@@ -57,7 +64,10 @@ function PostJob() {
   const onSubmitHandler = async (values: valuesInterface) => {
     setLoading(true);
     try {
-      await createJob(values);
+      await createJob({
+        ...values,
+        skills: splitCommaSeparatedValues(values.skills),
+      } as valuesInterface);
       showSuccess(t`Job posted successfully!`);
       navigate(`/company/${companyId}/dashboard`);
     } catch (error: unknown) {
@@ -258,6 +268,19 @@ function PostJob() {
             {...register("requirements")}
           />
           <div className="error-message">{errors.requirements}</div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="skills">
+            <Trans>Skills (comma separated)</Trans>{" "}
+            <span className="optional-badge"><Trans>Optional</Trans></span>
+          </label>
+          <input
+            type="text"
+            id="skills"
+            placeholder={t`e.g., React, Communication, Driving License B`}
+            {...register("skills")}
+          />
         </div>
 
         <div className="form-group">

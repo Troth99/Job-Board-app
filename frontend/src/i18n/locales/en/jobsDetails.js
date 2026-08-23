@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:JSON.parse("{\"7g0tdb\":[\"In favorites\"],\"81NlCe\":[\"not-allowed\"],\"T/pF0Z\":[\"Remove from favorites\"],\"pBsoKL\":[\"Add to favorites\"],\"wArlDg\":[\"You must log in to add this job in favourites\"]}")};

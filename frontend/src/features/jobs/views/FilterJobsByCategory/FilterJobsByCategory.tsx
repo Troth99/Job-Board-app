@@ -154,6 +154,7 @@ export default function FilterJobByCategory() {
             <>
               <ShowJobs
                 jobs={filteredJobs}
+                variant="search"
                 onJobClick={(jobId) => navigate(`/job/${jobId}`)}
               />
 

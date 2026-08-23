@@ -1,0 +1,252 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-22 02:39+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+msgid "A compact snapshot of the core terms and expectations for the position."
+msgstr "A compact snapshot of the core terms and expectations for the position."
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Activate Job"
+msgstr "Activate Job"
+
+msgid "Active"
+msgstr "Active"
+
+msgid "All"
+msgstr "All"
+
+msgid "Application deadline"
+msgstr "Application deadline"
+
+msgid "Applied On"
+msgstr "Applied On"
+
+msgid "Approve"
+msgstr "Approve"
+
+msgid "Approve candidate first to unlock removal"
+msgstr "Approve candidate first to unlock removal"
+
+msgid "Approved"
+msgstr "Approved"
+
+msgid "Benefits"
+msgstr "Benefits"
+
+msgid "candidate"
+msgstr "candidate"
+
+msgid "Candidate Applications"
+msgstr "Candidate Applications"
+
+msgid "Candidate pipeline"
+msgstr "Candidate pipeline"
+
+msgid "Candidate status filters"
+msgstr "Candidate status filters"
+
+msgid "Candidate-facing strengths, perks, and extra incentives for the role."
+msgstr "Candidate-facing strengths, perks, and extra incentives for the role."
+
+msgid "candidates"
+msgstr "candidates"
+
+msgid "Category"
+msgstr "Category"
+
+msgid "Closed"
+msgstr "Closed"
+
+msgid "Contract type"
+msgstr "Contract type"
+
+msgid "CV"
+msgstr "CV"
+
+msgid "Deactivate Job"
+msgstr "Deactivate Job"
+
+msgid "Delete Job"
+msgstr "Delete Job"
+
+msgid "Deleted user"
+msgstr "Deleted user"
+
+msgid "Deleting..."
+msgstr "Deleting..."
+
+msgid "Edit Job"
+msgstr "Edit Job"
+
+msgid "Education level"
+msgstr "Education level"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Employment"
+msgstr "Employment"
+
+msgid "Experience level"
+msgstr "Experience level"
+
+msgid "Experience years"
+msgstr "Experience years"
+
+msgid "Hiring information"
+msgstr "Hiring information"
+
+#~ msgid "is-active"
+#~ msgstr "is-active"
+
+#~ msgid "is-closed"
+#~ msgstr "is-closed"
+
+msgid "Job Actions"
+msgstr "Job Actions"
+
+msgid "Keep the longer hiring context readable instead of burying it in a single block."
+msgstr "Keep the longer hiring context readable instead of burying it in a single block."
+
+msgid "Language requirements"
+msgstr "Language requirements"
+
+msgid "Loading applications..."
+msgstr "Loading applications..."
+
+msgid "Location"
+msgstr "Location"
+
+msgid "New"
+msgstr "New"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "No benefits listed yet."
+msgstr "No benefits listed yet."
+
+msgid "No candidates applied for this job."
+msgstr "No candidates applied for this job."
+
+msgid "No candidates match the selected status."
+msgstr "No candidates match the selected status."
+
+msgid "No extra requirements or notes were added for this role yet."
+msgstr "No extra requirements or notes were added for this role yet."
+
+msgid "No public description has been added for this role yet."
+msgstr "No public description has been added for this role yet."
+
+msgid "No skills listed yet."
+msgstr "No skills listed yet."
+
+msgid "Not available"
+msgstr "Not available"
+
+msgid "Not provided"
+msgstr "Not provided"
+
+msgid "Not specified"
+msgstr "Not specified"
+
+msgid "Not updated yet"
+msgstr "Not updated yet"
+
+msgid "Open until filled"
+msgstr "Open until filled"
+
+msgid "Openings"
+msgstr "Openings"
+
+msgid "Owner-facing details for the posting lifecycle and candidate communication."
+msgstr "Owner-facing details for the posting lifecycle and candidate communication."
+
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Page {currentPage} of {totalPages}"
+
+msgid "Pending"
+msgstr "Pending"
+
+msgid "Phone"
+msgstr "Phone"
+
+msgid "Position overview"
+msgstr "Position overview"
+
+msgid "Posted by"
+msgstr "Posted by"
+
+msgid "Previous"
+msgstr "Previous"
+
+msgid "Reject"
+msgstr "Reject"
+
+msgid "Rejected"
+msgstr "Rejected"
+
+#. placeholder {0}: candidate.email
+msgid "Remove {0}"
+msgstr "Remove {0}"
+
+msgid "Remove approved candidate"
+msgstr "Remove approved candidate"
+
+msgid "Requirements and notes"
+msgstr "Requirements and notes"
+
+msgid "Review every application, open resumes, and move strong candidates through the process quickly."
+msgstr "Review every application, open resumes, and move strong candidates through the process quickly."
+
+msgid "Role details"
+msgstr "Role details"
+
+msgid "Salary"
+msgstr "Salary"
+
+msgid "Schedule"
+msgstr "Schedule"
+
+#. placeholder {0}: (currentPage - 1) * CANDIDATES_PER_PAGE + 1
+#. placeholder {1}: Math.min(currentPage * CANDIDATES_PER_PAGE, filteredCandidates.length)
+#. placeholder {2}: filteredCandidates.length
+msgid "Showing {0}-{1} of {2}"
+msgstr "Showing {0}-{1} of {2}"
+
+msgid "Skills"
+msgstr "Skills"
+
+msgid "Skills and benefits"
+msgstr "Skills and benefits"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Updated at"
+msgstr "Updated at"
+
+msgid "View CV"
+msgstr "View CV"
+
+msgid "Views"
+msgstr "Views"
+
+msgid "Work mode"
+msgstr "Work mode"

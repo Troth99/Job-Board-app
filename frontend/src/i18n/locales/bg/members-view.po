@@ -23,9 +23,6 @@ msgstr "{memberName} е премахнат от компанията."
 msgid "{memberName}'s role updated to {newRole} successfully."
 msgstr "Ролята на {memberName}  е актуализирана успешно до {newRole}."
 
-#~ msgid "Change Role"
-#~ msgstr "Промяна на роля"
-
 msgid "Company Members"
 msgstr "Членове на компанията"
 

@@ -10,12 +10,14 @@ export default function useProfile() {
   const [userData, setUserData] = useState<User | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
   const user = getUserFromLocalStorage();
+
   useEffect(() => {
-    if (user) {
-      getLoggedInUserData();
-    } else {
+    if (!user || Object.keys(user).length === 0) {
       setIsInitialized(true);
+      return;
     }
+
+    getLoggedInUserData();
   }, []);
 
   const { t } = useLingui();
@@ -89,10 +91,6 @@ export default function useProfile() {
       throw new Error(error.message || "Network error");
     }
   };
-
-  useEffect(() => {
-    getLoggedInUserData();
-  }, []);
 
   return {
     loading,

@@ -16,7 +16,6 @@ import MetaData from "../../../../seo/MetaDataTags";
 import useAvatar from "../../hooks/useAvatar";
 import { ProfileProps } from "../../types/profileSectionTypes";
 import { Trans } from "@lingui/react/macro";
-import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 
 export default function MyProfile({ LogOutComponnent }: ProfileProps) {
   const { loading: userLoading, isInitialized, userData } = useProfile();
@@ -145,6 +144,7 @@ const companyId = userData?.company;
             <section className="profile-bottom-grid">
               <JobPosting
                 company={company}
+                userRole={userRole}
                 postJobNavigation={postJobNavigation}
                 registerCompanyNavigation={registerCompanyNavigation}
               />

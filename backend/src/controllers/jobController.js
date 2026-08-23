@@ -1,5 +1,6 @@
 import { CompanyMember } from "../models/CompanyMember.js";
 import Jobs from "../models/Jobs.js";
+import User from "../models/User.js";
 import Category from "../models/Category.js";
 import mongoose from "mongoose";
 import { createJobService, getJobById, getJobsByCategoryName, getRecentJobs } from "../services/jobService.js";
@@ -78,6 +79,8 @@ export const getAllJobsController = async (req, res) => {
       }
 
       filter.company = companyId;
+    } else {
+      filter.isActive = true;
     }
 
     const jobs = await Jobs.find(filter)
@@ -184,6 +187,13 @@ export const updateJobController = async (req, res) => {
 
 
     await job.save();
+
+    if (job.isActive === false) {
+      await User.updateMany(
+        { "savedJobs.job": job._id },
+        { $pull: { savedJobs: { job: job._id } } },
+      );
+    }
 
     res.status(200).json(job);
   } catch (error) {

@@ -16,9 +16,6 @@ msgstr ""
 msgid "Bulgarian"
 msgstr "Български"
 
-#~ msgid "Career Advice"
-#~ msgstr ""
-
 msgid "Change language"
 msgstr "Смени езика"
 

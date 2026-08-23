@@ -11,7 +11,7 @@ const ViewAllJobs = lazy(() => {
   return import("../views/ViewAllJobs/ViewAllJobs");
 });
 const DetailsJob = lazy(() => {
-  return import("../views/DetailsJob/DetailsJob");
+  return import("../components/DetailsJobsActions/JobActions");
 });
 const PostJob = lazy(() => import("../views/CreateJob/CreateJob"));
 const EditJob = lazy(() => import("../views/EditJob/EditJob"));
@@ -20,7 +20,7 @@ const ViewAllJobsForCompany = lazy(
     import("../../companies/views/ViewAllJobsForCompany/ViewAllJobsForCompany"),
 );
 const CandidateJobView = lazy(
-  () => import("../views/JobDetailsView/JobDetailsView"),
+  () => import("../views/JobDetailsView/CandidateJobView"),
 );
 const FilterJobByCategory = lazy(
   () => import("../views/FilterJobsByCategory/FilterJobsByCategory"),
