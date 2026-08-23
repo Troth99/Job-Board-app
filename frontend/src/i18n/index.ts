@@ -30,6 +30,7 @@ import { messages as bgProfile } from "./locales/bg/profile.po";
 import { messages as bgRegisterCompany } from "./locales/bg/register-company.po";
 import { messages as bgSalaryNegotiation } from "./locales/bg/salary-negotiation.po";
 import { messages as bgSavedJobs } from "./locales/bg/saved-jobs.po";
+import { messages as bgShowCompanyJobs } from "./locales/bg/show-company-jobs.po";
 import { messages as bgSeo } from "./locales/bg/seoTranslates.po";
 import { messages as bgShared } from "./locales/bg/shared.po";
 import { messages as bgTermsAndConditions } from "./locales/bg/terms-and-conditions.po";
@@ -65,6 +66,7 @@ import { messages as enProfile } from "./locales/en/profile.po";
 import { messages as enRegisterCompany } from "./locales/en/register-company.po";
 import { messages as enSalaryNegotiation } from "./locales/en/salary-negotiation.po";
 import { messages as enSavedJobs } from "./locales/en/saved-jobs.po";
+import { messages as enShowCompanyJobs } from "./locales/en/show-company-jobs.po";
 import { messages as enSeo } from "./locales/en/seoTranslates.po";
 import { messages as enShared } from "./locales/en/shared.po";
 import { messages as enTermsAndConditions } from "./locales/en/terms-and-conditions.po";
@@ -108,6 +110,7 @@ const bgMessages = {
   ...bgSeo,
   ...bgMembersView,
   ...bgSavedJobs,
+  ...bgShowCompanyJobs,
   ...bgApplyModal,
   ...bgJobDetails,
   ...bgDetailsForJob,
@@ -144,6 +147,7 @@ const enMessages = {
   ...enSeo,
   ...enMembersView,
   ...enSavedJobs,
+  ...enShowCompanyJobs,
   ...enApplyModal,
   ...enJobDetails,
   ...enDetailsForJob,

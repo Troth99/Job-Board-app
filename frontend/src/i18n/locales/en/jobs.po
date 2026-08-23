@@ -51,6 +51,9 @@ msgstr "A compact snapshot of the core terms and expectations for the position."
 msgid "Actions"
 msgstr "Actions"
 
+msgid "Activate Job"
+msgstr "Activate Job"
+
 msgid "Active"
 msgstr "Active"
 
@@ -213,11 +216,20 @@ msgstr "CV Link"
 msgid "Data Science & Analytics"
 msgstr "Data Science & Analytics"
 
+msgid "Deactivate Job"
+msgstr "Deactivate Job"
+
 msgid "Degree level, certification baseline, or 'Not required' when education is not a screening factor."
 msgstr "Degree level, certification baseline, or 'Not required' when education is not a screening factor."
 
+msgid "Delete Job"
+msgstr "Delete Job"
+
 msgid "Deleted user"
 msgstr "Deleted user"
+
+msgid "Deleting..."
+msgstr "Deleting..."
 
 msgid "Describe the day-to-day work, team context, responsibilities, and what success looks like in the role."
 msgstr "Describe the day-to-day work, team context, responsibilities, and what success looks like in the role."
@@ -407,6 +419,9 @@ msgstr "Invalid application deadline date."
 
 #~ msgid "is-closed"
 #~ msgstr "is-closed"
+
+msgid "Job Actions"
+msgstr "Job Actions"
 
 msgid "Job Category"
 msgstr "Job Category"

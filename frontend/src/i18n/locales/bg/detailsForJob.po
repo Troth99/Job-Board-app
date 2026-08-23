@@ -19,6 +19,9 @@ msgstr "Компактен преглед на основните условия
 msgid "Actions"
 msgstr "Действия"
 
+msgid "Activate Job"
+msgstr "Активиране на работа"
+
 msgid "Active"
 msgstr "Активен"
 
@@ -53,7 +56,7 @@ msgid "Candidate pipeline"
 msgstr "Кандидатски поток"
 
 msgid "Candidate status filters"
-msgstr ""
+msgstr "Филтри за статус на кандидатите"
 
 msgid "Candidate-facing strengths, perks, and extra incentives for the role."
 msgstr "Силни страни, придобивки и допълнителни стимули за ролята."
@@ -65,7 +68,7 @@ msgid "Category"
 msgstr "Категория"
 
 msgid "Closed"
-msgstr ""
+msgstr "Затворен"
 
 msgid "Contract type"
 msgstr "Вид на договора"
@@ -73,8 +76,20 @@ msgstr "Вид на договора"
 msgid "CV"
 msgstr "CV"
 
+msgid "Deactivate Job"
+msgstr "Деактивиране на работа"
+
+msgid "Delete Job"
+msgstr " Изтриване на работа"
+
 msgid "Deleted user"
-msgstr ""
+msgstr "Изтрит потребител"
+
+msgid "Deleting..."
+msgstr " Изтриване..."
+
+msgid "Edit Job"
+msgstr " Редактиране на работа"
 
 msgid "Education level"
 msgstr "Образователно ниво"
@@ -100,6 +115,9 @@ msgstr "Информация за наемане"
 #~ msgid "is-closed"
 #~ msgstr "затворен"
 
+msgid "Job Actions"
+msgstr "Действия за работа"
+
 msgid "Keep the longer hiring context readable instead of burying it in a single block."
 msgstr "Запазете по-дългия контекст на наемане четим, вместо да го заравяте в един блок."
 
@@ -107,7 +125,7 @@ msgid "Language requirements"
 msgstr "Изисквания за езика"
 
 msgid "Loading applications..."
-msgstr ""
+msgstr "Зареждане на кандидатури..."
 
 msgid "Location"
 msgstr "Местоположение"
@@ -128,10 +146,10 @@ msgid "No candidates match the selected status."
 msgstr "Няма кандидати, които да съответстват на избрания статус."
 
 msgid "No extra requirements or notes were added for this role yet."
-msgstr ""
+msgstr "Все още не са добавени допълнителни изисквания или бележки за тази роля."
 
 msgid "No public description has been added for this role yet."
-msgstr ""
+msgstr "Все още не е добавено публично описание за тази роля."
 
 msgid "No skills listed yet."
 msgstr "Все още няма изброени умения."

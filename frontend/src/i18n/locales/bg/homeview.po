@@ -28,8 +28,14 @@ msgstr "Компании"
 msgid "Discover the Latest Opportunities"
 msgstr "Открий най-новите възможности"
 
+msgid "found"
+msgstr "намерени"
+
 msgid "Here you can see an overview of the activity on our platform."
 msgstr "Тук можете да видите преглед на активността на нашата платформа."
+
+msgid "Job search"
+msgstr "Търсене на работа"
 
 msgid "Jobs"
 msgstr "Обяви за работа"
@@ -60,6 +66,12 @@ msgstr "Търсене по ключова дума във всички обяв
 
 msgid "Search by keyword..."
 msgstr "Търсене по ключова дума..."
+
+msgid "Search results"
+msgstr "Резултати от търсенето"
+
+msgid "Showing opportunities matching"
+msgstr "Показани са възможности, съответстващи на"
 
 msgid "Total job postings"
 msgstr "Общо обяви за работа"

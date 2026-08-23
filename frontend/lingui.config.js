@@ -39,6 +39,10 @@ export default defineConfig({
 			include: ["src/features/jobs"],
 		},
 		{
+			path: "<rootDir>/src/i18n/locales/{locale}/show-company-jobs",
+			include: ["src/features/companies/components/showJobs"],
+		},
+		{
 			path: "<rootDir>/src/i18n/locales/{locale}/view-all-companies",
 			include: ["src/features/companies/views/ViewAllCompanies"],
 		},
@@ -115,12 +119,6 @@ export default defineConfig({
 			path: "<rootDir>/src/i18n/locales/{locale}/edit-profile",
 			include: ["src/features/profile/views/EditProfile",
 				"src/features/profile/views/ChangePassword",
-			],
-
-		},
-		{
-			path: "<rootDir>/src/i18n/locales/{locale}/jobs",
-			include: ["src/features/jobs/views/ViewAllJobs/ViewAllJobs",
 			],
 
 		},
@@ -218,6 +216,7 @@ export default defineConfig({
 			path: "<rootDir>/src/i18n/locales/{locale}/detailsForJob",
 			include: ["src/features/jobs/views/DetailsJob",
 				"src/features/jobs/components/CandidateApplications",
+				"src/features/jobs/components/detailsJobsActions",
 			],
 
 		},

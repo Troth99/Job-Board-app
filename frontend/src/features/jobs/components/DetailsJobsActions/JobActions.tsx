@@ -12,6 +12,8 @@ import useMembers from "../../../companies/hooks/useMembers";
 import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
 import useJobs from "../../hooks/useJobsAPI";
 import useApplications from "../../hooks/useJobApplications";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 
 
 //Deactive job should make the job not visible for candidates and not allow them to apply. It should also remove the job from the favorites of candidates who have favorited it.
@@ -161,26 +163,26 @@ function DetailsJob() {
             />
             {canEditOrDelete && (
               <div className="job-actions">
-                <h3>Job Actions</h3>
+                <h3><Trans>Job Actions</Trans></h3>
                 <div className="job-actions-buttons">
                   <button
                     className="edit-job-button"
                     onClick={editNavigateHandler}
                   >
-                    Edit Job
+                    <Trans>Edit Job</Trans>
                   </button>
                   <button
                     className="delete-job-button"
                     onClick={deleteJobHandler}
                     disabled={loading}
                   >
-                    {loading ? "Deleting..." : "Delete Job"}
+                    {loading ? t`Deleting...` : t`Delete Job`}
                   </button>
                   <button
                     className="app-button app-button--secondary"
                     onClick={changeStatusHandler}
                   >
-                    {jobDetails?.isActive ? "Deactivate Job" : "Activate Job"}
+                    {jobDetails?.isActive ? t`Deactivate Job` : t`Activate Job`}
                   </button>
                 </div>
               </div>

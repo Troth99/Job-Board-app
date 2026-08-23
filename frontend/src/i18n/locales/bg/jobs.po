@@ -51,6 +51,9 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+msgid "Activate Job"
+msgstr ""
+
 msgid "Active"
 msgstr ""
 
@@ -213,10 +216,19 @@ msgstr ""
 msgid "Data Science & Analytics"
 msgstr ""
 
+msgid "Deactivate Job"
+msgstr ""
+
 msgid "Degree level, certification baseline, or 'Not required' when education is not a screening factor."
 msgstr ""
 
+msgid "Delete Job"
+msgstr ""
+
 msgid "Deleted user"
+msgstr ""
+
+msgid "Deleting..."
 msgstr ""
 
 msgid "Describe the day-to-day work, team context, responsibilities, and what success looks like in the role."
@@ -407,6 +419,9 @@ msgstr ""
 
 #~ msgid "is-closed"
 #~ msgstr ""
+
+msgid "Job Actions"
+msgstr ""
 
 msgid "Job Category"
 msgstr ""

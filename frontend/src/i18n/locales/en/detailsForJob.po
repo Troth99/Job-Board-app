@@ -19,6 +19,9 @@ msgstr "A compact snapshot of the core terms and expectations for the position."
 msgid "Actions"
 msgstr "Actions"
 
+msgid "Activate Job"
+msgstr "Activate Job"
+
 msgid "Active"
 msgstr "Active"
 
@@ -73,8 +76,20 @@ msgstr "Contract type"
 msgid "CV"
 msgstr "CV"
 
+msgid "Deactivate Job"
+msgstr "Deactivate Job"
+
+msgid "Delete Job"
+msgstr "Delete Job"
+
 msgid "Deleted user"
 msgstr "Deleted user"
+
+msgid "Deleting..."
+msgstr "Deleting..."
+
+msgid "Edit Job"
+msgstr "Edit Job"
 
 msgid "Education level"
 msgstr "Education level"
@@ -99,6 +114,9 @@ msgstr "Hiring information"
 
 #~ msgid "is-closed"
 #~ msgstr "is-closed"
+
+msgid "Job Actions"
+msgstr "Job Actions"
 
 msgid "Keep the longer hiring context readable instead of burying it in a single block."
 msgstr "Keep the longer hiring context readable instead of burying it in a single block."

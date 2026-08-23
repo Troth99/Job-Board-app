@@ -5,6 +5,8 @@ import useJobs from "../../../../jobs/hooks/useJobsAPI";
 import { Job } from "../../../../jobs/types/Job.model";
 import Spinner from "../../../../../shared/components/Spinner/Spinner";
 import { ShowJobs } from "../../../../companies/components/showJobs/showCompanyJobs";
+import "../Search.css";
+import "../Responsive.css";
 
 export default function SearchResults() {
   const [searchParams] = useSearchParams();
@@ -37,6 +39,19 @@ export default function SearchResults() {
   }
   return (
     <div className="search-results-container">
+      <header className="search-results-header">
+        <div>
+          <span className="search-results-eyebrow"><Trans>Job search</Trans></span>
+          <h1><Trans>Search results</Trans></h1>
+          <p>
+            <Trans>Showing opportunities matching</Trans>{" "}
+            <strong>"{query}"</strong>
+          </p>
+        </div>
+        <span className="search-results-count">
+          {results.length} <Trans>found</Trans>
+        </span>
+      </header>
       {results.length === 0 ? (
         <div className="search-no-jobs-f1">
           <span
@@ -51,6 +66,7 @@ export default function SearchResults() {
       ) : (
         <ShowJobs
           jobs={results}
+          variant="search"
           onJobClick={(jobId) => navigate(`/job/${jobId}`)}
         />
       )}

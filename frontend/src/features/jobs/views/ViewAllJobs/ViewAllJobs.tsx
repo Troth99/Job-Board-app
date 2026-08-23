@@ -139,6 +139,10 @@ function ViewAllJobs() {
                       </span>
                     </div>
 
+                    <p className="job-description-modern">
+                      {job.description || "Explore this opportunity and discover what the role has to offer."}
+                    </p>
+
                     <div className="job-info-modern">
                       <span className="job-pill job-type-modern">
                         {job.employmentType}
@@ -153,7 +157,12 @@ function ViewAllJobs() {
                   </div>
 
                   <div className="job-card-footer">
-                    <span className="job-posted-by-modern"></span>
+                    <span className="job-posted-by-modern">
+                      <Trans>Posted by</Trans>{" "}
+                      {job.createdBy?.firstName || job.createdBy?.lastName
+                        ? `${job.createdBy.firstName || ""} ${job.createdBy.lastName || ""}`.trim()
+                        : "Company team"}
+                    </span>
                     <span className="job-apply-btn-modern">View details</span>
                   </div>
                 </article>

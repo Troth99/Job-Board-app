@@ -28,8 +28,14 @@ msgstr "Companies"
 msgid "Discover the Latest Opportunities"
 msgstr "Discover the Latest Opportunities"
 
+msgid "found"
+msgstr "found"
+
 msgid "Here you can see an overview of the activity on our platform."
 msgstr "Here you can see an overview of the activity on our platform."
+
+msgid "Job search"
+msgstr "Job search"
 
 msgid "Jobs"
 msgstr "Jobs"
@@ -60,6 +66,12 @@ msgstr "Search by keyword in all job postings"
 
 msgid "Search by keyword..."
 msgstr "Search by keyword..."
+
+msgid "Search results"
+msgstr "Search results"
+
+msgid "Showing opportunities matching"
+msgstr "Showing opportunities matching"
 
 msgid "Total job postings"
 msgstr "Total job postings"
