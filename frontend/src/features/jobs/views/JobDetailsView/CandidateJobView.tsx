@@ -1,6 +1,6 @@
 import { useLocation, useParams } from "react-router";
 import useJobs from "../../hooks/useJobsAPI";
-import "./JobDetailsView.css";
+import "./CandidateJobView.css";
 import { useEffect, useState } from "react";
 import { Job } from "../../types/Job.model";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
@@ -11,6 +11,7 @@ import { Container } from "../../../../shared/components/Container/Container";
 import { CompanyDetails } from "./CompanyDetailsForJobSection/CompanyDetailsViewforJobs";
 import { QucikInfoSection } from "./CompanyDetailsForJobSection/QuicnInfoSection";
 import useProfile from "../../../profile/hooks/useProfile";
+import DeactivatedJobView from "../../components/DeactivatedJobView/DeactivatedJob";
 
 function normalizeToArray(value: unknown): string[] {
   if (Array.isArray(value)) {
@@ -34,8 +35,10 @@ export default function CandidateJobView() {
   const location = useLocation();
   const { loading, getJobById } = useJobs();
   const [jobData, setJobData] = useState<Job>();
+  const [isJobActive, setIsJobActive] = useState<boolean | undefined>(undefined);
 
   const [token] = useLocalStorage<string>("user", "");
+
   const isLoggedIn = !!token;
 
   const [showApplyModal, setShowApplyModal] = useState(false);
@@ -47,7 +50,7 @@ export default function CandidateJobView() {
 
   const skills = normalizeToArray(jobData?.skills || jobData?.requirements);
   const benefits = normalizeToArray(jobData?.benefits);
-  const tags = normalizeToArray(jobData?.tags);
+
   const categoryLabel =
     typeof jobData?.category === "string"
       ? jobData.category
@@ -73,6 +76,7 @@ export default function CandidateJobView() {
         }
 
         const response = await getJobById(jobId);
+        setIsJobActive(response.isActive);
         setJobData(response);
       } catch (error) {
         console.error("Failed to fetch jobs.");
@@ -86,6 +90,9 @@ export default function CandidateJobView() {
   }
   return (
     <Container>
+      {!isJobActive === false ?
+      <DeactivatedJobView /> :
+      
       <section className="job-details-page">
         <div className="job-board-layout">
           <aside className="job-sidebar">
@@ -220,6 +227,7 @@ export default function CandidateJobView() {
           />
         )}
       </section>
+      }
     </Container>
   );
 }

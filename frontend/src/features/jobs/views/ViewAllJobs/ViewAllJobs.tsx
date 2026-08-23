@@ -142,8 +142,7 @@ function ViewAllJobs() {
 
                 <div className="job-card-footer">
                   <span className="job-posted-by-modern">
-                    Posted by {job.createdBy?.firstName || "Unknown"}{" "}
-                    {job.createdBy?.lastName || "recruiter"}
+                
                   </span>
                   <span className="job-apply-btn-modern">View details</span>
                 </div>

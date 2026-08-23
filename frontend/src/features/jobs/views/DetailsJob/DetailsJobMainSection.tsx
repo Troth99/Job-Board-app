@@ -57,6 +57,7 @@ function DetailsJobMainSection({
   return (
     <>
      <MetaData seo={seo()} />
+     
     <section className="details-job-main">
       <article className="details-job-main__hero">
         <div className="details-job-main__eyebrow-row">

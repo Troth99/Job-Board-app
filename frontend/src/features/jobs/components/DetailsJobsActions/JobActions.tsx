@@ -48,6 +48,7 @@ function DetailsJob() {
       if (jobId) {
         setLoading(true);
         const currentJob = await getJobById(jobId);
+        console.log(currentJob);
         setCurrentStatus(currentJob.isActive);
         setJobdetails(currentJob);
       }

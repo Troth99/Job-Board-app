@@ -20,7 +20,7 @@ const ViewAllJobsForCompany = lazy(
     import("../../companies/views/ViewAllJobsForCompany/ViewAllJobsForCompany"),
 );
 const CandidateJobView = lazy(
-  () => import("../views/JobDetailsView/JobDetailsView"),
+  () => import("../views/JobDetailsView/CandidateJobView"),
 );
 const FilterJobByCategory = lazy(
   () => import("../views/FilterJobsByCategory/FilterJobsByCategory"),

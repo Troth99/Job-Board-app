@@ -6,12 +6,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: bg\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 msgid "A compact snapshot of the core terms and expectations for the position."
-msgstr " Компактен преглед на основните условия и очаквания за позицията."
+msgstr "Компактен преглед на основните условия и очаквания за позицията."
 
 msgid "Actions"
 msgstr "Действия"
+
+msgid "Active"
+msgstr "Активен"
 
 msgid "All"
 msgstr "Всички"
@@ -43,6 +52,9 @@ msgstr "Кандидатури"
 msgid "Candidate pipeline"
 msgstr "Кандидатски поток"
 
+msgid "Candidate status filters"
+msgstr ""
+
 msgid "Candidate-facing strengths, perks, and extra incentives for the role."
 msgstr "Силни страни, придобивки и допълнителни стимули за ролята."
 
@@ -52,11 +64,17 @@ msgstr "кандидати"
 msgid "Category"
 msgstr "Категория"
 
+msgid "Closed"
+msgstr ""
+
 msgid "Contract type"
 msgstr "Вид на договора"
 
 msgid "CV"
 msgstr "CV"
+
+msgid "Deleted user"
+msgstr ""
 
 msgid "Education level"
 msgstr "Образователно ниво"
@@ -76,17 +94,20 @@ msgstr "Години опит"
 msgid "Hiring information"
 msgstr "Информация за наемане"
 
-msgid "is-active"
-msgstr "активен"
+#~ msgid "is-active"
+#~ msgstr "активен"
 
-msgid "is-closed"
-msgstr "затворен"
+#~ msgid "is-closed"
+#~ msgstr "затворен"
 
 msgid "Keep the longer hiring context readable instead of burying it in a single block."
 msgstr "Запазете по-дългия контекст на наемане четим, вместо да го заравяте в един блок."
 
 msgid "Language requirements"
 msgstr "Изисквания за езика"
+
+msgid "Loading applications..."
+msgstr ""
 
 msgid "Location"
 msgstr "Местоположение"
@@ -106,8 +127,29 @@ msgstr "Няма кандидати, които да са кандидатств
 msgid "No candidates match the selected status."
 msgstr "Няма кандидати, които да съответстват на избрания статус."
 
+msgid "No extra requirements or notes were added for this role yet."
+msgstr ""
+
+msgid "No public description has been added for this role yet."
+msgstr ""
+
 msgid "No skills listed yet."
 msgstr "Все още няма изброени умения."
+
+msgid "Not available"
+msgstr "Не е налично"
+
+msgid "Not provided"
+msgstr "Не е предоставено"
+
+msgid "Not specified"
+msgstr "Не е посочено"
+
+msgid "Not updated yet"
+msgstr "Все още не е актуализирано"
+
+msgid "Open until filled"
+msgstr "Отворено, докато не се запълни"
 
 msgid "Openings"
 msgstr "Свободни позиции"
@@ -135,6 +177,13 @@ msgstr "Предишна"
 
 msgid "Reject"
 msgstr "Откажи"
+
+msgid "Rejected"
+msgstr "Отхвърлен"
+
+#. placeholder {0}: candidate.email
+msgid "Remove {0}"
+msgstr "Премахване на {0}"
 
 msgid "Remove approved candidate"
 msgstr "Премахване на одобрения кандидат"

@@ -51,6 +51,9 @@ msgstr "A compact snapshot of the core terms and expectations for the position."
 msgid "Actions"
 msgstr "Actions"
 
+msgid "Active"
+msgstr "Active"
+
 msgid "Add the city or area where the employee will work. If hybrid, mention the office location clearly."
 msgstr "Add the city or area where the employee will work. If hybrid, mention the office location clearly."
 
@@ -123,6 +126,9 @@ msgstr "Candidate Applications"
 msgid "Candidate pipeline"
 msgstr "Candidate pipeline"
 
+msgid "Candidate status filters"
+msgstr "Candidate status filters"
+
 msgid "Candidate-facing strengths, perks, and extra incentives for the role."
 msgstr "Candidate-facing strengths, perks, and extra incentives for the role."
 
@@ -152,6 +158,9 @@ msgstr "Clarify the legal or commercial form of engagement if it matters for the
 
 msgid "Clear All Filters"
 msgstr "Clear All Filters"
+
+msgid "Closed"
+msgstr "Closed"
 
 msgid "Company"
 msgstr "Company"
@@ -206,6 +215,9 @@ msgstr "Data Science & Analytics"
 
 msgid "Degree level, certification baseline, or 'Not required' when education is not a screening factor."
 msgstr "Degree level, certification baseline, or 'Not required' when education is not a screening factor."
+
+msgid "Deleted user"
+msgstr "Deleted user"
 
 msgid "Describe the day-to-day work, team context, responsibilities, and what success looks like in the role."
 msgstr "Describe the day-to-day work, team context, responsibilities, and what success looks like in the role."
@@ -390,11 +402,11 @@ msgstr "Internship"
 msgid "Invalid application deadline date."
 msgstr "Invalid application deadline date."
 
-msgid "is-active"
-msgstr "is-active"
+#~ msgid "is-active"
+#~ msgstr "is-active"
 
-msgid "is-closed"
-msgstr "is-closed"
+#~ msgid "is-closed"
+#~ msgstr "is-closed"
 
 msgid "Job Category"
 msgstr "Job Category"
@@ -440,6 +452,9 @@ msgstr "List the must-have qualifications as comma-separated items. Focus on rea
 
 msgid "List the value-added perks as comma-separated items so the offer looks concrete and transparent."
 msgstr "List the value-added perks as comma-separated items so the offer looks concrete and transparent."
+
+msgid "Loading applications..."
+msgstr "Loading applications..."
 
 msgid "Loading jobs..."
 msgstr "Loading jobs..."
@@ -492,6 +507,9 @@ msgstr "No candidates applied for this job."
 msgid "No candidates match the selected status."
 msgstr "No candidates match the selected status."
 
+msgid "No extra requirements or notes were added for this role yet."
+msgstr "No extra requirements or notes were added for this role yet."
+
 msgid "No jobs found"
 msgstr "No jobs found"
 
@@ -501,11 +519,26 @@ msgstr "No jobs found."
 msgid "No prior experience required"
 msgstr "No prior experience required"
 
+msgid "No public description has been added for this role yet."
+msgstr "No public description has been added for this role yet."
+
 msgid "No skills listed yet."
 msgstr "No skills listed yet."
 
 msgid "Non-Profit & NGO"
 msgstr "Non-Profit & NGO"
+
+msgid "Not available"
+msgstr "Not available"
+
+msgid "Not provided"
+msgstr "Not provided"
+
+msgid "Not specified"
+msgstr "Not specified"
+
+msgid "Not updated yet"
+msgstr "Not updated yet"
 
 msgid "not-allowed"
 msgstr "not-allowed"
@@ -533,6 +566,9 @@ msgstr "Open positions must be at least 1."
 
 msgid "Open the job posting guide with examples for every field."
 msgstr "Open the job posting guide with examples for every field."
+
+msgid "Open until filled"
+msgstr "Open until filled"
 
 msgid "Openings"
 msgstr "Openings"
@@ -615,8 +651,15 @@ msgstr "Real Estate & Property"
 msgid "Reject"
 msgstr "Reject"
 
+msgid "Rejected"
+msgstr "Rejected"
+
 msgid "Remote"
 msgstr "Remote"
+
+#. placeholder {0}: candidate.email
+msgid "Remove {0}"
+msgstr "Remove {0}"
 
 msgid "Remove approved candidate"
 msgstr "Remove approved candidate"
