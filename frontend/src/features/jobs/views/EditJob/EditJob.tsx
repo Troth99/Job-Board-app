@@ -17,6 +17,7 @@ import { jobPostValidations } from "../../validators/createJobValidation";
 import { jobValidationMessages } from "../../validators/jobValidationMessages";
 import { Trans, useLingui } from "@lingui/react/macro";
 
+//to add the helper function for translating thr work types
 
 const initialValues = {
   title: "",
