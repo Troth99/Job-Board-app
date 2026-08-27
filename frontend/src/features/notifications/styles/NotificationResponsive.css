@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 /* Responsive styles for Notifications */
 @media (max-width: 900px) {
 	.notification-list {

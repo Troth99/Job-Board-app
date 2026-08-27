@@ -1,5 +1,5 @@
-import "./Notifications.css";
-import "./NotificationResponsive.css";
+import "../../styles/Notifications.css";
+import "../../styles/NotificationResponsive.css";
 import { useState } from "react";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import useNotifications, { useSortedNotifications } from "../../hooks/useNotifications";
