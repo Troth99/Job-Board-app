@@ -57,6 +57,9 @@ msgstr "Activate Job"
 msgid "Active"
 msgstr "Active"
 
+msgid "Active vacancy"
+msgstr "Active vacancy"
+
 msgid "Add the city or area where the employee will work. If hybrid, mention the office location clearly."
 msgstr "Add the city or area where the employee will work. If hybrid, mention the office location clearly."
 
@@ -89,6 +92,9 @@ msgstr "Applied On"
 
 msgid "Apply for {jobTitle}"
 msgstr "Apply for {jobTitle}"
+
+msgid "Apply now"
+msgstr "Apply now"
 
 msgid "Apprenticeship"
 msgstr "Apprenticeship"
@@ -165,11 +171,20 @@ msgstr "Clear All Filters"
 msgid "Closed"
 msgstr "Closed"
 
+msgid "Closed vacancy"
+msgstr "Closed vacancy"
+
 msgid "Company"
 msgstr "Company"
 
+msgid "Company members cannot apply"
+msgstr "Company members cannot apply"
+
 msgid "Consulting & Strategy"
 msgstr "Consulting & Strategy"
+
+msgid "Contact email"
+msgstr "Contact email"
 
 msgid "Contact Email"
 msgstr "Contact Email"
@@ -296,6 +311,9 @@ msgstr "Email is required."
 
 msgid "Employment"
 msgstr "Employment"
+
+msgid "Employment type"
+msgstr "Employment type"
 
 msgid "Employment Type"
 msgstr "Employment Type"
@@ -426,6 +444,9 @@ msgstr "Job Actions"
 msgid "Job Category"
 msgstr "Job Category"
 
+msgid "Job description"
+msgstr "Job description"
+
 msgid "Job Description"
 msgstr "Job Description"
 
@@ -483,6 +504,9 @@ msgstr "Location is required."
 msgid "Location:"
 msgstr "Location:"
 
+msgid "Log in and continue"
+msgstr "Log in and continue"
+
 msgid "Main tasks, tools used, reporting line, shift details, and any important operational expectations."
 msgstr "Main tasks, tools used, reporting line, shift details, and any important operational expectations."
 
@@ -504,6 +528,9 @@ msgstr "Mid-level"
 msgid "Monday to Friday, 09:00-18:00"
 msgstr "Monday to Friday, 09:00-18:00"
 
+msgid "More information"
+msgstr "More information"
+
 msgid "Need help filling the form?"
 msgstr "Need help filling the form?"
 
@@ -516,11 +543,17 @@ msgstr "Next"
 msgid "No benefits listed yet."
 msgstr "No benefits listed yet."
 
+msgid "No benefits listed."
+msgstr "No benefits listed."
+
 msgid "No candidates applied for this job."
 msgstr "No candidates applied for this job."
 
 msgid "No candidates match the selected status."
 msgstr "No candidates match the selected status."
+
+msgid "No description provided yet."
+msgstr "No description provided yet."
 
 msgid "No extra requirements or notes were added for this role yet."
 msgstr "No extra requirements or notes were added for this role yet."
@@ -539,6 +572,9 @@ msgstr "No public description has been added for this role yet."
 
 msgid "No skills listed yet."
 msgstr "No skills listed yet."
+
+msgid "No skills listed."
+msgstr "No skills listed."
 
 msgid "Non-Profit & NGO"
 msgstr "Non-Profit & NGO"
@@ -566,6 +602,9 @@ msgstr "On-site, Hybrid, or Remote depending on the role."
 
 msgid "Only shortlisted candidates will be contacted within 10 business days."
 msgstr "Only shortlisted candidates will be contacted within 10 business days."
+
+msgid "Open positions"
+msgstr "Open positions"
 
 msgid "Open Positions"
 msgstr "Open Positions"
@@ -627,8 +666,14 @@ msgstr "Phone"
 msgid "Phone number"
 msgstr "Phone number"
 
+msgid "Please make sure your CV and contact details are up to date before applying."
+msgstr "Please make sure your CV and contact details are up to date before applying."
+
 msgid "Plovdiv, Bulgaria"
 msgstr "Plovdiv, Bulgaria"
+
+msgid "Position details"
+msgstr "Position details"
 
 msgid "Position overview"
 msgstr "Position overview"
@@ -638,6 +683,9 @@ msgstr "Post a New Job"
 
 msgid "Post job"
 msgstr "Post job"
+
+msgid "Posted"
+msgstr "Posted"
 
 msgid "Posted by"
 msgstr "Posted by"
@@ -656,6 +704,12 @@ msgstr "Private health insurance, monthly bonus, food vouchers"
 
 msgid "Provide a real salary range or compensation note that helps candidates decide whether to apply."
 msgstr "Provide a real salary range or compensation note that helps candidates decide whether to apply."
+
+msgid "Questions about this role? Contact us at "
+msgstr "Questions about this role? Contact us at "
+
+msgid "Quick info"
+msgstr "Quick info"
 
 msgid "Quick rules"
 msgstr "Quick rules"
@@ -687,6 +741,9 @@ msgstr "Required"
 
 msgid "Required fields"
 msgstr "Required fields"
+
+msgid "Required skills"
+msgstr "Required skills"
 
 msgid "Requirements"
 msgstr "Requirements"
@@ -886,6 +943,9 @@ msgstr "Warehouse Operations Coordinator"
 msgid "We will contact you!"
 msgstr "We will contact you!"
 
+msgid "We would be happy to review your application. If your profile is a good fit, our team will contact you for the next steps."
+msgstr "We would be happy to review your application. If your profile is a good fit, our team will contact you for the next steps."
+
 msgid "What a complete entry set can look like"
 msgstr "What a complete entry set can look like"
 
@@ -910,6 +970,9 @@ msgstr "Work mode cannot be empty."
 msgid "Work mode is required."
 msgstr "Work mode is required."
 
+msgid "Work schedule"
+msgstr "Work schedule"
+
 msgid "Work Schedule"
 msgstr "Work Schedule"
 
@@ -927,6 +990,9 @@ msgstr "You have no saved jobs"
 
 msgid "You must log in to add this job in favourites"
 msgstr "You must log in to add this job in favourites"
+
+msgid "You need an account to apply"
+msgstr "You need an account to apply"
 
 msgid "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."
 msgstr "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."
