@@ -16,7 +16,7 @@ import { Trans, useLingui } from "@lingui/react/macro";
 
 export default function Notifications() {
   const { deleteNotification, markAsRead } = useNotifications();
-  const { notifications, setNotifications, unreadCount, setUnreadCount } =
+  const { notifications, setNotifications, setUnreadCount } =
     useNotificationContext();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -30,7 +30,6 @@ export default function Notifications() {
 
   const seo = generateSeoConfig("notifications");
 
-  const userId = getUserFromLocalStorage()._id;
   const navigate = useNavigate();
 
 // Handler for removing a notification - deletes it from the server and updates the local state

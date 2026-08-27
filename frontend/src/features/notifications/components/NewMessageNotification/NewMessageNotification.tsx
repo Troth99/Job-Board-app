@@ -27,7 +27,6 @@ export default function NewmessageNotification() {
       if (!notificationId) return;
       try {
         const result = await getNotificationById(notificationId);
-
         setNotification(result);
       } catch (error) {
         console.error("Error fetching notification message:", error);
