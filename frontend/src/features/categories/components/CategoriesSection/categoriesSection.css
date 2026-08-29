@@ -20,11 +20,11 @@
 .custom-category-card {
   min-height: 82px;
   padding: 14px;
-  color: #ffffff;
-  background: rgba(31, 58, 90, 0.9);
-  border: 1px solid rgba(111, 165, 233, 0.8);
+  color: #173b64;
+  background: #ffffff;
+  border: 1px solid #c8d9ec;
   border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(25, 118, 210, 0.08);
+  box-shadow: 0 3px 8px rgba(25, 76, 125, 0.08);
   text-align: center;
   cursor: pointer;
   transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease, transform 0.18s ease;
@@ -39,14 +39,14 @@
   text-align: center;
   font-size: 1.7rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #173b64;
   margin-bottom: 22px;
   letter-spacing: 0;
 }
 .custom-category-card:hover {
   color: #ffffff;
-  background: #2563eb;
-  border-color: #2563eb;
+  background: #1f5f9e;
+  border-color: #1f5f9e;
   box-shadow: 0 7px 16px rgba(25, 118, 210, 0.18);
   transform: translateY(-2px);
 }
@@ -64,7 +64,7 @@
 }
 
 .custom-one-line span {
-  color: #ffffff;
+  color: inherit;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -95,6 +95,9 @@
 
 [data-theme="dark"] .custom-categories-section {
   background: transparent;
+}
+[data-theme="dark"] .custom-categories-title {
+  color: #ffffff;
 }
 [data-theme="dark"] .custom-category-card {
   color: #dbeafe;

@@ -307,6 +307,23 @@
   line-height: 1.5;
 }
 
+.dashboard-readonly-notice {
+  border-left: 4px solid #d68a10;
+  border-radius: 6px;
+  background: #fff6df;
+  color: #704500;
+  padding: 0.75rem 0.9rem;
+}
+
+.dashboard-readonly-notice p {
+  margin: 0;
+  color: inherit;
+}
+
+.dashboard-readonly-notice p + p {
+  margin-top: 0.3rem;
+}
+
 .dashboard .content-header,
 .dashboard .content-header-jobs {
   margin: 0;
@@ -473,6 +490,12 @@ body[data-theme="dark"] .dashboard-title {
 
 body[data-theme="dark"] .dashboard-subtitle {
   color: #cfe0f8;
+}
+
+body[data-theme="dark"] .dashboard-readonly-notice {
+  border-left-color: #f6bd56;
+  background: rgba(113, 75, 14, 0.3);
+  color: #ffe3a5;
 }
 
 body[data-theme="dark"] .success-message {

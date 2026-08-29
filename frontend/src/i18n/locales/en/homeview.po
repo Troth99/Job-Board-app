@@ -70,9 +70,6 @@ msgstr "Make your next"
 msgid "move"
 msgstr "move"
 
-msgid " on your terms."
-msgstr " on your terms."
-
 msgid "No jobs available."
 msgstr "No jobs available."
 

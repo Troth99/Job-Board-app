@@ -61,6 +61,12 @@ msgstr "Company dashboard"
 msgid "Company panel"
 msgstr "Company panel"
 
+msgid "Contact an administrator if you need permission to manage job listings."
+msgstr "Contact an administrator if you need permission to manage job listings."
+
+#~ msgid "Contact an administrator if you need permission to manage job listings.."
+#~ msgstr "Contact an administrator if you need permission to manage job listings.."
+
 msgid "Email"
 msgstr "Email"
 
@@ -114,6 +120,9 @@ msgstr "Operational overview"
 
 msgid "Overview"
 msgstr "Overview"
+
+#~ msgid "Please contact your administrator for editing permissions."
+#~ msgstr "Please contact your administrator for editing permissions."
 
 msgid "Post new jobs and monitor recent openings for your company."
 msgstr "Post new jobs and monitor recent openings for your company."
@@ -194,6 +203,12 @@ msgstr "You are the owner of the company"
 
 msgid "You cannot leave the company until you transfer ownership to another member."
 msgstr "You cannot leave the company until you transfer ownership to another member."
+
+#~ msgid "You have read-only access to the jobs board. You are able only to visit job listings."
+#~ msgstr "You have read-only access to the jobs board. You are able only to visit job listings."
+
+msgid "You have read-only access to the jobs board. You cannot create, edit, or delete job listings."
+msgstr "You have read-only access to the jobs board. You cannot create, edit, or delete job listings."
 
 msgid "Your message has been sent successfully!"
 msgstr "Your message has been sent successfully!"

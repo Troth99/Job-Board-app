@@ -61,6 +61,12 @@ msgstr "Табло на компанията"
 msgid "Company panel"
 msgstr "Панел на компанията"
 
+msgid "Contact an administrator if you need permission to manage job listings."
+msgstr "Свържете се с администратор, ако имате нужда от разрешение за управление на обявите за работа."
+
+#~ msgid "Contact an administrator if you need permission to manage job listings.."
+#~ msgstr "Свържете се с администратор, ако имате нужда от разрешение за управление на обявите за работа."
+
 msgid "Email"
 msgstr "Имейл"
 
@@ -114,6 +120,9 @@ msgstr "Оперативен преглед"
 
 msgid "Overview"
 msgstr "Преглед"
+
+#~ msgid "Please contact your administrator for editing permissions."
+#~ msgstr "Моля, свържете се с вашия администратор за разрешения за редактиране."
 
 msgid "Post new jobs and monitor recent openings for your company."
 msgstr "Публикувайте нови работни места и следете последните обяви за вашата компания."
@@ -194,6 +203,12 @@ msgstr "Вие сте собственик на компанията"
 
 msgid "You cannot leave the company until you transfer ownership to another member."
 msgstr "Не можете да напуснете компанията, докато не прехвърлите собствеността на друг член."
+
+#~ msgid "You have read-only access to the jobs board. You are able only to visit job listings."
+#~ msgstr "Имате достъп само за четене до борда за работни места. Можете само да посещавате обявите за работа."
+
+msgid "You have read-only access to the jobs board. You cannot create, edit, or delete job listings."
+msgstr "Имате достъп само за четене до борда за работни места. Не можете да създавате, редактирате или изтривате обяви за работа."
 
 msgid "Your message has been sent successfully!"
 msgstr "Вашето съобщение беше изпратено успешно!"

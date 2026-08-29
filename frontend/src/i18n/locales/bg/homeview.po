@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 msgid " on your terms."
-msgstr " на твоите условия."
+msgstr " стъпка на твои условия."
 
 #~ msgid "<0>Job Board</0> for your next career move."
 #~ msgstr "<0>Job Board</0> за следващата ти кариерна стъпка."
@@ -69,9 +69,6 @@ msgstr "Направи"
 
 msgid "move"
 msgstr "следващата си"
-
-msgid " on your terms."
-msgstr " стъпка на твои условия."
 
 msgid "No jobs available."
 msgstr "Няма налични обяви за работа."

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router";
-import { ShowJobs } from "../../components/showJobs/showCompanyJobs";
+import { ShowJobs } from "../../components/showCompanyJobs/showCompanyJobs";
 import { Job } from "../../../jobs/types/Job.model";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import useJobs from "../../../jobs/hooks/useJobsAPI";
