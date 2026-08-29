@@ -64,8 +64,14 @@ msgstr "Търсене на работа"
 msgid "Jobs"
 msgstr "Обяви за работа"
 
-msgid "Make your next move"
-msgstr "Направи следващата си стъпка"
+msgid "Make your next"
+msgstr "Направи"
+
+msgid "move"
+msgstr "следващата си"
+
+msgid " on your terms."
+msgstr " стъпка на твои условия."
 
 msgid "No jobs available."
 msgstr "Няма налични обяви за работа."

@@ -1,0 +1,51 @@
+.custom-show-all-btn,
+.homeview-primary-btn,
+.custom-hero .search-btn,
+.search-btn {
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.custom-show-all-btn,
+.homeview-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  padding: 0.8rem 1.5rem;
+  background: var(--home-accent-strong);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+}
+
+.custom-show-all-btn:hover,
+.homeview-primary-btn:hover {
+  background: #115293;
+  box-shadow: 0 0 18px rgba(25, 118, 210, 0.13);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.custom-hero .search-btn,
+.search-btn {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.custom-hero .search-btn:hover,
+.search-btn:hover {
+  background: linear-gradient(90deg, #009dff, #00ccff);
+  transform: scale(1.1);
+  box-shadow: 0 0 18px rgba(0, 123, 255, 0.5);
+}
+
+.custom-hero .search-btn svg,
+.search-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}

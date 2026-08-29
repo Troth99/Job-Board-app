@@ -1,5 +1,5 @@
 import { StatsResponse } from "../../types/ApplicationStatistic.model";
-import "./HomeStats.css";
+import "../../styles/HomeStats.css";
 import { Trans } from "@lingui/react/macro";
 
 export function HomeStats({

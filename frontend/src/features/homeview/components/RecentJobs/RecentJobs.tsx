@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/react/macro";
 import { formatDate } from "../../../../shared/utils/formData";
 import { Job } from "../../../jobs/types/Job.model";
-import "./RecentJobs.css";
+import "../../styles/RecentJobs.css";
 import { Link } from "react-router";
 
 

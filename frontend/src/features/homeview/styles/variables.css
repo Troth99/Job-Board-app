@@ -1,0 +1,16 @@
+:root {
+  --home-bg-dark: #121821;
+  --home-bg-overlay: rgba(8, 14, 24, 0.48);
+  --home-surface: rgba(31, 58, 90, 0.9);
+  --home-border: rgba(111, 165, 233, 0.8);
+  --home-text: #f8fafc;
+  --home-muted: #d4dce8;
+  --home-accent: #60a5fa;
+  --home-accent-strong: #1976d2;
+  --home-input-bg: rgba(255, 255, 255, 0.9);
+  --home-input-placeholder: #777;
+  --home-shadow: rgba(25, 118, 210, 0.08);
+  --home-shadow-strong: rgba(25, 118, 210, 0.18);
+  --home-btn-dark: #00bfae;
+  --home-btn-dark-hover: #008e7c;
+}

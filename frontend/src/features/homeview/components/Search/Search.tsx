@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useLingui } from "@lingui/react/macro";
-import "./Search.css";
-import "./Responsive.css";
+import "../../styles/Search.css";
+import "../../styles/Responsive.css";
+import "../../styles/buttons.css";
 import { useNavigate } from "react-router";
 
 

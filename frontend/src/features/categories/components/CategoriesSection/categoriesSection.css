@@ -10,13 +10,20 @@
   margin: 0 auto;
   max-width: 920px;
 }
+
+.custom-categories-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
 .custom-category-card {
   min-height: 82px;
   padding: 14px;
-  color: #1e3a8a;
-  background: #f1f6ff;
-  border: 1px solid #a9c7f7;
-  border-radius: 6px;
+  color: #ffffff;
+  background: rgba(31, 58, 90, 0.9);
+  border: 1px solid rgba(111, 165, 233, 0.8);
+  border-radius: 10px;
   box-shadow: 0 3px 8px rgba(25, 118, 210, 0.08);
   text-align: center;
   cursor: pointer;
@@ -32,7 +39,7 @@
   text-align: center;
   font-size: 1.7rem;
   font-weight: 800;
-  color: #1e3a8a;
+  color: #ffffff;
   margin-bottom: 22px;
   letter-spacing: 0;
 }
@@ -57,7 +64,7 @@
 }
 
 .custom-one-line span {
-  color: inherit;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0;

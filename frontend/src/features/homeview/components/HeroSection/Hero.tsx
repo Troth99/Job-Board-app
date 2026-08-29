@@ -1,6 +1,7 @@
 import { Trans } from "@lingui/react/macro";
-import "./Hero.css";
-import "./Responsive.css";
+import "../../styles/Hero.css";
+import "../../styles/Responsive.css";
+import "../../styles/buttons.css";
 import Search from "../Search/Search";
 
 export default function Hero() {
@@ -13,7 +14,12 @@ export default function Hero() {
           <Trans>Find work that fits your life</Trans>
         </p>
         <h1>
-          <Trans>Make your next move</Trans>
+          <span className="custom-hero__title-line">
+            <Trans>Make your next</Trans>
+          </span>
+          <span className="custom-hero__title-line">
+            <Trans>move</Trans>
+          </span>
           <span className="custom-hero__title-accent">
             <Trans> on your terms.</Trans>
           </span>

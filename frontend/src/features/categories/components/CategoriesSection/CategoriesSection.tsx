@@ -50,9 +50,11 @@ const handleCategoryClick = (cat: Category) => {
       </div>
 
       {reduxCategories.length > 8 && (
-        <button className="custom-show-all-btn" onClick={() => setOpenModal(true)}>
-          <Trans>View All Categories</Trans>
-        </button>
+        <div className="custom-categories-actions">
+          <button className="custom-show-all-btn" onClick={() => setOpenModal(true)}>
+            <Trans>View All Categories</Trans>
+          </button>
+        </div>
       )}
 
  

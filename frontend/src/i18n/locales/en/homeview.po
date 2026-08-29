@@ -64,8 +64,14 @@ msgstr "Job search"
 msgid "Jobs"
 msgstr "Jobs"
 
-msgid "Make your next move"
-msgstr "Make your next move"
+msgid "Make your next"
+msgstr "Make your next"
+
+msgid "move"
+msgstr "move"
+
+msgid " on your terms."
+msgstr " on your terms."
 
 msgid "No jobs available."
 msgstr "No jobs available."

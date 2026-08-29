@@ -413,9 +413,66 @@ body[data-theme="dark"] .sidebar-nav-list li button {
   color: #d9e8ff;
 }
 
+body[data-theme="dark"] .sidebar-nav-list li a::before,
+body[data-theme="dark"] .sidebar-nav-list li button::before {
+  background: #82a9dc;
+}
+
+body[data-theme="dark"] .sidebar-nav-list li a:hover,
+body[data-theme="dark"] .sidebar-nav-list li button:hover,
+body[data-theme="dark"] .sidebar-nav-list li a:focus-visible,
+body[data-theme="dark"] .sidebar-nav-list li button:focus-visible {
+  border-color: rgba(130, 169, 220, 0.45);
+  background: linear-gradient(135deg, rgba(86, 136, 235, 0.2), rgba(52, 173, 171, 0.1));
+  color: #edf5ff;
+}
+
+body[data-theme="dark"] .sidebar-mini-calendar,
+body[data-theme="dark"] .sidebar-extension,
+body[data-theme="dark"] .sidebar-divider {
+  border-color: #2d405d;
+}
+
+body[data-theme="dark"] .sidebar-mini-calendar {
+  background: rgba(16, 29, 46, 0.8);
+}
+
+body[data-theme="dark"] .sidebar-mini-calendar-header h3,
+body[data-theme="dark"] .sidebar-extension h3,
+body[data-theme="dark"] .sidebar-extension p,
+body[data-theme="dark"] .sidebar-mini-calendar-header {
+  color: #eaf4ff;
+}
+
+body[data-theme="dark"] .sidebar-extension p,
+body[data-theme="dark"] .sidebar-extension-chips span {
+  color: #bbcadf;
+}
+
+body[data-theme="dark"] .sidebar-extension-chips span {
+  background: rgba(107, 144, 201, 0.14);
+  border-color: rgba(124, 164, 227, 0.35);
+}
+
 body[data-theme="dark"] .dashboard-overview {
   border-color: #334e6f;
   background: linear-gradient(180deg, #16263d 0%, #142338 100%);
+}
+
+body[data-theme="dark"] .dashboard-overview::after {
+  background: linear-gradient(180deg, #7ea5d8, #5d8ece);
+}
+
+body[data-theme="dark"] .dashboard-kicker {
+  color: #8caedb;
+}
+
+body[data-theme="dark"] .dashboard-title {
+  color: #edf5ff;
+}
+
+body[data-theme="dark"] .dashboard-subtitle {
+  color: #cfe0f8;
 }
 
 body[data-theme="dark"] .success-message {

@@ -61,15 +61,23 @@
   letter-spacing: 0;
 }
 
+.custom-hero__title-line,
+.custom-hero__title-accent {
+  display: block;
+}
+
 html[lang="bg"] .custom-hero h1 {
-  max-width: 12ch;
+  max-width: 15ch;
   font-size: clamp(2.3rem, 4.1vw, 3.65rem);
   line-height: 1.05;
 }
 
 .custom-hero__title-accent {
-  display: block;
-  color: #93c5fd;
+  color: #f8fafc;
+}
+
+html[lang="bg"] .custom-hero__title-accent {
+  color: #f8fafc;
 }
 
 .custom-hero-subtitle {
