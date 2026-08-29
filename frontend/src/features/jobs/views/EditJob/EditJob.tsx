@@ -83,6 +83,11 @@ export default function EditJob() {
       if (currentJob.category && typeof currentJob.category === "object") {
         currentJob.category = currentJob.category._id;
       }
+
+      if (currentJob.applicationDeadline) {
+        currentJob.applicationDeadline = currentJob.applicationDeadline.split("T")[0];
+      }
+
       setJobData(currentJob);
     } catch (error) {
       console.error("Unable to fetch jobs.");
