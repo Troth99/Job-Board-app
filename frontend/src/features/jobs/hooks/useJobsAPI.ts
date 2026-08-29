@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useApiRequester from "../../../shared/hooks/useApiRequester";
 import { API_BASE } from "../../../config/api";
-import { Job, valuesInterface } from "../types/Job.model";
+import { CreateJobPayload, Job } from "../types/Job.model";
 
 export default function useJobs() {
   const { request } = useApiRequester();
@@ -23,7 +23,7 @@ export default function useJobs() {
     }
   };
 
-  const createJob = async (jobData: valuesInterface) => {
+  const createJob = async (jobData: CreateJobPayload) => {
     setLoading(true);
     try {
       const response = await request(`${API_BASE}/jobs`, "POST", jobData);

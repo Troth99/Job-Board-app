@@ -43,7 +43,7 @@ export interface valuesInterface {
   description: string;
   location: string;
   salary: string;
-  category: Category;
+  category: Category | "";
   employmentType: string;
   skills?: string;
   requirements: string;
@@ -61,4 +61,8 @@ export interface valuesInterface {
   educationLevel?: string;
   additionalInfo?: string;
   [key: string]: any;
+}
+
+export interface CreateJobPayload extends Omit<valuesInterface, "skills"> {
+  skills: string[];
 }

@@ -18,7 +18,7 @@ import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import { Trans, useLingui } from "@lingui/react/macro";
 
-const initialValues = {
+const initialValues: valuesInterface = {
   title: "",
   description: "",
   location: "",
@@ -67,7 +67,7 @@ function PostJob() {
       await createJob({
         ...values,
         skills: splitCommaSeparatedValues(values.skills),
-      } as valuesInterface);
+      });
       showSuccess(t`Job posted successfully!`);
       navigate(`/company/${companyId}/dashboard`);
     } catch (error: unknown) {
