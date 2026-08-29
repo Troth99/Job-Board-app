@@ -25,6 +25,72 @@ msgstr "Предимства (разделени със запетаи)"
 msgid "Category"
 msgstr "Категория"
 
+msgid "Information Technology"
+msgstr "Информационни технологии"
+
+msgid "Finance & Accounting"
+msgstr "Финанси и счетоводство"
+
+msgid "Marketing & Advertising"
+msgstr "Маркетинг и реклама"
+
+msgid "Human Resources"
+msgstr "Човешки ресурси"
+
+msgid "Design & Creative"
+msgstr "Дизайн и творчество"
+
+msgid "Sales & Business Development"
+msgstr "Продажби и бизнес развитие"
+
+msgid "Customer Support"
+msgstr "Обслужване на клиенти"
+
+msgid "Operations & Logistics"
+msgstr "Операции и логистика"
+
+msgid "Education & Training"
+msgstr "Образование и обучение"
+
+msgid "Legal & Compliance"
+msgstr "Право и съответствие"
+
+msgid "Healthcare & Medical"
+msgstr "Здравеопазване и медицина"
+
+msgid "Engineering & Manufacturing"
+msgstr "Инженерство и производство"
+
+msgid "Science & Research"
+msgstr "Наука и изследвания"
+
+msgid "Consulting & Strategy"
+msgstr "Консултиране и стратегия"
+
+msgid "Media & Communication"
+msgstr "Медии и комуникации"
+
+msgid "Data Science & Analytics"
+msgstr "Наука за данните и анализи"
+
+msgid "Retail & E-commerce"
+msgstr "Търговия на дребно и електронна търговия"
+
+msgid "Hospitality & Tourism"
+msgstr "Хотелиерство и туризъм"
+
+msgid "Real Estate & Property"
+msgstr "Недвижими имоти"
+
+msgid "Food & Beverage"
+msgstr "Храни и напитки"
+
+msgid "Transportation & Delivery"
+msgstr "Транспорт и доставки"
+
+msgid "Non-Profit & NGO"
+msgstr "Нестопански организации и НПО"
+
 msgid "Category is required."
 msgstr "Категорията е задължителна."
 
@@ -73,6 +139,33 @@ msgstr "Имейлът е задължителен."
 msgid "Employment Type"
 msgstr "Тип заетост"
 
+msgid "Full-time"
+msgstr "Пълно работно време"
+
+msgid "Part-time"
+msgstr "Непълно работно време"
+
+msgid "Internship"
+msgstr "Стаж"
+
+msgid "Contract"
+msgstr "Договор"
+
+msgid "Freelance"
+msgstr "Свободна практика"
+
+msgid "Temporary"
+msgstr "Временна заетост"
+
+msgid "Volunteer"
+msgstr "Доброволческа позиция"
+
+msgid "Seasonal"
+msgstr "Сезонна заетост"
+
+msgid "Apprenticeship"
+msgstr "Чиракуване"
+
 msgid "Employment type is required."
 msgstr "Типът заетост е задължителен."
 
@@ -81,6 +174,30 @@ msgstr "Изисква се ниво на опит."
 
 msgid "Experience Requirement"
 msgstr "Изисквания за опит"
+
+msgid "No prior experience required"
+msgstr "Не се изисква предишен опит"
+
+msgid "Some experience preferred (6+ months)"
+msgstr "Предимство е известен опит (6+ месеца)"
+
+msgid "1+ year relevant experience"
+msgstr "1+ година подходящ опит"
+
+msgid "2+ years relevant experience"
+msgstr "2+ години подходящ опит"
+
+msgid "3+ years relevant experience"
+msgstr "3+ години подходящ опит"
+
+msgid "5+ years relevant experience"
+msgstr "5+ години подходящ опит"
+
+msgid "Supervisory experience required"
+msgstr "Изисква се опит в ръководенето на екип"
+
+msgid "Management experience required"
+msgstr "Изисква се управленски опит"
 
 msgid "Experience years cannot be negative."
 msgstr "Годините опит не могат да бъдат отрицателни."
@@ -127,6 +244,9 @@ msgstr "Свободните позиции трябва да са поне 1."
 msgid "Open the job posting guide with examples for every field."
 msgstr "Отворете ръководството за публикуване на работни места с примери за всяко поле."
 
+msgid "On-site"
+msgstr "На място"
+
 msgid "Optional"
 msgstr "По избор"
 
@@ -144,6 +264,9 @@ msgstr "Изисквания (разделени със запетаи)"
 
 msgid "Requirements are required."
 msgstr "Изискванията са задължителни."
+
+msgid "Remote"
+msgstr "Дистанционно"
 
 msgid "Salary"
 msgstr "Заплата"

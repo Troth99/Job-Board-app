@@ -91,7 +91,7 @@ export  function JobEditCategory({ value, categories, onChange }: JobCategorySel
       <option value=""><Trans>Select a category</Trans></option>
       {categories.map((category) => (
         <option key={category._id} value={category._id}>
-          {category.name}
+          {getTranslatedCategoryLabel(category.name ?? "")}
         </option>
       ))}
     </select>

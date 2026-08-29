@@ -24,25 +24,13 @@ msgstr ""
 msgid "{rule}"
 msgstr ""
 
-msgid "1+ year relevant experience"
-msgstr ""
-
-msgid "2+ years relevant experience"
-msgstr ""
-
 msgid "2200-2800 EURO gross"
 msgstr ""
 
 msgid "3"
 msgstr ""
 
-msgid "3+ years relevant experience"
-msgstr ""
-
 msgid "31 May 2026"
-msgstr ""
-
-msgid "5+ years relevant experience"
 msgstr ""
 
 msgid "A compact snapshot of the core terms and expectations for the position."
@@ -510,9 +498,6 @@ msgstr ""
 msgid "Main tasks, tools used, reporting line, shift details, and any important operational expectations."
 msgstr ""
 
-msgid "Management experience required"
-msgstr ""
-
 msgid "Marketing & Advertising"
 msgstr ""
 
@@ -563,9 +548,6 @@ msgstr ""
 
 msgid "No jobs found."
 msgstr "Няма намерени работни места."
-
-msgid "No prior experience required"
-msgstr ""
 
 msgid "No public description has been added for this role yet."
 msgstr ""
@@ -847,9 +829,6 @@ msgstr ""
 msgid "Sofia, Bulgaria"
 msgstr ""
 
-msgid "Some experience preferred (6+ months)"
-msgstr ""
-
 msgid "Something went wrong while posting job."
 msgstr ""
 
@@ -863,9 +842,6 @@ msgid "State the minimum education expectation only if it is genuinely relevant 
 msgstr ""
 
 msgid "Status"
-msgstr ""
-
-msgid "Supervisory experience required"
 msgstr ""
 
 msgid "Technical skills, licenses, language ability, legal eligibility, tool knowledge, or proven experience."
