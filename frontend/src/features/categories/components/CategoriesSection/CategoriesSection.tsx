@@ -34,13 +34,18 @@ const handleCategoryClick = (cat: Category) => {
       <h2 className="custom-categories-title"><Trans>Browse by Category</Trans></h2>
       <div className="custom-categories-grid">
         {visibleCategories.map((cat) => (
-          <div key={cat.name} className="custom-category-card" onClick={() => handleCategoryClick(cat)}>
+          <button
+            key={cat.name}
+            type="button"
+            className="custom-category-card"
+            onClick={() => handleCategoryClick(cat)}
+          >
             <div className="custom-card-body">
               <div className="custom-one-line">
                 <span>{i18n.locale.startsWith("bg") ? cat.bgName || cat.name : cat.name}</span>
               </div>
             </div>
-          </div>
+          </button>
         ))}
       </div>
 

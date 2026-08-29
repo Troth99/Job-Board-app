@@ -1,12 +1,13 @@
+import "../../styles/newMessages.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useNotifications from "../../hooks/useNotifications";
-import "./newMessages.css";
 import { Notification } from "../../types/Notification.model";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { formatDate } from "../../../../shared/utils/formData";
 import { ModalReply } from "./ModalReply";
 import { Trans } from "@lingui/react/macro";
+
 
 export default function NewmessageNotification() {
   const [notification, setNotification] = useState<Notification | null>(null);
