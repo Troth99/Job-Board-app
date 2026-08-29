@@ -13,12 +13,12 @@ import { Link, useNavigate, useParams } from "react-router";
 import { jobPostValidations } from "../../validators/createJobValidation";
 import { jobValidationMessages } from "../../validators/jobValidationMessages";
 import useForm from "../../../../shared/hooks/useForm";
-import { valuesInterface } from "../../types/Job.model";
+import { JobFormValues } from "../../types/Job.model";
 import { generateSeoConfig } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
 import { Trans, useLingui } from "@lingui/react/macro";
 
-const initialValues: valuesInterface = {
+const initialValues: JobFormValues = {
   title: "",
   description: "",
   location: "",
@@ -58,10 +58,10 @@ function PostJob() {
 
 
 
-  const validateForm = (values: valuesInterface) =>
+  const validateForm = (values: JobFormValues) =>
     jobPostValidations(values, jobValidationMessages);
 
-  const onSubmitHandler = async (values: valuesInterface) => {
+  const onSubmitHandler = async (values: JobFormValues) => {
     setLoading(true);
     try {
       await createJob({
@@ -82,7 +82,7 @@ function PostJob() {
   };
 
   const { register, formHandler, errors, setFieldValue } =
-    useForm<valuesInterface>(onSubmitHandler, initialValues, validateForm);
+    useForm<JobFormValues>(onSubmitHandler, initialValues, validateForm);
 
     const seo = () => generateSeoConfig("postJob");
     return (

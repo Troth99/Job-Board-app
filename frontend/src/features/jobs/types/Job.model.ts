@@ -37,13 +37,13 @@ export interface Job {
 }
 
 
-export interface valuesInterface {
+export interface JobFormValues {
   _id?: string;
   title: string;
   description: string;
   location: string;
   salary: string;
-  category: Category | "";
+  category: string;
   employmentType: string;
   skills?: string;
   requirements: string;
@@ -63,6 +63,7 @@ export interface valuesInterface {
   [key: string]: any;
 }
 
-export interface CreateJobPayload extends Omit<valuesInterface, "skills"> {
+export interface JobPayload extends Omit<JobFormValues, "skills"> {
   skills: string[];
+  updatedAt?: string;
 }

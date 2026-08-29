@@ -11,7 +11,7 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
-import { valuesInterface } from "../../types/Job.model";
+import { JobFormValues } from "../../types/Job.model";
 import useForm from "../../../../shared/hooks/useForm";
 import { jobPostValidations } from "../../validators/createJobValidation";
 import { jobValidationMessages } from "../../validators/jobValidationMessages";
@@ -22,11 +22,7 @@ const initialValues = {
   description: "",
   location: "",
   salary: "",
-  category: {
-    _id: "",
-    name: "",
-    shortName: "",
-  },
+  category: "",
   employmentType: "",
   skills: "",
   requirements: "",
@@ -53,7 +49,7 @@ const splitCommaSeparatedValues = (value?: string) =>
 
 export default function EditJob() {
   const { companyId, jobId } = useParams();
-  const [jobData, setJobData] = useState<valuesInterface>(initialValues);
+  const [jobData, setJobData] = useState<JobFormValues>(initialValues);
   const [pending, setPending] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -84,13 +80,8 @@ export default function EditJob() {
         currentJob.requirements = currentJob.skills;
       }
 
-      if (currentJob.category && typeof currentJob.category === "string") {
-        const selectedCategory = categories.find(
-          (category) => category._id === currentJob.category,
-        );
-        if (selectedCategory) {
-          currentJob.category = selectedCategory;
-        }
+      if (currentJob.category && typeof currentJob.category === "object") {
+        currentJob.category = currentJob.category._id;
       }
       setJobData(currentJob);
     } catch (error) {
@@ -109,7 +100,7 @@ export default function EditJob() {
     fetchData();
   }, [jobId, categories.length]);
 
-  const editSubmitHandler = async (values: valuesInterface) => {
+  const editSubmitHandler = async (values: JobFormValues) => {
     setPending(true);
 
     try {
@@ -117,13 +108,8 @@ export default function EditJob() {
         console.error("Job ID is missing.");
         return;
       }
-      if (!values.category) {
-        console.error("Job category is required.");
-        return;
-      }
       await updateJob(jobId, {
         ...values,
-        category: values.category,
         skills: splitCommaSeparatedValues(values.skills),
         updatedAt: new Date().toISOString(),
       });
@@ -135,7 +121,7 @@ export default function EditJob() {
     }
   };
 
-  const validateForm = (values: valuesInterface) =>
+  const validateForm = (values: JobFormValues) =>
     jobPostValidations(values, jobValidationMessages);
 
   const { register, errors, formHandler, setFieldValue } = useForm(
@@ -145,14 +131,7 @@ export default function EditJob() {
   );
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedCategoryId = e.target.value;
-    const selectedCategory = categories.find(
-      (category) => category._id === selectedCategoryId,
-    );
-
-    if (selectedCategory) {
-      setFieldValue("category", selectedCategory);
-    }
+    setFieldValue("category", e.target.value);
   };
 
   return (
@@ -246,11 +225,7 @@ export default function EditJob() {
                 <Trans>Job Category</Trans>
               </label>
               <JobEditCategory
-                value={
-                  typeof register("category").value === "string"
-                    ? null
-                    : register("category").value
-                }
+                value={register("category").value}
                 categories={categories}
                 onChange={handleCategoryChange}
               />

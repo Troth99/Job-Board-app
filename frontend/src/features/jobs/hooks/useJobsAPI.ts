@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useApiRequester from "../../../shared/hooks/useApiRequester";
 import { API_BASE } from "../../../config/api";
-import { CreateJobPayload, Job } from "../types/Job.model";
+import { JobPayload } from "../types/Job.model";
 
 export default function useJobs() {
   const { request } = useApiRequester();
@@ -23,7 +23,7 @@ export default function useJobs() {
     }
   };
 
-  const createJob = async (jobData: CreateJobPayload) => {
+  const createJob = async (jobData: JobPayload) => {
     setLoading(true);
     try {
       const response = await request(`${API_BASE}/jobs`, "POST", jobData);
@@ -70,7 +70,7 @@ export default function useJobs() {
     }
   };
 
-  const updateJob = async (jobId: string, jobData: Partial<Job>) => {
+  const updateJob = async (jobId: string, jobData: JobPayload) => {
     setLoading(true);
     try {
       if (!jobId) throw new Error("Job ID is missing.");
