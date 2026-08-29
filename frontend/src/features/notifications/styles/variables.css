@@ -1,0 +1,70 @@
+/* Shared color tokens for notification UI */
+:root {
+  --notification-bg: #f0e8e8;
+  --notification-surface: #f8fafc;
+  --notification-surface-strong: #ffffff;
+  --notification-surface-soft: #f1f5f9;
+  --notification-surface-alt: #e0e7ff;
+  --notification-border: #e0e7ff;
+  --notification-text: #334155;
+  --notification-heading: #3730a3;
+  --notification-muted: #64748b;
+  --notification-brand: #6366f1;
+  --notification-brand-strong: #3730a3;
+  --notification-read-bg: #cdd4e2;
+  --notification-read-text: #242629;
+  --notification-icon-bg: #e0e7ff;
+  --notification-shadow: rgba(59, 130, 246, 0.13);
+  --notification-shadow-soft: rgba(99, 102, 241, 0.1);
+  --notification-envelope: #f59e42;
+  --notification-briefcase: #10b981;
+  --notification-building: #6366f1;
+   --notification-close: #888888;
+  --notification-close-hover: #3730a3;
+  --notification-close-hover-bg: #edeef3;
+  --notification-button-amber: #ffe066;
+  --notification-button-amber-strong: #ffd43b;
+  --notification-button-amber-text: #23272a;
+  --notification-button-blue: #1976d2;
+  --notification-button-blue-hover: #357ab8;
+  --notification-ghost: #f7fafd;
+  --notification-success-bg: #e6ffe6;
+  --notification-success-text: #218838;
+  --notification-success-border: #34c759;
+}
+
+/* Dark mode overrides for notification tokens */
+body[data-theme="dark"],
+[data-theme="dark"] {
+  --notification-bg: #18181b;
+  --notification-surface: #18181b;
+  --notification-surface-strong: #27272a;
+  --notification-surface-soft: #232323;
+  --notification-surface-alt: #3b3b3b;
+  --notification-border: #27272a;
+  --notification-text: #fde68a;
+  --notification-heading: #38bdf8;
+  --notification-muted: #fbbf24;
+  --notification-brand: #fbbf24;
+  --notification-brand-strong: #38bdf8;
+  --notification-read-bg: #2f2f34;
+  --notification-read-text: #f3f4f6;
+  --notification-icon-bg: #232323;
+  --notification-shadow: rgba(30, 41, 59, 0.18);
+  --notification-shadow-soft: rgba(251, 191, 36, 0.13);
+  --notification-envelope: #fbbf24;
+  --notification-briefcase: #22d3ee;
+  --notification-building: #38bdf8;
+  --notification-close: #d4d4d8;
+  --notification-close-hover: #fbbf24;
+  --notification-close-hover-bg: rgba(255, 255, 255, 0.08);
+  --notification-button-amber: #fbbf24;
+  --notification-button-amber-strong: #fde68a;
+  --notification-button-amber-text: #18181b;
+  --notification-button-blue: #2563eb;
+  --notification-button-blue-hover: #3b82f6;
+  --notification-ghost: #23272a;
+  --notification-success-bg: #14532d;
+  --notification-success-text: #bbf7d0;
+  --notification-success-border: #22c55e;
+}

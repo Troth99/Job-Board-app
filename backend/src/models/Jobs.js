@@ -25,6 +25,12 @@ const jobSchema = new Schema({
     required: true 
   },
 
+  contractType: {
+    type: String,
+    default: "",
+    trim: true,
+  },
+
   experienceLevel: {
     type: String,
     default: '',

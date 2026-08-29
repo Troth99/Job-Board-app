@@ -1,0 +1,138 @@
+.stats-section {
+  max-width: 960px;
+  margin: 74px auto 64px;
+  padding: 34px 24px;
+  background: #f5f9ff;
+  border: 1px solid #c7dbfa;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stats-eyebrow {
+  margin-bottom: 10px;
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stats-title {
+  max-width: 18ch;
+  margin: 0 auto;
+  color: #1e3a8a;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.stats-desc {
+  margin: 12px auto 0;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.home-stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 32px;
+  border-top: 1px solid #c7dbfa;
+  border-bottom: 1px solid #c7dbfa;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 26px 22px;
+}
+
+.stat-card + .stat-card {
+  border-left: 1px solid #c7dbfa;
+}
+
+.stat-index {
+  margin-bottom: 12px;
+  color: #2563eb;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.stat-value {
+  margin-bottom: 4px;
+  color: #2563eb;
+  font-size: 2.45rem;
+  font-weight: 800;
+}
+
+.stat-label {
+  color: #1e3a8a;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.stat-info {
+  margin-top: 5px;
+  color: #71809b;
+  font-size: 0.82rem;
+}
+
+[data-theme="dark"] .stats-section {
+  background: #252a34;
+  border: 1px solid #394354;
+}
+
+[data-theme="dark"] .stats-eyebrow,
+[data-theme="dark"] .stat-index {
+  color: #8db8ff;
+}
+
+[data-theme="dark"] .stats-title,
+[data-theme="dark"] .stat-label {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .stats-desc,
+[data-theme="dark"] .stat-info {
+  color: #bcc6d3;
+}
+
+[data-theme="dark"] .home-stats-container,
+[data-theme="dark"] .stat-card + .stat-card {
+  border-color: #465267;
+}
+
+[data-theme="dark"] .stat-value {
+  color: #8db8ff;
+}
+
+@media (max-width: 900px) {
+  .stats-section {
+    margin-top: 56px;
+    margin-bottom: 48px;
+  }
+
+  .stat-card {
+    padding: 22px 12px;
+  }
+}
+
+@media (max-width: 650px) {
+  .stats-section {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .home-stats-container {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card + .stat-card {
+    border-top: 1px solid #c7dbfa;
+    border-left: 0;
+  }
+
+  [data-theme="dark"] .stat-card + .stat-card {
+    border-color: #465267;
+  }
+}

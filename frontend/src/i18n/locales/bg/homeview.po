@@ -13,26 +13,50 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-msgid "<0>Job Board</0> for your next career move."
-msgstr "<0>Job Board</0> за следващата ти кариерна стъпка."
+msgid " on your terms."
+msgstr " стъпка на твои условия."
 
-msgid "<0>Your next opportunity</0> starts here."
-msgstr "<0>Твоята следваща възможност</0> започва тук."
+#~ msgid "<0>Job Board</0> for your next career move."
+#~ msgstr "<0>Job Board</0> за следващата ти кариерна стъпка."
+
+#~ msgid "<0>Your next opportunity</0> starts here."
+#~ msgstr "<0>Твоята следваща възможност</0> започва тук."
+
+msgid "A growing network of people, teams, and opportunities."
+msgstr "Растяща мрежа от хора, екипи и възможности."
 
 msgid "Active companies posting jobs"
 msgstr "Активни компании, публикуващи обяви за работа"
 
+msgid "Built around real career momentum"
+msgstr "Изградена около реалния кариерен импулс"
+
+msgid "Built for your next step"
+msgstr "Създадена за следващата ти стъпка"
+
 msgid "Companies"
 msgstr "Компании"
+
+msgid "Curated opportunities"
+msgstr "Курирани възможности"
+
+msgid "Direct applications"
+msgstr "Директни кандидатури"
 
 msgid "Discover the Latest Opportunities"
 msgstr "Открий най-новите възможности"
 
+msgid "Explore roles from teams that are ready for what you bring."
+msgstr "Разгледай роли от екипи, които са готови за това, което можеш да предложиш."
+
+msgid "Find work that fits your life"
+msgstr "Намери работа, която пасва на живота ти"
+
 msgid "found"
 msgstr "намерени"
 
-msgid "Here you can see an overview of the activity on our platform."
-msgstr "Тук можете да видите преглед на активността на нашата платформа."
+#~ msgid "Here you can see an overview of the activity on our platform."
+#~ msgstr "Тук можете да видите преглед на активността на нашата платформа."
 
 msgid "Job search"
 msgstr "Търсене на работа"
@@ -40,29 +64,39 @@ msgstr "Търсене на работа"
 msgid "Jobs"
 msgstr "Обяви за работа"
 
+msgid "Make your next"
+msgstr "Направи"
+
+msgid "move"
+msgstr "следващата си"
+
 msgid "No jobs available."
 msgstr "Няма налични обяви за работа."
 
 msgid "No jobs found."
 msgstr "Не са намерени обяви за работа."
 
-msgid "Platform Statistics"
-msgstr "Статистика на платформата"
+msgid "Platform pulse"
+msgstr "Пулс на платформата"
 
-#. placeholder {0}: job.createdBy?.firstName
-#. placeholder {1}: job.createdBy?.lastName
-msgid "Posted by: {0} {1}"
-msgstr "Публикувано от: {0} {1}"
+#~ msgid "Platform Statistics"
+#~ msgstr "Статистика на платформата"
 
 #. placeholder {0}: job.createdAt && formatDate(job.createdAt)
-msgid "Posted: {0}"
-msgstr "Публикувано на: {0}"
+msgid "Posted {0}"
+msgstr "Публикувано {0}"
+
+#~ msgid "Posted by: {0} {1}"
+#~ msgstr "Публикувано от: {0} {1}"
+
+#~ msgid "Posted: {0}"
+#~ msgstr "Публикувано на: {0}"
 
 msgid "Registered users on the platform"
 msgstr "Регистрирани потребители на платформата"
 
-msgid "Search by keyword in all job postings"
-msgstr "Търсене по ключова дума във всички обяви за работа"
+#~ msgid "Search by keyword in all job postings"
+#~ msgstr "Търсене по ключова дума във всички обяви за работа"
 
 msgid "Search by keyword..."
 msgstr "Търсене по ключова дума..."
@@ -81,3 +115,6 @@ msgstr "Потребители"
 
 msgid "View All Jobs"
 msgstr "Виж всички обяви за работа"
+
+msgid "View role"
+msgstr "Виж ролята"

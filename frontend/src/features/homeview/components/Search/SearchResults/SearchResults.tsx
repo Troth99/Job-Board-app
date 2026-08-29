@@ -4,9 +4,10 @@ import { useNavigate, useSearchParams } from "react-router";
 import useJobs from "../../../../jobs/hooks/useJobsAPI";
 import { Job } from "../../../../jobs/types/Job.model";
 import Spinner from "../../../../../shared/components/Spinner/Spinner";
-import { ShowJobs } from "../../../../companies/components/showJobs/showCompanyJobs";
-import "../Search.css";
-import "../Responsive.css";
+import { ShowJobs } from "../../../../companies/components/showCompanyJobs/showCompanyJobs";
+import "../../../styles/Search.css";
+import "../../../styles/Responsive.css";
+import "../../../styles/buttons.css";
 
 export default function SearchResults() {
   const [searchParams] = useSearchParams();

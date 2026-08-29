@@ -12,7 +12,11 @@ import { CompanyDetails } from "./CompanyDetailsForJobSection/CompanyDetailsView
 import { QucikInfoSection } from "./CompanyDetailsForJobSection/QuicnInfoSection";
 import useProfile from "../../../profile/hooks/useProfile";
 import DeactivatedJobView from "../../components/DeactivatedJobView/DeactivatedJob";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 
+
+//to check if the data is beign passed correctly
 function normalizeToArray(value: unknown): string[] {
   if (Array.isArray(value)) {
     return value.filter(Boolean).map(String);
@@ -60,7 +64,7 @@ export default function CandidateJobView() {
     typeof jobData?.additionalInfo === "string" &&
     jobData.additionalInfo.trim().length > 0
       ? jobData.additionalInfo
-      : "We would be happy to review your application. If your profile is a good fit, our team will contact you for the next steps.";
+      : t`We would be happy to review your application. If your profile is a good fit, our team will contact you for the next steps.`;
 
   if (!jobId) {
     console.error("Job id is missing.");
@@ -108,15 +112,15 @@ export default function CandidateJobView() {
             />
 
             <section className="job-card job-card--more-info">
-              <h2>More information</h2>
+              <h2><Trans>More information</Trans></h2>
               <p className="more-info-text">{additionalInfoText}</p>
               <p className="more-info-note">
-                Please make sure your CV and contact details are up to date
-                before applying.
+                <Trans>Please make sure your CV and contact details are up to date
+                before applying.</Trans>
               </p>
               {jobData?.email && (
                 <p className="more-info-contact">
-                  Questions about this role? Contact us at{" "}
+                  <Trans>Questions about this role? Contact us at{" "}</Trans>
                   <a href={`mailto:${jobData.email}`}>{jobData.email}</a>
                 </p>
               )}
@@ -131,63 +135,63 @@ export default function CandidateJobView() {
             </header>
 
             <section className="job-card">
-              <h2>Job description</h2>
-              <p>{jobData?.description || "No description provided yet."}</p>
+              <h2><Trans>Job description</Trans></h2>
+              <p>{jobData?.description || t`No description provided yet.`}</p>
             </section>
 
             <section className="job-card">
-              <h2>Position details</h2>
+              <h2><Trans>Position details</Trans></h2>
               <ul className="details-list">
                 <li>
-                  <span>Category</span>
+                  <span><Trans>Category</Trans></span>
                   <strong>{categoryLabel}</strong>
                 </li>
                 <li>
-                  <span>Work mode</span>
+                  <span><Trans>Work mode</Trans></span>
                   <strong>{jobData?.workMode || "N/A"}</strong>
                 </li>
                 <li>
-                  <span>Employment type</span>
+                  <span><Trans>Employment type</Trans></span>
                   <strong>{jobData?.employmentType || "N/A"}</strong>
                 </li>
                 <li>
-                  <span>Experience level</span>
+                  <span><Trans>Experience level</Trans></span>
                   <strong>{jobData?.experienceLevel || "N/A"}</strong>
                 </li>
 
                 <li>
-                  <span>Open positions</span>
+                  <span><Trans>Open positions</Trans></span>
                   <strong>{jobData?.openings || "N/A"}</strong>
                 </li>
                 <li>
-                  <span>Contract type</span>
+                  <span><Trans>Contract type</Trans></span>
                   <strong>{jobData?.contractType || "N/A"}</strong>
                 </li>
                 <li>
-                  <span>Work schedule</span>
+                  <span><Trans>Work schedule</Trans></span>
                   <strong>{jobData?.workSchedule || "N/A"}</strong>
                 </li>
                 <li>
-                  <span>Language requirements</span>
+                  <span><Trans>Language requirements</Trans></span>
                   <strong>{jobData?.languageRequirements || "N/A"}</strong>
                 </li>
                 <li>
-                  <span>Education level</span>
+                  <span><Trans>Education level</Trans></span>
                   <strong>{jobData?.educationLevel || "N/A"}</strong>
                 </li>
                 <li>
-                  <span>Application deadline</span>
+                  <span><Trans>Application deadline</Trans></span>
                   <strong>{jobData?.applicationDeadline || "N/A"}</strong>
                 </li>
                 <li>
-                  <span>Contact email</span>
+                  <span><Trans>Contact email</Trans></span>
                   <strong>{jobData?.email || "N/A"}</strong>
                 </li>
               </ul>
             </section>
 
             <section className="job-card">
-              <h2>Required skills</h2>
+              <h2><Trans>Required skills</Trans></h2>
               {skills.length > 0 ? (
                 <ul className="chip-list">
                   {skills.map((item, index) => (
@@ -197,12 +201,12 @@ export default function CandidateJobView() {
                   ))}
                 </ul>
               ) : (
-                <p className="empty-text">No skills listed.</p>
+                <p className="empty-text"><Trans>No skills listed.</Trans></p>
               )}
             </section>
 
             <section className="job-card">
-              <h2>Benefits</h2>
+              <h2><Trans>Benefits</Trans></h2>
               {benefits.length > 0 ? (
                 <ul className="chip-list">
                   {benefits.map((item, index) => (
@@ -212,7 +216,7 @@ export default function CandidateJobView() {
                   ))}
                 </ul>
               ) : (
-                <p className="empty-text">No benefits listed.</p>
+                <p className="empty-text"><Trans>No benefits listed.</Trans></p>
               )}
             </section>
           </main>

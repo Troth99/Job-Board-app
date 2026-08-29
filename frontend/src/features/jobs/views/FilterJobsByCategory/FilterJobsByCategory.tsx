@@ -12,7 +12,7 @@ import Pagination from "../../../../shared/components/Pagination/Pagination";
 import { Helmet } from "react-helmet-async";
 import { generateSeoConfig } from "../../../../seo/seo";
 import { useJobFilters } from "../../hooks/useJobFilters";
-import { ShowJobs } from "../../../companies/components/showJobs/showCompanyJobs";
+import { ShowJobs } from "../../../companies/components/showCompanyJobs/showCompanyJobs";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { RootState } from "../../../../store/store";
 import { getTranslatedEmploymentLabel } from "../../helpers/getTranslatedEmploymentLabel";

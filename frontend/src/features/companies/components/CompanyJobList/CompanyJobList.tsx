@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useJobs from "../../../jobs/hooks/useJobsAPI";
-import { ShowJobs } from "../showJobs/showCompanyJobs";
+import { ShowJobs } from "../showCompanyJobs/showCompanyJobs";
 import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";
 import { Job } from "../../../jobs/types/Job.model";
 import { useNavigate } from "react-router";

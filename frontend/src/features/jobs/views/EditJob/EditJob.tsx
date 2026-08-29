@@ -11,23 +11,18 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
-import { valuesInterface } from "../../types/Job.model";
+import { JobFormValues } from "../../types/Job.model";
 import useForm from "../../../../shared/hooks/useForm";
 import { jobPostValidations } from "../../validators/createJobValidation";
 import { jobValidationMessages } from "../../validators/jobValidationMessages";
 import { Trans, useLingui } from "@lingui/react/macro";
-
 
 const initialValues = {
   title: "",
   description: "",
   location: "",
   salary: "",
- category: {
-  _id: "",
-  name: "",
-  shortName: ""
-},
+  category: "",
   employmentType: "",
   skills: "",
   requirements: "",
@@ -54,7 +49,7 @@ const splitCommaSeparatedValues = (value?: string) =>
 
 export default function EditJob() {
   const { companyId, jobId } = useParams();
-  const [jobData, setJobData] = useState<valuesInterface>(initialValues);
+  const [jobData, setJobData] = useState<JobFormValues>(initialValues);
   const [pending, setPending] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
@@ -62,7 +57,7 @@ export default function EditJob() {
   const { t } = useLingui();
 
   const categories = useSelector(
-    (state: RootState) => state.categories.categories
+    (state: RootState) => state.categories.categories,
   );
   const { getJobById, updateJob } = useJobs();
 
@@ -85,14 +80,14 @@ export default function EditJob() {
         currentJob.requirements = currentJob.skills;
       }
 
-      if (currentJob.category && typeof currentJob.category === "string") {
-        const selectedCategory = categories.find(
-          (category) => category._id === currentJob.category,
-        );
-        if (selectedCategory) {
-          currentJob.category = selectedCategory;
-        }
+      if (currentJob.category && typeof currentJob.category === "object") {
+        currentJob.category = currentJob.category._id;
       }
+
+      if (currentJob.applicationDeadline) {
+        currentJob.applicationDeadline = currentJob.applicationDeadline.split("T")[0];
+      }
+
       setJobData(currentJob);
     } catch (error) {
       console.error("Unable to fetch jobs.");
@@ -110,7 +105,7 @@ export default function EditJob() {
     fetchData();
   }, [jobId, categories.length]);
 
-  const editSubmitHandler = async (values: valuesInterface) => {
+  const editSubmitHandler = async (values: JobFormValues) => {
     setPending(true);
 
     try {
@@ -131,7 +126,7 @@ export default function EditJob() {
     }
   };
 
-  const validateForm = (values: valuesInterface) =>
+  const validateForm = (values: JobFormValues) =>
     jobPostValidations(values, jobValidationMessages);
 
   const { register, errors, formHandler, setFieldValue } = useForm(
@@ -141,14 +136,7 @@ export default function EditJob() {
   );
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedCategoryId = e.target.value;
-    const selectedCategory = categories.find(
-      (category) => category._id === selectedCategoryId,
-    );
-
-    if (selectedCategory) {
-      setFieldValue("category", selectedCategory);
-    }
+    setFieldValue("category", e.target.value);
   };
 
   return (
@@ -157,10 +145,14 @@ export default function EditJob() {
         <Spinner overlay={true} />
       ) : (
         <div className="post-job-container">
-          <h2><Trans>Edit Job</Trans></h2>
+          <h2>
+            <Trans>Edit Job</Trans>
+          </h2>
           <form className="post-job-form" onSubmit={formHandler}>
             <div className="form-group">
-              <label htmlFor="title"><Trans>Job Title</Trans></label>
+              <label htmlFor="title">
+                <Trans>Job Title</Trans>
+              </label>
               <input
                 type="text"
                 id="title"
@@ -171,7 +163,9 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="description"><Trans>Job Description</Trans></label>
+              <label htmlFor="description">
+                <Trans>Job Description</Trans>
+              </label>
               <textarea
                 id="description"
                 placeholder={t`Job Description`}
@@ -182,7 +176,10 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="additionalInfo">
-                <Trans>Additional Information</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+                <Trans>Additional Information</Trans>{" "}
+                <span className="optional-badge">
+                  <Trans>Optional</Trans>
+                </span>
               </label>
               <textarea
                 id="additionalInfo"
@@ -192,7 +189,9 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="location"><Trans>Location</Trans></label>
+              <label htmlFor="location">
+                <Trans>Location</Trans>
+              </label>
               <input
                 type="text"
                 id="location"
@@ -203,7 +202,9 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="salary"><Trans>Salary</Trans></label>
+              <label htmlFor="salary">
+                <Trans>Salary</Trans>
+              </label>
               <input
                 type="text"
                 id="salary"
@@ -214,7 +215,9 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="workMode"><Trans>Work Mode</Trans></label>
+              <label htmlFor="workMode">
+                <Trans>Work Mode</Trans>
+              </label>
               <WorkModeSelect
                 value={register("workMode").value}
                 onChange={(e) => setFieldValue("workMode", e.target.value)}
@@ -223,9 +226,11 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="category"><Trans>Job Category</Trans></label>
+              <label htmlFor="category">
+                <Trans>Job Category</Trans>
+              </label>
               <JobEditCategory
-                value={typeof register("category").value === "string" ? null : register("category").value}
+                value={register("category").value}
                 categories={categories}
                 onChange={handleCategoryChange}
               />
@@ -235,26 +240,37 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="employmentType"><Trans>Employment Type</Trans></label>
+              <label htmlFor="employmentType">
+                <Trans>Employment Type</Trans>
+              </label>
               <EmploymentTypeSelect
                 value={register("employmentType").value}
-                onChange={(e) => setFieldValue("employmentType", e.target.value)}
+                onChange={(e) =>
+                  setFieldValue("employmentType", e.target.value)
+                }
               />
               <div className="error-message">{errors.employmentType}</div>
             </div>
 
             <div className="form-group">
-              <label htmlFor="experienceLevel"><Trans>Experience Requirement</Trans></label>
+              <label htmlFor="experienceLevel">
+                <Trans>Experience Requirement</Trans>
+              </label>
               <ExperienceLevelSelect
                 value={register("experienceLevel").value}
-                onChange={(e) => setFieldValue("experienceLevel", e.target.value)}
+                onChange={(e) =>
+                  setFieldValue("experienceLevel", e.target.value)
+                }
               />
               <div className="error-message">{errors.experienceLevel}</div>
             </div>
 
             <div className="form-group">
               <label htmlFor="applicationDeadline">
-                <Trans>Application Deadline</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+                <Trans>Application Deadline</Trans>{" "}
+                <span className="optional-badge">
+                  <Trans>Optional</Trans>
+                </span>
               </label>
               <input
                 type="date"
@@ -265,7 +281,9 @@ export default function EditJob() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="openings"><Trans>Open Positions</Trans></label>
+              <label htmlFor="openings">
+                <Trans>Open Positions</Trans>
+              </label>
               <input
                 type="number"
                 id="openings"
@@ -278,7 +296,10 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="contractType">
-                <Trans>Contract Type</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+                <Trans>Contract Type</Trans>{" "}
+                <span className="optional-badge">
+                  <Trans>Optional</Trans>
+                </span>
               </label>
               <input
                 type="text"
@@ -290,7 +311,10 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="workSchedule">
-                <Trans>Work Schedule</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+                <Trans>Work Schedule</Trans>{" "}
+                <span className="optional-badge">
+                  <Trans>Optional</Trans>
+                </span>
               </label>
               <input
                 type="text"
@@ -302,7 +326,10 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="languageRequirements">
-                <Trans>Language Requirements</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+                <Trans>Language Requirements</Trans>{" "}
+                <span className="optional-badge">
+                  <Trans>Optional</Trans>
+                </span>
               </label>
               <input
                 type="text"
@@ -314,7 +341,10 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="educationLevel">
-                <Trans>Education Level</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+                <Trans>Education Level</Trans>{" "}
+                <span className="optional-badge">
+                  <Trans>Optional</Trans>
+                </span>
               </label>
               <input
                 type="text"
@@ -327,7 +357,10 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="requirements">
-                <Trans>Requirements</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+                <Trans>Requirements</Trans>{" "}
+                <span className="optional-badge">
+                  <Trans>Optional</Trans>
+                </span>
               </label>
               <input
                 type="text"
@@ -340,7 +373,10 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="skills">
-                <Trans>Skills</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+                <Trans>Skills</Trans>{" "}
+                <span className="optional-badge">
+                  <Trans>Optional</Trans>
+                </span>
               </label>
               <input
                 type="text"
@@ -352,7 +388,10 @@ export default function EditJob() {
 
             <div className="form-group">
               <label htmlFor="benefits">
-                <Trans>Benefits</Trans> <span className="optional-badge"><Trans>Optional</Trans></span>
+                <Trans>Benefits</Trans>{" "}
+                <span className="optional-badge">
+                  <Trans>Optional</Trans>
+                </span>
               </label>
               <input
                 type="text"
@@ -376,7 +415,11 @@ export default function EditJob() {
             </div>
 
             <div>
-              <button type="submit" className="post-job-button" disabled={pending}>
+              <button
+                type="submit"
+                className="post-job-button"
+                disabled={pending}
+              >
                 {pending ? t`Saving...` : t`Save Changes`}
               </button>
             </div>

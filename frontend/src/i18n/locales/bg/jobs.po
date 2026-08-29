@@ -57,6 +57,9 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
+msgid "Active vacancy"
+msgstr ""
+
 msgid "Add the city or area where the employee will work. If hybrid, mention the office location clearly."
 msgstr ""
 
@@ -88,6 +91,9 @@ msgid "Applied On"
 msgstr ""
 
 msgid "Apply for {jobTitle}"
+msgstr ""
+
+msgid "Apply now"
 msgstr ""
 
 msgid "Apprenticeship"
@@ -165,10 +171,19 @@ msgstr ""
 msgid "Closed"
 msgstr ""
 
+msgid "Closed vacancy"
+msgstr ""
+
 msgid "Company"
 msgstr ""
 
+msgid "Company members cannot apply"
+msgstr ""
+
 msgid "Consulting & Strategy"
+msgstr ""
+
+msgid "Contact email"
 msgstr ""
 
 msgid "Contact Email"
@@ -295,6 +310,9 @@ msgid "Email is required."
 msgstr ""
 
 msgid "Employment"
+msgstr ""
+
+msgid "Employment type"
 msgstr ""
 
 msgid "Employment Type"
@@ -426,6 +444,9 @@ msgstr ""
 msgid "Job Category"
 msgstr ""
 
+msgid "Job description"
+msgstr ""
+
 msgid "Job Description"
 msgstr ""
 
@@ -483,6 +504,9 @@ msgstr ""
 msgid "Location:"
 msgstr ""
 
+msgid "Log in and continue"
+msgstr ""
+
 msgid "Main tasks, tools used, reporting line, shift details, and any important operational expectations."
 msgstr ""
 
@@ -504,6 +528,9 @@ msgstr ""
 msgid "Monday to Friday, 09:00-18:00"
 msgstr ""
 
+msgid "More information"
+msgstr ""
+
 msgid "Need help filling the form?"
 msgstr ""
 
@@ -516,10 +543,16 @@ msgstr ""
 msgid "No benefits listed yet."
 msgstr ""
 
+msgid "No benefits listed."
+msgstr ""
+
 msgid "No candidates applied for this job."
 msgstr ""
 
 msgid "No candidates match the selected status."
+msgstr ""
+
+msgid "No description provided yet."
 msgstr ""
 
 msgid "No extra requirements or notes were added for this role yet."
@@ -538,6 +571,9 @@ msgid "No public description has been added for this role yet."
 msgstr ""
 
 msgid "No skills listed yet."
+msgstr ""
+
+msgid "No skills listed."
 msgstr ""
 
 msgid "Non-Profit & NGO"
@@ -565,6 +601,9 @@ msgid "On-site, Hybrid, or Remote depending on the role."
 msgstr ""
 
 msgid "Only shortlisted candidates will be contacted within 10 business days."
+msgstr ""
+
+msgid "Open positions"
 msgstr ""
 
 msgid "Open Positions"
@@ -627,7 +666,13 @@ msgstr ""
 msgid "Phone number"
 msgstr ""
 
+msgid "Please make sure your CV and contact details are up to date before applying."
+msgstr ""
+
 msgid "Plovdiv, Bulgaria"
+msgstr ""
+
+msgid "Position details"
 msgstr ""
 
 msgid "Position overview"
@@ -637,6 +682,9 @@ msgid "Post a New Job"
 msgstr ""
 
 msgid "Post job"
+msgstr ""
+
+msgid "Posted"
 msgstr ""
 
 msgid "Posted by"
@@ -655,6 +703,12 @@ msgid "Private health insurance, monthly bonus, food vouchers"
 msgstr ""
 
 msgid "Provide a real salary range or compensation note that helps candidates decide whether to apply."
+msgstr ""
+
+msgid "Questions about this role? Contact us at "
+msgstr ""
+
+msgid "Quick info"
 msgstr ""
 
 msgid "Quick rules"
@@ -686,6 +740,9 @@ msgid "Required"
 msgstr ""
 
 msgid "Required fields"
+msgstr ""
+
+msgid "Required skills"
 msgstr ""
 
 msgid "Requirements"
@@ -886,6 +943,9 @@ msgstr ""
 msgid "We will contact you!"
 msgstr ""
 
+msgid "We would be happy to review your application. If your profile is a good fit, our team will contact you for the next steps."
+msgstr ""
+
 msgid "What a complete entry set can look like"
 msgstr ""
 
@@ -910,6 +970,9 @@ msgstr ""
 msgid "Work mode is required."
 msgstr ""
 
+msgid "Work schedule"
+msgstr ""
+
 msgid "Work Schedule"
 msgstr ""
 
@@ -926,6 +989,9 @@ msgid "You have no saved jobs"
 msgstr ""
 
 msgid "You must log in to add this job in favourites"
+msgstr ""
+
+msgid "You need an account to apply"
 msgstr ""
 
 msgid "You will handle inbound customer requests, document cases in the CRM system, and coordinate with the operations team to resolve issues quickly."

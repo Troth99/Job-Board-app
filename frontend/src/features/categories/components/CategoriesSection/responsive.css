@@ -5,9 +5,10 @@
     max-width: 100%;
   }
   .custom-category-card {
-    padding: 12px 0;
+    min-height: 70px;
+    padding: 10px;
     font-size: 0.98rem;
-    border-radius: 12px;
+    border-radius: 6px;
   }
 }
 
@@ -41,9 +42,9 @@
     max-width: 400px;
   }
   .custom-category-card {
-    padding: 14px 0;
+    padding: 12px;
     font-size: 1rem;
-    border-radius: 13px;
+    border-radius: 6px;
   }
 }
 
@@ -54,9 +55,9 @@
     max-width: 800px;
   }
   .custom-category-card {
-    padding: 16px 0;
+    padding: 14px;
     font-size: 1rem;
-    border-radius: 14px;
+    border-radius: 6px;
   }
 }
 

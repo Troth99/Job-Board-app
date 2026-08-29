@@ -13,26 +13,26 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-msgid "Active"
-msgstr "Active"
+#~ msgid "Active"
+#~ msgstr "Active"
 
-msgid "Closed"
-msgstr "Closed"
+#~ msgid "Closed"
+#~ msgstr "Closed"
 
-msgid "Location"
-msgstr "Location"
+#~ msgid "Location"
+#~ msgstr "Location"
 
-msgid "No jobs for current company."
-msgstr "No jobs for current company."
+#~ msgid "No jobs for current company."
+#~ msgstr "No jobs for current company."
 
-msgid "Open opportunity"
-msgstr "Open opportunity"
+#~ msgid "Open opportunity"
+#~ msgstr "Open opportunity"
 
-msgid "Posted"
-msgstr "Posted"
+#~ msgid "Posted"
+#~ msgstr "Posted"
 
-msgid "View details"
-msgstr "View details"
+#~ msgid "View details"
+#~ msgstr "View details"
 
-msgid "Work Type"
-msgstr "Work Type"
+#~ msgid "Work Type"
+#~ msgstr "Work Type"

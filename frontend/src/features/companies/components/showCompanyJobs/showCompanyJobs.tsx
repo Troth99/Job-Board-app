@@ -12,10 +12,12 @@ interface ShowCompanyJobsProps {
   variant?: "default" | "search";
 }
 
-export function ShowJobs({ jobs, onJobClick, variant = "default" }: ShowCompanyJobsProps) {
+export function ShowJobs({ jobs, onJobClick, variant = "default" , isReadOnly}: ShowCompanyJobsProps) {
   const { companyId } = useParams<{ companyId: string; jobId: string }>();
   const navigate = useNavigate();
-
+  
+  
+  console.log("isReadOnly:", isReadOnly);
   const handleJobClick = (jobId: string | undefined) => {
     if (!jobId) {
       console.error("Job id is missing");
@@ -53,13 +55,16 @@ export function ShowJobs({ jobs, onJobClick, variant = "default" }: ShowCompanyJ
               <span><strong><Trans>Work Type</Trans></strong>{job.employmentType}</span>
               <span><strong><Trans>Posted</Trans></strong>{formatDate(job.createdAt || "", "en-US")}</span>
             </div>
-            <button
-              className="job-card-member__action"
-              type="button"
-              onClick={() => handleJobClick(job._id)}
-            >
-              <Trans>View details</Trans> <span aria-hidden="true">-&gt;</span>
-            </button>
+            
+            {!isReadOnly && (
+              <button
+                className="job-card-member__action"
+                type="button"
+                onClick={() => handleJobClick(job._id)}
+              >
+                <Trans>View details</Trans> <span aria-hidden="true">-&gt;</span>
+              </button>
+            )}
           </div>
         ))
       ) : (

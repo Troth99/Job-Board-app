@@ -1,4 +1,4 @@
-import { valuesInterface } from "../types/Job.model";
+import { JobFormValues } from "../types/Job.model";
 
 //function to normalize the array of strings, removing empty strings and trimming whitespace
 const normalize = (arr: any) =>
@@ -11,7 +11,7 @@ const normalize = (arr: any) =>
       : [];
 
 export function jobPostValidations(
-  form: valuesInterface,
+  form: JobFormValues,
   messages: Record<string, string>,
 ): Record<string, string> {
 
@@ -22,10 +22,7 @@ export function jobPostValidations(
       ? ""
       : String(form.openings).trim();
 
-  const hasCategory =
-    typeof form.category === "string"
-      ? form.category.trim().length > 0
-      : Boolean(form.category?._id || form.category?.name);
+  const hasCategory = form.category.trim().length > 0;
 
   if (!form.title || form.title.trim().length === 0) {
     errors.title = messages.titleRequired;

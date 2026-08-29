@@ -13,26 +13,26 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-msgid "Active"
-msgstr "Активна"
+#~ msgid "Active"
+#~ msgstr "Активна"
 
-msgid "Closed"
-msgstr "Затворена"
+#~ msgid "Closed"
+#~ msgstr "Затворена"
 
-msgid "Location"
-msgstr "Местоположение"
+#~ msgid "Location"
+#~ msgstr "Местоположение"
 
-msgid "No jobs for current company."
-msgstr "Няма обяви за текущата компания."
+#~ msgid "No jobs for current company."
+#~ msgstr "Няма обяви за текущата компания."
 
-msgid "Open opportunity"
-msgstr ""
+#~ msgid "Open opportunity"
+#~ msgstr ""
 
-msgid "Posted"
-msgstr "Публикувана"
+#~ msgid "Posted"
+#~ msgstr "Публикувана"
 
-msgid "View details"
-msgstr "Виж детайли"
+#~ msgid "View details"
+#~ msgstr "Виж детайли"
 
-msgid "Work Type"
-msgstr "Тип работа"
+#~ msgid "Work Type"
+#~ msgstr "Тип работа"

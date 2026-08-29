@@ -123,12 +123,12 @@ export default defineConfig({
 
 		},
 		{
-		path:"<rootDir>/src/i18n/locales/{locale}/jobsDetails",
-		include: ["src/features/jobs/components/SaveJobButton"],
+			path: "<rootDir>/src/i18n/locales/{locale}/jobsDetails",
+			include: ["src/features/jobs/components/SaveJobButton"],
 
 		},
 		{
-			path:"<rootDir>/src/i18n/locales/{locale}/applyModalForJob",
+			path: "<rootDir>/src/i18n/locales/{locale}/applyModalForJob",
 			include: ["src/features/jobs/components/ApplyForJobModal",]
 		},
 		{
@@ -220,7 +220,15 @@ export default defineConfig({
 			],
 
 		},
-		
+		{
+			path: "<rootDir>/src/i18n/locales/{locale}/candidateJobView",
+			include: ["src/features/jobs/views/CandidateJobView",
+						"src/features/jobs/views/CandidateJobView/CompanyDetailsForJobSection/QuicnInfoSection",
+					],
+
+		},
+
+
 
 
 	],

@@ -8,7 +8,7 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 interface JobCategorySelectProps {
-  value: Category | null; 
+  value: string;
   categories: Category[]; 
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
@@ -87,11 +87,11 @@ export  function JobCategorySelect({ value, onChange }: Props) {
 export  function JobEditCategory({ value, categories, onChange }: JobCategorySelectProps) {
 
   return (
-    <select name="category" value={value?._id} onChange={onChange}>
+    <select name="category" value={value} onChange={onChange}>
       <option value=""><Trans>Select a category</Trans></option>
       {categories.map((category) => (
         <option key={category._id} value={category._id}>
-          {category.name}
+          {getTranslatedCategoryLabel(category.name ?? "")}
         </option>
       ))}
     </select>

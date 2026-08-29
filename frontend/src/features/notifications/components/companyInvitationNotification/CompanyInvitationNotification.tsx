@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import "./companyInvitationNotification.css";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
+import "../../styles/companyInvitationNotification.css"
 import { profilePaths } from "../../../profile/routes/profilePaths";
 import { useNotificationContext } from "../../../../context/NotificationContext";
 import { useUserData } from "../../../../context/UseDataContext";

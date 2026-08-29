@@ -1,5 +1,5 @@
 import { StatsResponse } from "../../types/ApplicationStatistic.model";
-import "./HomeStats.css";
+import "../../styles/HomeStats.css";
 import { Trans } from "@lingui/react/macro";
 
 export function HomeStats({
@@ -50,22 +50,26 @@ export function HomeStats({
   }
   return (
     <div className="stats-section">
-      <h2 className="stats-title"><Trans>Platform Statistics</Trans></h2>
+      <p className="stats-eyebrow"><Trans>Platform pulse</Trans></p>
+      <h2 className="stats-title"><Trans>Built around real career momentum</Trans></h2>
       <p className="stats-desc">
-        <Trans>Here you can see an overview of the activity on our platform.</Trans>
+        <Trans>A growing network of people, teams, and opportunities.</Trans>
       </p>
       <div className="home-stats-container">
         <div className="stat-card">
+          <span className="stat-index">01</span>
           <div className="stat-value">{statistics?.jobsCount}</div>
           <div className="stat-label"><Trans>Jobs</Trans></div>
           <div className="stat-info"><Trans>Total job postings</Trans></div>
         </div>
         <div className="stat-card">
+          <span className="stat-index">02</span>
           <div className="stat-value">{statistics?.usersCount}</div>
           <div className="stat-label"><Trans>Users</Trans></div>
           <div className="stat-info"><Trans>Registered users on the platform</Trans></div>
         </div>
         <div className="stat-card">
+          <span className="stat-index">03</span>
           <div className="stat-value">{statistics?.companiesCount}</div>
           <div className="stat-label"><Trans>Companies</Trans></div>
           <div className="stat-info"><Trans>Active companies posting jobs</Trans></div>

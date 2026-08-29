@@ -13,26 +13,50 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-msgid "<0>Job Board</0> for your next career move."
-msgstr "<0>Job Board</0> for your next career move."
+msgid " on your terms."
+msgstr " on your terms."
 
-msgid "<0>Your next opportunity</0> starts here."
-msgstr "<0>Your next opportunity</0> starts here."
+#~ msgid "<0>Job Board</0> for your next career move."
+#~ msgstr "<0>Job Board</0> for your next career move."
+
+#~ msgid "<0>Your next opportunity</0> starts here."
+#~ msgstr "<0>Your next opportunity</0> starts here."
+
+msgid "A growing network of people, teams, and opportunities."
+msgstr "A growing network of people, teams, and opportunities."
 
 msgid "Active companies posting jobs"
 msgstr "Active companies posting jobs"
 
+msgid "Built around real career momentum"
+msgstr "Built around real career momentum"
+
+msgid "Built for your next step"
+msgstr "Built for your next step"
+
 msgid "Companies"
 msgstr "Companies"
+
+msgid "Curated opportunities"
+msgstr "Curated opportunities"
+
+msgid "Direct applications"
+msgstr "Direct applications"
 
 msgid "Discover the Latest Opportunities"
 msgstr "Discover the Latest Opportunities"
 
+msgid "Explore roles from teams that are ready for what you bring."
+msgstr "Explore roles from teams that are ready for what you bring."
+
+msgid "Find work that fits your life"
+msgstr "Find work that fits your life"
+
 msgid "found"
 msgstr "found"
 
-msgid "Here you can see an overview of the activity on our platform."
-msgstr "Here you can see an overview of the activity on our platform."
+#~ msgid "Here you can see an overview of the activity on our platform."
+#~ msgstr "Here you can see an overview of the activity on our platform."
 
 msgid "Job search"
 msgstr "Job search"
@@ -40,29 +64,39 @@ msgstr "Job search"
 msgid "Jobs"
 msgstr "Jobs"
 
+msgid "Make your next"
+msgstr "Make your next"
+
+msgid "move"
+msgstr "move"
+
 msgid "No jobs available."
 msgstr "No jobs available."
 
 msgid "No jobs found."
 msgstr "No jobs found."
 
-msgid "Platform Statistics"
-msgstr "Platform Statistics"
+msgid "Platform pulse"
+msgstr "Platform pulse"
 
-#. placeholder {0}: job.createdBy?.firstName
-#. placeholder {1}: job.createdBy?.lastName
-msgid "Posted by: {0} {1}"
-msgstr "Posted by: {0} {1}"
+#~ msgid "Platform Statistics"
+#~ msgstr "Platform Statistics"
 
 #. placeholder {0}: job.createdAt && formatDate(job.createdAt)
-msgid "Posted: {0}"
-msgstr "Posted: {0}"
+msgid "Posted {0}"
+msgstr "Posted {0}"
+
+#~ msgid "Posted by: {0} {1}"
+#~ msgstr "Posted by: {0} {1}"
+
+#~ msgid "Posted: {0}"
+#~ msgstr "Posted: {0}"
 
 msgid "Registered users on the platform"
 msgstr "Registered users on the platform"
 
-msgid "Search by keyword in all job postings"
-msgstr "Search by keyword in all job postings"
+#~ msgid "Search by keyword in all job postings"
+#~ msgstr "Search by keyword in all job postings"
 
 msgid "Search by keyword..."
 msgstr "Search by keyword..."
@@ -81,3 +115,6 @@ msgstr "Users"
 
 msgid "View All Jobs"
 msgstr "View All Jobs"
+
+msgid "View role"
+msgstr "View role"

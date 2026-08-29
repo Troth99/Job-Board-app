@@ -36,6 +36,7 @@ import { messages as bgShared } from "./locales/bg/shared.po";
 import { messages as bgTermsAndConditions } from "./locales/bg/terms-and-conditions.po";
 import { messages as bgViewAllCompanies } from "./locales/bg/view-all-companies.po";
 import {messages as bgDetailsForJob} from "./locales/bg/detailsForJob.po";
+import { messages as bgCandidateJobView } from "./locales/bg/candidateJobView.po";
 
 //english imports
 import { messages as enApplyModal } from "./locales/en/applyModalForJob.po";
@@ -72,6 +73,7 @@ import { messages as enShared } from "./locales/en/shared.po";
 import { messages as enTermsAndConditions } from "./locales/en/terms-and-conditions.po";
 import { messages as enViewAllCompanies } from "./locales/en/view-all-companies.po";
 import {messages as enDetailsForJob} from "./locales/en/detailsForJob.po";
+import {messages as enCandidateJobView } from "./locales/en/candidateJobView.po";
 
 export const locales = ["bg", "en"] as const;
 export type AppLocale = (typeof locales)[number];
@@ -114,6 +116,7 @@ const bgMessages = {
   ...bgApplyModal,
   ...bgJobDetails,
   ...bgDetailsForJob,
+  ...bgCandidateJobView,
 };
 
 const enMessages = {
@@ -137,6 +140,7 @@ const enMessages = {
   ...enSalaryNegotiation,
   ...enEditProfile,
   ...enPostJob,
+  ...enCandidateJobView,
   ...enPagination,
   ...enCompanyView,
   ...enRegisterCompany,
