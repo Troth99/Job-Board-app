@@ -11,7 +11,7 @@ const initialValue = {
   email: "",
 };
 
-export function CompanyMembers() {
+export function InviteMemberToCompany() {
   const { companyId } = useParams();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [userEmailExistError, setuserEmailExistError] = useState<string>("");

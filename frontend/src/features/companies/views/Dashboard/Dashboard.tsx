@@ -4,7 +4,7 @@ import "../../styles/dashboard.css";
 import { useNavigate, useParams } from "react-router";
 import { CompanyJobsList } from "../../components/CompanyJobList/CompanyJobList";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
-import { CompanyMembers } from "../../components/InviteMemberToCompany/InviteMemberToCompany";
+import {  InviteMemberToCompany } from "../../components/InviteMemberToCompany/InviteMemberToCompany";
 import { SendMessage } from "../../components/SendMessage/SendMessage";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import { useUserData } from "../../../../context/UseDataContext";
@@ -212,7 +212,7 @@ export default function Dashboard() {
               </p>
             </div>
             <div className="content-header section-body">
-              <CompanyMembers />
+              <InviteMemberToCompany />
               <SendMessage onSuccess={() => setSuccess(true)} />
             </div>
           </section>
