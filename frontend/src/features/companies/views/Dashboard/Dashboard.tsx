@@ -20,7 +20,6 @@ import useMembers from "../../hooks/useMembers";
 import { MemberDashboardSideBar } from "../../components/DashboardSidebarUI/DashboardSidebarUI";
 import { Trans } from "@lingui/react/macro";
 
-//to add a permision for adding a member also to set a timer to avoid spam sent message to be able to send only in current company members
 export default function Dashboard() {
   const { companyId } = useParams();
   const navigate = useNavigate();

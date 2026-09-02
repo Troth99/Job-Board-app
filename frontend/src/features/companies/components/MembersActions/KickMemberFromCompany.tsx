@@ -4,6 +4,8 @@ import { FiUserX } from "react-icons/fi";
 import { CompanyMember } from "../../types/CompanyMember.model";
 
 
+
+//to add a modal for confirmation before removing a member
 export default function KickMemberFromCompany({
   userRole,
   member,

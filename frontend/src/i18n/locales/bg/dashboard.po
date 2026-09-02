@@ -37,6 +37,9 @@ msgstr "Добавете още опции"
 msgid "Add more options here as your company workflow grows."
 msgstr "Добавете още опции тук, тъй като работният процес на вашата компания се разраства."
 
+msgid "An unexpected error occurred."
+msgstr "Възникна неочаквана грешка."
+
 msgid "Analytics"
 msgstr "Анализи"
 
@@ -123,6 +126,9 @@ msgstr "Преглед"
 
 #~ msgid "Please contact your administrator for editing permissions."
 #~ msgstr "Моля, свържете се с вашия администратор за разрешения за редактиране."
+
+msgid "Please wait 2 minutes before sending another invitation."
+msgstr "Моля, изчакайте 2 минути, преди да изпратите друга покана."
 
 msgid "Post new jobs and monitor recent openings for your company."
 msgstr "Публикувайте нови работни места и следете последните обяви за вашата компания."

@@ -29,13 +29,38 @@ export const createNotification = async (req, res) => {
 
         if (req.body.email) {
             const foundUser = await User.findOne({ email: req.body.email });
-          
+
             if (foundUser) {
                 req.body.user = foundUser._id;
             } else {
                 return res.status(404).json({ error: "User not found" });
             }
 
+        }
+        const isCompanyInvite = req.body.type === "company_invite";
+
+        if (isCompanyInvite) {
+            const cooldownMs = 2 * 60 * 1000; // 2 minutes in milliseconds
+
+            //same person to not be allowed to send new invite within cooldown period
+            const lastInvite = await Notification.findOne({
+                user: req.body.user,
+                sender: req.body.sender,
+                company: req.body.company,
+                type: "company_invite",
+            }).sort({ createdAt: -1 });
+
+            if (lastInvite) {
+                const elapsedMs = Date.now() - lastInvite.createdAt.getTime();
+
+                if (elapsedMs < cooldownMs) {
+                    const retryAfterSeconds = Math.ceil((cooldownMs - elapsedMs) / 1000);
+
+                    return res.status(429).json({
+                        message: "INVITE_COOLDOWN",
+                    });
+                }
+            }
         }
 
         const notification = await Notification.create(req.body);
@@ -97,7 +122,7 @@ export const getNotificationById = async (req, res) => {
     try {
         const notification = await Notification.findById(req.params.id)
             .populate("user", "name email firstName lastName")
-           .populate("sender", "firstName lastName email")
+            .populate("sender", "firstName lastName email")
             .populate("company", "name");
         if (!notification) {
             return res.status(404).json({ error: "Notification not found" });
@@ -106,7 +131,6 @@ export const getNotificationById = async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
-
 };
 
 export const deleteNotification = async (req, res) => {
