@@ -1,439 +1,154 @@
-﻿# Job Board — Backend API
+# Job Board Backend API
 
-> Node.js · Express 5 · MongoDB (Mongoose) · JWT Auth · Google OAuth 2.0 · SSE Notifications · SendGrid
+The backend is an Express API that powers job discovery, company collaboration, recruiting workflows, authentication, and notifications.
 
----
+## Stack
 
-## Table of Contents
+Node.js ESM, Express 5, MongoDB with Mongoose 8, JWT access and refresh tokens, Passport Google OAuth 2.0, bcrypt, SendGrid, Multer, express-validator, CORS, rate limiting, and Server-Sent Events.
 
-- [Job Board — Backend API](#job-board--backend-api)
-  - [Table of Contents](#table-of-contents)
-  - [Tech Stack](#tech-stack)
-  - [Project Structure](#project-structure)
-  - [Environment Variables](#environment-variables)
-  - [Getting Started](#getting-started)
-  - [Authentication Flow](#authentication-flow)
-  - [API Reference](#api-reference)
-    - [Users](#users)
-    - [Auth (OAuth)](#auth-oauth)
-    - [Jobs](#jobs)
-    - [Companies](#companies)
-    - [Applications](#applications)
-    - [Notifications](#notifications)
-    - [Stats](#stats)
-    - [Categories](#categories)
-  - [Models](#models)
-    - [User](#user)
-    - [Job](#job)
-    - [Company](#company)
-    - [Application](#application)
-    - [Notification](#notification)
-    - [RefreshToken](#refreshtoken)
-    - [CompanyMember](#companymember)
-    - [Category](#category)
-  - [Middleware](#middleware)
-    - [`protect` — `src/middleware/authMiddleware.js`](#protect--srcmiddlewareauthmiddlewarejs)
-  - [Services](#services)
-  - [Utils](#utils)
-    - [`src/utils/generateToken.js`](#srcutilsgeneratetokenjs)
-  - [What's Missing / TODO](#whats-missing--todo)
+## Run It
 
----
-
-## Tech Stack
-
-| Layer | Package |
-|---|---|
-| Runtime | Node.js (ESM) |
-| Framework | Express 5 |
-| Database | MongoDB via Mongoose 8 |
-| Auth | JWT (access 15m / refresh 7d) + Google OAuth 2.0 (Passport) |
-| Email | SendGrid (`@sendgrid/mail`) |
-| Password hashing | bcrypt (salt rounds: 13) |
-| Validation | express-validator + mongoose schema validators |
-| File uploads | Multer |
-| Real-time | Server-Sent Events (SSE) |
-| Dev server | Nodemon |
-
----
-
-## Project Structure
-
-```
-backend/
-├── src/
-│   ├── index.js                  # App entry — Express setup, DB connect, routes mount
-│   ├── seedCategories.js         # One-time DB seed script for job categories
-│   │
-│   ├── config/
-│   │   └── passport.js           # Google OAuth 2.0 strategy (Passport)
-│   │
-│   ├── middleware/
-│   │   └── authMiddleware.js     # JWT protect middleware (Bearer token)
-│   │
-│   ├── models/
-│   │   ├── User.js               # User schema + bcrypt pre-save hook
-│   │   ├── Jobs.js               # Job posting schema
-│   │   ├── Company.js            # Company schema
-│   │   ├── CompanyMember.js      # Company <-> User membership + roles
-│   │   ├── Application.js        # Job application schema
-│   │   ├── Category.js           # Job category schema
-│   │   ├── Notification.js       # In-app notification schema
-│   │   └── RefreshToken.js       # Stored refresh tokens (7d TTL)
-│   │
-│   ├── controllers/
-│   │   ├── userController.js           # Register, Login, Profile CRUD, Token refresh, Logout
-│   │   ├── jobController.js            # Jobs CRUD + category filter + recent jobs
-│   │   ├── companyController.js        # Company CRUD + member management
-│   │   ├── ApplicationController.js    # Application CRUD + status update
-│   │   ├── categoryController.js       # Category listing
-│   │   ├── notificationsContoller.js   # Notifications CRUD + SSE stream
-│   │   ├── statsController.js          # Application statistics per company
-│   │   ├── changePasswordController.js # Authenticated password change
-│   │   ├── forgotPasswordController.js # Send reset-password email (SendGrid)
-│   │   └── resetPasswordController.js  # Consume reset token + set new password
-│   │
-│   ├── routes/
-│   │   ├── index.js              # Central router — mounts all sub-routers
-│   │   ├── userRoutes.js         # /api/users/*
-│   │   ├── jobRoutes.js          # /api/jobs/*
-│   │   ├── companyRoutes.js      # /api/companies/*
-│   │   ├── applicationRoutes.js  # /api/applications/*
-│   │   ├── categoriesRoutes.js   # /api/categories/*
-│   │   ├── notificationRoutes.js # /api/notifications/*
-│   │   ├── statsRoutes.js        # /api/application/stats
-│   │   └── authRoutes.js         # /api/auth/google (OAuth)
-│   │
-│   ├── services/
-│   │   ├── jobService.js         # Job DB logic (create, getById, recent, byCategory)
-│   │   └── companyService.js     # Company DB logic + member role helpers
-│   │
-│   └── utils/
-│       └── generateToken.js      # generateAccessToken() + generateRefreshToken()
-│
-└── package.json
+```sh
+npm install
+npm run dev       # development with nodemon
+npm start         # production-style start
 ```
 
----
+The server defaults to `http://localhost:5000`. Its root endpoint returns `API is up and running!`.
 
-## Environment Variables
+## Configuration
 
-Create `.env.development` and `.env.production` files in `backend/`.
+The app loads `.env` first and then overrides it with `.env.development` or `.env.production`, based on `NODE_ENV`.
 
 ```env
-# Server
 PORT=5000
 NODE_ENV=development
-
-# Database
-MONGO_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/jobboard
-
-# JWT
-JWT_SECRET=your_access_token_secret
-JWT_REFRESH_SECRET=your_refresh_token_secret
-
-# Google OAuth
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
-
-# SendGrid (forgot password emails)
-SENDGRID_API_KEY=SG.xxx
-
-# Frontend URL (used for OAuth redirects)
+MONGO_URI=mongodb+srv://<user>:<password>@<cluster>/jobboard
+JWT_SECRET=long-access-token-secret
+JWT_REFRESH_SECRET=long-refresh-token-secret
+SESSION_SECRET=long-session-secret
 FRONTEND_URL=http://localhost:5173
-
-# Sessions (Passport)
-SESSION_SECRET=your_session_secret
+GOOGLE_CLIENT_ID=google-client-id
+GOOGLE_CLIENT_SECRET=google-client-secret
+GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
+SENDGRID_API_KEY=sendgrid-api-key
+EMAIL_FROM=verified-sender@example.com
 ```
 
----
+Google OAuth and password-reset email features require their provider variables. Never commit environment files or real credentials.
 
-## Getting Started
+## Architecture
 
-```bash
-# Install dependencies
-npm install
-
-# Development (hot reload)
-npm run dev
-
-# Production
-npm start
+```text
+src/
+├── index.js                  Express setup, middleware, DB connection, server
+├── config/passport.js        Google OAuth strategy
+├── controllers/              HTTP handlers by domain
+├── middleware/               JWT protection
+├── models/                   Mongoose schemas
+├── routes/                   Domain routers mounted from routes/index.js
+├── services/                 Job/company database operations
+├── scripts/                  One-off migrations
+├── seedCategories.js         Category seed script
+└── utils/generateToken.js    Access and refresh token helpers
 ```
 
----
+## Authentication
 
-## Authentication Flow
+1. Register or log in to receive a 15-minute access token and seven-day refresh token.
+2. Send the access token as `Authorization: Bearer <accessToken>`.
+3. Call `POST /api/users/refresh-token` with the refresh token after expiry.
+4. Call `POST /api/users/logout` to invalidate the stored refresh token.
 
-```
-1. Register / Login  ->  returns { accessToken (15m), refreshToken (7d) }
-2. Client stores both tokens
-3. Every request  ->  Authorization: Bearer <accessToken>
-4. Token expired?  ->  POST /api/users/refresh-token with { refreshToken }
-                   ->  returns new accessToken
-5. Logout          ->  POST /api/users/logout  (deletes refreshToken from DB)
-
-Google OAuth:
-1. Redirect user to  GET /api/auth/google
-2. Google returns to GET /api/auth/google/callback
-3. Server issues JWT pair, redirects to frontend /oauth-callback?accessToken=...
-```
-
----
+Google login starts at `GET /api/auth/google` and returns to the configured callback before redirecting to the frontend OAuth callback.
 
 ## API Reference
 
-> Lock = requires `Authorization: Bearer <accessToken>` header
+`Lock` means the route expects a valid Bearer access token. `Public` means no `protect` middleware is currently attached.
 
----
+### Users and Auth
 
-### Users
+| Method | Endpoint | Auth | Purpose |
+| --- | --- | --- | --- |
+| POST | `/api/users/register` | - | Create an account |
+| POST | `/api/users/login` | - | Log in |
+| POST | `/api/users/logout` | - | Invalidate refresh token |
+| POST | `/api/users/refresh-token` | - | Issue a new access token |
+| GET | `/api/users/me` | Lock | Read own profile |
+| PUT | `/api/users/me` | Lock | Update own profile |
+| DELETE | `/api/users/me` | Lock | Delete account |
+| PUT | `/api/users/change-password` | Lock | Change password |
+| POST | `/api/users/forgot-password` | - | Send reset email |
+| POST | `/api/users/reset-password/:token` | - | Set a new password |
+| GET | `/api/auth/google` | - | Start Google OAuth |
 
-Base: `/api/users`
+### Jobs and Favourites
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/register` | — | Register new user |
-| POST | `/login` | — | Login, returns token pair |
-| POST | `/logout` | — | Invalidate refresh token |
-| POST | `/refresh-token` | — | Exchange refresh token for new access token |
-| POST | `/check-user-exists` | — | Check if email already registered |
-| GET | `/me` | Lock | Get own profile |
-| PUT | `/me` | Lock | Update own profile |
-| DELETE | `/me` | Lock | Delete account |
-| DELETE | `/me/avatar` | Lock | Remove profile image |
-| PUT | `/change-password` | Lock | Change password (requires current password) |
-| POST | `/forgot-password` | — | Send password reset email |
-| POST | `/reset-password/:token` | — | Reset password via email token |
+| Method | Endpoint | Auth | Purpose |
+| --- | --- | --- | --- |
+| GET | `/api/jobs` | - | List jobs; supports company filtering |
+| GET | `/api/jobs/recent` | - | List recent jobs with optional limit |
+| GET | `/api/jobs/:id` | - | Read one job |
+| GET | `/api/jobs/category/:categoryName` | - | Filter by category |
+| POST | `/api/jobs` | Lock | Create a company job |
+| PUT | `/api/jobs/:id` | Lock | Update a job |
+| DELETE | `/api/jobs/:id` | Lock | Delete a job |
+| GET/POST/DELETE | `/api/favourites/*` | Lock | Read, save, and remove saved jobs |
 
----
+### Companies and Applications
 
-### Auth (OAuth)
+| Method | Endpoint | Auth | Purpose |
+| --- | --- | --- | --- |
+| GET | `/api/companies` | - | Browse companies |
+| GET | `/api/companies/:id` | - | Read a company |
+| POST | `/api/companies` | Lock | Create a company |
+| GET | `/api/companies/:companyId/members` | Lock | List members |
+| POST | `/api/companies/:companyId/add-member` | Lock | Invite a member |
+| PATCH | `/api/companies/:companyId/members/:memberId/role` | Lock | Change a role |
+| POST | `/api/companies/:companyId/transfer-ownership` | Lock | Transfer ownership |
+| DELETE | `/api/companies/:companyId/member/:memberId` | Lock | Remove a member |
+| POST | `/api/applications` | Lock | Submit an application |
+| GET | `/api/applications/job/:jobId` | Lock | List applications for a job |
+| PATCH | `/api/applications/:id/status` | Public | Update application status |
 
-Base: `/api/auth`
+Application statuses are `new`, `pending`, `approved`, and `rejected`.
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/google` | — | Redirect to Google consent screen |
-| GET | `/google/callback` | — | Google callback — issues JWT, redirects to frontend |
+### Notifications, Stats, and Categories
 
----
+| Method | Endpoint | Auth | Purpose |
+| --- | --- | --- | --- |
+| GET | `/api/notifications/user/:userId` | Public | List user notifications |
+| GET | `/api/notifications/stream/:userId` | Public | Open the SSE stream |
+| PATCH | `/api/notifications/read/:id` | Public | Mark a notification read |
+| GET | `/api/application/stats` | Public | Read application statistics |
+| GET | `/api/categories` | - | List job categories |
+| GET | `/api/ping` | - | Connectivity check |
 
-### Jobs
+For complete route behavior, inspect the matching module in `src/routes` and controller in `src/controllers`.
 
-Base: `/api/jobs`
+## Data Model
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/` | — | Get all jobs (filter by `?company=id`) |
-| GET | `/recent` | — | Get recent jobs (`?limit=10`) |
-| GET | `/:id` | — | Get single job by ID |
-| GET | `/category/:categoryName` | — | Get jobs by category name |
-| POST | `/` | Lock | Create job (must be a company member) |
-| PUT | `/:id` | Lock | Update job |
-| DELETE | `/:id` | Lock | Delete job |
+- `User`: identity, credentials, profile, avatar, company relationship, reset state
+- `Jobs`: title, description, location, salary, company, category, skills, benefits, deadline, views, active state
+- `Company`: profile data, creator, members, and employer metadata
+- `CompanyMember`: user/company junction with `owner`, `admin`, or `recruiter` role
+- `Application`: applicant, job, CV, cover letter, contact data, status, timestamp
+- `Notification`: recipient, message, read state, action metadata, and optional company link
+- `RefreshToken`: stored refresh token with user and expiry
+- `Category`: name-based job classification
 
----
+## Operations
 
-### Companies
+Seed categories or run the available migration with:
 
-Base: `/api/companies`
-
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/` | — | Get all companies |
-| GET | `/:id` | — | Get company by ID |
-| GET | `/my-company` | Lock | Get own company |
-| POST | `/` | Lock | Create company |
-| POST | `/:companyId/add-member` | Lock | Invite member to company |
-| GET | `/:companyId/members` | Lock | List company members |
-| GET | `/:companyId/members/:userId/role` | Lock | Get member role |
-| PATCH | `/:companyId/members/:memberId/role` | Lock | Change member role |
-| POST | `/:companyId/transfer-ownership` | Lock | Transfer company ownership |
-| DELETE | `/:companyId/member/:memberId` | Lock | Kick member |
-| DELETE | `/:companyId/abandon` | Lock | Abandon / delete company |
-
----
-
-### Applications
-
-Base: `/api/applications`
-
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/` | Lock | Submit application (CV link + cover letter) |
-| GET | `/job/:jobId` | Lock | Get all applications for a job |
-| GET | `/:id` | Lock | Get single application |
-| PATCH | `/:id/status` | — | Update application status |
-| DELETE | `/:id` | — | Delete application |
-
-Application statuses: `new` / `pending` / `approved` / `rejected`
-
----
-
-### Notifications
-
-Base: `/api/notifications`
-
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/stream/:userId` | — | SSE stream — real-time push |
-| POST | `/` | — | Create notification |
-| GET | `/user/:userId` | — | Get all notifications for user |
-| GET | `/:id` | — | Get single notification |
-| PATCH | `/read/:id` | — | Mark notification as read |
-| DELETE | `/:id` | — | Delete notification |
-
----
-
-### Stats
-
-Base: `/api/application`
-
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/stats` | — | Application counts per status / per company |
-
----
-
-### Categories
-
-Base: `/api/categories`
-
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/` | — | Get all job categories |
-
----
-
-## Models
-
-### User
-| Field | Type | Notes |
-|---|---|---|
-| firstName | String | required, min 2 chars |
-| lastName | String | required (unless Google OAuth) |
-| email | String | unique, validated |
-| phoneNumber | String | required (unless Google OAuth) |
-| location | String | required (unless Google OAuth) |
-| password | String | hashed with bcrypt, salt 13 |
-| googleId | String | set on OAuth login |
-| avatar | String | URL |
-| company | ObjectId -> Company | |
-| resetPasswordToken | String | |
-| resetPasswordExpire | Date | |
-
-### Job
-| Field | Type | Notes |
-|---|---|---|
-| title | String | required |
-| description | String | required |
-| location | String | required |
-| salary | String | |
-| logo | String | |
-| createdBy | ObjectId -> User | required |
-| company | ObjectId -> Company | required |
-| category | ObjectId -> Category | required |
-| employmentType | String | default: Full-time |
-| benefits | [String] | |
-| tags | [String] | |
-| skills | [String] | |
-| applicationDeadline | Date | |
-| email | String | contact email |
-| views | Number | default: 0 |
-| isActive | Boolean | default: true |
-
-### Company
-| Field | Type | Notes |
-|---|---|---|
-| name | String | required, unique |
-| industry | String | required |
-| description | String | |
-| location | String | required |
-| website | String | |
-| logo | String | |
-| size | String | |
-| foundedYear | Number | |
-| members | [ObjectId -> User] | |
-| createdBy | ObjectId -> User | required |
-
-### Application
-| Field | Type | Notes |
-|---|---|---|
-| jobId | ObjectId -> Job | required |
-| userId | ObjectId -> User | required |
-| email | String | required |
-| phone | String | |
-| cv | String | CV URL — required |
-| coverLetter | String | |
-| status | String | new / pending / approved / rejected |
-| appliedAt | Date | auto |
-
-### Notification
-| Field | Type | Notes |
-|---|---|---|
-| user | ObjectId -> User | recipient |
-| sender | ObjectId -> User | |
-| type | String | required |
-| message | String | required |
-| isRead | Boolean | default: false |
-| actionRequired | Boolean | |
-| actionType | String | |
-| link | String | |
-| company | ObjectId -> Company | |
-
-### RefreshToken
-Stores issued refresh tokens — fields: `userId`, `token`, `expiresAt` (7 days).
-
-### CompanyMember
-Junction model linking `User <-> Company` with a `role` field (`owner` / `member`).
-
-### Category
-Name-based category used to classify job postings. Seeded via `seedCategories.js`.
-
----
-
-## Middleware
-
-### `protect` — `src/middleware/authMiddleware.js`
-
-- Reads `Authorization: Bearer <token>` header
-- Verifies JWT signature against `JWT_SECRET`
-- Attaches full `User` document (without password) to `req.user`
-- Returns `401` for missing, expired, or invalid tokens
-- Does **not** log `TokenExpiredError` (expected during refresh flow)
-
----
-
-## Services
-
-| File | Functions |
-|---|---|
-| `jobService.js` | `createJobService` · `getJobById` · `getRecentJobs` · `getJobsByCategoryName` |
-| `companyService.js` | `createCompanyService` · `getCompaniesService` · `getCompanyByIdService` · `getMemberRole` |
-
-Services contain the raw DB logic so controllers stay thin.
-
----
-
-## Utils
-
-### `src/utils/generateToken.js`
-
-```js
-generateAccessToken(userId)   // JWT signed with JWT_SECRET,         expires 15m
-generateRefreshToken(userId)  // JWT signed with JWT_REFRESH_SECRET,  expires 7d
+```sh
+node src/seedCategories.js
+npm run migrate:add-job-skills
 ```
 
----
+The service layer keeps common job and company database operations out of controllers. The `protect` middleware verifies JWTs and attaches the authenticated user without exposing the password.
 
-## What's Missing / TODO
+## Related Documentation
 
-| Area | Detail |
-|---|---|
-| **Input validation** | `express-validator` is installed but not applied to most routes — add validation chains for register, create job, create company |
-| **Authorization guards on jobs** | No ownership check on job edit/delete — any authenticated user can edit any job |
-| **Application status guard** | `PATCH /:id/status` has no `protect` middleware — anyone can change status |
-| **Delete application guard** | `DELETE /:id` has no `protect` middleware |
-| **Notification cleanup** | No TTL index or cron to purge old read notifications |
+- [Product overview and setup](../README.md)
+- [Frontend guide](../frontend/README.md)

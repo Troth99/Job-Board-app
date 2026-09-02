@@ -1,211 +1,102 @@
-# Frontend
+# Job Board Frontend
 
-## Overview
+The frontend is the responsive React experience for the Job Board platform. It serves two audiences in the same product: candidates looking for their next role and company teams managing jobs, members, and applications.
 
-This frontend is built with React, Vite, and TypeScript.
+## Experience Map
 
-The codebase is currently in transition from a flat structure (`components`, `hooks`, `services`) to a feature-based structure. The `jobs` feature is the main migrated example and should be used as the reference pattern for future frontend work.
+| Area | User-facing capabilities |
+| --- | --- |
+| Home and search | Discover featured/recent jobs, search, and browse results |
+| Jobs | View details, filter by category, inspect skills and benefits, save, apply |
+| Companies | Explore the company directory and company profiles |
+| Employer workspace | Register a company, manage jobs, members, roles, and dashboard data |
+| Profile | Edit personal information, avatar, password, and profile activity |
+| Notifications | View messages, invitations, replies, and application activity |
+| Auth | Register, login, logout, Google OAuth, forgot/reset password |
+| Content | Career advice, employer guidance, privacy, cookies, and terms pages |
 
 ## Stack
 
-- React 19
-- Vite
-- TypeScript
-- React Router
-- Redux Toolkit
-- React Redux
-- React Helmet Async
-- React Toastify
-- ESLint
-- plain CSS
+- React 19 + TypeScript + Vite
+- React Router 7 with lazy-loaded route views
+- Redux Toolkit and React Context for state
+- Lingui with English and Bulgarian catalogs
+- React Helmet Async for page metadata
+- React Toastify and React Icons for interaction feedback and UI
+- ESLint for code quality
 
-## Scripts
-
-Run all commands from [frontend/package.json](e:/JavaScript%20programming%20files/Job-Board-app/frontend/package.json).
+## Start Here
 
 ```sh
 npm install
 npm run dev
-npm run build
-npm run preview
-npm run lint
 ```
 
-## Current Frontend Structure
+The development server runs at `http://localhost:5173`. On localhost, API requests target `http://localhost:5000/api`. On the deployed site, requests target the configured Render backend. This behavior is defined in [src/config/api.ts](src/config/api.ts).
 
-```txt
-frontend/
-├── public/
-├── src/
-│   ├── features/
-│   │   ├── jobs/
-│   │   ├── companies/
-│   │   └── profile/
-│   ├── components/      # shared or not-yet-migrated UI
-│   ├── hooks/           # shared or not-yet-migrated hooks
-│   ├── context/
-│   ├── redux/
-│   ├── interfaces/
-│   ├── services/
-│   ├── seo/
-│   ├── utils/
-│   ├── Routes/
-│   ├── RouteGuards/
-│   ├── App.tsx
-│   └── main.tsx
-├── package.json
-├── tsconfig.json
-├── vite.config.js
-└── vercel.json
+## Commands
+
+```sh
+npm run dev              # start Vite
+npm run build            # production build
+npm run preview          # preview the production build
+npm run lint             # ESLint
+npm run extract          # extract Lingui messages
+npm run compile:locale   # compile locale catalogs
+npm run check:translations
 ```
 
-## Feature-Based Direction
+Run `npm run build` after structural changes and before deployment. Vite will catch missing imports, including missing locale catalog files.
 
-The target direction is:
+## Feature-First Structure
 
-- route-level screens go in `views`
-- feature-local reusable UI goes in `components`
-- API and orchestration logic goes in `hooks`
-- models and contracts go in `types`
-- form-only helpers/selects can live in `form`
-- route config stays close to the feature in `routes`
-
-## Jobs Feature Reference
-
-Current structure:
-
-```txt
-src/features/jobs/
-├── components/
-│   ├── ApplyForJobModal/
-│   └── SaveJobButton/
-├── form/
-│   └── formSelectedInputs.tsx
-├── hooks/
-│   ├── useJobApplications.ts
-│   ├── useJobBoard.ts
-│   ├── useJobFilters.ts
-│   ├── useJobsAPI.ts
-│   └── useSavedJobs.ts
-├── routes/
-│   └── JobsRoutes.tsx
-├── types/
-│   ├── Apllication.model.ts
-│   ├── Job.model.ts
-│   ├── QuickInfoSection.types.ts
-│   └── SavedJob.model.ts
-└── views/
-    ├── CreateJob/
-    ├── DetailsJob/
-    ├── EditJob/
-    ├── HowToPostJobInfo/
-    ├── JobDetailsView/
-    ├── SavedJobView/
-    └── ViewAllJobs/
+```text
+src/
+├── features/
+│   ├── auth/             login, registration, guards, OAuth callback
+│   ├── categories/       category data and UI
+│   ├── companies/        directory, company workspace, members, roles
+│   ├── homeview/         home and search experience
+│   ├── jobs/             discovery, details, posting, applications, favourites
+│   ├── notifications/    notification views and message actions
+│   └── profile/          profile, editing, avatar, and password flows
+├── shared/               layouts, navigation, pages, SEO, and reusable UI
+├── context/              theme, roles, favourites, notifications, and data
+├── store/                Redux store and slices
+├── config/               API configuration
+└── styles/               global CSS
 ```
 
-### What belongs in `views`
+### Ownership rules
 
-- full pages loaded by routes
-- route entry screens
-- page-specific layout composition
+- Put route-level screens in `features/<name>/views`.
+- Put feature-local reusable UI in `components`.
+- Put API and orchestration logic in `hooks`.
+- Put domain models and view contracts in `types`.
+- Keep route definitions beside their feature in `routes`.
+- Use `shared` for code genuinely used by multiple features.
 
-Examples:
+The migration from older flat folders is intentionally incremental. Do not move unrelated code just to make the tree look uniform; use the `jobs` feature as the strongest reference for new work.
 
-- `ViewAllJobs`
-- `CreateJob`
-- `EditJob`
-- `DetailsJob`
-- `JobDetailsView`
-- `SavedJobView`
+## Route Highlights
 
-### What belongs in `components`
+Public routes include `/`, `/search`, `/jobs`, `/job/:jobId`, `/category/:categoryName`, and `/companies`. Authenticated users can access `/favourite-jobs`, profile pages, and the company workspace. Company actions are guarded by membership and role checks; posting and editing jobs is limited to the appropriate company roles.
 
-- smaller reusable parts of a feature
-- buttons, modals, local reusable sections
-- pieces that can be reused by multiple views in the same feature
+## Localization
 
-Examples:
+Supported locales are `en` and `bg`. Catalog configuration lives in [lingui.config.js](lingui.config.js), while compiled catalogs live under `src/i18n/locales`. When adding a catalog, update the config and the imports in `src/i18n/index.ts` together, then run:
 
-- `ApplyForJobModal`
-- `SaveJobButton`
-
-### What belongs in `hooks`
-
-- API request hooks
-- composed feature hooks
-- feature-local state helpers
-
-Examples:
-
-- `useJobsAPI.ts`
-- `useJobApplications.ts`
-- `useSavedJobs.ts`
-- `useJobBoard.ts`
-- `useJobFilters.ts`
-
-### What belongs in `types`
-
-- domain models
-- feature-local view props/interfaces
-
-Examples:
-
-- `Job.model.ts`
-- `Apllication.model.ts`
-- `SavedJob.model.ts`
-- `QuickInfoSection.types.ts`
-
-## Shared vs Feature Code
-
-Keep code in top-level shared folders when it is used across multiple features.
-
-Typical shared areas:
-
-- `src/components/`
-- `src/hooks/`
-- `src/context/`
-- `src/redux/`
-- `src/services/`
-- `src/utils/`
-- `src/seo/`
-- `src/RouteGuards/`
-
-Move code into `features/*` only when it is clearly owned by one feature.
-
-## Naming Conventions
-
-- use `views` for route-level screens
-- use `components` for reusable UI inside a feature
-- keep file and folder names aligned when possible
-- prefer descriptive names over generic names like `utils` inside a feature unless the purpose is actually utility logic
-
-Good examples:
-
-- `SaveJobButton.tsx`
-- `SavedJobView.tsx`
-- `useJobApplications.ts`
-- `Job.model.ts`
-
-## Adding a New Feature
-
-When creating a new frontend feature, prefer this shape:
-
-```txt
-src/features/feature-name/
-├── components/
-├── hooks/
-├── routes/
-├── types/
-└── views/
+```sh
+npm run extract
+npm run compile:locale
+npm run check:translations
 ```
 
-Add `form/` only if the feature has meaningful form-specific UI or options.
+## Deployment
 
-## Practical Rules
+The SPA is configured for Vercel through [vercel.json](vercel.json). Build with `npm run build`; the generated `dist/` directory is the deployable output. Configure the deployed backend URL and ensure its CORS allowlist includes the frontend origin.
 
-- do not move everything at once; migrate one slice at a time
-- after moving files, always run `npm run build`
-- prefer direct imports while refactoring instead of overusing barrel files
-- keep shared code shared until feature ownership is clear
-- use `jobs` as the reference example for future migrations
+## Related Documentation
+
+- [Project overview and local setup](../README.md)
+- [Backend API reference](../backend/README.md)
