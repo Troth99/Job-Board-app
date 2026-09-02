@@ -6,12 +6,13 @@ import "./InviteMemberToCompany.css";
 import useNotifications from "../../../notifications/hooks/useNotifications";
 import useCompanies from "../../hooks/useCompanyAPI";
 import { Trans, useLingui } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 
 const initialValue = {
   email: "",
 };
 
-export function CompanyMembers() {
+export function InviteMemberToCompany() {
   const { companyId } = useParams();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [userEmailExistError, setuserEmailExistError] = useState<string>("");
@@ -31,7 +32,6 @@ export function CompanyMembers() {
     return errors;
   };
 
-  const {t} = useLingui();
   const addMemberHandler = async (values: { email: string }) => {
     setuserEmailExistError("");
     setSuccessMessage("");
@@ -66,9 +66,13 @@ export function CompanyMembers() {
       });
       setSuccessMessage("Invitation sent successfully");
     } catch (error: any) {
-      setuserEmailExistError(
-        "Failed to check if the user exists in the backend",
-      );
+      if (error.message === "INVITE_COOLDOWN") {
+        setuserEmailExistError(
+          t`Please wait 2 minutes before sending another invitation.`,
+        );
+      } else {
+        setuserEmailExistError(t`An unexpected error occurred.`);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -100,7 +104,9 @@ export function CompanyMembers() {
             className="company-members-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3><Trans>Add Member</Trans></h3>
+            <h3>
+              <Trans>Add Member</Trans>
+            </h3>
             <form className="company-members-form" onSubmit={formHandler}>
               <input
                 type="email"

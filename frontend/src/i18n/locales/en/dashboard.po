@@ -37,6 +37,9 @@ msgstr "Add more options"
 msgid "Add more options here as your company workflow grows."
 msgstr "Add more options here as your company workflow grows."
 
+msgid "An unexpected error occurred."
+msgstr "An unexpected error occurred."
+
 msgid "Analytics"
 msgstr "Analytics"
 
@@ -123,6 +126,9 @@ msgstr "Overview"
 
 #~ msgid "Please contact your administrator for editing permissions."
 #~ msgstr "Please contact your administrator for editing permissions."
+
+msgid "Please wait 2 minutes before sending another invitation."
+msgstr "Please wait 2 minutes before sending another invitation."
 
 msgid "Post new jobs and monitor recent openings for your company."
 msgstr "Post new jobs and monitor recent openings for your company."

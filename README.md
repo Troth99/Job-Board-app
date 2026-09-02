@@ -1,252 +1,175 @@
+# Job Board
 
+> A full-stack hiring workspace for discovering roles, building companies, and moving candidates through the hiring journey.
 
-# Job Board App
+Job Board brings job discovery and lightweight recruiting operations into one focused experience. Candidates can search, save, and apply for opportunities. Employers can create a company, collaborate with members, publish jobs, review applications, and follow activity through notifications.
 
-## 📝 Overview
-A modern full-stack job board for posting, searching, and managing job listings, companies, and users. The project is split into **frontend** (React + Vite) and **backend** (Node.js + Express + MongoDB).
+**Live app:** [job-board-three-omega.vercel.app](https://job-board-three-omega.vercel.app/)
 
-The frontend is currently being refactored toward a **feature-based architecture**. The `jobs` feature is the main migrated slice and serves as the reference structure for future frontend modules.
+## What You Can Do
 
----
+### For candidates
 
-## 🚀 Features
-- User registration, login, JWT authentication
-- Create, edit, and delete job postings
-- Company and member management
-- Filter and search jobs by category, keywords, employment type
-- Protected routes (middleware)
-- Responsive, modern UI
-- Form validation (frontend + backend)
-- Toast notifications for success/error
-- Pagination and search
-- Password reset and change
-- Profile editing and image upload
+- Browse recent and categorized job listings
+- Search by keywords and filter by employment type and category
+- Open detailed job views with skills, benefits, salary, and deadline information
+- Apply with a CV link, contact details, and cover letter
+- Save interesting jobs to a personal favourites list
+- Track notifications and application updates
+- Maintain a profile, avatar, and password
 
----
+### For employers
 
-## 🛠️ Technologies
+- Create and update a company profile
+- Invite team members and manage `owner`, `admin`, and `recruiter` responsibilities
+- Publish, edit, and manage company job listings
+- Review applications and update their status
+- See application statistics in the company dashboard
+- Transfer ownership or leave/abandon a company when appropriate
 
-**Frontend:**  
-- React 19, Vite, TypeScript, Redux Toolkit, React Router, React Helmet Async, ESLint, React Toastify, plain CSS
+### Product experience
 
-**Backend:**  
-- Node.js, Express, MongoDB (Mongoose), JWT, bcrypt, dotenv, multer, express-validator
+- JWT access and refresh token authentication
+- Google OAuth 2.0 sign-in
+- Real-time notifications through Server-Sent Events
+- Password recovery email flow through SendGrid
+- Responsive UI with English and Bulgarian translations
+- Protected routes, role guards, validation, lazy-loaded views, SEO metadata, and toast feedback
 
----
+## Technology
 
-## 📦 Project Structure
+| Area | Stack |
+| --- | --- |
+| Frontend | React 19, TypeScript, Vite, React Router 7 |
+| State and UI | Redux Toolkit, React Context, React Toastify, React Icons |
+| Localization | Lingui with `en` and `bg` catalogs |
+| Backend | Node.js, Express 5, Mongoose 8 |
+| Security | JWT, bcrypt, Passport Google OAuth, rate limiting, CORS |
+| Integrations | MongoDB Atlas, SendGrid, Multer, Server-Sent Events |
+| Deployment | Vercel frontend, Render-compatible backend, MongoDB Atlas |
 
-```
+## Repository Map
+
+```text
 Job-Board-app/
-├── backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   └── index.js
-│   ├── package.json
-│   └── .env
-├── frontend/
-│   ├── src/
-│   │   ├── features/
-│   │   │   ├── jobs/
-│   │   │   ├── companies/
-│   │   │   └── profile/
-│   │   ├── components/      # shared / legacy UI
-│   │   ├── hooks/           # shared / legacy hooks
-│   │   ├── context/
-│   │   ├── redux/
-│   │   ├── interfaces/
-│   │   ├── services/
-│   │   ├── seo/
-│   │   ├── utils/
-│   │   └── App.tsx
-│   ├── public/
-│   ├── package.json
-│   ├── vite.config.js
-│   └── tsconfig.json
-├── README.md
-└── LICENSE
+├── backend/              Express API and database layer
+│   └── src/
+│       ├── controllers/  Request handlers for each domain
+│       ├── models/       User, job, company, application, and support schemas
+│       ├── routes/       API route modules mounted from routes/index.js
+│       ├── services/     Database-focused business logic
+│       ├── middleware/   Authentication and request middleware
+│       └── utils/        Shared backend helpers
+├── frontend/             React application
+│   └── src/
+│       ├── features/     Auth, jobs, companies, profile, notifications, and more
+│       ├── shared/       Layouts, pages, navigation, SEO, and reusable UI
+│       ├── context/      Theme, notifications, roles, and favourites state
+│       └── store/        Redux store configuration
+└── tests/                Browser test artifacts and test configuration
 ```
 
----
+The frontend follows a feature-first structure. A feature normally contains `components`, `hooks`, `routes`, `types`, and `views`; shared code stays under `src/shared` or the existing top-level contexts and store.
 
-## 🧭 Frontend Architecture
+## Run Locally
 
-The frontend is being migrated from a flat `components/hooks/services` layout to a **feature-first structure**.
+### Prerequisites
 
-### Current Direction
+- Node.js 18+
+- A MongoDB database
+- Optional: Google OAuth and SendGrid credentials for those flows
 
-- `features/jobs` is the primary reference feature.
-- `features/companies` and `features/profile` exist as placeholders for future migration.
-- top-level folders like `components`, `hooks`, `context`, `redux`, `services`, and `utils` still hold shared or not-yet-migrated code.
+### 1. Install dependencies
 
-### Jobs Feature Layout
-
-```txt
-frontend/src/features/jobs/
-├── components/   # reusable parts used by job views
-├── form/         # form-specific UI/select inputs
-├── hooks/        # jobs API and orchestration hooks
-├── routes/       # jobs route definitions
-├── types/        # jobs-related models and view types
-└── views/        # route-level screens/pages
-```
-
-### Jobs Feature Breakdown
-
-`views/`
-- route-level pages such as `ViewAllJobs`, `CreateJob`, `EditJob`, `DetailsJob`, `JobDetailsView`, `SavedJobView`, and `HowToPostJobInfo`
-
-`components/`
-- reusable feature-local UI such as `ApplyForJobModal` and `SaveJobButton`
-
-`hooks/`
-- `useJobsAPI.ts` for jobs API requests
-- `useJobApplications.ts` for application actions
-- `useSavedJobs.ts` for saved jobs/favorites logic
-- `useJobBoard.ts` as a composition hook over jobs-related actions
-- `useJobFilters.ts` for jobs filtering state/helpers
-
-`types/`
-- `Job.model.ts`
-- `Apllication.model.ts`
-- `SavedJob.model.ts`
-- `QuickInfoSection.types.ts`
-
-`form/`
-- jobs form selects and related form-specific inputs
-
-### Practical Rule
-
-- put **route-level screens** in `views`
-- put **feature-local reusable pieces** in `components`
-- put **API/state logic** in `hooks`
-- put **models and view contracts** in `types`
-- keep **shared cross-feature logic** in existing shared top-level folders until those are explicitly refactored
-
-### Migration Note
-
-The frontend is in a transitional state. Some older folders still exist alongside the new feature-based structure. This is intentional during migration; new frontend work should prefer the `features/*` layout, starting with the `jobs` pattern.
-
----
-
-## ⚡ Installation & Setup
-
-### 1. Clone the repository
 ```sh
-git clone <repo-url>
-cd Job-Board-app
+cd backend && npm install
+cd ../frontend && npm install
 ```
 
-### 2. Backend Setup
+### 2. Configure the backend
+
+Create `backend/.env.development`:
+
+```env
+PORT=5000
+NODE_ENV=development
+MONGO_URI=mongodb+srv://<user>:<password>@<cluster>/jobboard
+JWT_SECRET=replace-with-a-long-access-secret
+JWT_REFRESH_SECRET=replace-with-a-long-refresh-secret
+SESSION_SECRET=replace-with-a-long-session-secret
+FRONTEND_URL=http://localhost:5173
+GOOGLE_CLIENT_ID=optional-google-client-id
+GOOGLE_CLIENT_SECRET=optional-google-client-secret
+GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
+SENDGRID_API_KEY=optional-sendgrid-key
+EMAIL_FROM=verified-sender@example.com
+```
+
+`NODE_ENV=production` loads `backend/.env.production` instead. Keep secrets out of git.
+
+### 3. Start the API
+
 ```sh
 cd backend
-npm install
-```
-Create a `.env` file:
-```
-PORT=5000
-MONGO_URI=your_mongo_uri
-JWT_SECRET=your_jwt_secret
-JWT_REFRESH_SECRET=your_refresh_secret
-EMAIL_FROM=your@email.com
-FRONTEND_URL=https://your-frontend-url.vercel.app
-SENDGRID_API_KEY=your_sendgrid_key
-```
-Start backend:
-```sh
 npm run dev
 ```
 
-### 3. Frontend Setup
+The API is available at `http://localhost:5000`; its root health response is `API is up and running!`.
+
+### 4. Start the frontend
+
 ```sh
-cd ../frontend
-npm install
+cd frontend
 npm run dev
 ```
 
-Frontend scripts:
+Open `http://localhost:5173`. The frontend automatically uses the local API on localhost and the deployed Render API elsewhere. For the full command list, see [frontend/README.md](frontend/README.md).
+
+## Useful Commands
 
 ```sh
+# frontend
 npm run dev
 npm run build
-npm run preview
 npm run lint
+npm run preview
+npm run extract
+npm run compile:locale
+npm run check:translations
+
+# backend
+npm run dev
+npm start
+npm run migrate:add-job-skills
 ```
 
----
+## API Overview
 
-## 🏃‍♂️ Running Locally
+The backend is mounted under `/api`:
 
-- Backend: `http://localhost:5000`
-- Frontend: `http://localhost:5173`
+| Area | Base path | Purpose |
+| --- | --- | --- |
+| Users | `/api/users` | Registration, login, profiles, passwords, tokens |
+| OAuth | `/api/auth` | Google authentication |
+| Jobs | `/api/jobs` | Public discovery and protected job management |
+| Companies | `/api/companies` | Company profiles, members, and roles |
+| Applications | `/api/applications` | Candidate applications and statuses |
+| Favourites | `/api/favourites` | Save and remove jobs |
+| Notifications | `/api/notifications` | In-app messages and SSE stream |
+| Stats | `/api/application/stats` | Company application analytics |
+| Categories | `/api/categories` | Job category catalogue |
+| Health | `/api/ping` | Backend connectivity check |
 
----
+For endpoint-level details and auth requirements, see [backend/README.md](backend/README.md).
 
-## 🌐 Deployment
+## Security Notes
 
-- **Frontend:** Vercel (SPA routing, automatic deploy on main branch changes)
-- **Backend:** Render.com, Heroku, or other Node.js hosting
-- **MongoDB:** MongoDB Atlas
+Protected requests use `Authorization: Bearer <accessToken>`. Access tokens expire quickly and refresh tokens are stored server-side with a seven-day lifetime. Passwords are hashed with bcrypt. In production, use strong unique secrets, HTTPS, a restricted CORS origin, and real provider credentials.
 
----
+## Contributing
 
-## 🔗 API Endpoints (examples)
-- `POST /api/users/register` — register
-- `POST /api/users/login` — login
-- `GET /api/jobs` — all jobs
-- `POST /api/jobs` — create job (auth)
-- `POST /api/users/forgot-password` — request password reset
-- `POST /api/users/reset-password/:token` — reset password
+Use a focused feature branch, keep frontend work inside the owning feature where possible, run the frontend build and lint checks, and describe user-visible behavior in the pull request.
 
----
+## License
 
-## 🖥️ Usage
-
-- Register and login
-- Create or edit your profile
-- Post and manage job listings
-- Apply for jobs
-- Manage company and members
-
----
-
-## 🧪 Testing
-
-- Test API with Postman or Thunder Client
-- Test UI in browser
-- For production build: `npm run build` and `npm run preview` (frontend)
-
----
-
-## 🛡️ Security
-
-- JWT middleware for protected routes
-- bcrypt for password hashing
-- CORS configured for frontend/backend communication
-
----
-
-## 🌐 Live Deployment
-
-**Frontend:** [https://job-board-three-omega.vercel.app/](https://job-board-three-omega.vercel.app/)
-
----
-
-## 📋 Contribution
-
-- Fork, feature branch, pull request
-- Follow code style (ESLint, Prettier)
-- Write clear commit messages
-
----
-
-## 📄 License
-
-MIT
-
----
+MIT. See [LICENSE](LICENSE).

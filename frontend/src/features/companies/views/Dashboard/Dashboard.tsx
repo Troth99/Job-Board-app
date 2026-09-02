@@ -4,7 +4,7 @@ import "../../styles/dashboard.css";
 import { useNavigate, useParams } from "react-router";
 import { CompanyJobsList } from "../../components/CompanyJobList/CompanyJobList";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
-import { CompanyMembers } from "../../components/InviteMemberToCompany/InviteMemberToCompany";
+import {  InviteMemberToCompany } from "../../components/InviteMemberToCompany/InviteMemberToCompany";
 import { SendMessage } from "../../components/SendMessage/SendMessage";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import { useUserData } from "../../../../context/UseDataContext";
@@ -20,7 +20,6 @@ import useMembers from "../../hooks/useMembers";
 import { MemberDashboardSideBar } from "../../components/DashboardSidebarUI/DashboardSidebarUI";
 import { Trans } from "@lingui/react/macro";
 
-//to add a permision for adding a member also to set a timer to avoid spam sent message to be able to send only in current company members
 export default function Dashboard() {
   const { companyId } = useParams();
   const navigate = useNavigate();
@@ -212,7 +211,7 @@ export default function Dashboard() {
               </p>
             </div>
             <div className="content-header section-body">
-              <CompanyMembers />
+              <InviteMemberToCompany />
               <SendMessage onSuccess={() => setSuccess(true)} />
             </div>
           </section>
