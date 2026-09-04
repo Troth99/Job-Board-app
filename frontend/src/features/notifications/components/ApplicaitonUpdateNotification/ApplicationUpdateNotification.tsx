@@ -29,7 +29,7 @@ export default function ApplicationUpdateNotification() {
   }, [notificationId]);
 
   if (loading) {
-    return <Spinner inline={true} />;
+    return <Spinner variant="inline" />;
   }
 
   if (!notification) {

@@ -3,7 +3,7 @@ import { getUserFromLocalStorage } from "../../auth/hooks/useAuth";
 import { useNotificationContext } from "../../../context/NotificationContext";
 import { Navigate, Outlet, useParams } from "react-router";
 import { toast } from "react-toastify";
-import Spinner from "../../../shared/components/Spinner/Spinner";
+import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 
 export function NotificationOwnerGuard() {
   const { notificationId } = useParams();
@@ -34,7 +34,7 @@ export function NotificationOwnerGuard() {
     }
   }, [notificationId, userId, notifications]);
 
-  if (allowed === null) return <Spinner inline />;
+  if (allowed === null) return <FullPageSpinner />;
  if (!allowed) return <Navigate to="/notifications" replace />;
   return <Outlet />;
 }

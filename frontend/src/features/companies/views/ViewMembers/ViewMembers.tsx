@@ -112,7 +112,7 @@ export default function ViewMembers() {
       <MetaData seo={seo} />
 
       {loading ? (
-        <Spinner overlay={true} />
+        <Spinner variant="fullpage" />
       ) : (
         <div className="member-list-page">
           <div className="members-list-container">

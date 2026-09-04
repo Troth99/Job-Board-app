@@ -112,7 +112,7 @@ export default function EditProfile() {
       <MetaData seo={seo} />
       <div className="profile-body">
         {!userData ? (
-          <Spinner overlay={true} />
+          <Spinner variant="fullpage" />
         ) : (
           <div className="profile-container">
             <div className="profile-header">

@@ -41,15 +41,27 @@ export const notificationsRoutes = [
       <Route element={<NotificationOwnerGuard />}>
         <Route
           path="/company-invitation/:notificationId"
-          element={<CompanyInvitationNotification />}
+          element={
+            <Suspense fallback={<FullPageSpinner />}>
+              <CompanyInvitationNotification />
+            </Suspense>
+          }
         />
         <Route
           path="/message/:notificationId"
-          element={<NewmessageNotification />}
+          element={
+            <Suspense fallback={<FullPageSpinner />}>
+              <NewmessageNotification />
+            </Suspense>
+          }
         />
         <Route
           path="/application-update/:notificationId"
-          element={<ApplicationUpdateNotification />}
+          element={
+            <Suspense fallback={<FullPageSpinner />}>
+              <ApplicationUpdateNotification />
+            </Suspense>
+          }
         />
       </Route>
     </Route>

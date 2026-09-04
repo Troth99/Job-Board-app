@@ -47,7 +47,7 @@ export default function NewmessageNotification() {
 
   // Show loading spinner while fetching data
   if (loading) {
-    return <Spinner inline={true} />;
+    return <Spinner variant="inline" />;
   }
 
   // If notification is not found, we can show a message or return null

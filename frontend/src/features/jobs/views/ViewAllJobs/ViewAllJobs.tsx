@@ -65,7 +65,7 @@ function ViewAllJobs() {
       <MetaData seo={seo} />
 
       {loading ? (
-        <Spinner overlay={true} />
+        <Spinner variant="fullpage" />
       ) : (
         <section className="jobs-board-page">
           <header className="jobs-board-hero">

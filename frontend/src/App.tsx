@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router";
 import { PageNotFound } from "./shared/pages/404/404";
 import { useDispatch } from "react-redux";
 import useCategories from "./features/categories/hooks/useCategories";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import { footerRoutes } from "./shared/routes/FooterRoutes";
 import { jobsRoutes } from "./features/jobs/routes/JobsRoutes";
 import { authRoutes } from "./features/auth/routes/AuthRoutes";
@@ -15,13 +15,13 @@ import MainLayout from "./shared/Layouts/MainLayout";
 import FullPageSpinner from "./shared/components/FullPageSpinner/FullPageSpinner";
 import { setCategories } from "./features/categories/components/CategoriesSection/categoriesSlice";
 import SearchResults from "./features/homeview/components/Search/SearchResults/SearchResults";
+import HomeSection from "./features/homeview/view/HomeSection";
+import { API_BASE } from "./config/api";
 
 
 interface AppProps {
   setUserId: (id: string) => void;
 }
-//lazy loaded components
-const HomeSection = lazy(() => import("./features/homeview/view/HomeSection"));
 
 function App({ setUserId }: AppProps) {
   const [loading, setLoading] = useState(true);
@@ -46,12 +46,17 @@ function App({ setUserId }: AppProps) {
       let retries = 0;
       const maxRetries = 3;
       const retryDelay = 1000;
+      // Ping the backend that this environment actually talks to, not a hardcoded production URL.
+      const pingUrl = API_BASE.replace(/\/api\/?$/, "/");
 
       while (retries < maxRetries) {
         try {
-          const response = await fetch(
-            "https://job-board-backend-7gfd.onrender.com/",
-          );
+          // Bound each attempt so a cold/unreachable server can't hang the spinner forever.
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 8000);
+          const response = await fetch(pingUrl, { signal: controller.signal });
+          clearTimeout(timeoutId);
+
           if (response.ok) {
             setServerReady(true);
             console.log("Server is up and ready!");
@@ -83,11 +88,7 @@ function App({ setUserId }: AppProps) {
         <Route path="/" element={<MainLayout />}>
           <Route
             index
-            element={
-              <Suspense fallback={<FullPageSpinner />}>
-                <HomeSection />
-              </Suspense>
-            }
+            element={<HomeSection />}
           />
         </Route>
 

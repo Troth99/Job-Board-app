@@ -147,7 +147,7 @@ export default function Dashboard() {
     localRole === "admin" || localRole === "owner" || localRole === "recruiter";
 
   if (loading || refreshingAfterTransfer || !localRole) {
-    return <Spinner overlay={true} />;
+    return <Spinner variant="fullpage" />;
   }
   return (
     <>

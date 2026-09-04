@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../../auth/hooks/useAuth";
@@ -7,6 +7,12 @@ import { Job } from "../types/Job.model";
 import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 import useCompanies from "../../companies/hooks/useCompanyAPI";
 import useMembers from "../../companies/hooks/useMembers";
+
+// Lets already-fetched job/role data flow to children so they don't refetch and flash a second spinner.
+export const JobDetailsContext = createContext<{
+  job: Job | undefined;
+  userRole: string | null;
+}>({ job: undefined, userRole: null });
 
 export function JobDetailsRouteGuard({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
@@ -104,5 +110,9 @@ export function JobDetailsRouteGuard({ children }: { children: React.ReactNode }
 
   if (loading || !isAuthorized) return <FullPageSpinner />;
 
-  return <>{children}</>;
+  return (
+    <JobDetailsContext.Provider value={{ job: currentJob, userRole: resolvedUserRole }}>
+      {children}
+    </JobDetailsContext.Provider>
+  );
 }

@@ -1,29 +1,11 @@
-import "./LoadingIndicator.css"
+import Spinner from "../Spinner/Spinner";
 
 interface LoadingIndicatorProps {
   message?: string;
   size?: "small" | "medium" | "large";
 }
 
-
-
+// Thin alias kept for readability at call sites; the real spinner lives in Spinner.tsx.
 export function LoadingIndicator({ message = "Loading...", size = "medium" }: LoadingIndicatorProps) {
-  const sizeMap = {
-    small: "30px",
-    medium: "50px",
-    large: "70px"
-  };
-
-    return (
-    <div className="loading-indicator-container">
-      <div 
-        className="loading-spinner" 
-        style={{
-          width: sizeMap[size],
-          height: sizeMap[size]
-        }}
-      ></div>
-      {message && <p className="loading-message">{message}</p>}
-    </div>
-  );
+  return <Spinner variant="inline" size={size} message={message} />;
 }

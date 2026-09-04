@@ -43,7 +43,7 @@ export function ViewAllJobsForCompany() {
   return (
 <div className="view-all-jobs-container">
       {loading ? (
-        <Spinner overlay={true} />
+        <Spinner variant="fullpage" />
       ) : (
         <>
           <ShowJobs jobs={companyJobs} />
