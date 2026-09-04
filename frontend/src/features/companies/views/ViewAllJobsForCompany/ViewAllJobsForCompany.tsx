@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router";
 import { ShowJobs } from "../../components/showCompanyJobs/showCompanyJobs";
 import { Job } from "../../../jobs/types/Job.model";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { JobCardSkeleton, SkeletonList } from "../../../../shared/components/Skeleton/Skeleton";
 import useJobs from "../../../jobs/hooks/useJobsAPI";
 import "../../styles/viewAllJobsForCompany.css";
 import Pagination from "../../../../shared/components/Pagination/Pagination";
@@ -43,7 +43,9 @@ export function ViewAllJobsForCompany() {
   return (
 <div className="view-all-jobs-container">
       {loading ? (
-        <Spinner variant="fullpage" />
+        <div className="job-list">
+          <SkeletonList count={ITEMS_PER_PAGE} render={(i) => <JobCardSkeleton key={i} />} />
+        </div>
       ) : (
         <>
           <ShowJobs jobs={companyJobs} />

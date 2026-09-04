@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useJobs from "../../../jobs/hooks/useJobsAPI";
 import { ShowJobs } from "../showCompanyJobs/showCompanyJobs";
-import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";
+import { JobCardSkeleton, SkeletonList } from "../../../../shared/components/Skeleton/Skeleton";
 import { Job } from "../../../jobs/types/Job.model";
 import { useNavigate } from "react-router";
 import { Trans, useLingui } from "@lingui/react/macro";
@@ -67,7 +67,7 @@ const viewAllJobsHandler = () =>{
 
       <div className="job-list">
         {loading ? (
-          <LoadingIndicator size="small" message={t`Loading jobs...`} />
+          <SkeletonList count={3} render={(i) => <JobCardSkeleton key={i} />} />
         ) : (
           <ShowJobs jobs={jobs} isReadOnly={isReadOnly} />
         )}

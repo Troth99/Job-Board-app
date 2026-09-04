@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useJobs from "../../hooks/useJobsAPI";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { JobCardModernSkeleton, SkeletonList } from "../../../../shared/components/Skeleton/Skeleton";
 import "./ViewAllJobs.css";
 import { useNavigate, useSearchParams } from "react-router";
 import { Job } from "../../types/Job.model";
@@ -65,7 +65,9 @@ function ViewAllJobs() {
       <MetaData seo={seo} />
 
       {loading ? (
-        <Spinner variant="fullpage" />
+        <div className="jobs-list-modern">
+          <SkeletonList count={ITEMS_PER_PAGE} render={(i) => <JobCardModernSkeleton key={i} />} />
+        </div>
       ) : (
         <section className="jobs-board-page">
           <header className="jobs-board-hero">

@@ -5,7 +5,7 @@ import { Meta, useSearchParams } from "react-router";
 import useCompanies from "../../hooks/useCompanyAPI";
 import { generateCompaniesSeo } from "../../../../seo/seo";
 import MetaData from "../../../../seo/MetaDataTags";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { CompanyCardSkeleton, SkeletonList } from "../../../../shared/components/Skeleton/Skeleton";
 import { Container } from "../../../../shared/components/Container/Container";
 import { formatDate } from "../../../../shared/utils/formData";
 import Pagination from "../../../../shared/components/Pagination/Pagination";
@@ -102,7 +102,9 @@ export default function ViewAllCompanies() {
     <MetaData seo={seo} />
 
     {loading ? (
-      <Spinner variant="fullpage" />
+      <div className="companies-grid">
+        <SkeletonList count={6} render={(i) => <CompanyCardSkeleton key={i} />} />
+      </div>
     ) : (
       <Container>
             <section className="companies-directory">
