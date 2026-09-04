@@ -23,6 +23,12 @@ msgstr "{memberName} е премахнат от компанията."
 msgid "{memberName}'s role updated to {newRole} successfully."
 msgstr "Ролята на {memberName}  е актуализирана успешно до {newRole}."
 
+msgid "Are you sure you want to remove {memberName} from the company?"
+msgstr "Наистина ли искате да премахнете {memberName} от компанията?"
+
+msgid "Cancel"
+msgstr "Отказ"
+
 msgid "Company Members"
 msgstr "Членове на компанията"
 
@@ -64,3 +70,6 @@ msgstr "Управление на екипа"
 
 msgid "Updated At:"
 msgstr "Актуализиран на:"
+
+msgid "Yes, remove"
+msgstr "Да, премахни"
