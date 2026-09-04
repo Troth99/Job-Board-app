@@ -52,3 +52,16 @@
   flex-direction: column;
   gap: 8px;
 }
+
+/* Generic vertical spacing wrapper, used when the ambient layout classes we borrow (.sidebar, .dashboard-panel, etc.) don't already stack children. */
+.skeleton-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-stack--row {
+  flex-direction: row;
+  align-items: center;
+}
+

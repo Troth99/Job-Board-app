@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { JobCardSkeleton, SkeletonList } from "../../../../shared/components/Skeleton/Skeleton";
 import { Container } from "../../../../shared/components/Container/Container";
 import "./SavedJobView.css";
 import type { SavedJob } from "../../types/SavedJob.model";
@@ -59,7 +59,11 @@ function SavedJobs() {
       <MetaData seo={seo} />
 
       {loading ? (
-        <Spinner variant="fullpage" />
+        <Container>
+          <div className="job-list">
+            <SkeletonList count={ITEMS_PER_PAGE} render={(i) => <JobCardSkeleton key={i} />} />
+          </div>
+        </Container>
       ) : (
         <Container>
           <div className="saved-jobs-view">

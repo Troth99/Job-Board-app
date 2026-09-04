@@ -10,7 +10,7 @@ import {
 } from "../../form/formSelectedInputs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { FormSkeleton } from "../../../../shared/components/Skeleton/Skeleton";
 import { JobFormValues } from "../../types/Job.model";
 import useForm from "../../../../shared/hooks/useForm";
 import { jobPostValidations } from "../../validators/createJobValidation";
@@ -142,7 +142,7 @@ export default function EditJob() {
   return (
     <>
       {loading ? (
-        <Spinner variant="fullpage" />
+        <FormSkeleton rows={10} />
       ) : (
         <div className="post-job-container">
           <h2>

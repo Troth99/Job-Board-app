@@ -1,5 +1,5 @@
 import "../../styles/edit-profile.css";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { FormSkeleton } from "../../../../shared/components/Skeleton/Skeleton";
 import { useNavigate } from "react-router";
 import { showSuccess } from "../../../../shared/utils/toast";
 import { useValidation } from "../../../auth/validators/useValidation";
@@ -112,7 +112,7 @@ export default function EditProfile() {
       <MetaData seo={seo} />
       <div className="profile-body">
         {!userData ? (
-          <Spinner variant="fullpage" />
+          <FormSkeleton rows={5} />
         ) : (
           <div className="profile-container">
             <div className="profile-header">

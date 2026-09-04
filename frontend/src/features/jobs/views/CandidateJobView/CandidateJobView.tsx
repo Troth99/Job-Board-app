@@ -3,7 +3,7 @@ import useJobs from "../../hooks/useJobsAPI";
 import "./CandidateJobView.css";
 import { useEffect, useState } from "react";
 import { Job } from "../../types/Job.model";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { DetailPageSkeleton } from "../../../../shared/components/Skeleton/Skeleton";
 import { useLocalStorage } from "../../../../shared/hooks/useLocalStorage";
 import { ApplyForJobModal } from "../../components/ApplyForJobModal/ApplyForJobModal";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
@@ -90,7 +90,11 @@ export default function CandidateJobView() {
   }, [jobId]);
 
   if (loading) {
-    return <Spinner variant="fullpage" />;
+    return (
+      <Container>
+        <DetailPageSkeleton />
+      </Container>
+    );
   }
   return (
     <Container>
