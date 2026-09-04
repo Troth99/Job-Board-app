@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useThemeContext } from "../../../context/ThemeContext";
 import "./Spinner.css";
 
@@ -11,10 +12,20 @@ interface SpinnerProps {
 }
 
 const inlineDiameters = { small: 20, medium: 28, large: 36 };
+// Skip rendering if the loading state clears within this window, so fast responses never flash a spinner.
+const APPEARANCE_DELAY_MS = 300;
 
 export default function Spinner({ variant = "block", size = "medium", message }: SpinnerProps) {
   const { theme } = useThemeContext();
   const darkClass = theme === "dark" ? "dark-theme" : "";
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), APPEARANCE_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!visible) return null;
 
   if (variant === "fullpage") {
     return (
