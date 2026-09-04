@@ -3,7 +3,7 @@ import { Trans } from "@lingui/react/macro";
 import { useNavigate, useSearchParams } from "react-router";
 import useJobs from "../../../../jobs/hooks/useJobsAPI";
 import { Job } from "../../../../jobs/types/Job.model";
-import Spinner from "../../../../../shared/components/Spinner/Spinner";
+import { JobCardSkeleton, SkeletonList } from "../../../../../shared/components/Skeleton/Skeleton";
 import { ShowJobs } from "../../../../companies/components/showCompanyJobs/showCompanyJobs";
 import "../../../styles/Search.css";
 import "../../../styles/Responsive.css";
@@ -36,7 +36,11 @@ export default function SearchResults() {
     fetchAndFilter();
   }, [query]);
   if (loading) {
-    return <Spinner variant="fullpage" />;
+    return (
+      <div className="job-list">
+        <SkeletonList count={5} render={(i) => <JobCardSkeleton key={i} />} />
+      </div>
+    );
   }
   return (
     <div className="search-results-container">

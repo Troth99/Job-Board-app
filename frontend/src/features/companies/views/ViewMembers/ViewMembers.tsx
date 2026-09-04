@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./ViewMembers.css";
 import { useParams } from "react-router";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { MemberCardSkeleton, SkeletonList } from "../../../../shared/components/Skeleton/Skeleton";
 import useMembers from "../../hooks/useMembers";
 import { CompanyMember } from "../../types/CompanyMember.model";
 import { useRole } from "../../../../context/RoleContext";
@@ -112,7 +112,9 @@ export default function ViewMembers() {
       <MetaData seo={seo} />
 
       {loading ? (
-        <Spinner variant="fullpage" />
+        <div className="members-cards">
+          <SkeletonList count={6} render={(i) => <MemberCardSkeleton key={i} />} />
+        </div>
       ) : (
         <div className="member-list-page">
           <div className="members-list-container">

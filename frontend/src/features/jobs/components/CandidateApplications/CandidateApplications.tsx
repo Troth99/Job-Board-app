@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import "../../styles/candidateApllications.css";
 import useApplications from "../../hooks/useJobApplications";
 import { Candidate } from "../../types/Apllication.model";
-import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";
+import { RowSkeleton } from "../../../../shared/components/Skeleton/Skeleton";
 import { formatDate } from "../../../../shared/utils/formData";
 import { useParams } from "react-router";
 import useNotifications from "../../../notifications/hooks/useNotifications";
@@ -223,7 +223,9 @@ export function CandidateApplications({
 
       {loading ? (
         <div className="candidate-applications__state">
-          <LoadingIndicator message={t`Loading applications...`} size="small" />
+          <RowSkeleton />
+          <RowSkeleton />
+          <RowSkeleton />
         </div>
       ) : candidates.length === 0 ? (
         <div className="candidate-applications__empty">

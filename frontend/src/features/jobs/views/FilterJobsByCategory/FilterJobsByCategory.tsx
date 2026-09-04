@@ -3,13 +3,13 @@ import "./FilterJobsByCategory.css";
 import useJobs from "../../hooks/useJobsAPI";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { LoadingIndicator } from "../../../../shared/components/LoadingIndicator/LoadingIndicator";
+import { JobCardSkeleton, SkeletonList } from "../../../../shared/components/Skeleton/Skeleton";
 import { FilterGroup } from "../../components/FilterJobsByCategory/FilterGroup";
 import { employmentOptions, } from "../../form/formSelectedInputs";
   
 import { Job } from "../../types/Job.model";
 import Pagination from "../../../../shared/components/Pagination/Pagination";
-import { Helmet } from "react-helmet-async";
+import MetaData from "../../../../seo/MetaDataTags";
 import { generateSeoConfig } from "../../../../seo/seo";
 import { useJobFilters } from "../../hooks/useJobFilters";
 import { ShowJobs } from "../../../companies/components/showCompanyJobs/showCompanyJobs";
@@ -95,16 +95,7 @@ export default function FilterJobByCategory() {
 
   return (
 <>
-    <Helmet>
-      <title>{seo.title}</title>
-      <meta
-        name="description"
-        content={seo.description}
-      />
-      {seo.url && <meta property="og:url" content={seo.url} />}
-      {seo.url && <link rel="canonical" href={seo.url} />}
-      {seo.noindex && <meta name="robots" content="noindex,nofollow" />}
-    </Helmet>
+    <MetaData seo={seo} />
     <div className="filter-jobs-container">
       <div className="filter-header">
         <div className="filter-title">
@@ -147,8 +138,8 @@ export default function FilterJobByCategory() {
 
         <main className="jobs-list-area">
           {loading ? (
-            <div className="loading-indicator-center">
-              <LoadingIndicator message={t`Loading jobs...`} size="medium" />
+            <div className="job-list">
+              <SkeletonList count={6} render={(i) => <JobCardSkeleton key={i} />} />
             </div>
           ) : jobsData.length > 0 ? (
             <>
