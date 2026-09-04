@@ -32,6 +32,7 @@ export default function Spinner({ variant = "block", size = "medium", message }:
       <div className="spinner-overlay">
         <div className={`spinner-ring ${darkClass}`}></div>
         <div className={`spinner-logo ${darkClass}`}>JB</div>
+        {message && <p className="spinner-message spinner-message--fullpage">{message}</p>}
       </div>
     );
   }

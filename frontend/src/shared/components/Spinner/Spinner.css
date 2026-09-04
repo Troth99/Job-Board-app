@@ -34,10 +34,22 @@
   height: 100vh;
   background: #ffffff;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 20px;
   z-index: 9999;
+}
+
+.spinner-message--fullpage {
+  width: 100%;
+  text-align: center;
+  margin-top: 4px;
+  color: #4a5a70;
+}
+
+[data-theme="dark"] .spinner-message--fullpage {
+  color: #b9c8de;
 }
 
 [data-theme="dark"] .spinner-overlay {
