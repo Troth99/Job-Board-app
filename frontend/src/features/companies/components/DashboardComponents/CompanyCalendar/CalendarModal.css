@@ -59,41 +59,41 @@
 .calendar-modal-body {
   overflow: auto;
   padding: 1rem;
-  background: rgba(36, 49, 66, 0.9);
+  background: #f7fafd;
 }
 
 .calendar-modal-body .company-calendar-container {
   border-radius: 12px;
   overflow: hidden;
-  background: rgba(38, 50, 64, 0.9);
+  background: #ffffff;
 }
 
 .calendar-modal-body .fc {
-  background: rgba(38, 50, 64, 0.9);
-  color: #edf5ff;
+  background: #ffffff;
+  color: #123558;
 }
 
 .calendar-modal-body .fc-toolbar-title,
 .calendar-modal-body .fc-col-header-cell-cushion,
 .calendar-modal-body .fc-daygrid-day-number,
 .calendar-modal-body .fc-daygrid-event {
-  color: #edf5ff;
+  color: #123558;
 }
 
 .calendar-modal-body .fc-col-header-cell,
 .calendar-modal-body .fc-scrollgrid,
 .calendar-modal-body .fc-daygrid-day {
-  border-color: rgba(148, 177, 219, 0.28);
+  border-color: rgba(120, 150, 190, 0.3);
 }
 
 .calendar-modal-body .fc-button {
-  background: rgba(66, 101, 152, 0.95);
-  border-color: rgba(142, 175, 212, 0.7);
+  background: #2f5fa3;
+  border-color: rgba(47, 95, 163, 0.7);
   color: #f3f8ff;
 }
 
 .calendar-modal-body .fc-button:hover {
-  background: rgba(79, 117, 176, 1);
+  background: #3a6fb8;
 }
 
 .calendar-modal-body .fc-day-today {
@@ -106,8 +106,49 @@
 }
 
 .calendar-modal-body .fc .fc-daygrid-day-frame {
+  background: #ffffff;
+}
+
+[data-theme="dark"] .calendar-modal-body {
+  background: rgba(36, 49, 66, 0.9);
+}
+
+[data-theme="dark"] .calendar-modal-body .company-calendar-container {
+  background: rgba(38, 50, 64, 0.9);
+}
+
+[data-theme="dark"] .calendar-modal-body .fc {
+  background: rgba(38, 50, 64, 0.9);
+  color: #edf5ff;
+}
+
+[data-theme="dark"] .calendar-modal-body .fc-toolbar-title,
+[data-theme="dark"] .calendar-modal-body .fc-col-header-cell-cushion,
+[data-theme="dark"] .calendar-modal-body .fc-daygrid-day-number,
+[data-theme="dark"] .calendar-modal-body .fc-daygrid-event {
+  color: #edf5ff;
+}
+
+[data-theme="dark"] .calendar-modal-body .fc-col-header-cell,
+[data-theme="dark"] .calendar-modal-body .fc-scrollgrid,
+[data-theme="dark"] .calendar-modal-body .fc-daygrid-day {
+  border-color: rgba(148, 177, 219, 0.28);
+}
+
+[data-theme="dark"] .calendar-modal-body .fc-button {
+  background: rgba(66, 101, 152, 0.95);
+  border-color: rgba(142, 175, 212, 0.7);
+  color: #f3f8ff;
+}
+
+[data-theme="dark"] .calendar-modal-body .fc-button:hover {
+  background: rgba(79, 117, 176, 1);
+}
+
+[data-theme="dark"] .calendar-modal-body .fc .fc-daygrid-day-frame {
   background: rgba(61, 79, 98, 0.85);
 }
+
 
 @media (max-width: 640px) {
   .calendar-modal-backdrop {

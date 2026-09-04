@@ -26,6 +26,7 @@ export default function useProfile() {
     try {
       const result = await request(`${API_BASE}/users/me`, "GET");
       setUserData(result);
+      return result;
     } catch (error) {
       console.error("Error fetching user profile:", error);
     } finally {

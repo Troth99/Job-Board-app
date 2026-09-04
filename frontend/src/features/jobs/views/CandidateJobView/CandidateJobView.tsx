@@ -90,7 +90,7 @@ export default function CandidateJobView() {
   }, [jobId]);
 
   if (loading) {
-    return <Spinner overlay={true} />;
+    return <Spinner variant="fullpage" />;
   }
   return (
     <Container>

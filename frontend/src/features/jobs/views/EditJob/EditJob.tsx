@@ -142,7 +142,7 @@ export default function EditJob() {
   return (
     <>
       {loading ? (
-        <Spinner overlay={true} />
+        <Spinner variant="fullpage" />
       ) : (
         <div className="post-job-container">
           <h2>

@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import "../../styles/variables.css";
 import "../../styles/jobActions.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Spinner from "../../../../shared/components/Spinner/Spinner";
 import { Job } from "../../types/Job.model";
 import { CandidateApplications } from "../CandidateApplications/CandidateApplications";
@@ -12,22 +12,23 @@ import useMembers from "../../../companies/hooks/useMembers";
 import { useFavoritesContext } from "../../../../context/FavouritesJobsContext";
 import useJobs from "../../hooks/useJobsAPI";
 import useApplications from "../../hooks/useJobApplications";
+import { JobDetailsContext } from "../../guards/jobDetailsRouteGuard";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 
 
-//Deactive job should make the job not visible for candidates and not allow them to apply. It should also remove the job from the favorites of candidates who have favorited it.
 function DetailsJob() {
   const { companyId, jobId } = useParams<{
     companyId: string;
     jobId: string;
   }>();
   const { removeFromFavorites } = useFavoritesContext();
+  const preloaded = useContext(JobDetailsContext);
 
   const navigate = useNavigate();
-  const [jobDetails, setJobdetails] = useState<Job>();
-  const [loading, setLoading] = useState(true);
-  const [currentStatus, setCurrentStatus] = useState();
+  const [jobDetails, setJobdetails] = useState<Job | undefined>(preloaded.job);
+  const [loading, setLoading] = useState(!preloaded.job);
+  const [currentStatus, setCurrentStatus] = useState(preloaded.job?.isActive);
   const [jobStatus, setJobStatus] = useState<boolean | undefined>(
     currentStatus,
   );
@@ -35,7 +36,7 @@ function DetailsJob() {
   const [statusLoading, setStatusLoading] = useState(false);
 
   const [candidates, setCandidates] = useState<Candidate[]>([]);
-  const [localRole, setLocalRole] = useState<string | null>(null);
+  const [localRole, setLocalRole] = useState<string | null>(preloaded.userRole);
   const { getUserRole } = useMembers();
   const { getJobById, updateJob, deleteJob } = useJobs();
   const { getApplicationsByJobId } = useApplications();
@@ -86,11 +87,13 @@ function DetailsJob() {
     }
   };
   useEffect(() => {
-    if (companyId) {
+    if (companyId && !preloaded.userRole) {
       fetchRole();
     }
     if (jobId) {
-      fetchCurrentJob();
+      if (!preloaded.job) {
+        fetchCurrentJob();
+      }
       fetchApllications();
     }
   }, [companyId, jobStatus, jobId]);
@@ -148,9 +151,7 @@ function DetailsJob() {
     <>
       <Container>
         {loading ? (
-          <Spinner overlay={true} />
-        ) : statusLoading ? (
-          <Spinner overlay={true} />
+          <Spinner variant="fullpage" />
         ) : (
           <div className="job-details-container">
             <DetailsJobMainSection jobDetails={jobDetails} />
@@ -181,8 +182,13 @@ function DetailsJob() {
                   <button
                     className="app-button app-button--secondary"
                     onClick={changeStatusHandler}
+                    disabled={statusLoading}
                   >
-                    {jobDetails?.isActive ? t`Deactivate Job` : t`Activate Job`}
+                    {statusLoading
+                      ? t`Updating...`
+                      : jobDetails?.isActive
+                        ? t`Deactivate Job`
+                        : t`Activate Job`}
                   </button>
                 </div>
               </div>

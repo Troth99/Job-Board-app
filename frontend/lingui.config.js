@@ -204,6 +204,7 @@ export default defineConfig({
 			path: "<rootDir>/src/i18n/locales/{locale}/members-view",
 			include: ["src/features/companies/views/ViewMembers",
 				"src/features/companies/components/MembersActions",
+				"src/features/companies/components/MembersActions/kickMemberConfirmationModal"
 			],
 
 		},

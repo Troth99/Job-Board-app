@@ -1,0 +1,79 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-ring {
+  width: 50px;
+  height: 50px;
+  border: 6px solid rgba(0, 123, 255, 0.2);
+  border-top: 6px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-ring.dark-theme {
+  border-color: rgba(30, 144, 255, 0.2);
+  border-top-color: #1e90ff;
+}
+
+.spinner-message {
+  margin-top: 12px;
+  color: #666;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* fullpage: fixed branded overlay used for route/auth loading */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 9999;
+}
+
+[data-theme="dark"] .spinner-overlay {
+  background: #0d1117;
+}
+
+.spinner-logo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #007bff;
+  font-family: "Segoe UI", sans-serif;
+  text-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
+}
+
+.spinner-logo.dark-theme {
+  color: #1e90ff;
+  text-shadow: 0 0 12px rgba(30, 144, 255, 0.8);
+}
+
+/* block: fills the surrounding content area for page/section loading */
+.spinner-block {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+/* inline: compact spinner for embedding in cards, lists, buttons, notifications */
+.spinner-inline-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0;
+}

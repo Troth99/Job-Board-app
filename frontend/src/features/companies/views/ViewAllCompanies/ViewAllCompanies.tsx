@@ -102,7 +102,7 @@ export default function ViewAllCompanies() {
     <MetaData seo={seo} />
 
     {loading ? (
-      <Spinner overlay={true} />
+      <Spinner variant="fullpage" />
     ) : (
       <Container>
             <section className="companies-directory">

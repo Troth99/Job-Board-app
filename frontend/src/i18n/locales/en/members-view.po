@@ -23,6 +23,12 @@ msgstr "{memberName} has been removed from the company."
 msgid "{memberName}'s role updated to {newRole} successfully."
 msgstr "{memberName}'s role updated to {newRole} successfully."
 
+msgid "Are you sure you want to remove {memberName} from the company?"
+msgstr "Are you sure you want to remove {memberName} from the company?"
+
+msgid "Cancel"
+msgstr "Cancel"
+
 msgid "Company Members"
 msgstr "Company Members"
 
@@ -64,3 +70,6 @@ msgstr "Team Management"
 
 msgid "Updated At:"
 msgstr "Updated At:"
+
+msgid "Yes, remove"
+msgstr "Yes, remove"

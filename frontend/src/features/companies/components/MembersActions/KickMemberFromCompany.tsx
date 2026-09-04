@@ -3,7 +3,6 @@ import { Trans } from "@lingui/react/macro";
 import { FiUserX } from "react-icons/fi";
 import { CompanyMember } from "../../types/CompanyMember.model";
 
-//to add a modal for confirmation before removing a member
 export default function KickMemberFromCompany({
   userRole,
   member,
@@ -24,13 +23,7 @@ export default function KickMemberFromCompany({
             className="action-btn remove"
             title={t`Remove Member`}
             disabled={loading}
-            onClick={() => {
-              if (loading) {
-                return;
-              }
-
-              kickMemberHandler(member._id);
-            }}
+            onClick={() => kickMemberHandler(member._id)}
           >
             {loading ? (
               t`Removing...`

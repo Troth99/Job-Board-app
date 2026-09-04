@@ -13,6 +13,7 @@ import MetaData from "../../../../seo/MetaDataTags";
 import { toast } from "react-toastify";
 import ChangeRoleForMember from "../../components/MembersActions/ChangeRoleForMember";
 import KickMemberFromCompany from "../../components/MembersActions/KickMemberFromCompany";
+import { KickMemberConfirmationModal } from "../../components/MembersActions/kickMemberConfirmationModal";
 import MembersCard from "./MembersCard";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
@@ -23,6 +24,8 @@ export default function ViewMembers() {
   const { companyId } = useParams();
   const [showOptions, setShowOptions] = useState<string | null>(null);
   const [showMessageModal, setShowMessageModal] = useState<string | null>(null);
+  const [memberToKick, setMemberToKick] = useState<CompanyMember | null>(null);
+  const [kicking, setKicking] = useState(false);
 
   const seo = () => generateSeoConfig("companyMembers");
 
@@ -80,21 +83,23 @@ export default function ViewMembers() {
     }
   };
 
-  const kickMemberHandler = async (memberId: string, member: CompanyMember) => {
-    if (!companyId) return;
-    setLoading(true);
-    const memberName = member.userId?.name || member.userId?.email || "Member";
+  const confirmKickMemberHandler = async () => {
+    if (!companyId || !memberToKick) return;
+    setKicking(true);
+    const memberName =
+      memberToKick.userId?.name || memberToKick.userId?.email || "Member";
     try {
-      await kickMemberFromCompany(companyId, memberId);
+      await kickMemberFromCompany(companyId, memberToKick._id);
       setMembers((prevMembers: CompanyMember[]) =>
-        prevMembers.filter((m) => m._id !== memberId),
+        prevMembers.filter((m) => m._id !== memberToKick._id),
       );
       toast.success(t`${memberName} has been removed from the company.`);
+      setMemberToKick(null);
     } catch (error) {
       console.error("Failed to kick member from the company", error);
       toast.error(t`Failed to remove the member.`);
     } finally {
-      setLoading(false);
+      setKicking(false);
     }
   };
 
@@ -107,7 +112,7 @@ export default function ViewMembers() {
       <MetaData seo={seo} />
 
       {loading ? (
-        <Spinner overlay={true} />
+        <Spinner variant="fullpage" />
       ) : (
         <div className="member-list-page">
           <div className="members-list-container">
@@ -165,9 +170,7 @@ export default function ViewMembers() {
                         userRole={userRole}
                         member={member}
                         loading={loading}
-                        kickMemberHandler={() =>
-                          kickMemberHandler(member._id, member)
-                        }
+                        kickMemberHandler={() => setMemberToKick(member)}
                       />
                     </div>
                   </div>
@@ -183,6 +186,17 @@ export default function ViewMembers() {
               onClose={() => setShowMessageModal(null)}
             />
           )}
+          <KickMemberConfirmationModal
+            isOpen={!!memberToKick}
+            memberName={
+              memberToKick?.userId?.name ||
+              memberToKick?.userId?.email ||
+              "this member"
+            }
+            submitting={kicking}
+            onClose={() => setMemberToKick(null)}
+            onConfirm={confirmKickMemberHandler}
+          />
         </div>
       )}
     </>

@@ -9,6 +9,7 @@ import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
 import useNotifications from "../../hooks/useNotifications";
 import { Notification } from "../../types/Notification.model";
 import useMembers from "../../../companies/hooks/useMembers";
+import useProfile from "../../../profile/hooks/useProfile";
 import { Trans } from "@lingui/react/macro";
 
 
@@ -19,8 +20,12 @@ export default function CompanyInvitationNotification() {
 
   const { addMemberToCompany } = useMembers();
   const {userData, setUserData} = useUserData();
+  const { getLoggedInUserData } = useProfile();
 
   const user = getUserFromLocalStorage();
+
+  // Company membership must reflect the server, since localStorage isn't updated when a user is kicked by someone else.
+  const [belongsToCompany, setBelongsToCompany] = useState<boolean>(!!user.company);
 
   //State only for the current OPEN notification.
   const [notification, setNotification] = useState<Notification | undefined>(
@@ -29,6 +34,16 @@ export default function CompanyInvitationNotification() {
   const navigate = useNavigate();
 
   const { deleteNotification } = useNotifications();
+
+  useEffect(() => {
+    (async () => {
+      const freshUser = await getLoggedInUserData();
+      if (freshUser) {
+        setBelongsToCompany(!!freshUser.company);
+        localStorage.setItem("user", JSON.stringify({ ...user, company: freshUser.company }));
+      }
+    })();
+  }, []);
 
   const companyId = notification?.company?._id;
 
@@ -42,7 +57,7 @@ export default function CompanyInvitationNotification() {
   const acceptCompanyInvitationHandler = async () => {
     if (!notification || !companyId) return;
 
-    if (user && user.company) {
+    if (belongsToCompany) {
       alert(
         "You are already part of a company. Please leave first in order to accept the invitation.",
       );
@@ -133,9 +148,9 @@ export default function CompanyInvitationNotification() {
         <div className="company-invitation-actions">
           <button
             className="company-invitation-accept"
-            disabled={!!user.company}
+            disabled={belongsToCompany}
             title={
-              user.company ? "You must leave your company before joining." : ""
+              belongsToCompany ? "You must leave your company before joining." : ""
             }
             onClick={acceptCompanyInvitationHandler}
           >
@@ -148,7 +163,7 @@ export default function CompanyInvitationNotification() {
             <Trans>Decline</Trans>
           </button>
         </div>
-        {user.company && (
+        {belongsToCompany && (
           <div className="company-invitation-warning">
             <Trans>You must leave your company before joining.</Trans>
           </div>

@@ -36,7 +36,7 @@ export default function SearchResults() {
     fetchAndFilter();
   }, [query]);
   if (loading) {
-    return <Spinner overlay={true} />;
+    return <Spinner variant="fullpage" />;
   }
   return (
     <div className="search-results-container">

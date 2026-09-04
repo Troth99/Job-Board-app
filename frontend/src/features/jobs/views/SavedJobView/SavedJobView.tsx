@@ -59,7 +59,7 @@ function SavedJobs() {
       <MetaData seo={seo} />
 
       {loading ? (
-        <Spinner overlay={true} />
+        <Spinner variant="fullpage" />
       ) : (
         <Container>
           <div className="saved-jobs-view">

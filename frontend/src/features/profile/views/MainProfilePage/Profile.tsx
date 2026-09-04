@@ -76,9 +76,10 @@ const companyId = userData?.company;
   const seo = () => generateSeoConfig("profile");
 
   const isProfilePending = userLoading || !isInitialized;
+  const isStillLoading = isProfilePending || (!!userData && !isCompanyReady);
 
-  if (!userData && isProfilePending) {
-    return <Spinner overlay={true} />;
+  if (isStillLoading) {
+    return <Spinner variant="fullpage" />;
   }
 
   if (!userData) {
@@ -115,71 +116,65 @@ const companyId = userData?.company;
     <>
       <MetaData seo={seo} />
 
-      {userLoading ||
-      (!isInitialized && !userData) ||
-      (!!userData && !isCompanyReady) ? (
-        <Spinner overlay={true} />
-      ) : (
-        <Container maxwith="1520px" padding="0 12px">
-          <div className="profile-container">
-            <section className="profile-top-grid">
-              <ProfileContainer
-                userData={userData}
-                avatar={avatar || userData.avatar || null}
-                handleFileChange={handleFileChange}
-                isUploading={isUploading}
-                completionPercentage={completionPercentage}
-                completedFields={completedFields}
-                totalCompletionFields={totalCompletionFields}
-              />
+      <Container maxwith="1520px" padding="0 12px">
+        <div className="profile-container">
+          <section className="profile-top-grid">
+            <ProfileContainer
+              userData={userData}
+              avatar={avatar || userData.avatar || null}
+              handleFileChange={handleFileChange}
+              isUploading={isUploading}
+              completionPercentage={completionPercentage}
+              completedFields={completedFields}
+              totalCompletionFields={totalCompletionFields}
+            />
 
-              <ProfileRightPanel
-                userRole={userRole}
-                company={company}
-                companyLoading={companyLoading}
-                hasCompanyId={hasCompanyId}
-              />
-            </section>
+            <ProfileRightPanel
+              userRole={userRole}
+              company={company}
+              companyLoading={companyLoading}
+              hasCompanyId={hasCompanyId}
+            />
+          </section>
 
-            <section className="profile-bottom-grid">
-              <JobPosting
-                company={company}
-                userRole={userRole}
-                postJobNavigation={postJobNavigation}
-                registerCompanyNavigation={registerCompanyNavigation}
-              />
+          <section className="profile-bottom-grid">
+            <JobPosting
+              company={company}
+              userRole={userRole}
+              postJobNavigation={postJobNavigation}
+              registerCompanyNavigation={registerCompanyNavigation}
+            />
 
-              <div className="profile-activity-card">
-                <h3><Trans>Recent account activity</Trans></h3>
-                <ul>
-                  <li>
-                    <span><Trans>Profile completion</Trans></span>
-                    <strong>{completionPercentage}% <Trans>complete</Trans></strong>
-                  </li>
-                  <li>
-                    <span><Trans>Company access</Trans></span>
-                    <strong>
-                      {!hasCompanyId
-                        ? <Trans>Not enabled</Trans>
-                        : company
-                          ? <Trans>Enabled</Trans>
-                          : <Trans>Loading...</Trans>}
-                    </strong>
-                  </li>
-                  <li>
-                    <span><Trans>Role summary</Trans></span>
-                    <strong>{userRole || <Trans>No company role</Trans>}</strong>
-                  </li>
-                </ul>
-              </div>
-            </section>
-
-            <div className="logout-container">
-              <LogOutComponnent />
+            <div className="profile-activity-card">
+              <h3><Trans>Recent account activity</Trans></h3>
+              <ul>
+                <li>
+                  <span><Trans>Profile completion</Trans></span>
+                  <strong>{completionPercentage}% <Trans>complete</Trans></strong>
+                </li>
+                <li>
+                  <span><Trans>Company access</Trans></span>
+                  <strong>
+                    {!hasCompanyId
+                      ? <Trans>Not enabled</Trans>
+                      : company
+                        ? <Trans>Enabled</Trans>
+                        : <Trans>Loading...</Trans>}
+                  </strong>
+                </li>
+                <li>
+                  <span><Trans>Role summary</Trans></span>
+                  <strong>{userRole || <Trans>No company role</Trans>}</strong>
+                </li>
+              </ul>
             </div>
+          </section>
+
+          <div className="logout-container">
+            <LogOutComponnent />
           </div>
-        </Container>
-      )}
+        </div>
+      </Container>
     </>
   );
 }

@@ -124,7 +124,7 @@ function UpdateCompany() {
     <>
     <MetaData seo={seo} />
       {loading ? (
-        <Spinner overlay={true} />
+        <Spinner variant="fullpage" />
       ) : (
         <div className="update-company-container">
           <h2>Update Company</h2>

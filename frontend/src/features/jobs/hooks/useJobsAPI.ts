@@ -70,7 +70,7 @@ export default function useJobs() {
     }
   };
 
-  const updateJob = async (jobId: string, jobData: JobPayload) => {
+  const updateJob = async (jobId: string, jobData: Partial<JobPayload>) => {
     setLoading(true);
     try {
       if (!jobId) throw new Error("Job ID is missing.");
