@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import "../../styles/variables.css";
 import "../../styles/jobActions.css";
 import { useContext, useEffect, useState } from "react";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { DetailPageSkeleton } from "../../../../shared/components/Skeleton/Skeleton";
 import { Job } from "../../types/Job.model";
 import { CandidateApplications } from "../CandidateApplications/CandidateApplications";
 import { Candidate } from "../../types/Apllication.model";
@@ -151,7 +151,7 @@ function DetailsJob() {
     <>
       <Container>
         {loading ? (
-          <Spinner variant="fullpage" />
+          <DetailPageSkeleton />
         ) : (
           <div className="job-details-container">
             <DetailsJobMainSection jobDetails={jobDetails} />

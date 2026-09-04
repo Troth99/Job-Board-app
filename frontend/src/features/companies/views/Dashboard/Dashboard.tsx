@@ -3,7 +3,7 @@ import useCompanies from "../../hooks/useCompanyAPI";
 import "../../styles/dashboard.css";
 import { useNavigate, useParams } from "react-router";
 import { CompanyJobsList } from "../../components/CompanyJobList/CompanyJobList";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { DashboardSkeleton } from "../../../../shared/components/Skeleton/Skeleton";
 import {  InviteMemberToCompany } from "../../components/InviteMemberToCompany/InviteMemberToCompany";
 import { SendMessage } from "../../components/SendMessage/SendMessage";
 import { getUserFromLocalStorage } from "../../../auth/hooks/useAuth";
@@ -147,7 +147,7 @@ export default function Dashboard() {
     localRole === "admin" || localRole === "owner" || localRole === "recruiter";
 
   if (loading || refreshingAfterTransfer || !localRole) {
-    return <Spinner variant="fullpage" />;
+    return <DashboardSkeleton />;
   }
   return (
     <>

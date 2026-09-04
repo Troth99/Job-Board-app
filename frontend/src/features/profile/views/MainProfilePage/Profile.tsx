@@ -1,7 +1,7 @@
 import "../../styles/profile.css"
 import "../../styles/buttons.css"
 import { useEffect, useState } from "react";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { ProfileSkeleton } from "../../../../shared/components/Skeleton/Skeleton";
 import useProfile from "../../hooks/useProfile";
 import { useNavigate } from "react-router";
 import { useRole } from "../../../../context/RoleContext";
@@ -79,7 +79,11 @@ const companyId = userData?.company;
   const isStillLoading = isProfilePending || (!!userData && !isCompanyReady);
 
   if (isStillLoading) {
-    return <Spinner variant="fullpage" />;
+    return (
+      <Container maxwith="1520px" padding="0 12px">
+        <ProfileSkeleton />
+      </Container>
+    );
   }
 
   if (!userData) {

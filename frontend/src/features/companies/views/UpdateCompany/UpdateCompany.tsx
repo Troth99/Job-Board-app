@@ -4,7 +4,7 @@ import { validateCompany } from "../../validators/useCompanyValidation";
 import useCompanyAPI from "../../hooks/useCompanyAPI";
 import "../../styles/updateCompany.css"
 import { useNavigate, useParams } from "react-router";
-import Spinner from "../../../../shared/components/Spinner/Spinner";
+import { FormSkeleton } from "../../../../shared/components/Skeleton/Skeleton";
 import MetaData from "../../../../seo/MetaDataTags";
 import { generateSeoConfig } from "../../../../seo/seo";
 import { toast } from "react-toastify";
@@ -124,7 +124,7 @@ function UpdateCompany() {
     <>
     <MetaData seo={seo} />
       {loading ? (
-        <Spinner variant="fullpage" />
+        <FormSkeleton rows={8} />
       ) : (
         <div className="update-company-container">
           <h2>Update Company</h2>
