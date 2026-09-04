@@ -12,7 +12,7 @@ import { notificationsRoutes } from "./features/notifications/routes/Notificatio
 import { ProfileRoutes } from "./features/profile/routes/ProfileRoutes";
 import { CompanyRoutes } from "./features/companies/routes/CompanyRoutes";
 import MainLayout from "./shared/Layouts/MainLayout";
-import FullPageSpinner from "./shared/components/FullPageSpinner/FullPageSpinner";
+import Spinner from "./shared/components/Spinner/Spinner";
 import { setCategories } from "./features/categories/components/CategoriesSection/categoriesSlice";
 import SearchResults from "./features/homeview/components/Search/SearchResults/SearchResults";
 import HomeSection from "./features/homeview/view/HomeSection";
@@ -26,16 +26,24 @@ interface AppProps {
 function App({ setUserId }: AppProps) {
   const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
+  const [slowStart, setSlowStart] = useState(false);
   const dispatch = useDispatch();
   const { getCategories } = useCategories();
 
   useEffect(() => {
     async function loadCategories() {
-      try {
-        const categories = await getCategories();
-        dispatch(setCategories(categories));
-      } catch (error) {
-        console.error("Error loading categories:", error);
+      const maxRetries = 3;
+      for (let attempt = 0; attempt <= maxRetries; attempt++) {
+        try {
+          const categories = await getCategories();
+          dispatch(setCategories(categories));
+          return;
+        } catch (error) {
+          console.error(`Error loading categories (attempt ${attempt + 1}):`, error);
+          if (attempt < maxRetries) {
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+          }
+        }
       }
     }
     loadCategories();
@@ -44,8 +52,9 @@ function App({ setUserId }: AppProps) {
   useEffect(() => {
     async function wakeUpServer() {
       let retries = 0;
-      const maxRetries = 3;
-      const retryDelay = 1000;
+      // Render's free tier can take 30-60s to wake a sleeping instance, so allow enough retries to actually catch it.
+      const maxRetries = 6;
+      const retryDelay = 3000;
       // Ping the backend that this environment actually talks to, not a hardcoded production URL.
       const pingUrl = API_BASE.replace(/\/api\/?$/, "/");
 
@@ -53,7 +62,7 @@ function App({ setUserId }: AppProps) {
         try {
           // Bound each attempt so a cold/unreachable server can't hang the spinner forever.
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 8000);
+          const timeoutId = setTimeout(() => controller.abort(), 10000);
           const response = await fetch(pingUrl, { signal: controller.signal });
           clearTimeout(timeoutId);
 
@@ -69,6 +78,10 @@ function App({ setUserId }: AppProps) {
         }
 
         retries++;
+        // Only mention the cold-start wait once it's actually taking a while, not on every reload.
+        if (retries === 1) {
+          setSlowStart(true);
+        }
         console.log(`Retrying... attempt ${retries} of ${maxRetries}`);
         await new Promise((resolve) => setTimeout(resolve, retryDelay));
       }
@@ -80,7 +93,12 @@ function App({ setUserId }: AppProps) {
   }, []);
 
   if (loading) {
-    return <FullPageSpinner />;
+    return (
+      <Spinner
+        variant="fullpage"
+        message={slowStart ? "Waking up the server, this can take up to a minute..." : undefined}
+      />
+    );
   }
   return (
     <div>
@@ -119,7 +137,7 @@ function App({ setUserId }: AppProps) {
           <Route
             path="*"
             element={
-              <Suspense fallback={<FullPageSpinner />}>
+              <Suspense fallback={<Spinner variant="fullpage" />}>
                 <PageNotFound />
               </Suspense>
             }
