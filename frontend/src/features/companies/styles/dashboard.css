@@ -5,7 +5,7 @@
 .dashboard {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
-  min-height: 100%;
+  min-height: 0;
   align-items: stretch;
   color: var(--member-text);
   background:
@@ -16,12 +16,11 @@
 
 /* Navigation sidebar */
 .dashboard .sidebar {
-  position: sticky;
-  top: 0;
-  align-self: start;
-  height: fit-content;
-  max-height: calc(100vh - 1rem);
-  overflow-y: auto;
+  position: relative;
+  align-self: stretch;
+  height: auto;
+  max-height: none;
+  overflow: visible;
   padding: 16px 12px 12px;
   color: #173a60;
   border-right: 1px solid #cfdded;
