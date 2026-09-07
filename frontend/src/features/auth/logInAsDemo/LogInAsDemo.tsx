@@ -33,7 +33,7 @@ export default function LogInAsDemo() {
 
     return (
         <button className="btn-login-as-demo" type="button" onClick={logInAsDemo} disabled={loading}>
-            <Trans>Log In as Demo</Trans>
+            {loading ? <Trans>Logging in...</Trans> : <Trans>Log In as Demo</Trans>}
         </button>
     )
 }

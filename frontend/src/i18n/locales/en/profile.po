@@ -59,6 +59,9 @@ msgstr "Delete Profile"
 msgid "Delete Profile Image"
 msgstr "Delete Profile Image"
 
+msgid "Demo Account"
+msgstr "Demo Account"
+
 msgid "Edit Profile"
 msgstr "Edit Profile"
 
@@ -181,6 +184,9 @@ msgstr "View All Saved Jobs"
 
 msgid "You are connected to a company and can publish new job posts."
 msgstr "You are connected to a company and can publish new job posts."
+
+msgid "You're browsing as a demo user — you can create a company and post jobs, but editing/deleting your profile, changing your password, and updating or deleting jobs/companies are disabled."
+msgstr "You're browsing as a demo user — you can create a company and post jobs, but editing/deleting your profile, changing your password, and updating or deleting jobs/companies are disabled."
 
 msgid "Your role is a member of the company. In order to post jobs, register and verify your own company or talk with the owner."
 msgstr "Your role is a member of the company. In order to post jobs, register and verify your own company or talk with the owner."

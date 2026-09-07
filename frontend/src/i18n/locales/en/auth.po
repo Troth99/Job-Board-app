@@ -97,6 +97,9 @@ msgstr "Log In as Demo"
 msgid "Log out"
 msgstr "Log out"
 
+msgid "Logging in..."
+msgstr "Logging in..."
+
 msgid "Logging out"
 msgstr "Logging out"
 

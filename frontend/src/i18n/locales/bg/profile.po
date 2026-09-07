@@ -59,6 +59,9 @@ msgstr ""
 msgid "Delete Profile Image"
 msgstr ""
 
+msgid "Demo Account"
+msgstr ""
+
 msgid "Edit Profile"
 msgstr ""
 
@@ -181,6 +184,9 @@ msgstr "Виж всички запазени работни места"
 
 msgid "You are connected to a company and can publish new job posts."
 msgstr "Вие сте свързани с компания и можете да публикувате нови обяви за работа."
+
+msgid "You're browsing as a demo user — you can create a company and post jobs, but editing/deleting your profile, changing your password, and updating or deleting jobs/companies are disabled."
+msgstr ""
 
 msgid "Your role is a member of the company. In order to post jobs, register and verify your own company or talk with the owner."
 msgstr "Вашата роля е член на компанията. За да публикувате обяви за работа, регистрирайте и потвърдете собствената си компания или се свържете със собственика."
