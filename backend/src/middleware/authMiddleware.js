@@ -34,3 +34,14 @@ export const protect = async (req, res, next) => {
     res.status(401).json({ message: "Unauthorized: Invalid token" });
   }
 };
+
+/**
+ * Blocks the demo account from destructive/mutating actions (delete, update, etc.).
+ * Apply after `protect` on routes that should stay read-only for the demo user.
+ */
+export const blockDemoWrite = (req, res, next) => {
+  if (req.user?.isDemo) {
+    return res.status(403).json({ message: "This action is disabled for the demo account." });
+  }
+  next();
+};

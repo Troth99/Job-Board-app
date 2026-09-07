@@ -122,6 +122,14 @@ const companyId = userData?.company;
 
       <Container maxwith="1520px" padding="0 12px">
         <div className="profile-container">
+          {userData.isDemo && (
+            <div className="profile-demo-banner">
+              <strong><Trans>Demo Account</Trans></strong>{" "}
+              <Trans>
+                You're browsing as a demo user — you can create a company and post jobs, but editing/deleting your profile, changing your password, and updating or deleting jobs/companies are disabled.
+              </Trans>
+            </div>
+          )}
           <section className="profile-top-grid">
             <ProfileContainer
               userData={userData}

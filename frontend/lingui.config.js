@@ -28,7 +28,9 @@ export default defineConfig({
 		},
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/auth",
-			include: ["src/features/auth"],
+			include: ["src/features/auth", 
+				"src/features/auth/logInAsDemo",
+			],
 		},
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/homeview",

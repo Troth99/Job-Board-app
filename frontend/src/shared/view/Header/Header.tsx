@@ -10,6 +10,7 @@ import { RootState } from "../../../store/store";
 import { NotificationMailIcon } from "../../components/NotificationBadge/NotificationMailIcon";
 import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher";
 import { Trans, useLingui } from "@lingui/react/macro";
+import LogInAsDemo from "../../../features/auth/logInAsDemo/LogInAsDemo";
 
 
 
@@ -80,6 +81,7 @@ export function Header() {
             </>
           ) : (
             <>
+              <LogInAsDemo /> 
               <Link to="/login" className="btn-login">
                 <Trans>Login</Trans>
               </Link>
@@ -104,6 +106,7 @@ export function Header() {
           </>
         ) : (
           <>
+          <LogInAsDemo />
             <Link to="/login" className="btn-login">
               <Trans>Login</Trans>
             </Link>

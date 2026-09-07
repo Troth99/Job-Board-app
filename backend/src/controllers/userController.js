@@ -94,7 +94,8 @@ export const loginUser = async (req, res) => {
         email: user.email,
         phoneNumber: user.phoneNumber,
         location: user.location,
-        avatar: user.avatar
+        avatar: user.avatar,
+        isDemo: user.isDemo
       },
       accessToken,
       refreshToken

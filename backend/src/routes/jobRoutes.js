@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { createJob, getCalendarEventsForJobsController, getMostRecentJobsByCompanyController, deleteJobController, getAllJobsController, getJobByIdController, getJobsByCategoryController, getRecentJobsController, updateJobController } from "../controllers/jobController.js";
-import { protect } from "../middleware/authMiddleware.js";
+import { protect, blockDemoWrite } from "../middleware/authMiddleware.js";
 
 
 const router = Router();
@@ -15,9 +15,9 @@ router.get('/recent-company-jobs/:companyId', protect, getMostRecentJobsByCompan
 router.get('/calendar-events-jobs/:companyId', protect, getCalendarEventsForJobsController)
 
 // protected routes
-router.post("/", protect,  createJob);
-router.put("/:id", protect,  updateJobController);
-router.delete('/:id', protect, deleteJobController)
+router.post("/", protect, createJob);
+router.put("/:id", protect, blockDemoWrite, updateJobController);
+router.delete('/:id', protect, blockDemoWrite, deleteJobController)
 
 
 export default router
