@@ -92,7 +92,6 @@ export const getAllJobsController = async (req, res) => {
 
     const totalJobs = await Jobs.countDocuments(filter);
     const totalPages = Math.ceil(totalJobs / limit);
-    console.log("Fetched jobs:", jobs);
     res.json({ jobs, totalJobs, totalPages, page, limit });
   } catch (error) {
     console.error(error);

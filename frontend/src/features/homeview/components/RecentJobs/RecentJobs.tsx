@@ -7,11 +7,33 @@ import { Link } from "react-router";
 
 interface RecentJobsProps {
   recentJobs: Job[];
+  loading?: boolean;
 }
-export default function RecentJobs({ recentJobs }: RecentJobsProps) {
+
+const SKELETON_CARD_COUNT = 4;
+
+export default function RecentJobs({ recentJobs, loading }: RecentJobsProps) {
   return (
     <div className="recentjobs-container">
-      {recentJobs && recentJobs.length > 0 ? (
+      {loading ? (
+        <ul className="recentjobs-list" aria-hidden="true">
+          {Array.from({ length: SKELETON_CARD_COUNT }).map((_, index) => (
+            <li key={index} className="recentjobs-card recentjobs-card--skeleton">
+              <div className="recentjobs-card-content">
+                <div className="recentjobs-skeleton-block recentjobs-skeleton-image" />
+                <div className="recentjobs-card-main">
+                  <div className="recentjobs-skeleton-block recentjobs-skeleton-line recentjobs-skeleton-line--title" />
+                  <div className="recentjobs-skeleton-block recentjobs-skeleton-line recentjobs-skeleton-line--company" />
+                  <div className="recentjobs-skeleton-block recentjobs-skeleton-line recentjobs-skeleton-line--meta" />
+                </div>
+                <div className="recentjobs-card-side">
+                  <div className="recentjobs-skeleton-block recentjobs-skeleton-line recentjobs-skeleton-line--side" />
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : recentJobs && recentJobs.length > 0 ? (
         <ul className="recentjobs-list">
           {recentJobs.map((job) => (
             <li key={job._id} className="recentjobs-card">

@@ -5,6 +5,7 @@ import { changePasswordController } from "../controllers/changePasswordControlle
 import { forgotPassword } from "../controllers/forgotPasswordController.js";
 import { resetPasswordController } from "../controllers/resetPasswordController.js";
 import { authLimiter, forgotPasswordLimiter } from "../utils/rateLimiter.js";
+import { blockDemoWrite } from "../middleware/authMiddleware.js";
 
 
 const router = Router();
@@ -18,10 +19,10 @@ router.post('/logout', logOutUser)
 router.post('/check-user-exists', checkUserExists)
 // Routes only for owner of the own profile
 router.get("/me", protect, getUserProfile);
-router.put("/me", protect, updateUserProfile);
-router.delete('/me/avatar', protect, deleteUserProfileImage)
-router.delete("/me", protect, deleteUserProfile);
-router.put("/change-password", protect, changePasswordController);
+router.put("/me", protect, blockDemoWrite, updateUserProfile);
+router.delete('/me/avatar', protect, blockDemoWrite, deleteUserProfileImage)
+router.delete("/me", protect, blockDemoWrite, deleteUserProfile);
+router.put("/change-password", protect, blockDemoWrite, changePasswordController);
 router.post('/forgot-password', forgotPasswordLimiter, forgotPassword)
 router.post('/reset-password/:token', resetPasswordController)
 

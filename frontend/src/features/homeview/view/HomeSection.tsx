@@ -6,7 +6,6 @@ import useStatistics from "../hooks/useStatistics";
 import useJobs from "../../jobs/hooks/useJobsAPI";
 import { generateSeoConfig } from "../../../seo/seo";
 import MetaData from "../../../seo/MetaDataTags";
-import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 import { Container } from "../../../shared/components/Container/Container";
 
 import { RootState } from "../../../store/store";
@@ -21,9 +20,9 @@ export default function HomeSection() {
     (state: RootState) => state.categories.categories,
   );
   const [recentJobs, setRecentJobs] = useState<Job[]>([]);
+  const [recentJobsLoading, setRecentJobsLoading] = useState<boolean>(true);
   const [applicationStatistics, setApplicationStatistics] =
     useState<StatsResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const { getRecentJobs } = useJobs();
   const { getApllicationStatistics } = useStatistics();
   const { i18n } = useLingui();
@@ -35,7 +34,7 @@ export default function HomeSection() {
     } catch (error) {
       console.error("Failed to fetch recent jobs.");
     } finally {
-      setLoading(false);
+      setRecentJobsLoading(false);
     }
   };
 
@@ -45,8 +44,6 @@ export default function HomeSection() {
       setApplicationStatistics(statisticData);
     } catch (error) {
       console.error("Failed to fetch application statistics.");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -59,24 +56,18 @@ export default function HomeSection() {
     <div>
       <MetaData key={i18n.locale} seo={seo} />
 
-      {loading || categories.length <= 0 ? (
-        <FullPageSpinner />
-      ) : (
-        <>
-          <Hero />
-          <Container>
-            <CategoriesSection />
-            <h1 className="recent-posted-jobs-text">
-              <Trans>Discover the Latest Opportunities</Trans>
-            </h1>
-            {/* Alternative ideas for section title:
+      <Hero />
+      <Container>
+        {categories.length > 0 && <CategoriesSection />}
+        <h1 className="recent-posted-jobs-text">
+          <Trans>Discover the Latest Opportunities</Trans>
+        </h1>
+        {/* Alternative ideas for section title:
           <h1 className="recent-posted-jobs-text">Hot Jobs Right Now</h1>
         */}
-            <RecentJobs recentJobs={recentJobs} />
-            <HomeStats statistics={applicationStatistics}></HomeStats>
-          </Container>
-        </>
-      )}
+        <RecentJobs recentJobs={recentJobs} loading={recentJobsLoading} />
+        <HomeStats statistics={applicationStatistics}></HomeStats>
+      </Container>
     </div>
   );
 }

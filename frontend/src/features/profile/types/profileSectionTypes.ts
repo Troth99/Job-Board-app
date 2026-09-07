@@ -7,6 +7,7 @@ export interface User {
   avatar?: string;
   createdAt?: string;
   company?: string;
+  isDemo?: boolean;
 }
 
 export interface ChangePasswordForm {

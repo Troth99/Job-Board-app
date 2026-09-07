@@ -489,11 +489,11 @@ msgstr "List the must-have qualifications as comma-separated items. Focus on rea
 msgid "List the value-added perks as comma-separated items so the offer looks concrete and transparent."
 msgstr "List the value-added perks as comma-separated items so the offer looks concrete and transparent."
 
-msgid "Loading applications..."
-msgstr "Loading applications..."
+#~ msgid "Loading applications..."
+#~ msgstr "Loading applications..."
 
-msgid "Loading jobs..."
-msgstr "Loading jobs..."
+#~ msgid "Loading jobs..."
+#~ msgstr "Loading jobs..."
 
 msgid "Location"
 msgstr "Location"
@@ -903,6 +903,9 @@ msgstr "Updated at"
 
 msgid "Updated for the current Create Job form"
 msgstr "Updated for the current Create Job form"
+
+msgid "Updating..."
+msgstr "Updating..."
 
 msgid "Use a monitored company mailbox instead of a personal address when possible."
 msgstr "Use a monitored company mailbox instead of a personal address when possible."

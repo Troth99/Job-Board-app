@@ -124,8 +124,8 @@ msgstr "Запазете по-дългия контекст на наемане 
 msgid "Language requirements"
 msgstr "Изисквания за езика"
 
-msgid "Loading applications..."
-msgstr "Зареждане на кандидатури..."
+#~ msgid "Loading applications..."
+#~ msgstr "Зареждане на кандидатури..."
 
 msgid "Location"
 msgstr "Местоположение"
@@ -241,6 +241,9 @@ msgstr "Общо"
 
 msgid "Updated at"
 msgstr "Актуализирано на"
+
+msgid "Updating..."
+msgstr ""
 
 msgid "View CV"
 msgstr "Виж CV"

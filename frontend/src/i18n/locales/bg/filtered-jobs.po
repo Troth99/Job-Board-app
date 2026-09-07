@@ -31,8 +31,8 @@ msgstr "Тип на работа"
 msgid "Jobs from"
 msgstr "Обяви от"
 
-msgid "Loading jobs..."
-msgstr "Зареждане на работи..."
+#~ msgid "Loading jobs..."
+#~ msgstr "Зареждане на работи..."
 
 msgid "No jobs found"
 msgstr "Не са намерени работи"

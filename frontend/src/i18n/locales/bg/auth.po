@@ -91,6 +91,9 @@ msgstr "Фамилия"
 msgid "Location and contact info improve recommendations for your role."
 msgstr "Информацията за местоположението и контактите подобрява препоръките за вашата роля."
 
+msgid "Log In as Demo"
+msgstr "Вход като демо"
+
 msgid "Log out"
 msgstr ""
 

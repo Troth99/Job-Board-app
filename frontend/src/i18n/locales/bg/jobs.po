@@ -489,11 +489,11 @@ msgstr ""
 msgid "List the value-added perks as comma-separated items so the offer looks concrete and transparent."
 msgstr ""
 
-msgid "Loading applications..."
-msgstr ""
+#~ msgid "Loading applications..."
+#~ msgstr ""
 
-msgid "Loading jobs..."
-msgstr ""
+#~ msgid "Loading jobs..."
+#~ msgstr ""
 
 msgid "Location"
 msgstr ""
@@ -902,6 +902,9 @@ msgid "Updated at"
 msgstr ""
 
 msgid "Updated for the current Create Job form"
+msgstr ""
+
+msgid "Updating..."
 msgstr ""
 
 msgid "Use a monitored company mailbox instead of a personal address when possible."

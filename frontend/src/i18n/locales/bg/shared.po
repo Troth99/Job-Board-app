@@ -54,3 +54,9 @@ msgstr "Превключи менюто"
 
 msgid "Toggle theme"
 msgstr "Превключи темата"
+
+msgid "Waking up the server, this can take up to a minute. Some actions may be slow until then."
+msgstr ""
+
+#~ msgid "Waking up the server, this may take up to a minute. Thanks for your patience!"
+#~ msgstr ""

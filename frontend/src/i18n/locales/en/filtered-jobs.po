@@ -31,8 +31,8 @@ msgstr "Job Type"
 msgid "Jobs from"
 msgstr "Jobs from"
 
-msgid "Loading jobs..."
-msgstr "Loading jobs..."
+#~ msgid "Loading jobs..."
+#~ msgstr "Loading jobs..."
 
 msgid "No jobs found"
 msgstr "No jobs found"

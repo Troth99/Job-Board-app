@@ -1,0 +1,13 @@
+
+.btn-login-as-demo {
+    background-color: #f502b8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.btn-login-as-demo:hover {
+    background-color: #0056b3;
+}
