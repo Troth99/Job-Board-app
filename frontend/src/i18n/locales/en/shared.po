@@ -54,3 +54,9 @@ msgstr "Toggle Menu"
 
 msgid "Toggle theme"
 msgstr "Toggle theme"
+
+msgid "Waking up the server, this can take up to a minute. Some actions may be slow until then."
+msgstr "Waking up the server, this can take up to a minute. Some actions may be slow until then."
+
+#~ msgid "Waking up the server, this may take up to a minute. Thanks for your patience!"
+#~ msgstr "Waking up the server, this may take up to a minute. Thanks for your patience!"

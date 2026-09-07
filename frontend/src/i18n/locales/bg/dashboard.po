@@ -100,8 +100,8 @@ msgstr "Напуснете компанията"
 msgid "Leaving..."
 msgstr "Напускане..."
 
-msgid "Loading jobs..."
-msgstr "Зареждане на работни места..."
+#~ msgid "Loading jobs..."
+#~ msgstr "Зареждане на работни места..."
 
 msgid "Members"
 msgstr "Членове"

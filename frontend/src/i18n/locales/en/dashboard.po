@@ -100,8 +100,8 @@ msgstr "Leave Company"
 msgid "Leaving..."
 msgstr "Leaving..."
 
-msgid "Loading jobs..."
-msgstr "Loading jobs..."
+#~ msgid "Loading jobs..."
+#~ msgstr "Loading jobs..."
 
 msgid "Members"
 msgstr "Members"

@@ -1,0 +1,18 @@
+.server-wake-banner {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #4a5a70;
+  background: #eef5ff;
+  border-bottom: 1px solid rgba(0, 123, 255, 0.25);
+}
+
+[data-theme="dark"] .server-wake-banner {
+  color: #b9c8de;
+  background: #10233d;
+  border-bottom-color: rgba(30, 144, 255, 0.3);
+}

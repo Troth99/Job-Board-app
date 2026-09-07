@@ -13,6 +13,7 @@ import { ProfileRoutes } from "./features/profile/routes/ProfileRoutes";
 import { CompanyRoutes } from "./features/companies/routes/CompanyRoutes";
 import MainLayout from "./shared/Layouts/MainLayout";
 import Spinner from "./shared/components/Spinner/Spinner";
+import ServerWakeBanner from "./shared/components/ServerWakeBanner/ServerWakeBanner";
 import { setCategories } from "./features/categories/components/CategoriesSection/categoriesSlice";
 import SearchResults from "./features/homeview/components/Search/SearchResults/SearchResults";
 import HomeSection from "./features/homeview/view/HomeSection";
@@ -24,7 +25,6 @@ interface AppProps {
 }
 
 function App({ setUserId }: AppProps) {
-  const [loading, setLoading] = useState(true);
   const [serverReady, setServerReady] = useState(false);
   const [slowStart, setSlowStart] = useState(false);
   const dispatch = useDispatch();
@@ -86,22 +86,15 @@ function App({ setUserId }: AppProps) {
         await new Promise((resolve) => setTimeout(resolve, retryDelay));
       }
 
-      setLoading(false);
+      setSlowStart(false);
     }
 
     wakeUpServer();
   }, []);
 
-  if (loading) {
-    return (
-      <Spinner
-        variant="fullpage"
-        message={slowStart ? "Waking up the server, this can take up to a minute..." : undefined}
-      />
-    );
-  }
   return (
     <div>
+      {slowStart && !serverReady && <ServerWakeBanner />}
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route

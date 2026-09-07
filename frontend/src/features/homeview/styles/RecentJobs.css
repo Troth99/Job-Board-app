@@ -169,6 +169,69 @@ button .recentjobs-view-all-link {
   display: flex;
   margin-top: 24px;
 }
+.recentjobs-no-jobs {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  text-align: center;
+  color: #5a6a8e;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #eff6ff;
+  border: 1px dashed #dbeafe;
+  border-radius: 6px;
+}
+
+.recentjobs-card--skeleton {
+  pointer-events: none;
+}
+
+.recentjobs-skeleton-block {
+  border-radius: 5px;
+  background: linear-gradient(90deg, #eff6ff 25%, #dbeafe 37%, #eff6ff 63%);
+  background-size: 400% 100%;
+  animation: recentjobs-skeleton-shimmer 1.4s ease infinite;
+}
+
+.recentjobs-skeleton-image {
+  flex-shrink: 0;
+  width: 66px;
+  height: 66px;
+}
+
+.recentjobs-skeleton-line {
+  height: 12px;
+  margin: 6px 0;
+}
+
+.recentjobs-skeleton-line--title {
+  width: 65%;
+  height: 16px;
+}
+
+.recentjobs-skeleton-line--company {
+  width: 40%;
+}
+
+.recentjobs-skeleton-line--meta {
+  width: 55%;
+}
+
+.recentjobs-skeleton-line--side {
+  width: 90px;
+  margin-left: auto;
+}
+
+@keyframes recentjobs-skeleton-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
 @media (max-width: 900px) {
   .recentjobs-card,
   .recentjobs-card-content {

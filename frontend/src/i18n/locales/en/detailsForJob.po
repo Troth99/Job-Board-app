@@ -124,8 +124,8 @@ msgstr "Keep the longer hiring context readable instead of burying it in a singl
 msgid "Language requirements"
 msgstr "Language requirements"
 
-msgid "Loading applications..."
-msgstr "Loading applications..."
+#~ msgid "Loading applications..."
+#~ msgstr "Loading applications..."
 
 msgid "Location"
 msgstr "Location"
@@ -241,6 +241,9 @@ msgstr "Total"
 
 msgid "Updated at"
 msgstr "Updated at"
+
+msgid "Updating..."
+msgstr "Updating..."
 
 msgid "View CV"
 msgstr "View CV"
