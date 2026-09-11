@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from "react-router";
 import { toast } from "react-toastify";
+import { t } from "@lingui/core/macro";
 
 export default function CompanyRegisterGuard() {
   // Direct localStorage check without using hook
@@ -16,7 +17,7 @@ export default function CompanyRegisterGuard() {
   }
 
   if (companyId) {
-    toast.warn('You are part of a company, so was not able to navigate to register.');
+    toast.warn(t`You are part of a company, so was not able to navigate to register.`);
     return <Navigate to={`/company/${companyId}/dashboard`} replace />;
   }
 

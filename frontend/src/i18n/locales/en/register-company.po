@@ -64,11 +64,17 @@ msgstr "Enter sector"
 msgid "Enter website URL"
 msgstr "Enter website URL"
 
+msgid "Error fetching company data."
+msgstr "Error fetching company data."
+
 msgid "Founded Year"
 msgstr "Founded Year"
 
 msgid "Industry"
 msgstr "Industry"
+
+msgid "Invalid company ID format."
+msgstr "Invalid company ID format."
 
 msgid "Location"
 msgstr "Location"
@@ -99,3 +105,12 @@ msgstr "Website"
 
 msgid "Why Work Here"
 msgstr "Why Work Here"
+
+msgid "You are part of a company, so was not able to navigate to register."
+msgstr "You are part of a company, so was not able to navigate to register."
+
+msgid "You do not have access to this company."
+msgstr "You do not have access to this company."
+
+msgid "You do not have access to this page."
+msgstr "You do not have access to this page."

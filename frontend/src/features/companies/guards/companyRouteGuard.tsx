@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { getAuthToken, getUserFromLocalStorage } from "../../auth/hooks/useAuth";
 import { Navigate, Outlet } from "react-router";
 import { showCompanyWarning } from "../../../shared/utils/toast";
+import { t } from "@lingui/core/macro";
 
 import FullPageSpinner from "../../../shared/components/FullPageSpinner/FullPageSpinner";
 import useCompanies from "../hooks/useCompanyAPI";
@@ -26,7 +27,7 @@ export default function CompanyRouteGuard() {
 
   useEffect(() => {
     if (!companyId || !isValidCompanyId(companyId)) {
-      toast.error("Invalid company ID format.");
+      toast.error(t`Invalid company ID format.`);
       navigate("/");
       return;
     }
@@ -35,7 +36,7 @@ export default function CompanyRouteGuard() {
 
     const fetchUserCompany = async () => {
       if (!token || !user) {
-        toast.error("You do not have access to this page.");
+        toast.error(t`You do not have access to this page.`);
         navigate("/login");
         setLoading(false);
         return;
@@ -48,7 +49,7 @@ export default function CompanyRouteGuard() {
       } catch (error) {
         console.error(error);
         if (isMounted) {
-          showCompanyWarning("Error fetching company data.");
+          showCompanyWarning(t`Error fetching company data.`);
           setLoading(false);
         }
       }
@@ -73,7 +74,7 @@ export default function CompanyRouteGuard() {
         setHasAccess(true);
       } else {
         if (!toastShown) {
-          showCompanyWarning("You do not have access to this company.");
+          showCompanyWarning(t`You do not have access to this company.`);
           setToastShown(true);
           navigate("/");
         }
