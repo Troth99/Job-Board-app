@@ -28,7 +28,7 @@ export default defineConfig({
 		},
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/auth",
-			include: ["src/features/auth", 
+			include: ["src/features/auth",
 				"src/features/auth/logInAsDemo",
 			],
 		},
@@ -157,12 +157,16 @@ export default defineConfig({
 		},
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/company-view",
-			include: ["src/features/companies/views/ViewAllCompanies",],
+			include: ["src/features/companies/views/ViewAllCompanies"
+
+			],
 
 		},
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/register-company",
-			include: ["src/features/companies/views/RegisterCompany",],
+			include: ["src/features/companies/views/RegisterCompany",
+				"src/features/companies/guards",
+			],
 
 		},
 
@@ -226,8 +230,8 @@ export default defineConfig({
 		{
 			path: "<rootDir>/src/i18n/locales/{locale}/candidateJobView",
 			include: ["src/features/jobs/views/CandidateJobView",
-						"src/features/jobs/views/CandidateJobView/CompanyDetailsForJobSection/QuicnInfoSection",
-					],
+				"src/features/jobs/views/CandidateJobView/CompanyDetailsForJobSection/QuicnInfoSection",
+			],
 
 		},
 

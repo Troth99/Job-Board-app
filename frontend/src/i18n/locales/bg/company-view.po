@@ -28,6 +28,12 @@ msgstr "Изчисти филтъра"
 msgid "Compare teams by industry, location, size, and website without losing the visual language of the rest of the app."
 msgstr "Сравнете екипите по индустрия, местоположение, размер и уебсайт, без да губите визуалния език на останалата част от приложението."
 
+#~ msgid "Error fetching company data."
+#~ msgstr "Грешка при извличане на данни за компанията."
+
+#~ msgid "Invalid company ID format."
+#~ msgstr "Невалиден формат на идентификатора на компанията."
+
 msgid "Location"
 msgstr "Местоположение"
 
@@ -60,3 +66,12 @@ msgstr "Посетете сайта"
 
 msgid "Website"
 msgstr "Уебсайт"
+
+#~ msgid "You are part of a company, so was not able to navigate to register."
+#~ msgstr "Вие сте част от компания, затова не беше възможно да навигирате до регистрацията."
+
+#~ msgid "You do not have access to this company."
+#~ msgstr ""
+
+#~ msgid "You do not have access to this page."
+#~ msgstr ""

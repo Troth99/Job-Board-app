@@ -28,6 +28,12 @@ msgstr "Clear filter"
 msgid "Compare teams by industry, location, size, and website without losing the visual language of the rest of the app."
 msgstr "Compare teams by industry, location, size, and website without losing the visual language of the rest of the app."
 
+#~ msgid "Error fetching company data."
+#~ msgstr "Error fetching company data."
+
+#~ msgid "Invalid company ID format."
+#~ msgstr "Invalid company ID format."
+
 msgid "Location"
 msgstr "Location"
 
@@ -60,3 +66,12 @@ msgstr "Visit site"
 
 msgid "Website"
 msgstr "Website"
+
+#~ msgid "You are part of a company, so was not able to navigate to register."
+#~ msgstr "You are part of a company, so was not able to navigate to register."
+
+#~ msgid "You do not have access to this company."
+#~ msgstr "You do not have access to this company."
+
+#~ msgid "You do not have access to this page."
+#~ msgstr "You do not have access to this page."

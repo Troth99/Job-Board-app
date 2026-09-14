@@ -64,11 +64,17 @@ msgstr "Въведете сектор"
 msgid "Enter website URL"
 msgstr "Въведете URL на уебсайта"
 
+msgid "Error fetching company data."
+msgstr "Грешка при извличане на данни за компанията."
+
 msgid "Founded Year"
 msgstr "Година на основаване"
 
 msgid "Industry"
 msgstr "Индустрия"
+
+msgid "Invalid company ID format."
+msgstr "Невалиден формат на идентификатора на компанията."
 
 msgid "Location"
 msgstr "Местоположение"
@@ -99,3 +105,12 @@ msgstr "Уебсайт"
 
 msgid "Why Work Here"
 msgstr "Защо да работите тук"
+
+msgid "You are part of a company, so was not able to navigate to register."
+msgstr "Вие сте част от компания, затова не беше възможно да навигирате до регистрацията."
+
+msgid "You do not have access to this company."
+msgstr "Нямате достъп до тази компания."
+
+msgid "You do not have access to this page."
+msgstr "Нямате достъп до тази страница."
